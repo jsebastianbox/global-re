@@ -1,0 +1,133 @@
+@import url("https://fonts.cdnfonts.com/css/calibri-light");
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.invoice {
+  display: grid;
+  grid-template-areas: "h h h" "i1 i1 i1" "i2 i2 i2" "d d d";
+  padding: 0.15rem;
+  width: 8.3in;
+  height: 11.7in;
+}
+.invoice header {
+  width: 8.3in;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin: 0 0.25rem;
+  padding: 0 45px 0 15px;
+}
+.invoice header .l {
+  display: block;
+  width: calc(8.3in - 50%);
+}
+
+.invoice header .logo img {
+  max-width: 200px;
+}
+
+.invoice header .r {
+  display: block;
+  width: calc(8.3in - 50%);
+}
+
+.invoice .invoice_title {
+  text-transform: uppercase;
+  color: lightgrey;
+  font-weight: 900;
+  display: block;
+  text-align: end;
+  font-size: 2.5rem;
+  font-family: "Calibri Light", sans-serif;
+}
+#info,
+#info_2 {
+  width: 8.3in;
+  justify-content: space-around;
+}
+#info {
+  grid-area: i1;
+}
+#info .l,
+#info_2 .l {
+  text-align: start;
+  margin: 0;
+  padding: 0 0 0 15px;
+}
+#info .r,
+#info_2 .r {
+  text-align: end;
+  margin: 0;
+  padding: 0 20px 0 0;
+}
+#info_2 {
+  grid-area: i2;
+}
+header {
+  width: 8.3in;
+  grid-area: h;
+}
+#invoice-data {
+  width: 8.3in;
+  grid-area: d;
+  place-self: center;
+  margin: 0 auto;
+  display: grid;
+  justify-content: space-around;
+}
+#info {
+  width: 8.3in;
+  display: grid;
+  grid-template-areas: "l r";
+}
+#info_2 {
+  width: 8.3in;
+  display: grid;
+  grid-template-areas: "l r";
+}
+.left {
+  width: calc(8.3in - 50%);
+  grid-area: l;
+}
+.right {
+  width: calc(8.3in - 50%);
+  grid-area: r;
+}
+h3 .right {
+  text-align: right;
+}
+
+table,
+thead,
+tbody,
+th,
+td[colspan="2"] {
+  border: 1px solid #3a3a3a;
+  border-collapse: collapse;
+  padding: 0.15rem;
+}
+tbody tr td.right {
+  border-right: 1px solid #3a3a3a;
+}
+tbody tr td {
+  padding: 5px 15px;
+}
+tfoot td[colspan="2"] {
+  text-transform: uppercase;
+  text-align: end;
+  padding: 0.15rem 8px 0.15rem;
+}
+
+tfoot td#total-invoice {
+  text-align: end;
+  padding: 0 8px;
+}
+.centered {
+  width: 8.3in;
+  text-align: center;
+  text-transform: capitalize;
+}

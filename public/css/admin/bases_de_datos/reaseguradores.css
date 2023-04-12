@@ -1,0 +1,28 @@
+.button {
+    color: #FAFAFA;
+    background-color: var(--primary-color);
+    padding: 8px 12px;
+}
+
+button {
+    background-color: #0D52E9;
+    position: relative;
+    color: #fff;
+    border: none;
+    padding: 1.25em 2em;
+    font-size: 0.75em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: .35em;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: background 0.25s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+button:hover {
+    background: #0c4ddb;
+}
+
+button:focus {
+    outline: none;
+}

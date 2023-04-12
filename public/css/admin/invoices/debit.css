@@ -1,0 +1,85 @@
+@page {
+    size: 210mm 297mm;
+    margin: 0;
+  }
+
+  body#debit-body {
+    width: 210mm;
+    height: 297mm;
+  }
+  .page-break {
+    page-break-after: always;
+  }
+  ul li {
+    list-style: none;
+  }
+  .left_side {
+    font-weight: 600;
+    display: inline-block;
+    width: fit-content;
+  }
+  .right_side {
+    display: inline-block;
+    width: fit-content;
+  }
+  .title {
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 10rem 0 1.75rem 0;
+  }
+  .content {
+    margin-inline: 4rem;
+    position: relative;
+  }
+  .dheader {
+    border: 1px solid black;
+  }
+  .date {
+    margin: 1rem 0 2rem 0;
+    text-align: end;
+  }
+  .invoice {
+    display: grid;
+    grid-template-columns: minmax(fit-content, 1fr) minmax(fit-content, 1fr);
+    grid-gap: 20px;
+  }
+
+  .invoice-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .invoice-cell {
+    padding: 10px;
+  }
+
+  .left {
+    text-align: left;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .right {
+    text-align: left;
+  }
+  table {
+    border-spacing: 1em 0em;
+  }
+  .signature {
+    margin-block: 8rem;
+    width: 15rem;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: end;
+  }
+
+  .footer::before {
+    content: "Página " counter(page) " de " counter(pages);
+  }

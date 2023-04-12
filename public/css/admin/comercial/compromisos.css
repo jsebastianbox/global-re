@@ -1,0 +1,478 @@
+#contentContainer {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    color: #fff;
+}
+
+input[type="file"] {
+    color: var(--global-grey);
+
+}
+
+.navList__subheading {
+    background-color: var(--accent-4) !important;
+}
+
+.sentenceInput {
+    color: var(--global-grey);
+}
+
+/* .right_side {
+    display: flex;
+    justify-content: space-between;
+    align-content: initial;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: initial;
+    max-width: 400px;
+} */
+
+.form__title {
+    text-align: center;
+}
+
+.new_entry__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* .two-sides {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+} */
+
+.new_entry__form--button {
+    width: fit-content;
+    color: #fff;
+    border: none;
+    padding: 1em 1.5em;
+    margin: 0.75rem;
+    max-width: min-content;
+    font-size: 0.75em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 0.35em;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+    transition: background-color 0.25s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.input_group svg {
+    width: 15px;
+    height: auto;
+    margin: 0 0.15rem;
+}
+
+.new_entry__form div label {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--global-grey);
+    max-width: 350px;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+/* .inputForm {
+    border: rgb(122, 122, 122);
+    border-radius: 6px;
+    width: 330px !important;
+    min-width: 30px !important;
+    padding: 5px 8px;
+    margin: 0;
+} */
+
+.inputForm {
+    border: rgb(122, 122, 122);
+    border-radius: 0.45rem;
+    width: 330px !important;
+    min-width: 300px !important;
+    max-width: 330px;
+    padding: 5px 8px;
+    margin: 0 0 0 20px;
+    outline: 1px solid rgba(200, 200, 200, .7);
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new_entry__form div select {
+    width: 20.5rem !important;
+    text-align: center;
+    color: var(--global-grey);
+
+}
+
+.new_entry__form div textarea {
+    width: 325px;
+}
+
+.selectContainer .input--label .labelForm .selectContainer .input--label .labelForm .inputForm {
+    width: 300px !important;
+}
+
+
+/* tabla */
+
+#chartsTitle {
+    margin: 1rem;
+    text-align: center;
+}
+
+.compromisosTable {
+    border-collapse: collapse;
+    background-color: white;
+    min-width: 350px;
+    border-radius: 10px;
+}
+
+.compromisosTable th,
+.compromisosTable td {
+    text-align: left;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.compromisosTable th {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.grid_elements {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    align-items: start;
+    justify-items: start;
+    grid-template-areas:
+        "l  r"
+        "b b";
+    width: 100%;
+    color: black;
+}
+
+.left-side,
+.right-side,
+.bottom {
+    width: 100%;
+}
+
+.right-side,
+.left-side {
+    margin-bottom: .5vh;
+}
+
+.left-side {
+    grid-area: l;
+}
+
+.right-side {
+    grid-area: r;
+    /* Por ver */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+/* .table_container table {
+    display: table;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+}
+.table_container table thead {
+    display: table-header-group;
+    width: 100%;
+}
+.table_container table thead tr {
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    justify-content: space-between;
+    align-items: center;
+    border-collapse: collapse;
+    background-color: #459db0;
+}
+
+.table_container table tbody {
+    display: table-caption;
+    align-content: stretch;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.table_container table tbody tr{
+    display: table-row;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.table_container table tbody tr td {
+    display: table-cell;
+    width: initial;
+    word-break: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+} */
+
+.bottom {
+    margin-top: .5vh;
+    padding: 0;
+    grid-area: b;
+    overflow-y: auto;
+}
+
+label {
+    color: rgb(70, 70, 70);
+}
+
+select {
+    border-radius: .25rem;
+    border: 1px solid rgb(122, 122, 122);
+}
+
+/** =============== Bootstrap form ============== **/
+
+.form {
+    background-color: #fff;
+    margin: 100px auto;
+    padding: 40px;
+    width: 100%;
+    min-width: 600px;
+    width: 100%;
+    max-width: 80vw;
+    min-width: 600px;
+}
+
+.form .table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    max-width: fit-content;
+}
+
+.form .table input {
+    min-width: 150px;
+    width: 100%;
+    max-width: 300px;
+}
+
+h1 {
+    text-align: center;
+}
+
+*:focus {
+    outline: 1px solid #00fffc;
+    border: 1px solid white;
+}
+
+
+input {
+    padding: 3px 10px;
+    /* min-width: 300px;
+    width: 330px;
+    max-width: 330px; */
+    font-size: 17px;
+    border: 1px solid #aaaaaa;
+    border-radius: 0.45rem;
+}
+
+/* Mark input boxes that get errors during validation: */
+input.invalid {
+    background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+    display: none;
+}
+
+#prevBtn {
+    background-color: #bbbbbb;
+}
+
+/* Step marker: Place in the form. */
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+    background-color: #4CAF50;
+}
+
+/* .d-inline input {
+    min-width: 128px;
+    width: fit-content;
+    max-width: 330px;
+} */
+
+p {
+    color: rgb(70, 70, 70);
+}
+
+
+/* styles juanse */
+.input_group {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.30rem;
+}
+
+.flexRowWrapContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.slipTitle {
+    color: var(--global-grey);
+    font-weight: 600;
+}
+
+.flexColumnCenterContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.labelStyleContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 4px 4px;
+
+}
+
+.labelStyleContainer p {
+    border-radius: 5px;
+    color: black;
+    background-color: rgba(226, 226, 226, 0.783);
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+    margin: 0 0 0 -0.3rem;
+    align-content: center;
+    align-items: center;
+    width: 153px;
+    font-weight: 600;
+    /* padding: 6px; */
+    text-align: center;
+    padding: .375rem .75rem;
+    max-height: 36px
+}
+
+.labelStyleContainer input {
+    max-height: 36px;
+
+}
+
+.tableContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.indemnizacionTable {
+    border-collapse: collapse;
+    background-color: #e1e1e1;
+    overflow-x: scroll;
+    color: var(--global-grey);
+    max-width: 800px;
+    border-radius: 10px;
+
+}
+
+.indemnizacionTable th,
+.indemnizacionTable td {
+    text-align: left;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.indemnizacionTable th {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.indemnizacionTable td select
+{
+    width: 100px;
+    background-color: white;
+}
+
+form div .bigTable input:not([type="checkbox"]),
+form div .bigTable select {
+    max-width: 90px;
+}
+
+#CoberturasAdicionalesTable tbody select,
+#ClausulasAdicionalesTable tbody select
+{
+    width: 167px;
+}
+
+hr
+{
+    background-color: darkgrey;
+    width: 70%;
+}

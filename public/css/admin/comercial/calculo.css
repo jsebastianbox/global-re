@@ -1,0 +1,11 @@
+/* @media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 1400px !important;
+    }
+} */
+form {
+    color: initial !important;
+}
+.modal-backdrop {
+    background-color: #00000059 !important;
+}

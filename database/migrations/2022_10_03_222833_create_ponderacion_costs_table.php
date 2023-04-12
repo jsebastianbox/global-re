@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreatePonderacionCostsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('ponderacion_costs', function (Blueprint $table) {
+            $table->id();
+            $table->string('partPonderada')->nullable();
+            $table->string('ponderad')->nullable();
+            $table->string('tasaNetaReaseg')->nullable();
+            $table->string('tasaBrutaReaseg')->nullable();
+            $table->string('comision')->nullable();
+            $table->foreignId('slip_id')->constrained('slips')
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('ponderacion_costs');
+    }
+}

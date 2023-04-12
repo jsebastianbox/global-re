@@ -1,0 +1,11 @@
+.table_container {
+    display: grid;
+    place-content: center;
+    width: calc(100vw - 250px);
+
+}
+
+.table_container tbody {
+    max-height:  calc(50vh - 340px);
+    overflow-y: auto;
+}

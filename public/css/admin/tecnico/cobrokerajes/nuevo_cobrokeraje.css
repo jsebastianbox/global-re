@@ -1,0 +1,463 @@
+main {
+    color: var(--global-grey);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+#contentContainer {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.titleContainer {
+    padding: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    min-width: 70vw;
+}
+
+/* form {
+    color: #fff;
+} */
+
+.right_side,
+.left_side {
+    display: flex;
+    justify-content: space-between;
+    align-content: initial;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: initial;
+    max-width: 400px;
+    min-width: 200px
+}
+
+.form__title {
+    text-align: center;
+}
+
+.new_entry__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.two-sides {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 1.3rem;
+    margin-bottom: 1.3rem;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+/* boton guardar */
+.new_entry__form--button {
+    width: fit-content;
+    color: #fff;
+    border: none;
+    padding: 1em 1.5em;
+    margin: 0.75rem;
+    max-width: min-content;
+    max-height: 50px;
+    font-size: 0.75em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 0.35em;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 10%);
+    transition: background-color 0.25s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.input_group {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.30rem;
+}
+
+.input_group svg {
+    width: 15px;
+    height: auto;
+    margin: 0 0.15rem;
+}
+
+.inputNumber {
+    width: 72px !important;
+}
+
+.new_entry__form div label {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--global-grey);
+    max-width: 350px;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+.inputForm {
+    border: rgb(122, 122, 122);
+    border-radius: 6px;
+    width: 330px;
+    min-width: 30px;
+    padding: 5px 8px;
+    margin: 0;
+}
+
+.new_entry__form div select {
+    width: 18.5rem;
+    text-align: center;
+    color: var(--global-grey);
+
+}
+
+.new_entry__form div textarea {
+    width: 325px;
+}
+
+.selectContainer .input--label .labelForm .selectContainer .input--label .labelForm .inputForm {
+    width: 300px !important;
+}
+
+.slipTitle {
+    color: var(--global-grey);
+    font-weight: 600;
+}
+
+.slipP {
+    color: var(--global-grey);
+    max-width: 550px;
+    margin: 1.2rem;
+    text-align: justify;
+}
+
+thead {
+    color: var(--global-grey)
+}
+
+main ul#errors {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    justify-self: flex-start;
+    margin: 1rem;
+    color: darkred;
+}
+
+.sentenceInput {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 1rem auto;
+    max-width: 800px;
+}
+
+.sentenceInput input,
+.sentenceInput select {
+    margin: 0 10px !important;
+    text-align: end;
+}
+
+/* tablas */
+.new_entry__form div input:not([type="checkbox"]) {
+    color: var(--global-grey);
+    width: auto;
+    max-width: 200px;
+}
+
+/* tablas */
+
+table thead tr th {
+    text-align: center;
+}
+
+.indemnizacionTable {
+    border-collapse: collapse;
+    background-color: #e1e1e1;
+    overflow-x: scroll;
+    color: var(--global-grey);
+    max-width: 800px;
+    border-radius: 10px;
+
+}
+
+.indemnizacionTable th,
+.indemnizacionTable td {
+    text-align: left;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.indemnizacionTable th {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+#apTableSecurity,
+#apTableGarantia,
+#vidaTableSecurity,
+#apTableGarantia,
+#incendioTableSecurity,
+#lucroCesanteTableSecurity,
+#astillerosTableGarantia,
+.tableGarantia {
+    max-width: 560px !important;
+}
+
+#cascoBuquesTableEmbarcaciones thead tr th,
+.bigTable thead tr th,
+#proteccionIndemnizacionTableEmbarcaciones thead tr th {
+    max-width: 90px;
+}
+
+.tableContado,
+.tableSecurity {
+    /* max-width: 350px !important; */
+}
+
+/* containers */
+.tableContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.flexRowWrapContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.flexColumnCenterContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.flexColumnSpaceBetweenContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-around;
+    width: 100%;
+}
+
+.labelStyleContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 4px 4px;
+
+}
+
+.labelStyleContainer p {
+    border-radius: 5px;
+    color: black;
+    background-color: rgba(226, 226, 226, 0.783);
+    display: flex;
+    justify-content: space-around;
+    height: 97%;
+    margin: 0.25rem 0 0.25rem -0.3rem;
+    align-content: center;
+    align-items: center;
+    width: 153px;
+    font-weight: 700;
+    padding: 6px;
+    text-align: end;
+    max-height: 36px
+}
+
+.labelStyleContainer input {
+    max-height: 36px;
+
+}
+
+.labelStyleContainer i {
+    margin: 0 3px;
+}
+
+.labelStyle2Container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: 4px 4px;
+}
+.labelStyle2Container span {
+    margin: 0 3px;
+    background-color: rgba(226, 226, 226, 0.783);
+    border: rgb(122, 122, 122);
+    border-radius: 0 5px 5px 0;
+    max-width: 30px;
+    height: 36px;
+    padding: 5px 8px;
+    margin: auto 0;
+    font-weight: 900;
+    box-shadow: 2px 2px rgb(185 185 185 / 94%);
+
+}
+.labelStyle2Container input {
+    height: 36px;
+    text-align: end;
+    border-radius: 5px 0 0 5px !important;
+
+}
+
+#firstTable {
+    max-width: 450px;
+}
+
+.new_entry__form div #cascoBuquesTableEmbarcaciones input:not([type="checkbox"]),
+.new_entry__form div #cascoBuquesTableEmbarcaciones select,
+.new_entry__form div .bigTable input:not([type="checkbox"]),
+.new_entry__form div .bigTable select,
+.new_entry__form div #proteccionIndemnizacionTableEmbarcaciones input:not([type="checkbox"]),
+.new_entry__form div #proteccionIndemnizacionTableEmbarcaciones select {
+    max-width: 90px;
+}
+
+
+/* form multi step */
+form {
+    width: fit-content;
+    margin: 0rem auto;
+    border-radius: 10px;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    height: max-content;
+}
+
+.form_group1,
+.form_group2,
+.form_group3,
+.form_group4,
+.form_group5,
+.form_group6,
+.form_group7,
+.form_group8 {
+    width: 70vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background-color: rgb(255, 255, 255);
+    padding: 2rem 1rem;
+    margin-bottom: 10rem;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.form_group2,
+.form_group3,
+.form_group4,
+.form_group5,
+.form_group6,
+.form_group7,
+.form_group8 {
+    left: 100vw;
+}
+
+form h3,
+form h4 {
+    margin: 2rem 2rem;
+}
+
+.main {
+    background-color: #fff;
+}
+
+.sidenav {
+    height: auto;
+}
+
+.footer {
+    display: none;
+}
+
+
+
+.progress1,
+.progress2,
+.progress3,
+.progress4,
+.progress5,
+.progress6,
+.progress7 {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.progress1.active,
+.progress2.active,
+.progress3.active,
+.progress4.active,
+.progress5.active,
+.progress6.active,
+.progress7.active {
+    opacity: 1;
+}
+
+.marginTop {
+    margin-top: 3rem;
+}
+
+#notificacionBtnOpcion1,
+#notificacionBtnOpcion2,
+#notificacionBtnOpcion3 {
+    margin: 1rem;
+}
+
+#calculosLastBody input {
+    text-align: center;
+}
+
+/* Mark input boxes that get errors during validation: */
+input.invalid {
+    background-color: #ffdddd !important;
+}
+
+.selectLet .select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 19px !important;
+}
+
+.selectLey .select2-container .select2-selection--single {
+    height: 20px !important;
+}
+
+.marginLeftBold {
+    margin-left: 1rem;
+    font-weight: 900;
+}

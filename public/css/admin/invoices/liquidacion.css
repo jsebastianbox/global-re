@@ -1,0 +1,171 @@
+section.primas_section {
+    padding-inline: 3rem;
+    padding-block: 0.5rem;
+}
+
+.primas_heading {
+    background-color: #144b72;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-align: center;
+    padding-block: 7px;
+}
+
+.primas_content {
+    display: grid;
+    grid-template-areas: "l1 r1" "l2 r2" "l3 r3" "l4 r4" "l5 r5" "l6 r6" "l7 r7";
+    grid-template-columns: minmax(500px, 1fr) minmax(500px, 1rem);
+    row-gap: 1rem;
+    column-gap: 2rem;
+    padding-block: 1rem 0;
+}
+
+.l1 {
+    grid-area: l1;
+}
+
+.l2 {
+    grid-area: l2;
+}
+
+.l3 {
+    grid-area: l3;
+}
+
+.l4 {
+    grid-area: l4;
+}
+
+.l5 {
+    grid-area: l5;
+}
+
+.l6 {
+    grid-area: l6;
+}
+
+.l7 {
+    grid-area: l7;
+}
+
+.r1 {
+    grid-area: r1;
+}
+
+.r2 {
+    grid-area: r2;
+}
+
+.r3 {
+    grid-area: r3;
+}
+
+.r4 {
+    grid-area: r4;
+}
+
+.r5 {
+    grid-area: r5;
+}
+
+.r6 {
+    grid-area: r6;
+}
+
+.r7 {
+    grid-area: r7;
+}
+
+.l1,
+.l2,
+.l3,
+.l4,
+.l5,
+.l6,
+.l7 {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.r1,
+.r2,
+.r3,
+.r4,
+.r5,
+.r6,
+.r7 {
+    text-align: start;
+}
+
+div.r7 {
+    font-weight: 600;
+}
+
+div.r7 p {
+    margin: 0;
+    padding: 0;
+}
+
+div.primas_content table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+div.primas_content table thead th {
+    text-transform: uppercase;
+}
+
+div.primas_content table thead th {
+    padding-inline: 0.5rem;
+}
+
+div.primas_content table tr td {
+    padding-inline: 3rem;
+    padding-block: 0.05rem;
+}
+
+div.primas_content table tr td#suma_cobrada {
+    background-color: yellow;
+}
+
+div.primas_content table tr td:not([scope="col"]) {
+    text-align: center;
+}
+
+div.primas_content table tr td:nth-child(4) {
+    text-align: end;
+}
+
+div.primas_content table tbody tr:nth-last-child(-n + 1) td:nth-child(1) {
+    font-weight: 600;
+}
+
+div.primas_content table tbody tr:nth-last-child(-n + 1) td:nth-child(4),
+div.primas_content table tbody tr:nth-last-child(-n + 1) td:nth-child(5),
+div.primas_content table tbody tr:nth-last-child(-n + 1) td:nth-child(6) {
+    position: relative;
+    border-block: 2px solid black;
+    font-weight: 600;
+}
+
+div.primas_content table tbody tr:nth-last-child(-n + 1) td:nth-child(4)::after,
+div.primas_content table tbody tr:nth-last-child(-n + 1) td:nth-child(5)::after,
+div.primas_content table tbody tr:nth-last-child(-n + 1) td:nth-child(6)::after {
+    position: absolute;
+    content: "";
+    background-color: black;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+}
+
+#number_installments {
+    text-align: end;
+    padding-inline: 0 15.3rem;
+}
+
+.liquidacion_info {
+    padding-inline: 3rem;
+}

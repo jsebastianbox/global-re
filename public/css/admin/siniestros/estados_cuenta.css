@@ -1,0 +1,81 @@
+.estados_container {
+    /* width: 297mm;
+    height: 100vh;
+    max-height: 210mm;
+    overflow-y: auto; */
+    padding-inline: 1rem;
+    padding-block: 1.5rem 0;
+}
+
+.estados_container .title {
+    padding-block: 2rem 1.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    font-size: 14px;
+}
+
+.estados_container .info_container {
+    display: grid;
+    justify-content: start;
+    align-content: start;
+    grid-template-areas: "left1 right1" "left2 right2";
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: minmax(90px, 7rem) minmax(90px, 7rem);
+    row-gap: 0;
+    font-size: 13px;
+}
+
+.estados_container .info_container .left1 {
+    grid-area: left1;
+}
+
+.estados_container .info_container .right1 {
+    grid-area: right1;
+}
+
+.estados_container .info_container .left2 {
+    grid-area: left2;
+}
+
+.estados_container .info_container .right2 {
+    grid-area: right2;
+}
+
+.estados_container .info_container .left1,
+.estados_container .info_container .left2,
+.estados_container .info_container .right1,
+.estados_container .info_container .right2 {
+    text-align: center;
+}
+
+.estados_container .table_container {
+    /**/
+}
+
+table.dataTable tbody td {
+    text-align: center;
+}
+
+/* table.dataTable tbody tr.odd,
+table.dataTable tbody td.sorting_1 {
+    background-color: #d9e1f2;
+}
+
+table.dataTable tbody tr.even,
+table.dataTable tbody td.sorting_1 {
+    background-color: #fff;
+}
+
+table.dataTable tbody tr:hover {
+    background-color: #d9def8;
+} */
+
+.estadosContainer.card {
+    padding: 1rem;
+}
+
+.card_body.gestionContainer
+{
+    overflow-y: scroll;
+}

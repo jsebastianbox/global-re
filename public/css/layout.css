@@ -1,0 +1,330 @@
+/* Googlefont Poppins CDN Link */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+:root {
+    --main-color: #57c1dd;
+    --main-colorbg: #f9f9f9;
+    --black: #13131a;
+    --color-light: rgba(22, 10, 10, 0.18);
+    --bg: #f9f9f9;
+    --primary-color: #4db0c1;
+    --secondary-color: #459db0;
+    --white: #FFFFFF;
+    --accent-1: #57c1dd;
+    --accent-2: #77d6e5;
+    --accent-4: #80e7ff;
+    --global-grey: #595959;
+}
+
+* {
+    font-family: 'Sora', sans-serif;
+    margin: 0;
+    padding: 0;
+    appearance: 0;
+    box-sizing: border-box;
+    outline: 0;
+    border: 0;
+    text-decoration: none;
+    transition: .2s linear;
+}
+
+html {
+    font-size: 62.5%;
+    overflow: hidden;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+} */
+
+
+/*SECTIONS________*/
+
+/* #HOME {
+    display: block;
+}
+
+#CHIFFRAGE {
+    display: none;
+}
+
+#PLANNING {
+    display: none;
+}
+
+#INDICATEURS {
+    display: none;
+}
+
+#FACTURATION {
+    display: none;
+}
+
+#DATABASE {
+    display: none;
+} */
+
+
+/* HEADER */
+/*
+header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    background: #fff;
+    padding: 1.5rem 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+header .icons div {
+    color: var(--black);
+    font-size: 2.5rem;
+    margin-left: 2rem;
+}
+
+header .icons div:hover {
+    color: var(--main-color);
+}
+
+header .search-box {
+    position: relative;
+    height: 35px;
+    max-width: 900px;
+    min-width: 100px;
+    width: 100%;
+    margin-left: 40px;
+}
+
+header .search-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    background: #F5F6FA;
+    border: 2px solid #EFEEF1;
+    border-radius: 6px;
+    font-size: 14px;
+    padding: 0 20px;
+}
+
+header .search-box .bx-search {
+    position: absolute;
+    right: 1px;
+    height: 30px;
+    width: 30px;
+    background: var(--main-colorbg);
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 4px;
+    line-height: 33px;
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+    transition: all 0.4 ease;
+}
+
+header .navbar {
+    display: inline-block;
+    justify-content: space-between;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    transition: all 0.5s ease;
+    width: 500px;
+} */
+
+
+/* SIDEBAR */
+
+/* .sidebar {
+    padding-top: 20px;
+    position: fixed;
+    height: 100%;
+    width: 180px;
+    background: transparent;
+    transition: all 0.5s ease;
+    margin: 0;
+    appearance: 0;
+    box-sizing: border-box;
+    outline: 0;
+    border: 0;
+    text-decoration: none;
+    transition: .2s linear;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    user-select: none;
+    overflow-y: auto;
+}
+
+.sidebar.active {
+    width: 60px;
+}
+
+.sidebar .nav-links {
+    margin-top: 50px;
+}
+
+.sidebar .nav-links li {
+    position: relative;
+    list-style: none;
+    height: 50px;
+}
+
+.sidebar .nav-links li div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--black);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.sidebar .nav-links li .active {
+    background: var(--bg);
+}
+
+.sidebar .nav-links li .active::before {
+    content: "";
+    width: 4px;
+    height: 100%;
+    background: var(--main-color);
+}
+
+.sidebar .nav-links li:hover {
+    background: var(--bg);
+}
+
+.sidebar .nav-links li i {
+    min-width: 60px;
+    text-align: center;
+    font-size: 18px;
+    color: var(--black);
+}
+
+.sidebar .nav-links li .links_name {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    white-space: nowrap;
+    color: var(--black);
+} */
+
+
+/* SECTION HOME */
+
+/* .home-section {
+    position: relative;
+    background: #f5f5f5;
+    min-height: 100vh;
+    width: calc(100% - 180px);
+    left: 180px;
+    transition: all 0.5s ease;
+    display: block;
+    user-select: none;
+}
+
+.sidebar.active~.home-section {
+    width: calc(100% - 60px);
+    left: 60px;
+}
+
+.home-section .home-content {
+    position: relative;
+    padding-top: 70px;
+}
+
+.home-content .sales-boxes {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 26px;
+    width: 100%;
+} */
+
+
+/* left box */
+
+/* .home-content .sales-boxes .recent-sales {
+    width: 65%;
+    background: #fff;
+    padding: 20px 30px;
+    margin: 0 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+} */
+
+
+/* Right box */
+/*
+.home-content .sales-boxes .top-sales {
+    width: 35%;
+    background: #fff;
+    padding: 20px 30px;
+    margin: 0 20px 0 0;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+} */
+
+
+/* Responsive Media Query */
+
+@media (max-width: 1240px) {
+    .sidebar.active {
+        width: 220px;
+    }
+    .home-section {
+        width: calc(100% - 60px);
+        left: 60px;
+    }
+    .sidebar.active~.home-section {
+        /* width: calc(100% - 220px); */
+        overflow: hidden;
+        left: 220px;
+    }
+}
+
+@media (max-width: 1150px) {
+    .home-content .sales-boxes {
+        flex-direction: column;
+    }
+    .home-content .sales-boxes .box {
+        width: 100%;
+        overflow-x: scroll;
+        margin-bottom: 30px;
+    }
+    .home-content .sales-boxes .top-sales {
+        margin: 0;
+    }
+    .top-sales {
+        display: none;
+    }
+    .home-content .sales-boxes {
+        width: 100%;
+        padding-right: 40px;
+    }
+}
+
+@media (max-width: 550px) {
+    .recent-sales {
+        width: 100%;
+    }
+}
+
+/* input[type="checkbox"] {
+    display: grid !important;
+    place-content: center !important;
+  }
+
+  input[type="checkbox"]::before {
+    content: "" !important;
+    width: 0.65em !important;
+    height: 0.65em !important;
+    transform: scale(0) !important;
+    transition: 120ms transform ease-in-out !important;
+    box-shadow: inset 1em 1em rgb(20, 20, 20) !important;
+  }
+
+  input[type="checkbox"]:checked::before {
+    transform: scale(1) !important;
+  } */

@@ -1,0 +1,19 @@
+#contentContainer
+{
+    padding: 2rem;
+}
+.registrosContainer {
+    background-color: white;
+    padding: 2rem;
+    overflow-x: scroll;
+}
+
+.registrosContainer table th
+{
+    text-align: center;
+}
+
+.registrosContainer table td
+{
+    
+}

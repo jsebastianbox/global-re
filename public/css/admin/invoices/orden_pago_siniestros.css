@@ -1,0 +1,120 @@
+@page {
+    size: 210mm 297mm;
+    margin: 0;
+}
+
+.orden_pago_container {
+    width: 210mm;
+    height: 297mm;
+    position: relative;
+}
+
+.orden_pago_content {
+    padding-inline: 6rem;
+}
+
+.orden_title {
+    margin-block: 8rem 4rem;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+
+.orden_date {
+    text-align: end;
+}
+
+.orden_header {
+    /*  */
+}
+
+.orden_row {
+    display: grid;
+    grid-template-columns: minmax(50px, 1fr) minmax(50px, 1fr);
+}
+
+.orden_cell {
+    padding: 10px;
+}
+
+.orden_left,
+.orden_right {
+    text-align: start;
+}
+
+.orden_left {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.orden_table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.orden_table table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.orden_table th,
+.orden_table td {
+    padding: 8px;
+    border: 1px solid black;
+}
+
+tbody tr>td {
+    text-align: center;
+}
+
+tfoot>tr>td {
+    text-align: end;
+}
+
+#pageCount {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 0 20mm 0 0;
+}
+
+#pageCount span {
+    font-size: 1rem;
+}
+
+.signature_container {
+    height: 5rem;
+    padding: 3rem 0 0 0;
+    width: 30%;
+}
+
+.orden_table table {
+    page-break-inside: avoid;
+}
+
+.orden_table tr {
+    page-break-inside: avoid;
+    page-break-after: always;
+}
+
+@media print {
+    .orden_table table {
+        page-break-inside: avoid;
+    }
+
+    .orden_table tr {
+        page-break-inside: avoid;
+        page-break-after: always;
+    }
+    #imprimir {
+        display: none;
+    }
+}

@@ -1,0 +1,125 @@
+.main {
+    grid-area: main;
+    background-color: #eaedf1;
+    color: #394263;
+    padding: 0 0 0 1rem;
+}
+
+.map_sections {
+    padding: 1.2rem;
+    display: grid;
+    grid-template-rows: minmax(5rem, calc(1fr - 5rem)) minmax(25rem, 1fr);
+    grid-template-areas: "table" "chart";
+    grid-template-columns: 1fr;
+    height: 100%;
+}
+
+#table {
+    grid-area: table;
+}
+
+#chart {
+    grid-area: chart;
+    place-self: center;
+    height: 100%;
+}
+
+canvas {
+    height: 100%;
+}
+
+section#table .title {
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-align: center;
+}
+
+section#table .info {
+    margin: 0 0 0 -1.15rem;
+}
+section#table .info .row {
+    margin: 0 0 0 0;
+}
+section#table .row {
+    display: grid;
+    grid-template-areas: "left right";
+    grid-template-columns: minmax(200px, 5rem) minmax(200px, 5rem);
+}
+
+section#table .left {
+    grid-area: left;
+}
+
+section#table .right {
+    grid-area: right;
+}
+
+#reinsurer_table tr:nth-child(4) td:nth-child(1),
+#reinsurer_table tr:nth-child(4) td:nth-child(2),
+#reinsurer_table tr:nth-child(4) td:nth-child(3),
+#reinsurer_table tr:nth-child(4) td:nth-child(4) {
+    background-color: red;
+}
+
+#reinsurer_table tr:nth-child(5) td:nth-child(1),
+#reinsurer_table tr:nth-child(6) td:nth-child(1),
+#reinsurer_table tr:nth-child(7) td:nth-child(1),
+#reinsurer_table tr:nth-child(8) td:nth-child(1),
+#reinsurer_table tr:nth-child(9) td:nth-child(1),
+#reinsurer_table tr:nth-child(10) td:nth-child(1),
+#reinsurer_table tr:nth-child(11) td:nth-child(1) {
+    border: 1px solid black;
+}
+
+#reinsurer_table tr,
+#reinsurer_table th {
+    text-align: center;
+    padding-inline: 2rem;
+}
+
+#reinsurer_table tr td:nth-child(1) {
+    text-align: start;
+}
+
+.trow {
+    display: grid;
+    grid-template-columns: minmax(5rem, 1fr) minmax(5rem, 1fr);
+    grid-template-areas: "tleft tright";
+}
+
+.tleft {
+    grid-area: tleft;
+}
+
+.tright {
+    grid-area: tright;
+}
+
+.trow table {
+    margin-top: 2rem;
+    border-collapse: collapse;
+}
+
+#info_table th:not(th:first-child) {
+    border: 1px solid black;
+}
+
+#info_table td {
+    border: 1px solid black;
+}
+
+#info_table tr:first-child td:first-child {
+    border: none;
+}
+
+#info_table tr {
+    text-align: center;
+}
+
+#info_table tr td:first-child {
+    text-align: start;
+}
+
+#info_table tr:first-child {
+    font-weight: bold;
+}

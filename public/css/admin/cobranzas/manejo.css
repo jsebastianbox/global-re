@@ -1,0 +1,16 @@
+.first_contaier, .information_container{
+    padding: 2rem;
+}
+
+.registros_container {
+    background-color: white;
+    padding: 2rem;
+}
+
+#cobrokerajes_cobranzas td input,
+#cobrokerajes_cobranzas td select,
+#cobrokerajes_cobranzas td .select2
+{
+    width: 160px !important;
+    height: 28px !important; 
+}
