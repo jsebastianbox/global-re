@@ -56,6 +56,7 @@ margin-top: 1.3rem;
                             País productor
                         </label>
                         <select class="js-example-basic-single inputForm select_country form-select" name="country_id" onchange="countryLeyJurisdiccion()">
+                            <option selected value="{{ $countries->find($slip->country_id)->name }}">{{ $countries->find($slip->country_id)->name }}</option>
                         </select>
                     </div>
                 </div>
@@ -64,7 +65,7 @@ margin-top: 1.3rem;
                         <label class="input-group-text" for="insuranceBroker">
                             Intermediario de seguros
                         </label>
-                        <input type="text" name="insuranceBroker" id="insuranceBroker" class="form-control">
+                        <input type="text" name="insuranceBroker" id="insuranceBroker" class="form-control"  value="{{ $slip->insuranceBroker }}"/>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -73,10 +74,12 @@ margin-top: 1.3rem;
                             Broker de Reaseguros
                         </label>
                         <select class="js-example-basic-single inputForm select_broker" name="broker">
+                            <option value="{{ $slip->broker }}" selected>{{ $slip->broker }}</option>
                         </select>
                     </div>
                 </div>
             </div>
+        
 
             <div class="row">
                 <div class="col-md-4">
@@ -85,13 +88,13 @@ margin-top: 1.3rem;
                         {{-- <input name="coin" id="coin" placeholder="..." class="form-control"> --}}
                         <select name="coin" id="coin">
                             <option value="" disabled>Seleccionar</option>
-                            <option value="Dólar canadiense">Dólar canadiense</option>
-                            <option selected value="Dólar estadounidense">Dólar estadounidense</option>
-                            <option value="Peso argentino">Peso argentino</option>
-                            <option value="Peso colombiano">Peso colombiano</option>
-                            <option value="Peso dominicano">Peso dominicano</option>
-                            <option value="Peso mexicano">Peso mexicano</option>
-                            <option value="Real">Real</option>
+                            <option {{ $slip->coin == "Dólar canadiense" ? 'selected' : '' }} value="Dólar canadiense">Dólar canadiense</option>
+                            <option {{ $slip->coin == "Dólar estadounidense" ? 'selected' : '' }} value="Dólar estadounidense">Dólar estadounidense</option>
+                            <option {{ $slip->coin == "Peso argentino" ? 'selected' : '' }} value="Peso argentino">Peso argentino</option>
+                            <option {{ $slip->coin == "Peso colombiano" ? 'selected' : '' }} value="Peso colombiano">Peso colombiano</option>
+                            <option {{ $slip->coin == "Peso dominicano" ? 'selected' : '' }} value="Peso dominicano">Peso dominicano</option>
+                            <option {{ $slip->coin == "Peso Mexicano" ? 'selected' : '' }} value="Peso mexicano">Peso mexicano</option>
+                            <option {{ $slip->coin == "Real" ? 'selected' : '' }} value="Real">Real</option>
                         </select>
                     </div>
                 </div>
@@ -101,7 +104,7 @@ margin-top: 1.3rem;
                             Tipo de cambio
                         </label>
                         <input type="number" step="any" name="equivalence" id="equivalence" placeholder="$"
-                            class="form-control">
+                            class="form-control" value="{{ $slip->equivalence }}">
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -110,6 +113,7 @@ margin-top: 1.3rem;
                             Cedente
                         </label>
                         <select class="js-example-basic-single inputForm select_cedente" name="assignor">
+                            <option value="{{ $slip->assignor }}" selected>{{ $slip->assignor }}</option>
                         </select>
                     </div>
                 </div>
@@ -121,8 +125,8 @@ margin-top: 1.3rem;
                         <label class="input-group-text" for="sector">Sector</label>
                         <select class="form-select" name="sector" id="sector" required>
                             <option value="" selected disabled>Selecciona</option>
-                            <option value="public">Público</option>
-                            <option value="private">Privado</option>
+                            <option {{ $slip->sector == "public" ? 'selected' : '' }} value="public">Público</option>
+                            <option {{ $slip->sector == "private" ? 'selected' : '' }} value="private">Privado</option>
                         </select>
                     </div>
                 </div>
@@ -131,7 +135,7 @@ margin-top: 1.3rem;
                         <label class="input-group-text" for="aseguradoName">
                             Nombre del asegurado
                         </label>
-                        <input placeholder="Nombre del asegurado..." name="insurer" class="form-control">
+                        <input placeholder="Nombre del asegurado..." name="insurer" class="form-control" value="{{ $slip->insurer }}">
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -139,44 +143,20 @@ margin-top: 1.3rem;
                         <label class="input-group-text" for="activity">
                             Actividad
                         </label>
-                        <input placeholder="Actividad..." name="activity" class="form-control">
+                        <input placeholder="Actividad..." name="activity" class="form-control" value="{{ $slip->activity }}">
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="direction">
                             Dirección
                         </label>
-                        <input placeholder="Dirección..." name="direction" class="form-control">
+                        <input placeholder="Dirección..." name="direction" class="form-control" value="{{$slip->direction}}">
                     </div>
                 </div>
-            </div>
-            <div class="row my-3">
-                <label for="" class="lead">Vigencia</label>
-                <hr style="background-color: darkgray">
-                <div class="row">
-                    <div class="col-md-3 my-1">
-                        <div class="input-group">
-                            <label class="input-group-text" for="validity_since">
-                                <i class="fa-solid fa-calendar-check"></i>&nbsp;Desde</label>
-                            <input type="date" id="validity_since" name="validity_since" value="{{ date('Y-m-d') }}"
-                                class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-3 my-1">
-                        <div class="input-group">
-                            <label class="input-group-text" for="validity_until">
-                                <i class="fa-solid fa-calendar-check"></i>&nbsp;Hasta</label>
-                            <input type="date" id="validity_until" name="validity_until"
-                                value="{{ date('Y-m-d', strtotime('+1 year')) }}" class="form-control">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row my-3">
                 <div class="col-md-6">
 
                     <div class="input-group mb-3">
@@ -188,6 +168,30 @@ margin-top: 1.3rem;
                     </div>
                 </div>
             </div>
+
+            <div class="row my-3">
+                <label for="" class="lead">Vigencia</label>
+                <hr style="background-color: darkgray">
+                <div class="row">
+                    <div class="col-md-3 my-1">
+                        <div class="input-group">
+                            <label class="input-group-text" for="validity_since">
+                                <i class="fa-solid fa-calendar-check"></i>&nbsp;Desde</label>
+                            <input type="date" id="validity_since" name="validity_since" value="{{ $slip->validity_since }}"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-3 my-1">
+                        <div class="input-group">
+                            <label class="input-group-text" for="validity_until">
+                                <i class="fa-solid fa-calendar-check"></i>&nbsp;Hasta</label>
+                            <input type="date" id="validity_until" name="validity_until"
+                                value="{{ $slip->validity_until }}" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-md-4">
                     <div class="input-group mb-3">
