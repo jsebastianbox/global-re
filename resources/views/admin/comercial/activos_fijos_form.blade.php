@@ -356,11 +356,11 @@
                         <input type="text" placeholder="Nombre columna.."
                             id="columnNameactivosSumaAseguradaTable">
                         <button type="button" class="btn btn-info" id="btnAddColumnSumas"
-                            onclick="addColumnSumas('activosSumaAseguradaTable')">Agregar columna</button>
+                            onclick="addColumnSumas('activos')">Agregar columna</button>
                     </div>
 
                     <button type="button" id="btnDeleteColumnSumas" class="btn btn-danger btn-xl"
-                        onclick="removeColumnSumas('activosSumaAseguradaTable')">
+                        onclick="removeColumnSumas('activos')">
                         Eliminar columna
                     </button>
                 </div>
@@ -480,11 +480,11 @@
                             <input type="text" placeholder="Nombre columna.."
                                 id="columnNameactivos_fijosSumaAseguradaTable">
                             <button type="button" class="btn btn-info" id="btnAddColumnSumas"
-                                onclick="addColumnSumas('activos_fijosSumaAseguradaTable')">Agregar columna</button>
+                                onclick="addColumnSumas('activos_fijos')">Agregar columna</button>
                         </div>
 
                         <button type="button" id="btnDeleteColumnSumas" class="btn btn-danger btn-xl"
-                            onclick="removeColumnSumas('activos_fijosSumaAseguradaTable')">
+                            onclick="removeColumnSumas('activos_fijos')">
                             Eliminar columna
                         </button>
                     </div>

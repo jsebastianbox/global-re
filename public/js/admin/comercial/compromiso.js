@@ -2988,11 +2988,11 @@ function addColumnSumas(tableName) {
         columnCounter++
         $('#btnAddColumnSumas').removeAttr('disabled')
         // Obtener referencia de la tabla
-        let tabla = document.getElementById(`${tableName}`);
+        let tabla = document.getElementById(`${tableName}SumaAseguradaTable`);
 
         // Crear encabezado de columna
         let encabezado = document.createElement("th");
-        let inputName = document.getElementById(`columnName${tableName}`).value
+        let inputName = document.getElementById(`columnName${tableName}SumaAseguradaTable`).value
         encabezado.style.textAlign = 'center'
         encabezado.textContent = inputName
         encabezado.name = `encabezado_${columnCounter}`
@@ -3004,14 +3004,14 @@ function addColumnSumas(tableName) {
         // Recorrer cada fila de la tabla y agregar una celda en la nueva columna
         for (let i = 1; i < tabla.rows.length - 1; i++) {
             let celda = tabla.rows[i].insertCell(8);
-            celda.innerHTML = `<input onkeyup="incendioSumaAsegurableTotales(${rowCounter}, 'activos_fijos')" style="width: 95px" type="number" name="column_${columnCounter}_${i}">`;
+            celda.innerHTML = `<input onkeyup="incendioSumaAsegurableTotales(${rowCounter}, '${tableName}')" class="row${rowCounter}" style="width: 95px" type="number" step="any" name="other_sum_assured${columnCounter}[]">`;
             rowCounter++ 
         }
         rowCounter = 1
         let celda = tabla.rows[tabla.rows.length - 1].insertCell(8);
         celda.style.textAlign = 'center'
 
-        celda.innerHTML = ` <span id="incendioOtrosTotal" class="slipTitle">0</span>`;
+        celda.innerHTML = ` <span id="incendioOtros${columnCounter}Total" class="slipTitle">0</span>`;
 
 
     } else {
