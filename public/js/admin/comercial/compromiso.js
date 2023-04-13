@@ -633,6 +633,21 @@ function updateS4() {
 
     switch (value) {
         case "ee":
+            document.getElementById('btnCoberturasEE').style.display = "block";
+            document.getElementById('btnClausulasEE').style.display = "block";
+            document.getElementById('btnCoberturasRM').style.display = "none";
+            document.getElementById('btnCoberturasPBRM').style.display = "none";
+            document.getElementById('btnCoberturasEMC').style.display = "none";
+            document.getElementById('btnCoberturasTRC').style.display = "none";
+            document.getElementById('btnCoberturasMM').style.display = "none";
+            document.getElementById('btnCoberturasALOP').style.display = "none";
+            document.getElementById('btnClausulasRM').style.display = "none";
+            document.getElementById('btnClausulasPBRM').style.display = "none";
+            document.getElementById('btnClausulasEMC').style.display = "none";
+            document.getElementById('btnClausulasTRC').style.display = "none";
+            document.getElementById('btnClausulasMM').style.display = "none";
+            document.getElementById('btnClausulasALOP').style.display = "none";
+            -
             element.setAttribute('value', '11');
             r_tecnicos.appendChild(element);
             currentTab = 0;
@@ -669,6 +684,20 @@ function updateS4() {
             coberturasSelect(".selectCobertura", "tecnico", "electronico");
             break;
         case "rm":
+            document.getElementById('btnCoberturasRM').style.display = "block";
+            document.getElementById('btnClausulasRM').style.display = "block";
+            document.getElementById('btnCoberturasEE').style.display = "none";
+            document.getElementById('btnCoberturasPBRM').style.display = "none";
+            document.getElementById('btnCoberturasEMC').style.display = "none";
+            document.getElementById('btnCoberturasTRC').style.display = "none";
+            document.getElementById('btnCoberturasMM').style.display = "none";
+            document.getElementById('btnCoberturasALOP').style.display = "none";
+            document.getElementById('btnClausulasEE').style.display = "none";
+            document.getElementById('btnClausulasPBRM').style.display = "none";
+            document.getElementById('btnClausulasEMC').style.display = "none";
+            document.getElementById('btnClausulasTRC').style.display = "none";
+            document.getElementById('btnClausulasMM').style.display = "none";
+            document.getElementById('btnClausulasALOP').style.display = "none";
             element.setAttribute('value', '12');
             r_tecnicos.appendChild(element);
             currentTab = 0;
@@ -680,6 +709,20 @@ function updateS4() {
             coberturasSelect(".selectCobertura", "tecnico", "rotura_maquinaria");
             break;
         case "pbrm":
+            document.getElementById('btnCoberturasPBRM').style.display = "block";
+            document.getElementById('btnClausulasPBRM').style.display = "block";
+            document.getElementById('btnCoberturasRM').style.display = "none";
+            document.getElementById('btnCoberturasEE').style.display = "none";
+            document.getElementById('btnCoberturasEMC').style.display = "none";
+            document.getElementById('btnCoberturasTRC').style.display = "none";
+            document.getElementById('btnCoberturasMM').style.display = "none";
+            document.getElementById('btnCoberturasALOP').style.display = "none";
+            document.getElementById('btnClausulasRM').style.display = "none";
+            document.getElementById('btnClausulasEE').style.display = "none";
+            document.getElementById('btnClausulasEMC').style.display = "none";
+            document.getElementById('btnClausulasTRC').style.display = "none";
+            document.getElementById('btnClausulasMM').style.display = "none";
+            document.getElementById('btnClausulasALOP').style.display = "none";
             element.setAttribute('value', '13');
             r_tecnicos.appendChild(element);
             currentTab = 0;
@@ -691,6 +734,20 @@ function updateS4() {
             coberturasSelect(".selectCobertura", "tecnico", "beneficios");
             break;
         case "emc":
+            document.getElementById('btnCoberturasEMC').style.display = "block";
+            document.getElementById('btnClausulasEMC').style.display = "block";
+            document.getElementById('btnCoberturasRM').style.display = "none";
+            document.getElementById('btnCoberturasPBRM').style.display = "none";
+            document.getElementById('btnCoberturasEE').style.display = "none";
+            document.getElementById('btnCoberturasTRC').style.display = "none";
+            document.getElementById('btnCoberturasMM').style.display = "none";
+            document.getElementById('btnCoberturasALOP').style.display = "none";
+            document.getElementById('btnClausulasRM').style.display = "none";
+            document.getElementById('btnClausulasPBRM').style.display = "none";
+            document.getElementById('btnClausulasEE').style.display = "none";
+            document.getElementById('btnClausulasTRC').style.display = "none";
+            document.getElementById('btnClausulasMM').style.display = "none";
+            document.getElementById('btnClausulasALOP').style.display = "none";
             element.setAttribute('value', '14');
             r_tecnicos.appendChild(element);
             currentTab = 0;
@@ -702,6 +759,20 @@ function updateS4() {
             coberturasSelect(".selectCobertura", "tecnico", "equipo_maquinaria");
             break;
         case "trc":
+            document.getElementById('btnCoberturasTRC').style.display = "block";
+            document.getElementById('btnClausulasTRC').style.display = "block";
+            document.getElementById('btnCoberturasRM').style.display = "none";
+            document.getElementById('btnCoberturasPBRM').style.display = "none";
+            document.getElementById('btnCoberturasEMC').style.display = "none";
+            document.getElementById('btnCoberturasEE').style.display = "none";
+            document.getElementById('btnCoberturasMM').style.display = "none";
+            document.getElementById('btnCoberturasALOP').style.display = "none";
+            document.getElementById('btnClausulasRM').style.display = "none";
+            document.getElementById('btnClausulasPBRM').style.display = "none";
+            document.getElementById('btnClausulasEMC').style.display = "none";
+            document.getElementById('btnClausulasEE').style.display = "none";
+            document.getElementById('btnClausulasMM').style.display = "none";
+            document.getElementById('btnClausulasALOP').style.display = "none";
             element.setAttribute('value', '15');
             r_tecnicos.appendChild(element);
             currentTab = 0;
@@ -713,6 +784,20 @@ function updateS4() {
             coberturasSelect(".selectCobertura", "tecnico", "construccion");
             break;
         case "mm":
+            document.getElementById('btnCoberturasMM').style.display = "block";
+            document.getElementById('btnClausulasMM').style.display = "block";
+            document.getElementById('btnCoberturasRM').style.display = "none";
+            document.getElementById('btnCoberturasPBRM').style.display = "none";
+            document.getElementById('btnCoberturasEMC').style.display = "none";
+            document.getElementById('btnCoberturasTRC').style.display = "none";
+            document.getElementById('btnCoberturasEE').style.display = "none";
+            document.getElementById('btnCoberturasALOP').style.display = "none";
+            document.getElementById('btnClausulasRM').style.display = "none";
+            document.getElementById('btnClausulasPBRM').style.display = "none";
+            document.getElementById('btnClausulasEMC').style.display = "none";
+            document.getElementById('btnClausulasTRC').style.display = "none";
+            document.getElementById('btnClausulasEE').style.display = "none";
+            document.getElementById('btnClausulasALOP').style.display = "none";
             element.setAttribute('value', '16');
             r_tecnicos.appendChild(element);
             currentTab = 0;
@@ -724,6 +809,20 @@ function updateS4() {
             coberturasSelect(".selectCobertura", "tecnico", "montaje");
             break;
         case "alop":
+            document.getElementById('btnCoberturasALOP').style.display = "block";
+            document.getElementById('btnClausulasEE').style.display = "block";
+            document.getElementById('btnCoberturasRM').style.display = "none";
+            document.getElementById('btnCoberturasPBRM').style.display = "none";
+            document.getElementById('btnCoberturasEMC').style.display = "none";
+            document.getElementById('btnCoberturasTRC').style.display = "none";
+            document.getElementById('btnCoberturasMM').style.display = "none";
+            document.getElementById('btnCoberturasEE').style.display = "none";
+            document.getElementById('btnClausulasRM').style.display = "none";
+            document.getElementById('btnClausulasPBRM').style.display = "none";
+            document.getElementById('btnClausulasEMC').style.display = "none";
+            document.getElementById('btnClausulasTRC').style.display = "none";
+            document.getElementById('btnClausulasMM').style.display = "none";
+            document.getElementById('btnClausulasEE').style.display = "none";
             element.setAttribute('value', '17');
             r_tecnicos.appendChild(element);
             currentTab = 0;
@@ -731,8 +830,6 @@ function updateS4() {
             valorAseguradoContainer.forEach(elemento => {
                 elemento.style.display = 'block';
             })
-
-            document.getElementById('formularioAlop').style.display = "block";
             clausulasSelect(".selectClausula", "tecnico", "alop");
             coberturasSelect(".selectCobertura", "tecnico", "alop");
             break;
@@ -1977,13 +2074,13 @@ function incendioSumaAsegurableTotales(row, col, table) {
     //suma en input
 
     if (table === 'activos') {
-        $(`#input_sumaAsegurable`).val(parseFloat(suma7).toFixed(2))
+        $(`#input_sumaAsegurable`).val(parseFloat(sumaTotal3).toFixed(2))
     }
     if (table === 'energia1') {
-        $(`#input_sumaAsegurableEnergia`).val(parseFloat(suma7).toFixed(2))
+        $(`#input_sumaAsegurableEnergia`).val(parseFloat(sumaTotal3).toFixed(2))
     }
     if (table === 'activos_fijos') {
-        $(`#input_sumaAsegurada`).val(parseFloat(suma7).toFixed(2))
+        $(`#input_sumaAsegurada`).val(parseFloat(sumaTotal3).toFixed(2))
     }
 
 }

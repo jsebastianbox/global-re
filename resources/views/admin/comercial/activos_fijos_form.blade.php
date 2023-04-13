@@ -461,7 +461,7 @@
                                 <span id="colTotal6" class="slipTitle">0</span>$
                             </td>
                             <td style="text-align: center">
-                                <span class="slipTitle col11" id="rowTotal1">0</span>$
+                                <span class="slipTitle " id="incendioTotalTotal">0</span>$
                             </td>
                             <td></td>
                         </tr>
@@ -587,7 +587,7 @@
                                     <span id="colTotal6" class="slipTitle">0</span>$
                                 </td>
                                 <td style="text-align: center">
-                                    <span class="slipTitle col11" id="rowTotal1">0</span>$
+                                    <span class="slipTitle " id="incendioTotalTotal">0</span>$
                                 </td>
                             </tr>
 

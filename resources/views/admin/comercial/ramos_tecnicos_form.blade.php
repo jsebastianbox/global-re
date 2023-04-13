@@ -486,11 +486,42 @@
                                 <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1"
                                     colspan="1" aria-label="Add row">
 
-                                    <button type="button"
-                                        onclick="addRowCoberturaV2(event, 'ramos_tecnicos', 'tecnico', 'all')"
+                                    <button type="button" style="display:none" id="btnCoberturasEE"
+                                        onclick="addRowCoberturaV2(event, 'ramos_tecnicos', 'tecnico', 'electronico')"
                                         class="btn btn-success btn-xs">
                                         +
                                     </button>
+                                    <button type="button" style="display:none" id="btnCoberturasRM"
+                                        onclick="addRowCoberturaV2(event, 'ramos_tecnicos', 'tecnico', 'rotura_maquinaria')"
+                                        class="btn btn-success btn-xs">
+                                        +
+                                    </button>
+                                    <button type="button" style="display:none" id="btnCoberturasPBRM"
+                                        onclick="addRowCoberturaV2(event, 'ramos_tecnicos', 'tecnico', 'beneficios')"
+                                        class="btn btn-success btn-xs">
+                                        +
+                                    </button>
+                                    <button type="button" style="display:none" id="btnCoberturasEMC"
+                                        onclick="addRowCoberturaV2(event, 'ramos_tecnicos', 'tecnico', 'equipo_maquinaria')"
+                                        class="btn btn-success btn-xs">
+                                        +
+                                    </button>
+                                    <button type="button" style="display:none" id="btnCoberturasTRC"
+                                        onclick="addRowCoberturaV2(event, 'ramos_tecnicos', 'tecnico', 'construccion')"
+                                        class="btn btn-success btn-xs">
+                                        +
+                                    </button>
+                                    <button type="button" style="display:none" id="btnCoberturasMM"
+                                        onclick="addRowCoberturaV2(event, 'ramos_tecnicos', 'tecnico', 'montaje')"
+                                        class="btn btn-success btn-xs">
+                                        +
+                                    </button>
+                                    <button type="button" style="display:none" id="btnCoberturasALOP"
+                                        onclick="addRowCoberturaV2(event, 'ramos_tecnicos', 'tecnico', 'alop')"
+                                        class="btn btn-success btn-xs">
+                                        +
+                                    </button>
+
                                 </th>
                             </tr>
                         </thead>
@@ -540,8 +571,38 @@
                                 <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1"
                                     colspan="1" aria-label="Add row">
 
-                                    <button type="button"
-                                        onclick="addRowClausula(event, 'ramos_tecnicos', 'tecnico', 'all')"
+                                    <button type="button" style="display: none" id="btnClausulasEE"
+                                        onclick="addRowClausula(event, 'ramos_tecnicos', 'tecnico', 'electronico')"
+                                        class="btn btn-success btn-xs">
+                                        +
+                                    </button>
+                                    <button type="button" style="display: none" id="btnClausulasRM"
+                                        onclick="addRowClausula(event, 'ramos_tecnicos', 'tecnico', 'rotura_maquinaria')"
+                                        class="btn btn-success btn-xs">
+                                        +
+                                    </button>
+                                    <button type="button" style="display: none" id="btnClausulasPBRM"
+                                        onclick="addRowClausula(event, 'ramos_tecnicos', 'tecnico', 'beneficios')"
+                                        class="btn btn-success btn-xs">
+                                        +
+                                    </button>
+                                    <button type="button" style="display: none" id="btnClausulasEMC"
+                                        onclick="addRowClausula(event, 'ramos_tecnicos', 'tecnico', 'equipo_maquinaria')"
+                                        class="btn btn-success btn-xs">
+                                        +
+                                    </button>
+                                    <button type="button" style="display: none" id="btnClausulasTRC"
+                                        onclick="addRowClausula(event, 'ramos_tecnicos', 'tecnico', 'construccion')"
+                                        class="btn btn-success btn-xs">
+                                        +
+                                    </button>
+                                    <button type="button" style="display: none" id="btnClausulasMM"
+                                        onclick="addRowClausula(event, 'ramos_tecnicos', 'tecnico', 'montaje')"
+                                        class="btn btn-success btn-xs">
+                                        +
+                                    </button>
+                                    <button type="button" style="display: none" id="btnClausulasALOP"
+                                        onclick="addRowClausula(event, 'ramos_tecnicos', 'tecnico', 'alop')"
                                         class="btn btn-success btn-xs">
                                         +
                                     </button>
