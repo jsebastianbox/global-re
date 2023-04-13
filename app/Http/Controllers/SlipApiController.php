@@ -1102,6 +1102,7 @@ class SlipApiController extends Controller
             'ismerchandise' => 'nullable|string|max:2',
             'entrance' => 'nullable|string|max:255',
             'limit_colusorio_text' => 'nullable|string|max:255',
+            'bailText' => 'nullable|string|max:255',
             'custodia' => 'nullable|string|max:255',
             'todo_riesgo' => 'nullable|numeric|max:999999999999999',
             'portadores_externos' => 'nullable|numeric|max:999999999999999',

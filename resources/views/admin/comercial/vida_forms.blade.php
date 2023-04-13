@@ -137,7 +137,7 @@
             @include('admin.comercial.include.edit_deducibles')
 
             <label class="lead" for="detalleValor">Listado de personas a ser aseguradas</label>
-            <hr>
+            <hr style="background-color:darkgrey;width:70%;">
 
             <div class="row">
                 <div class="tableContainer" style="margin: 2rem 0">
