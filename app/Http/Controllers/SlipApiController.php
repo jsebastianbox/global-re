@@ -679,6 +679,7 @@ class SlipApiController extends Controller
                 break;
             case 'finanzas_1_form':
             case 'finanzas_2_form':
+                $slip->slip_type_id = "8";
                 switch ($validatedData['type_slip']) {
                     case 'finanzas_1_form':
                         $slip_finanzas_1 = new SlipFianzaOne();
@@ -711,7 +712,6 @@ class SlipApiController extends Controller
                     default:
                         break;
                 }
-                $slip->slip_type_id = "8";
 
                 
 
@@ -1093,6 +1093,7 @@ class SlipApiController extends Controller
             'transportation' => 'nullable|string|max:15',
             'type_merchandise' => 'nullable|string|max:15',
             'annual_mobilization' => 'nullable|numeric|max:9999999999999999',
+            'limit_colusorio_value' => 'nullable|numeric|max:9999999999999999',
             'limit_shipment' => 'nullable|numeric|max:9999999999999999',
             'departure_date' => 'nullable|date_format:Y-m-d',
             'arrival_date' => 'nullable|date_format:Y-m-d',
@@ -1100,6 +1101,7 @@ class SlipApiController extends Controller
             'insured_journey' => 'nullable|string|max:15',
             'ismerchandise' => 'nullable|string|max:2',
             'entrance' => 'nullable|string|max:255',
+            'limit_colusorio_text' => 'nullable|string|max:255',
             'custodia' => 'nullable|string|max:255',
             'todo_riesgo' => 'nullable|numeric|max:999999999999999',
             'portadores_externos' => 'nullable|numeric|max:999999999999999',

@@ -72,175 +72,175 @@
             <input type="hidden" name="type_slip" value="vida_forms">
             <input hidden type="number" name="slip_status" value="3">
 
-                <div class="row">
-                    @include('admin.comercial.include.person_index')
-                </div>
+            <div class="row">
+                @include('admin.comercial.include.person_index')
+            </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="input-group mb-3">
-                            <label class="input-group-text" for="tecnico">Asignar t&eacute;cnico</label>
-                            <select class="js-example-basic-single inputForm select_assigned form-select" name="user_id">
-                                <option selected value="{{ $users->find($slip->user_id)->id }}">
-                                    {{ $users->find($slip->user_id)->name . ' ' . $users->find($slip->user_id)->surname }}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6" id="cumuloAsegurable" style="{{$slip->insurable_value > 0 ? 'display:flex' : 'display:none'}}">
-                        <div class="input-group mb-3">
-                            <label class="input-group-text">Cúmulo asegurable</label>
-                            <input type="number" step="any" name="insurable_value" placeholder="..." value="{{$slip->insurable_value}}">
-                        </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="tecnico">Asignar t&eacute;cnico</label>
+                        <select class="js-example-basic-single inputForm select_assigned form-select" name="user_id">
+                            <option selected value="{{ $users->find($slip->user_id)->id }}">
+                                {{ $users->find($slip->user_id)->name . ' ' . $users->find($slip->user_id)->surname }}</option>
+                        </select>
                     </div>
                 </div>
+                <div class="col-md-6" id="cumuloAsegurable" style="{{$slip->insurable_value > 0 ? 'display:flex' : 'display:none'}}">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text">Cúmulo asegurable</label>
+                        <input type="number" step="any" name="insurable_value" placeholder="..." value="{{$slip->insurable_value}}">
+                    </div>
+                </div>
+            </div>
 
-                <label for="" class="lead">Coberturas adicionales</label>
+            <label for="" class="lead">Coberturas adicionales</label>
+            <hr style="background-color: darkgrey; width: 70%">
+
+            <div class="row">
+                @include('admin.comercial.include.edit_tablaCoberturas')
+            </div>
+
+            <label class="lead">Cláusulas adicionales</label>
+            <hr style="background-color: darkgrey; width: 70%">
+            
+            <div class="row">
+                @include('admin.comercial.include.edit_tablaClausulas')
+            </div>
+
+            <label for="" style="max-width:300px" class="lead">Tasa/Prima</label>
+            <hr style="background-color:darkgrey;width:70%;">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="reinsurer_rate">Tasa de reaseguros</label>
+                        <input type="number" step="any" name="reinsurer_rate"
+                            id="reinsurer_rate" value="{{ $slip->reinsurer_rate }}"><span class="input-group-text">%</span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="deducible">Prima de reaseguros</label>
+                        <input type="number" step="any" data-money placeholder="USD"
+                            name="reinsurance_premium" value="{{ $slip->reinsurance_premium }}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="lead">Deducibles</label>
                 <hr style="background-color: darkgrey; width: 70%">
+            </div>
 
-                <div class="row">
-                    @include('admin.comercial.include.edit_tablaCoberturas')
-                </div>
+            @include('admin.comercial.include.edit_deducibles')
 
-                <label class="lead">Cláusulas adicionales</label>
-                <hr style="background-color: darkgrey; width: 70%">
-                
-                <div class="row">
-                    @include('admin.comercial.include.edit_tablaClausulas')
-                </div>
+            <label class="lead" for="detalleValor">Listado de personas a ser aseguradas</label>
+            <hr>
 
-                <label for="" style="max-width:300px" class="lead">Tasa/Prima</label>
-                <hr style="background-color:darkgrey;width:70%;">
+            <div class="row">
+                <div class="tableContainer" style="margin: 2rem 0">
+                    <table id="vidaListadoPersonasAseguradasTable" class="indemnizacionTable">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center; width: 42px;">#</th>
+                                <th style="text-align: center">Nombre</th>
+                                <th style="text-align: center">Fecha de Nacimiento</th>
+                                <th style="text-align: center">Edad</th>
+                                <th style="text-align: center">Sexo</th>
+                                <th style="text-align: center">Actividad</th>
+                                <th style="text-align: center">Límite</th>
+                                <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1"
+                                    colspan="1" aria-label="Add row">
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="input-group mb-3">
-                            <label class="input-group-text" for="reinsurer_rate">Tasa de reaseguros</label>
-                            <input type="number" step="any" name="reinsurer_rate"
-                                id="reinsurer_rate" value="{{ $slip->reinsurer_rate }}"><span class="input-group-text">%</span>
-                        </div>
-                    </div>
-    
-                    <div class="col-md-6">
-                        <div class="input-group mb-3">
-                            <label class="input-group-text" for="deducible">Prima de reaseguros</label>
-                            <input type="number" step="any" data-money placeholder="USD"
-                                name="reinsurance_premium" value="{{ $slip->reinsurance_premium }}">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <label class="lead">Deducibles</label>
-                    <hr style="background-color: darkgrey; width: 70%">
-                </div>
-    
-                @include('admin.comercial.include.edit_deducibles')
-
-                <label class="lead" for="detalleValor">Listado de personas a ser aseguradas</label>
-                <hr>
-
-                <div class="row">
-                    <div class="tableContainer" style="margin: 2rem 0">
-                        <table id="vidaListadoPersonasAseguradasTable" class="indemnizacionTable">
-                            <thead>
-                                <tr>
-                                    <th style="text-align: center; width: 42px;">#</th>
-                                    <th style="text-align: center">Nombre</th>
-                                    <th style="text-align: center">Fecha de Nacimiento</th>
-                                    <th style="text-align: center">Edad</th>
-                                    <th style="text-align: center">Sexo</th>
-                                    <th style="text-align: center">Actividad</th>
-                                    <th style="text-align: center">Límite</th>
-                                    <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1"
-                                        colspan="1" aria-label="Add row">
-    
-                                        <button type="button" onclick="addPersonaAseguradaRow(event, 'vida')"
-                                            class="btn btn-success btn-xs">
-                                            +
-                                        </button>
-                                    </th>
-                                </tr>
-                            </thead>
-                            {{-- tbody --}}
-                            <tbody id="vidaListadoPersonasAseguradasTableBody">
-                                @if (count($object_insurance) > 0)
-                                    @foreach ($object_insurance as $key => $item )
-                                        <tr>
-                                            <td>{{$key + 1}}</td>
-                                            <td>
-                                                <input value="{{$item->name}}" type="text" name="name[]" placeholder="Nombre..">
-                                            </td>
-
-                                            <td>
-                                                <input value="{{$item->birthday}}" type="date" name="birthday[]" id="birthDate" class="birthdateInput" oninput="putAge('personaAdicional')">
-                                            </td>
-
-                                            <td>
-                                                <input value="{{$item->age}}" type="number" class="ageInput" name="age[]" id="personAge" min="1"
-                                                        max="110">
-                                            </td>
-
-                                            <td>
-                                                <select name="sex_merchant[]" id="sex">
-                                                    <option value="Masculino" {{$item->sex_merchant == 'Masculino' ? 'selected' : ''}}>Masculino</option>
-                                                    <option value="Femenino" {{$item->sex_merchant == 'Femenino' ? 'selected' : ''}}>Femenino</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input value="{{$item->activity_merchant}}" type="text" placeholder="..." name="activity_merchant[]">
-                                            </td>
-                                            <td>
-                                                <input value="{{$item->limit}}" type="text" placeholder="..." name="limit[]">
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @else
+                                    <button type="button" onclick="addPersonaAseguradaRow(event, 'vida')"
+                                        class="btn btn-success btn-xs">
+                                        +
+                                    </button>
+                                </th>
+                            </tr>
+                        </thead>
+                        {{-- tbody --}}
+                        <tbody id="vidaListadoPersonasAseguradasTableBody">
+                            @if (count($object_insurance) > 0)
+                                @foreach ($object_insurance as $key => $item )
                                     <tr>
-                                        <td>1</td>
+                                        <td>{{$key + 1}}</td>
                                         <td>
-                                            <input type="text" name="name[]" placeholder="Nombre..">
+                                            <input value="{{$item->name}}" type="text" name="name[]" placeholder="Nombre..">
                                         </td>
 
                                         <td>
-                                            <input type="date" name="birthday[]" id="birthDate" class="birthdateInput" oninput="putAge('personaAdicional')">
+                                            <input value="{{$item->birthday}}" type="date" name="birthday[]" id="birthDate" class="birthdateInput" oninput="putAge('personaAdicional')">
                                         </td>
 
                                         <td>
-                                            <input type="number" class="ageInput" name="age[]" id="personAge" min="1"
+                                            <input value="{{$item->age}}" type="number" class="ageInput" name="age[]" id="personAge" min="1"
                                                     max="110">
                                         </td>
 
                                         <td>
                                             <select name="sex_merchant[]" id="sex">
-                                                <option value="m" selected>Masculino</option>
-                                                <option value="f">Femenino</option>
+                                                <option value="Masculino" {{$item->sex_merchant == 'Masculino' ? 'selected' : ''}}>Masculino</option>
+                                                <option value="Femenino" {{$item->sex_merchant == 'Femenino' ? 'selected' : ''}}>Femenino</option>
                                             </select>
                                         </td>
                                         <td>
-                                            <input type="text" placeholder="..." name="activity_merchant[]">
+                                            <input value="{{$item->activity_merchant}}" type="text" placeholder="..." name="activity_merchant[]">
                                         </td>
                                         <td>
-                                            <input type="text" placeholder="..." name="limit[]">
+                                            <input value="{{$item->limit}}" type="text" placeholder="..." name="limit[]">
                                         </td>
                                     </tr>
-                                @endif
-                            </tbody>
-    
-                        </table>
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <input type="text" name="name[]" placeholder="Nombre..">
+                                    </td>
+
+                                    <td>
+                                        <input type="date" name="birthday[]" id="birthDate" class="birthdateInput" oninput="putAge('personaAdicional')">
+                                    </td>
+
+                                    <td>
+                                        <input type="number" class="ageInput" name="age[]" id="personAge" min="1"
+                                                max="110">
+                                    </td>
+
+                                    <td>
+                                        <select name="sex_merchant[]" id="sex">
+                                            <option value="m" selected>Masculino</option>
+                                            <option value="f">Femenino</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="text" placeholder="..." name="activity_merchant[]">
+                                    </td>
+                                    <td>
+                                        <input type="text" placeholder="..." name="limit[]">
+                                    </td>
+                                </tr>
+                            @endif
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="file" name="accidentRate" id="accidentRate">
+                        <label class="input-group-text" for="accidentRate">Siniestralidad de los últimos 5 años
+                        </label>
                     </div>
                 </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="input-group mb-3">
-                            <input class="form-control" type="file" name="accidentRate" id="accidentRate">
-                            <label class="input-group-text" for="accidentRate">Siniestralidad de los últimos 5 años
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                @include('admin.comercial.include.leyJurisdiccion')
+            @include('admin.comercial.include.leyJurisdiccion')
 
             <div>
                 <div style="float:right;" class="row">

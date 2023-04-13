@@ -481,25 +481,35 @@ class CompromisoController extends Controller
     public function fianzas($id)
     {
         $users = User::all();
+        $user = Auth::user();
         $countries = Country::all();
         $slip_statuses = SlipStatus::all();
         $type_coverage = TypeCoverage::all();
         $slip = Slip::find($id);
 
+        //clausulas y cobertura to find
+        $coberturasSelect = CoberturasSelector::where('main_branch', 'fianzas')->get();
+        $clausulasSelect = Clausulas_selector::where('main_branch', 'fianzas')->get();
 
-        switch ($slip->model_type) {
-            case 'App\Models\SlipFianzaOne':
-                $slip_type = SlipFianzaOne::find($id)->first();
+        switch ($slip->type_coverage) {
+            case '46':
+                $slip_type = SlipFianzaOne::where('slip_id', $id)->first();
+                $object_insurance = ObjectInsurance::where('slip_id', $id)->get();
                 break;
 
-            case 'App\Models\SlipFianzaTwo':
-                $slip_type = SlipFianzaTwo::find($id)->first();
+                case '47':
+                case '48':
+                case '49':
+                case '50':
+                case '51':
+                case '52':
+                $slip_type = SlipFianzaTwo::where('slip_id', $id)->first();
+                $object_insurance = [];
                 break;
             default:
                 break;
         }
 
-        $user = Auth::user();
 
         return view('admin.comercial.edit_compromiso.edit_index')
             ->with('user', $user)
@@ -507,6 +517,9 @@ class CompromisoController extends Controller
             ->with('countries', $countries)
             ->with('slip_statuses', $slip_statuses)
             ->with('type_coverage', $type_coverage)
+            ->with('object_insurance', $object_insurance)
+            ->with('coberturasSelect', $coberturasSelect)
+            ->with('clausulasSelect', $clausulasSelect)
             ->with('slip', $slip)
             ->with('slip_type', $slip_type);
     }
