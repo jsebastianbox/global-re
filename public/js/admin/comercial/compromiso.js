@@ -3050,6 +3050,30 @@ function putUbicaciones() {
     let newLocationsArray = []
 
     console.log(allLocationsArray);
+    console.log(inputsDirection);
+
+    for (const element of allLocationsArray) {
+        if (element.value.length > 0) {
+            newLocationsArray.push(element.value)
+        }
+    }
+
+    for (let i = 0; i < newLocationsArray.length; i++) {
+
+        inputsDirection[i].value = newLocationsArray[i]
+
+    }
+
+
+}
+function putUbicaciones_edit(table) {
+    const tabla = document.getElementById(`${table}`)
+    let allLocationsArray = tabla.querySelectorAll('.inputLocation')
+    let inputsDirection = document.querySelectorAll('.inputDirection')
+    let newLocationsArray = []
+
+    console.log(allLocationsArray);
+    console.log(inputsDirection);
 
     for (const element of allLocationsArray) {
         if (element.value.length > 0) {

@@ -29,7 +29,7 @@
                 <tr>
                     <td>{{ $key+1 }}</td>
                     <td>
-                        <input type="text" name="location[]" style="width: 95px" placeholder="..." novalidate value="{{ $item->location }}">
+                        <input type="text" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate value="{{ $item->location }}">
                     </td>
                     <td>
                         <input onkeyup="incendioSumaAsegurableTotales({{ $key }}, 'activos_fijos')" type="number" step="any"

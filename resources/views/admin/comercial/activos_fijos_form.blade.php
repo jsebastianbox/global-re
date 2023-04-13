@@ -148,13 +148,20 @@
 
             <div class="row">
                 <div class="tableContainer" style="margin: 2rem 0">
+                    <button type="button" class="btn btn-info my-2" id="btnPutUbicaciones"
+                        @if ($slip->insurable_sum > 0)
+                            onclick="putUbicaciones_edit('activosSumaAseguradaTable')"
+                        @elseif($slip->insured_sum > 0)
+                            onclick="putUbicaciones_edit('activos_fijosSumaAseguradaTable')"
+                        @endif
+                            >Actualizar</button>
                     <table id="activos_fijosPrediosTable" class="indemnizacionTable">
                         <thead>
                             <tr>
                                 <th style="text-align: center; width: 42px;">#</th>
-                                <th style="text-align: center">Dirección</th>
                                 <th style="text-align: center">Provincia</th>
                                 <th style="text-align: center">Ciudad</th>
+                                <th style="text-align: center">Dirección</th>
                                 <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1"
                                     colspan="1" aria-label="Add row">
 
@@ -171,13 +178,13 @@
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td>
-                                            <input value="{{ $item->province_perdios }}" type="text" name="province_perdios[]" placeholder="...">
+                                            <input value="{{ $item->province_perdios }}"  type="text" name="province_perdios[]" placeholder="...">
                                         </td>
                                         <td>
                                             <input value="{{ $item->city_perdios }}" type="text" name="city_perdios[]" placeholder="...">
                                         </td>
                                         <td>
-                                            <input value="{{ $item->direction_perdios }}" type="text" name='direction_perdios[]' placeholder="...">
+                                            <input value="{{ $item->direction_perdios }}" class="inputDirection" type="text" name='direction_perdios[]' placeholder="...">
                                         </td>
                                         <td></td>
                                     </tr>
@@ -192,7 +199,8 @@
                                         <input type="text" name="city_perdios[]" placeholder="...">
                                     </td>
                                     <td>
-                                        <input type="text" name='direction_perdios[]' placeholder="...">
+                                        <input type="text" class="inputDirection" name='direction_perdios[]'
+                                            placeholder="...">
                                     </td>
                                     <td></td>
                                 </tr>

@@ -155,7 +155,7 @@ class CompromisoController extends Controller
         $user = Auth::user();
 
         //clausulas y cobertura to find
-        $coberturasSelect = CoberturasSelector::where('main_branch', 'activos')->get();
+        $coberturasSelect = CoberturasSelector::where('main_branch', 'vida')->get();
         $clausulasSelect = Clausulas_selector::where('main_branch', 'vida')->get();
 
         return view('admin.comercial.edit_compromiso.edit_index')
@@ -189,7 +189,7 @@ class CompromisoController extends Controller
         $coberturas = AdditionalCoverage::where('slip_id', $slip->id)->get();
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'activos')->get();
-        $clausulasSelect = Clausulas_selector::where('main_branch', 'vida')->get();
+        $clausulasSelect = Clausulas_selector::where('main_branch', 'activos')->get();
 
         // $slip_type = SlipPropertyFixedAsset::where('id', $slip->model_id)
         // ->with('sum_assured')
@@ -233,8 +233,8 @@ class CompromisoController extends Controller
         $clausulas = ClauseSlip::where('slip_id', $slip->id)->get();
         $coberturas = AdditionalCoverage::where('slip_id', $slip->id)->get();
         //clausulas y cobertura to find
-        $coberturasSelect = CoberturasSelector::where('main_branch', 'activos')->get();
-        $clausulasSelect = Clausulas_selector::where('main_branch', 'vida')->get();
+        $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
+        $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
 
 
         return view('admin.comercial.edit_compromiso.edit_index')
@@ -348,7 +348,7 @@ class CompromisoController extends Controller
 
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'aviacion')->get();
-        $clausulasSelect = Clausulas_selector::where('main_branch', 'vida')->get();
+        $clausulasSelect = Clausulas_selector::where('main_branch', 'aviacion')->get();
 
 
         switch ($slip->type_coverage) {
@@ -406,8 +406,8 @@ class CompromisoController extends Controller
         $slip = Slip::find($id);
         
         //clausulas y cobertura to find
-        $coberturasSelect = CoberturasSelector::where('main_branch', 'vida')->get();
-        $clausulasSelect = Clausulas_selector::where('main_branch', 'vida')->get();
+        $coberturasSelect = CoberturasSelector::all();
+        $clausulasSelect = Clausulas_selector::all();
 
         switch ($slip->type_coverage) {
             case '21':
@@ -464,8 +464,8 @@ class CompromisoController extends Controller
         $slip_type = SlipFinancialRisk::where('slip_id', $id)->first();
         
         //clausulas y cobertura to find
-        $coberturasSelect = CoberturasSelector::where('main_branch', 'vida')->get();
-        $clausulasSelect = Clausulas_selector::where('main_branch', 'vida')->get();
+        $coberturasSelect = CoberturasSelector::all();
+        $clausulasSelect = Clausulas_selector::all();
 
         return view('admin.comercial.edit_compromiso.edit_index')
             ->with('user', $user)

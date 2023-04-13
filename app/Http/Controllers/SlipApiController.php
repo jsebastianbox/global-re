@@ -178,8 +178,8 @@ class SlipApiController extends Controller
                     }
                 }
                 //Perdios
-                for ($i = 0; $i < count($request->province_perdios); $i++) {
-                    if (isset($request->province_perdios[$i])) {
+                for ($i = 0; $i < count($request->direction_perdios); $i++) {
+                    if (isset($request->direction_perdios[$i])) {
                         $detailPredios = new DetailPerdios([
                             'province_perdios' => $request->province_perdios[$i] ?? null,
                             'city_perdios' => $request->city_perdios[$i] ?? null,
