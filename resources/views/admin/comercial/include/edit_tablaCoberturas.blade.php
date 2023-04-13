@@ -9,8 +9,6 @@
                 <th style="text-align: center">Campo adicional</th>
                 <th style="text-align: center; width: 42px;" class="sorting_" rowspan="1" colspan="1"
                     aria-label="Add row">
-
-
                     @switch($slip->type_coverage)
                         @case(1)
                             <button onclick="addRowCoberturaV2(event, '', 'vida','all')" class="btn btn-success btn-xs">
@@ -98,17 +96,17 @@
                             </button>
                             @break
                         @case(18)
-                            <button onclick="addRowCoberturaV2(event, '', 'responsabilidad_civil','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'energia','trp')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(19)
-                            <button onclick="addRowCoberturaV2(event, '', 'responsabilidad_civil','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'energia','trp')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(20)
-                            <button onclick="addRowCoberturaV2(event, '', 'responsabilidad_civil','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'energia','trp')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
@@ -198,83 +196,81 @@
                             </button>
                             @break
                         @case(38)
-                            <button onclick="addRowCoberturaV2(event, '', 'activos','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'responsabilidad_civil','all')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(39)
-                            <button onclick="addRowCoberturaV2(event, '', 'activos','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'responsabilidad_civil','all')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(40)
-                            <button onclick="addRowCoberturaV2(event, '', 'activos','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'responsabilidad_civil','all')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(41)
-                            <button onclick="addRowCoberturaV2(event, '', 'activos','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'responsabilidad_civil','all')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(42)
-                            <button onclick="addRowCoberturaV2(event, '', 'activos','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'responsabilidad_civil','all')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(43)
-                            <button onclick="addRowCoberturaV2(event, '', 'activos','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'responsabilidad_civil','all')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(44)
-                            <button onclick="addRowCoberturaV2(event, '', 'activos','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'tecnico','all')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(45)
-                            <button onclick="addRowCoberturaV2(event, '', 'activos','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'tecnico','all')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(46)
-                            <button onclick="addRowCoberturaV2(event, '', 'activos','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'fianzas','all')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(47)
-                            <button onclick="addRowCoberturaV2(event, '', 'activos','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'fianzas','all')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(48)
-                            <button onclick="addRowCoberturaV2(event, '', 'activos','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'fianzas','all')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(49)
-                            <button onclick="addRowCoberturaV2(event, '', 'activos','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'fianzas','all')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(50)
-                            <button onclick="addRowCoberturaV2(event, '', 'activos','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'fianzas','all')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(51)
-                            <button onclick="addRowCoberturaV2(event, '', 'activos','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'fianzas','all')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(52)
-                            <button onclick="addRowCoberturaV2(event, '', 'activos','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'fianzas','all')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                     @endswitch
-
-
                 </th>
             </tr>
         </thead>

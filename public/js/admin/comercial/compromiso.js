@@ -2289,45 +2289,6 @@ $(document).on('click', '.btn-delete-cobertura', function (e) {
     $(`#newRowIncendioCoberturaAdicional${id}`).remove()
 })
 
-/* function clausulas adicionales incendio */
-
-// function addRowClausula(event, type, typeRamo, typeSubCobertura) {
-//     event.preventDefault()
-//     let rowCount = document.getElementById(`${type}ClausulasAdicionalesTable`).rows.length
-
-//     const clausulasAdicionalesTableBody = document.getElementById(`${type}ClausulasAdicionalesTableBody`)
-//     const tr = document.createElement('tr')
-
-//     clausulasAdicionalesTableBody.appendChild(tr)
-//     tr.id = `newRowClausulaAdicional${rowCount}`
-//     tr.innerHTML =
-//         `
-//             <td>
-//                 ${rowCount}
-//             </td>
-//             <td>
-//                 <select name="description_clause_additional[]"  class="selectClausula">
-//                     <option selected disabled>Seleccionar</option>
-//                 </select>
-//             </td>
-//             <td>
-//                 <input type="text" placeholder="..." name="clause_additional_additional[]">
-//             </td>
-//             <td>
-//                 <input type="number" step="any" placeholder="0" name="clause_additional_usd[]" data-money>
-//             </td>
-//             <td>
-//                 <input type="text" placeholder="..." name="clause_additional_additional2[]">
-//             </td>
-//             <td>
-//                 <button id="${rowCount}" type="button" class="btn btn-danger btn-delete-clausula"></button>
-//             </td>
-//         `
-//     clausulasSelect(".selectClausula", `${typeRamo}`, `${typeSubCobertura}`);
-
-// }
-
-
 function addRowClausula(event, type, typeRamo, typeSubCobertura) {
     event.preventDefault()
     let rowCount = document.getElementById(`${type}ClausulasAdicionalesTable`).rows.length
