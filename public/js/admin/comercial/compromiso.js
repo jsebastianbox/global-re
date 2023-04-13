@@ -1926,7 +1926,7 @@ function refreshSumaAseguradaTable() {
     }
 }
 
-function incendioSumaAsegurableTotales(row, table) {
+function incendioSumaAsegurableTotales(row, col, table) {
     const activos_fijosSumaAseguradaTable = document.getElementById(`${table}SumaAseguradaTable`)
     //sumas filas
     let rowSelect = activos_fijosSumaAseguradaTable.getElementsByClassName(`row${row}`)
@@ -1942,84 +1942,37 @@ function incendioSumaAsegurableTotales(row, table) {
     let sumaTotal = rowTotalArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
 
     rowTotal.innerText = parseFloat(sumaTotal).toFixed(2)
-    //sumas columnas
 
-    let edificacionInput = activos_fijosSumaAseguradaTable.getElementsByClassName("edificacionInput")
-    let contenidosInput = activos_fijosSumaAseguradaTable.getElementsByClassName("contenidosInput")
-    let maquinariaEquiposInput = activos_fijosSumaAseguradaTable.getElementsByClassName("maquinariaEquiposInput")
-    let mueblesInput = activos_fijosSumaAseguradaTable.getElementsByClassName("mueblesInput")
-    let mercaderiasInput = activos_fijosSumaAseguradaTable.getElementsByClassName("mercaderiasInput")
-    let otrosInput = activos_fijosSumaAseguradaTable.getElementsByClassName("otrosInput")
-    let incendioTotalSpan = activos_fijosSumaAseguradaTable.getElementsByClassName("incendioTotalSpan")
+    //suma columnas
+    let colSelect = activos_fijosSumaAseguradaTable.getElementsByClassName(`col${col}`)
+    let colTotal = activos_fijosSumaAseguradaTable.querySelector(`#colTotal${col}`)
+    let colTotalArray = []
 
-    const incendioEdificacionTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioEdificacionTotal')
-    const incendioContenidosTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioContenidosTotal')
-    const incendioMaquinariaEquiposTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioMaquinariaEquiposTotal')
-    const incendioMueblesTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioMueblesTotal')
-    const incendioMercaderiasTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioMercaderiasTotal')
-    const incendioOtrosTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioOtrosTotal')
-    const incendioTotalTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioTotalTotal')
-
-    //totals
-    let incendioEdificacionArray = []
-    let incendioContenidosArray = []
-    let incendioMaquinariaEquiposArray = []
-    let incendioMueblesArray = []
-    let incendioMercaderiasArray = []
-    let incendioOtrosArray = []
-    let incendioTotalArray = []
-
-    for (let i = 0; i < edificacionInput.length; i++) {
-        if (edificacionInput[i].value > 0) {
-            incendioEdificacionArray.push(parseFloat(edificacionInput[i].value))
-        }
-    }
-    for (let i = 0; i < contenidosInput.length; i++) {
-        if (contenidosInput[i].value > 0) {
-            incendioContenidosArray.push(parseFloat(contenidosInput[i].value))
-        }
-    }
-    for (let i = 0; i < maquinariaEquiposInput.length; i++) {
-        if (maquinariaEquiposInput[i].value > 0) {
-            incendioMaquinariaEquiposArray.push(parseFloat(maquinariaEquiposInput[i].value))
-        }
-    }
-    for (let i = 0; i < mueblesInput.length; i++) {
-        if (mueblesInput[i].value > 0) {
-            incendioMueblesArray.push(parseFloat(mueblesInput[i].value))
-        }
-    }
-    for (let i = 0; i < mercaderiasInput.length; i++) {
-        if (mercaderiasInput[i].value > 0) {
-            incendioMercaderiasArray.push(parseFloat(mercaderiasInput[i].value))
-        }
-    }
-    for (let i = 0; i < otrosInput.length; i++) {
-        if (otrosInput[i].value > 0) {
-            incendioOtrosArray.push(parseFloat(otrosInput[i].value))
-        }
-    }
-    for (let i = 0; i < incendioTotalSpan.length; i++) {
-        if (incendioTotalSpan[i].innerText > 0) {
-            incendioTotalArray.push(parseFloat(incendioTotalSpan[i].innerText))
+    for (const element of colSelect) {
+        if (element.value > 0) {
+            colTotalArray.push(parseFloat(element.value))
         }
     }
 
-    let suma1 = incendioEdificacionArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
-    let suma2 = incendioContenidosArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
-    let suma3 = incendioMaquinariaEquiposArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
-    let suma4 = incendioMueblesArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
-    let suma5 = incendioMercaderiasArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
-    let suma6 = incendioOtrosArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
-    let suma7 = incendioTotalArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
+    let sumaTotal2 = colTotalArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
 
-    incendioEdificacionTotal.innerText = parseFloat(suma1).toFixed(2)
-    incendioContenidosTotal.innerText = parseFloat(suma2).toFixed(2)
-    incendioMaquinariaEquiposTotal.innerText = parseFloat(suma3).toFixed(2)
-    incendioMueblesTotal.innerText = parseFloat(suma4).toFixed(2)
-    incendioMercaderiasTotal.innerText = parseFloat(suma5).toFixed(2)
-    incendioOtrosTotal.innerText = parseFloat(suma6).toFixed(2)
-    incendioTotalTotal.innerText = parseFloat(suma7).toFixed(2)
+    colTotal.innerText = parseFloat(sumaTotal2).toFixed(2)
+
+    //total de los total
+    let colTotalTotal = activos_fijosSumaAseguradaTable.getElementsByClassName('col11')
+    console.log(colTotalTotal);
+    const totalTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioTotalTotal')
+    let colTotalTotalArray = []
+
+    for (const element of colTotalTotal) {
+        if (element.innerText > 0) {
+            colTotalTotalArray.push(parseFloat(element.innerText))
+        }
+    }
+
+    let sumaTotal3 = colTotalTotalArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
+
+    totalTotal.innerText = parseFloat(sumaTotal3).toFixed(2)
 
     //suma en input
 
@@ -2051,39 +2004,43 @@ function addRowSumaAseguradaIncendio(event, type) {
                 ${rowCount}
             </td>
             <td>
-                <input type="text" class="inputLocation" name="location[]" style="width: 95px" placeholder="..." novalidate>
+                <input type="text" name="location[]" class="inputLocation" style="width: 95px"
+                    placeholder="..." novalidate>
             </td>
             <td>
-                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, '${type}')" type="number" step="any"
-                    name="edification[]" value="0" novalidate
-                    style="width: 95px" class="edificacionInput row${rowCount}">
+                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, 1, '${type}')" type="number"
+                    step="any" data-money name="edification[]" value="0" novalidate
+                    style="width: 95px" class="col1 row${rowCount}">
             </td>
             <td>
-                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, '${type}')" type="number" step="any"
-                    name="contents[]" value="0" novalidate
-                    style="width: 95px" class="contenidosInput row${rowCount}">
+                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, 2, '${type}')" type="number"
+                    step="any" data-money name="contents[]" value="0" novalidate
+                    style="width: 95px" class="col2 row${rowCount}">
             </td>
             <td>
-                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, '${type}')" type="number" step="any"
-                    name="equipment[]" value="0" novalidate
-                    style="width: 95px" class="maquinariaEquiposInput row${rowCount}">
+                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, 3, '${type}')" type="number"
+                    step="any" data-money name="equipment[]" value="0" novalidate
+                    style="width: 95px" class="col3 row${rowCount}">
             </td>
             <td>
-                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, '${type}')" type="number" step="any"
-                    name="machine[]" value="0" novalidate style="width: 95px" class="mueblesInput row${rowCount}">
+                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, 4, '${type}')" type="number"
+                    step="any" data-money name="machine[]" value="0" novalidate
+                    style="width: 95px" class="col4 row${rowCount}">
             </td>
             <td>
-                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, '${type}')" type="number" step="any"
-                    name="commodity[]" value="0" novalidate
-                    style="width: 95px" class="mercaderiasInput row${rowCount}">
+                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, 5, '${type}')" type="number"
+                    step="any" data-money name="commodity[]" value="0" novalidate
+                    style="width: 95px" class="col5 row${rowCount}">
             </td>
             <td>
-                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, '${type}')" type="number" step="any"
-                    name="other_sum_assured[]" value="0" novalidate style="width: 95px" class="otrosInput row${rowCount}">
+                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, 6, '${type}')" type="number"
+                    step="any" name="other_sum_assured[]" value="0" novalidate
+                    style="width: 95px" class="col6 row${rowCount}">
             </td>
             <td style="text-align: center">
-                <span class="slipTitle incendioTotalSpan" id="rowTotal${rowCount}">0</span>$
+                <span class="slipTitle col11" id="rowTotal${rowCount}">0</span>$
             </td>
+
             <td>
                 <button id="${rowCount}" type="button"  class="btn btn-danger btn-delete-suma"></button>
             </td>
@@ -2982,6 +2939,7 @@ function coberturasSelect(class_selector = ".selectCobertura", main_branch, sub_
 //add column suma asegurada / asegurable
 var rowCounter = 1
 var columnCounter = 1
+var columnCounter2 = 7
 function addColumnSumas(tableName) {
 
     if (columnCounter <= 5) {
@@ -3004,14 +2962,15 @@ function addColumnSumas(tableName) {
         // Recorrer cada fila de la tabla y agregar una celda en la nueva columna
         for (let i = 1; i < tabla.rows.length - 1; i++) {
             let celda = tabla.rows[i].insertCell(8);
-            celda.innerHTML = `<input onkeyup="incendioSumaAsegurableTotales(${rowCounter}, '${tableName}')" class="row${rowCounter}" style="width: 95px" type="number" step="any" name="other_sum_assured${columnCounter}[]">`;
+            celda.innerHTML = `<input onkeyup="incendioSumaAsegurableTotales(${rowCounter}, ${columnCounter2}, '${tableName}')" class="col${columnCounter2} row${rowCounter}" style="width: 95px" type="number" step="any" name="other_sum_assured${columnCounter}[]">`;
             rowCounter++ 
         }
         rowCounter = 1
         let celda = tabla.rows[tabla.rows.length - 1].insertCell(8);
         celda.style.textAlign = 'center'
-
-        celda.innerHTML = ` <span id="incendioOtros${columnCounter}Total" class="slipTitle">0</span>`;
+        
+        celda.innerHTML = ` <span id="colTotal${columnCounter2}" class="slipTitle">0</span>$`;
+        columnCounter2++ 
 
 
     } else {
@@ -3026,7 +2985,7 @@ function removeColumnSumas(tableName) {
         $('#btnDeleteColumnSumas').removeAttr('disabled')
 
         // Obtener la referencia de la tabla
-        let tabla = document.getElementById(`${tableName}`);
+        let tabla = document.getElementById(`${tableName}SumaAseguradaTable`);
 
         // Obtener el número de columnas de la tabla
         let numColumnas = tabla.rows[0].cells.length - 3;

@@ -398,37 +398,37 @@
                                     placeholder="..." novalidate>
                             </td>
                             <td>
-                                <input onkeyup="incendioSumaAsegurableTotales(1, 'activos')" type="number"
+                                <input onkeyup="incendioSumaAsegurableTotales(1, 1, 'activos')" type="number"
                                     step="any" data-money name="edification[]" value="0" novalidate
-                                    style="width: 95px" class="edificacionInput row1">
+                                    style="width: 95px" class="col1 row1">
                             </td>
                             <td>
-                                <input onkeyup="incendioSumaAsegurableTotales(1, 'activos')" type="number"
+                                <input onkeyup="incendioSumaAsegurableTotales(1, 2, 'activos')" type="number"
                                     step="any" data-money name="contents[]" value="0" novalidate
-                                    style="width: 95px" class="contenidosInput row1">
+                                    style="width: 95px" class="col2 row1">
                             </td>
                             <td>
-                                <input onkeyup="incendioSumaAsegurableTotales(1, 'activos')" type="number"
+                                <input onkeyup="incendioSumaAsegurableTotales(1, 3, 'activos')" type="number"
                                     step="any" data-money name="equipment[]" value="0" novalidate
-                                    style="width: 95px" class="maquinariaEquiposInput row1">
+                                    style="width: 95px" class="col3 row1">
                             </td>
                             <td>
-                                <input onkeyup="incendioSumaAsegurableTotales(1, 'activos')" type="number"
+                                <input onkeyup="incendioSumaAsegurableTotales(1, 4, 'activos')" type="number"
                                     step="any" data-money name="machine[]" value="0" novalidate
-                                    style="width: 95px" class="mueblesInput row1">
+                                    style="width: 95px" class="col4 row1">
                             </td>
                             <td>
-                                <input onkeyup="incendioSumaAsegurableTotales(1, 'activos')" type="number"
+                                <input onkeyup="incendioSumaAsegurableTotales(1, 5, 'activos')" type="number"
                                     step="any" data-money name="commodity[]" value="0" novalidate
-                                    style="width: 95px" class="mercaderiasInput row1">
+                                    style="width: 95px" class="col5 row1">
                             </td>
                             <td>
-                                <input onkeyup="incendioSumaAsegurableTotales(1, 'activos')" type="number"
+                                <input onkeyup="incendioSumaAsegurableTotales(1, 6, 'activos')" type="number"
                                     step="any" name="other_sum_assured[]" value="0" novalidate
-                                    style="width: 95px" class="otrosInput row1">
+                                    style="width: 95px" class="col6 row1">
                             </td>
                             <td style="text-align: center">
-                                <span class="slipTitle incendioTotalSpan" id="rowTotal1">0</span>$
+                                <span class="slipTitle col11" id="rowTotal1">0</span>$
                             </td>
                             <td></td>
                         </tr>
@@ -443,25 +443,25 @@
                                 <h5 class="slipTitle">Total</h5>
                             </td>
                             <td style="text-align: center">
-                                <span id="incendioEdificacionTotal" class="slipTitle">0</span>$
+                                <span id="colTotal1" class="slipTitle">0</span>$
                             </td>
                             <td style="text-align: center">
-                                <span id="incendioContenidosTotal" class="slipTitle">0</span>$
+                                <span id="colTotal2" class="slipTitle">0</span>$
                             </td>
                             <td style="text-align: center">
-                                <span id="incendioMaquinariaEquiposTotal" class="slipTitle">0</span>$
+                                <span id="colTotal3" class="slipTitle">0</span>$
                             </td>
                             <td style="text-align: center">
-                                <span id="incendioMueblesTotal" class="slipTitle">0</span>$
+                                <span id="colTotal4" class="slipTitle">0</span>$
                             </td>
                             <td style="text-align: center">
-                                <span id="incendioMercaderiasTotal" class="slipTitle">0</span>$
+                                <span id="colTotal5" class="slipTitle">0</span>$
                             </td>
                             <td style="text-align: center">
-                                <span id="incendioOtrosTotal" class="slipTitle">0</span>$
+                                <span id="colTotal6" class="slipTitle">0</span>$
                             </td>
                             <td style="text-align: center">
-                                <span id="incendioTotalTotal" class="slipTitle">0</span>$
+                                <span class="slipTitle col11" id="rowTotal1">0</span>$
                             </td>
                             <td></td>
                         </tr>
@@ -523,37 +523,37 @@
                                         style="width: 95px" placeholder="..." novalidate>
                                 </td>
                                 <td>
-                                    <input onkeyup="incendioSumaAsegurableTotales(1, 'activos_fijos')" type="number"
+                                    <input onkeyup="incendioSumaAsegurableTotales(1, 1, 'activos_fijos')" type="number"
                                         step="any" data-money name="edification[]" value="0"
-                                        novalidate style="width: 95px" class="edificacionInput row1">
+                                        novalidate style="width: 95px" class="col1 row1">
                                 </td>
                                 <td>
-                                    <input onkeyup="incendioSumaAsegurableTotales(1, 'activos_fijos')" type="number"
+                                    <input onkeyup="incendioSumaAsegurableTotales(1, 2, 'activos_fijos')" type="number"
                                         step="any" data-money name="contents[]" value="0" novalidate
-                                        style="width: 95px" class="contenidosInput row1">
+                                        style="width: 95px" class="col2 row1">
                                 </td>
                                 <td>
-                                    <input onkeyup="incendioSumaAsegurableTotales(1, 'activos_fijos')" type="number"
+                                    <input onkeyup="incendioSumaAsegurableTotales(1, 3, 'activos_fijos')" type="number"
                                         step="any" data-money name="equipment[]" value="0"
-                                        novalidate style="width: 95px" class="maquinariaEquiposInput row1">
+                                        novalidate style="width: 95px" class="col3 row1">
                                 </td>
                                 <td>
-                                    <input onkeyup="incendioSumaAsegurableTotales(1, 'activos_fijos')" type="number"
+                                    <input onkeyup="incendioSumaAsegurableTotales(1, 4, 'activos_fijos')" type="number"
                                         step="any" data-money name="machine[]" value="0" novalidate
-                                        style="width: 95px" class="mueblesInput row1">
+                                        style="width: 95px" class="col4 row1">
                                 </td>
                                 <td>
-                                    <input onkeyup="incendioSumaAsegurableTotales(1, 'activos_fijos')" type="number"
+                                    <input onkeyup="incendioSumaAsegurableTotales(1, 5, 'activos_fijos')" type="number"
                                         step="any" data-money name="commodity[]" value="0"
-                                        novalidate style="width: 95px" class="mercaderiasInput row1">
+                                        novalidate style="width: 95px" class="col5 row1">
                                 </td>
                                 <td>
-                                    <input onkeyup="incendioSumaAsegurableTotales(1, 'activos_fijos')" type="number"
+                                    <input onkeyup="incendioSumaAsegurableTotales(1, 6, 'activos_fijos')" type="number"
                                         step="any" data-money name="other_sum_assured[]" value="0"
-                                        novalidate style="width: 95px" class="otrosInput row1">
+                                        novalidate style="width: 95px" class="col6 row1">
                                 </td>
                                 <td style="text-align: center">
-                                    <span class="slipTitle incendioTotalSpan" id="rowTotal1">0</span>$
+                                    <span class="slipTitle col11" id="rowTotal1">0</span>$
                                 </td>
                                 <td></td>
                             </tr>
@@ -569,25 +569,25 @@
                                     <h5 class="slipTitle">Total</h5>
                                 </td>
                                 <td style="text-align: center">
-                                    <span id="incendioEdificacionTotal" class="slipTitle">0</span>$
+                                    <span id="colTotal1" class="slipTitle">0</span>$
                                 </td>
                                 <td style="text-align: center">
-                                    <span id="incendioContenidosTotal" class="slipTitle">0</span>$
+                                    <span id="colTotal2" class="slipTitle">0</span>$
                                 </td>
                                 <td style="text-align: center">
-                                    <span id="incendioMaquinariaEquiposTotal" class="slipTitle">0</span>$
+                                    <span id="colTotal3" class="slipTitle">0</span>$
                                 </td>
                                 <td style="text-align: center">
-                                    <span id="incendioMueblesTotal" class="slipTitle">0</span>$
+                                    <span id="colTotal4" class="slipTitle">0</span>$
                                 </td>
                                 <td style="text-align: center">
-                                    <span id="incendioMercaderiasTotal" class="slipTitle">0</span>$
+                                    <span id="colTotal5" class="slipTitle">0</span>$
                                 </td>
                                 <td style="text-align: center">
-                                    <span id="incendioOtrosTotal" class="slipTitle">0</span>$
+                                    <span id="colTotal6" class="slipTitle">0</span>$
                                 </td>
                                 <td style="text-align: center">
-                                    <span id="incendioTotalTotal" class="slipTitle">0</span>$
+                                    <span class="slipTitle col11" id="rowTotal1">0</span>$
                                 </td>
                             </tr>
 
