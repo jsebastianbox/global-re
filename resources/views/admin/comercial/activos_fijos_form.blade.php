@@ -617,7 +617,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4" id="inputSumaAsegurada" style="display:none">
+                <div class="col-md-4" id="inputSumaAsegurada" style="display:flex">
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="insuredSum">Suma asegurada</label>
                         <input id="input_sumaAsegurada" type="number" step="any" placeholder="Suma asegurada" name="insured_sum">

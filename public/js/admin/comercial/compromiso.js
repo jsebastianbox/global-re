@@ -2028,7 +2028,7 @@ function refreshSumaAseguradaTable() {
     console.log('a');
     let row = $('#activos_fijosSumaAseguradaTableBody').find('tr').length
 
-    for (let i = 0; i < row; i++) {
+    for (let i = 1; i <= row; i++) {
         incendioSumaAsegurableTotales(i, 1, 'activos_fijos')
         incendioSumaAsegurableTotales(i, 2,'activos_fijos')
         incendioSumaAsegurableTotales(i, 3, 'activos_fijos')
@@ -2036,10 +2036,10 @@ function refreshSumaAseguradaTable() {
         incendioSumaAsegurableTotales(i, 5,'activos_fijos')
         incendioSumaAsegurableTotales(i, 6, 'activos_fijos')
         incendioSumaAsegurableTotales(i, 7, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 8, 'activos_fijos')
+        /* incendioSumaAsegurableTotales(i, 8, 'activos_fijos')
         incendioSumaAsegurableTotales(i, 9, 'activos_fijos')
         incendioSumaAsegurableTotales(i, 10, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 11, 'activos_fijos')
+        incendioSumaAsegurableTotales(i, 11, 'activos_fijos') */
     }
 }
 
@@ -2155,7 +2155,7 @@ function addRowSumaAseguradaIncendio(event, type) {
                     style="width: 95px" class="col6 row${rowCount}">
             </td>
             <td style="text-align: center">
-                <span class="slipTitle col11" id="rowTotal${rowCount}">0</span>$
+                <span class="slipTitle col12" id="rowTotal${rowCount}">0</span>$
             </td>
 
             <td>

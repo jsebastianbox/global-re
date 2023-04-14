@@ -64,67 +64,67 @@
 
                     <td>
                         <input onkeyup="incendioSumaAsegurableTotales({{ $key+1 }}, 1, 'activos_fijos')" type="number"
-                            step="any" data-money name="edification[]" value="0" novalidate
+                            step="any" data-money name="edification[]" value="{{$item->edification}}" novalidate
                             style="width: 95px" class="col1 row{{ $key+1 }}">
                     </td>
                     <td>
                         <input onkeyup="incendioSumaAsegurableTotales({{ $key+1 }}, 2, 'activos_fijos')" type="number"
-                            step="any" data-money name="contents[]" value="0" novalidate
+                            step="any" data-money name="contents[]" value="{{$item->contents}}" novalidate
                             style="width: 95px" class="col2 row{{ $key+1 }}">
                     </td>
                     <td>
                         <input onkeyup="incendioSumaAsegurableTotales({{ $key+1 }}, 3, 'activos_fijos')" type="number"
-                            step="any" data-money name="equipment[]" value="0" novalidate
+                            step="any" data-money name="equipment[]" value="{{$item->equipment}}" novalidate
                             style="width: 95px" class="col3 row{{ $key+1 }}">
                     </td>
                     <td>
                         <input onkeyup="incendioSumaAsegurableTotales({{ $key+1 }}, 4, 'activos_fijos')" type="number"
-                            step="any" data-money name="machine[]" value="0" novalidate
+                            step="any" data-money name="machine[]" value="{{$item->machine}}" novalidate
                             style="width: 95px" class="col4 row{{ $key+1 }}">
                     </td>
                     <td>
                         <input onkeyup="incendioSumaAsegurableTotales({{ $key+1 }}, 5, 'activos_fijos')" type="number"
-                            step="any" data-money name="commodity[]" value="0" novalidate
+                            step="any" data-money name="commodity[]" value="{{$item->commodity}}" novalidate
                             style="width: 95px" class="col5 row{{ $key+1 }}">
                     </td>
                     <td>
                         <input onkeyup="incendioSumaAsegurableTotales({{ $key+1 }}, 6, 'activos_fijos')" type="number"
-                            step="any" name="other_sum_assured[]" value="0" novalidate
+                            step="any" name="other_sum_assured[]" value="{{$item->other_sum_assured}}" novalidate
                             style="width: 95px" class="col6 row{{ $key+1 }}">
                     </td>
 
                     @if (!is_null($slip_type->th_sum_assured_1) && $slip_type->th_sum_assured_1 !== '')
                         <td>
                             <input onkeyup="incendioSumaAsegurableTotales({{ $key+1 }}, 7, 'activos_fijos')" type="number"
-                                step="any" name="other_sum_assured_1[]" value="0" novalidate
+                                step="any" name="other_sum_assured_1[]" value="{{$item->other_sum_assured_1}}" novalidate
                                 style="width: 95px" class="col7 row{{ $key+1 }}">
                         </td>
                     @endif
                     @if (!is_null($slip_type->th_sum_assured_2) && $slip_type->th_sum_assured_2 !== '')
                         <td>
                             <input onkeyup="incendioSumaAsegurableTotales({{ $key+1 }}, 8, 'activos_fijos')" type="number"
-                                step="any" name="other_sum_assured_2[]" value="0" novalidate
+                                step="any" name="other_sum_assured_2[]" value="{{$item->other_sum_assured_2}}" novalidate
                                 style="width: 95px" class="col8 row{{ $key+1 }}">
                         </td>
                     @endif
                     @if (!is_null($slip_type->th_sum_assured_3) && $slip_type->th_sum_assured_3 !== '')
                         <td>
                             <input onkeyup="incendioSumaAsegurableTotales({{ $key+1 }}, 9, 'activos_fijos')" type="number"
-                                step="any" name="other_sum_assured_3[]" value="0" novalidate
+                                step="any" name="other_sum_assured_3[]" value="{{$item->other_sum_assured_3}}" novalidate
                                 style="width: 95px" class="col9 row{{ $key+1 }}">
                         </td>
                     @endif
                     @if (!is_null($slip_type->th_sum_assured_4) && $slip_type->th_sum_assured_4 !== '')
                         <td>
                             <input onkeyup="incendioSumaAsegurableTotales({{ $key+1 }}, 10, 'activos_fijos')" type="number"
-                                step="any" name="other_sum_assured_4[]" value="0" novalidate
+                                step="any" name="other_sum_assured_4[]" value="{{$item->other_sum_assured_4}}" novalidate
                                 style="width: 95px" class="col10 row{{ $key+1 }}">
                         </td>
                     @endif
                     @if (!is_null($slip_type->th_sum_assured_5) && $slip_type->th_sum_assured_5 !== '')
                         <td>
                             <input onkeyup="incendioSumaAsegurableTotales({{ $key+1 }}, 11, 'activos_fijos')" type="number"
-                                step="any" name="other_sum_assured_5[]" value="0" novalidate
+                                step="any" name="other_sum_assured_5[]" value="{{$item->other_sum_assured_5}}" novalidate
                                 style="width: 95px" class="col11 row{{ $key+1 }}">
                         </td>
                     @endif
