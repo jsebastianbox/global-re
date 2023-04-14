@@ -10,6 +10,7 @@ use App\Models\Clausulas_selector;
 use App\Models\CoberturasSelector;
 use App\Models\Compromiso;
 use App\Models\Country;
+use App\Models\DeductibleSlip;
 use App\Models\DetailPerdios;
 use App\Models\InformationAerialHelmets;
 use App\Models\ObjectInsurance;
@@ -522,5 +523,18 @@ class CompromisoController extends Controller
             ->with('clausulasSelect', $clausulasSelect)
             ->with('slip', $slip)
             ->with('slip_type', $slip_type);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $slip = Slip::find($id);
+        DeductibleSlip::where('slip_id', $id)->get()->delete();
+        AdditionalCoverage::where('slip_id', $id)->get()->delete();
+        ClauseSlip::where('slip_id', $id)->get()->delete();
+        $selectSlip = Slip::where('id', $id)->select('model_id', 'type_coverage')->first();
+
+        switch ($slip->type_coverage) {
+            
+        }
     }
 }

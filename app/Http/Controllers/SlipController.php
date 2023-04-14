@@ -363,40 +363,33 @@ class SlipController extends Controller
 
         $selectSlip = Slip::where('id', $id)->select('model_id', 'type_coverage')->first();
 
+        $slip->slip_status_id = '2';
         $idModel = $selectSlip->model_id;
 
-        switch ($selectSlip->type_coverage) {
+        switch ($slip->type_coverage) {
                 //vida y accidentes personales
             case '1':
             case '2':
             case '3':
             case '4':
-                SlipLifePersonlAccident::find($idModel)->update($request->all());
+                $type_slip = SlipLifePersonlAccident::where('slip_id', $id)->first();
+                $type_slip->update($request->all());
 
-                $type_slip = SlipLifePersonlAccident::find($idModel);
-                $type_slip->object_insurance()->delete();
+                ObjectInsurance::where('slip_id', $id)->delete();
 
-                if ($request->has('aditional_coverage') | $request->has('age')) {
-                    //objeto del seguro
-                    for ($i = 0; $i < count($request->age); $i++) {
-                        $object = new ObjectInsurance([
-                            'number' => $request->number[$i],
-                            'name' => $request->name[$i],
-                            'age' => $request->age[$i],
-                            'birthday' => $request->birthday[$i],
-                            'limit' => $request->limit[$i],
+                //Objeto del Seguro
+                if ($request->has('birthday')) {
+                    for ($i = 0; $i < count($request->birthday); $i++) {
+                        $object_insurance = new ObjectInsurance([
+                            'birthday' => $request->birthday[$i] ?? null,
+                            'name' => $request->name[$i] ?? null,
+                            'age' => $request->age[$i] ?? null,
+                            'sex_merchant' => $request->sex_merchant[$i] ?? null,
+                            'activity_merchant' => $request->activity_merchant[$i] ?? null,
+                            'limit' => $request->limit[$i] ?? null,
+                            'slip_id' => $slip->id
                         ]);
-                        $type_slip->object_insurance()->save($object);
-                    }
-
-                    //coberturas adicionales
-                    for ($i = 0; $i < count($request->aditional_coverage); $i++) {
-                        if (isset($request->aditional_coverage[$i])) {
-                            $coverage = new CoverageSlip([
-                                'aditional_coverage' => $request->aditional_coverage[$i],
-                            ]);
-                            $slip->coverage()->save($coverage);
-                        }
+                        $object_insurance->save();
                     }
                 }
 
@@ -751,6 +744,54 @@ class SlipController extends Controller
                 return 'slip no encotrado';
                 break;
         }
+        //coberturas adicionales
+        if ($request->has('description_coverage_additional')) {
+            for ($i = 0; $i < count($request->description_coverage_additional); $i++) {
+                if (isset($request->description_coverage_additional[$i])) {
+                    $additional_coverages = new AdditionalCoverage([
+                        'description_coverage_additional' => $request->description_coverage_additional[$i] ?? null,
+                        'coverage_additional_additional' => $request->coverage_additional_additional[$i] ?? null,
+                        'coverage_additional_usd' => $request->coverage_additional_usd[$i] ?? null,
+                        'coverage_additional_additional2' => $request->coverage_additional_additional2[$i] ?? null,
+                        'slip_id' => $slip->id
+                    ]);
+                    $additional_coverages->save();
+                }
+            }
+        }
+
+        //clausulas adicionales
+        if ($request->has('description_clause_additional')) {
+            for ($i = 0; $i < count($request->description_clause_additional); $i++) {
+                if (isset($request->description_clause_additional[$i])) {
+                    $additional_clauses = new ClauseSlip([
+                        'description_clause_additional' => $request->description_clause_additional[$i] ?? null,
+                        'clause_additional_additional' => $request->clause_additional_additional[$i] ?? null,
+                        'clause_additional_usd' => $request->clause_additional_usd[$i] ?? null,
+                        'clause_additional_additional2' => $request->clause_additional_additional2[$i] ?? null,
+                        'slip_id' => $slip->id
+                    ]);
+                    $additional_clauses->save();
+                }
+            }
+        }
+
+        //deductibles
+        if ($request->has('description_deductible')) {
+            for ($i = 0; $i < count($request->description_deductible); $i++) {
+                if (isset($request->description_deductible[$i])) {
+                    $deductibles = new DeductibleSlip([
+                        'description_deductible' => $request->description_deductible[$i] ?? null,
+                        'sinister_value' => $request->sinister_value[$i] ?? null,
+                        'insured_value' => $request->insured_value[$i] ?? null,
+                        'minimum' => $request->minimum[$i] ?? null,
+                        'description2_deductible' => $request->description2_deductible[$i] ?? null,
+                        'slip_id' => $slip->id
+                    ]);
+                    $deductibles->save();
+                }
+            }
+        }
 
         //limite de cobertura
         if ($request->has('limit_aditional_coverage')) {
@@ -765,54 +806,6 @@ class SlipController extends Controller
             }
         }
 
-        //deducible
-        if ($request->has('sinister_value') || $request->has('description_deductible')) {
-            //return 'existe';
-            for ($i = 0; $i < count($request->sinister_value); $i++) {
-                if (isset($request->sinister_value[$i])) {
-                    $deductible = new DeductibleSlip([
-                        'description_deductible' => isset($request->description_deductible[$i]) ? $request->description_deductible[$i] : null,
-                        'sinister_value' => isset($request->sinister_value[$i]) ? $request->sinister_value[$i] : null,
-                        'insured_value' => isset($request->insured_value[$i]) ? $request->insured_value[$i] : null,
-                        'minimum' => isset($request->minimum[$i]) ? $request->minimum[$i] : null,
-                        'description2_deductible' => isset($request->description2_deductible[$i]) ? $request->description2_deductible[$i] : null,
-                    ]);
-                    $slip->deductible()->save($deductible);
-                }
-            }
-        }
-
-        //Cláusulas adicionales
-        if ($request->has('description_clause_additional')) {
-            //$description_clause_additional = $request->description_clause_additional;
-            for ($i = 0; $i < count($request->description_clause_additional); $i++) {
-                if (isset($request->description_clause_additional[$i])) {
-                    $deductible = new ClauseSlip([
-                        'description_clause_additional' => $request->description_clause_additional[$i],
-                        'clause_additional_additional' => isset($request->clause_additional_additional[$i]) ? $request->clause_additional_additional[$i] : null,
-                        'clause_additional_additional2' => isset($request->clause_additional_additional2[$i]) ? $request->clause_additional_additional2[$i] : null,
-                        'clause_additional_usd' => isset($request->clause_additional_usd[$i]) ? $request->clause_additional_usd[$i] : null,
-                    ]);
-                    $slip->clause_aditional()->save($deductible);
-                }
-            }
-        }
-
-        //coberturas adicionales
-        if ($request->has('description_coverage_additional')) {
-            //$iscovorage = $request->type_slip != 'rc' && $request->type_slip != 'transporte' && $request->type_slip != 'licencia' ? true : false;
-            for ($i = 0; $i < count($request->description_coverage_additional); $i++) {
-                if (isset($request->description_coverage_additional[$i])) {
-                    $object = new AdditionalCoverage([
-                        'description_coverage_additional' => $request->description_coverage_additional[$i],
-                        'coverage_additional_usd' => isset($request->coverage_additional_usd) ? $request->coverage_additional_usd[$i] : null,
-                        'coverage_additional_additional' => isset($request->coverage_additional_additional) ? $request->coverage_additional_additional[$i] : null,
-                        'coverage_additional_additional2' => isset($request->coverage_additional_additional2) ? $request->coverage_additional_additional2[$i] : null,
-                    ]);
-                    $slip->coverage_additional()->save($object);
-                }
-            }
-        }
 
         //security
         if ($request->has('name_insurer')) {
@@ -859,19 +852,16 @@ class SlipController extends Controller
             }
         }
 
-        $slipsUser = Slip::where('slip_status_id', '3')->get();
-        $slip_statuses = SlipStatus::all();
-        $user = Auth::user();
-
+        //update & save
         $slip->update($request->all());
-        $slip->slip_status_id = '3';
         $slip->save();
-
+        
+        $user = Auth::user();
         if ($user->role === "comercial") {
             return redirect('/admin/compromiso/pending')
             ->with('success', 'El Slip ha sido modificado y enviado al departamento técnico de manera exitosa.');
         } else {
-            return view('admin.tecnico.slip.index')
+            return redirect('/admin/compromiso/pending')
             ->with('success', 'El Slip ha sido modificado y enviado al departamento técnico de manera exitosa.');
         }
     }

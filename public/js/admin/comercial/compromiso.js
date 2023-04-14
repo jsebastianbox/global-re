@@ -2036,10 +2036,10 @@ function refreshSumaAseguradaTable() {
         incendioSumaAsegurableTotales(i, 5,'activos_fijos')
         incendioSumaAsegurableTotales(i, 6, 'activos_fijos')
         incendioSumaAsegurableTotales(i, 7, 'activos_fijos')
-        /* incendioSumaAsegurableTotales(i, 8, 'activos_fijos')
+        incendioSumaAsegurableTotales(i, 8, 'activos_fijos')
         incendioSumaAsegurableTotales(i, 9, 'activos_fijos')
         incendioSumaAsegurableTotales(i, 10, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 11, 'activos_fijos') */
+        incendioSumaAsegurableTotales(i, 11, 'activos_fijos')
     }
 }
 

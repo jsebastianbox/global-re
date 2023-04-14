@@ -64,13 +64,14 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ asset('js/admin/comercial/ajax.js') }}" defer></script>
+    
     <div class="card px-4 py-2">
         <form method="POST" action="{{ route('slip.update', $slip->id) }}" id="vida_form" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             @method('PUT')
-            <input type="hidden" name="type_slip" value="vida_forms">
-            <input hidden type="number" name="slip_status" value="3">
+            {{-- <input type="hidden" name="type_slip" value="vida_forms"> --}}
+            {{-- <input hidden type="number" name="slip_status" value="3"> --}}
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
             <div class="row">
                 @include('admin.comercial.include.person_index')
