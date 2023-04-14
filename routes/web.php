@@ -219,9 +219,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/comercial/edit_compromiso/maritimo/{id}', [CompromisoController::class, 'maritimo'])->name('edit.maritimo');
     Route::get('/admin/comercial/edit_compromiso/riesgos/{id}', [CompromisoController::class, 'riesgos'])->name('edit.riesgos');
     Route::get('/admin/comercial/edit_compromiso/fianzas/{id}', [CompromisoController::class, 'fianzas'])->name('edit.fianzas');
-
-    /* save compromisos */
-    Route::put('/admin/comercial/edit_compromiso/update/{id}', [CompromisoController::class, 'update'])->name('comercial.update');
     
 });
 

@@ -524,17 +524,4 @@ class CompromisoController extends Controller
             ->with('slip', $slip)
             ->with('slip_type', $slip_type);
     }
-
-    public function update(Request $request, $id)
-    {
-        $slip = Slip::find($id);
-        DeductibleSlip::where('slip_id', $id)->get()->delete();
-        AdditionalCoverage::where('slip_id', $id)->get()->delete();
-        ClauseSlip::where('slip_id', $id)->get()->delete();
-        $selectSlip = Slip::where('id', $id)->select('model_id', 'type_coverage')->first();
-
-        switch ($slip->type_coverage) {
-            
-        }
-    }
 }

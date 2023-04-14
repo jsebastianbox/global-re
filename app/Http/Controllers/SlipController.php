@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\AdditionalCoverage;
 use App\Models\BoatDetailSlip;
 use App\Models\ClauseSlip;
+use App\Models\Clausulas_selector;
+use App\Models\CoberturasSelector;
 use App\Models\CompensationLimit;
 use App\Models\Country;
 use App\Models\CoverageLimit;
@@ -67,32 +69,21 @@ class SlipController extends Controller
 
     public function slipSelected($id)
     {
-        /* $user = Auth::user();
-        $slips = Slip::all();
-        $countries = Country::all();
-        $type_coverage = TypeCoverage::all();
-        $slipsUser = $slips->where('user_id', $user->id);
-        $slipSelected = $slipsUser->where('id', $id)->first();
-        $selectedCountry = $countries->where('id', $slipSelected->country_id)->first();
-        $selectedCoverage = $type_coverage->where('id', $slipSelected->type_coverage)->first(); */
-        //dd($slipSelected);
-        //$object = Slip::where('id', $id)->with('slip_object')->first();
+        $slip = Slip::find($id);
 
-        $type_coverage = Slip::select('type_coverage')->where('id', $id)->first();
-        $slip = Slip::where('id', $id)
-            ->with('type')->with('security')
-            ->with('guarantee_payment')->with('deductible')
-            ->with('coverage')->with('clause_aditional')->with('coverage_additional')
-            ->with('country_politics_one')
-            ->with('excluye')->with('limit_insured')->with('file')->with('limit_coverage')
-            ->with('user')->with('country')->first();
+        //variables nulls para no tirar error
+        $object_insurance = [];
 
-        switch ($type_coverage->type_coverage) {
+        switch ($slip->type_coverage) {
             case '1':
             case '2':
             case '3':
             case '4':
-                $slip_type = SlipLifePersonlAccident::where('id', $slip->model_id)->with('object_insurance')->first();
+                $slip_type = SlipLifePersonlAccident::where('slip_id', $id)->first();
+                $object_insurance = ObjectInsurance::where('slip_id', $slip->id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::where('main_branch', 'vida')->get();
+                $clausulasSelect = Clausulas_selector::where('main_branch', 'vida')->get();
                 break;
             case '5':
             case '6':
@@ -241,7 +232,10 @@ class SlipController extends Controller
         return view('admin.tecnico.slip.slipSelected')
             ->with('user', $user)
             ->with('slip', $slip)
-            ->with('slip_type', $slip_type);
+            ->with('slip_type', $slip_type)
+            ->with('coberturasSelect', $coberturasSelect)
+            ->with('clausulasSelect', $clausulasSelect)
+            ->with('object_insurance', $object_insurance);
 
         //$object = $slip_life->with('slip_object')->first();
 
