@@ -2011,7 +2011,17 @@ function refreshSumaAsegurableTable() {
     let row = $('#activosSumaAseguradaTableBody').find('tr').length
 
     for (let i = 0; i < row; i++) {
-        incendioSumaAsegurableTotales(i, 'activos')
+        incendioSumaAsegurableTotales(i, 1, 'activos')
+        incendioSumaAsegurableTotales(i, 2, 'activos')
+        incendioSumaAsegurableTotales(i, 3, 'activos')
+        incendioSumaAsegurableTotales(i, 4, 'activos')
+        incendioSumaAsegurableTotales(i, 5, 'activos')
+        incendioSumaAsegurableTotales(i, 6, 'activos')
+        incendioSumaAsegurableTotales(i, 7, 'activos')
+        incendioSumaAsegurableTotales(i, 8, 'activos')
+        incendioSumaAsegurableTotales(i, 9, 'activos')
+        incendioSumaAsegurableTotales(i, 10, 'activos')
+        incendioSumaAsegurableTotales(i, 11, 'activos')
     }
 }
 function refreshSumaAseguradaTable() {
@@ -2019,7 +2029,17 @@ function refreshSumaAseguradaTable() {
     let row = $('#activos_fijosSumaAseguradaTableBody').find('tr').length
 
     for (let i = 0; i < row; i++) {
-        incendioSumaAsegurableTotales(i, 'activos_fijos')
+        incendioSumaAsegurableTotales(i, 1, 'activos_fijos')
+        incendioSumaAsegurableTotales(i, 2,'activos_fijos')
+        incendioSumaAsegurableTotales(i, 3, 'activos_fijos')
+        incendioSumaAsegurableTotales(i, 4, 'activos_fijos')
+        incendioSumaAsegurableTotales(i, 5,'activos_fijos')
+        incendioSumaAsegurableTotales(i, 6, 'activos_fijos')
+        incendioSumaAsegurableTotales(i, 7, 'activos_fijos')
+        incendioSumaAsegurableTotales(i, 8, 'activos_fijos')
+        incendioSumaAsegurableTotales(i, 9, 'activos_fijos')
+        incendioSumaAsegurableTotales(i, 10, 'activos_fijos')
+        incendioSumaAsegurableTotales(i, 11, 'activos_fijos')
     }
 }
 
@@ -2056,7 +2076,7 @@ function incendioSumaAsegurableTotales(row, col, table) {
     colTotal.innerText = parseFloat(sumaTotal2).toFixed(2)
 
     //total de los total
-    let colTotalTotal = activos_fijosSumaAseguradaTable.getElementsByClassName('col11')
+    let colTotalTotal = activos_fijosSumaAseguradaTable.getElementsByClassName('col12')
     console.log(colTotalTotal);
     const totalTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioTotalTotal')
     let colTotalTotalArray = []
@@ -2998,6 +3018,7 @@ function coberturasSelect(class_selector = ".selectCobertura", main_branch, sub_
 var rowCounter = 1
 var columnCounter = 1
 var columnCounter2 = 7
+var insertCell_sum = 8
 function addColumnSumas(tableName) {
 
     if (columnCounter <= 5) {
@@ -3006,12 +3027,17 @@ function addColumnSumas(tableName) {
         // Obtener referencia de la tabla
         let tabla = document.getElementById(`${tableName}SumaAseguradaTable`);
 
-        // Crear encabezado de columna
+        // Crear encabezado de columna y input hidden
         let encabezado = document.createElement("th");
         let inputName = document.getElementById(`columnName${tableName}SumaAseguradaTable`).value
         encabezado.style.textAlign = 'center'
         encabezado.textContent = inputName
-        encabezado.name = `encabezado_${columnCounter}`
+        // Crear el elemento input
+        let input = document.createElement('input');
+        input.setAttribute('type', 'hidden');
+        input.setAttribute('name', `th_sum_assured_${columnCounter-1}`);
+        input.setAttribute('value', `${inputName}`);
+        encabezado.appendChild(input)
 
         // Agregar encabezado de columna a la primera fila de la tabla
         let ths = tabla.querySelectorAll('th')
@@ -3019,13 +3045,14 @@ function addColumnSumas(tableName) {
 
         // Recorrer cada fila de la tabla y agregar una celda en la nueva columna
         for (let i = 1; i < tabla.rows.length - 1; i++) {
-            let celda = tabla.rows[i].insertCell(8);
-            celda.innerHTML = `<input onkeyup="incendioSumaAsegurableTotales(${rowCounter}, ${columnCounter2}, '${tableName}')" class="col${columnCounter2} row${rowCounter}" style="width: 95px" type="number" step="any" name="other_sum_assured${columnCounter}[]">`;
+            let celda = tabla.rows[i].insertCell(insertCell_sum);
+            celda.innerHTML = `<input onkeyup="incendioSumaAsegurableTotales(${rowCounter}, ${columnCounter2}, '${tableName}')" class="col${columnCounter2} row${rowCounter}" style="width: 95px" type="number" step="any" name="other_sum_assured_${columnCounter-1}[]">`;
             rowCounter++ 
         }
         rowCounter = 1
-        let celda = tabla.rows[tabla.rows.length - 1].insertCell(8);
+        let celda = tabla.rows[tabla.rows.length - 1].insertCell(insertCell_sum);
         celda.style.textAlign = 'center'
+        insertCell_sum++
         
         celda.innerHTML = ` <span id="colTotal${columnCounter2}" class="slipTitle">0</span>$`;
         columnCounter2++ 
@@ -3055,7 +3082,8 @@ function removeColumnSumas(tableName) {
         }
 
         columnCounter--
-        console.log(columnCounter);
+        columnCounter2--
+        insertCell_sum--
     } else {
         $('#btnDeleteColumnSumas').attr('disabled')
     }

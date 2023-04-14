@@ -172,6 +172,11 @@ class SlipApiController extends Controller
                             'machine' => $request->machine[$i] ?? null,
                             'commodity' => $request->commodity[$i] ?? null,
                             'other_sum_assured' => $request->other_sum_assured[$i] ?? null,
+                            'other_sum_assured_1' => $request->other_sum_assured_1[$i] ?? null,
+                            'other_sum_assured_2' => $request->other_sum_assured_2[$i] ?? null,
+                            'other_sum_assured_3' => $request->other_sum_assured_3[$i] ?? null,
+                            'other_sum_assured_4' => $request->other_sum_assured_4[$i] ?? null,
+                            'other_sum_assured_5' => $request->other_sum_assured_5[$i] ?? null,
                             'slip_id' => $slip->id
                         ]);
                         $sumAssured->save();
@@ -371,9 +376,14 @@ class SlipApiController extends Controller
                             'edification' => $request->edification[$i] ?? null,
                             'contents' => $request->contents[$i] ?? null,
                             'equipment' => $request->equipment[$i] ?? null,
-                            ' n' => $request->machine[$i] ?? null,
+                            'machine' => $request->machine[$i] ?? null,
                             'commodity' => $request->commodity[$i] ?? null,
                             'other_sum_assured' => $request->other_sum_assured[$i] ?? null,
+                            'other_sum_assured_1' => $request->other_sum_assured[$i] ?? null,
+                            'other_sum_assured_2' => $request->other_sum_assured[$i] ?? null,
+                            'other_sum_assured_3' => $request->other_sum_assured[$i] ?? null,
+                            'other_sum_assured_4' => $request->other_sum_assured[$i] ?? null,
+                            'other_sum_assured_5' => $request->other_sum_assured[$i] ?? null,
                             'slip_id' => $slip->id
                         ]);
                         $sumAssured->save();
@@ -1105,6 +1115,11 @@ class SlipApiController extends Controller
             'insured_journey' => 'nullable|string|max:15',
             'ismerchandise' => 'nullable|string|max:2',
             'entrance' => 'nullable|string|max:255',
+            'th_sum_assured_1' => 'nullable|string|max:255',
+            'th_sum_assured_2' => 'nullable|string|max:255',
+            'th_sum_assured_3' => 'nullable|string|max:255',
+            'th_sum_assured_4' => 'nullable|string|max:255',
+            'th_sum_assured_5' => 'nullable|string|max:255',
             'limit_colusorio_text' => 'nullable|string|max:255',
             'bailText' => 'nullable|string|max:255',
             'custodia' => 'nullable|string|max:255',

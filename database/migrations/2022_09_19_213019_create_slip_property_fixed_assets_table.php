@@ -38,6 +38,11 @@ class CreateSlipPropertyFixedAssetsTable extends Migration
             //$table->string('limit_compensation')->nullable();
             //$table->enum('first_risk', ['Absoluto', 'Relativo']);
             $table->string('first_risk')->nullable()->default('Absoluto');
+            $table->string('th_sum_assured_1')->nullable();
+            $table->string('th_sum_assured_2')->nullable();
+            $table->string('th_sum_assured_3')->nullable();
+            $table->string('th_sum_assured_4')->nullable();
+            $table->string('th_sum_assured_5')->nullable();
 
             //sabotaje y terrorismo
             //$table->string('coverage')->nullable();

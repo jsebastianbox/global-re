@@ -23,6 +23,11 @@ class SlipPropertyFixedAsset extends Model
         'coverage',
         'type_loss_profits',
         'period_compensation',
+        'th_sum_assured_1',
+        'th_sum_assured_2',
+        'th_sum_assured_3',
+        'th_sum_assured_4',
+        'th_sum_assured_5',
         'first_risk'
     ];
 

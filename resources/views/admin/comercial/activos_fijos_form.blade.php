@@ -428,7 +428,7 @@
                                     style="width: 95px" class="col6 row1">
                             </td>
                             <td style="text-align: center">
-                                <span class="slipTitle col11" id="rowTotal1">0</span>$
+                                <span class="slipTitle col12" id="rowTotal1">0</span>$
                             </td>
                             <td></td>
                         </tr>
@@ -553,7 +553,7 @@
                                         novalidate style="width: 95px" class="col6 row1">
                                 </td>
                                 <td style="text-align: center">
-                                    <span class="slipTitle col11" id="rowTotal1">0</span>$
+                                    <span class="slipTitle col12" id="rowTotal1">0</span>$
                                 </td>
                                 <td></td>
                             </tr>
