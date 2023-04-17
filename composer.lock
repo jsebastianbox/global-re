@@ -100,7 +100,7 @@
                         "PDF": "Barryvdh\\DomPDF\\Facade\\Pdf"
                     }
                 }
-            },
+            },  
             "autoload": {
                 "psr-4": {
                     "Barryvdh\\DomPDF\\": "src"

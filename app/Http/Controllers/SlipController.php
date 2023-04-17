@@ -393,53 +393,45 @@ class SlipController extends Controller
             case '6':
             case '7':
             case '8':
-                SlipPropertyFixedAsset::find($idModel)->update($request->all());
-                $type_slip = SlipPropertyFixedAsset::find($idModel);
-                $type_slip->sum_assured()->delete();
-                $type_slip->detail_perdios()->delete();
-                $type_slip->equipment_list()->delete();
+                $type_slip = SlipPropertyFixedAsset::where('slip_id', $id)->first();
+                $type_slip->update($request->all());
 
-                //Suma asegurada
-                if ($request->has('location')) {
-                    for ($i = 0; $i < count($request->location); $i++) {
-                        if (isset($request->location[$i])) {
-                            $object = new SumAssured([
-                                //'equipment_name' => isset($request->equipment_name[$i]) ? $request->equipment_name[$i] : null,
-                                'location' => isset($request->location[$i]) ? $request->location[$i] : null,
-                                'edification' => isset($request->edification[$i]) ? $request->edification[$i] : null,
-                                'contents' => isset($request->contents[$i]) ? $request->contents[$i] : null,
-                                'equipment' => isset($request->equipment[$i]) ? $request->equipment[$i] : null,
-                                'machine' => isset($request->machine[$i]) ? $request->machine[$i] : null,
-                                'commodity' => isset($request->commodity[$i]) ? $request->commodity[$i] : null,
-                                'other_sum_assured' => isset($request->other_sum_assured[$i]) ? $request->other_sum_assured[$i] : null,
+
+                //predios
+                if ($request->has('direction_perdios')) {
+                    for ($i = 0; $i < count($request->direction_perdios); $i++) {
+                        if (isset($request->direction_perdios[$i])) {
+                            $detailPredios = new DetailPerdios([
+                                'province_perdios' => $request->province_perdios[$i] ?? null,
+                                'city_perdios' => $request->city_perdios[$i] ?? null,
+                                'direction_perdios' => $request->direction_perdios[$i] ?? null,
+                                'slip_id' => $slip->id
                             ]);
-                            $type_slip->sum_assured()->save($object);
+                            $detailPredios->save();
                         }
                     }
                 }
 
-                if ($request->has('province_perdios') | $request->has('name_equipment')) {
-                    //predios
-                    for ($i = 0; $i < count($request->province_perdios); $i++) {
-                        if (isset($request->province_perdios[$i])) {
-                            $detail = new DetailPerdios([
-                                'province_perdios' => $request->province_perdios[$i],
-                                'city_perdios' => $request->city_perdios[$i],
-                                'direction_perdios' => $request->direction_perdios[$i],
+                //Suma Asegurada
+                if ($request->has('location')) {
+                    for ($i = 0; $i < count($request->location); $i++) {
+                        if (isset($request->location[$i])) {
+                            $sumAssured = new SumAssured([
+                                'location' => $request->location[$i] ?? null,
+                                'edification' => $request->edification[$i] ?? null,
+                                'contents' => $request->contents[$i] ?? null,
+                                'equipment' => $request->equipment[$i] ?? null,
+                                'machine' => $request->machine[$i] ?? null,
+                                'commodity' => $request->commodity[$i] ?? null,
+                                'other_sum_assured' => $request->other_sum_assured[$i] ?? null,
+                                'other_sum_assured_1' => $request->other_sum_assured_1[$i] ?? null,
+                                'other_sum_assured_2' => $request->other_sum_assured_2[$i] ?? null,
+                                'other_sum_assured_3' => $request->other_sum_assured_3[$i] ?? null,
+                                'other_sum_assured_4' => $request->other_sum_assured_4[$i] ?? null,
+                                'other_sum_assured_5' => $request->other_sum_assured_5[$i] ?? null,
+                                'slip_id' => $slip->id
                             ]);
-                            $type_slip->detail_perdios()->save($detail);
-                        }
-                    }
-
-                    //Listado de equipos a ser asegurados
-                    if ($request->name_equipment > 1) {
-                        for ($i = 0; $i < count($request->name_equipment); $i++) {
-                            if (isset($request->name_equipment[$i])) {
-                                $detail = new EquipmentListInsured([
-                                    'name_equipment' => $request->name_equipment[$i],
-                                ]);
-                                $type_slip->detail_perdios()->save($detail);
-                            }
+                            $sumAssured->save();
                         }
                     }
                 }

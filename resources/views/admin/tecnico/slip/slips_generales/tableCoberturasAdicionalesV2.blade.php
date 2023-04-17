@@ -22,10 +22,15 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>
-                            <select name="description_coverage_additional[]" class="selectCobertura">
-                                <option value="{{ $coberturas->find('coberturas_selectors') }}">
-                                    {{ $coberturas->find($item->coberturas_selectors) }}
-                                </option>
+                            <select name="description_coverage_additional[]"{{--  class="selectCobertura" --}}>
+                                @foreach ($coberturasSelect as $coberturaSelect)
+                                    <option value="{{ $coberturaSelect->name }}" 
+                                            @if ($coberturaSelect->id == $item->description_coverage_additional) 
+                                                selected 
+                                            @endif >
+                                        {{ $coberturaSelect->name }}
+                                    </option>
+                                @endforeach
                             </select>
                             {{-- <textarea name="description_coverage_additional[]"> {{ $item->description_coverage_additional }}</textarea> --}}
                         </td>
@@ -48,9 +53,6 @@
                     <td>1</td>
                     <td>
                         <select name="description_coverage_additional[]" class="selectCobertura">
-                            <option value="{{ $coberturas->find('coberturas_selectors') }}">
-                                {{ $coberturas->find('coberturas_selectors') }}
-                            </option>
                         </select>
                         {{-- <textarea name="description_coverage_additional[]"></textarea> --}}
                     </td>

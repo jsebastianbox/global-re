@@ -3064,6 +3064,9 @@ function addColumnSumas(tableName) {
     }
 }
 
+
+
+
 function removeColumnSumas(tableName) {
 
     if (columnCounter > 1) {

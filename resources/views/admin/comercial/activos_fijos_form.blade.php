@@ -95,6 +95,7 @@
                 <div id="sumaAseguradaContainer" class="tableContainer" 
                 style="{{$slip->insured_sum > 0 ? 'display:flex' : 'display:none'}};margin:1.5rem 0;">
                     <h4 class="slipTitle">Tabla suma asegurada</h4>
+                    
                     <button type="button" onclick="refreshSumaAseguradaTable()" class="btn btn-info my-2">
                         Actualizar
                     </button>

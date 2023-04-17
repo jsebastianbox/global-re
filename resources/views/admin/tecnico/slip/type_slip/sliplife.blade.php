@@ -62,78 +62,94 @@
 
         {{-- table Objetos del seguro --}}
 
-        <div class="tableContainer" style="width:90%;">
+        <div class="tableContainer">
             <h3 class="slipTitle">Objeto(s) Del Seguro</h3>
 
-            <table id="tableObjetosSeguro" class="table table-striped table-bordered dataTable no-footer"
-                cellspacing="0" width="90%" aria-describedby="example_info">
+            <table id="vidaListadoPersonasAseguradasTable" class="indemnizacionTable">
                 <thead>
-                    <tr role="row">
-                        <th>Número</th>
-                        <th>Nombre</th>
-                        <th>Fecha de nacimiento</th>
-                        <th>Edad</th>
-                        <th>Limite</th>
+                    <tr>
+                        <th style="text-align: center; width: 42px;">#</th>
+                        <th style="text-align: center">Nombre</th>
+                        <th style="text-align: center">Fecha de Nacimiento</th>
+                        <th style="text-align: center">Edad</th>
+                        <th style="text-align: center">Sexo</th>
+                        <th style="text-align: center">Actividad</th>
+                        <th style="text-align: center">Límite</th>
                         <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1"
                             colspan="1" aria-label="Add row">
 
-                            <button onclick="addRowObjetoSeguro(event)" class="btn btn-success btn-xs">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            <button type="button" onclick="addPersonaAseguradaRow(event, 'vida')"
+                                class="btn btn-success btn-xs">
+                                +
                             </button>
                         </th>
                     </tr>
                 </thead>
-
-                <tbody id="objetosTableBody">
-
-                    @if (count($slip_type->object_insurance) > 0)
-                        @foreach ($slip_type->object_insurance as $item)
+                {{-- tbody --}}
+                <tbody id="vidaListadoPersonasAseguradasTableBody">
+                    @if (count($object_insurance) > 0)
+                        @foreach ($object_insurance as $key => $item )
                             <tr>
-                                <th>
-                                    <input type="text" name="number[]" value="{{ $item->number }}">
-                                </th>
-                                <th>
-                                    <input type="text" name="name[]" value="{{ $item->name }}">
-                                </th>
-                                <th>
-                                    <input type="date" name="birthday[]" value="{{ $item->birthday }}">
-                                </th>
-                                <th>
-                                    <input type="number" name="age[]" value="{{ $item->age }}">
-                                </th>
-                                <th>
-                                    <input type="number" name="limit[]" value="{{ $item->limit }}">
-                                </th>
-                                <th>
-                                </th>
+                                <td>{{$key + 1}}</td>
+                                <td>
+                                    <input value="{{$item->name}}" type="text" name="name[]" placeholder="Nombre..">
+                                </td>
+
+                                <td>
+                                    <input value="{{$item->birthday}}" type="date" name="birthday[]" id="birthDate" class="birthdateInput" oninput="putAge('personaAdicional')">
+                                </td>
+
+                                <td>
+                                    <input value="{{$item->age}}" type="number" class="ageInput" name="age[]" id="personAge" min="1"
+                                            max="110">
+                                </td>
+
+                                <td>
+                                    <select name="sex_merchant[]" id="sex">
+                                        <option value="Masculino" {{$item->sex_merchant == 'Masculino' ? 'selected' : ''}}>Masculino</option>
+                                        <option value="Femenino" {{$item->sex_merchant == 'Femenino' ? 'selected' : ''}}>Femenino</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input value="{{$item->activity_merchant}}" type="text" placeholder="..." name="activity_merchant[]">
+                                </td>
+                                <td>
+                                    <input value="{{$item->limit}}" type="text" placeholder="..." name="limit[]">
+                                </td>
                             </tr>
                         @endforeach
                     @else
                         <tr>
-                            <th>
+                            <td>1</td>
+                            <td>
+                                <input type="text" name="name[]" placeholder="Nombre..">
+                            </td>
 
-                                <input type="text" name="number[]">
-                            </th>
-                            <th>
-                                <input type="text" name="name[]">
-                            </th>
-                            <th>
-                                <input type="date" name="birthday[]">
-                            </th>
-                            <th>
-                                <input type="number" name="age[]">
-                            </th>
-                            <th>
-                                <input type="number" name="limit[]">
-                            </th>
-                            <th>
+                            <td>
+                                <input type="date" name="birthday[]" id="birthDate" class="birthdateInput" oninput="putAge('personaAdicional')">
+                            </td>
 
-                            </th>
+                            <td>
+                                <input type="number" class="ageInput" name="age[]" id="personAge" min="1"
+                                        max="110">
+                            </td>
+
+                            <td>
+                                <select name="sex_merchant[]" id="sex">
+                                    <option value="m" selected>Masculino</option>
+                                    <option value="f">Femenino</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..." name="activity_merchant[]">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..." name="limit[]">
+                            </td>
                         </tr>
                     @endif
-
-
                 </tbody>
+
             </table>
 
         </div>
@@ -162,464 +178,37 @@
             </div>
         </div>
 
-        <h4 class="slipTitle">Coberturas</h4>
-        <div class="two-sides">
-            <div class="left_side">
-                {{-- Limite asegurado --}}
-                <div class="input_group">
-                    <label for="apMuerteCausa2">
-                        <i class="fa fa-search"></i>
-                        Muerte por cualquier causa:
-                    </label>
-                    <input type="text" id="apMuerteCausa2" name="aditional_coverage[]" placeholder="..."
-                        @isset($slip->coverage[0])
-                    value="{{ $slip->coverage[0]->aditional_coverage }}"
-                    @endisset>
-
-                </div>
-
-                {{-- Desmembración accidental --}}
-                <div class="input_group">
-                    <label for="apDesmembracionAccidental2">
-                        <i class="fa fa-search"></i>
-                        Desmembración accidental:
-                    </label>
-
-                    <input type="text" id="apMuerteCausa2" name="aditional_coverage[]" placeholder="..."
-                        @isset($slip->coverage[1])
-                    value="{{ $slip->coverage[1]->aditional_coverage }}"
-                    @endisset>
-
-
-                </div>
-                {{-- Incapacidad total y permanente por cualquier causa: --}}
-                <div class="input_group">
-                    <label for="apIncapacidadTotal2">
-                        <i class="fa fa-search"></i>
-                        Incapacidad total y permanente por cualquier causa:
-                    </label>
-                    <input type="text" id="apMuerteCausa2" name="aditional_coverage[]" placeholder="..."
-                        @isset($slip->coverage[2])
-                    value="{{ $slip->coverage[2]->aditional_coverage }}"
-                    @endisset>
-
-                </div>
-            </div>
-            <div class="right">
-                {{-- Reembolso de gastos médicos --}}
-                <div class="input_group">
-                    <label for="apRembolsoGastos2">
-                        <i class="fa fa-search"></i>
-                        Reembolso de gastos médicos por accidente:
-                    </label>
-                    <input type="text" id="apMuerteCausa2" name="aditional_coverage[]" placeholder="..."
-                        @isset($slip->coverage[3])
-                    value="{{ $slip->coverage[3]->aditional_coverage }}"
-                    @endisset>
-
-                </div>
-                {{-- Gastos de sepelio --}}
-                <div class="input_group">
-                    <label for="apGastosSepelio2">
-                        <i class="fa fa-search"></i>
-                        Gastos de sepelio:
-                    </label>
-                    <input type="text" id="apMuerteCausa2" name="aditional_coverage[]" placeholder="..."
-                        @isset($slip->coverage[4])
-                    value="{{ $slip->coverage[4]->aditional_coverage }}"
-                    @endisset>
-
-                </div>
-                {{-- Ambulancia por accidente: --}}
-                <div class="input_group">
-                    <label for="apAmbulanciaAccidente2">
-                        <i class="fa fa-search"></i>
-                        Ambulancia por accidente:
-                    </label>
-                    <input type="text" id="apMuerteCausa2" name="aditional_coverage[]" placeholder="..."
-                        @isset($slip->coverage[5])
-                    value="{{ $slip->coverage[5]->aditional_coverage }}"
-                    @endisset>
-
-                </div>
-            </div>
-        </div>
-
-        <h4 class="slipTitle">Límite asegurado</h4>
-        <div class="two-sides">
-            <div class="left_side">
-                {{-- Limite asegurado --}}
-                <div class="input_group">
-                    <label for="apMuerteCausa1">
-                        <i class="fa fa-search"></i>
-                        Muerte por cualquier causa:
-                    </label>
-
-                    {{-- <input type="number" id="apMuerteCausa1" name="value_limit_insured[]" placeholder="USD"> --}}
-
-                    <input type="text" id="apMuerteCausa1" name="value_limit_insured[]" placeholder="USD"
-                        @isset($slip->limit_insured[0])
-                    value="{{ $slip->limit_insured[0]->value_limit_insured }}"
-                    @endisset>
-                </div>
-                {{-- Desmembración accidental --}}
-                <div class="input_group">
-                    <label for="apDesmembracionAccidental1">
-                        <i class="fa fa-search"></i>
-                        Desmembración accidental:
-                    </label>
-                    <input type="text" id="apMuerteCausa1" name="value_limit_insured[]" placeholder="USD"
-                        @isset($slip->limit_insured[1])
-                    value="{{ $slip->limit_insured[1]->value_limit_insured }}"
-                    @endisset>
-                </div>
-                {{-- Incapacidad total y permanente por cualquier causa: --}}
-                <div class="input_group">
-                    <label for="apIncapacidadTotal1">
-                        <i class="fa fa-search"></i>
-                        Incapacidad total y permanente por cualquier causa:
-                    </label>
-                    <input type="text" id="apMuerteCausa1" name="value_limit_insured[]" placeholder="USD"
-                        @isset($slip->limit_insured[2])
-                    value="{{ $slip->limit_insured[2]->value_limit_insured }}"
-                    @endisset>
-                </div>
-            </div>
-            <div class="right">
-                {{-- Reembolso de gastos médicos --}}
-                <div class="input_group">
-                    <label for="apRembolsoGastos1">
-                        <i class="fa fa-search"></i>
-                        Reembolso de gastos médicos por accidente:
-                    </label>
-                    <input type="text" id="apMuerteCausa1" name="value_limit_insured[]" placeholder="USD"
-                        @isset($slip->limit_insured[3])
-                    value="{{ $slip->limit_insured[3]->value_limit_insured }}"
-                    @endisset>
-                </div>
-                {{-- Gastos de sepelio --}}
-                <div class="input_group">
-                    <label for="apGastosSepelio1">
-                        <i class="fa fa-search"></i>
-                        Gastos de sepelio:
-                    </label>
-                    <input type="text" id="apMuerteCausa1" name="value_limit_insured[]" placeholder="USD"
-                        @isset($slip->limit_insured[4])
-                    value="{{ $slip->limit_insured[4]->value_limit_insured }}"
-                    @endisset>
-                </div>
-                {{-- Ambulancia por accidente: --}}
-                <div class="input_group">
-                    <label for="apAmbulanciaAccidente1">
-                        <i class="fa fa-search"></i>
-                        Ambulancia por accidente:
-                    </label>
-                    <input type="text" id="apMuerteCausa1" name="value_limit_insured[]" placeholder="USD"
-                        @isset($slip->limit_insured[5])
-                value="{{ $slip->limit_insured[5]->value_limit_insured }}"
-                @endisset>
-                </div>
-            </div>
-        </div>
-
-
-        {{-- Base de cobertura --}}
-        <h4 class="slipTitle">Base de cobertura</h4>
-        <div class="flexColumnCenterContainer">
-            <div class="input_group" style="max-width:450px">
-                <label for="apBaseCobertura">
-                    <i class="fa fa-search"></i>
-                    Base de cobertura:
-                </label>
-                <input type="text" id="apBaseCobertura" name="coverage_foundation"
-                    value="{{ $slip_type->coverage_foundation }}">
-            </div>
-        </div>
 
     </div>
 
     <div class="form_group2">
-        {{-- Clausulas adicionales --}}
-        <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Clausulas Adicionales</h3>
+        <h3 class="slipTitle"> <span class="badge badge-secondary">3</span> Coberturas Adicionales</h3>
 
-        <div class="tableContainer" style="margin: 2rem 0">
-            <table id="clausulasAdicionalesTable" class="indemnizacionTable">
-                <thead>
-                    <tr>
-                        <th style="text-align: center; width: 42px;">#</th>
-                        <th style="text-align: center">Cláusulas</th>
-                        <th style="text-align: center">Campo adicional</th>
-                        <th style="text-align: center">USD</th>
-                        <th style="text-align: center">Campo adicional</th>
-                        <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1"
-                            colspan="1" aria-label="Add row">
+        {{-- @include('admin.tecnico.slip.slips_generales.tableCoberturasAdicionalesV2') --}}
+        @include('admin.comercial.include.edit_tablaCoberturas')
 
-                            <button type="button" onclick="addRowClausula(event)" class="btn btn-success btn-xs">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                            </button>
-                        </th>
-                    </tr>
-                </thead>
-                {{-- tbody --}}
-                <tbody id="clausulasAdicionalesTableBody">
 
-                    @if (count($slip->clause_aditional) > 0)
-                        @foreach ($slip->clause_aditional as $item)
-                            <tr>
-                                <td>{{ $item->id }}</td>
-                                <td>
-                                    <textarea name="description_clause_additional[]">{{ $item->description_clause_additional }}</textarea>
-                                </td>
-                                <td>
-                                    <input type="text" placeholder="..." name="clause_additional_additional[]"
-                                        value="{{ $item->clause_additional_additional }}">
-                                </td>
-                                <td>
-                                    <input type="number" placeholder="0" name="clause_additional_usd[]"
-                                        value="{{ $item->clause_additional_usd }}">
-                                </td>
-                                <td>
-                                    <input type="text" placeholder="..." name="clause_additional_additional2[]"
-                                        value="{{ $item->clause_additional_additional2 }}">
-                                </td>
-                                <td></td>
-                            </tr>
-                        @endforeach
-                    @else
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <textarea name="description_clause_additional[]">Errores u omisiones</textarea>
-                            </td>
-                            <td>
-                                <input type="text" placeholder="..." name="clause_additional_additional[]">
-                            </td>
-                            <td>
-                                <input type="number" placeholder="0" name="clause_additional_usd[]">
-                            </td>
-                            <td>
-                                <input type="text" placeholder="..." name="clause_additional_additional2[]">
-                            </td>
-                            <td></td>
-                        </tr>
-                    @endif
+        {{-- Cláusulas Adicionales --}}
+        <h3 class="slipTitle"> <span class="badge badge-secondary">4</span> Cláusulas Adicionales</h3>
 
-                </tbody>
+        {{-- @include('admin.tecnico.slip.slips_generales.tableClausulasAdicionalesV2') --}}
+        @include('admin.comercial.include.edit_tablaClausulas')
 
-            </table>
-        </div>
 
     </div>
 
     <div class="form_group3">
         {{-- Exclusiones --}}
-        <h3 class="slipTitle"> <span class="badge badge-secondary">3</span> Exclusiones</h3>
+        <h3 class="slipTitle"> <span class="badge badge-secondary">5</span> Exclusiones</h3>
 
         @include('admin.tecnico.slip.slips_generales.exclusiones')
     </div>
 
     <div class="form_group4">
         {{-- Deducibles --}}
-        <h3 class="slipTitle"> <span class="badge badge-secondary">4</span> Deducibles</h3>
+        <h3 class="slipTitle"> <span class="badge badge-secondary">6</span> Deducibles</h3>
 
-        {{-- Muerte por cualquier causa --}}
-        <div class="flexColumnCenterContainer">
-            <h4 class="slipTitle">Muerte Por Cualquier Causa:</h4>
-            <div class="flexRowWrapContainer" style="margin:1.2rem 0">
-                <div class="labelStyleContainer">
-                    <p>
-                        <i class="fa-solid fa-percent"></i>
-                        valor del siniestro
-                    </p>
-                    <input type="number" style="max-width:95px;text-align: end;" placeholder="%"
-                        name="sinister_value[]" min="0"
-                        @isset($slip->deductible[0])
-                    value="{{ $slip->deductible[0]->sinister_value }}"
-                    @endisset>
-                </div>
-                <div class="labelStyleContainer">
-                    <p>
-                        <i class="fa-solid fa-percent"></i>
-                        valor asegurado
-                    </p>
-                    <input type="number" placeholder="%" name="insured_value[]" min="0"
-                        style="max-width:95px;text-align: end;"
-                        @isset($slip->deductible[0])
-                    value="{{ $slip->deductible[0]->insured_value }}"
-                    @endisset>
-                </div>
-                <div class="labelStyleContainer">
-                    <input type="number" name="minimum[]" style="text-align:end" placeholder="..."
-                        @isset($slip->deductible[0])
-                    value="{{ $slip->deductible[0]->minimum }}"
-                    @endisset>
-                    <p>
-                        mínimo
-                    </p>
-                </div>
-                <textarea type="text" name="description2_deductible[]" placeholder="..."></textarea>
-            </div>
-        </div>
-        {{-- Desmembración accidental --}}
-        <div class="flexColumnCenterContainer">
-            <h4 class="slipTitle">Desmembración Accidental</h4>
-            <div class="flexRowWrapContainer" style="margin:1.2rem 0">
-                <div class="labelStyleContainer">
-                    <p>
-                        <i class="fa-solid fa-percent"></i>
-                        valor del siniestro
-                    </p>
-                    <input type="number" style="max-width:95px;text-align: end;" placeholder="%"
-                        name="sinister_value[]" min="0"
-                        @isset($slip->deductible[1])
-                    value="{{ $slip->deductible[1]->sinister_value }}"
-                    @endisset>
-                </div>
-                <div class="labelStyleContainer">
-                    <p>
-                        <i class="fa-solid fa-percent"></i>
-                        valor asegurado
-                    </p>
-                    <input type="number" placeholder="%" name="insured_value[]" min="0"
-                        style="max-width:95px;text-align: end;"
-                        @isset($slip->deductible[1])
-                    value="{{ $slip->deductible[1]->insured_value }}"
-                    @endisset>
-                </div>
-                <div class="labelStyleContainer">
-                    <input type="number" name="minimum[]" style="text-align:end" placeholder="..."
-                        @isset($slip->deductible[1])
-                    value="{{ $slip->deductible[1]->minimum }}"
-                    @endisset>
-                    <p>
-                        mínimo
-                    </p>
-                </div>
-                <textarea type="text" name="description2_deductible[]" placeholder="..."></textarea>
-            </div>
-        </div>
-        {{-- Incapacidad total y permanente por cualquier causa: --}}
-        <div class="flexColumnCenterContainer">
-            <h4 class="slipTitle">Incapacidad Total y Permanente Por Cualquier Causa</h4>
-            <div class="flexRowWrapContainer" style="margin:1.2rem 0">
-                <div class="labelStyleContainer">
-                    <p>
-                        <i class="fa-solid fa-percent"></i>
-                        valor del siniestro
-                    </p>
-                    <input type="number" style="max-width:95px;text-align: end;" placeholder="%"
-                        name="sinister_value[]" min="0">
-                </div>
-                <div class="labelStyleContainer">
-                    <p>
-                        <i class="fa-solid fa-percent"></i>
-                        valor asegurado
-                    </p>
-                    <input type="number" placeholder="%" name="insured_value[]" min="0"
-                        style="max-width:95px;text-align: end;">
-                </div>
-                <div class="labelStyleContainer">
-                    <input type="number" name="minimum[]" style="text-align:end" placeholder="...">
-                    <p>
-                        mínimo
-                    </p>
-                </div>
-                <textarea type="text" name="description2_deductible[]" placeholder="..."></textarea>
-            </div>
-        </div>
-
-
-
-        {{-- Reembolso de gastos médicos --}}
-
-        <div class="flexColumnCenterContainer">
-            <h4 class="slipTitle">Reembolso De Gastos Médicos</h4>
-            <div class="flexRowWrapContainer" style="margin:1.2rem 0">
-                <div class="labelStyleContainer">
-                    <p>
-                        <i class="fa-solid fa-percent"></i>
-                        valor del siniestro
-                    </p>
-                    <input type="number" style="max-width:95px;text-align: end;" placeholder="%"
-                        name="sinister_value[]" min="0">
-                </div>
-                <div class="labelStyleContainer">
-                    <p>
-                        <i class="fa-solid fa-percent"></i>
-                        valor asegurado
-                    </p>
-                    <input type="number" placeholder="%" name="insured_value[]" min="0"
-                        style="max-width:95px;text-align: end;">
-                </div>
-                <div class="labelStyleContainer">
-                    <input type="number" name="minimum[]" style="text-align:end" placeholder="...">
-                    <p>
-                        mínimo
-                    </p>
-                </div>
-                <textarea type="text" name="description2_deductible[]" placeholder="..."></textarea>
-            </div>
-        </div>
-        {{-- Gastos de sepelio --}}
-
-        <div class="flexColumnCenterContainer">
-            <h4 class="slipTitle">Gastos De Sepelio:</h4>
-            <div class="flexRowWrapContainer" style="margin:1.2rem 0">
-                <div class="labelStyleContainer">
-                    <p>
-                        <i class="fa-solid fa-percent"></i>
-                        valor del siniestro
-                    </p>
-                    <input type="number" style="max-width:95px;text-align: end;" placeholder="%"
-                        name="sinister_value[]" min="0">
-                </div>
-                <div class="labelStyleContainer">
-                    <p>
-                        <i class="fa-solid fa-percent"></i>
-                        valor asegurado
-                    </p>
-                    <input type="number" placeholder="%" name="insured_value[]" min="0"
-                        style="max-width:95px;text-align: end;">
-                </div>
-                <div class="labelStyleContainer">
-                    <input type="number" name="minimum[]" style="text-align:end" placeholder="...">
-                    <p>
-                        mínimo
-                    </p>
-                </div>
-                <textarea type="text" name="description2_deductible[]" placeholder="..."></textarea>
-            </div>
-        </div>
-        {{-- Ambulancia por accidente --}}
-        <div class="flexColumnCenterContainer">
-            <h4 class="slipTitle">Ambulancia Por Accidente:</h4>
-            <div class="flexRowWrapContainer" style="margin:1.2rem 0">
-                <div class="labelStyleContainer">
-                    <p>
-                        <i class="fa-solid fa-percent"></i>
-                        valor del siniestro
-                    </p>
-                    <input type="number" style="max-width:95px;text-align: end;" placeholder="%"
-                        name="sinister_value[]" min="0">
-                </div>
-                <div class="labelStyleContainer">
-                    <p>
-                        <i class="fa-solid fa-percent"></i>
-                        valor asegurado
-                    </p>
-                    <input type="number" placeholder="%" name="insured_value[]" min="0"
-                        style="max-width:95px;text-align: end;">
-                </div>
-                <div class="labelStyleContainer">
-                    <input type="number" name="minimum[]" style="text-align:end" placeholder="...">
-                    <p>
-                        mínimo
-                    </p>
-                </div>
-                <textarea type="text" name="description2_deductible[]" placeholder="..."></textarea>
-            </div>
-        </div>
-
+        @include('admin.tecnico.slip.slips_generales.deducibles')
 
     </div>
 
