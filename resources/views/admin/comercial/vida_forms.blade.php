@@ -236,7 +236,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-10">
                 <div class="input-group mb-3">
                     <input class="form-control" type="file" name="accidentRate" hidden="true" id="accidentRate" accept="application/*">
                     <label class="input-group-text" hidden="true" for="accidentRate" id="accidentRateFileLabel">Siniestralidad de los últimos 5 años
@@ -533,7 +533,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-10">
                 <div class="input-group mb-3">
                     <input class="form-control" type="file" name="accidentRate" id="accidentRate" accept="application/*">
                     <label class="input-group-text" for="accidentRate">Siniestralidad de los últimos 5 años

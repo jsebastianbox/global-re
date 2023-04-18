@@ -31,6 +31,7 @@ class CreateSlipLifePersonlAccidentsTable extends Migration
             //merchant
             $table->string('people_insurer')->nullable();
             $table->double('sum_insurer')->nullable();
+            $table->double('equivalence')->nullable();
             $table->string('siniestralidad')->nullable();
             $table->foreignIdFor(Slip::class);
             $table->timestamps();
