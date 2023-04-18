@@ -9,7 +9,7 @@
                     País productor
                 </label>
                 <select class="js-example-basic-single inputForm select_country form-select" name="country_id" onchange="countryLeyJurisdiccion()">
-                    <option selected value="{{ $countries->find($slip->country_id)->name }}">{{ $countries->find($slip->country_id)->name }}</option>
+                    <option selected value="{{ $slip->country_id }}">{{ $countries->find($slip->country_id)->name }}</option>
                 </select>
             </div>
         </div>

@@ -358,8 +358,7 @@ class SlipController extends Controller
 
         $selectSlip = Slip::where('id', $id)->select('model_id', 'type_coverage')->first();
 
-        $slip->slip_status_id = '2';
-        $idModel = $selectSlip->model_id;
+        $slip->slip_status_id = '3';
 
         switch ($slip->type_coverage) {
                 //vida y accidentes personales
@@ -1339,7 +1338,7 @@ class SlipController extends Controller
             }
 
             //archivos
-            if ($request->has("file")) {
+            /* if ($request->has("file")) {
                 $files = $request->file;
 
                 foreach ($files as $key) {
@@ -1349,7 +1348,7 @@ class SlipController extends Controller
 
                     $slip->file()->save($newFile);
                 }
-            }
+            } */
 
             return redirect()->route('compromiso')
                 ->with('success', 'El slip se creó exitosamente.');
