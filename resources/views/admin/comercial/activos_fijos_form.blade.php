@@ -92,7 +92,7 @@
                         <h4 class="slipTitle mb-2">Tabla suma asegurada</h4>
                     @endif
 
-                    <div class="input-group">
+                    <div class="input-group ms-5">
                         <input type="text" placeholder="Nombre columna.."
                             id="columnNameactivos_fijosSumaAseguradaTable">
                         <button type="button" class="btn btn-info" id="btnAddColumnSumas"
@@ -471,6 +471,7 @@
                         </tr>
 
                     </tfoot>
+                    <caption>Recuerda: solo podrás agregar un número determinado de filas en esta sección. ¡Revisa bien!</caption>
 
                 </table>
             </div>
@@ -494,7 +495,6 @@
                     </div>
 
                     <table id="activos_fijosSumaAseguradaTable" class="indemnizacionTable">
-                        <caption>Recuerda: solo podrás agregar un número determinado de filas en esta sección. ¡Revisa bien!</caption>
                         <thead>
                             <tr>
                                 <th style="text-align: center">#</th>
@@ -597,6 +597,7 @@
                             </tr>
 
                         </tfoot>
+                        <caption>Recuerda: solo podrás agregar un número determinado de filas en esta sección. ¡Revisa bien!</caption>
 
                     </table>
                 </div>
