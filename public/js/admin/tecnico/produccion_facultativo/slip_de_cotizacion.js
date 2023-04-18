@@ -327,7 +327,7 @@ function createButtons(numSlip) {
         form_group6[numSlip - 1].style.left = '-100vw'
         progress5.classList.toggle('active')
         progress6.classList.toggle('active')
-        validateForm()
+        /* validateForm() */
         currentTab--
         window.scrollTo(0, 0);
     }
@@ -344,7 +344,7 @@ function createButtons(numSlip) {
         form_group7[numSlip - 1].style.left = '0vw'
         progress6.classList.toggle('active')
         progress7.classList.toggle('active')
-        validateForm()
+        /* validateForm() */
         currentTab++
         window.scrollTo(0, 0);
     }

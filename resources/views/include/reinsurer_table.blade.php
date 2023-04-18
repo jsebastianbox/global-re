@@ -115,7 +115,6 @@
                     <input type="number" id="sumaAsegurada" name="sumaAsegurada" value="0" class="sumaAseguradaInput" onkeyup="infoReaseguradorSuma()">
                 </td>
                 <td>
-                    <div class="perce">
                     <div class="labelStyle2Container">
                         <span>%</span>
                         <input type="number" min="0" max="100" name="participacion" id="participacion" value="0" class="participacion participacionInput" onkeyup="infoReaseguradorSuma()">
@@ -214,10 +213,4 @@
         rowIdx--;
     });
 
-
-    //---------david
-
-    getReinsurers('.select_reinsurer', 'RI');
-
-    //----------end david
 </script>
