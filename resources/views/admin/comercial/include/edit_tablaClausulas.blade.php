@@ -281,17 +281,15 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>
-                            <select name="description_clause_additional[]" class="selectClausula">
-                                <option selected value="{{ $item->description_clause_aditional }}">
-                                    @foreach ($clausulasSelect as $clausulaSelect)
-                                        <option value="{{ $clausulaSelect->name }}" 
-                                                @if ($clausulaSelect->id == $item->description_clause_additional) 
-                                                    selected 
-                                                @endif >
-                                            {{ $clausulaSelect->name }}
-                                        </option>
-                                    @endforeach
-                                </option>
+                            <select name="description_clause_additional[]" {{-- class="selectClausula" --}}>
+                                @foreach ($clausulasSelect as $clausulaSelect)
+                                    <option value="{{ $clausulaSelect->name }}" 
+                                            @if ($clausulaSelect->id == $item->description_clause_additional) 
+                                                selected 
+                                            @endif >
+                                        {{ $clausulaSelect->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </td>
                         <td>
