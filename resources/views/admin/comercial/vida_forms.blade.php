@@ -34,6 +34,7 @@
         const anchor = document.getElementById('accidentRateDownload')
         if (anchor) {
             anchor.href = accidentRate
+            anchor.download = 'vida_siniestralidad_previa.{{$accidentRateExtension}}'
         }
     });
 </script>
@@ -237,7 +238,7 @@
         <div class="row">
             <div class="col-md-10">
                 <div class="input-group mb-3">
-                    <input class="form-control" download="siniestralidad_cargada" type="file" name="accidentRate" id="accidentRate">
+                    <input class="form-control" type="file" name="accidentRate" id="accidentRate" accept="application/*">
                     <label class="input-group-text" for="accidentRate">Siniestralidad de los últimos 5 años
                     </label>
                     @if ($accidentRate)
