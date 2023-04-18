@@ -238,12 +238,34 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="input-group mb-3">
-                    <input class="form-control" type="file" name="accidentRate" id="accidentRate" accept="application/*">
-                    <label class="input-group-text" for="accidentRate">Siniestralidad de los últimos 5 años
+                    <input class="form-control" type="file" name="accidentRate" hidden="true" id="accidentRate" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="accidentRate" id="accidentRateFileLabel">Siniestralidad de los últimos 5 años
                     </label>
                     @if ($accidentRate)
-                    <a download="siniestralidad_previa" id="accidentRateDownload">Siniestralidad previa</a>
+                    <a download="siniestralidad_previa" style="padding:1rem" id="accidentRateDownload">Siniestralidad previa</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleInputs()" id="accidentRateFileToggle">Modificar</button>
+                    <script>
+                        let toggledAccidentRateFile = false;
+                        const accidentRateInput = document.getElementById('accidentRate');
+                        const accidentRateDownload = document.getElementById('accidentRateDownload');
+                        const accidentRateLabel = document.getElementById('accidentRateFileLabel');
+                        const accidentRateToggle = document.getElementById('accidentRateFileToggle');
+
+                        function toggleInputs() {
+                            toggledAccidentRateFile = !toggledAccidentRateFile;
+                            accidentRateInput.hidden = !toggledAccidentRateFile;
+                            accidentRateDownload.hidden = toggledAccidentRateFile;
+                            accidentRateLabel.hidden = !toggledAccidentRateFile;
+                            accidentRateToggle.textContent = toggledAccidentRateFile ? 'Usar previo' : 'Modificar'
+                            if (toggledAccidentRateFile) accidentRateInput.click()
+                        }
+                    </script>
+                    @else<input class="form-control" type="file" name="accidentRate" id="accidentRate" accept="application/*">
+                    <label class="input-group-text" for="accidentRate">Siniestralidad de los últimos 5 años
+                    </label>
+
                     @endif
+
                 </div>
             </div>
         </div>
