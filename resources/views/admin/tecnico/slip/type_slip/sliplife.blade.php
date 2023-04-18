@@ -13,6 +13,7 @@
         @include('admin.tecnico.slip.slips_generales.initial')
 
         <div class="two-sides">
+        {{-- @include('admin.tablas.calculo') --}}
 
             <div class="left_side">
                 {{-- Limite edad --}}

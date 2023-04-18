@@ -135,7 +135,8 @@
     <hr style="background-color: darkgrey; width: 70%">
 </div>
 <div class="row">
-    <div class="row">
+    <div class="tableContainer">
+        {{-- @include('admin.tablas.calculo') --}}
         @include('include.reinsurer_table')
     </div>
 </div>
