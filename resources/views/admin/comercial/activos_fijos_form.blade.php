@@ -708,6 +708,7 @@
                 <div class="tableContainer" style="margin: 2rem 0">
                     <table id="incendioCoberturasAdicionalesTable" name="incendioCoberturasAdicionalesTable"
                         class="indemnizacionTable">
+                        <caption>No olvidar de llenar mínimo una cobertura.</caption>
                         <thead>
                             <tr>
                                 <th style="text-align: center; width: 42px;">#</th>
@@ -757,6 +758,7 @@
 
             <div class="row">
                 <div class="tableContainer" style="margin: 2rem 0">
+                    <caption>No olvidar de llenar mínimo una cláusula.</caption>
                     <table id="incendioClausulasAdicionalesTable" name="incendioClausulasAdicionalesTable"
                         class="indemnizacionTable">
                         <thead>

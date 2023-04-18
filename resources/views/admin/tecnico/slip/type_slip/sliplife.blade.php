@@ -168,19 +168,32 @@
                 </div>
             </div>
             <div class="right">
-                {{-- Cumulo asegurado --}}
-                @if ($slip->insurable_value === 2 || $slip->insurable_value === 4)                            
+                <div class="tableContainer">
                     <div class="input_group">
-                        <label for="apCumuloAsegurado">
+                        <label>
                             <i class="fa-solid fa-flag"></i>
-                            Cúmulo asegurado
+                            Base de Cobertura
                         </label>
-                        <input type="number" step="any" id="apCumuloAsegurado" name="insurable_value"
-                            value="{{ $slip->insurable_value }}">
+                        <input type="number" step="any" name="coverage_foundation" placeholder="...">
                     </div>
-                @endif
+                </div>
+        
             </div>
         </div>
+        
+        {{-- Cumulo asegurado --}}
+        @if ($slip->insurable_value === 2 || $slip->insurable_value === 4)                            
+        <div class="tableContainer">
+            <div class="input_group" style="width: 350px">
+                <label for="apCumuloAsegurado">
+                    <i class="fa-solid fa-flag"></i>
+                    Cúmulo asegurado
+                </label>
+                <input type="number" step="any" id="apCumuloAsegurado" name="insurable_value"
+                    value="{{ $slip->insurable_value }}">
+            </div>    
+        </div>
+        @endif
 
 
     </div>
@@ -198,7 +211,7 @@
         {{-- @include('admin.tecnico.slip.slips_generales.tableClausulasAdicionalesV2') --}}
         @include('admin.comercial.include.edit_tablaClausulas')
 
-
+       
     </div>
 
     <div class="form_group3">
