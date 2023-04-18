@@ -615,8 +615,8 @@ class SlipApiController extends Controller
                         $type_slip = SlipAviationTwo::where('id', $slip->id);
 
                         //Objeto del Seguro
-                        for ($i = 0; $i < count($request->limit); $i++) {
-                            if (isset($request->limit[$i])) {
+                        for ($i = 0; $i < count($request->birthday); $i++) {
+                            if (isset($request->birthday[$i])) {
                                 $object_insurance = new ObjectInsurance([
                                     'limit' => $request->limit[$i] ?? null,
                                     'age' => $request->age[$i] ?? null,
@@ -777,7 +777,6 @@ class SlipApiController extends Controller
                 $slip_responsabilidad->save();
                 $slip->slip_type_id = "9";
 
-                // limite de compensacion
                 $type_slip = SlipCivilLiability::where('id', $slip->id);
 
                 //coberturas adicionales
@@ -830,8 +829,6 @@ class SlipApiController extends Controller
                 $slip_riesgos->slip_id = $slip->id;
                 $slip_riesgos->save();
                 $slip->slip_type_id = "10";
-
-                //Tabla de limite de compensacion
 
                 $type_slip = SlipFinancialRisk::where('id', $slip->id);
 
