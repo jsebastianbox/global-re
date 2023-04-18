@@ -29,7 +29,7 @@
 <script>
     const accidentRate_raw = "{{$accidentRate}}";
     let accidentRate;
-    const base64Response = fetch(`data:application/*;base64,${accidentRate_raw}`).then(base64 => base64.blob()).then(blob => {
+    fetch(`data:application/*;base64,${accidentRate_raw}`).then(base64 => base64.blob()).then(blob => {
         accidentRate = URL.createObjectURL(blob)
         const anchor = document.getElementById('accidentRateDownload')
         if (anchor) {
@@ -263,9 +263,7 @@
                     @else<input class="form-control" type="file" name="accidentRate" id="accidentRate" accept="application/*">
                     <label class="input-group-text" for="accidentRate">Siniestralidad de los últimos 5 años
                     </label>
-
                     @endif
-
                 </div>
             </div>
         </div>

@@ -40,6 +40,7 @@ use App\Models\SlipTechnicalBranch;
 use App\Models\SlipVehicle;
 use App\Models\SumAssured;
 use App\Models\VehicleDetail;
+use App\Traits\HasUploadFiles;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -48,6 +49,7 @@ use Yajra\DataTables\DataTables;
 
 class SlipController extends Controller
 {
+    use HasUploadFiles;
     /**
      * Display a listing of the resource.
      *
@@ -359,7 +361,7 @@ class SlipController extends Controller
         $selectSlip = Slip::where('id', $id)->select('model_id', 'type_coverage')->first();
 
         $slip->slip_status_id = '3';
-
+        $basePath = "slips";
         switch ($slip->type_coverage) {
                 //vida y accidentes personales
             case '1':
@@ -386,6 +388,8 @@ class SlipController extends Controller
                         $object_insurance->save();
                     }
                 }
+
+                $this->saveFilesFromRequest($request, $basePath, 'vida', $type_slip->id);
 
                 break;
                 //Propiedad activos fijos
@@ -437,7 +441,7 @@ class SlipController extends Controller
                         }
                     }
                 }
-
+                $this->saveFilesFromRequest($request, $basePath, 'activos_fijos', $type_slip->id, 'activos-fijos');
                 break;
                 //Vehículos
             case '9':
@@ -459,6 +463,7 @@ class SlipController extends Controller
                     }
                 }
 
+                $this->saveFilesFromRequest($request, $basePath, 'vehiculos', $type_slip->id);
                 break;
                 //Ramos Técnicos
             case '11':
@@ -588,8 +593,8 @@ class SlipController extends Controller
                     case '33':
                         $type_slip = SlipAviationOne::where('slip_id', $id)->first();
                         $type_slip->update($request->all());
-                    
-                        
+
+
                         InformationAerialHelmets::where('slip_id', $id)->delete();
                         AviacionExtras::where('slip_id', $id)->delete();
 
@@ -845,14 +850,14 @@ class SlipController extends Controller
         //update & save
         $slip->update($request->all());
         $slip->save();
-        
+
         $user = Auth::user();
         if ($user->role === "comercial") {
             return redirect('/admin/compromiso/pending')
-            ->with('success', 'El Slip ha sido modificado y enviado al departamento técnico de manera exitosa.');
+                ->with('success', 'El Slip ha sido modificado y enviado al departamento técnico de manera exitosa.');
         } else {
             return redirect('/admin/compromiso/pending')
-            ->with('success', 'El Slip ha sido modificado y enviado al departamento técnico de manera exitosa.');
+                ->with('success', 'El Slip ha sido modificado y enviado al departamento técnico de manera exitosa.');
         }
     }
 
@@ -1053,7 +1058,7 @@ class SlipController extends Controller
                             $type_slip = SlipMaritimeFour::find($idslip->id);
                             break;
                         default:
-                        break;
+                            break;
                     }
 
                     if ($request->has('name_boat')) {

@@ -2,7 +2,9 @@
 
 namespace App\Traits;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\View\View;
 
 trait HasUploadFiles
 {
@@ -145,5 +147,44 @@ trait HasUploadFiles
     public function copyFile(string $located_path, string $to_copy_path)
     {
         copy(storage_path($located_path), storage_path($to_copy_path));
+    }
+    public function keysFiles($case)
+    {
+        $keys = [];
+        switch ($case) {
+            case 'vida':
+                $keys[] = "accidentRate";
+                break;
+            case 'activos_fijos':
+                $keys[] = "quote_form_file";
+                $keys[] = "inspection_control_file";
+                $keys[] = "machine_list_file";
+                $keys[] = "devices_list_file";
+                $keys[] = "desglose_file";
+                $keys[] = "accidentRate";
+                break;
+            default:
+                break;
+        }
+        return $keys;
+    }
+    public function chargeFilesIntoView(string $slip_route, $case, $id, View $view): View
+    {
+        foreach ($this->keysFiles($case) as $key) {
+            $file = $this->getFile("slips/" . $slip_route . "/" . $id . "/" . $key . ".*");
+            $view->with($key . "Extension", $file ? $this->getExtensionFromName($file) : null);
+            $view->with($key, $file ? $this->getBase64FromFile($file) : null);
+        }
+        return $view;
+    }
+    public function saveFilesFromRequest(Request $request, string $basePath, string $case, $id, string $route = null)
+    {
+        $route = $route ?? $case;
+        foreach ($this->keysFiles($case) as $key) {
+            if ($request->hasFile($key)) {
+                $file = $request->file($key);
+                $this->saveFile($file, $this->getPath($basePath . '/' . $route . '/' . $id), $key);
+            }
+        }
     }
 }

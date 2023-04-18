@@ -247,7 +247,7 @@ class SlipApiController extends Controller
                         $deductibles->save();
                     }
                 }
-
+                $this->saveFilesFromRequest($request, $basePath, 'activos_fijos', $slip_activos_fijos->id, "activos-fijos");
 
                 break;
             case 'vehiculo':
@@ -316,6 +316,9 @@ class SlipApiController extends Controller
                     }
                 }
 
+                $this->saveFilesFromRequest($request, $basePath, 'vehiculos',  $slip_vehiculos->id);
+
+
                 break;
             case 'ramos_tecnicos_form':
                 $slip_ramos_tecnicos = new SlipTechnicalBranch();
@@ -365,6 +368,13 @@ class SlipApiController extends Controller
                             'slip_id' => $slip->id
                         ]);
                         $deductibles->save();
+                    }
+                }
+
+                foreach ($this->keysFiles('ramos_tecnicos_form') as $key) {
+                    if ($request->hasFile($key)) {
+                        $file = $request->file($key);
+                        $this->saveFile($file, $this->getPath($basePath . '/ramos-tecnicos-form/' . $slip_ramos_tecnicos->id), $key);
                     }
                 }
 
@@ -440,6 +450,12 @@ class SlipApiController extends Controller
                             'slip_id' => $slip->id
                         ]);
                         $deductibles->save();
+                    }
+                }
+                foreach ($this->keysFiles('energia_form') as $key) {
+                    if ($request->hasFile($key)) {
+                        $file = $request->file($key);
+                        $this->saveFile($file, $this->getPath($basePath . '/energia_form/' . $slip_energia->id), $key);
                     }
                 }
 
@@ -989,7 +1005,6 @@ class SlipApiController extends Controller
         $request->session()->forget('csrf_token');
         return true;
     }
-
 
     /**
      * Validacion de los inputs
