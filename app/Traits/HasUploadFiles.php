@@ -30,7 +30,8 @@ trait HasUploadFiles
         $fileName = str_replace(' ', '_', $fileName);
 
         $file_exists = $this->getFile($path . '/' . $fileName);
-
+        $extension = $this->getExtension($file);
+        $fileName = $fileName . "." . $extension;
         if ($file_exists) {
             return null;
         }
@@ -52,6 +53,12 @@ trait HasUploadFiles
     {
         $originalName = $file->getClientOriginalName();
         $ext = explode('.', $originalName);
+        return end($ext);
+    }
+    public function getExtensionFromName(string $file)
+    {
+        $name = explode('/', $file);
+        $ext = explode('.', end($name));
         return end($ext);
     }
 
@@ -101,6 +108,18 @@ trait HasUploadFiles
         $files = $this->getFiles('app/' . $storage_path);
         return count($files) > 0 ? $files[0] : null;
     }
+
+    public function getFileFile($storage_path)
+    {
+        $file = $this->getFile($storage_path);
+        return $file ? file_get_contents($file) : null;
+    }
+
+    public function getBase64FromFile($file): ?string
+    {
+        return base64_encode(file_get_contents($file));
+    }
+
     public function getBase64($storage_path): ?string
     {
         $file = $this->getFile($storage_path);

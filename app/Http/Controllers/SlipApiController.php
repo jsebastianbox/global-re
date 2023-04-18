@@ -155,8 +155,10 @@ class SlipApiController extends Controller
                 }
 
 
-                $file = $request->file('accidentRate');
-                $this->saveFile($file, $this->getPath($basePath . '/vida/' . $slip_vida->id), "accidentRate");
+                if ($request->hasFile('accidentRate')) {
+                    $file = $request->file('accidentRate');
+                    $this->saveFile($file, $this->getPath($basePath . '/vida/' . $slip_vida->id), "accidentRate");
+                }
 
                 break;
 
@@ -1141,13 +1143,12 @@ class SlipApiController extends Controller
             'limite_indemnizacion' => 'nullable|numeric|max:999999999999999',
             'asegurable_electronico' => 'nullable|numeric|max:999999999999999',
             'asegurada_electronico' => 'nullable|numeric|max:999999999999999',
-            'accidentRate' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'accidentRate' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
             'desglose_file' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
             'devices_list_file' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
             'machine_list_file' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
             'inspection_control_file' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
             'quote_form_file' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'accidentRate' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
             'informe' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
             'quotationReport' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
             'financialStatements' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB

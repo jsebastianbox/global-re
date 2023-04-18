@@ -157,11 +157,17 @@ class CompromisoController extends Controller
         $object_insurance = ObjectInsurance::where('slip_id', $slip->id)->get();
 
         $user = Auth::user();
-
+        $accidentRate = null;
+        $accidentRateExtension = null;
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'vida')->get();
         $clausulasSelect = Clausulas_selector::where('main_branch', 'vida')->get();
-        $accidentRate = $this->getBase64("slips/vida/" . $slip_type->id . "/accidentRate");
+        $accidentRateFile = $this->getFile("slips/vida/" . $slip_type->id . "/accidentRate.*");
+
+        if ($accidentRateFile) {
+            $accidentRateExtension = $this->getExtensionFromName($accidentRateFile);
+            $accidentRate = $this->getBase64FromFile($accidentRateFile);
+        }
 
         return view('admin.comercial.edit_compromiso.edit_index')
             ->with('user', $user)
@@ -174,7 +180,8 @@ class CompromisoController extends Controller
             ->with('coberturasSelect', $coberturasSelect)
             ->with('clausulasSelect', $clausulasSelect)
             ->with('slip_type', $slip_type)
-            ->with('accidentRate', $accidentRate);
+            ->with('accidentRate', $accidentRate)
+            ->with('accidentRateExtension', $accidentRateExtension);
     }
 
     public function activos($id)
