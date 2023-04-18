@@ -75,7 +75,7 @@
         <div class="col-md-4">
             <div class="input-group mb-3">
                 <label class="input-group-text" for="sector">Sector</label>
-                <select class="form-select" name="sector" id="sector" required>
+                <select class="form-select" name="sector" id="sector">
                     <option value="" selected disabled>Selecciona</option>
                     <option {{ $slip->sector == "public" ? 'selected' : '' }} value="public">Público</option>
                     <option {{ $slip->sector == "private" ? 'selected' : '' }} value="private">Privado</option>
@@ -255,7 +255,7 @@
         <div class="col-md-4">
             <div class="input-group mb-3">
                 <label class="input-group-text" for="sector">Sector</label>
-                <select class="form-select" name="sector" id="sector" required>
+                <select class="form-select" name="sector" id="sector">
                     <option value="" selected disabled>Selecciona</option>
                     <option value="public">Público</option>
                     <option value="private">Privado</option>

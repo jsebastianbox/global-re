@@ -848,10 +848,10 @@ class SlipController extends Controller
         
         $user = Auth::user();
         if ($user->role === "comercial") {
-            return redirect('/admin/compromiso/pending')
+            return redirect('/slip')
             ->with('success', 'El Slip ha sido modificado y enviado al departamento técnico de manera exitosa.');
         } else {
-            return redirect('/admin/compromiso/pending')
+            return redirect('/slip')
             ->with('success', 'El Slip ha sido modificado y enviado al departamento técnico de manera exitosa.');
         }
     }
