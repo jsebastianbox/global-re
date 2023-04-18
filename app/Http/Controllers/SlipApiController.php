@@ -32,10 +32,12 @@ use App\Models\SlipTechnicalBranch;
 use App\Models\SlipVehicle;
 use App\Models\SumAssured;
 use App\Models\VehicleDetail;
+use App\Traits\HasUploadFiles;
 use Illuminate\Http\Request;
 
 class SlipApiController extends Controller
 {
+    use HasUploadFiles;
     /**
      * Display a listing of the resource.
      *
@@ -73,12 +75,14 @@ class SlipApiController extends Controller
         // }
 
         $validatedData = $this->validateData($request);
-
+        $basePath = "slips";
         //Guarda el slip general
         $slip = new Slip();
         $slip->fill($validatedData);
         $slip->slip_status_id = '2';
         $slip->save();
+
+
 
         //Guarda el slip según el tipo de slip (variable type_slip en los form blades)
         switch ($validatedData['type_slip']) {
@@ -149,6 +153,10 @@ class SlipApiController extends Controller
                         $deductibles->save();
                     }
                 }
+
+
+                $file = $request->file('accidentRate');
+                $this->saveFile($file, $this->getPath($basePath . '/vida/' . $slip_vida->id), "accidentRate");
 
                 break;
 
@@ -238,7 +246,7 @@ class SlipApiController extends Controller
                     }
                 }
 
-                
+
                 break;
             case 'vehiculo':
                 $slip_vehiculos = new SlipVehicle();
@@ -357,7 +365,7 @@ class SlipApiController extends Controller
                         $deductibles->save();
                     }
                 }
-                
+
                 break;
             case 'energia_form':
                 $slip_energia = new SlipEnergy();
@@ -432,7 +440,7 @@ class SlipApiController extends Controller
                         $deductibles->save();
                     }
                 }
-                
+
                 break;
             case 'maritimo_1_form':
             case 'maritimo_2_form':
@@ -511,9 +519,9 @@ class SlipApiController extends Controller
                 $slip->slip_type_id = "6";
                 $slip->save();
 
-                
 
-                
+
+
                 //coberturas adicionales
                 for ($i = 0; $i < count($request->description_coverage_additional); $i++) {
                     if (isset($request->description_coverage_additional[$i])) {
@@ -611,7 +619,7 @@ class SlipApiController extends Controller
                         $slip_aereo_2->fill($validatedData);
                         $slip_aereo_2->slip_id = $slip->id;
                         $slip_aereo_2->save();
-                        
+
                         $type_slip = SlipAviationTwo::where('id', $slip->id);
 
                         //Objeto del Seguro
@@ -723,10 +731,10 @@ class SlipApiController extends Controller
                         break;
                 }
 
-                
 
 
-                
+
+
                 //coberturas adicionales
                 for ($i = 0; $i < count($request->description_coverage_additional); $i++) {
                     if (isset($request->description_coverage_additional[$i])) {
@@ -883,7 +891,7 @@ class SlipApiController extends Controller
         //TODO: Agregar las columnas que se agregan de manera dinámica
 
         if (
-            isset($value['location'], $value['edification'], $value['contents'], $value['equipment'], $value['machine'], $value['commodity'], $value['other_sum_assured']) 
+            isset($value['location'], $value['edification'], $value['contents'], $value['equipment'], $value['machine'], $value['commodity'], $value['other_sum_assured'])
             && !SumAssured::where('slip_id', $slip->id)->exists()
         ) {
             $this->storeSuma($request, $slip);

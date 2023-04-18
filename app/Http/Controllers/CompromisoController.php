@@ -38,11 +38,14 @@ use App\Models\TypeCoverage;
 use App\Models\TransportSlipStock;
 use App\Models\User;
 use App\Models\VehicleDetail;
+use App\Traits\HasUploadFiles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CompromisoController extends Controller
 {
+    use HasUploadFiles;
+
     public function compromiso()
     {
         $slips = Slip::all();
@@ -147,17 +150,18 @@ class CompromisoController extends Controller
         $type_coverage = TypeCoverage::all();
 
         $slip = Slip::find($id);
-        
+
         $slip_type = SlipLifePersonlAccident::where('slip_id', $id)->first();
-        
-        
+
+
         $object_insurance = ObjectInsurance::where('slip_id', $slip->id)->get();
-        
+
         $user = Auth::user();
 
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'vida')->get();
         $clausulasSelect = Clausulas_selector::where('main_branch', 'vida')->get();
+        $accidentRate = $this->getBase64("slips/vida/" . $slip_type->id . "/accidentRate");
 
         return view('admin.comercial.edit_compromiso.edit_index')
             ->with('user', $user)
@@ -169,7 +173,8 @@ class CompromisoController extends Controller
             ->with('object_insurance', $object_insurance)
             ->with('coberturasSelect', $coberturasSelect)
             ->with('clausulasSelect', $clausulasSelect)
-            ->with('slip_type', $slip_type);
+            ->with('slip_type', $slip_type)
+            ->with('accidentRate', $accidentRate);
     }
 
     public function activos($id)
@@ -178,14 +183,14 @@ class CompromisoController extends Controller
         $countries = Country::all();
         $slip_statuses = SlipStatus::all();
         $type_coverage = TypeCoverage::all();
-        
+
         $slip = Slip::find($id);
-        
+
         $sum_assured = SumAssured::where('slip_id', $slip->id)->get();
         $predios = DetailPerdios::where('slip_id', $slip->id)->get();
-        
+
         $slip_type = SlipPropertyFixedAsset::where('slip_id', $id)->first();
-        
+
         $clausulas = ClauseSlip::where('slip_id', $slip->id)->get();
         $coberturas = AdditionalCoverage::where('slip_id', $slip->id)->get();
         //clausulas y cobertura to find
@@ -269,7 +274,7 @@ class CompromisoController extends Controller
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'energia')->get();
         $clausulasSelect = Clausulas_selector::where('main_branch', 'energia')->get();
-        
+
 
         return view('admin.comercial.edit_compromiso.edit_index')
             ->with('user', $user)
@@ -322,7 +327,7 @@ class CompromisoController extends Controller
         $slip = Slip::find($id);
 
         $slip_type = SlipCivilLiability::where('slip_id', $id)->first();
-        
+
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'responsabilidad_civil')->get();
         $clausulasSelect = Clausulas_selector::where('main_branch', 'responsabilidad_civil')->get();
@@ -345,7 +350,7 @@ class CompromisoController extends Controller
         $slip_statuses = SlipStatus::all();
         $type_coverage = TypeCoverage::all();
         $slip = Slip::find($id);
-        
+
 
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'aviacion')->get();
@@ -405,7 +410,7 @@ class CompromisoController extends Controller
         $slip_statuses = SlipStatus::all();
         $type_coverage = TypeCoverage::all();
         $slip = Slip::find($id);
-        
+
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::all();
         $clausulasSelect = Clausulas_selector::all();
@@ -424,7 +429,7 @@ class CompromisoController extends Controller
 
             case '24':
             case '25':
-            case '26':        
+            case '26':
                 $slip_type = SlipMaritimeThree::where('slip_id', $id)->first();
                 $boat_detail = [];
             case '27':
@@ -463,7 +468,7 @@ class CompromisoController extends Controller
         $slip = Slip::find($id);
 
         $slip_type = SlipFinancialRisk::where('slip_id', $id)->first();
-        
+
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::all();
         $clausulasSelect = Clausulas_selector::all();
@@ -498,12 +503,12 @@ class CompromisoController extends Controller
                 $object_insurance = ObjectInsurance::where('slip_id', $id)->get();
                 break;
 
-                case '47':
-                case '48':
-                case '49':
-                case '50':
-                case '51':
-                case '52':
+            case '47':
+            case '48':
+            case '49':
+            case '50':
+            case '51':
+            case '52':
                 $slip_type = SlipFianzaTwo::where('slip_id', $id)->first();
                 $object_insurance = [];
                 break;
