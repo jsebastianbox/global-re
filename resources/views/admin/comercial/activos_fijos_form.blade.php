@@ -82,19 +82,22 @@
             <label class="lead">Suma elegida</label>
             <hr style="color:darkgrey; width:70%">
 
-            <div id="sumaAsegurableContainer" class="flexColumnCenterContainer"
-                style="{{$slip->insurable_sum > 0 ? 'display:flex' : 'display:none'}};margin:1.5rem 0;">
-                <h4 class="slipTitle">Tabla suma asegurable</h4>
-                <button type="button" onclick="refreshSumaAsegurableTable()" class="btn btn-info my-2">
-                    Actualizar
-                </button>
-                @include('admin.tecnico.slip.slips_generales.tableSumaAsegurable')
-            </div>
+            
 
             <div class="row">
-                <div id="sumaAseguradaContainer" class="tableContainer" 
-                style="{{$slip->insured_sum > 0 ? 'display:flex' : 'display:none'}};margin:1.5rem 0;">
-                    <h4 class="slipTitle">Tabla suma asegurada</h4>
+                <div id="sumaAseguradaContainer" class="tableContainer" style="margin:1.5rem 0;">
+                    @if ($slip->insurable_sum > 0)
+                        <h4 class="slipTitle mb-2">Tabla suma asegurable</h4>
+                    @elseif($slip->insured_sum > 0)
+                        <h4 class="slipTitle mb-2">Tabla suma asegurada</h4>
+                    @endif
+
+                    <div class="input-group">
+                        <input type="text" placeholder="Nombre columna.."
+                            id="columnNameactivos_fijosSumaAseguradaTable">
+                        <button type="button" class="btn btn-info" id="btnAddColumnSumas"
+                            onclick="addColumnSumas('activos_fijos')">Agregar columna</button>
+                    </div>
                     
                     <button type="button" onclick="refreshSumaAseguradaTable()" class="btn btn-info my-2">
                         Actualizar
@@ -491,6 +494,7 @@
                     </div>
 
                     <table id="activos_fijosSumaAseguradaTable" class="indemnizacionTable">
+                        <caption>Recuerda: solo podrás agregar un número determinado de filas en esta sección. ¡Revisa bien!</caption>
                         <thead>
                             <tr>
                                 <th style="text-align: center">#</th>

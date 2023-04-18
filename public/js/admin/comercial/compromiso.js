@@ -2004,42 +2004,16 @@ function chooseTypeSuma2(event) {
 
 
 //suma asegurable / table suma asegurada rama:incendio
-const incendioSumaAsegurable = document.getElementById('incendioSumaAsegurable')
 
-
-function refreshSumaAsegurableTable() {
-    let row = $('#activosSumaAseguradaTableBody').find('tr').length
-
-    for (let i = 0; i < row; i++) {
-        incendioSumaAsegurableTotales(i, 1, 'activos')
-        incendioSumaAsegurableTotales(i, 2, 'activos')
-        incendioSumaAsegurableTotales(i, 3, 'activos')
-        incendioSumaAsegurableTotales(i, 4, 'activos')
-        incendioSumaAsegurableTotales(i, 5, 'activos')
-        incendioSumaAsegurableTotales(i, 6, 'activos')
-        incendioSumaAsegurableTotales(i, 7, 'activos')
-        incendioSumaAsegurableTotales(i, 8, 'activos')
-        incendioSumaAsegurableTotales(i, 9, 'activos')
-        incendioSumaAsegurableTotales(i, 10, 'activos')
-        incendioSumaAsegurableTotales(i, 11, 'activos')
-    }
-}
 function refreshSumaAseguradaTable() {
-    console.log('a');
     let row = $('#activos_fijosSumaAseguradaTableBody').find('tr').length
-
+    let column = $('#activos_fijosSumaAseguradaTableBody').find('tr:first-child td').length - 4;
+    console.log(column);
+    
     for (let i = 1; i <= row; i++) {
-        incendioSumaAsegurableTotales(i, 1, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 2,'activos_fijos')
-        incendioSumaAsegurableTotales(i, 3, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 4, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 5,'activos_fijos')
-        incendioSumaAsegurableTotales(i, 6, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 7, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 8, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 9, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 10, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 11, 'activos_fijos')
+        for (let j = 1; j <= column; j++) {
+            incendioSumaAsegurableTotales(i, j, 'activos_fijos');
+        }
     }
 }
 

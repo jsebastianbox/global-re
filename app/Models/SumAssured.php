@@ -17,6 +17,7 @@ class SumAssured extends Model
         'edification',
         'contents',
         'equipment',
+        'machine',
         'commodity',
         'other_sum_assured',
         'other_sum_assured_1',
