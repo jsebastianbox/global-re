@@ -25,6 +25,7 @@
 </script>
 @endsection
 @if (\Illuminate\Support\Str::contains(\Illuminate\Support\Facades\Request::url(), '/admin/comercial/edit_compromiso/'))
+
 <script>
     const accidentRate_raw = "{{$accidentRate}}";
     let accidentRate;
@@ -36,54 +37,14 @@
             anchor.download = 'vida_siniestralidad_previa.{{$accidentRateExtension}}'
         }
     });
-    const quote_form_file_raw = "{{$quote_form_file}}";
-    let quote_form_file;
-    fetch(`data:application/*;base64,${quote_form_file_raw}`).then(base64 => base64.blob()).then(blob => {
-        quote_form_file = URL.createObjectURL(blob)
-        const anchor = document.getElementById('quote_form_fileDownload')
+    const informe_raw = "{{$informe}}";
+    let informe;
+    fetch(`data:application/*;base64,${informe_raw}`).then(base64 => base64.blob()).then(blob => {
+        informe = URL.createObjectURL(blob)
+        const anchor = document.getElementById('informeDownload')
         if (anchor) {
-            anchor.href = quote_form_file
-            anchor.download = 'vida_siniestralidad_previa.{{$quote_form_fileExtension}}'
-        }
-    });
-    const inspection_control_file_raw = "{{$inspection_control_file}}";
-    let inspection_control_file;
-    fetch(`data:application/*;base64,${inspection_control_file_raw}`).then(base64 => base64.blob()).then(blob => {
-        inspection_control_file = URL.createObjectURL(blob)
-        const anchor = document.getElementById('inspection_control_fileDownload')
-        if (anchor) {
-            anchor.href = inspection_control_file
-            anchor.download = 'vida_siniestralidad_previa.{{$inspection_control_fileExtension}}'
-        }
-    });
-    const devices_list_file_raw = "{{$devices_list_file}}";
-    let devices_list_file;
-    fetch(`data:application/*;base64,${devices_list_file_raw}`).then(base64 => base64.blob()).then(blob => {
-        devices_list_file = URL.createObjectURL(blob)
-        const anchor = document.getElementById('devices_list_fileDownload')
-        if (anchor) {
-            anchor.href = devices_list_file
-            anchor.download = 'vida_siniestralidad_previa.{{$devices_list_fileExtension}}'
-        }
-    });
-    const machine_list_file_raw = "{{$machine_list_file}}";
-    let machine_list_file;
-    fetch(`data:application/*;base64,${machine_list_file_raw}`).then(base64 => base64.blob()).then(blob => {
-        machine_list_file = URL.createObjectURL(blob)
-        const anchor = document.getElementById('machine_list_fileDownload')
-        if (anchor) {
-            anchor.href = machine_list_file
-            anchor.download = 'vida_siniestralidad_previa.{{$machine_list_fileExtension}}'
-        }
-    });
-    const desglose_file_raw = "{{$desglose_file}}";
-    let desglose_file;
-    fetch(`data:application/*;base64,${desglose_file_raw}`).then(base64 => base64.blob()).then(blob => {
-        desglose_file = URL.createObjectURL(blob)
-        const anchor = document.getElementById('desglose_fileDownload')
-        if (anchor) {
-            anchor.href = desglose_file
-            anchor.download = 'vida_siniestralidad_previa.{{$desglose_fileExtension}}'
+            anchor.href = informe
+            anchor.download = 'vida_siniestralidad_previa.{{$informeExtension}}'
         }
     });
 </script>
@@ -228,14 +189,61 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="input-group">
-                    <input class="form-control" type="file" name="informe" id="informe">
-                    <label class="input-group-text" for="accidentRate">Informe de inspección</label>
+                    <input class="form-control" type="file" name="informe" hidden="true" id="informe" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="informe" id="informeFileLabel">Informe de inspección
+                    </label>
+                    @if ($informe)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="informeDownload">Informe de inspección - Previa</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleInforme()" id="informeFileToggle">Modificar</button>
+                    <script>
+                        let toggledInformeFile = false;
+                        const informeInput = document.getElementById('informe');
+                        const informeDownload = document.getElementById('informeDownload');
+                        const informeLabel = document.getElementById('informeFileLabel');
+                        const informeToggle = document.getElementById('informeFileToggle');
+
+                        function toggleInforme() {
+                            toggledInformeFile = !toggledInformeFile;
+                            informeInput.hidden = !toggledInformeFile;
+                            informeDownload.hidden = toggledInformeFile;
+                            informeLabel.hidden = !toggledInformeFile;
+                            informeToggle.textContent = toggledInformeFile ? 'Usar previo' : 'Modificar'
+                            if (toggledInformeFile) informeInput.click()
+                        }
+                    </script>
+                    @else<input class="form-control" type="file" name="informe" id="informe">
+                    <label class="input-group-text" for="inform">Informe de inspección</label>
+                    @endif
                 </div>
                 <div class="my-2 input-group">
-                    <input class="form-control" type="file" name="accidentRate" id="accidentRate">
-                    <label class="input-group-text" for="accidentRate">Siniestralidad de los últimos 5
-                        años (Fecha de ocurrencia, causa del siniestro, monto de la pérdida, valor
-                        indemnizado)</label>
+                    <input class="form-control" type="file" name="accidentRate" hidden="true" id="accidentRate" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="accidentRate" id="accidentRateFileLabel">Siniestralidad de los últimos 5 años (Fecha de ocurrencia, causa del siniestro, monto de la pérdida, valor
+                        indemnizado)
+                    </label>
+                    @if ($accidentRate)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="accidentRateDownload">Siniestralidad previa</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleInputs()" id="accidentRateFileToggle">Modificar</button>
+                    <script>
+                        let toggledAccidentRateFile = false;
+                        const accidentRateInput = document.getElementById('accidentRate');
+                        const accidentRateDownload = document.getElementById('accidentRateDownload');
+                        const accidentRateLabel = document.getElementById('accidentRateFileLabel');
+                        const accidentRateToggle = document.getElementById('accidentRateFileToggle');
+
+                        function toggleInputs() {
+                            toggledAccidentRateFile = !toggledAccidentRateFile;
+                            accidentRateInput.hidden = !toggledAccidentRateFile;
+                            accidentRateDownload.hidden = toggledAccidentRateFile;
+                            accidentRateLabel.hidden = !toggledAccidentRateFile;
+                            accidentRateToggle.textContent = toggledAccidentRateFile ? 'Usar previo' : 'Modificar'
+                            if (toggledAccidentRateFile) accidentRateInput.click()
+                        }
+                    </script>
+                    @else<input class="form-control" type="file" name="accidentRate" id="accidentRate" accept="application/*">
+                    <label class="input-group-text" for="accidentRate">Siniestralidad de los últimos 5 años (Fecha de ocurrencia, causa del siniestro, monto de la pérdida, valor
+                        indemnizado)
+                    </label>
+                    @endif
                 </div>
             </div>
 

@@ -283,9 +283,7 @@ class CompromisoController extends Controller
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'energia')->get();
         $clausulasSelect = Clausulas_selector::where('main_branch', 'energia')->get();
-
-
-        return view('admin.comercial.edit_compromiso.edit_index')
+        $view = view('admin.comercial.edit_compromiso.edit_index')
             ->with('user', $user)
             ->with('users', $users)
             ->with('countries', $countries)
@@ -296,6 +294,10 @@ class CompromisoController extends Controller
             ->with('sum_assured', $sum_assured)
             ->with('slip', $slip)
             ->with('slip_type', $slip_type);
+
+        $view = $this->chargeFilesIntoView("energia", "energia", $slip_type->id, $view);
+
+        return $view;
     }
     public function tecnico($id)
     {
@@ -342,8 +344,7 @@ class CompromisoController extends Controller
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'responsabilidad_civil')->get();
         $clausulasSelect = Clausulas_selector::where('main_branch', 'responsabilidad_civil')->get();
-
-        return view('admin.comercial.edit_compromiso.edit_index')
+        $view = view('admin.comercial.edit_compromiso.edit_index')
             ->with('user', $user)
             ->with('users', $users)
             ->with('countries', $countries)
@@ -353,6 +354,10 @@ class CompromisoController extends Controller
             ->with('clausulasSelect', $clausulasSelect)
             ->with('slip', $slip)
             ->with('slip_type', $slip_type);
+
+        $view = $this->chargeFilesIntoView("energia", "energia", $slip_type->id, $view);
+
+        return $view;
     }
     public function aviacion($id)
     {
@@ -483,8 +488,7 @@ class CompromisoController extends Controller
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::all();
         $clausulasSelect = Clausulas_selector::all();
-
-        return view('admin.comercial.edit_compromiso.edit_index')
+        $view = view('admin.comercial.edit_compromiso.edit_index')
             ->with('user', $user)
             ->with('users', $users)
             ->with('countries', $countries)
@@ -494,6 +498,10 @@ class CompromisoController extends Controller
             ->with('clausulasSelect', $clausulasSelect)
             ->with('slip', $slip)
             ->with('slip_type', $slip_type);
+
+
+        $view = $this->chargeFilesIntoView("riesgos", "riesgos", $slip_type->id, $view);
+        return    $view;
     }
     public function fianzas($id)
     {

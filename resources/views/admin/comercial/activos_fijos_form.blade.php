@@ -343,27 +343,27 @@
                 </div>
                 <div class="input-group my-2">
                     <input class="form-control" type="file" name="desglose_file" hidden="true" id="desglose_file" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="desglose_file" id="desglose_fileFileLabel">Siniestralidad de los últimos 5 años (Fecha de ocurrencia, causa del siniestro, monto de la pérdida, valor
-                        indemnizado)
+                    <label class="input-group-text" hidden="true" for="desglose_file" id="desglose_fileFileLabel">Detalle/Desglose (Valor asegurado por
+                        ubicación y por rubro)
                     </label>
                     @if ($desglose_file)
                     <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="desglose_fileDownload">Detalle/Desglose (Valor asegurado por
                         ubicación y por rubro) - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleAccidentRate()" id="desglose_fileFileToggle">Modificar</button>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggledesglose_file()" id="desglose_fileFileToggle">Modificar</button>
                     <script>
-                        let toggledDesglose_fileFile = false;
+                        let toggleddesglose_fileFile = false;
                         const desglose_fileInput = document.getElementById('desglose_file');
                         const desglose_fileDownload = document.getElementById('desglose_fileDownload');
                         const desglose_fileLabel = document.getElementById('desglose_fileFileLabel');
                         const desglose_fileToggle = document.getElementById('desglose_fileFileToggle');
 
-                        function toggleAccidentRate() {
-                            toggledDesglose_fileFile = !toggledDesglose_fileFile;
-                            desglose_fileInput.hidden = !toggledDesglose_fileFile;
-                            desglose_fileDownload.hidden = toggledDesglose_fileFile;
-                            desglose_fileLabel.hidden = !toggledDesglose_fileFile;
-                            desglose_fileToggle.textContent = toggledDesglose_fileFile ? 'Usar previo' : 'Modificar'
-                            if (toggledDesglose_fileFile) desglose_fileInput.click()
+                        function toggledesglose_file() {
+                            toggleddesglose_fileFile = !toggleddesglose_fileFile;
+                            desglose_fileInput.hidden = !toggleddesglose_fileFile;
+                            desglose_fileDownload.hidden = toggleddesglose_fileFile;
+                            desglose_fileLabel.hidden = !toggleddesglose_fileFile;
+                            desglose_fileToggle.textContent = toggleddesglose_fileFile ? 'Usar previo' : 'Modificar'
+                            if (toggleddesglose_fileFile) desglose_fileInput.click()
                         }
                     </script>
                     @else
@@ -380,7 +380,7 @@
                     @if ($devices_list_file)
                     <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="devices_list_fileDownload">Listado de equipos (Valorados para equipo
                         electrónico) - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleAccidentRate()" id="devices_list_fileFileToggle">Modificar</button>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggletoggleddevices_list_file()" id="devices_list_fileFileToggle">Modificar</button>
                     <script>
                         let toggleddevices_list_fileFile = false;
                         const devices_list_fileInput = document.getElementById('devices_list_file');
@@ -388,7 +388,7 @@
                         const devices_list_fileLabel = document.getElementById('devices_list_fileFileLabel');
                         const devices_list_fileToggle = document.getElementById('devices_list_fileFileToggle');
 
-                        function toggleAccidentRate() {
+                        function toggletoggleddevices_list_file() {
                             toggleddevices_list_fileFile = !toggleddevices_list_fileFile;
                             devices_list_fileInput.hidden = !toggleddevices_list_fileFile;
                             devices_list_fileDownload.hidden = toggleddevices_list_fileFile;
@@ -410,7 +410,7 @@
                     @if ($machine_list_file)
                     <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="machine_list_fileDownload">Listado de maquinaria (Valorados para rotura
                         de maquinaria y/o equipo de maquinaria) - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleAccidentRate()" id="machine_list_fileFileToggle">Modificar</button>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglemachine_list_file()" id="machine_list_fileFileToggle">Modificar</button>
                     <script>
                         let toggledmachine_list_fileFile = false;
                         const machine_list_fileInput = document.getElementById('machine_list_file');
@@ -418,7 +418,7 @@
                         const machine_list_fileLabel = document.getElementById('machine_list_fileFileLabel');
                         const machine_list_fileToggle = document.getElementById('machine_list_fileFileToggle');
 
-                        function toggleAccidentRate() {
+                        function togglemachine_list_file() {
                             toggledmachine_list_fileFile = !toggledmachine_list_fileFile;
                             machine_list_fileInput.hidden = !toggledmachine_list_fileFile;
                             machine_list_fileDownload.hidden = toggledmachine_list_fileFile;
@@ -439,7 +439,7 @@
                     </label>
                     @if ($inspection_control_file)
                     <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="inspection_control_fileDownload">Informe de inspección - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleAccidentRate()" id="inspection_control_fileFileToggle">Modificar</button>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleinspection_control_file()" id="inspection_control_fileFileToggle">Modificar</button>
                     <script>
                         let toggledinspection_control_fileFile = false;
                         const inspection_control_fileInput = document.getElementById('inspection_control_file');
@@ -447,7 +447,7 @@
                         const inspection_control_fileLabel = document.getElementById('inspection_control_fileFileLabel');
                         const inspection_control_fileToggle = document.getElementById('inspection_control_fileFileToggle');
 
-                        function toggleAccidentRate() {
+                        function toggleinspection_control_file() {
                             toggledinspection_control_fileFile = !toggledinspection_control_fileFile;
                             inspection_control_fileInput.hidden = !toggledinspection_control_fileFile;
                             inspection_control_fileDownload.hidden = toggledinspection_control_fileFile;
@@ -465,11 +465,11 @@
             <div class="row" id="formularioCotizacionLucro" style="display: none">
                 <div class="input-group my-2">
                     <input class="form-control" type="file" name="quote_form_file" hidden="true" id="quote_form_file" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="quote_form_file" id="quote_form_fileFileLabel">Informe de inspección
+                    <label class="input-group-text" hidden="true" for="quote_form_file" id="quote_form_fileFileLabel">Formularios de cotización
                     </label>
                     @if ($quote_form_file)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="quote_form_fileDownload">Informe de inspección - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleAccidentRate()" id="quote_form_fileFileToggle">Modificar</button>
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="quote_form_fileDownload">Formularios de cotización - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglequote_form_file()" id="quote_form_fileFileToggle">Modificar</button>
                     <script>
                         let toggledquote_form_fileFile = false;
                         const quote_form_fileInput = document.getElementById('quote_form_file');
@@ -477,7 +477,7 @@
                         const quote_form_fileLabel = document.getElementById('quote_form_fileFileLabel');
                         const quote_form_fileToggle = document.getElementById('quote_form_fileFileToggle');
 
-                        function toggleAccidentRate() {
+                        function togglequote_form_file() {
                             toggledquote_form_fileFile = !toggledquote_form_fileFile;
                             quote_form_fileInput.hidden = !toggledquote_form_fileFile;
                             quote_form_fileDownload.hidden = toggledquote_form_fileFile;
@@ -489,8 +489,6 @@
                     @else<input type="file" name="quote_form_file" id="quote_form_file" class="form-control">
                     <label for="quote_form_file" class="input-group-text">Formularios de cotización</label>
                     @endif
-                    <input type="file" name="" id="" class="form-control">
-                    <label for="" class="input-group-text"></label>
                 </div>
             </div>
         </div>

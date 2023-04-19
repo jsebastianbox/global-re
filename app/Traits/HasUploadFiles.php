@@ -163,6 +163,33 @@ trait HasUploadFiles
                 $keys[] = "desglose_file";
                 $keys[] = "accidentRate";
                 break;
+            case 'vehiculos':
+                $keys[] = "accidentRate";
+                $keys[] = "informe";
+                break;
+            case 'tecnico':
+                $keys[] = "coverageDetail";
+                $keys[] = "accidentRate";
+                $keys[] = "schedule";
+                $keys[] = "soilStudy";
+                $keys[] = "quotationForm";
+                $keys[] = "experience";
+                $keys[] = "workMemory";
+                break;
+            case 'energia':
+                $keys[] = "coverageDetail";
+                $keys[] = "accidentRate";
+                $keys[] = "schedule";
+                $keys[] = "soilStudy";
+                $keys[] = "quotationForm";
+                $keys[] = "experience";
+                $keys[] = "workMemory";
+                $keys[] = "accidentRate";
+                $keys[] = "accidentRate";
+                $keys[] = "accidentRate";
+                $keys[] = "accidentRate";
+                break;
+
             default:
                 break;
         }
