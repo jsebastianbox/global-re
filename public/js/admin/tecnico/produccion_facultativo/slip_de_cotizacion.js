@@ -550,7 +550,7 @@ $(document).on('click', '.btn-delete-cobertura', function (e) {
     $(`#newRowCoberturaAdicional${id}`).remove()
 })
 //Deducibles
-
+let deducibleCounter = 1
 function addDeducible(event) {
     event.preventDefault()
 
@@ -560,10 +560,11 @@ function addDeducible(event) {
     deduciblesContainer.appendChild(div)
     div.className = 'flexColumnCenterContainer'
     div.style.margin = '2rem 0'
+    div.id = `newDeducible${deducibleCounter}`
     div.innerHTML =
         `
         <div class="flexRowWrapContainer" style="margin:1.2rem 0">
-        <input type="text" name="description_deductible[]"
+            <input type="text" name="description_deductible[]"
                         placeholder="Detalle..">
             <div class="labelStyleContainer">
                 <p>
@@ -588,8 +589,20 @@ function addDeducible(event) {
             </div>
             <textarea rows="1" type="text" name="description2_deductible[]" placeholder="..."></textarea>
         </div>
+        <button id="${deducibleCounter}" type="button" class="btn btn-danger btn-xs btn-delete-deducible">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
         `
+
+    deducibleCounter++
 }
+$(document).on('click', '.btn-delete-deducible', function (e) {
+    e.preventDefault()
+    let id = $(this).attr('id')
+    $(`#newDeducible${id}`).remove()
+    deducibleCounter--
+})
+
 
 
 const apIndemnizacion29 = document.getElementById('apIndemnizacion29')
@@ -765,7 +778,7 @@ function refreshSumaAsegurableTable(table) {
 }
 
 ///////////////////////funciones suma//////////////////////////////////
-function incendioSumaAsegurableTotales(row, table) {
+function incendioSumaAsegurableTotalesSINUSAR(row, table) {
     const activos_fijosSumaAseguradaTable = document.getElementById(`${table}SumaAseguradaTable`)
     //sumas filas
     let rowSelect = activos_fijosSumaAseguradaTable.getElementsByClassName(`row${row}`)
@@ -2460,3 +2473,81 @@ $(document).on('click', '.btn-delete-cobertura', function (e) {
 
     $(`#newRowIncendioCoberturaAdicional${id}`).remove()
 })
+
+//suma asegurable / table suma asegurada rama:incendio
+
+function refreshSumaAseguradaTable() {
+    let row = $('#activos_fijosSumaAseguradaTableBody').find('tr').length
+    let column = $('#activos_fijosSumaAseguradaTableBody').find('tr:first-child td').length - 4;
+    console.log(column);
+    
+    for (let i = 1; i <= row; i++) {
+        for (let j = 1; j <= column; j++) {
+            incendioSumaAsegurableTotales(i, j, 'activos_fijos');
+        }
+    }
+
+    $('#btnRefreshSuma').fadeOut();
+}
+
+function incendioSumaAsegurableTotales(row, col, table) {
+    const activos_fijosSumaAseguradaTable = document.getElementById(`${table}SumaAseguradaTable`)
+    //sumas filas
+    let rowSelect = activos_fijosSumaAseguradaTable.getElementsByClassName(`row${row}`)
+    let rowTotal = activos_fijosSumaAseguradaTable.querySelector(`#rowTotal${row}`)
+    let rowTotalArray = []
+
+    for (let i = 0; i < rowSelect.length; i++) {
+        if (rowSelect[i].value > 0) {
+            rowTotalArray.push(parseFloat(rowSelect[i].value))
+        }
+    }
+
+    let sumaTotal = rowTotalArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
+
+    rowTotal.innerText = parseFloat(sumaTotal).toFixed(2)
+
+    //suma columnas
+    let colSelect = activos_fijosSumaAseguradaTable.getElementsByClassName(`col${col}`)
+    let colTotal = activos_fijosSumaAseguradaTable.querySelector(`#colTotal${col}`)
+    let colTotalArray = []
+
+    for (const element of colSelect) {
+        if (element.value > 0) {
+            colTotalArray.push(parseFloat(element.value))
+        }
+    }
+
+    let sumaTotal2 = colTotalArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
+
+    colTotal.innerText = parseFloat(sumaTotal2).toFixed(2)
+
+    //total de los total
+    let colTotalTotal = activos_fijosSumaAseguradaTable.getElementsByClassName('col12')
+    console.log(colTotalTotal);
+    const totalTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioTotalTotal')
+    let colTotalTotalArray = []
+
+    for (const element of colTotalTotal) {
+        if (element.innerText > 0) {
+            colTotalTotalArray.push(parseFloat(element.innerText))
+        }
+    }
+
+    let sumaTotal3 = colTotalTotalArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
+
+    totalTotal.innerText = parseFloat(sumaTotal3).toFixed(2)
+
+    //suma en input
+
+    if (table === 'activos') {
+        $(`#input_sumaAsegurable`).val(parseFloat(sumaTotal3).toFixed(2))
+    }
+    if (table === 'energia1') {
+        $(`#input_sumaAsegurableEnergia`).val(parseFloat(sumaTotal3).toFixed(2))
+    }
+    if (table === 'activos_fijos') {
+        $(`#input_sumaAsegurada`).val(parseFloat(sumaTotal3).toFixed(2))
+    }
+
+}

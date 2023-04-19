@@ -22,32 +22,26 @@
             </div>
         </div>
 
-        <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Suma Asegurable y/o Suma Asegurada</h3>
-
-        <div class="flexColumnCenterContainer">
-
-            <div class="flexRowWrapContainer">
-                <button type="button" class="new_entry__form--button"  onclick="chooseTypeSuma('asegurable'); refreshSumaAsegurableTable('activos')">
-                    Suma Asegurable
-                </button>
-
-                <button type="button" class="new_entry__form--button"  onclick="chooseTypeSuma('asegurada'); refreshSumaAsegurableTable('activos_fijos')">
-                    Suma Asegurada
-                </button>
-
-
-            </div>
-
-        </div>
+        @if ($slip->insurable_sum > 0)
+            <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Suma Asegurable</h3>
+        @elseif($slip->insured_sum > 0)
+            <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Suma Asegurada</h3>
+        @endif
 
         {{-- Suma asegurable / asegurada --}}
 
-        <div id="sumaAsegurableContainer" class="flexColumnCenterContainer" style="display:none;margin:2.5rem 0">
-            <h4 class="slipTitle">Tabla Suma Asegurable</h4>
-            @include('admin.tecnico.slip.slips_generales.tableSumaAsegurable')
+        <div class="flexColumnCenterContainer" style="margin:2.5rem 0">
+            <button id="btnRefreshSuma" type="button" onclick="refreshSumaAseguradaTable()" class="btn btn-info" style="margin: 1rem">
+                Actualizar
+            </button>
+            @include('admin.tecnico.slip.slips_generales.tableSumaAsegurada')
+           {{--  @include('admin.tecnico.slip.slips_generales.tableSumaAsegurable') --}}
+        </div>
 
-            <div class="tableContainer">
-                <div class="input_group" style="max-width: 700px;margin-top:2rem">
+
+        <div class="two-sides">
+            <div class="left_side">
+                <div class="input_group">
                     <label for="incendioLimiteIndem">
                         Límite de indemnización:
                     </label>
@@ -55,18 +49,41 @@
                         value="{{ $slip_type->limit_compensation }}">
                 </div>
             </div>
+            <div class="right_side">
+                @if ($slip->insurable_sum > 0)
+                    <div class="input_group">
+                        <label for="">Suma Asegurable:</label>
+                        <input id="input_sumaAsegurada" type="number" name="insurable_sum"
+                        value="{{ $slip->insurable_sum }}">
+                    </div>
+                @elseif($slip->insured_sum > 0)
+                    <div class="input_group">
+                        <label for="">Suma Asegurada:</label>
+                        <input id="input_sumaAsegurada" type="number" name="insured_sum"
+                        value="{{ $slip->insured_sum }}">
+                    </div>
+                @endif
+            </div>
         </div>
 
-        <div id="sumaAseguradaContainer" class="tableContainer" style="display:none;margin:1.5rem 0">
-            <h4 class="slipTitle">Tabla Suma Asegurada</h4>
-            @include('admin.tecnico.slip.slips_generales.tableSumaAsegurada')
-        </div>
-
+        @if ($slip->type_coverage === 7)
+            <div class="tableContainer">
+                <div class="input_group" style="width: 350px">
+                    <label class="input-group-text">Primer riesgo:</label>
+                    <select name="first_risk">
+                        <option value="Absoluto" {{$slip_type->first_risk === 'Absoluto' ? 'selected' : ''}}>
+                            Absoluto
+                        </option>
+                        <option value="Relativo" {{$slip_type->first_risk === 'Relativo' ? 'selected' : ''}}>
+                            Relativo
+                        </option>
+                    </select>
+                </div>
+            </div>
+        @endif
 
         <div class="flexRowWrapContainer" style="margin: 2rem 1rem">
             {{-- Límite de Indemnización --}}
-
-
 
             <div class="input_group" style="display:none;">
                 <label style="margin-right: 8px">

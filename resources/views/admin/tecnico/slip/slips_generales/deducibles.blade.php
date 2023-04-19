@@ -61,64 +61,6 @@
                 <textarea type="text" name="description2_deductible[]" placeholder="..."></textarea>
             </div>
         </div>
-        {{-- Deducible 2 --}}
-        <div class="flexColumnCenterContainer" style="margin: 2rem 0">
-            <div class="flexRowWrapContainer" style="margin:1.2rem 0">
-                <input type="text" name="description_deductible[]" placeholder="Detalle..">
-                <div class="labelStyleContainer">
-                    <p>
-                        <i class="fa-solid fa-percent"></i>
-                        valor del siniestro
-                    </p>
-                    <input type="number" style="max-width:95px;text-align: end;" placeholder="%"
-                        name="sinister_value[]" min="0">
-                </div>
-                <div class="labelStyleContainer">
-                    <p>
-                        <i class="fa-solid fa-percent"></i>
-                        valor asegurado
-                    </p>
-                    <input type="number" placeholder="%" name="insured_value[]" min="0"
-                        style="max-width:95px;text-align: end;">
-                </div>
-                <div class="labelStyleContainer">
-                    <input type="number" name="minimum[]" style="text-align:end" placeholder="USD">
-                    <p>
-                        mínimo
-                    </p>
-                </div>
-                <textarea type="text" name="description2_deductible[]" placeholder="..."></textarea>
-            </div>
-        </div>
-        {{-- Deducible 3 --}}
-        <div class="flexColumnCenterContainer" style="margin: 2rem 0">
-            <div class="flexRowWrapContainer" style="margin:1.2rem 0">
-                <input type="text" name="description_deductible[]" placeholder="Detalle..">
-                <div class="labelStyleContainer">
-                    <p>
-                        <i class="fa-solid fa-percent"></i>
-                        valor del siniestro
-                    </p>
-                    <input type="number" style="max-width:95px;text-align: end;" placeholder="%"
-                        name="sinister_value[]" min="0">
-                </div>
-                <div class="labelStyleContainer">
-                    <p>
-                        <i class="fa-solid fa-percent"></i>
-                        valor asegurado
-                    </p>
-                    <input type="number" placeholder="%" name="insured_value[]" min="0"
-                        style="max-width:95px;text-align: end;">
-                </div>
-                <div class="labelStyleContainer">
-                    <input type="number" name="minimum[]" style="text-align:end" placeholder="USD">
-                    <p>
-                        mínimo
-                    </p>
-                </div>
-                <textarea type="text" name="description2_deductible[]" placeholder="..."></textarea>
-            </div>
-        </div>
     @endif
 
 </div>
