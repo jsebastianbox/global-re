@@ -75,7 +75,7 @@ class SlipController extends Controller
         //variables nulls para no tirar error
         $object_insurance = [];
         $sum_assured = [];
-        $vehicle_detail = [];
+        $vehicles_details = [];
 
         switch ($slip->type_coverage) {
             case '1':
@@ -103,7 +103,7 @@ class SlipController extends Controller
             case '9':
             case '10':
                 $slip_type = SlipVehicle::where('slip_id', $id)->first();
-                $vehicle_detail = VehicleDetail::where('slip_id', $slip->id)->get();
+                $vehicles_details = VehicleDetail::where('slip_id', $slip->id)->get();
                 //clausulas y cobertura to find
                 $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
                 $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
@@ -241,7 +241,7 @@ class SlipController extends Controller
             ->with('slip', $slip)
             ->with('slip_type', $slip_type)
             ->with('sum_assured', $sum_assured)
-            ->with('vehicle_detail', $vehicle_detail)
+            ->with('vehicles_details', $vehicles_details)
             ->with('coberturasSelect', $coberturasSelect)
             ->with('clausulasSelect', $clausulasSelect)
             ->with('object_insurance', $object_insurance);

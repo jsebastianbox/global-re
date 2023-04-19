@@ -2551,3 +2551,25 @@ function incendioSumaAsegurableTotales(row, col, table) {
     }
 
 }
+
+
+/* VEHICULOS */
+
+function addMatriculaRow(event) {
+    event.preventDefault()
+
+    let rowCount = document.getElementById(`vehiculosMatriculasTable`).rows.length
+
+    const fidelidadObjetosTableBody = document.getElementById(`vehiculosMatriculasTableBody`)
+    const tr = document.createElement('tr')
+
+    fidelidadObjetosTableBody.appendChild(tr)
+    tr.innerHTML =
+        `
+        <th scope="row">${rowCount}</th>
+        <td>
+            <input type="text" name="plate_vehicle[]" >
+        </td>
+
+        `
+}
