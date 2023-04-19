@@ -179,15 +179,15 @@ trait HasUploadFiles
             case 'energia':
                 $keys[] = "coverageDetail";
                 $keys[] = "accidentRate";
-                $keys[] = "schedule";
-                $keys[] = "soilStudy";
-                $keys[] = "quotationForm";
-                $keys[] = "experience";
-                $keys[] = "workMemory";
-                $keys[] = "accidentRate";
-                $keys[] = "accidentRate";
-                $keys[] = "accidentRate";
-                $keys[] = "accidentRate";
+                $keys[] = "valueDetail";
+                $keys[] = "petroleumDenValue";
+                $keys[] = "report";
+                $keys[] = "anualIncome";
+                $keys[] = "employees";
+                $keys[] = "vehicles";
+                $keys[] = "payroll";
+                $keys[] = "dailyProduction";
+                $keys[] = "barrelValue";
                 break;
 
             default:

@@ -25,6 +25,128 @@
 </script>
 @endsection
 @if (\Illuminate\Support\Str::contains(\Illuminate\Support\Facades\Request::url(), '/admin/comercial/edit_compromiso/'))
+<script>
+    const coverageDetail_raw = "{{$coverageDetail}}";
+    let coverageDetail;
+    fetch(`data:application/*;base64,${coverageDetail_raw}`).then(base64 => base64.blob()).then(blob => {
+        coverageDetail = URL.createObjectURL(blob)
+        const anchor = document.getElementById('coverageDetailDownload')
+        if (anchor) {
+            anchor.href = coverageDetail
+            anchor.download = 'vida_siniestralidad_previa.{{$coverageDetailExtension}}'
+        }
+    });
+
+    const accidentRate_raw = "{{$accidentRate}}";
+    let accidentRate;
+    fetch(`data:application/*;base64,${accidentRate_raw}`).then(base64 => base64.blob()).then(blob => {
+        accidentRate = URL.createObjectURL(blob)
+        const anchor = document.getElementById('accidentRateDownload')
+        if (anchor) {
+            anchor.href = accidentRate
+            anchor.download = 'vida_siniestralidad_previa.{{$accidentRateExtension}}'
+        }
+    });
+
+    const valueDetail_raw = "{{$valueDetail}}";
+    let valueDetail;
+    fetch(`data:application/*;base64,${valueDetail_raw}`).then(base64 => base64.blob()).then(blob => {
+        valueDetail = URL.createObjectURL(blob)
+        const anchor = document.getElementById('valueDetailDownload')
+        if (anchor) {
+            anchor.href = valueDetail
+            anchor.download = 'vida_siniestralidad_previa.{{$valueDetailExtension}}'
+        }
+    });
+
+    const petroleumDenValue_raw = "{{$petroleumDenValue}}";
+    let petroleumDenValue;
+    fetch(`data:application/*;base64,${petroleumDenValue_raw}`).then(base64 => base64.blob()).then(blob => {
+        petroleumDenValue = URL.createObjectURL(blob)
+        const anchor = document.getElementById('petroleumDenValueDownload')
+        if (anchor) {
+            anchor.href = petroleumDenValue
+            anchor.download = 'vida_siniestralidad_previa.{{$petroleumDenValueExtension}}'
+        }
+    });
+
+    const report_raw = "{{$report}}";
+    let report;
+    fetch(`data:application/*;base64,${report_raw}`).then(base64 => base64.blob()).then(blob => {
+        report = URL.createObjectURL(blob)
+        const anchor = document.getElementById('reportDownload')
+        if (anchor) {
+            anchor.href = report
+            anchor.download = 'vida_siniestralidad_previa.{{$reportExtension}}'
+        }
+    });
+
+    const anualIncome_raw = "{{$anualIncome}}";
+    let anualIncome;
+    fetch(`data:application/*;base64,${anualIncome_raw}`).then(base64 => base64.blob()).then(blob => {
+        anualIncome = URL.createObjectURL(blob)
+        const anchor = document.getElementById('anualIncomeDownload')
+        if (anchor) {
+            anchor.href = anualIncome
+            anchor.download = 'vida_siniestralidad_previa.{{$anualIncomeExtension}}'
+        }
+    });
+
+    const employees_raw = "{{$employees}}";
+    let employees;
+    fetch(`data:application/*;base64,${employees_raw}`).then(base64 => base64.blob()).then(blob => {
+        employees = URL.createObjectURL(blob)
+        const anchor = document.getElementById('employeesDownload')
+        if (anchor) {
+            anchor.href = employees
+            anchor.download = 'vida_siniestralidad_previa.{{$employeesExtension}}'
+        }
+    });
+
+    const vehicles_raw = "{{$vehicles}}";
+    let vehicles;
+    fetch(`data:application/*;base64,${vehicles_raw}`).then(base64 => base64.blob()).then(blob => {
+        vehicles = URL.createObjectURL(blob)
+        const anchor = document.getElementById('vehiclesDownload')
+        if (anchor) {
+            anchor.href = vehicles
+            anchor.download = 'vida_siniestralidad_previa.{{$vehiclesExtension}}'
+        }
+    });
+
+    const payroll_raw = "{{$payroll}}";
+    let payroll;
+    fetch(`data:application/*;base64,${payroll_raw}`).then(base64 => base64.blob()).then(blob => {
+        payroll = URL.createObjectURL(blob)
+        const anchor = document.getElementById('payrollDownload')
+        if (anchor) {
+            anchor.href = payroll
+            anchor.download = 'vida_siniestralidad_previa.{{$payrollExtension}}'
+        }
+    });
+
+    const dailyProduction_raw = "{{$dailyProduction}}";
+    let dailyProduction;
+    fetch(`data:application/*;base64,${dailyProduction_raw}`).then(base64 => base64.blob()).then(blob => {
+        dailyProduction = URL.createObjectURL(blob)
+        const anchor = document.getElementById('dailyProductionDownload')
+        if (anchor) {
+            anchor.href = dailyProduction
+            anchor.download = 'vida_siniestralidad_previa.{{$dailyProductionExtension}}'
+        }
+    });
+
+    const barrelValue_raw = "{{$barrelValue}}";
+    let barrelValue;
+    fetch(`data:application/*;base64,${barrelValue_raw}`).then(base64 => base64.blob()).then(blob => {
+        barrelValue = URL.createObjectURL(blob)
+        const anchor = document.getElementById('barrelValueDownload')
+        if (anchor) {
+            anchor.href = barrelValue
+            anchor.download = 'vida_siniestralidad_previa.{{$barrelValueExtension}}'
+        }
+    });
+</script>
 <style>
     hr {
         background-color: darkgrey;
@@ -196,299 +318,289 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="input-group my-2">
-                    <input class="form-control" type="file" name="quote_form_file" hidden="true" id="quote_form_file" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="quote_form_file" id="quote_form_fileFileLabel">Informe de inspección
+                    <input class="form-control" type="file" name="accidentRate" hidden="true" id="accidentRate" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="accidentRate" id="accidentRateFileLabel">Siniestralidad 5 años detallada
                     </label>
-                    @if ($quote_form_file)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="quote_form_fileDownload">Informe de inspección - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglequote_form_file()" id="quote_form_fileFileToggle">Modificar</button>
+                    @if ($accidentRate)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="accidentRateDownload">Siniestralidad 5 años detallada - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleaccidentRate()" id="accidentRateFileToggle">Modificar</button>
                     <script>
-                        let toggledquote_form_fileFile = false;
-                        const quote_form_fileInput = document.getElementById('quote_form_file');
-                        const quote_form_fileDownload = document.getElementById('quote_form_fileDownload');
-                        const quote_form_fileLabel = document.getElementById('quote_form_fileFileLabel');
-                        const quote_form_fileToggle = document.getElementById('quote_form_fileFileToggle');
+                        let toggledaccidentRateFile = false;
+                        const accidentRateInput = document.getElementById('accidentRate');
+                        const accidentRateDownload = document.getElementById('accidentRateDownload');
+                        const accidentRateLabel = document.getElementById('accidentRateFileLabel');
+                        const accidentRateToggle = document.getElementById('accidentRateFileToggle');
 
-                        function togglequote_form_file() {
-                            toggledquote_form_fileFile = !toggledquote_form_fileFile;
-                            quote_form_fileInput.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileDownload.hidden = toggledquote_form_fileFile;
-                            quote_form_fileLabel.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileToggle.textContent = toggledquote_form_fileFile ? 'Usar previo' : 'Modificar'
-                            if (toggledquote_form_fileFile) quote_form_fileInput.click()
+                        function toggleaccidentRate() {
+                            toggledaccidentRateFile = !toggledaccidentRateFile;
+                            accidentRateInput.hidden = !toggledaccidentRateFile;
+                            accidentRateDownload.hidden = toggledaccidentRateFile;
+                            accidentRateLabel.hidden = !toggledaccidentRateFile;
+                            accidentRateToggle.textContent = toggledaccidentRateFile ? 'Usar previo' : 'Modificar'
+                            if (toggledaccidentRateFile) accidentRateInput.click()
                         }
                     </script>
-                    @else<input type="file" name="quote_form_file" id="quote_form_file" class="form-control">
-                    <label for="quote_form_file" class="input-group-text">Formularios de cotización</label>
+                    @else<input type="file" name="accidentRate" id="accidentRate" class="form-control">
+                    <label for="accidentRate" class="input-group-text">Siniestralidad 5 años detallada</label>
                     @endif
-                    <label class="input-group-text" for="accidentRate">Siniestralidad 5 años detallada</label>
-                    <input class="inputForm" type="file" name="accidentRate" id="accidentRate">
                 </div>
                 <div class="input-group my-2">
-                    <input class="form-control" type="file" name="quote_form_file" hidden="true" id="quote_form_file" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="quote_form_file" id="quote_form_fileFileLabel">Informe de inspección
+                    <input class="form-control" type="file" name="valueDetail" hidden="true" id="valueDetail" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="valueDetail" id="valueDetailFileLabel">Detalle/Desglose de valor asegurado por
+                        ubicación y por
+                        rubro
                     </label>
-                    @if ($quote_form_file)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="quote_form_fileDownload">Informe de inspección - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglequote_form_file()" id="quote_form_fileFileToggle">Modificar</button>
+                    @if ($valueDetail)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="valueDetailDownload">Detalle/Desglose de valor asegurado por
+                        ubicación y por
+                        rubro - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglevalueDetail()" id="valueDetailFileToggle">Modificar</button>
                     <script>
-                        let toggledquote_form_fileFile = false;
-                        const quote_form_fileInput = document.getElementById('quote_form_file');
-                        const quote_form_fileDownload = document.getElementById('quote_form_fileDownload');
-                        const quote_form_fileLabel = document.getElementById('quote_form_fileFileLabel');
-                        const quote_form_fileToggle = document.getElementById('quote_form_fileFileToggle');
+                        let toggledvalueDetailFile = false;
+                        const valueDetailInput = document.getElementById('valueDetail');
+                        const valueDetailDownload = document.getElementById('valueDetailDownload');
+                        const valueDetailLabel = document.getElementById('valueDetailFileLabel');
+                        const valueDetailToggle = document.getElementById('valueDetailFileToggle');
 
-                        function togglequote_form_file() {
-                            toggledquote_form_fileFile = !toggledquote_form_fileFile;
-                            quote_form_fileInput.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileDownload.hidden = toggledquote_form_fileFile;
-                            quote_form_fileLabel.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileToggle.textContent = toggledquote_form_fileFile ? 'Usar previo' : 'Modificar'
-                            if (toggledquote_form_fileFile) quote_form_fileInput.click()
+                        function togglevalueDetail() {
+                            toggledvalueDetailFile = !toggledvalueDetailFile;
+                            valueDetailInput.hidden = !toggledvalueDetailFile;
+                            valueDetailDownload.hidden = toggledvalueDetailFile;
+                            valueDetailLabel.hidden = !toggledvalueDetailFile;
+                            valueDetailToggle.textContent = toggledvalueDetailFile ? 'Usar previo' : 'Modificar'
+                            if (toggledvalueDetailFile) valueDetailInput.click()
                         }
                     </script>
-                    @else<input type="file" name="quote_form_file" id="quote_form_file" class="form-control">
-                    <label for="quote_form_file" class="input-group-text">Formularios de cotización</label>
-                    @endif
-                    <label class="input-group-text" for="valueDetail">Detalle/Desglose de valor asegurado por
+                    @else<input type="file" name="valueDetail" id="valueDetail" class="form-control">
+                    <label for="valueDetail" class="input-group-text">Detalle/Desglose de valor asegurado por
                         ubicación y por
                         rubro</label>
-                    <input class="inputForm" type="file" name="valueDetail" id="valueDetail">
+                    @endif
                 </div>
                 <div class="input-group my-2">
-                    <input class="form-control" type="file" name="quote_form_file" hidden="true" id="quote_form_file" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="quote_form_file" id="quote_form_fileFileLabel">Informe de inspección
+                    <input class="form-control" type="file" name="petroleumDenValue" hidden="true" id="petroleumDenValue" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="petroleumDenValue" id="petroleumDenValueFileLabel">Detalle/Desglose de valor asegurado
+                        por
+                        pozo
+                        energia
                     </label>
-                    @if ($quote_form_file)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="quote_form_fileDownload">Informe de inspección - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglequote_form_file()" id="quote_form_fileFileToggle">Modificar</button>
+                    @if ($petroleumDenValue)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="petroleumDenValueDownload">Detalle/Desglose de valor asegurado
+                        por
+                        pozo
+                        energia - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglepetroleumDenValue()" id="petroleumDenValueFileToggle">Modificar</button>
                     <script>
-                        let toggledquote_form_fileFile = false;
-                        const quote_form_fileInput = document.getElementById('quote_form_file');
-                        const quote_form_fileDownload = document.getElementById('quote_form_fileDownload');
-                        const quote_form_fileLabel = document.getElementById('quote_form_fileFileLabel');
-                        const quote_form_fileToggle = document.getElementById('quote_form_fileFileToggle');
+                        let toggledpetroleumDenValueFile = false;
+                        const petroleumDenValueInput = document.getElementById('petroleumDenValue');
+                        const petroleumDenValueDownload = document.getElementById('petroleumDenValueDownload');
+                        const petroleumDenValueLabel = document.getElementById('petroleumDenValueFileLabel');
+                        const petroleumDenValueToggle = document.getElementById('petroleumDenValueFileToggle');
 
-                        function togglequote_form_file() {
-                            toggledquote_form_fileFile = !toggledquote_form_fileFile;
-                            quote_form_fileInput.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileDownload.hidden = toggledquote_form_fileFile;
-                            quote_form_fileLabel.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileToggle.textContent = toggledquote_form_fileFile ? 'Usar previo' : 'Modificar'
-                            if (toggledquote_form_fileFile) quote_form_fileInput.click()
+                        function togglepetroleumDenValue() {
+                            toggledpetroleumDenValueFile = !toggledpetroleumDenValueFile;
+                            petroleumDenValueInput.hidden = !toggledpetroleumDenValueFile;
+                            petroleumDenValueDownload.hidden = toggledpetroleumDenValueFile;
+                            petroleumDenValueLabel.hidden = !toggledpetroleumDenValueFile;
+                            petroleumDenValueToggle.textContent = toggledpetroleumDenValueFile ? 'Usar previo' : 'Modificar'
+                            if (toggledpetroleumDenValueFile) petroleumDenValueInput.click()
                         }
                     </script>
-                    @else<input type="file" name="quote_form_file" id="quote_form_file" class="form-control">
-                    <label for="quote_form_file" class="input-group-text">Formularios de cotización</label>
-                    @endif
-                    <label class="input-group-text" for="petroleumDenValue">Detalle/Desglose de valor asegurado
+                    @else<input type="file" name="petroleumDenValue" id="petroleumDenValue" class="form-control">
+                    <label for="petroleumDenValue" class="input-group-text">Detalle/Desglose de valor asegurado
                         por
                         pozo
                         energia</label>
-                    <input class="inputForm" type="file" name="petroleumDenValue" id="petroleumDenValue">
+                    @endif
                 </div>
                 <div class="input-group my-2">
-                    <input class="form-control" type="file" name="quote_form_file" hidden="true" id="quote_form_file" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="quote_form_file" id="quote_form_fileFileLabel">Informe de inspección
+                    <input class="form-control" type="file" name="report" hidden="true" id="report" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="report" id="reportFileLabel">Informe de inspección
                     </label>
-                    @if ($quote_form_file)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="quote_form_fileDownload">Informe de inspección - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglequote_form_file()" id="quote_form_fileFileToggle">Modificar</button>
+                    @if ($report)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="reportDownload">Informe de inspección - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglereport()" id="reportFileToggle">Modificar</button>
                     <script>
-                        let toggledquote_form_fileFile = false;
-                        const quote_form_fileInput = document.getElementById('quote_form_file');
-                        const quote_form_fileDownload = document.getElementById('quote_form_fileDownload');
-                        const quote_form_fileLabel = document.getElementById('quote_form_fileFileLabel');
-                        const quote_form_fileToggle = document.getElementById('quote_form_fileFileToggle');
+                        let toggledreportFile = false;
+                        const reportInput = document.getElementById('report');
+                        const reportDownload = document.getElementById('reportDownload');
+                        const reportLabel = document.getElementById('reportFileLabel');
+                        const reportToggle = document.getElementById('reportFileToggle');
 
-                        function togglequote_form_file() {
-                            toggledquote_form_fileFile = !toggledquote_form_fileFile;
-                            quote_form_fileInput.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileDownload.hidden = toggledquote_form_fileFile;
-                            quote_form_fileLabel.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileToggle.textContent = toggledquote_form_fileFile ? 'Usar previo' : 'Modificar'
-                            if (toggledquote_form_fileFile) quote_form_fileInput.click()
+                        function togglereport() {
+                            toggledreportFile = !toggledreportFile;
+                            reportInput.hidden = !toggledreportFile;
+                            reportDownload.hidden = toggledreportFile;
+                            reportLabel.hidden = !toggledreportFile;
+                            reportToggle.textContent = toggledreportFile ? 'Usar previo' : 'Modificar'
+                            if (toggledreportFile) reportInput.click()
                         }
                     </script>
-                    @else<input type="file" name="quote_form_file" id="quote_form_file" class="form-control">
-                    <label for="quote_form_file" class="input-group-text">Formularios de cotización</label>
+                    @else<input type="file" name="report" id="report" class="form-control">
+                    <label for="report" class="input-group-text">Informe de inspección</label>
                     @endif
-                    <label class="input-group-text" for="report">Informe de inspección</label>
-                    <input class="inputForm" type="file" name="report" id="report">
                 </div>
                 <div class="input-group my-2">
-                    <input class="form-control" type="file" name="quote_form_file" hidden="true" id="quote_form_file" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="quote_form_file" id="quote_form_fileFileLabel">Informe de inspección
+                    <input class="form-control" type="file" name="anualIncome" hidden="true" id="anualIncome" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="anualIncome" id="anualIncomeFileLabel">Ingresos estimados anuales
                     </label>
-                    @if ($quote_form_file)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="quote_form_fileDownload">Informe de inspección - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglequote_form_file()" id="quote_form_fileFileToggle">Modificar</button>
+                    @if ($anualIncome)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="anualIncomeDownload">Ingresos estimados anuales - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleanualIncome()" id="anualIncomeFileToggle">Modificar</button>
                     <script>
-                        let toggledquote_form_fileFile = false;
-                        const quote_form_fileInput = document.getElementById('quote_form_file');
-                        const quote_form_fileDownload = document.getElementById('quote_form_fileDownload');
-                        const quote_form_fileLabel = document.getElementById('quote_form_fileFileLabel');
-                        const quote_form_fileToggle = document.getElementById('quote_form_fileFileToggle');
+                        let toggledanualIncomeFile = false;
+                        const anualIncomeInput = document.getElementById('anualIncome');
+                        const anualIncomeDownload = document.getElementById('anualIncomeDownload');
+                        const anualIncomeLabel = document.getElementById('anualIncomeFileLabel');
+                        const anualIncomeToggle = document.getElementById('anualIncomeFileToggle');
 
-                        function togglequote_form_file() {
-                            toggledquote_form_fileFile = !toggledquote_form_fileFile;
-                            quote_form_fileInput.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileDownload.hidden = toggledquote_form_fileFile;
-                            quote_form_fileLabel.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileToggle.textContent = toggledquote_form_fileFile ? 'Usar previo' : 'Modificar'
-                            if (toggledquote_form_fileFile) quote_form_fileInput.click()
+                        function toggleanualIncome() {
+                            toggledanualIncomeFile = !toggledanualIncomeFile;
+                            anualIncomeInput.hidden = !toggledanualIncomeFile;
+                            anualIncomeDownload.hidden = toggledanualIncomeFile;
+                            anualIncomeLabel.hidden = !toggledanualIncomeFile;
+                            anualIncomeToggle.textContent = toggledanualIncomeFile ? 'Usar previo' : 'Modificar'
+                            if (toggledanualIncomeFile) anualIncomeInput.click()
                         }
                     </script>
-                    @else<input type="file" name="quote_form_file" id="quote_form_file" class="form-control">
-                    <label for="quote_form_file" class="input-group-text">Formularios de cotización</label>
+                    @else<input type="file" name="anualIncome" id="anualIncome" class="form-control">
+                    <label for="anualIncome" class="input-group-text">Ingresos estimados anuales</label>
                     @endif
-                    <label class="input-group-text" for="anualIncome">Ingresos estimados anuales</label>
-                    <input class="inputForm" type="file" name="anualIncome" id="anualIncome">
                 </div>
                 <div class="input-group my-2">
-                    <input class="form-control" type="file" name="quote_form_file" hidden="true" id="quote_form_file" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="quote_form_file" id="quote_form_fileFileLabel">Informe de inspección
+                    <input class="form-control" type="file" name="employees" hidden="true" id="employees" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="employees" id="employeesFileLabel">No. Empleados
                     </label>
-                    @if ($quote_form_file)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="quote_form_fileDownload">Informe de inspección - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglequote_form_file()" id="quote_form_fileFileToggle">Modificar</button>
+                    @if ($employees)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="employeesDownload">No. Empleados - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleemployees()" id="employeesFileToggle">Modificar</button>
                     <script>
-                        let toggledquote_form_fileFile = false;
-                        const quote_form_fileInput = document.getElementById('quote_form_file');
-                        const quote_form_fileDownload = document.getElementById('quote_form_fileDownload');
-                        const quote_form_fileLabel = document.getElementById('quote_form_fileFileLabel');
-                        const quote_form_fileToggle = document.getElementById('quote_form_fileFileToggle');
+                        let toggledemployeesFile = false;
+                        const employeesInput = document.getElementById('employees');
+                        const employeesDownload = document.getElementById('employeesDownload');
+                        const employeesLabel = document.getElementById('employeesFileLabel');
+                        const employeesToggle = document.getElementById('employeesFileToggle');
 
-                        function togglequote_form_file() {
-                            toggledquote_form_fileFile = !toggledquote_form_fileFile;
-                            quote_form_fileInput.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileDownload.hidden = toggledquote_form_fileFile;
-                            quote_form_fileLabel.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileToggle.textContent = toggledquote_form_fileFile ? 'Usar previo' : 'Modificar'
-                            if (toggledquote_form_fileFile) quote_form_fileInput.click()
+                        function toggleemployees() {
+                            toggledemployeesFile = !toggledemployeesFile;
+                            employeesInput.hidden = !toggledemployeesFile;
+                            employeesDownload.hidden = toggledemployeesFile;
+                            employeesLabel.hidden = !toggledemployeesFile;
+                            employeesToggle.textContent = toggledemployeesFile ? 'Usar previo' : 'Modificar'
+                            if (toggledemployeesFile) employeesInput.click()
                         }
                     </script>
-                    @else<input type="file" name="quote_form_file" id="quote_form_file" class="form-control">
-                    <label for="quote_form_file" class="input-group-text">Formularios de cotización</label>
+                    @else<input type="file" name="employees" id="employees" class="form-control">
+                    <label for="employees" class="input-group-text">Informe de inspección</label>
                     @endif
-                    <label class="input-group-text" for="employees">No. Empleados</label>
-                    <input class="inputForm" type="file" name="employees" id="employees">
                 </div>
                 <div class="input-group my-2">
-                    <input class="form-control" type="file" name="quote_form_file" hidden="true" id="quote_form_file" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="quote_form_file" id="quote_form_fileFileLabel">Informe de inspección
+                    <input class="form-control" type="file" name="vehicles" hidden="true" id="vehicles" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="vehicles" id="vehiclesFileLabel">No. Vehículos
                     </label>
-                    @if ($quote_form_file)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="quote_form_fileDownload">Informe de inspección - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglequote_form_file()" id="quote_form_fileFileToggle">Modificar</button>
+                    @if ($vehicles)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="vehiclesDownload">No. Vehículos - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglevehicles()" id="vehiclesFileToggle">Modificar</button>
                     <script>
-                        let toggledquote_form_fileFile = false;
-                        const quote_form_fileInput = document.getElementById('quote_form_file');
-                        const quote_form_fileDownload = document.getElementById('quote_form_fileDownload');
-                        const quote_form_fileLabel = document.getElementById('quote_form_fileFileLabel');
-                        const quote_form_fileToggle = document.getElementById('quote_form_fileFileToggle');
+                        let toggledvehiclesFile = false;
+                        const vehiclesInput = document.getElementById('vehicles');
+                        const vehiclesDownload = document.getElementById('vehiclesDownload');
+                        const vehiclesLabel = document.getElementById('vehiclesFileLabel');
+                        const vehiclesToggle = document.getElementById('vehiclesFileToggle');
 
-                        function togglequote_form_file() {
-                            toggledquote_form_fileFile = !toggledquote_form_fileFile;
-                            quote_form_fileInput.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileDownload.hidden = toggledquote_form_fileFile;
-                            quote_form_fileLabel.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileToggle.textContent = toggledquote_form_fileFile ? 'Usar previo' : 'Modificar'
-                            if (toggledquote_form_fileFile) quote_form_fileInput.click()
+                        function togglevehicles() {
+                            toggledvehiclesFile = !toggledvehiclesFile;
+                            vehiclesInput.hidden = !toggledvehiclesFile;
+                            vehiclesDownload.hidden = toggledvehiclesFile;
+                            vehiclesLabel.hidden = !toggledvehiclesFile;
+                            vehiclesToggle.textContent = toggledvehiclesFile ? 'Usar previo' : 'Modificar'
+                            if (toggledvehiclesFile) vehiclesInput.click()
                         }
                     </script>
-                    @else<input type="file" name="quote_form_file" id="quote_form_file" class="form-control">
-                    <label for="quote_form_file" class="input-group-text">Formularios de cotización</label>
+                    @else<input type="file" name="vehicles" id="vehicles" class="form-control">
+                    <label for="vehicles" class="input-group-text">No. Vehículos</label>
                     @endif
-                    <label class="input-group-text" for="vehicles">No. Vehículos</label>
-                    <input class="inputForm" type="file" name="vehicles" id="vehicles">
                 </div>
                 <div class="input-group my-2">
-                    <input class="form-control" type="file" name="quote_form_file" hidden="true" id="quote_form_file" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="quote_form_file" id="quote_form_fileFileLabel">Informe de inspección
+                    <input class="form-control" type="file" name="payroll" hidden="true" id="payroll" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="payroll" id="payrollFileLabel">Valor de la nómina
                     </label>
-                    @if ($quote_form_file)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="quote_form_fileDownload">Informe de inspección - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglequote_form_file()" id="quote_form_fileFileToggle">Modificar</button>
+                    @if ($payroll)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="payrollDownload">Valor de la nómina - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglepayroll()" id="payrollFileToggle">Modificar</button>
                     <script>
-                        let toggledquote_form_fileFile = false;
-                        const quote_form_fileInput = document.getElementById('quote_form_file');
-                        const quote_form_fileDownload = document.getElementById('quote_form_fileDownload');
-                        const quote_form_fileLabel = document.getElementById('quote_form_fileFileLabel');
-                        const quote_form_fileToggle = document.getElementById('quote_form_fileFileToggle');
+                        let toggledpayrollFile = false;
+                        const payrollInput = document.getElementById('payroll');
+                        const payrollDownload = document.getElementById('payrollDownload');
+                        const payrollLabel = document.getElementById('payrollFileLabel');
+                        const payrollToggle = document.getElementById('payrollFileToggle');
 
-                        function togglequote_form_file() {
-                            toggledquote_form_fileFile = !toggledquote_form_fileFile;
-                            quote_form_fileInput.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileDownload.hidden = toggledquote_form_fileFile;
-                            quote_form_fileLabel.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileToggle.textContent = toggledquote_form_fileFile ? 'Usar previo' : 'Modificar'
-                            if (toggledquote_form_fileFile) quote_form_fileInput.click()
+                        function togglepayroll() {
+                            toggledpayrollFile = !toggledpayrollFile;
+                            payrollInput.hidden = !toggledpayrollFile;
+                            payrollDownload.hidden = toggledpayrollFile;
+                            payrollLabel.hidden = !toggledpayrollFile;
+                            payrollToggle.textContent = toggledpayrollFile ? 'Usar previo' : 'Modificar'
+                            if (toggledpayrollFile) payrollInput.click()
                         }
                     </script>
-                    @else<input type="file" name="quote_form_file" id="quote_form_file" class="form-control">
-                    <label for="quote_form_file" class="input-group-text">Formularios de cotización</label>
+                    @else<input type="file" name="payroll" id="payroll" class="form-control">
+                    <label for="payroll" class="input-group-text">Valor de la nómina</label>
                     @endif
-                    <label class="input-group-text" for="payroll">Valor de la nómina</label>
-                    <input class="inputForm" type="file" name="payroll" id="payroll">
                 </div>
                 <div class="input-group my-2">
-                    <input class="form-control" type="file" name="quote_form_file" hidden="true" id="quote_form_file" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="quote_form_file" id="quote_form_fileFileLabel">Informe de inspección
+                    <input class="form-control" type="file" name="dailyProduction" hidden="true" id="dailyProduction" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="dailyProduction" id="dailyProductionFileLabel">Producción de barriles por día
                     </label>
-                    @if ($quote_form_file)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="quote_form_fileDownload">Informe de inspección - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglequote_form_file()" id="quote_form_fileFileToggle">Modificar</button>
+                    @if ($dailyProduction)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="dailyProductionDownload">Producción de barriles por día - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggledailyProduction()" id="dailyProductionFileToggle">Modificar</button>
                     <script>
-                        let toggledquote_form_fileFile = false;
-                        const quote_form_fileInput = document.getElementById('quote_form_file');
-                        const quote_form_fileDownload = document.getElementById('quote_form_fileDownload');
-                        const quote_form_fileLabel = document.getElementById('quote_form_fileFileLabel');
-                        const quote_form_fileToggle = document.getElementById('quote_form_fileFileToggle');
+                        let toggleddailyProductionFile = false;
+                        const dailyProductionInput = document.getElementById('dailyProduction');
+                        const dailyProductionDownload = document.getElementById('dailyProductionDownload');
+                        const dailyProductionLabel = document.getElementById('dailyProductionFileLabel');
+                        const dailyProductionToggle = document.getElementById('dailyProductionFileToggle');
 
-                        function togglequote_form_file() {
-                            toggledquote_form_fileFile = !toggledquote_form_fileFile;
-                            quote_form_fileInput.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileDownload.hidden = toggledquote_form_fileFile;
-                            quote_form_fileLabel.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileToggle.textContent = toggledquote_form_fileFile ? 'Usar previo' : 'Modificar'
-                            if (toggledquote_form_fileFile) quote_form_fileInput.click()
+                        function toggledailyProduction() {
+                            toggleddailyProductionFile = !toggleddailyProductionFile;
+                            dailyProductionInput.hidden = !toggleddailyProductionFile;
+                            dailyProductionDownload.hidden = toggleddailyProductionFile;
+                            dailyProductionLabel.hidden = !toggleddailyProductionFile;
+                            dailyProductionToggle.textContent = toggleddailyProductionFile ? 'Usar previo' : 'Modificar'
+                            if (toggleddailyProductionFile) dailyProductionInput.click()
                         }
                     </script>
-                    @else<input type="file" name="quote_form_file" id="quote_form_file" class="form-control">
-                    <label for="quote_form_file" class="input-group-text">Formularios de cotización</label>
+                    @else<input type="file" name="dailyProduction" id="dailyProduction" class="form-control">
+                    <label for="dailyProduction" class="input-group-text">Formularios de cotización</label>
                     @endif
-                    <label class="input-group-text" for="dailyProduction">Producción de barriles por día</label>
-                    <input class="inputForm" type="file" name="dailyProduction" id="dailyProduction">
                 </div>
                 <div class="input-group my-2">
-                    <input class="form-control" type="file" name="quote_form_file" hidden="true" id="quote_form_file" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="quote_form_file" id="quote_form_fileFileLabel">Informe de inspección
+                    <input class="form-control" type="file" name="barrelValue" hidden="true" id="barrelValue" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="barrelValue" id="barrelValueFileLabel">Costo de extracción por barril
                     </label>
-                    @if ($quote_form_file)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="quote_form_fileDownload">Informe de inspección - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglequote_form_file()" id="quote_form_fileFileToggle">Modificar</button>
+                    @if ($barrelValue)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="barrelValueDownload">Costo de extracción por barril - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglebarrelValue()" id="barrelValueFileToggle">Modificar</button>
                     <script>
-                        let toggledquote_form_fileFile = false;
-                        const quote_form_fileInput = document.getElementById('quote_form_file');
-                        const quote_form_fileDownload = document.getElementById('quote_form_fileDownload');
-                        const quote_form_fileLabel = document.getElementById('quote_form_fileFileLabel');
-                        const quote_form_fileToggle = document.getElementById('quote_form_fileFileToggle');
+                        let toggledbarrelValueFile = false;
+                        const barrelValueInput = document.getElementById('barrelValue');
+                        const barrelValueDownload = document.getElementById('barrelValueDownload');
+                        const barrelValueLabel = document.getElementById('barrelValueFileLabel');
+                        const barrelValueToggle = document.getElementById('barrelValueFileToggle');
 
-                        function togglequote_form_file() {
-                            toggledquote_form_fileFile = !toggledquote_form_fileFile;
-                            quote_form_fileInput.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileDownload.hidden = toggledquote_form_fileFile;
-                            quote_form_fileLabel.hidden = !toggledquote_form_fileFile;
-                            quote_form_fileToggle.textContent = toggledquote_form_fileFile ? 'Usar previo' : 'Modificar'
-                            if (toggledquote_form_fileFile) quote_form_fileInput.click()
+                        function togglebarrelValue() {
+                            toggledbarrelValueFile = !toggledbarrelValueFile;
+                            barrelValueInput.hidden = !toggledbarrelValueFile;
+                            barrelValueDownload.hidden = toggledbarrelValueFile;
+                            barrelValueLabel.hidden = !toggledbarrelValueFile;
+                            barrelValueToggle.textContent = toggledbarrelValueFile ? 'Usar previo' : 'Modificar'
+                            if (toggledbarrelValueFile) barrelValueInput.click()
                         }
                     </script>
-                    @else<input type="file" name="quote_form_file" id="quote_form_file" class="form-control">
-                    <label for="quote_form_file" class="input-group-text">Formularios de cotización</label>
+                    @else<input type="file" name="barrelValue" id="barrelValue" class="form-control">
+                    <label for="barrelValue" class="input-group-text">Costo de extracción por barril</label>
                     @endif
-                    <label class="input-group-text" for="barrelValue">Costo de extracción por barril</label>
-                    <input class="inputForm" type="file" name="barrelValue" id="barrelValue">
                 </div>
             </div>
         </div>
