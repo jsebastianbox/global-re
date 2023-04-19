@@ -8,14 +8,14 @@
             ];
             const days = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
 
-            const now = new Date();
-            const day = days[now.getDay()];
-            const date = now.getDate();
-            const month = months[now.getMonth()];
-            const year = now.getFullYear();
-            const hour = now.getHours().toString().padStart(2, '0');
-            const minute = now.getMinutes().toString().padStart(2, '0');
-            const second = now.getSeconds().toString().padStart(2, '0');
+            const now = new Date()
+            const day = days[now.getDay()]
+            const date = now.getDate()
+            const month = months[now.getMonth()]
+            const year = now.getFullYear()
+            const hour = now.getHours().toString().padStart(2, '0')
+            const minute = now.getMinutes().toString().padStart(2, '0')
+            const second = now.getSeconds().toString().padStart(2, '0')
 
             const dateString =
                 `Comercial — Editar Compromiso | ${day}, ${date} de ${month} del ${year} ${hour}:${minute}:${second}`;
