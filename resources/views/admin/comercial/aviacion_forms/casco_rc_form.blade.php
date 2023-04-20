@@ -36,6 +36,65 @@
 <script src="{{ asset('js/admin/comercial/ajax.js') }}" defer></script>
 @if (\Illuminate\Support\Str::contains(\Illuminate\Support\Facades\Request::url(), '/admin/comercial/edit_compromiso/'))
 <script>
+    const modelMakeHours_raw = "{{$modelMakeHours}}";
+    let modelMakeHours;
+    fetch(`data:application/*;base64,${modelMakeHours_raw}`).then(base64 => base64.blob()).then(blob => {
+        modelMakeHours = URL.createObjectURL(blob)
+        const anchor = document.getElementById('modelMakeHoursDownload')
+        if (anchor) {
+            anchor.href = modelMakeHours
+            anchor.download = 'vida_siniestralidad_previa.{{$modelMakeHoursExtension}}'
+        }
+    });
+
+    const accidentRate_raw = "{{$accidentRate}}";
+    let accidentRate;
+    fetch(`data:application/*;base64,${accidentRate_raw}`).then(base64 => base64.blob()).then(blob => {
+        accidentRate = URL.createObjectURL(blob)
+        const anchor = document.getElementById('accidentRateDownload')
+        if (anchor) {
+            anchor.href = accidentRate
+            anchor.download = 'vida_siniestralidad_previa.{{$accidentRateExtension}}'
+        }
+    });
+
+
+    const otherForms_raw = "{{$otherForms}}";
+    let otherForms;
+    fetch(`data:application/*;base64,${otherForms_raw}`).then(base64 => base64.blob()).then(blob => {
+        otherForms = URL.createObjectURL(blob)
+        const anchor = document.getElementById('otherFormsDownload')
+        if (anchor) {
+            anchor.href = otherForms
+            anchor.download = 'vida_siniestralidad_previa.{{$otherFormsExtension}}'
+        }
+    });
+
+
+    const crFormSigned_raw = "{{$crFormSigned}}";
+    let crFormSigned;
+    fetch(`data:application/*;base64,${crFormSigned_raw}`).then(base64 => base64.blob()).then(blob => {
+        crFormSigned = URL.createObjectURL(blob)
+        const anchor = document.getElementById('crFormSignedDownload')
+        if (anchor) {
+            anchor.href = crFormSigned
+            anchor.download = 'vida_siniestralidad_previa.{{$crFormSignedExtension}}'
+        }
+    });
+
+
+    const pilotExperienceFormSigned_raw = "{{$pilotExperienceFormSigned}}";
+    let pilotExperienceFormSigned;
+    fetch(`data:application/*;base64,${pilotExperienceFormSigned_raw}`).then(base64 => base64.blob()).then(blob => {
+        pilotExperienceFormSigned = URL.createObjectURL(blob)
+        const anchor = document.getElementById('pilotExperienceFormSignedDownload')
+        if (anchor) {
+            anchor.href = pilotExperienceFormSigned
+            anchor.download = 'vida_siniestralidad_previa.{{$pilotExperienceFormSignedExtension}}'
+        }
+    });
+</script>
+<script>
 </script>
 <div class="card px-4 py-2">
     <form enctype="multipart/form-data" method="POST" action="{{ route('slip.update', $slip->id) }}" id="aviacion_1_form">
@@ -410,32 +469,156 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <div class="input-group mb-3">
-                    <label class="input-group-text" for="modelMakeHours">Horas en marca y modelo</label>
-                    <input value="{{ $slip_type->modelMakeHours }}" class="inputForm" type="file" name="modelMakeHours" id="modelMakeHours">
+                    <input class="form-control" type="file" name="modelMakeHours" hidden="true" id="modelMakeHours" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="modelMakeHours" id="modelMakeHoursFileLabel">Horas en marca y modelo
+                    </label>
+                    @if ($modelMakeHours)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="modelMakeHoursDownload">Horas en marca y modelo - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglemodelMakeHours()" id="modelMakeHoursFileToggle">Modificar</button>
+                    <script>
+                        let toggledmodelMakeHoursFile = false;
+                        const modelMakeHoursInput = document.getElementById('modelMakeHours');
+                        const modelMakeHoursDownload = document.getElementById('modelMakeHoursDownload');
+                        const modelMakeHoursLabel = document.getElementById('modelMakeHoursFileLabel');
+                        const modelMakeHoursToggle = document.getElementById('modelMakeHoursFileToggle');
+
+                        function togglemodelMakeHours() {
+                            toggledmodelMakeHoursFile = !toggledmodelMakeHoursFile;
+                            modelMakeHoursInput.hidden = !toggledmodelMakeHoursFile;
+                            modelMakeHoursDownload.hidden = toggledmodelMakeHoursFile;
+                            modelMakeHoursLabel.hidden = !toggledmodelMakeHoursFile;
+                            modelMakeHoursToggle.textContent = toggledmodelMakeHoursFile ? 'Usar previo' : 'Modificar'
+                            if (toggledmodelMakeHoursFile) modelMakeHoursInput.click()
+                        }
+                    </script>
+                    @else<input type="file" name="modelMakeHours" id="modelMakeHours" class="form-control">
+                    <label for="modelMakeHours" class="input-group-text">Horas en marca y modelo</label>
+                    @endif
                 </div>
                 <div class="input-group mb-3">
-                    <label class="input-group-text" for="accidentRate">Siniestralidad de los últimos 5
+                    <input class="form-control" type="file" name="accidentRate" hidden="true" id="accidentRate" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="accidentRate" id="accidentRateFileLabel">Siniestralidad de los últimos 5
+                        años
+                    </label>
+                    @if ($accidentRate)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="accidentRateDownload">Siniestralidad de los últimos 5
+                        años - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleaccidentRate()" id="accidentRateFileToggle">Modificar</button>
+                    <script>
+                        let toggledaccidentRateFile = false;
+                        const accidentRateInput = document.getElementById('accidentRate');
+                        const accidentRateDownload = document.getElementById('accidentRateDownload');
+                        const accidentRateLabel = document.getElementById('accidentRateFileLabel');
+                        const accidentRateToggle = document.getElementById('accidentRateFileToggle');
+
+                        function toggleaccidentRate() {
+                            toggledaccidentRateFile = !toggledaccidentRateFile;
+                            accidentRateInput.hidden = !toggledaccidentRateFile;
+                            accidentRateDownload.hidden = toggledaccidentRateFile;
+                            accidentRateLabel.hidden = !toggledaccidentRateFile;
+                            accidentRateToggle.textContent = toggledaccidentRateFile ? 'Usar previo' : 'Modificar'
+                            if (toggledaccidentRateFile) accidentRateInput.click()
+                        }
+                    </script>
+                    @else<input type="file" name="accidentRate" id="accidentRate" class="form-control">
+                    <label for="accidentRate" class="input-group-text">Siniestralidad de los últimos 5
                         años</label>
-                    <input value="{{ $slip_type->accidentRate }}" class="inputForm" type="file" name="accidentRate" id="accidentRate">
+                    @endif
                 </div>
                 <div class="input-group mb-3">
-                    <label class="input-group-text" for="otherForms">Formularios de Hangares y formularios varios
+                    <input class="form-control" type="file" name="otherForms" hidden="true" id="otherForms" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="otherForms" id="otherFormsFileLabel">Formularios de Hangares y formularios varios
+                        por cobertura
+                    </label>
+                    @if ($otherForms)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="otherFormsDownload">Formularios de Hangares y formularios varios
+                        por cobertura - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleotherForms()" id="otherFormsFileToggle">Modificar</button>
+                    <script>
+                        let toggledotherFormsFile = false;
+                        const otherFormsInput = document.getElementById('otherForms');
+                        const otherFormsDownload = document.getElementById('otherFormsDownload');
+                        const otherFormsLabel = document.getElementById('otherFormsFileLabel');
+                        const otherFormsToggle = document.getElementById('otherFormsFileToggle');
+
+                        function toggleotherForms() {
+                            toggledotherFormsFile = !toggledotherFormsFile;
+                            otherFormsInput.hidden = !toggledotherFormsFile;
+                            otherFormsDownload.hidden = toggledotherFormsFile;
+                            otherFormsLabel.hidden = !toggledotherFormsFile;
+                            otherFormsToggle.textContent = toggledotherFormsFile ? 'Usar previo' : 'Modificar'
+                            if (toggledotherFormsFile) otherFormsInput.click()
+                        }
+                    </script>
+                    @else<input type="file" name="otherForms" id="otherForms" class="form-control">
+                    <label for="otherForms" class="input-group-text">Formularios de Hangares y formularios varios
                         por cobertura</label>
-                    <input value="{{ $slip_type->otherForms }}" class="inputForm" type="file" name="otherForms" id="otherForms">
+                    @endif
                 </div>
             </div>
             <div class="col-md-6">
-
                 <div class="input-group mb-3">
-                    <label class="input-group-text" for="crFormSigned">Formulario de casco relleno y
+                    <input class="form-control" type="file" name="crFormSigned" hidden="true" id="crFormSigned" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="crFormSigned" id="crFormSignedFileLabel">Formulario de casco relleno y
+                        firmado
+                    </label>
+                    @if ($crFormSigned)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="crFormSignedDownload">Formulario de casco relleno y
+                        firmado - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglecrFormSigned()" id="crFormSignedFileToggle">Modificar</button>
+                    <script>
+                        let toggledcrFormSignedFile = false;
+                        const crFormSignedInput = document.getElementById('crFormSigned');
+                        const crFormSignedDownload = document.getElementById('crFormSignedDownload');
+                        const crFormSignedLabel = document.getElementById('crFormSignedFileLabel');
+                        const crFormSignedToggle = document.getElementById('crFormSignedFileToggle');
+
+                        function togglecrFormSigned() {
+                            toggledcrFormSignedFile = !toggledcrFormSignedFile;
+                            crFormSignedInput.hidden = !toggledcrFormSignedFile;
+                            crFormSignedDownload.hidden = toggledcrFormSignedFile;
+                            crFormSignedLabel.hidden = !toggledcrFormSignedFile;
+                            crFormSignedToggle.textContent = toggledcrFormSignedFile ? 'Usar previo' : 'Modificar'
+                            if (toggledcrFormSignedFile) crFormSignedInput.click()
+                        }
+                    </script>
+                    @else<input type="file" name="crFormSigned" id="crFormSigned" class="form-control">
+                    <label for="crFormSigned" class="input-group-text">Formulario de casco relleno y
                         firmado</label>
-                    <input value="{{ $slip_type->crFormSigned }}" class="inputForm" type="file" name="crFormSigned" id="crFormSigned">
+                    @endif
                 </div>
                 <div class="input-group mb-3">
-                    <label class="input-group-text" for="pilotExperienceFormSigned">Experiencia de los pilotos -
+                    <input class="form-control" type="file" name="pilotExperienceFormSigned" hidden="true" id="pilotExperienceFormSigned" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="pilotExperienceFormSigned" id="pilotExperienceFormSignedFileLabel">Experiencia de los pilotos -
+                        formulario relleno y
+                        firmado
+                    </label>
+                    @if ($pilotExperienceFormSigned)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="pilotExperienceFormSignedDownload">Experiencia de los pilotos -
+                        formulario relleno y
+                        firmado - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglepilotExperienceFormSigned()" id="pilotExperienceFormSignedFileToggle">Modificar</button>
+                    <script>
+                        let toggledpilotExperienceFormSignedFile = false;
+                        const pilotExperienceFormSignedInput = document.getElementById('pilotExperienceFormSigned');
+                        const pilotExperienceFormSignedDownload = document.getElementById('pilotExperienceFormSignedDownload');
+                        const pilotExperienceFormSignedLabel = document.getElementById('pilotExperienceFormSignedFileLabel');
+                        const pilotExperienceFormSignedToggle = document.getElementById('pilotExperienceFormSignedFileToggle');
+
+                        function togglepilotExperienceFormSigned() {
+                            toggledpilotExperienceFormSignedFile = !toggledpilotExperienceFormSignedFile;
+                            pilotExperienceFormSignedInput.hidden = !toggledpilotExperienceFormSignedFile;
+                            pilotExperienceFormSignedDownload.hidden = toggledpilotExperienceFormSignedFile;
+                            pilotExperienceFormSignedLabel.hidden = !toggledpilotExperienceFormSignedFile;
+                            pilotExperienceFormSignedToggle.textContent = toggledpilotExperienceFormSignedFile ? 'Usar previo' : 'Modificar'
+                            if (toggledpilotExperienceFormSignedFile) pilotExperienceFormSignedInput.click()
+                        }
+                    </script>
+                    @else<input type="file" name="pilotExperienceFormSigned" id="pilotExperienceFormSigned" class="form-control">
+                    <label for="pilotExperienceFormSigned" class="input-group-text">Experiencia de los pilotos -
                         formulario relleno y
                         firmado</label>
-                    <input value="{{ $slip_type->pilotExperienceFormSigned }}" class="inputForm" type="file" name="pilotExperienceFormSigned" id="pilotExperienceFormSigned">
+                    @endif
                 </div>
             </div>
 

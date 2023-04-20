@@ -391,6 +391,7 @@ class CompromisoController extends Controller
                 $information_aerial = InformationAerialHelmets::where('slip_id', $id)->get();
                 $aviation_extras = AviacionExtras::where('slip_id', $id)->get();
                 $object_insurance = [];
+                $view = $this->chargeFilesIntoView("aviacion_1", "aviacion_1", $slip_type->id, $view);
                 break;
 
             case '34':
@@ -398,6 +399,7 @@ class CompromisoController extends Controller
                 $object_insurance = ObjectInsurance::where('slip_id', $id)->get();
                 $information_aerial = [];
                 $aviation_extras = [];
+                $view = $this->chargeFilesIntoView("aviacion_2", "aviacion_2", $slip_type->id, $view);
                 break;
 
             case '35':
@@ -408,6 +410,7 @@ class CompromisoController extends Controller
                 $aviation_extras = [];
                 $object_insurance = [];
 
+                $view = $this->chargeFilesIntoView("aviacion_3", "aviacion_3", $slip_type->id, $view);
                 break;
 
             default:
@@ -448,23 +451,27 @@ class CompromisoController extends Controller
             case '22':
                 $slip_type = SlipMaritimeOne::where('slip_id', $id)->first();
                 $boat_detail = BoatDetailSlip::where('slip_id', $id)->get();
+                $view = $this->chargeFilesIntoView("maritimo_1", "maritimo_1", $slip_type->id, $view);
                 break;
 
             case '23':
                 $slip_type = SlipMaritimeTwo::where('slip_id', $id)->first();
                 $boat_detail = BoatDetailSlip::where('slip_id', $id)->get();
+                $view = $this->chargeFilesIntoView("maritimo_2", "maritimo_2", $slip_type->id, $view);
                 break;
 
             case '24':
             case '25':
             case '26':
                 $slip_type = SlipMaritimeThree::where('slip_id', $id)->first();
+                $view = $this->chargeFilesIntoView("maritimo_3", "maritimo_3", $slip_type->id, $view);
                 $boat_detail = [];
             case '27':
             case '28':
             case '29':
             case '30':
                 $slip_type = SlipMaritimeFour::where('slip_id', $id)->first();
+                $view = $this->chargeFilesIntoView("maritimo_4", "maritimo_4", $slip_type->id, $view);
                 $boat_detail = [];
                 break;
 
@@ -518,11 +525,20 @@ class CompromisoController extends Controller
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'fianzas')->get();
         $clausulasSelect = Clausulas_selector::where('main_branch', 'fianzas')->get();
-
+        $view = view('admin.comercial.edit_compromiso.edit_index')
+            ->with('user', $user)
+            ->with('users', $users)
+            ->with('countries', $countries)
+            ->with('slip_statuses', $slip_statuses)
+            ->with('type_coverage', $type_coverage)
+            ->with('coberturasSelect', $coberturasSelect)
+            ->with('clausulasSelect', $clausulasSelect)
+            ->with('slip', $slip);
         switch ($slip->type_coverage) {
             case '46':
                 $slip_type = SlipFianzaOne::where('slip_id', $id)->first();
                 $object_insurance = ObjectInsurance::where('slip_id', $id)->get();
+                $view = $this->chargeFilesIntoView("finanzas_1", "finanzas_1", $slip_type->id, $view);
                 break;
 
             case '47':
@@ -533,22 +549,14 @@ class CompromisoController extends Controller
             case '52':
                 $slip_type = SlipFianzaTwo::where('slip_id', $id)->first();
                 $object_insurance = [];
+                $view = $this->chargeFilesIntoView("finanzas_2", "finanzas_2", $slip_type->id, $view);
                 break;
             default:
                 break;
         }
-
-
-        return view('admin.comercial.edit_compromiso.edit_index')
-            ->with('user', $user)
-            ->with('users', $users)
-            ->with('countries', $countries)
-            ->with('slip_statuses', $slip_statuses)
-            ->with('type_coverage', $type_coverage)
-            ->with('object_insurance', $object_insurance)
-            ->with('coberturasSelect', $coberturasSelect)
-            ->with('clausulasSelect', $clausulasSelect)
-            ->with('slip', $slip)
+        $view->with('object_insurance', $object_insurance)
             ->with('slip_type', $slip_type);
+
+        return $view;
     }
 }

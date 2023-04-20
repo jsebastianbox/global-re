@@ -199,6 +199,46 @@ trait HasUploadFiles
                 $keys[] = "quotationReport";
                 $keys[] = "financialStatements";
                 break;
+            case 'aviacion_1':
+                $keys[] = "modelMakeHours";
+                $keys[] = "accidentRate";
+                $keys[] = "otherForms";
+                $keys[] = "crFormSigned";
+                $keys[] = "pilotExperienceFormSigned";
+                break;
+            case 'aviacion_2':
+                $keys[] = "pilotos";
+                $keys[] = "signedForm";
+                $keys[] = "medicTest";
+                break;
+            case 'aviacion_3':
+                $keys[] = "crFormSigned";
+                break;
+            case 'maritimo_1':
+                $keys[] = "copiaMatricula";
+                $keys[] = "informeInspeccion";
+                $keys[] = "accidentRate";
+                $keys[] = "siniestralidad_armador";
+                $keys[] = "otrasEmbarcaciones";
+                $keys[] = "experienciaArmador";
+                $keys[] = "detalleMantenimiento";
+                $keys[] = "tripulacionInfo";
+                $keys[] = "detalleLicencia";
+                $keys[] = "detalleViajeFile";
+                $keys[] = "detalleValorReemplazo";
+                $keys[] = "formularioFirmado";
+                break;
+            case 'maritimo_2':
+                $keys[] = "pilotos";
+                $keys[] = "signedForm";
+                $keys[] = "medicTest";
+                break;
+            case 'maritimo_3':
+                $keys[] = "crFormSigned";
+                break;
+            case 'maritimo_4':
+                $keys[] = "crFormSigned";
+                break;
             default:
                 break;
         }

@@ -35,6 +35,42 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="{{ asset('js/admin/comercial/ajax.js') }}" defer></script>
 @if (\Illuminate\Support\Str::contains(\Illuminate\Support\Facades\Request::url(), '/admin/comercial/edit_compromiso/'))
+<script>
+    const pilotos_raw = "{{$pilotos}}";
+    let pilotos;
+    fetch(`data:application/*;base64,${pilotos_raw}`).then(base64 => base64.blob()).then(blob => {
+        pilotos = URL.createObjectURL(blob)
+        const anchor = document.getElementById('pilotosDownload')
+        if (anchor) {
+            anchor.href = pilotos
+            anchor.download = 'vida_siniestralidad_previa.{{$pilotosExtension}}'
+        }
+    });
+
+    const signedForm_raw = "{{$signedForm}}";
+    let signedForm;
+    fetch(`data:application/*;base64,${signedForm_raw}`).then(base64 => base64.blob()).then(blob => {
+        signedForm = URL.createObjectURL(blob)
+        const anchor = document.getElementById('signedFormDownload')
+        if (anchor) {
+            anchor.href = signedForm
+            anchor.download = 'vida_siniestralidad_previa.{{$signedFormExtension}}'
+        }
+    });
+
+
+    const medicTest_raw = "{{$medicTest}}";
+    let medicTest;
+    fetch(`data:application/*;base64,${medicTest_raw}`).then(base64 => base64.blob()).then(blob => {
+        medicTest = URL.createObjectURL(blob)
+        const anchor = document.getElementById('medicTestDownload')
+        if (anchor) {
+            anchor.href = medicTest
+            anchor.download = 'vida_siniestralidad_previa.{{$medicTestExtension}}'
+        }
+    });
+</script>
+
 <div class="card px-4 py-2">
     <form action="{{ route('slip.update', $slip->id) }}" enctype="multipart/form-data" method="POST" id="aviacion_2_form">
 
@@ -136,8 +172,31 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="input-group mb-3">
-                    <label class="input-group-text" for="pilotos">Detalle de pilotos asegurados</label>
-                    <input type="file" placeholder="..." name="pilotos" id="pilotos">
+                    <input class="form-control" type="file" name="pilotos" hidden="true" id="pilotos" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="pilotos" id="pilotosFileLabel">Detalle de pilotos asegurados
+                    </label>
+                    @if ($pilotos)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="pilotosDownload">Detalle de pilotos asegurados - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglepilotos()" id="pilotosFileToggle">Modificar</button>
+                    <script>
+                        let toggledpilotosFile = false;
+                        const pilotosInput = document.getElementById('pilotos');
+                        const pilotosDownload = document.getElementById('pilotosDownload');
+                        const pilotosLabel = document.getElementById('pilotosFileLabel');
+                        const pilotosToggle = document.getElementById('pilotosFileToggle');
+
+                        function togglepilotos() {
+                            toggledpilotosFile = !toggledpilotosFile;
+                            pilotosInput.hidden = !toggledpilotosFile;
+                            pilotosDownload.hidden = toggledpilotosFile;
+                            pilotosLabel.hidden = !toggledpilotosFile;
+                            pilotosToggle.textContent = toggledpilotosFile ? 'Usar previo' : 'Modificar'
+                            if (toggledpilotosFile) pilotosInput.click()
+                        }
+                    </script>
+                    @else<input type="file" name="pilotos" id="pilotos" class="form-control">
+                    <label for="pilotos" class="input-group-text">Detalle de pilotos asegurados</label>
+                    @endif
                 </div>
             </div>
             <div class="col-md-6">
@@ -198,15 +257,63 @@
         <div class="row mb-3">
             <div class="col-md-6">
                 <div class="input-group mb-3">
-                    <label class="input-group-text" for="signedForm">Formulario de cotización relleno y
+                    <input class="form-control" type="file" name="signedForm" hidden="true" id="signedForm" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="signedForm" id="signedFormFileLabel">Formulario de cotización relleno y
+                        firmado
+                    </label>
+                    @if ($signedForm)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="signedFormDownload">Formulario de cotización relleno y
+                        firmado - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglesignedForm()" id="signedFormFileToggle">Modificar</button>
+                    <script>
+                        let toggledsignedFormFile = false;
+                        const signedFormInput = document.getElementById('signedForm');
+                        const signedFormDownload = document.getElementById('signedFormDownload');
+                        const signedFormLabel = document.getElementById('signedFormFileLabel');
+                        const signedFormToggle = document.getElementById('signedFormFileToggle');
+
+                        function togglesignedForm() {
+                            toggledsignedFormFile = !toggledsignedFormFile;
+                            signedFormInput.hidden = !toggledsignedFormFile;
+                            signedFormDownload.hidden = toggledsignedFormFile;
+                            signedFormLabel.hidden = !toggledsignedFormFile;
+                            signedFormToggle.textContent = toggledsignedFormFile ? 'Usar previo' : 'Modificar'
+                            if (toggledsignedFormFile) signedFormInput.click()
+                        }
+                    </script>
+                    @else<input type="file" name="signedForm" id="signedForm" class="form-control">
+                    <label for="signedForm" class="input-group-text">Formulario de cotización relleno y
                         firmado</label>
-                    <input class="inputForm" type="file" name="signedForm" id="signedForm">
+                    @endif
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-group mb-3">
+                    <input class="form-control" type="file" name="medicTest" hidden="true" id="medicTest" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="medicTest" id="medicTestFileLabel">Exámenes médicos
+                    </label>
+                    @if ($medicTest)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="medicTestDownload">Exámenes médicos - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglemedicTest()" id="medicTestFileToggle">Modificar</button>
+                    <script>
+                        let toggledmedicTestFile = false;
+                        const medicTestInput = document.getElementById('medicTest');
+                        const medicTestDownload = document.getElementById('medicTestDownload');
+                        const medicTestLabel = document.getElementById('medicTestFileLabel');
+                        const medicTestToggle = document.getElementById('medicTestFileToggle');
+
+                        function togglemedicTest() {
+                            toggledmedicTestFile = !toggledmedicTestFile;
+                            medicTestInput.hidden = !toggledmedicTestFile;
+                            medicTestDownload.hidden = toggledmedicTestFile;
+                            medicTestLabel.hidden = !toggledmedicTestFile;
+                            medicTestToggle.textContent = toggledmedicTestFile ? 'Usar previo' : 'Modificar'
+                            if (toggledmedicTestFile) medicTestInput.click()
+                        }
+                    </script>
+                    @else<input type="file" name="medicTest" id="medicTest" class="form-control">
                     <label for="medicTest" class="input-group-text">Exámenes médicos</label>
-                    <input type="file" name="medicTest" id="medicTest">
+                    @endif
                 </div>
             </div>
         </div>
