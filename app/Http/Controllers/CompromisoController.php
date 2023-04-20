@@ -510,7 +510,7 @@ class CompromisoController extends Controller
             ->with('slip_type', $slip_type);
 
 
-        $view = $this->chargeFilesIntoView("riesgos", "riesgos", $slip_type->id, $view);
+        $view = $this->chargeFilesIntoView("riesgo", "riesgo", $slip_type->id, $view);
         return    $view;
     }
     public function fianzas($id)
