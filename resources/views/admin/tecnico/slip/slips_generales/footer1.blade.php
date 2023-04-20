@@ -7,12 +7,31 @@
 
 <div class="tableContainer" style="1.2rem 0">
     <h4 class="slipTitle">Tasa/Prima de Reaseguros</h4>
+
+    <div class="two-sides">
+        <div class="left_side">
+            <div class="input_group">
+                <label>Tasa de reaseguros:</label>
+                <input type="number" name="reinsurer_rate" value="{{$slip->reinsurer_rate}}">
+            </div>
+        </div>
+        <div class="right_side">
+            <div class="input_group">
+                <label>Prima de reaseguros:</label>
+                <input type="number" name="reinsurance_premium" value="{{$slip->reinsurance_premium}}">
+            </div>
+        </div>
+    </div>
+
     <div class="flexColumnCenterContainer">
 
         <!-- Button trigger modal -->
         @include('admin.tablas.calculo')
 
-        <button class="btn btn-sm btn-primary" onclick="resumenNotificacion(event)" style="margin: 1.5rem 0">Actualizar
+
+
+
+        {{-- <button class="btn btn-sm btn-primary" onclick="resumenNotificacion(event)" style="margin: 1.5rem 0">Actualizar
             resumen</button>
 
         <table class="indemnizacionTable" style="margin: 1.5rem 0">
@@ -60,7 +79,7 @@
                     <td style="text-align: center" id="primaNetaGlobalResumen">0</td>
                 </tr>
             </tbody>
-        </table>
+        </table> --}}
     </div>
 </div>
 

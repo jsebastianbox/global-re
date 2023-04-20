@@ -609,18 +609,24 @@
     <div class="tab">
         <div id="showElectronico" style="display: none">
             <div class="row">
-                <div class="input-group">
-                    <span class="input-group-text">Suma asegurable</span>
-                    <input type="number" step="any" class="form-control" name="asegurable_electronico">
-                </div>
+                <label class="lead">Suma asegurada y/o asegurable</label>
+                <hr style="background-color: darkgrey; width: 70%">
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text">Suma asegurable</span>
+                        <input type="number" step="any" class="form-control" name="asegurable_electronico">
+                    </div>
+                </div>
+                <div class="col-md-6">
                     <div class="input-group">
                         <span class="input-group-text">Suma asegurada</span>
                         <input type="number" step="any" class="form-control" name="asegurada_electronico">
                     </div>
                 </div>
+            </div>
+            <div class="row my-2">
                 <div class="col-md-8">
                     <table class="table table-hover table-light table-responsive-lg">
                         <caption>Cuadro resumen</caption>
@@ -673,10 +679,15 @@
                     </table>
                 </div>
             </div>
+
+            <div class="row">
+                <label class="lead">Límite de indemnizacion</label>
+                <hr style="background-color: darkgrey; width: 70%">
+            </div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="input-group">
-                        <span class="input-group-text">Límite de indemnización</span>
+                        <span class="input-group-text">Límite</span>
                         <input type="number" name="limit_compensation" id="" class="form-control" step="any">
                     </div>
                 </div>
@@ -901,9 +912,6 @@
                         <input class="form-control" type="text" name="minimum[]" placeholder="...">
                         <textarea rows="1" type="text" name="description2_deductible[]" placeholder="Descripción del deducible..."></textarea>
                     </div>
-
-
-
                 </div>
             </div>
         </div>

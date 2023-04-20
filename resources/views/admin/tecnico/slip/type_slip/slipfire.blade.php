@@ -14,11 +14,11 @@
         {{-- Objeto del seguro --}}
         <div class="flexColumnCenterContainer">
             <div class="input_group" style="max-width: 450px">
-                <label for="incendioObjetoSeguro">
+                <label>
                     <i class="fa-solid fa-bars-staggered"></i>
                     Objeto del seguro
                 </label>
-                <textarea name="object_insurance" id="object_insurance" cols="30" rows="1">{{ $slip_type->object_insurance }}</textarea>
+                <textarea name="object_insurance" id="object_insurance" cols="30" rows="1">{{ $slip->object_insurance }}</textarea>
             </div>
         </div>
 

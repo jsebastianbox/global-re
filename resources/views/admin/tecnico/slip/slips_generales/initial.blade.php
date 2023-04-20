@@ -151,6 +151,16 @@
             </label>
             <input type="text" id="insuranceBroker" name="insuranceBroker" value="{{ $slip->insuranceBroker }}" disabled>
         </div>
+
+        @if ($slip->type_coverage !== 2 || $slip->type_coverage !== 4 || $slip->type_coverage !== 5 || $slip->type_coverage !== 6 || $slip->type_coverage !== 7 || $slip->type_coverage !== 8 || $slip->type_coverage !== 11 )
+            <div class="input_group">
+                <label >
+                    <i class="fa-solid fa-bars-staggered"></i>
+                    Valor Asegurado
+                </label>
+                <input type="text" name="insured_value" value="{{ $slip->insured_value }}" disabled>
+            </div>
+        @endif
     </div>
 </div>
 

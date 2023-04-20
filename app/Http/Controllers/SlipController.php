@@ -118,12 +118,12 @@ class SlipController extends Controller
             case '15':
             case '16':
             case '17':
-                $slip_type = SlipTechnicalBranch::where('id', $slip->model_id)
-                    ->with('sum_rc_assured')
-                    ->with('detail_machin')
-                    ->with('compensation_limit')
-                    ->with('sum_assured')
-                    ->first();
+                $slip_type = SlipTechnicalBranch::where('slip_id', $id)->first();
+                $vehicles_details = VehicleDetail::where('slip_id', $slip->id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
+                $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
+
                 break;
             case '18':
             case '19':

@@ -171,8 +171,8 @@
             <div class="input-group mb-3">
                 <label class="input-group-text">Valor asegurado</label>
                 <input type="number" step="any" placeholder="Valor.." 
-                    name="object_insured_value" class="form-control" 
-                    value="{{$slip->object_insured_value}}">
+                    name="insured_value" class="form-control" 
+                    value="{{$slip->insured_value}}">
             </div>
         </div>
 
@@ -338,7 +338,7 @@
         <div class="col-md-4 my-3 valorAseguradoContainer">
             <div class="input-group mb-3">
                 <label class="input-group-text">Valor asegurado</label>
-                <input type="number" step="any" placeholder="Valor.." name="object_insured_value" class="form-control">
+                <input type="number" step="any" placeholder="Valor.." name="insured_value" class="form-control">
             </div>
         </div>
         <div class="col-md-4 my-3">
