@@ -895,7 +895,7 @@ class SlipApiController extends Controller
                     }
                 }
 
-                $this->saveFilesFromRequest($request, $basePath, 'riesgos',  $slip_riesgos->id);
+                $this->saveFilesFromRequest($request, $basePath, 'riesgo',  $slip_riesgos->id);
                 break;
             default:
                 break;

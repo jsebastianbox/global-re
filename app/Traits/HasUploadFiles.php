@@ -189,7 +189,16 @@ trait HasUploadFiles
                 $keys[] = "dailyProduction";
                 $keys[] = "barrelValue";
                 break;
-
+            case 'responsabilidad':
+                $keys[] = "accidentRate";
+                $keys[] = "quotationReport";
+                $keys[] = "financialStatements";
+                break;
+            case 'riesgo':
+                $keys[] = "accidentRate";
+                $keys[] = "quotationReport";
+                $keys[] = "financialStatements";
+                break;
             default:
                 break;
         }

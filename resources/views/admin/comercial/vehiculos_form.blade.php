@@ -212,7 +212,7 @@
                         }
                     </script>
                     @else<input class="form-control" type="file" name="informe" id="informe">
-                    <label class="input-group-text" for="inform">Informe de inspección</label>
+                    <label class="input-group-text" for="informe">Informe de inspección</label>
                     @endif
                 </div>
                 <div class="my-2 input-group">
