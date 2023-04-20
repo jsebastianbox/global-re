@@ -250,7 +250,14 @@ trait HasUploadFiles
             case 'maritimo_4':
                 $keys[] = "quotationForm";
                 break;
+            case 'finanzas_1':
+                $keys[] = "accidentRate";
+                $keys[] = "quotationReport";
+                $keys[] = "financialReport";
+                break;
+
             default:
+
                 break;
         }
         return $keys;
