@@ -1,4 +1,43 @@
 {{-- Fidelidad --}}
+@section('tab_title')
+<div id="date"></div>
+<script>
+    function updateClock() {
+        const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre',
+            'octubre', 'noviembre', 'diciembre'
+        ];
+        const days = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+
+        const now = new Date();
+        const day = days[now.getDay()];
+        const date = now.getDate();
+        const month = months[now.getMonth()];
+        const year = now.getFullYear();
+        const hour = now.getHours().toString().padStart(2, '0');
+        const minute = now.getMinutes().toString().padStart(2, '0');
+        const second = now.getSeconds().toString().padStart(2, '0');
+
+        const dateString =
+            `Comercial — Editar Compromiso | ${day}, ${date} de ${month} del ${year} ${hour}:${minute}:${second}`;
+        document.getElementById('date').textContent = dateString;
+    }
+    setInterval(updateClock, 1000);
+</script>
+@endsection
+
+@if (\Illuminate\Support\Str::contains(\Illuminate\Support\Facades\Request::url(), '/admin/comercial/edit_compromiso/'))
+<script>
+    const accidentRate_raw = "{{$accidentRate}}";
+    let accidentRate;
+    fetch(`data:application/*;base64,${accidentRate_raw}`).then(base64 => base64.blob()).then(blob => {
+        accidentRate = URL.createObjectURL(blob)
+        const anchor = document.getElementById('accidentRateDownload')
+        if (anchor) {
+            anchor.href = accidentRate
+            anchor.download = 'vida_siniestralidad_previa.{{$accidentRateExtension}}'
+        }
+    });
+</script>
 <style>
     hr {
         background-color: darkgrey;
@@ -38,7 +77,6 @@ margin-top: 1.3rem;
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="{{ asset('js/admin/comercial/ajax.js') }}" defer></script>
 
-@if (\Illuminate\Support\Str::contains(\Illuminate\Support\Facades\Request::url(), '/admin/comercial/edit_compromiso/'))
     <div class="card py-2 px-4">
         <form enctype="multipart/form-data" method="POST" id="finanzas_1_form" >
             <!-- One "tab" for each step in the form: -->
@@ -222,16 +260,39 @@ margin-top: 1.3rem;
 
             @include('admin.comercial.include.leyJurisdiccion')
 
-            <div class="row mb-3">
-
-                <div class="col-md-12">
-                    <div style="input-group">
-                        <label class="input-group-text" for="accidentRate">Siniestralidad de los últimos 5 años</label>
-                        <input class="inputForm" type="file" name="accidentRate" id="accidentRate">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="file" name="accidentRate" hidden="true" id="accidentRate" accept="application/*">
+                        <label class="input-group-text" hidden="true" for="accidentRate" id="accidentRateFileLabel">Siniestralidad de los últimos 5 años
+                        </label>
+                        @if ($accidentRate)
+                        <a download="siniestralidad_previa" style="padding:1rem" id="accidentRateDownload">Siniestralidad previa</a>
+                        <button type="button" class="btn btn-info" style="color: white" onclick="toggleInputs()" id="accidentRateFileToggle">Modificar</button>
+                        <script>
+                            let toggledAccidentRateFile = false;
+                            const accidentRateInput = document.getElementById('accidentRate');
+                            const accidentRateDownload = document.getElementById('accidentRateDownload');
+                            const accidentRateLabel = document.getElementById('accidentRateFileLabel');
+                            const accidentRateToggle = document.getElementById('accidentRateFileToggle');
+    
+                            function toggleInputs() {
+                                toggledAccidentRateFile = !toggledAccidentRateFile;
+                                accidentRateInput.hidden = !toggledAccidentRateFile;
+                                accidentRateDownload.hidden = toggledAccidentRateFile;
+                                accidentRateLabel.hidden = !toggledAccidentRateFile;
+                                accidentRateToggle.textContent = toggledAccidentRateFile ? 'Usar previo' : 'Modificar'
+                                if (toggledAccidentRateFile) accidentRateInput.click()
+                            }
+                        </script>
+                        @else<input class="form-control" type="file" name="accidentRate" id="accidentRate" accept="application/*">
+                        <label class="input-group-text" for="accidentRate">Siniestralidad de los últimos 5 años
+                        </label>
+                        @endif
                     </div>
                 </div>
-
             </div>
+
             <div class="row">
                 <div class="col-md-6">
                     <div style="input-group">
