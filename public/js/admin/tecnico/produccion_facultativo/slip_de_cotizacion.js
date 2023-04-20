@@ -2573,3 +2573,74 @@ function addMatriculaRow(event) {
 
         `
 }
+
+
+
+//Select2 para clausulas
+function clausulasSelect(class_selector = ".selectClausula", main_branch, sub_branch) {
+    $(class_selector).select2({
+        language: 'es',
+        tags: true,
+        placeholder: 'Seleccionar',
+        ajax: {
+            url: `${window.location.origin}/api/clausulas_selectors`,
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    main_branch: main_branch,
+                    sub_branch: sub_branch,
+                    q: params.term // Include search query parameter
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: $.map(data.data, function (item) {
+                        return {
+                            text: item.name,
+                            id: item.id
+                        };
+                    })
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 0 // Set to 0 to always show options on focus
+    });
+    $(class_selector).append('<option value="" selected>Seleccionar</option>');
+}
+
+//Select2 para coberturas
+function coberturasSelect(class_selector = ".selectCobertura", main_branch, sub_branch) {
+    $(class_selector).select2({
+        language: 'es',
+        tags: true,
+        placeholder: 'Seleccionar',
+        ajax: {
+            url: `${window.location.origin}/api/coberturas_selectors`,
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    main_branch: main_branch,
+                    sub_branch: sub_branch,
+                    q: params.term // Include search query parameter
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: $.map(data.data, function (item) {
+                        return {
+                            text: item.name,
+                            id: item.id
+                        };
+                    })
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 0 // Set to 0 to always show options on focus
+    });
+    $(class_selector).append('<option value="" selected>Seleccionar</option>');
+}
+

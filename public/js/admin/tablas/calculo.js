@@ -481,7 +481,6 @@ function infoReaseguradorSuma() {
     const primaNetaFooterTotal = document.getElementById('primaNetaFooterTotal')
     const primaPartFooterTotal = document.getElementById('primaPartFooterTotal')
 
-    console.log(primaNetaSpan);
     //formulas lineales 
     
     let tasaBrutaInputs = calculosBody.getElementsByClassName('tasaBrutaInput')
@@ -491,7 +490,7 @@ function infoReaseguradorSuma() {
     for (let i = 0; i < tasaBrutaInputs.length; i++) {
 
         let tasaB = tasaBrutaInputs[i].value
-        let dstos = parseFloat(dstosInputs[i].value / 100).toFixed(2) 
+        let dstos = parseFloat(dstosInputs[i].value / 100)
 
         //tasa bruta - descuentos
         let formula = parseFloat(tasaB - (tasaB * dstos)).toFixed(4)
@@ -748,23 +747,27 @@ function refreshPonderacion() {
 
         //tasa ponderada =  participacion por fila / participacion total 
         var participacionTotal = $("#calculosTable #calculosFooter #participacionTotal").text()
-        var participacionTotalDecimal = parseFloat(participacionTotal / 100).toFixed(2)
-        var participacionDecimal = parseFloat(inputsParticipation[i].value / 100).toFixed(2)
-        let tasaPonderadaPorFila = parseFloat(participacionDecimal / participacionTotalDecimal).toFixed(2) 
+        var participacionTotalDecimal = parseFloat(participacionTotal / 100)
+        var participacionDecimal = parseFloat(inputsParticipation[i].value / 100)
+        let tasaPonderadaPorFila = parseFloat(participacionDecimal / participacionTotalDecimal).toFixed(6) 
+        console.log(tasaPonderadaPorFila);
 
         //tasa neta RI = tasa neta * tasa ponde por fila
-        var tasaNetaDecimal = parseFloat(inputsTasaNeta[i].value).toFixed(4)
+        var tasaNetaDecimal = parseFloat(inputsTasaNeta[i].value / 100)
         console.log(tasaNetaDecimal);
-        let tasaNetaRiPorFila = parseFloat(tasaNetaDecimal * tasaPonderadaPorFila).toFixed(4)
+        var tasaPonderadaDecimal = parseFloat(tasaPonderadaPorFila / 100)
+        console.log(tasaPonderadaPorFila);
+        var formulaX = parseFloat(tasaNetaDecimal * tasaPonderadaDecimal)
+        let tasaNetaRiPorFila = parseFloat(formulaX * 10000)
         console.log(tasaNetaRiPorFila);
 
         //tasa bruta = tasa bruta * tasa ponde por fila
-        var tasaBrutaDecimal = parseFloat(inputsTasaBruta[i].value).toFixed(4)
-        let brutaPorFila = parseFloat(tasaBrutaDecimal * tasaPonderadaPorFila).toFixed(4)
+        var tasaBrutaDecimal = parseFloat(inputsTasaBruta[i].value)
+        let brutaPorFila = parseFloat(tasaBrutaDecimal * tasaPonderadaPorFila).toFixed(6)
 
         //comision = descuentos * tasa ponde por fila
-        var dstsDecimal = parseFloat(inputsDstos[i].value / 100).toFixed(2)
-        let comisionPorFila = parseFloat(dstsDecimal * tasaPonderadaPorFila).toFixed(2)
+        var dstsDecimal = parseFloat(inputsDstos[i].value / 100)
+        let comisionPorFila = parseFloat(dstsDecimal * tasaPonderadaPorFila).toFixed(6)
 
 
         tr.innerHTML =
@@ -773,8 +776,8 @@ function refreshPonderacion() {
             </td>
             <td><span name="partPonderada">${inputsParticipation[i].value}</span>%</td>
             <td><span name="tasaPonderada">${(tasaPonderadaPorFila * 100).toFixed(2)}</span>%</td>
-            <td><span name="netaPonderada">${(tasaNetaRiPorFila * 100).toFixed(4)}</span>%</td>
-            <td><span name="brutaPonderada">${(brutaPorFila * 100).toFixed(4)}</span>%</td>
+            <td><span name="netaPonderada">${(tasaNetaRiPorFila).toFixed(6)}</span>%</td>
+            <td><span name="brutaPonderada">${parseFloat(brutaPorFila).toFixed(6)}</span>%</td>
             <td><span name="comisionPonderada">${(comisionPorFila * 100).toFixed(2)}</span>%</td>`
             
             numRow++
