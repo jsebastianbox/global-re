@@ -229,15 +229,26 @@ trait HasUploadFiles
                 $keys[] = "formularioFirmado";
                 break;
             case 'maritimo_2':
-                $keys[] = "pilotos";
-                $keys[] = "signedForm";
-                $keys[] = "medicTest";
+                $keys[] = "copiaMatricula";
+                $keys[] = "informeInspeccion";
+                $keys[] = "siniestralidadCincoAnios";
+                $keys[] = "siniestralidad_armador";
+                $keys[] = "otrasEmbarcaciones";
+                $keys[] = "experienciaArmador";
+                $keys[] = "detalleMantenimiento";
+                $keys[] = "tripulacionInfo";
+                $keys[] = "detalleLicencia";
+                $keys[] = "detalleViajeFile";
+                $keys[] = "detalleValorReemplazo";
+                $keys[] = "formularioFirmado";
                 break;
             case 'maritimo_3':
-                $keys[] = "crFormSigned";
+                $keys[] = "report";
+                $keys[] = "signedForm";
+                $keys[] = "accidentRate";
                 break;
             case 'maritimo_4':
-                $keys[] = "crFormSigned";
+                $keys[] = "quotationForm";
                 break;
             default:
                 break;
