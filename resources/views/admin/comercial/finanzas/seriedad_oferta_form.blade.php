@@ -1,4 +1,43 @@
 {{-- Seriedad de oferta && Cumplimiento de contrato && Buen uso de anticipo && Ejecucion de obra y buena calidad de materiales && garantías aduaneras && Otras garantías --}}
+@section('tab_title')
+<div id="date"></div>
+<script>
+    function updateClock() {
+        const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre',
+            'octubre', 'noviembre', 'diciembre'
+        ];
+        const days = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+
+        const now = new Date();
+        const day = days[now.getDay()];
+        const date = now.getDate();
+        const month = months[now.getMonth()];
+        const year = now.getFullYear();
+        const hour = now.getHours().toString().padStart(2, '0');
+        const minute = now.getMinutes().toString().padStart(2, '0');
+        const second = now.getSeconds().toString().padStart(2, '0');
+
+        const dateString =
+            `Comercial — Editar Compromiso | ${day}, ${date} de ${month} del ${year} ${hour}:${minute}:${second}`;
+        document.getElementById('date').textContent = dateString;
+    }
+    setInterval(updateClock, 1000);
+</script>
+@endsection
+
+@if (\Illuminate\Support\Str::contains(\Illuminate\Support\Facades\Request::url(), '/admin/comercial/edit_compromiso/'))
+<script>
+    const sourceDoc_raw = "{{$sourceDoc}}";
+    let sourceDoc;
+    fetch(`data:application/*;base64,${sourceDoc_raw}`).then(base64 => base64.blob()).then(blob => {
+        sourceDoc = URL.createObjectURL(blob)
+        const anchor = document.getElementById('sourceDocDownload')
+        if (anchor) {
+            anchor.href = sourceDoc
+            anchor.download = 'vida_siniestralidad_previa.{{$sourceDocExtension}}'
+        }
+    });
+</script>
 <style>
     hr {
         background-color: darkgrey;
@@ -37,7 +76,6 @@ margin-top: 1.3rem;
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="{{ asset('js/admin/comercial/ajax.js') }}" defer></script>
-@if (\Illuminate\Support\Str::contains(\Illuminate\Support\Facades\Request::url(), '/admin/comercial/edit_compromiso/'))
 
     <div class="card px-4 py-2">
         <form enctype="multipart/form-data" method="POST" enctype="multipart/form-data" id="finanzas_2_form">
@@ -363,10 +401,39 @@ margin-top: 1.3rem;
                                 <h4 style="text-align: center; text-transform: uppercase">Anexos</h4>
                                 <ul>
                                     <li class="my-2">
+
                                         <div class="input-group">
-                                            <label for="sourceDoc" class="input-group-text">Documento fuente</label>
-                                            <input type="file" name="sourceDoc" id="sourceDoc">
+
+                                            @if ($sourceDoc)
+                                            <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="sourceDocDownload">Documento fuente</a>
+                                            <button type="button" class="btn btn-info" style="color: white" onclick="toggleInputs()" id="sourceDocFileToggle">Modificar</button>
+                                            <script>
+                                                let toggledsourceDocFile = false;
+                                                const sourceDocInput = document.getElementById('sourceDoc');
+                                                const sourceDocDownload = document.getElementById('sourceDocDownload');
+                                                const sourceDocLabel = document.getElementById('sourceDocFileLabel');
+                                                const sourceDocToggle = document.getElementById('sourceDocFileToggle');
+                        
+                                                function toggleInputs() {
+                                                    toggledsourceDocFile = !toggledsourceDocFile;
+                                                    sourceDocInput.hidden = !toggledsourceDocFile;
+                                                    sourceDocDownload.hidden = toggledsourceDocFile;
+                                                    sourceDocLabel.hidden = !toggledsourceDocFile;
+                                                    sourceDocToggle.textContent = toggledsourceDocFile ? 'Usar previo' : 'Modificar'
+                                                    if (toggledsourceDocFile) sourceDocInput.click()
+                                                }
+                                            </script>
+                                            @else
+                                            <input class="form-control" type="file" name="sourceDoc" id="sourceDoc" accept="application/*">
+                                            <label class="input-group-text" for="sourceDoc">Documento fuente
+                                            </label>
+                                            @endif
+                                            
+
                                         </div>
+
+
+
                                     </li>
                                     <li class="my-2">
                                         <div class="input-group">
