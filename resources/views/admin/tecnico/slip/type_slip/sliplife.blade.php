@@ -13,6 +13,7 @@
         @include('admin.tecnico.slip.slips_generales.initial')
 
         <div class="two-sides">
+        {{-- @include('admin.tablas.calculo') --}}
 
             <div class="left_side">
                 {{-- Limite edad --}}
@@ -77,11 +78,13 @@
                         <th style="text-align: center">Límite</th>
                         <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1"
                             colspan="1" aria-label="Add row">
-
+                        @if ($slip->type_coverage === 2 || $slip->type_coverage === 4)
                             <button type="button" onclick="addPersonaAseguradaRow(event, 'vida')"
                                 class="btn btn-success btn-xs">
                                 +
-                            </button>
+                            </button>                            
+                        @endif
+                        
                         </th>
                     </tr>
                 </thead>
@@ -100,7 +103,7 @@
                                 </td>
 
                                 <td>
-                                    <input value="{{$item->age}}" type="number" class="ageInput" name="age[]" id="personAge" min="1"
+                                    <input value="{{$item->age}}" type="number" step="any" class="ageInput" name="age[]" id="personAge" min="1"
                                             max="110">
                                 </td>
 
@@ -130,7 +133,7 @@
                             </td>
 
                             <td>
-                                <input type="number" class="ageInput" name="age[]" id="personAge" min="1"
+                                <input type="number" step="any" class="ageInput" name="age[]" id="personAge" min="1"
                                         max="110">
                             </td>
 
@@ -166,17 +169,32 @@
                 </div>
             </div>
             <div class="right">
-                {{-- Cumulo asegurado --}}
-                <div class="input_group">
-                    <label for="apCumuloAsegurado">
-                        <i class="fa-solid fa-flag"></i>
-                        Cúmulo asegurado
-                    </label>
-                    <input type="text" id="apCumuloAsegurado" name="accumulation"
-                        value="{{ $slip->accumulation }}">
+                <div class="tableContainer">
+                    <div class="input_group">
+                        <label>
+                            <i class="fa-solid fa-flag"></i>
+                            Base de Cobertura
+                        </label>
+                        <input type="number" step="any" name="coverage_foundation" placeholder="...">
+                    </div>
                 </div>
+        
             </div>
         </div>
+        
+        {{-- Cumulo asegurado --}}
+        @if ($slip->insurable_value === 2 || $slip->insurable_value === 4)                            
+        <div class="tableContainer">
+            <div class="input_group" style="width: 350px">
+                <label for="apCumuloAsegurado">
+                    <i class="fa-solid fa-flag"></i>
+                    Cúmulo asegurado
+                </label>
+                <input type="number" step="any" id="apCumuloAsegurado" name="insurable_value"
+                    value="{{ $slip->insurable_value }}">
+            </div>    
+        </div>
+        @endif
 
 
     </div>
@@ -194,7 +212,7 @@
         {{-- @include('admin.tecnico.slip.slips_generales.tableClausulasAdicionalesV2') --}}
         @include('admin.comercial.include.edit_tablaClausulas')
 
-
+       
     </div>
 
     <div class="form_group3">
@@ -221,11 +239,11 @@
 
         <div class="sentenceInput">
             <label>Desde los</label>
-            <input class="inputNumber" type="number" id="apIndemnizacionEdadDesde" name="compensation_since">
+            <input class="inputNumber" type="number" step="any" id="apIndemnizacionEdadDesde" name="compensation_since">
             <label> años, hasta los</label>
-            <input class="inputNumber" type="number" id="apIndemnizacionEdadHasta" name="compensation_until">
+            <input class="inputNumber" type="number" step="any" id="apIndemnizacionEdadHasta" name="compensation_until">
             <label> años, al</label>
-            <input class="inputNumber" type="number" id="apIndemnizacionSumaAsegurada1"
+            <input class="inputNumber" type="number" step="any" id="apIndemnizacionSumaAsegurada1"
                 name="compensation_porcentage">
             <label>% de la suma asegurada</label>
         </div>
@@ -246,7 +264,7 @@
                         <td>1</td>
                         <td>Enajenación mental que impida todo trabajo.</td>
                         <td>
-                            <input type="number" id="apIndemnizacion1" name="Indemnizacion1" value="100"
+                            <input type="number" step="any" id="apIndemnizacion1" name="Indemnizacion1" value="100"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -254,7 +272,7 @@
                         <td>2</td>
                         <td>Parálisis o Incapacidad total y permanente</td>
                         <td>
-                            <input type="number" id="apIndemnizacion2" name="Indemnizacion2" value="100"
+                            <input type="number" step="any" id="apIndemnizacion2" name="Indemnizacion2" value="100"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -262,7 +280,7 @@
                         <td>3</td>
                         <td>Pérdida de la Vista de ambos ojos</td>
                         <td>
-                            <input type="number" id="apIndemnizacion3" name="Indemnizacion3" value="100"
+                            <input type="number" step="any" id="apIndemnizacion3" name="Indemnizacion3" value="100"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -270,7 +288,7 @@
                         <td>4</td>
                         <td>Pérdida o inutilización total y permanente de ambas manos o ambos pies</td>
                         <td>
-                            <input type="number" id="apIndemnizacion4" name="Indemnizacion4" value="100"
+                            <input type="number" step="any" id="apIndemnizacion4" name="Indemnizacion4" value="100"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -278,7 +296,7 @@
                         <td>5</td>
                         <td>Pérdida o inutilización total y permanente de una mano y un pie</td>
                         <td>
-                            <input type="number" id="apIndemnizacion5" name="Indemnizacion5" value="100"
+                            <input type="number" step="any" id="apIndemnizacion5" name="Indemnizacion5" value="100"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -286,7 +304,7 @@
                         <td>6</td>
                         <td>Pérdida total e irrecuperable del habla</td>
                         <td>
-                            <input type="number" id="apIndemnizacion6" name="Indemnizacion6" value="100"
+                            <input type="number" step="any" id="apIndemnizacion6" name="Indemnizacion6" value="100"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -294,7 +312,7 @@
                         <td>7</td>
                         <td>Pérdida total e irreparable de la audición de los dos oídos</td>
                         <td>
-                            <input type="number" id="apIndemnizacion7" name="Indemnizacion7" value="100"
+                            <input type="number" step="any" id="apIndemnizacion7" name="Indemnizacion7" value="100"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -302,7 +320,7 @@
                         <td>8</td>
                         <td>Pérdida de dos o más miembros principales</td>
                         <td>
-                            <input type="number" id="apIndemnizacion8" name="Indemnizacion8" value="100"
+                            <input type="number" step="any" id="apIndemnizacion8" name="Indemnizacion8" value="100"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -310,7 +328,7 @@
                         <td>9</td>
                         <td>Pérdida total e irreparable de un ojo, junto con la pérdida de un pie o una mano</td>
                         <td>
-                            <input type="number" id="apIndemnizacion9" name="Indemnizacion9" value="100"
+                            <input type="number" step="any" id="apIndemnizacion9" name="Indemnizacion9" value="100"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -318,7 +336,7 @@
                         <td>10</td>
                         <td>Pérdida total de los dedos de ambas manos, comprendiendo todas las falanges</td>
                         <td>
-                            <input type="number" id="apIndemnizacion10" name="Indemnizacion10" value="100"
+                            <input type="number" step="any" id="apIndemnizacion10" name="Indemnizacion10" value="100"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -326,7 +344,7 @@
                         <td>11</td>
                         <td>Pérdida o inutilización total y permanente de una mano</td>
                         <td>
-                            <input type="number" id="apIndemnizacion11" name="Indemnizacion11" value="80"
+                            <input type="number" step="any" id="apIndemnizacion11" name="Indemnizacion11" value="80"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -334,7 +352,7 @@
                         <td>12</td>
                         <td>Pérdida de todos los dedos de una mano</td>
                         <td>
-                            <input type="number" id="apIndemnizacion12" name="Indemnizacion12" value="60"
+                            <input type="number" step="any" id="apIndemnizacion12" name="Indemnizacion12" value="60"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -342,7 +360,7 @@
                         <td>13</td>
                         <td>Pérdida o inutilización total y permanente de un pie</td>
                         <td>
-                            <input type="number" id="apIndemnizacion13" name="Indemnizacion13" value="80"
+                            <input type="number" step="any" id="apIndemnizacion13" name="Indemnizacion13" value="80"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -350,7 +368,7 @@
                         <td>14</td>
                         <td>Pérdida total o irreparable de la visión de un ojo</td>
                         <td>
-                            <input type="number" id="apIndemnizacion14" name="Indemnizacion14" value="60"
+                            <input type="number" step="any" id="apIndemnizacion14" name="Indemnizacion14" value="60"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -358,7 +376,7 @@
                         <td>15</td>
                         <td>Pérdida total permanente de la audición de un oído</td>
                         <td>
-                            <input type="number" id="apIndemnizacion15" name="Indemnizacion15" value="60"
+                            <input type="number" step="any" id="apIndemnizacion15" name="Indemnizacion15" value="60"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -366,7 +384,7 @@
                         <td>16</td>
                         <td>Pérdida de un miembro principal. </td>
                         <td>
-                            <input type="number" id="apIndemnizacion16" name="Indemnizacion16" value="60"
+                            <input type="number" step="any" id="apIndemnizacion16" name="Indemnizacion16" value="60"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -374,7 +392,7 @@
                         <td>17</td>
                         <td>Pérdida de los dedos pulgar e índice de la misma mano</td>
                         <td>
-                            <input type="number" id="apIndemnizacion17" name="Indemnizacion17" value="25"
+                            <input type="number" step="any" id="apIndemnizacion17" name="Indemnizacion17" value="25"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -382,7 +400,7 @@
                         <td>18</td>
                         <td>Pérdida del pulgar derecho</td>
                         <td>
-                            <input type="number" id="apIndemnizacion18" name="Indemnizacion18" value="20"
+                            <input type="number" step="any" id="apIndemnizacion18" name="Indemnizacion18" value="20"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -390,7 +408,7 @@
                         <td>19</td>
                         <td>Pérdida del pulgar izquierdo</td>
                         <td>
-                            <input type="number" id="apIndemnizacion19" name="Indemnizacion19" value="20"
+                            <input type="number" step="any" id="apIndemnizacion19" name="Indemnizacion19" value="20"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -398,7 +416,7 @@
                         <td>20</td>
                         <td>Pérdida de las falanges del pulgar derecho</td>
                         <td>
-                            <input type="number" id="apIndemnizacion20" name="Indemnizacion20" value="20"
+                            <input type="number" step="any" id="apIndemnizacion20" name="Indemnizacion20" value="20"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -406,7 +424,7 @@
                         <td>21</td>
                         <td>Pérdida de las falanges del pulgar izquierdo</td>
                         <td>
-                            <input type="number" id="apIndemnizacion21" name="Indemnizacion21" value="20"
+                            <input type="number" step="any" id="apIndemnizacion21" name="Indemnizacion21" value="20"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -414,7 +432,7 @@
                         <td>22</td>
                         <td>Pérdida de una de las falanges del pulgar derecho</td>
                         <td>
-                            <input type="number" id="apIndemnizacion22" name="Indemnizacion22" value="20"
+                            <input type="number" step="any" id="apIndemnizacion22" name="Indemnizacion22" value="20"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -422,7 +440,7 @@
                         <td>23</td>
                         <td>Pérdida de una de las falanges del pulgar izquierdo</td>
                         <td>
-                            <input type="number" id="apIndemnizacion23" name="Indemnizacion23" value="20"
+                            <input type="number" step="any" id="apIndemnizacion23" name="Indemnizacion23" value="20"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -430,7 +448,7 @@
                         <td>24</td>
                         <td>Pérdida del dedo grande del pie</td>
                         <td>
-                            <input type="number" id="apIndemnizacion24" name="Indemnizacion24" value="20"
+                            <input type="number" step="any" id="apIndemnizacion24" name="Indemnizacion24" value="20"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -438,7 +456,7 @@
                         <td>25</td>
                         <td>Pérdida de tres falanges de cualquier otro dedo de la mano derecha</td>
                         <td>
-                            <input type="number" id="apIndemnizacion25" name="Indemnizacion25" value="15"
+                            <input type="number" step="any" id="apIndemnizacion25" name="Indemnizacion25" value="15"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -446,7 +464,7 @@
                         <td>26</td>
                         <td>Pérdida de dos falanges de cualquier otro dedo de la mano izquierda</td>
                         <td>
-                            <input type="number" id="apIndemnizacion26" name="Indemnizacion26" value="15"
+                            <input type="number" step="any" id="apIndemnizacion26" name="Indemnizacion26" value="15"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -454,7 +472,7 @@
                         <td>27</td>
                         <td>Pérdida de dos falanges de cualquier otro dedo de la mano derecha </td>
                         <td>
-                            <input type="number" id="apIndemnizacion27" name="Indemnizacion27" value="15"
+                            <input type="number" step="any" id="apIndemnizacion27" name="Indemnizacion27" value="15"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -462,7 +480,7 @@
                         <td>28</td>
                         <td>Pérdida de dos falanges de cualquier otro dedo de la mano izquierda </td>
                         <td>
-                            <input type="number" id="apIndemnizacion28" name="Indemnizacion28" value="15"
+                            <input type="number" step="any" id="apIndemnizacion28" name="Indemnizacion28" value="15"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>
@@ -470,7 +488,7 @@
                         <td>29</td>
                         <td>Pérdida de una falange de cualquier otro dedo de la mano derecha </td>
                         <td>
-                            <input type="number" id="apIndemnizacion29" name="Indemnizacion29" value="10"
+                            <input type="number" step="any" id="apIndemnizacion29" name="Indemnizacion29" value="10"
                                 min="0" style="width: 75px">
                         </td>
                     </tr>

@@ -446,7 +446,7 @@ function updateFirstTable() {
     })
 
     function sumTable() {
-        sumFirstTable = parseFloat(isd.value) + parseFloat(impRenta.value) + parseFloat(ciaSeguros.value) + parseFloat(ciaPartner.value) + parseFloat(comBq.value);
+        sumFirstTable = parseFloat(comGlobal.value) + parseFloat(isd.value) + parseFloat(impRenta.value) + parseFloat(ciaSeguros.value) + parseFloat(ciaPartner.value) + parseFloat(comBq.value);
         total.innerText = `${parseFloat(sumFirstTable).toFixed(4)}%`;
     }
 
@@ -490,11 +490,11 @@ function infoReaseguradorSuma() {
     //tasa neta
     for (let i = 0; i < tasaBrutaInputs.length; i++) {
 
-        let tasaB = tasaBrutaInputs[i].value;
-        let dstos = dstosInputs[i].value / 100;
+        let tasaB = tasaBrutaInputs[i].value
+        let dstos = parseFloat(dstosInputs[i].value / 100).toFixed(2) 
 
         //tasa bruta - descuentos
-        let formula = parseFloat(tasaB - dstos).toFixed(4)
+        let formula = parseFloat(tasaB - (tasaB * dstos)).toFixed(4)
         tasaNetaSpan[i].value = formula
     }
     //prima neta

@@ -7,16 +7,14 @@
             'octubre', 'noviembre', 'diciembre'
         ];
         const days = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
-
-        const now = new Date();
-        const day = days[now.getDay()];
-        const date = now.getDate();
-        const month = months[now.getMonth()];
-        const year = now.getFullYear();
-        const hour = now.getHours().toString().padStart(2, '0');
-        const minute = now.getMinutes().toString().padStart(2, '0');
-        const second = now.getSeconds().toString().padStart(2, '0');
-
+        const now = new Date()
+        const day = days[now.getDay()]
+        const date = now.getDate()
+        const month = months[now.getMonth()]
+        const year = now.getFullYear()
+        const hour = now.getHours().toString().padStart(2, '0')
+        const minute = now.getMinutes().toString().padStart(2, '0')
+        const second = now.getSeconds().toString().padStart(2, '0')
         const dateString =
             `Comercial — Editar Compromiso | ${day}, ${date} de ${month} del ${year} ${hour}:${minute}:${second}`;
         document.getElementById('date').textContent = dateString;
@@ -93,7 +91,6 @@
         }
     });
 </script>
-
 <style>
     hr {
         background-color: darkgrey;
@@ -111,7 +108,6 @@
     /* .select2-container--open .select2-dropdown--below {
             margin-top: 1.3rem;
         } */
-
     form select {
         background: transparent;
     }
@@ -143,17 +139,20 @@
         <label class="lead">Suma elegida</label>
         <hr style="color:darkgrey; width:70%">
 
-        <div id="sumaAsegurableContainer" class="flexColumnCenterContainer" style="{{$slip->insurable_sum > 0 ? 'display:flex' : 'display:none'}};margin:1.5rem 0;">
-            <h4 class="slipTitle">Tabla suma asegurable</h4>
-            <button type="button" onclick="refreshSumaAsegurableTable()" class="btn btn-info my-2">
-                Actualizar
-            </button>
-            @include('admin.tecnico.slip.slips_generales.tableSumaAsegurable')
-        </div>
+
 
         <div class="row">
-            <div id="sumaAseguradaContainer" class="tableContainer" style="{{$slip->insured_sum > 0 ? 'display:flex' : 'display:none'}};margin:1.5rem 0;">
-                <h4 class="slipTitle">Tabla suma asegurada</h4>
+            <div id="sumaAseguradaContainer" class="tableContainer" style="margin:1.5rem 0;">
+                @if ($slip->insurable_sum > 0)
+                <h4 class="slipTitle mb-2">Tabla suma asegurable</h4>
+                @elseif($slip->insured_sum > 0)
+                <h4 class="slipTitle mb-2">Tabla suma asegurada</h4>
+                @endif
+
+                <div class="input-group ms-5">
+                    <input type="text" placeholder="Nombre columna.." id="columnNameactivos_fijosSumaAseguradaTable">
+                    <button type="button" class="btn btn-info" id="btnAddColumnSumas" onclick="addColumnSumas('activos_fijos')">Agregar columna</button>
+                </div>
 
                 <button type="button" onclick="refreshSumaAseguradaTable()" class="btn btn-info my-2">
                     Actualizar
@@ -300,6 +299,8 @@
             </div>
         </div>
 
+
+
         <div class="row">
             <label class="lead">Deducibles</label>
             <hr style="background-color: darkgrey; width: 70%">
@@ -434,36 +435,6 @@
                     @endif
                 </div>
                 <div class="input-group my-2">
-                    <input class="form-control" type="file" name="inspection_control_file" hidden="true" id="inspection_control_file" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="inspection_control_file" id="inspection_control_fileFileLabel">Informe de inspección
-                    </label>
-                    @if ($inspection_control_file)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="inspection_control_fileDownload">Informe de inspección - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleinspection_control_file()" id="inspection_control_fileFileToggle">Modificar</button>
-                    <script>
-                        let toggledinspection_control_fileFile = false;
-                        const inspection_control_fileInput = document.getElementById('inspection_control_file');
-                        const inspection_control_fileDownload = document.getElementById('inspection_control_fileDownload');
-                        const inspection_control_fileLabel = document.getElementById('inspection_control_fileFileLabel');
-                        const inspection_control_fileToggle = document.getElementById('inspection_control_fileFileToggle');
-
-                        function toggleinspection_control_file() {
-                            toggledinspection_control_fileFile = !toggledinspection_control_fileFile;
-                            inspection_control_fileInput.hidden = !toggledinspection_control_fileFile;
-                            inspection_control_fileDownload.hidden = toggledinspection_control_fileFile;
-                            inspection_control_fileLabel.hidden = !toggledinspection_control_fileFile;
-                            inspection_control_fileToggle.textContent = toggledinspection_control_fileFile ? 'Usar previo' : 'Modificar'
-                            if (toggledinspection_control_fileFile) inspection_control_fileInput.click()
-                        }
-                    </script>
-                    @else<input type="file" name="inspection_control_file" id="inspection_control_file" class="form-control">
-                    <label for="inspection_control_file" class="input-group-text">Informe de inspección</label>
-                    @endif
-                </div>
-
-            </div>
-            <div class="row" id="formularioCotizacionLucro" style="display: none">
-                <div class="input-group my-2">
                     <input class="form-control" type="file" name="quote_form_file" hidden="true" id="quote_form_file" accept="application/*">
                     <label class="input-group-text" hidden="true" for="quote_form_file" id="quote_form_fileFileLabel">Formularios de cotización
                     </label>
@@ -490,21 +461,45 @@
                     <label for="quote_form_file" class="input-group-text">Formularios de cotización</label>
                     @endif
                 </div>
+                <div class="input-group my-2">
+                    <input class="form-control" type="file" name="inspection_control_file" hidden="true" id="inspection_control_file" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="inspection_control_file" id="inspection_control_fileFileLabel">Informe de inspección
+                    </label>
+                    @if ($inspection_control_file)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="inspection_control_fileDownload">Informe de inspección - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleinspection_control_file()" id="inspection_control_fileFileToggle">Modificar</button>
+                    <script>
+                        let toggledinspection_control_fileFile = false;
+                        const inspection_control_fileInput = document.getElementById('inspection_control_file');
+                        const inspection_control_fileDownload = document.getElementById('inspection_control_fileDownload');
+                        const inspection_control_fileLabel = document.getElementById('inspection_control_fileFileLabel');
+                        const inspection_control_fileToggle = document.getElementById('inspection_control_fileFileToggle');
+
+                        function toggleinspection_control_file() {
+                            toggledinspection_control_fileFile = !toggledinspection_control_fileFile;
+                            inspection_control_fileInput.hidden = !toggledinspection_control_fileFile;
+                            inspection_control_fileDownload.hidden = toggledinspection_control_fileFile;
+                            inspection_control_fileLabel.hidden = !toggledinspection_control_fileFile;
+                            inspection_control_fileToggle.textContent = toggledinspection_control_fileFile ? 'Usar previo' : 'Modificar'
+                            if (toggledinspection_control_fileFile) inspection_control_fileInput.click()
+                        }
+                    </script>
+                    @else<input type="file" name="inspection_control_file" id="inspection_control_file" class="form-control">
+                    <label for="inspection_control_file" class="input-group-text">Informe de inspección</label>
+                    @endif
+                </div>
             </div>
         </div>
+        <div class="row">
+            @include('admin.comercial.include.leyJurisdiccion')
+        </div>
 
-</div>
-</div>
-<div class="row">
-    @include('admin.comercial.include.leyJurisdiccion')
-</div>
-
-<div>
-    <div style="float:right;" class="row">
-        <button type="submit" formnovalidate="formnovalidate" id="submitBtn" class="btn btn-info" style="color: white">Enviar a dpto. Técnico</button>
-    </div>
-</div>
-</form>
+        <div>
+            <div style="float:right;" class="row">
+                <button type="submit" formnovalidate="formnovalidate" id="submitBtn" class="btn btn-info" style="color: white">Enviar a dpto. Técnico</button>
+            </div>
+        </div>
+    </form>
 </div>
 @else
 <form enctype="multipart/form-data" method="POST" id="activos_fijos_form" class="form activos" style="display: none">
@@ -642,6 +637,7 @@
                     </tr>
 
                 </tfoot>
+                <caption>Recuerda: solo podrás agregar un número determinado de filas en esta sección. ¡Revisa bien!</caption>
 
             </table>
         </div>
@@ -748,6 +744,7 @@
                         </tr>
 
                     </tfoot>
+                    <caption>Recuerda: solo podrás agregar un número determinado de filas en esta sección. ¡Revisa bien!</caption>
 
                 </table>
             </div>
@@ -852,6 +849,7 @@
         <div class="row">
             <div class="tableContainer" style="margin: 2rem 0">
                 <table id="incendioCoberturasAdicionalesTable" name="incendioCoberturasAdicionalesTable" class="indemnizacionTable">
+                    <caption>No olvidar de llenar mínimo una cobertura.</caption>
                     <thead>
                         <tr>
                             <th style="text-align: center; width: 42px;">#</th>
@@ -897,6 +895,7 @@
 
         <div class="row">
             <div class="tableContainer" style="margin: 2rem 0">
+                <caption>No olvidar de llenar mínimo una cláusula.</caption>
                 <table id="incendioClausulasAdicionalesTable" name="incendioClausulasAdicionalesTable" class="indemnizacionTable">
                     <thead>
                         <tr>

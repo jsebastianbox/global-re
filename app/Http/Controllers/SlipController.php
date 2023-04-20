@@ -76,6 +76,8 @@ class SlipController extends Controller
 
         //variables nulls para no tirar error
         $object_insurance = [];
+        $sum_assured = [];
+        $vehicles_details = [];
 
         switch ($slip->type_coverage) {
             case '1':
@@ -92,17 +94,21 @@ class SlipController extends Controller
             case '6':
             case '7':
             case '8':
-                $slip_type = SlipPropertyFixedAsset::where('id', $slip->model_id)
-                    ->with('sum_assured')
-                    ->with('detail_perdios')
-                    ->with('equipment_list')
-                    ->first();
+                $slip_type = SlipPropertyFixedAsset::where('slip_id', $id)->first();
+                $sum_assured = SumAssured::where('slip_id', $slip->id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::where('main_branch', 'activos')->get();
+                $clausulasSelect = Clausulas_selector::where('main_branch', 'activos')->get();
+
                 break;
 
             case '9':
             case '10':
-                $slip_type = SlipVehicle::where('id', $slip->model_id)
-                    ->with('vehicle_detail')->first();
+                $slip_type = SlipVehicle::where('slip_id', $id)->first();
+                $vehicles_details = VehicleDetail::where('slip_id', $slip->id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
+                $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
 
                 break;
             case '11':
@@ -236,6 +242,8 @@ class SlipController extends Controller
             ->with('user', $user)
             ->with('slip', $slip)
             ->with('slip_type', $slip_type)
+            ->with('sum_assured', $sum_assured)
+            ->with('vehicles_details', $vehicles_details)
             ->with('coberturasSelect', $coberturasSelect)
             ->with('clausulasSelect', $clausulasSelect)
             ->with('object_insurance', $object_insurance);
@@ -866,10 +874,10 @@ class SlipController extends Controller
 
         $user = Auth::user();
         if ($user->role === "comercial") {
-            return redirect('/admin/compromiso/pending')
+            return redirect('/slip')
                 ->with('success', 'El Slip ha sido modificado y enviado al departamento técnico de manera exitosa.');
         } else {
-            return redirect('/admin/compromiso/pending')
+            return redirect('/slip')
                 ->with('success', 'El Slip ha sido modificado y enviado al departamento técnico de manera exitosa.');
         }
     }

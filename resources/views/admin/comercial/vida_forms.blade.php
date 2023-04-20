@@ -315,11 +315,14 @@
 
     <div class="tab">
         <label for="" class="lead">Coberturas adicionales</label>
-        <hr>
+        <hr style="background-color: darkgrey; width: 70%">
 
         <div class="row">
             <div class="tableContainer" style="margin: 2rem 0">
+                
                 <table id="vida_formsCoberturasAdicionalesTable" class="indemnizacionTable">
+                    <caption>No olvidar de llenar mínimo una cobertura.</caption>
+
                     <thead>
                         <tr>
                             <th style="text-align: center; width: 42px;">#</th>
@@ -363,10 +366,13 @@
         </div>
 
         <label class="lead">Cláusulas adicionales</label>
-        <hr>
+        <hr style="background-color: darkgrey; width: 70%">
+
         <div class="row">
             <div class="tableContainer" style="margin: 2rem 0">
                 <table id="vidaClausulasAdicionalesTable" class="indemnizacionTable">
+                    <caption>No olvidar de llenar mínimo una cláusula.</caption>
+
                     <thead>
                         <tr>
                             <th style="text-align: center; width: 42px;">#</th>

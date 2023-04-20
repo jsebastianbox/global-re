@@ -76,7 +76,9 @@
 <div class="tableContainer" style="1.2rem 0">
     <h4 class="slipTitle">Notificación de Siniestros</h4>
 
-    <div class="flexRowWrapContainer" style="1.2rem 0">
+    <textarea name="note_sinester" id="" cols="30" rows="10"></textarea>
+
+    {{-- <div class="flexRowWrapContainer" style="1.2rem 0">
         <button id="notificacionBtnOpcion1" class="btn btn-sm btn-primary">Por días</button>
         <button id="notificacionBtnOpcion2" class="btn btn-sm btn-primary">Claúsula de Control de Reclamos</button>
         <button id="notificacionBtnOpcion3" class="btn btn-sm btn-primary">Cláusula de Cooperación de Reclamos</button>
@@ -93,22 +95,23 @@
     <div id="notificacionOpcion3" class="sentenceInput" style="display: none">
         <input type="number" name="note_sinester" placeholder="No. Días" style="margin: 1rem 0">
         <p>días contados a partir de la fecha de ocurrencia</p>
-    </div>
+    </div> --}}
 </div>
 
 <div class="tableContainer">
+    
     <h4 class="slipTitle selectLey">Ley y jurisdicción:</h4>
 
 
     <div style="max-width: 800px">
         <p>Este reaseguro será gobernado por y constituido de acuerdo con la ley de:
-        <select class="js-example-basic-single inputForm select_country" name="politics_country_one" style="margin-bottom: 15px">
-            {{-- <option value="{{ $slip->country_id }}" selected>{{ $slip->country_politics_one->name }}</option> --}}
-        </select>
+            <span class="politics_country_one" style="font-weight: bold">
+                {{$slip->country->name}}
+            </span>,&nbsp;
         y cada parte acuerda referir a la jurisdicción exclusiva de las cortes de:
-        <select class="js-example-basic-single inputForm select_country">
-            {{-- <option value="{{ $slip->country_id }}" selected>{{ $slip->country_politics_one->name }}</option> --}}
-        </select>
+        <span class="politics_country_one" style="font-weight: bold">
+            {{$slip->country->name}}
+        </span>,&nbsp;
         a menos que ambas partes acuerden referir el caso a arbitraje.</p>
     </div>
 </div>

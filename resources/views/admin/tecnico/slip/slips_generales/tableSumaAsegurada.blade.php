@@ -43,7 +43,8 @@
             <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1"
                 colspan="1" aria-label="Add row">
 
-                <button type="button" onclick="addRowSumaAseguradaIncendio(event, 'activos_fijos')" class="btn btn-success btn-xs">
+                <button type="button" onclick="addRowSumaAseguradaIncendio(event, 'activos_fijos')" class="btn btn-success btn-xs"
+                    style="display: none">
                     +
                 </button>
             </th>

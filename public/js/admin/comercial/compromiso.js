@@ -2004,42 +2004,16 @@ function chooseTypeSuma2(event) {
 
 
 //suma asegurable / table suma asegurada rama:incendio
-const incendioSumaAsegurable = document.getElementById('incendioSumaAsegurable')
 
-
-function refreshSumaAsegurableTable() {
-    let row = $('#activosSumaAseguradaTableBody').find('tr').length
-
-    for (let i = 0; i < row; i++) {
-        incendioSumaAsegurableTotales(i, 1, 'activos')
-        incendioSumaAsegurableTotales(i, 2, 'activos')
-        incendioSumaAsegurableTotales(i, 3, 'activos')
-        incendioSumaAsegurableTotales(i, 4, 'activos')
-        incendioSumaAsegurableTotales(i, 5, 'activos')
-        incendioSumaAsegurableTotales(i, 6, 'activos')
-        incendioSumaAsegurableTotales(i, 7, 'activos')
-        incendioSumaAsegurableTotales(i, 8, 'activos')
-        incendioSumaAsegurableTotales(i, 9, 'activos')
-        incendioSumaAsegurableTotales(i, 10, 'activos')
-        incendioSumaAsegurableTotales(i, 11, 'activos')
-    }
-}
 function refreshSumaAseguradaTable() {
-    console.log('a');
     let row = $('#activos_fijosSumaAseguradaTableBody').find('tr').length
-
+    let column = $('#activos_fijosSumaAseguradaTableBody').find('tr:first-child td').length - 4;
+    console.log(column);
+    
     for (let i = 1; i <= row; i++) {
-        incendioSumaAsegurableTotales(i, 1, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 2,'activos_fijos')
-        incendioSumaAsegurableTotales(i, 3, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 4, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 5,'activos_fijos')
-        incendioSumaAsegurableTotales(i, 6, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 7, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 8, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 9, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 10, 'activos_fijos')
-        incendioSumaAsegurableTotales(i, 11, 'activos_fijos')
+        for (let j = 1; j <= column; j++) {
+            incendioSumaAsegurableTotales(i, j, 'activos_fijos');
+        }
     }
 }
 
@@ -3064,6 +3038,54 @@ function addColumnSumas(tableName) {
     }
 }
 
+function addColumnSumasInEdit(tableName) {
+    let columnCounter2 = $('#activos_fijosSumaAseguradaTableBody').find('tr:first-child td').length - 3;
+
+    console.log(columnCounter2);
+
+
+    if (columnCounter <= 5) {
+        columnCounter++
+        $('#btnAddColumnSumas').removeAttr('disabled')
+        // Obtener referencia de la tabla
+        let tabla = document.getElementById(`${tableName}SumaAseguradaTable`);
+
+        // Crear encabezado de columna y input hidden
+        let encabezado = document.createElement("th");
+        let inputName = document.getElementById(`columnName${tableName}SumaAseguradaTable`).value
+        encabezado.style.textAlign = 'center'
+        encabezado.textContent = inputName
+        // Crear el elemento input
+        let input = document.createElement('input');
+        input.setAttribute('type', 'hidden');
+        input.setAttribute('name', `th_sum_assured_${columnCounter-1}`);
+        input.setAttribute('value', `${inputName}`);
+        encabezado.appendChild(input)
+
+        // Agregar encabezado de columna a la primera fila de la tabla
+        let ths = tabla.querySelectorAll('th')
+        tabla.rows[0].cells[ths.length - 3].insertAdjacentElement('afterend', encabezado)
+
+        // Recorrer cada fila de la tabla y agregar una celda en la nueva columna
+        for (let i = 1; i < tabla.rows.length - 1; i++) {
+            let celda = tabla.rows[i].insertCell(insertCell_sum);
+            celda.innerHTML = `<input onkeyup="incendioSumaAsegurableTotales(${rowCounter}, ${columnCounter2}, '${tableName}')" class="col${columnCounter2} row${rowCounter}" style="width: 95px" type="number" step="any" name="other_sum_assured_${columnCounter-1}[]">`;
+            rowCounter++ 
+        }
+        rowCounter = 1
+        let celda = tabla.rows[tabla.rows.length - 1].insertCell(insertCell_sum);
+        celda.style.textAlign = 'center'
+        insertCell_sum++
+        
+        celda.innerHTML = ` <span id="colTotal${columnCounter2}" class="slipTitle">0</span>$`;
+        columnCounter2++ 
+
+
+    } else {
+        $('#btnAddColumnSumas').attr('disabled')
+        $('#columnName').attr('disabled')
+    }
+}
 
 
 

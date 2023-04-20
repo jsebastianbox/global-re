@@ -87,9 +87,9 @@
                 </tr>
             </thead>
             <tbody style="overflow-y: auto; max-height: 700px;">
-                @foreach ($slipsUser as $slip)
+                @foreach ($slipsUser as $key => $slip)
                     <tr>
-                        <td style="text-align: center">{{ $slip->id }}</td>
+                        <td style="text-align: center">{{ $key +1 }}</td>
                         <td style="text-align: center">{{ $slip->insurer }}</td>
                         <td style="text-align: center">{{ $slip->type->name }}</td>
                         <td style="text-align: center">{{ $slip_statuses->find($slip->slip_status_id)->slip_status }}
