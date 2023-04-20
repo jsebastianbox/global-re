@@ -26,146 +26,146 @@
 @endsection
 @if (\Illuminate\Support\Str::contains(\Illuminate\Support\Facades\Request::url(), '/admin/comercial/edit_compromiso/'))
 <script>
-    const coverageDetail_raw = "{{$coverageDetail}}";
-    let coverageDetail;
-    fetch(`data:application/*;base64,${coverageDetail_raw}`).then(base64 => base64.blob()).then(blob => {
-        coverageDetail = URL.createObjectURL(blob)
-        const anchor = document.getElementById('coverageDetailDownload')
+    const copiaMatricula_raw = "{{$copiaMatricula}}";
+    let copiaMatricula;
+    fetch(`data:application/*;base64,${copiaMatricula_raw}`).then(base64 => base64.blob()).then(blob => {
+        copiaMatricula = URL.createObjectURL(blob)
+        const anchor = document.getElementById('copiaMatriculaDownload')
         if (anchor) {
-            anchor.href = coverageDetail
-            anchor.download = 'vida_siniestralidad_previa.{{$coverageDetailExtension}}'
+            anchor.href = copiaMatricula
+            anchor.download = 'vida_siniestralidad_previa.{{$copiaMatriculaExtension}}'
         }
     });
 
 
-    const coverageDetail_raw = "{{$coverageDetail}}";
-    let coverageDetail;
-    fetch(`data:application/*;base64,${coverageDetail_raw}`).then(base64 => base64.blob()).then(blob => {
-        coverageDetail = URL.createObjectURL(blob)
-        const anchor = document.getElementById('coverageDetailDownload')
+    const informeInspeccion_raw = "{{$informeInspeccion}}";
+    let informeInspeccion;
+    fetch(`data:application/*;base64,${informeInspeccion_raw}`).then(base64 => base64.blob()).then(blob => {
+        informeInspeccion = URL.createObjectURL(blob)
+        const anchor = document.getElementById('informeInspeccionDownload')
         if (anchor) {
-            anchor.href = coverageDetail
-            anchor.download = 'vida_siniestralidad_previa.{{$coverageDetailExtension}}'
+            anchor.href = informeInspeccion
+            anchor.download = 'vida_siniestralidad_previa.{{$informeInspeccionExtension}}'
         }
     });
 
 
-    const coverageDetail_raw = "{{$coverageDetail}}";
-    let coverageDetail;
-    fetch(`data:application/*;base64,${coverageDetail_raw}`).then(base64 => base64.blob()).then(blob => {
-        coverageDetail = URL.createObjectURL(blob)
-        const anchor = document.getElementById('coverageDetailDownload')
+    const siniestralidadCincoAnios_raw = "{{$siniestralidadCincoAnios}}";
+    let siniestralidadCincoAnios;
+    fetch(`data:application/*;base64,${siniestralidadCincoAnios_raw}`).then(base64 => base64.blob()).then(blob => {
+        siniestralidadCincoAnios = URL.createObjectURL(blob)
+        const anchor = document.getElementById('siniestralidadCincoAniosDownload')
         if (anchor) {
-            anchor.href = coverageDetail
-            anchor.download = 'vida_siniestralidad_previa.{{$coverageDetailExtension}}'
+            anchor.href = siniestralidadCincoAnios
+            anchor.download = 'vida_siniestralidad_previa.{{$siniestralidadCincoAniosExtension}}'
         }
     });
 
 
-    const coverageDetail_raw = "{{$coverageDetail}}";
-    let coverageDetail;
-    fetch(`data:application/*;base64,${coverageDetail_raw}`).then(base64 => base64.blob()).then(blob => {
-        coverageDetail = URL.createObjectURL(blob)
-        const anchor = document.getElementById('coverageDetailDownload')
+    const siniestralidad_armador_raw = "{{$siniestralidad_armador}}";
+    let siniestralidad_armador;
+    fetch(`data:application/*;base64,${siniestralidad_armador_raw}`).then(base64 => base64.blob()).then(blob => {
+        siniestralidad_armador = URL.createObjectURL(blob)
+        const anchor = document.getElementById('siniestralidad_armadorDownload')
         if (anchor) {
-            anchor.href = coverageDetail
-            anchor.download = 'vida_siniestralidad_previa.{{$coverageDetailExtension}}'
+            anchor.href = siniestralidad_armador
+            anchor.download = 'vida_siniestralidad_previa.{{$siniestralidad_armadorExtension}}'
         }
     });
 
 
-    const coverageDetail_raw = "{{$coverageDetail}}";
-    let coverageDetail;
-    fetch(`data:application/*;base64,${coverageDetail_raw}`).then(base64 => base64.blob()).then(blob => {
-        coverageDetail = URL.createObjectURL(blob)
-        const anchor = document.getElementById('coverageDetailDownload')
+    const otrasEmbarcaciones_raw = "{{$otrasEmbarcaciones}}";
+    let otrasEmbarcaciones;
+    fetch(`data:application/*;base64,${otrasEmbarcaciones_raw}`).then(base64 => base64.blob()).then(blob => {
+        otrasEmbarcaciones = URL.createObjectURL(blob)
+        const anchor = document.getElementById('otrasEmbarcacionesDownload')
         if (anchor) {
-            anchor.href = coverageDetail
-            anchor.download = 'vida_siniestralidad_previa.{{$coverageDetailExtension}}'
+            anchor.href = otrasEmbarcaciones
+            anchor.download = 'vida_siniestralidad_previa.{{$otrasEmbarcacionesExtension}}'
         }
     });
 
 
-    const coverageDetail_raw = "{{$coverageDetail}}";
-    let coverageDetail;
-    fetch(`data:application/*;base64,${coverageDetail_raw}`).then(base64 => base64.blob()).then(blob => {
-        coverageDetail = URL.createObjectURL(blob)
-        const anchor = document.getElementById('coverageDetailDownload')
+    const experienciaArmador_raw = "{{$experienciaArmador}}";
+    let experienciaArmador;
+    fetch(`data:application/*;base64,${experienciaArmador_raw}`).then(base64 => base64.blob()).then(blob => {
+        experienciaArmador = URL.createObjectURL(blob)
+        const anchor = document.getElementById('experienciaArmadorDownload')
         if (anchor) {
-            anchor.href = coverageDetail
-            anchor.download = 'vida_siniestralidad_previa.{{$coverageDetailExtension}}'
+            anchor.href = experienciaArmador
+            anchor.download = 'vida_siniestralidad_previa.{{$experienciaArmadorExtension}}'
         }
     });
 
 
-    const coverageDetail_raw = "{{$coverageDetail}}";
-    let coverageDetail;
-    fetch(`data:application/*;base64,${coverageDetail_raw}`).then(base64 => base64.blob()).then(blob => {
-        coverageDetail = URL.createObjectURL(blob)
-        const anchor = document.getElementById('coverageDetailDownload')
+    const detalleMantenimiento_raw = "{{$detalleMantenimiento}}";
+    let detalleMantenimiento;
+    fetch(`data:application/*;base64,${detalleMantenimiento_raw}`).then(base64 => base64.blob()).then(blob => {
+        detalleMantenimiento = URL.createObjectURL(blob)
+        const anchor = document.getElementById('detalleMantenimientoDownload')
         if (anchor) {
-            anchor.href = coverageDetail
-            anchor.download = 'vida_siniestralidad_previa.{{$coverageDetailExtension}}'
+            anchor.href = detalleMantenimiento
+            anchor.download = 'vida_siniestralidad_previa.{{$detalleMantenimientoExtension}}'
         }
     });
 
 
-    const coverageDetail_raw = "{{$coverageDetail}}";
-    let coverageDetail;
-    fetch(`data:application/*;base64,${coverageDetail_raw}`).then(base64 => base64.blob()).then(blob => {
-        coverageDetail = URL.createObjectURL(blob)
-        const anchor = document.getElementById('coverageDetailDownload')
+    const tripulacionInfo_raw = "{{$tripulacionInfo}}";
+    let tripulacionInfo;
+    fetch(`data:application/*;base64,${tripulacionInfo_raw}`).then(base64 => base64.blob()).then(blob => {
+        tripulacionInfo = URL.createObjectURL(blob)
+        const anchor = document.getElementById('tripulacionInfoDownload')
         if (anchor) {
-            anchor.href = coverageDetail
-            anchor.download = 'vida_siniestralidad_previa.{{$coverageDetailExtension}}'
+            anchor.href = tripulacionInfo
+            anchor.download = 'vida_siniestralidad_previa.{{$tripulacionInfoExtension}}'
         }
     });
 
 
-    const coverageDetail_raw = "{{$coverageDetail}}";
-    let coverageDetail;
-    fetch(`data:application/*;base64,${coverageDetail_raw}`).then(base64 => base64.blob()).then(blob => {
-        coverageDetail = URL.createObjectURL(blob)
-        const anchor = document.getElementById('coverageDetailDownload')
+    const detalleLicencia_raw = "{{$detalleLicencia}}";
+    let detalleLicencia;
+    fetch(`data:application/*;base64,${detalleLicencia_raw}`).then(base64 => base64.blob()).then(blob => {
+        detalleLicencia = URL.createObjectURL(blob)
+        const anchor = document.getElementById('detalleLicenciaDownload')
         if (anchor) {
-            anchor.href = coverageDetail
-            anchor.download = 'vida_siniestralidad_previa.{{$coverageDetailExtension}}'
+            anchor.href = detalleLicencia
+            anchor.download = 'vida_siniestralidad_previa.{{$detalleLicenciaExtension}}'
         }
     });
 
 
-    const coverageDetail_raw = "{{$coverageDetail}}";
-    let coverageDetail;
-    fetch(`data:application/*;base64,${coverageDetail_raw}`).then(base64 => base64.blob()).then(blob => {
-        coverageDetail = URL.createObjectURL(blob)
-        const anchor = document.getElementById('coverageDetailDownload')
+    const detalleViajeFile_raw = "{{$detalleViajeFile}}";
+    let detalleViajeFile;
+    fetch(`data:application/*;base64,${detalleViajeFile_raw}`).then(base64 => base64.blob()).then(blob => {
+        detalleViajeFile = URL.createObjectURL(blob)
+        const anchor = document.getElementById('detalleViajeFileDownload')
         if (anchor) {
-            anchor.href = coverageDetail
-            anchor.download = 'vida_siniestralidad_previa.{{$coverageDetailExtension}}'
+            anchor.href = detalleViajeFile
+            anchor.download = 'vida_siniestralidad_previa.{{$detalleViajeFileExtension}}'
         }
     });
 
 
-    const coverageDetail_raw = "{{$coverageDetail}}";
-    let coverageDetail;
-    fetch(`data:application/*;base64,${coverageDetail_raw}`).then(base64 => base64.blob()).then(blob => {
-        coverageDetail = URL.createObjectURL(blob)
-        const anchor = document.getElementById('coverageDetailDownload')
+    const detalleValorReemplazo_raw = "{{$detalleValorReemplazo}}";
+    let detalleValorReemplazo;
+    fetch(`data:application/*;base64,${detalleValorReemplazo_raw}`).then(base64 => base64.blob()).then(blob => {
+        detalleValorReemplazo = URL.createObjectURL(blob)
+        const anchor = document.getElementById('detalleValorReemplazoDownload')
         if (anchor) {
-            anchor.href = coverageDetail
-            anchor.download = 'vida_siniestralidad_previa.{{$coverageDetailExtension}}'
+            anchor.href = detalleValorReemplazo
+            anchor.download = 'vida_siniestralidad_previa.{{$detalleValorReemplazoExtension}}'
         }
     });
 
 
-    const coverageDetail_raw = "{{$coverageDetail}}";
-    let coverageDetail;
-    fetch(`data:application/*;base64,${coverageDetail_raw}`).then(base64 => base64.blob()).then(blob => {
-        coverageDetail = URL.createObjectURL(blob)
-        const anchor = document.getElementById('coverageDetailDownload')
+    const formularioFirmado_raw = "{{$formularioFirmado}}";
+    let formularioFirmado;
+    fetch(`data:application/*;base64,${formularioFirmado_raw}`).then(base64 => base64.blob()).then(blob => {
+        formularioFirmado = URL.createObjectURL(blob)
+        const anchor = document.getElementById('formularioFirmadoDownload')
         if (anchor) {
-            anchor.href = coverageDetail
-            anchor.download = 'vida_siniestralidad_previa.{{$coverageDetailExtension}}'
+            anchor.href = formularioFirmado
+            anchor.download = 'vida_siniestralidad_previa.{{$formularioFirmadoExtension}}'
         }
     });
 </script>
@@ -496,68 +496,66 @@ margin-top: 1.3rem;
         <div class="row mb-3">
             <div class="col-md-6">
                 <div class="input-group">
-                    <input class="form-control" type="file" name="coverageDetail" hidden="true" id="coverageDetail" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="coverageDetail" id="coverageDetailFileLabel">Detalle de bienes asegurados
+                    <input class="form-control" type="file" name="informeInspeccion" hidden="true" id="informeInspeccion" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="informeInspeccion" id="informeInspeccionFileLabel">Informe de inspección
+                        actualizado
                     </label>
-                    @if ($coverageDetail)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="coverageDetailDownload">Detalle de bienes asegurados - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglecoverageDetail()" id="coverageDetailFileToggle">Modificar</button>
+                    @if ($informeInspeccion)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="informeInspeccionDownload">Informe de inspección
+                        actualizado - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleinformeInspeccion()" id="informeInspeccionFileToggle">Modificar</button>
                     <script>
-                        let toggledcoverageDetailFile = false;
-                        const coverageDetailInput = document.getElementById('coverageDetail');
-                        const coverageDetailDownload = document.getElementById('coverageDetailDownload');
-                        const coverageDetailLabel = document.getElementById('coverageDetailFileLabel');
-                        const coverageDetailToggle = document.getElementById('coverageDetailFileToggle');
+                        let toggledinformeInspeccionFile = false;
+                        const informeInspeccionInput = document.getElementById('informeInspeccion');
+                        const informeInspeccionDownload = document.getElementById('informeInspeccionDownload');
+                        const informeInspeccionLabel = document.getElementById('informeInspeccionFileLabel');
+                        const informeInspeccionToggle = document.getElementById('informeInspeccionFileToggle');
 
-                        function togglecoverageDetail() {
-                            toggledcoverageDetailFile = !toggledcoverageDetailFile;
-                            coverageDetailInput.hidden = !toggledcoverageDetailFile;
-                            coverageDetailDownload.hidden = toggledcoverageDetailFile;
-                            coverageDetailLabel.hidden = !toggledcoverageDetailFile;
-                            coverageDetailToggle.textContent = toggledcoverageDetailFile ? 'Usar previo' : 'Modificar'
-                            if (toggledcoverageDetailFile) coverageDetailInput.click()
+                        function toggleinformeInspeccion() {
+                            toggledinformeInspeccionFile = !toggledinformeInspeccionFile;
+                            informeInspeccionInput.hidden = !toggledinformeInspeccionFile;
+                            informeInspeccionDownload.hidden = toggledinformeInspeccionFile;
+                            informeInspeccionLabel.hidden = !toggledinformeInspeccionFile;
+                            informeInspeccionToggle.textContent = toggledinformeInspeccionFile ? 'Usar previo' : 'Modificar'
+                            if (toggledinformeInspeccionFile) informeInspeccionInput.click()
                         }
                     </script>
-                    @else<input type="file" name="coverageDetail" id="coverageDetail" class="form-control">
-                    <label for="coverageDetail" class="input-group-text">Detalle de bienes asegurados</label>
-                    @endif
-
-                    <label class="input-group-text" for="informeInspeccion">Informe de inspección
+                    @else<input type="file" name="informeInspeccion" id="informeInspeccion" class="form-control">
+                    <label for="informeInspeccion" class="input-group-text">Informe de inspección
                         actualizado</label>
-                    <input type="file" name="informeInspeccion" id="informeInspeccion">
+                    @endif
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-group">
-                    <input class="form-control" type="file" name="coverageDetail" hidden="true" id="coverageDetail" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="coverageDetail" id="coverageDetailFileLabel">Detalle de bienes asegurados
+                    <input class="form-control" type="file" name="siniestralidadCincoAnios" hidden="true" id="siniestralidadCincoAnios" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="siniestralidadCincoAnios" id="siniestralidadCincoAniosFileLabel">Siniestralidad 5 años de
+                        embarcación
                     </label>
-                    @if ($coverageDetail)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="coverageDetailDownload">Detalle de bienes asegurados - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglecoverageDetail()" id="coverageDetailFileToggle">Modificar</button>
+                    @if ($siniestralidadCincoAnios)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="siniestralidadCincoAniosDownload">Siniestralidad 5 años de
+                        embarcación - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglesiniestralidadCincoAnios()" id="siniestralidadCincoAniosFileToggle">Modificar</button>
                     <script>
-                        let toggledcoverageDetailFile = false;
-                        const coverageDetailInput = document.getElementById('coverageDetail');
-                        const coverageDetailDownload = document.getElementById('coverageDetailDownload');
-                        const coverageDetailLabel = document.getElementById('coverageDetailFileLabel');
-                        const coverageDetailToggle = document.getElementById('coverageDetailFileToggle');
+                        let toggledsiniestralidadCincoAniosFile = false;
+                        const siniestralidadCincoAniosInput = document.getElementById('siniestralidadCincoAnios');
+                        const siniestralidadCincoAniosDownload = document.getElementById('siniestralidadCincoAniosDownload');
+                        const siniestralidadCincoAniosLabel = document.getElementById('siniestralidadCincoAniosFileLabel');
+                        const siniestralidadCincoAniosToggle = document.getElementById('siniestralidadCincoAniosFileToggle');
 
-                        function togglecoverageDetail() {
-                            toggledcoverageDetailFile = !toggledcoverageDetailFile;
-                            coverageDetailInput.hidden = !toggledcoverageDetailFile;
-                            coverageDetailDownload.hidden = toggledcoverageDetailFile;
-                            coverageDetailLabel.hidden = !toggledcoverageDetailFile;
-                            coverageDetailToggle.textContent = toggledcoverageDetailFile ? 'Usar previo' : 'Modificar'
-                            if (toggledcoverageDetailFile) coverageDetailInput.click()
+                        function togglesiniestralidadCincoAnios() {
+                            toggledsiniestralidadCincoAniosFile = !toggledsiniestralidadCincoAniosFile;
+                            siniestralidadCincoAniosInput.hidden = !toggledsiniestralidadCincoAniosFile;
+                            siniestralidadCincoAniosDownload.hidden = toggledsiniestralidadCincoAniosFile;
+                            siniestralidadCincoAniosLabel.hidden = !toggledsiniestralidadCincoAniosFile;
+                            siniestralidadCincoAniosToggle.textContent = toggledsiniestralidadCincoAniosFile ? 'Usar previo' : 'Modificar'
+                            if (toggledsiniestralidadCincoAniosFile) siniestralidadCincoAniosInput.click()
                         }
                     </script>
-                    @else<input type="file" name="coverageDetail" id="coverageDetail" class="form-control">
-                    <label for="coverageDetail" class="input-group-text">Detalle de bienes asegurados</label>
-                    @endif
-
-                    <label class="input-group-text" for="siniestralidadCincoAnios">Siniestralidad 5 años de
+                    @else<input type="file" name="siniestralidadCincoAnios" id="siniestralidadCincoAnios" class="form-control">
+                    <label for="siniestralidadCincoAnios" class="input-group-text">Siniestralidad 5 años de
                         embarcación</label>
-                    <input type="file" name="siniestralidad_embarcacion" id="siniestralidadCincoAnios">
+                    @endif
                 </div>
             </div>
         </div>
@@ -565,68 +563,67 @@ margin-top: 1.3rem;
         <div class="row mb-3">
             <div class="col-md-6">
                 <div class="input-group">
-                    <input class="form-control" type="file" name="coverageDetail" hidden="true" id="coverageDetail" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="coverageDetail" id="coverageDetailFileLabel">Detalle de bienes asegurados
+                    <input class="form-control" type="file" name="experienciaArmador" hidden="true" id="experienciaArmador" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="experienciaArmador" id="experienciaArmadorFileLabel">Experiencia del armador en otras
+                        embarcaciones
                     </label>
-                    @if ($coverageDetail)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="coverageDetailDownload">Detalle de bienes asegurados - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglecoverageDetail()" id="coverageDetailFileToggle">Modificar</button>
+                    @if ($experienciaArmador)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="experienciaArmadorDownload">Experiencia del armador en otras
+                        embarcaciones - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleexperienciaArmador()" id="experienciaArmadorFileToggle">Modificar</button>
                     <script>
-                        let toggledcoverageDetailFile = false;
-                        const coverageDetailInput = document.getElementById('coverageDetail');
-                        const coverageDetailDownload = document.getElementById('coverageDetailDownload');
-                        const coverageDetailLabel = document.getElementById('coverageDetailFileLabel');
-                        const coverageDetailToggle = document.getElementById('coverageDetailFileToggle');
+                        let toggledexperienciaArmadorFile = false;
+                        const experienciaArmadorInput = document.getElementById('experienciaArmador');
+                        const experienciaArmadorDownload = document.getElementById('experienciaArmadorDownload');
+                        const experienciaArmadorLabel = document.getElementById('experienciaArmadorFileLabel');
+                        const experienciaArmadorToggle = document.getElementById('experienciaArmadorFileToggle');
 
-                        function togglecoverageDetail() {
-                            toggledcoverageDetailFile = !toggledcoverageDetailFile;
-                            coverageDetailInput.hidden = !toggledcoverageDetailFile;
-                            coverageDetailDownload.hidden = toggledcoverageDetailFile;
-                            coverageDetailLabel.hidden = !toggledcoverageDetailFile;
-                            coverageDetailToggle.textContent = toggledcoverageDetailFile ? 'Usar previo' : 'Modificar'
-                            if (toggledcoverageDetailFile) coverageDetailInput.click()
+                        function toggleexperienciaArmador() {
+                            toggledexperienciaArmadorFile = !toggledexperienciaArmadorFile;
+                            experienciaArmadorInput.hidden = !toggledexperienciaArmadorFile;
+                            experienciaArmadorDownload.hidden = toggledexperienciaArmadorFile;
+                            experienciaArmadorLabel.hidden = !toggledexperienciaArmadorFile;
+                            experienciaArmadorToggle.textContent = toggledexperienciaArmadorFile ? 'Usar previo' : 'Modificar'
+                            if (toggledexperienciaArmadorFile) experienciaArmadorInput.click()
                         }
                     </script>
-                    @else<input type="file" name="coverageDetail" id="coverageDetail" class="form-control">
-                    <label for="coverageDetail" class="input-group-text">Detalle de bienes asegurados</label>
+                    @else<input type="file" name="experienciaArmador" id="experienciaArmador" class="form-control">
+                    <label for="experienciaArmador" class="input-group-text">Experiencia del armador en otras
+                        embarcaciones</label>
                     @endif
 
-                    <label class="input-group-text" for="experienciaArmador">Experiencia del armador en otras
-                        embarcaciones</label>
-                    <input type="file" name="experienciaArmador" id="experienciaArmador">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="input-group">
-                    <input class="form-control" type="file" name="coverageDetail" hidden="true" id="coverageDetail" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="coverageDetail" id="coverageDetailFileLabel">Detalle de bienes asegurados
+                    <input class="form-control" type="file" name="siniestralidad_armador" hidden="true" id="siniestralidad_armador" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="siniestralidad_armador" id="siniestralidad_armadorFileLabel">Siniestralidad 5 años
+                        armador
                     </label>
-                    @if ($coverageDetail)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="coverageDetailDownload">Detalle de bienes asegurados - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglecoverageDetail()" id="coverageDetailFileToggle">Modificar</button>
+                    @if ($siniestralidad_armador)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="siniestralidad_armadorDownload">Siniestralidad 5 años
+                        armador - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglesiniestralidad_armador()" id="siniestralidad_armadorFileToggle">Modificar</button>
                     <script>
-                        let toggledcoverageDetailFile = false;
-                        const coverageDetailInput = document.getElementById('coverageDetail');
-                        const coverageDetailDownload = document.getElementById('coverageDetailDownload');
-                        const coverageDetailLabel = document.getElementById('coverageDetailFileLabel');
-                        const coverageDetailToggle = document.getElementById('coverageDetailFileToggle');
+                        let toggledsiniestralidad_armadorFile = false;
+                        const siniestralidad_armadorInput = document.getElementById('siniestralidad_armador');
+                        const siniestralidad_armadorDownload = document.getElementById('siniestralidad_armadorDownload');
+                        const siniestralidad_armadorLabel = document.getElementById('siniestralidad_armadorFileLabel');
+                        const siniestralidad_armadorToggle = document.getElementById('siniestralidad_armadorFileToggle');
 
-                        function togglecoverageDetail() {
-                            toggledcoverageDetailFile = !toggledcoverageDetailFile;
-                            coverageDetailInput.hidden = !toggledcoverageDetailFile;
-                            coverageDetailDownload.hidden = toggledcoverageDetailFile;
-                            coverageDetailLabel.hidden = !toggledcoverageDetailFile;
-                            coverageDetailToggle.textContent = toggledcoverageDetailFile ? 'Usar previo' : 'Modificar'
-                            if (toggledcoverageDetailFile) coverageDetailInput.click()
+                        function togglesiniestralidad_armador() {
+                            toggledsiniestralidad_armadorFile = !toggledsiniestralidad_armadorFile;
+                            siniestralidad_armadorInput.hidden = !toggledsiniestralidad_armadorFile;
+                            siniestralidad_armadorDownload.hidden = toggledsiniestralidad_armadorFile;
+                            siniestralidad_armadorLabel.hidden = !toggledsiniestralidad_armadorFile;
+                            siniestralidad_armadorToggle.textContent = toggledsiniestralidad_armadorFile ? 'Usar previo' : 'Modificar'
+                            if (toggledsiniestralidad_armadorFile) siniestralidad_armadorInput.click()
                         }
                     </script>
-                    @else<input type="file" name="coverageDetail" id="coverageDetail" class="form-control">
-                    <label for="coverageDetail" class="input-group-text">Detalle de bienes asegurados</label>
-                    @endif
-
-                    <label class="input-group-text" for="siniestralidad_armador">Siniestralidad 5 años
+                    @else<input type="file" name="siniestralidad_armador" id="siniestralidad_armador" class="form-control">
+                    <label for="siniestralidad_armador" class="input-group-text">Siniestralidad 5 años
                         armador</label>
-                    <input type="file" name="siniestralidad_armador" id="siniestralidad_armador">
+                    @endif
                 </div>
             </div>
         </div>
@@ -634,78 +631,103 @@ margin-top: 1.3rem;
 
         <div class="row mb-3">
             <div class="input-group">
-                <input class="form-control" type="file" name="coverageDetail" hidden="true" id="coverageDetail" accept="application/*">
-                <label class="input-group-text" hidden="true" for="coverageDetail" id="coverageDetailFileLabel">Detalle de bienes asegurados
+                <input class="form-control" type="file" name="otrasEmbarcaciones" hidden="true" id="otrasEmbarcaciones" accept="application/*">
+                <label class="input-group-text" hidden="true" for="otrasEmbarcaciones" id="otrasEmbarcacionesFileLabel">Qué otras embarcaciones ha tenido el
+                    armador en
+                    los últimos 5 años
                 </label>
-                @if ($coverageDetail)
-                <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="coverageDetailDownload">Detalle de bienes asegurados - Previo</a>
-                <button type="button" class="btn btn-info" style="color: white" onclick="togglecoverageDetail()" id="coverageDetailFileToggle">Modificar</button>
+                @if ($otrasEmbarcaciones)
+                <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="otrasEmbarcacionesDownload">Qué otras embarcaciones ha tenido el
+                    armador en
+                    los últimos 5 años - Previo</a>
+                <button type="button" class="btn btn-info" style="color: white" onclick="toggleotrasEmbarcaciones()" id="otrasEmbarcacionesFileToggle">Modificar</button>
                 <script>
-                    let toggledcoverageDetailFile = false;
-                    const coverageDetailInput = document.getElementById('coverageDetail');
-                    const coverageDetailDownload = document.getElementById('coverageDetailDownload');
-                    const coverageDetailLabel = document.getElementById('coverageDetailFileLabel');
-                    const coverageDetailToggle = document.getElementById('coverageDetailFileToggle');
+                    let toggledotrasEmbarcacionesFile = false;
+                    const otrasEmbarcacionesInput = document.getElementById('otrasEmbarcaciones');
+                    const otrasEmbarcacionesDownload = document.getElementById('otrasEmbarcacionesDownload');
+                    const otrasEmbarcacionesLabel = document.getElementById('otrasEmbarcacionesFileLabel');
+                    const otrasEmbarcacionesToggle = document.getElementById('otrasEmbarcacionesFileToggle');
 
-                    function togglecoverageDetail() {
-                        toggledcoverageDetailFile = !toggledcoverageDetailFile;
-                        coverageDetailInput.hidden = !toggledcoverageDetailFile;
-                        coverageDetailDownload.hidden = toggledcoverageDetailFile;
-                        coverageDetailLabel.hidden = !toggledcoverageDetailFile;
-                        coverageDetailToggle.textContent = toggledcoverageDetailFile ? 'Usar previo' : 'Modificar'
-                        if (toggledcoverageDetailFile) coverageDetailInput.click()
+                    function toggleotrasEmbarcaciones() {
+                        toggledotrasEmbarcacionesFile = !toggledotrasEmbarcacionesFile;
+                        otrasEmbarcacionesInput.hidden = !toggledotrasEmbarcacionesFile;
+                        otrasEmbarcacionesDownload.hidden = toggledotrasEmbarcacionesFile;
+                        otrasEmbarcacionesLabel.hidden = !toggledotrasEmbarcacionesFile;
+                        otrasEmbarcacionesToggle.textContent = toggledotrasEmbarcacionesFile ? 'Usar previo' : 'Modificar'
+                        if (toggledotrasEmbarcacionesFile) otrasEmbarcacionesInput.click()
                     }
                 </script>
-                @else<input type="file" name="coverageDetail" id="coverageDetail" class="form-control">
-                <label for="coverageDetail" class="input-group-text">Detalle de bienes asegurados</label>
-                @endif
-
-                <label class="input-group-text" for="otrasEmbarcaciones">Qué otras embarcaciones ha tenido el
+                @else<input type="file" name="otrasEmbarcaciones" id="otrasEmbarcaciones" class="form-control">
+                <label for="otrasEmbarcaciones" class="input-group-text">Qué otras embarcaciones ha tenido el
                     armador en
                     los últimos 5 años</label>
-                <input type="file" name="otrasEmbarcaciones" id="otrasEmbarcaciones">
+                @endif
             </div>
         </div>
 
 
         <div class="row mb-3">
             <div class="col-md-7">
-                <input class="form-control" type="file" name="coverageDetail" hidden="true" id="coverageDetail" accept="application/*">
-                <label class="input-group-text" hidden="true" for="coverageDetail" id="coverageDetailFileLabel">Detalle de bienes asegurados
+                <input class="form-control" type="file" name="detalleViaje" hidden="true" id="detalleViaje" accept="application/*">
+                <label class="input-group-text" hidden="true" for="detalleViaje" id="detalleViajeFileLabel">Detalles de los viajes de pesca (en
+                    caso de requerir casco pesquero)
                 </label>
-                @if ($coverageDetail)
-                <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="coverageDetailDownload">Detalle de bienes asegurados - Previo</a>
-                <button type="button" class="btn btn-info" style="color: white" onclick="togglecoverageDetail()" id="coverageDetailFileToggle">Modificar</button>
+                @if ($detalleViaje)
+                <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="detalleViajeDownload">Detalles de los viajes de pesca (en
+                    caso de requerir casco pesquero) - Previo</a>
+                <button type="button" class="btn btn-info" style="color: white" onclick="toggledetalleViaje()" id="detalleViajeFileToggle">Modificar</button>
                 <script>
-                    let toggledcoverageDetailFile = false;
-                    const coverageDetailInput = document.getElementById('coverageDetail');
-                    const coverageDetailDownload = document.getElementById('coverageDetailDownload');
-                    const coverageDetailLabel = document.getElementById('coverageDetailFileLabel');
-                    const coverageDetailToggle = document.getElementById('coverageDetailFileToggle');
+                    let toggleddetalleViajeFile = false;
+                    const detalleViajeInput = document.getElementById('detalleViaje');
+                    const detalleViajeDownload = document.getElementById('detalleViajeDownload');
+                    const detalleViajeLabel = document.getElementById('detalleViajeFileLabel');
+                    const detalleViajeToggle = document.getElementById('detalleViajeFileToggle');
 
-                    function togglecoverageDetail() {
-                        toggledcoverageDetailFile = !toggledcoverageDetailFile;
-                        coverageDetailInput.hidden = !toggledcoverageDetailFile;
-                        coverageDetailDownload.hidden = toggledcoverageDetailFile;
-                        coverageDetailLabel.hidden = !toggledcoverageDetailFile;
-                        coverageDetailToggle.textContent = toggledcoverageDetailFile ? 'Usar previo' : 'Modificar'
-                        if (toggledcoverageDetailFile) coverageDetailInput.click()
+                    function toggledetalleViaje() {
+                        toggleddetalleViajeFile = !toggleddetalleViajeFile;
+                        detalleViajeInput.hidden = !toggleddetalleViajeFile;
+                        detalleViajeDownload.hidden = toggleddetalleViajeFile;
+                        detalleViajeLabel.hidden = !toggleddetalleViajeFile;
+                        detalleViajeToggle.textContent = toggleddetalleViajeFile ? 'Usar previo' : 'Modificar'
+                        if (toggleddetalleViajeFile) detalleViajeInput.click()
                     }
                 </script>
-                @else<input type="file" name="coverageDetail" id="coverageDetail" class="form-control">
-                <label for="coverageDetail" class="input-group-text">Detalle de bienes asegurados</label>
+                @else<input type="file" name="detalleViaje" id="detalleViaje" class="form-control">
+                <label for="detalleViaje" class="input-group-text">Detalles de los viajes de pesca (en
+                    caso de requerir casco pesquero)</label>
                 @endif
 
-                <label class="input-group-text" for="detalleViaje">Detalles de los viajes de pesca (en
-                    caso de requerir casco pesquero)</label>
-                <input type="text" name="detalleViajeText" id="detalleViaje" value="{{ $slip_type->detalleViajeText }}">
-                <input type="file" name="detalleViajeFile" id="detalleViajeAttachement">
             </div>
             <div class="col-md-5">
                 <div class="input-group">
-                    <label class="input-group-text" for="copiaMatricula">Copia de la matrícula de la
+                    <input class="form-control" type="file" name="copiaMatricula" hidden="true" id="copiaMatricula" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="copiaMatricula" id="copiaMatriculaFileLabel">Copia de la matrícula de la
+                        embarcación
+                    </label>
+                    @if ($copiaMatricula)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="copiaMatriculaDownload">Copia de la matrícula de la
+                        embarcación - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglecopiaMatricula()" id="copiaMatriculaFileToggle">Modificar</button>
+                    <script>
+                        let toggledcopiaMatriculaFile = false;
+                        const copiaMatriculaInput = document.getElementById('copiaMatricula');
+                        const copiaMatriculaDownload = document.getElementById('copiaMatriculaDownload');
+                        const copiaMatriculaLabel = document.getElementById('copiaMatriculaFileLabel');
+                        const copiaMatriculaToggle = document.getElementById('copiaMatriculaFileToggle');
+
+                        function togglecopiaMatricula() {
+                            toggledcopiaMatriculaFile = !toggledcopiaMatriculaFile;
+                            copiaMatriculaInput.hidden = !toggledcopiaMatriculaFile;
+                            copiaMatriculaDownload.hidden = toggledcopiaMatriculaFile;
+                            copiaMatriculaLabel.hidden = !toggledcopiaMatriculaFile;
+                            copiaMatriculaToggle.textContent = toggledcopiaMatriculaFile ? 'Usar previo' : 'Modificar'
+                            if (toggledcopiaMatriculaFile) copiaMatriculaInput.click()
+                        }
+                    </script>
+                    @else<input type="file" name="copiaMatricula" id="copiaMatricula" class="form-control">
+                    <label for="copiaMatricula" class="input-group-text">Copia de la matrícula de la
                         embarcación</label>
-                    <input type="file" name="copiaMatricula" id="copiaMatricula">
+                    @endif
                 </div>
             </div>
 
@@ -713,172 +735,168 @@ margin-top: 1.3rem;
 
         <div class="row mb-3">
             <div class="col-md-12">
-                <input class="form-control" type="file" name="coverageDetail" hidden="true" id="coverageDetail" accept="application/*">
-                <label class="input-group-text" hidden="true" for="coverageDetail" id="coverageDetailFileLabel">Detalle de bienes asegurados
+                <input class="form-control" type="file" name="detalleMantenimiento" hidden="true" id="detalleMantenimiento" accept="application/*">
+                <label class="input-group-text" hidden="true" for="detalleMantenimiento" id="detalleMantenimientoFileLabel">Detalles de mantenimiento de
+                    los últimos 5 años, incluyendo maquinaria y costos
                 </label>
-                @if ($coverageDetail)
-                <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="coverageDetailDownload">Detalle de bienes asegurados - Previo</a>
-                <button type="button" class="btn btn-info" style="color: white" onclick="togglecoverageDetail()" id="coverageDetailFileToggle">Modificar</button>
+                @if ($detalleMantenimiento)
+                <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="detalleMantenimientoDownload">Detalles de mantenimiento de
+                    los últimos 5 años, incluyendo maquinaria y costos - Previo</a>
+                <button type="button" class="btn btn-info" style="color: white" onclick="toggledetalleMantenimiento()" id="detalleMantenimientoFileToggle">Modificar</button>
                 <script>
-                    let toggledcoverageDetailFile = false;
-                    const coverageDetailInput = document.getElementById('coverageDetail');
-                    const coverageDetailDownload = document.getElementById('coverageDetailDownload');
-                    const coverageDetailLabel = document.getElementById('coverageDetailFileLabel');
-                    const coverageDetailToggle = document.getElementById('coverageDetailFileToggle');
+                    let toggleddetalleMantenimientoFile = false;
+                    const detalleMantenimientoInput = document.getElementById('detalleMantenimiento');
+                    const detalleMantenimientoDownload = document.getElementById('detalleMantenimientoDownload');
+                    const detalleMantenimientoLabel = document.getElementById('detalleMantenimientoFileLabel');
+                    const detalleMantenimientoToggle = document.getElementById('detalleMantenimientoFileToggle');
 
-                    function togglecoverageDetail() {
-                        toggledcoverageDetailFile = !toggledcoverageDetailFile;
-                        coverageDetailInput.hidden = !toggledcoverageDetailFile;
-                        coverageDetailDownload.hidden = toggledcoverageDetailFile;
-                        coverageDetailLabel.hidden = !toggledcoverageDetailFile;
-                        coverageDetailToggle.textContent = toggledcoverageDetailFile ? 'Usar previo' : 'Modificar'
-                        if (toggledcoverageDetailFile) coverageDetailInput.click()
+                    function toggledetalleMantenimiento() {
+                        toggleddetalleMantenimientoFile = !toggleddetalleMantenimientoFile;
+                        detalleMantenimientoInput.hidden = !toggleddetalleMantenimientoFile;
+                        detalleMantenimientoDownload.hidden = toggleddetalleMantenimientoFile;
+                        detalleMantenimientoLabel.hidden = !toggleddetalleMantenimientoFile;
+                        detalleMantenimientoToggle.textContent = toggleddetalleMantenimientoFile ? 'Usar previo' : 'Modificar'
+                        if (toggleddetalleMantenimientoFile) detalleMantenimientoInput.click()
                     }
                 </script>
-                @else<input type="file" name="coverageDetail" id="coverageDetail" class="form-control">
-                <label for="coverageDetail" class="input-group-text">Detalle de bienes asegurados</label>
-                @endif
-
-                <label class="input-group-text" for="detalleMantenimiento">Detalles de mantenimiento de
+                @else<input type="file" name="detalleMantenimiento" id="detalleMantenimiento" class="form-control">
+                <label for="detalleMantenimiento" class="input-group-text">Detalles de mantenimiento de
                     los últimos 5 años, incluyendo maquinaria y costos</label>
-                <input type="file" name="detalleMantenimiento" id="detalleMantenimiento">
+                @endif
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-6">
                 <div class="input-group">
-                    <input class="form-control" type="file" name="coverageDetail" hidden="true" id="coverageDetail" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="coverageDetail" id="coverageDetailFileLabel">Detalle de bienes asegurados
+                    <input class="form-control" type="file" name="tripulacionInfo" hidden="true" id="tripulacionInfo" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="tripulacionInfo" id="tripulacionInfoFileLabel">Información de la
+                        tripulación
                     </label>
-                    @if ($coverageDetail)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="coverageDetailDownload">Detalle de bienes asegurados - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglecoverageDetail()" id="coverageDetailFileToggle">Modificar</button>
+                    @if ($tripulacionInfo)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="tripulacionInfoDownload">Información de la
+                        tripulación - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggletripulacionInfo()" id="tripulacionInfoFileToggle">Modificar</button>
                     <script>
-                        let toggledcoverageDetailFile = false;
-                        const coverageDetailInput = document.getElementById('coverageDetail');
-                        const coverageDetailDownload = document.getElementById('coverageDetailDownload');
-                        const coverageDetailLabel = document.getElementById('coverageDetailFileLabel');
-                        const coverageDetailToggle = document.getElementById('coverageDetailFileToggle');
+                        let toggledtripulacionInfoFile = false;
+                        const tripulacionInfoInput = document.getElementById('tripulacionInfo');
+                        const tripulacionInfoDownload = document.getElementById('tripulacionInfoDownload');
+                        const tripulacionInfoLabel = document.getElementById('tripulacionInfoFileLabel');
+                        const tripulacionInfoToggle = document.getElementById('tripulacionInfoFileToggle');
 
-                        function togglecoverageDetail() {
-                            toggledcoverageDetailFile = !toggledcoverageDetailFile;
-                            coverageDetailInput.hidden = !toggledcoverageDetailFile;
-                            coverageDetailDownload.hidden = toggledcoverageDetailFile;
-                            coverageDetailLabel.hidden = !toggledcoverageDetailFile;
-                            coverageDetailToggle.textContent = toggledcoverageDetailFile ? 'Usar previo' : 'Modificar'
-                            if (toggledcoverageDetailFile) coverageDetailInput.click()
+                        function toggletripulacionInfo() {
+                            toggledtripulacionInfoFile = !toggledtripulacionInfoFile;
+                            tripulacionInfoInput.hidden = !toggledtripulacionInfoFile;
+                            tripulacionInfoDownload.hidden = toggledtripulacionInfoFile;
+                            tripulacionInfoLabel.hidden = !toggledtripulacionInfoFile;
+                            tripulacionInfoToggle.textContent = toggledtripulacionInfoFile ? 'Usar previo' : 'Modificar'
+                            if (toggledtripulacionInfoFile) tripulacionInfoInput.click()
                         }
                     </script>
-                    @else<input type="file" name="coverageDetail" id="coverageDetail" class="form-control">
-                    <label for="coverageDetail" class="input-group-text">Detalle de bienes asegurados</label>
-                    @endif
-
-                    <label class="input-group-text" for="tripulacionInfo">Información de la
+                    @else<input type="file" name="tripulacionInfo" id="tripulacionInfo" class="form-control">
+                    <label for="tripulacionInfo" class="input-group-text">Información de la
                         tripulación</label>
-                    <input type="file" name="tripulacionInfo" id="tripulacionInfo">
+                    @endif
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="input-group">
-                    <input class="form-control" type="file" name="coverageDetail" hidden="true" id="coverageDetail" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="coverageDetail" id="coverageDetailFileLabel">Detalle de bienes asegurados
+                    <input class="form-control" type="file" name="detalleValorReemplazo" hidden="true" id="detalleValorReemplazo" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="detalleValorReemplazo" id="detalleValorReemplazoFileLabel">Detalle del valor para
+                        reemplazar maquinaria
                     </label>
-                    @if ($coverageDetail)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="coverageDetailDownload">Detalle de bienes asegurados - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglecoverageDetail()" id="coverageDetailFileToggle">Modificar</button>
+                    @if ($detalleValorReemplazo)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="detalleValorReemplazoDownload">Detalle del valor para
+                        reemplazar maquinaria - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggledetalleValorReemplazo()" id="detalleValorReemplazoFileToggle">Modificar</button>
                     <script>
-                        let toggledcoverageDetailFile = false;
-                        const coverageDetailInput = document.getElementById('coverageDetail');
-                        const coverageDetailDownload = document.getElementById('coverageDetailDownload');
-                        const coverageDetailLabel = document.getElementById('coverageDetailFileLabel');
-                        const coverageDetailToggle = document.getElementById('coverageDetailFileToggle');
+                        let toggleddetalleValorReemplazoFile = false;
+                        const detalleValorReemplazoInput = document.getElementById('detalleValorReemplazo');
+                        const detalleValorReemplazoDownload = document.getElementById('detalleValorReemplazoDownload');
+                        const detalleValorReemplazoLabel = document.getElementById('detalleValorReemplazoFileLabel');
+                        const detalleValorReemplazoToggle = document.getElementById('detalleValorReemplazoFileToggle');
 
-                        function togglecoverageDetail() {
-                            toggledcoverageDetailFile = !toggledcoverageDetailFile;
-                            coverageDetailInput.hidden = !toggledcoverageDetailFile;
-                            coverageDetailDownload.hidden = toggledcoverageDetailFile;
-                            coverageDetailLabel.hidden = !toggledcoverageDetailFile;
-                            coverageDetailToggle.textContent = toggledcoverageDetailFile ? 'Usar previo' : 'Modificar'
-                            if (toggledcoverageDetailFile) coverageDetailInput.click()
+                        function toggledetalleValorReemplazo() {
+                            toggleddetalleValorReemplazoFile = !toggleddetalleValorReemplazoFile;
+                            detalleValorReemplazoInput.hidden = !toggleddetalleValorReemplazoFile;
+                            detalleValorReemplazoDownload.hidden = toggleddetalleValorReemplazoFile;
+                            detalleValorReemplazoLabel.hidden = !toggleddetalleValorReemplazoFile;
+                            detalleValorReemplazoToggle.textContent = toggleddetalleValorReemplazoFile ? 'Usar previo' : 'Modificar'
+                            if (toggleddetalleValorReemplazoFile) detalleValorReemplazoInput.click()
                         }
                     </script>
-                    @else<input type="file" name="coverageDetail" id="coverageDetail" class="form-control">
-                    <label for="coverageDetail" class="input-group-text">Detalle de bienes asegurados</label>
+                    @else<input type="file" name="detalleValorReemplazo" id="detalleValorReemplazo" class="form-control">
+                    <label for="detalleValorReemplazo" class="input-group-text">Detalle del valor para
+                        reemplazar maquinaria</label>
                     @endif
 
-                    <label class="input-group-text" for="detalleValorReemplazo">Detalle del valor para
-                        reemplazar maquinaria</label>
-                    <input type="file" name="detalleValorReemplazo" id="detalleValorReemplazo">
                 </div>
             </div>
 
         </div>
         <div class="row mb-3">
             <div class="input-group">
-                <input class="form-control" type="file" name="coverageDetail" hidden="true" id="coverageDetail" accept="application/*">
-                <label class="input-group-text" hidden="true" for="coverageDetail" id="coverageDetailFileLabel">Detalle de bienes asegurados
+                <input class="form-control" type="file" name="detalleLicencia" hidden="true" id="detalleLicencia" accept="application/*">
+                <label class="input-group-text" hidden="true" for="detalleLicencia" id="detalleLicenciaFileLabel">Detalle de las licencias que requiere la
+                    embarcación para navegación
                 </label>
-                @if ($coverageDetail)
-                <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="coverageDetailDownload">Detalle de bienes asegurados - Previo</a>
-                <button type="button" class="btn btn-info" style="color: white" onclick="togglecoverageDetail()" id="coverageDetailFileToggle">Modificar</button>
+                @if ($detalleLicencia)
+                <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="detalleLicenciaDownload">Detalle de las licencias que requiere la
+                    embarcación para navegación - Previo</a>
+                <button type="button" class="btn btn-info" style="color: white" onclick="toggledetalleLicencia()" id="detalleLicenciaFileToggle">Modificar</button>
                 <script>
-                    let toggledcoverageDetailFile = false;
-                    const coverageDetailInput = document.getElementById('coverageDetail');
-                    const coverageDetailDownload = document.getElementById('coverageDetailDownload');
-                    const coverageDetailLabel = document.getElementById('coverageDetailFileLabel');
-                    const coverageDetailToggle = document.getElementById('coverageDetailFileToggle');
+                    let toggleddetalleLicenciaFile = false;
+                    const detalleLicenciaInput = document.getElementById('detalleLicencia');
+                    const detalleLicenciaDownload = document.getElementById('detalleLicenciaDownload');
+                    const detalleLicenciaLabel = document.getElementById('detalleLicenciaFileLabel');
+                    const detalleLicenciaToggle = document.getElementById('detalleLicenciaFileToggle');
 
-                    function togglecoverageDetail() {
-                        toggledcoverageDetailFile = !toggledcoverageDetailFile;
-                        coverageDetailInput.hidden = !toggledcoverageDetailFile;
-                        coverageDetailDownload.hidden = toggledcoverageDetailFile;
-                        coverageDetailLabel.hidden = !toggledcoverageDetailFile;
-                        coverageDetailToggle.textContent = toggledcoverageDetailFile ? 'Usar previo' : 'Modificar'
-                        if (toggledcoverageDetailFile) coverageDetailInput.click()
+                    function toggledetalleLicencia() {
+                        toggleddetalleLicenciaFile = !toggleddetalleLicenciaFile;
+                        detalleLicenciaInput.hidden = !toggleddetalleLicenciaFile;
+                        detalleLicenciaDownload.hidden = toggleddetalleLicenciaFile;
+                        detalleLicenciaLabel.hidden = !toggleddetalleLicenciaFile;
+                        detalleLicenciaToggle.textContent = toggleddetalleLicenciaFile ? 'Usar previo' : 'Modificar'
+                        if (toggleddetalleLicenciaFile) detalleLicenciaInput.click()
                     }
                 </script>
-                @else<input type="file" name="coverageDetail" id="coverageDetail" class="form-control">
-                <label for="coverageDetail" class="input-group-text">Detalle de bienes asegurados</label>
-                @endif
-
-                <label class="input-group-text" for="detalleLicencia">Detalle de las licencias que requiere la
+                @else<input type="file" name="detalleLicencia" id="detalleLicencia" class="form-control">
+                <label for="detalleLicencia" class="input-group-text">Detalle de las licencias que requiere la
                     embarcación para navegación</label>
-                <input type="file" name="detalleLicencia" id="detalleLicencia">
+                @endif
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-6">
                 <div class="input-group">
-                    <input class="form-control" type="file" name="coverageDetail" hidden="true" id="coverageDetail" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="coverageDetail" id="coverageDetailFileLabel">Detalle de bienes asegurados
+                    <input class="form-control" type="file" name="formularioFirmado" hidden="true" id="formularioFirmado" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="formularioFirmado" id="formularioFirmadoFileLabel">Formulario relleno y
+                        firmado
                     </label>
-                    @if ($coverageDetail)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="coverageDetailDownload">Detalle de bienes asegurados - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglecoverageDetail()" id="coverageDetailFileToggle">Modificar</button>
+                    @if ($formularioFirmado)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="formularioFirmadoDownload">Formulario relleno y
+                        firmado - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleformularioFirmado()" id="formularioFirmadoFileToggle">Modificar</button>
                     <script>
-                        let toggledcoverageDetailFile = false;
-                        const coverageDetailInput = document.getElementById('coverageDetail');
-                        const coverageDetailDownload = document.getElementById('coverageDetailDownload');
-                        const coverageDetailLabel = document.getElementById('coverageDetailFileLabel');
-                        const coverageDetailToggle = document.getElementById('coverageDetailFileToggle');
+                        let toggledformularioFirmadoFile = false;
+                        const formularioFirmadoInput = document.getElementById('formularioFirmado');
+                        const formularioFirmadoDownload = document.getElementById('formularioFirmadoDownload');
+                        const formularioFirmadoLabel = document.getElementById('formularioFirmadoFileLabel');
+                        const formularioFirmadoToggle = document.getElementById('formularioFirmadoFileToggle');
 
-                        function togglecoverageDetail() {
-                            toggledcoverageDetailFile = !toggledcoverageDetailFile;
-                            coverageDetailInput.hidden = !toggledcoverageDetailFile;
-                            coverageDetailDownload.hidden = toggledcoverageDetailFile;
-                            coverageDetailLabel.hidden = !toggledcoverageDetailFile;
-                            coverageDetailToggle.textContent = toggledcoverageDetailFile ? 'Usar previo' : 'Modificar'
-                            if (toggledcoverageDetailFile) coverageDetailInput.click()
+                        function toggleformularioFirmado() {
+                            toggledformularioFirmadoFile = !toggledformularioFirmadoFile;
+                            formularioFirmadoInput.hidden = !toggledformularioFirmadoFile;
+                            formularioFirmadoDownload.hidden = toggledformularioFirmadoFile;
+                            formularioFirmadoLabel.hidden = !toggledformularioFirmadoFile;
+                            formularioFirmadoToggle.textContent = toggledformularioFirmadoFile ? 'Usar previo' : 'Modificar'
+                            if (toggledformularioFirmadoFile) formularioFirmadoInput.click()
                         }
                     </script>
-                    @else<input type="file" name="coverageDetail" id="coverageDetail" class="form-control">
-                    <label for="coverageDetail" class="input-group-text">Detalle de bienes asegurados</label>
-                    @endif
-
-                    <label class="input-group-text" for="formularioFirmado">Formulario relleno y
+                    @else<input type="file" name="formularioFirmado" id="formularioFirmado" class="form-control">
+                    <label for="formularioFirmado" class="input-group-text">Formulario relleno y
                         firmado</label>
-                    <input type="file" name="formularioFirmado" id="formularioFirmado">
+                    @endif
                 </div>
             </div>
         </div>
