@@ -202,14 +202,12 @@
     <div class="form_group2">
         <h3 class="slipTitle"> <span class="badge badge-secondary">3</span> Coberturas Adicionales</h3>
 
-        {{-- @include('admin.tecnico.slip.slips_generales.tableCoberturasAdicionalesV2') --}}
         @include('admin.comercial.include.edit_tablaCoberturas')
 
 
         {{-- Cláusulas Adicionales --}}
         <h3 class="slipTitle"> <span class="badge badge-secondary">4</span> Cláusulas Adicionales</h3>
 
-        {{-- @include('admin.tecnico.slip.slips_generales.tableClausulasAdicionalesV2') --}}
         @include('admin.comercial.include.edit_tablaClausulas')
 
        

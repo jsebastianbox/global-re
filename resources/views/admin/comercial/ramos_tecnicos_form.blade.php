@@ -352,19 +352,27 @@
         <div class="tab">
             <div id="showElectronico" style="display: none">
                 <div class="row">
-                    <div class="input-group">
-                        <span class="input-group-text">Suma asegurable</span>
-                        <input type="number" step="any" class="form-control" name="asegurable_electronico">
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-md-4">
                         <div class="input-group">
                             <span class="input-group-text">Suma asegurada</span>
                             <input type="number" step="any" class="form-control" name="asegurada_electronico">
                         </div>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-text">Suma asegurable</span>
+                            <input type="number" step="any" class="form-control" name="asegurable_electronico">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-text">Límite de indemnización</span>
+                            <input type="number" name="limit_compensation" id="" class="form-control" step="any">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="tableContainer">
                         <table class="table table-hover table-light table-responsive-lg">
                             <caption>Cuadro resumen</caption>
                             <thead>
@@ -420,13 +428,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="input-group">
-                            <span class="input-group-text">Límite de indemnización</span>
-                            <input type="number" name="limit_compensation" id="" class="form-control" step="any">
-                        </div>
-                    </div>
-                    <div class="col-md-8">
+                    
+                    <div class="tableContainer">
                         <table class="table table-hover table-light table-responsive-lg">
                             <caption>Cuadro resumen</caption>
                             <thead>
