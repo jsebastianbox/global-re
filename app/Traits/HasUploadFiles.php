@@ -255,7 +255,10 @@ trait HasUploadFiles
                 $keys[] = "quotationReport";
                 $keys[] = "financialReport";
                 break;
-
+            case 'finanzas_2':
+                $keys[] = "sourceDoc";
+                break;
+            
             default:
 
                 break;

@@ -1,3 +1,64 @@
+{{-- Riesgos --}}
+@section('tab_title')
+<div id="date"></div>
+<script>
+    function updateClock() {
+        const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre',
+            'octubre', 'noviembre', 'diciembre'
+        ];
+        const days = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+
+        const now = new Date();
+        const day = days[now.getDay()];
+        const date = now.getDate();
+        const month = months[now.getMonth()];
+        const year = now.getFullYear();
+        const hour = now.getHours().toString().padStart(2, '0');
+        const minute = now.getMinutes().toString().padStart(2, '0');
+        const second = now.getSeconds().toString().padStart(2, '0');
+
+        const dateString =
+            `Comercial — Editar Compromiso | ${day}, ${date} de ${month} del ${year} ${hour}:${minute}:${second}`;
+        document.getElementById('date').textContent = dateString;
+    }
+    setInterval(updateClock, 1000);
+</script>
+@endsection
+
+@if (\Illuminate\Support\Str::contains(\Illuminate\Support\Facades\Request::url(), '/admin/comercial/edit_compromiso/'))
+<script>
+    const accidentRate_raw = "{{$accidentRate}}";
+    let accidentRate;
+    fetch(`data:application/*;base64,${accidentRate_raw}`).then(base64 => base64.blob()).then(blob => {
+        accidentRate = URL.createObjectURL(blob)
+        const anchor = document.getElementById('accidentRateDownload')
+        if (anchor) {
+            anchor.href = accidentRate
+            anchor.download = 'vida_siniestralidad_previa.{{$accidentRateExtension}}'
+        }
+    });
+    const quotationReport_raw = "{{$quotationReport}}";
+    let quotationReport;
+    fetch(`data:application/*;base64,${quotationReport_raw}`).then(base64 => base64.blob()).then(blob => {
+        quotationReport = URL.createObjectURL(blob)
+        const anchor = document.getElementById('quotationReportDownload')
+        if (anchor) {
+            anchor.href = quotationReport
+            anchor.download = 'vida_siniestralidad_previa.{{$quotationReportExtension}}'
+        }
+    });
+    const financialStatements_raw = "{{$financialStatements}}";
+    let financialStatements;
+    fetch(`data:application/*;base64,${financialStatements_raw}`).then(base64 => base64.blob()).then(blob => {
+        financialStatements = URL.createObjectURL(blob)
+        const anchor = document.getElementById('financialStatementsDownload')
+        if (anchor) {
+            anchor.href = financialStatements
+            anchor.download = 'vida_siniestralidad_previa.{{$financialStatementsExtension}}'
+        }
+    });
+</script>
+
 <style>
     hr {
         background-color: darkgrey;
@@ -34,7 +95,7 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="{{ asset('js/admin/comercial/ajax.js') }}" defer></script>
-@if (\Illuminate\Support\Str::contains(\Illuminate\Support\Facades\Request::url(), '/admin/comercial/edit_compromiso/'))
+
 <div class="card px-4 py-2">
     <form enctype="multipart/form-data" method="POST" action="{{ route('slip.update', $slip->id) }}" id="riesgos_form">
         @csrf
