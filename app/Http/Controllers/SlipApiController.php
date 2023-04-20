@@ -247,7 +247,7 @@ class SlipApiController extends Controller
                         $deductibles->save();
                     }
                 }
-
+                $this->saveFilesFromRequest($request, $basePath, 'activos_fijos', $slip_activos_fijos->id, "activos-fijos");
 
                 break;
             case 'vehiculo':
@@ -316,6 +316,9 @@ class SlipApiController extends Controller
                     }
                 }
 
+
+                $this->saveFilesFromRequest($request, $basePath, 'vehiculos',  $slip_vehiculos->id);
+
                 break;
             case 'ramos_tecnicos_form':
                 $slip_ramos_tecnicos = new SlipTechnicalBranch();
@@ -367,6 +370,8 @@ class SlipApiController extends Controller
                         $deductibles->save();
                     }
                 }
+
+                $this->saveFilesFromRequest($request, $basePath, 'tecnico',  $slip_ramos_tecnicos->id);
 
                 break;
             case 'energia_form':
@@ -443,6 +448,9 @@ class SlipApiController extends Controller
                     }
                 }
 
+                $this->saveFilesFromRequest($request, $basePath, 'energia',  $slip_energia->id);
+
+
                 break;
             case 'maritimo_1_form':
             case 'maritimo_2_form':
@@ -474,6 +482,7 @@ class SlipApiController extends Controller
                             }
                         }
 
+                        $this->saveFilesFromRequest($request, $basePath, 'matitimo_1',  $slip_maritimo_1->id);
                         break;
                     case 'maritimo_2_form':
                         $slip_maritimo_2 = new SlipMaritimeTwo();
@@ -499,6 +508,7 @@ class SlipApiController extends Controller
                             }
                         }
 
+                        $this->saveFilesFromRequest($request, $basePath, 'matitimo_2',  $slip_maritimo_2->id);
                         break;
                     case 'maritimo_3_form':
                         $slip_maritimo_3 = new SlipMaritimeThree();
@@ -507,6 +517,7 @@ class SlipApiController extends Controller
                         $slip_maritimo_3->save();
                         $type_slip = SlipMaritimeThree::where('id', $slip->id);
 
+                        $this->saveFilesFromRequest($request, $basePath, 'matitimo_3',  $slip_maritimo_3->id);
                         break;
                     case 'maritimo_4_form':
                         $slip_maritimo_4 = new SlipMaritimeFour();
@@ -514,6 +525,7 @@ class SlipApiController extends Controller
                         $slip_maritimo_4->slip_id = $slip->id;
                         $slip_maritimo_4->save();
                         $type_slip = SlipMaritimeFour::where('id', $slip->id);
+                        $this->saveFilesFromRequest($request, $basePath, 'matitimo_4',  $slip_maritimo_4->id);
                         break;
                     default:
                         break;
@@ -615,6 +627,7 @@ class SlipApiController extends Controller
                             }
                         }
 
+                        $this->saveFilesFromRequest($request, $basePath, 'aviacion_1',  $slip_aereo->id);
                         break;
                     case 'aviacion_2_form':
                         $slip_aereo_2 = new SlipAviationTwo();
@@ -638,6 +651,7 @@ class SlipApiController extends Controller
                             }
                         }
 
+                        $this->saveFilesFromRequest($request, $basePath, 'aviacion_2',  $slip_aereo_2->id);
                         break;
                     case 'aviacion_3_form':
                         $slip_aereo_3 = new SlipAviationThree();
@@ -646,6 +660,7 @@ class SlipApiController extends Controller
                         $slip_aereo_3->save();
 
                         $type_slip = SlipAviationThree::where('id', $slip->id);
+                        $this->saveFilesFromRequest($request, $basePath, 'aviacion_3',  $slip_aereo_3->id);
                         break;
                     default:
                         break;
@@ -721,6 +736,8 @@ class SlipApiController extends Controller
                                 $object_insurance->save();
                             }
                         }
+
+                        $this->saveFilesFromRequest($request, $basePath, 'finanzas_1',  $slip_finanzas_1->id);
                         break;
                     case 'finanzas_2_form':
                         $slip_finanzas_2 = new SlipFianzaTwo();
@@ -728,6 +745,7 @@ class SlipApiController extends Controller
                         $slip_finanzas_2->slip_id = $slip->id;
                         $slip_finanzas_2->save();
                         $type_slip = SlipFianzaTwo::find($slip->id);
+                        $this->saveFilesFromRequest($request, $basePath, 'finanzas_2',  $slip_finanzas_2->id);
                         break;
                     default:
                         break;
@@ -832,6 +850,8 @@ class SlipApiController extends Controller
                     }
                 }
 
+                $this->saveFilesFromRequest($request, $basePath, 'responsabilidad',  $slip_responsabilidad->id);
+
                 break;
             case 'riesgos_form':
                 $slip_riesgos = new SlipFinancialRisk();
@@ -885,6 +905,7 @@ class SlipApiController extends Controller
                     }
                 }
 
+                $this->saveFilesFromRequest($request, $basePath, 'riesgo',  $slip_riesgos->id);
                 break;
             default:
                 break;
@@ -989,7 +1010,6 @@ class SlipApiController extends Controller
         $request->session()->forget('csrf_token');
         return true;
     }
-
 
     /**
      * Validacion de los inputs
@@ -1144,42 +1164,42 @@ class SlipApiController extends Controller
             'asegurable_electronico' => 'nullable|numeric|max:999999999999999',
             'asegurada_electronico' => 'nullable|numeric|max:999999999999999',
             'accidentRate' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'desglose_file' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'devices_list_file' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'machine_list_file' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'inspection_control_file' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'quote_form_file' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'informe' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'quotationReport' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'financialStatements' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'coverageDetail' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'schedule' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'soilStudy' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'quotationForm' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'experience' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'alopQuote' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'workMemory' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'modelMakeHours' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'crFormSigned' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'pilotExperienceFormSigned' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'otherForms' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'pilotos' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'signedForm' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'medicTest' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'financialReport' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'copiaMatricula' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'informeInspeccion' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'siniestralidad_armador' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'otrasEmbarcaciones' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'experienciaArmador' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'detalleMantenimiento' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'tripulacionInfo' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'detalleViajeFile' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'detalleValorReemplazo' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'formularioFirmado' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'siniestralidad_embarcacion' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'detalleLicencia' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
-            'report' => 'nullable|file|mimetypes:application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'desglose_file' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'devices_list_file' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'machine_list_file' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'inspection_control_file' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'quote_form_file' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'informe' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'quotationReport' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'financialStatements' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'coverageDetail' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'schedule' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'soilStudy' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'quotationForm' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'experience' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'alopQuote' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'workMemory' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'modelMakeHours' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'crFormSigned' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'pilotExperienceFormSigned' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'otherForms' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'pilotos' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'signedForm' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'medicTest' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'financialReport' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'copiaMatricula' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'informeInspeccion' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'siniestralidad_armador' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'otrasEmbarcaciones' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'experienciaArmador' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'detalleMantenimiento' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'tripulacionInfo' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'detalleViajeFile' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'detalleValorReemplazo' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'formularioFirmado' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'siniestralidad_embarcacion' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'detalleLicencia' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'report' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
         ]); //aviacion rc no hay
 
         $is_array = is_array($request->input('insured_value'));

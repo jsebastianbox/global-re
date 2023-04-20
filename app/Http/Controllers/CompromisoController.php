@@ -157,12 +157,13 @@ class CompromisoController extends Controller
         $object_insurance = ObjectInsurance::where('slip_id', $slip->id)->get();
 
         $user = Auth::user();
-        $accidentRate = null;
-        $accidentRateExtension = null;
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'vida')->get();
         $clausulasSelect = Clausulas_selector::where('main_branch', 'vida')->get();
+
         $accidentRateFile = $this->getFile("slips/vida/" . $slip_type->id . "/accidentRate.*");
+        $accidentRate = null;
+        $accidentRateExtension = null;
 
         if ($accidentRateFile) {
             $accidentRateExtension = $this->getExtensionFromName($accidentRateFile);
@@ -203,16 +204,10 @@ class CompromisoController extends Controller
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'activos')->get();
         $clausulasSelect = Clausulas_selector::where('main_branch', 'activos')->get();
-
-        // $slip_type = SlipPropertyFixedAsset::where('id', $slip->model_id)
-        // ->with('sum_assured')
-        // ->with('detail_perdios')
-        // ->with('equipment_list')
-        // ->first();
-
+        $slip_route = "activos-fijos";
         $user = Auth::user();
 
-        return view('admin.comercial.edit_compromiso.edit_index')
+        $view = view('admin.comercial.edit_compromiso.edit_index')
             ->with('user', $user)
             ->with('users', $users)
             ->with('countries', $countries)
@@ -226,6 +221,10 @@ class CompromisoController extends Controller
             ->with('coberturasSelect', $coberturasSelect)
             ->with('clausulasSelect', $clausulasSelect)
             ->with('sum_assured', $sum_assured);
+
+        $view = $this->chargeFilesIntoView($slip_route, "activos_fijos", $slip_type->id, $view);
+
+        return $view;
     }
 
     public function vehiculos($id)
@@ -248,9 +247,7 @@ class CompromisoController extends Controller
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
         $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
-
-
-        return view('admin.comercial.edit_compromiso.edit_index')
+        $view = view('admin.comercial.edit_compromiso.edit_index')
             ->with('user', $user)
             ->with('users', $users)
             ->with('countries', $countries)
@@ -263,6 +260,11 @@ class CompromisoController extends Controller
             ->with('clausulasSelect', $clausulasSelect)
             ->with('vehicles_details', $vehicles_details)
             ->with('slip_type', $slip_type);
+
+
+        $view = $this->chargeFilesIntoView("vehiculos", "vehiculos", $slip_type->id, $view);
+
+        return  $view;
     }
 
     public function energia($id)
@@ -281,9 +283,7 @@ class CompromisoController extends Controller
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'energia')->get();
         $clausulasSelect = Clausulas_selector::where('main_branch', 'energia')->get();
-
-
-        return view('admin.comercial.edit_compromiso.edit_index')
+        $view = view('admin.comercial.edit_compromiso.edit_index')
             ->with('user', $user)
             ->with('users', $users)
             ->with('countries', $countries)
@@ -294,6 +294,10 @@ class CompromisoController extends Controller
             ->with('sum_assured', $sum_assured)
             ->with('slip', $slip)
             ->with('slip_type', $slip_type);
+
+        $view = $this->chargeFilesIntoView("energia", "energia", $slip_type->id, $view);
+
+        return $view;
     }
     public function tecnico($id)
     {
@@ -310,8 +314,7 @@ class CompromisoController extends Controller
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
         $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
-
-        return view('admin.comercial.edit_compromiso.edit_index')
+        $view = view('admin.comercial.edit_compromiso.edit_index')
             ->with('user', $user)
             ->with('users', $users)
             ->with('countries', $countries)
@@ -322,6 +325,9 @@ class CompromisoController extends Controller
             ->with('clausulasSelect', $clausulasSelect)
             ->with('slip', $slip)
             ->with('slip_type', $slip_type);
+
+        $view = $this->chargeFilesIntoView("tecnico", "tecnico", $slip_type->id, $view);
+        return $view;
     }
     public function responsabilidad($id)
     {
@@ -338,8 +344,7 @@ class CompromisoController extends Controller
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'responsabilidad_civil')->get();
         $clausulasSelect = Clausulas_selector::where('main_branch', 'responsabilidad_civil')->get();
-
-        return view('admin.comercial.edit_compromiso.edit_index')
+        $view = view('admin.comercial.edit_compromiso.edit_index')
             ->with('user', $user)
             ->with('users', $users)
             ->with('countries', $countries)
@@ -349,6 +354,10 @@ class CompromisoController extends Controller
             ->with('clausulasSelect', $clausulasSelect)
             ->with('slip', $slip)
             ->with('slip_type', $slip_type);
+
+        $view = $this->chargeFilesIntoView("responsabilidad", "responsabilidad", $slip_type->id, $view);
+
+        return $view;
     }
     public function aviacion($id)
     {
@@ -362,6 +371,17 @@ class CompromisoController extends Controller
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'aviacion')->get();
         $clausulasSelect = Clausulas_selector::where('main_branch', 'aviacion')->get();
+        $user = Auth::user();
+
+        $view = view('admin.comercial.edit_compromiso.edit_index')
+            ->with('user', $user)
+            ->with('users', $users)
+            ->with('countries', $countries)
+            ->with('slip_statuses', $slip_statuses)
+            ->with('type_coverage', $type_coverage)
+            ->with('coberturasSelect', $coberturasSelect)
+            ->with('clausulasSelect', $clausulasSelect)
+            ->with('slip', $slip);
 
 
         switch ($slip->type_coverage) {
@@ -371,6 +391,7 @@ class CompromisoController extends Controller
                 $information_aerial = InformationAerialHelmets::where('slip_id', $id)->get();
                 $aviation_extras = AviacionExtras::where('slip_id', $id)->get();
                 $object_insurance = [];
+                $view = $this->chargeFilesIntoView("aviacion_1", "aviacion_1", $slip_type->id, $view);
                 break;
 
             case '34':
@@ -378,6 +399,7 @@ class CompromisoController extends Controller
                 $object_insurance = ObjectInsurance::where('slip_id', $id)->get();
                 $information_aerial = [];
                 $aviation_extras = [];
+                $view = $this->chargeFilesIntoView("aviacion_2", "aviacion_2", $slip_type->id, $view);
                 break;
 
             case '35':
@@ -388,27 +410,19 @@ class CompromisoController extends Controller
                 $aviation_extras = [];
                 $object_insurance = [];
 
+                $view = $this->chargeFilesIntoView("aviacion_3", "aviacion_3", $slip_type->id, $view);
                 break;
 
             default:
                 break;
         }
 
-        $user = Auth::user();
-
-        return view('admin.comercial.edit_compromiso.edit_index')
-            ->with('user', $user)
-            ->with('users', $users)
-            ->with('countries', $countries)
-            ->with('slip_statuses', $slip_statuses)
-            ->with('type_coverage', $type_coverage)
+        $view->with('slip_type', $slip_type)
             ->with('information_aerial', $information_aerial)
             ->with('aviation_extras', $aviation_extras)
-            ->with('object_insurance', $object_insurance)
-            ->with('coberturasSelect', $coberturasSelect)
-            ->with('clausulasSelect', $clausulasSelect)
-            ->with('slip', $slip)
-            ->with('slip_type', $slip_type);
+            ->with('object_insurance', $object_insurance);
+
+        return    $view;
     }
     public function maritimo($id)
     {
@@ -418,32 +432,46 @@ class CompromisoController extends Controller
         $type_coverage = TypeCoverage::all();
         $slip = Slip::find($id);
 
+        $user = Auth::user();
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::all();
         $clausulasSelect = Clausulas_selector::all();
+        $view = view('admin.comercial.edit_compromiso.edit_index')
+            ->with('user', $user)
+            ->with('users', $users)
+            ->with('countries', $countries)
+            ->with('slip_statuses', $slip_statuses)
+            ->with('type_coverage', $type_coverage)
+            ->with('coberturasSelect', $coberturasSelect)
+            ->with('clausulasSelect', $clausulasSelect)
+            ->with('slip', $slip);
 
         switch ($slip->type_coverage) {
             case '21':
             case '22':
                 $slip_type = SlipMaritimeOne::where('slip_id', $id)->first();
                 $boat_detail = BoatDetailSlip::where('slip_id', $id)->get();
+                $view = $this->chargeFilesIntoView("maritimo_1", "maritimo_1", $slip_type->id, $view);
                 break;
 
             case '23':
                 $slip_type = SlipMaritimeTwo::where('slip_id', $id)->first();
                 $boat_detail = BoatDetailSlip::where('slip_id', $id)->get();
+                $view = $this->chargeFilesIntoView("maritimo_2", "maritimo_2", $slip_type->id, $view);
                 break;
 
             case '24':
             case '25':
             case '26':
                 $slip_type = SlipMaritimeThree::where('slip_id', $id)->first();
+                $view = $this->chargeFilesIntoView("maritimo_3", "maritimo_3", $slip_type->id, $view);
                 $boat_detail = [];
             case '27':
             case '28':
             case '29':
             case '30':
                 $slip_type = SlipMaritimeFour::where('slip_id', $id)->first();
+                $view = $this->chargeFilesIntoView("maritimo_4", "maritimo_4", $slip_type->id, $view);
                 $boat_detail = [];
                 break;
 
@@ -451,19 +479,10 @@ class CompromisoController extends Controller
                 break;
         }
 
-        $user = Auth::user();
-
-        return view('admin.comercial.edit_compromiso.edit_index')
-            ->with('user', $user)
-            ->with('users', $users)
-            ->with('countries', $countries)
-            ->with('slip_statuses', $slip_statuses)
-            ->with('type_coverage', $type_coverage)
-            ->with('boat_detail', $boat_detail)
-            ->with('coberturasSelect', $coberturasSelect)
-            ->with('clausulasSelect', $clausulasSelect)
-            ->with('slip', $slip)
+        $view->with('boat_detail', $boat_detail)
             ->with('slip_type', $slip_type);
+
+        return $view;
     }
     public function riesgos($id)
     {
@@ -479,8 +498,7 @@ class CompromisoController extends Controller
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::all();
         $clausulasSelect = Clausulas_selector::all();
-
-        return view('admin.comercial.edit_compromiso.edit_index')
+        $view = view('admin.comercial.edit_compromiso.edit_index')
             ->with('user', $user)
             ->with('users', $users)
             ->with('countries', $countries)
@@ -490,6 +508,10 @@ class CompromisoController extends Controller
             ->with('clausulasSelect', $clausulasSelect)
             ->with('slip', $slip)
             ->with('slip_type', $slip_type);
+
+
+        $view = $this->chargeFilesIntoView("riesgos", "riesgos", $slip_type->id, $view);
+        return    $view;
     }
     public function fianzas($id)
     {
@@ -503,11 +525,20 @@ class CompromisoController extends Controller
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'fianzas')->get();
         $clausulasSelect = Clausulas_selector::where('main_branch', 'fianzas')->get();
-
+        $view = view('admin.comercial.edit_compromiso.edit_index')
+            ->with('user', $user)
+            ->with('users', $users)
+            ->with('countries', $countries)
+            ->with('slip_statuses', $slip_statuses)
+            ->with('type_coverage', $type_coverage)
+            ->with('coberturasSelect', $coberturasSelect)
+            ->with('clausulasSelect', $clausulasSelect)
+            ->with('slip', $slip);
         switch ($slip->type_coverage) {
             case '46':
                 $slip_type = SlipFianzaOne::where('slip_id', $id)->first();
                 $object_insurance = ObjectInsurance::where('slip_id', $id)->get();
+                $view = $this->chargeFilesIntoView("finanzas_1", "finanzas_1", $slip_type->id, $view);
                 break;
 
             case '47':
@@ -518,22 +549,14 @@ class CompromisoController extends Controller
             case '52':
                 $slip_type = SlipFianzaTwo::where('slip_id', $id)->first();
                 $object_insurance = [];
+                $view = $this->chargeFilesIntoView("finanzas_2", "finanzas_2", $slip_type->id, $view);
                 break;
             default:
                 break;
         }
-
-
-        return view('admin.comercial.edit_compromiso.edit_index')
-            ->with('user', $user)
-            ->with('users', $users)
-            ->with('countries', $countries)
-            ->with('slip_statuses', $slip_statuses)
-            ->with('type_coverage', $type_coverage)
-            ->with('object_insurance', $object_insurance)
-            ->with('coberturasSelect', $coberturasSelect)
-            ->with('clausulasSelect', $clausulasSelect)
-            ->with('slip', $slip)
+        $view->with('object_insurance', $object_insurance)
             ->with('slip_type', $slip_type);
+
+        return $view;
     }
 }

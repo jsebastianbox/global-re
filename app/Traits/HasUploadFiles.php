@@ -2,7 +2,9 @@
 
 namespace App\Traits;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\View\View;
 
 trait HasUploadFiles
 {
@@ -145,5 +147,131 @@ trait HasUploadFiles
     public function copyFile(string $located_path, string $to_copy_path)
     {
         copy(storage_path($located_path), storage_path($to_copy_path));
+    }
+    public function keysFiles($case)
+    {
+        $keys = [];
+        switch ($case) {
+            case 'vida':
+                $keys[] = "accidentRate";
+                break;
+            case 'activos_fijos':
+                $keys[] = "quote_form_file";
+                $keys[] = "inspection_control_file";
+                $keys[] = "machine_list_file";
+                $keys[] = "devices_list_file";
+                $keys[] = "desglose_file";
+                $keys[] = "accidentRate";
+                break;
+            case 'vehiculos':
+                $keys[] = "accidentRate";
+                $keys[] = "informe";
+                break;
+            case 'tecnico':
+                $keys[] = "coverageDetail";
+                $keys[] = "accidentRate";
+                $keys[] = "schedule";
+                $keys[] = "soilStudy";
+                $keys[] = "quotationForm";
+                $keys[] = "experience";
+                $keys[] = "workMemory";
+                break;
+            case 'energia':
+                $keys[] = "coverageDetail";
+                $keys[] = "accidentRate";
+                $keys[] = "valueDetail";
+                $keys[] = "petroleumDenValue";
+                $keys[] = "report";
+                $keys[] = "anualIncome";
+                $keys[] = "employees";
+                $keys[] = "vehicles";
+                $keys[] = "payroll";
+                $keys[] = "dailyProduction";
+                $keys[] = "barrelValue";
+                break;
+            case 'responsabilidad':
+                $keys[] = "accidentRate";
+                $keys[] = "quotationReport";
+                $keys[] = "financialStatements";
+                break;
+            case 'riesgo':
+                $keys[] = "accidentRate";
+                $keys[] = "quotationReport";
+                $keys[] = "financialStatements";
+                break;
+            case 'aviacion_1':
+                $keys[] = "modelMakeHours";
+                $keys[] = "accidentRate";
+                $keys[] = "otherForms";
+                $keys[] = "crFormSigned";
+                $keys[] = "pilotExperienceFormSigned";
+                break;
+            case 'aviacion_2':
+                $keys[] = "pilotos";
+                $keys[] = "signedForm";
+                $keys[] = "medicTest";
+                break;
+            case 'aviacion_3':
+                $keys[] = "crFormSigned";
+                break;
+            case 'maritimo_1':
+                $keys[] = "copiaMatricula";
+                $keys[] = "informeInspeccion";
+                $keys[] = "accidentRate";
+                $keys[] = "siniestralidad_armador";
+                $keys[] = "otrasEmbarcaciones";
+                $keys[] = "experienciaArmador";
+                $keys[] = "detalleMantenimiento";
+                $keys[] = "tripulacionInfo";
+                $keys[] = "detalleLicencia";
+                $keys[] = "detalleViajeFile";
+                $keys[] = "detalleValorReemplazo";
+                $keys[] = "formularioFirmado";
+                break;
+            case 'maritimo_2':
+                $keys[] = "copiaMatricula";
+                $keys[] = "informeInspeccion";
+                $keys[] = "siniestralidadCincoAnios";
+                $keys[] = "siniestralidad_armador";
+                $keys[] = "otrasEmbarcaciones";
+                $keys[] = "experienciaArmador";
+                $keys[] = "detalleMantenimiento";
+                $keys[] = "tripulacionInfo";
+                $keys[] = "detalleLicencia";
+                $keys[] = "detalleViajeFile";
+                $keys[] = "detalleValorReemplazo";
+                $keys[] = "formularioFirmado";
+                break;
+            case 'maritimo_3':
+                $keys[] = "report";
+                $keys[] = "signedForm";
+                $keys[] = "accidentRate";
+                break;
+            case 'maritimo_4':
+                $keys[] = "quotationForm";
+                break;
+            default:
+                break;
+        }
+        return $keys;
+    }
+    public function chargeFilesIntoView(string $slip_route, $case, $id, View $view): View
+    {
+        foreach ($this->keysFiles($case) as $key) {
+            $file = $this->getFile("slips/" . $slip_route . "/" . $id . "/" . $key . ".*");
+            $view->with($key . "Extension", $file ? $this->getExtensionFromName($file) : null);
+            $view->with($key, $file ? $this->getBase64FromFile($file) : null);
+        }
+        return $view;
+    }
+    public function saveFilesFromRequest(Request $request, string $basePath, string $case, $id, string $route = null)
+    {
+        $route = $route ?? $case;
+        foreach ($this->keysFiles($case) as $key) {
+            if ($request->hasFile($key)) {
+                $file = $request->file($key);
+                $this->saveFile($file, $this->getPath($basePath . '/' . $route . '/' . $id), $key);
+            }
+        }
     }
 }
