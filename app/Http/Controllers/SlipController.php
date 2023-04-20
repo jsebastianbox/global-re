@@ -476,6 +476,7 @@ class SlipController extends Controller
                 $type_slip = SlipTechnicalBranch::where('slip_id', $id)->first();
                 $type_slip->update($request->all());
 
+                $this->saveFilesFromRequest($request, $basePath, 'tecnico',  $type_slip->id);
                 break;
                 //energia
             case '18':
@@ -509,6 +510,7 @@ class SlipController extends Controller
                     }
                 }
 
+                $this->saveFilesFromRequest($request, $basePath, 'energia',  $type_slip->id);
                 break;
                 //Maritimo
             case '21':
@@ -531,6 +533,7 @@ class SlipController extends Controller
 
                         BoatDetailSlip::where('slip_id', $id)->delete();
 
+                        $this->saveFilesFromRequest($request, $basePath, 'maritimo_1',  $type_slip->id);
                         break;
 
                     case '23':
@@ -539,6 +542,7 @@ class SlipController extends Controller
 
                         BoatDetailSlip::where('slip_id', $id)->delete();
 
+                        $this->saveFilesFromRequest($request, $basePath, 'maritimo_2',  $type_slip->id);
                         break;
 
                     case '24':
@@ -547,6 +551,7 @@ class SlipController extends Controller
                         $type_slip = SlipMaritimeThree::where('slip_id', $id)->first();
                         $type_slip->update($request->all());
 
+                        $this->saveFilesFromRequest($request, $basePath, 'maritimo_3',  $type_slip->id);
                         break;
                     case '27':
                     case '28':
@@ -556,6 +561,7 @@ class SlipController extends Controller
                         $type_slip = SlipMaritimeFour::where('slip_id', $id)->first();
                         $type_slip->update($request->all());
 
+                        $this->saveFilesFromRequest($request, $basePath, 'maritimo_4',  $type_slip->id);
                         break;
                 }
 
@@ -612,6 +618,7 @@ class SlipController extends Controller
                             }
                         }
 
+                        $this->saveFilesFromRequest($request, $basePath, 'aviacion_1',  $type_slip->id);
                         break;
                     case '34':
                         $type_slip = ObjectInsurance::where('slip_id', $id)->first();
@@ -620,6 +627,7 @@ class SlipController extends Controller
                         BoatDetailSlip::where('slip_id', $id)->delete();
 
                         $type_slip->object_insurance()->delete();
+                        $this->saveFilesFromRequest($request, $basePath, 'aviacion_2',  $type_slip->id);
                         break;
                     case '35':
                     case '36':
@@ -627,6 +635,7 @@ class SlipController extends Controller
                         $type_slip = SlipAviationThree::where('slip_id', $id)->first();
                         $type_slip->update($request->all());
 
+                        $this->saveFilesFromRequest($request, $basePath, 'aviacion_3',  $type_slip->id);
                         break;
                     default:
                         # code...
@@ -681,6 +690,7 @@ class SlipController extends Controller
                 $type_slip = SlipCivilLiability::where('slip_id', $id)->first();
                 $type_slip->update($request->all());
 
+                $this->saveFilesFromRequest($request, $basePath, 'responsabilidad',  $type_slip->id);
                 break;
 
                 //Riesgos Financieros
@@ -689,6 +699,7 @@ class SlipController extends Controller
                 $type_slip = SlipFinancialRisk::where('slip_id', $id)->first();
                 $type_slip->update($request->all());
 
+                $this->saveFilesFromRequest($request, $basePath, 'riesgo',  $type_slip->id);
                 break;
                 //fianza
             case '46':
@@ -721,6 +732,7 @@ class SlipController extends Controller
                                 }
                             }
                         }
+                        $this->saveFilesFromRequest($request, $basePath, 'fianza_1',  $type_slip->id);
                         break;
 
                     case '47':
@@ -731,6 +743,7 @@ class SlipController extends Controller
                     case '52':
                         $type_slip = SlipFianzaTwo::where('slip_id', $id)->first();
                         $type_slip->update($request->all());
+                        $this->saveFilesFromRequest($request, $basePath, 'fianza_2',  $type_slip->id);
                         break;
                 }
 
