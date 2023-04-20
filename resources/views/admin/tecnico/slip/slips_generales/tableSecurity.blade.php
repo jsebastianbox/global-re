@@ -1,41 +1,12 @@
 <style>
-    #securityContainer {
-        display: grid;
-        place-content: center;
-        grid-template-areas: 'l r';
-        grid-gap: 5rem;
-    }
 
-    #securityContainer .table {
-        grid-area: 'l';
-    }
-
-    #securityContainer .schema {
-        grid-area: 'r';
-    }
-
-    select {
-        outline: 1px solid rgba(151, 151, 151, 0.35);
-        border-radius: 12px;
-        background-color: #fff;
-        padding: 6px 8px;
-        box-shadow: 3px 3px 2px 0px rgb(0 204 255 / 20%);
-        -webkit-box-shadow: 3px 3px 2px 0px rgb(0 204 255 / 20%);
-        -moz-box-shadow: 3px 3px 2px 0px rgba(0, 0, 0, 0.2);
-    }
-
-    .selectSchema {
-        /**/
-    }
 </style>
 <div id="securityContainer">
-    <div class="selectSchema">
-        <select name="securitySchema" id="securitySchema" onchange="securitySchemaOptions()">
-            <option value="proportional" selected>Proporcional</option>
-            <option value="nonProportional">No Proporcional</option>
-        </select>
-    </div>
+
     <div class="tableContainer table">
+
+        <p class="slipTitle">Proporcional</p>
+
         <table id="proportionalTable" class="indemnizacionTable tableSecurity">
             <thead>
                 <tr role="row">
@@ -117,7 +88,9 @@
 
         </table>
 
-        <table id="noproportionalTable" class="indemnizacionTable tableSecurity" style="display: none">
+        <p class="slipTitle marginTop">No proporcional</p>
+
+        <table id="noproportionalTable" class="indemnizacionTable tableSecurity">
             <thead>
                 <tr role="row">
                     <th style="text-align: center;">#</th>

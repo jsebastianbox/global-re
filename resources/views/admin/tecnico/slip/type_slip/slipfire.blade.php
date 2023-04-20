@@ -53,13 +53,13 @@
                 @if ($slip->insurable_sum > 0)
                     <div class="input_group">
                         <label for="">Suma Asegurable:</label>
-                        <input id="input_sumaAsegurada" type="number" name="insurable_sum"
+                        <input id="value_for_calculos" type="number" name="insurable_sum"
                         value="{{ $slip->insurable_sum }}">
                     </div>
                 @elseif($slip->insured_sum > 0)
                     <div class="input_group">
                         <label for="">Suma Asegurada:</label>
-                        <input id="input_sumaAsegurada" type="number" name="insured_sum"
+                        <input id="value_for_calculos" type="number" name="insured_sum"
                         value="{{ $slip->insured_sum }}">
                     </div>
                 @endif

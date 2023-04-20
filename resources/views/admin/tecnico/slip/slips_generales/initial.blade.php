@@ -158,7 +158,7 @@
                     <i class="fa-solid fa-bars-staggered"></i>
                     Valor Asegurado
                 </label>
-                <input type="text" name="insured_value" value="{{ $slip->insured_value }}" disabled>
+                <input type="text" name="valor_asegurado" id="value_for_calculos" value="{{ $slip->valor_asegurado }}" disabled>
             </div>
         @endif
 
@@ -170,7 +170,7 @@
                     <i class="fa-solid fa-bars-staggered"></i>
                     Cúmulo Asegurado
                 </label>
-                <input type="text" name="insurable_value" value="{{ $slip->insurable_value }}" disabled>
+                <input type="text" name="insurable_value" id="value_for_calculos" value="{{ $slip->insurable_value }}" disabled>
             </div>
         @endif
     </div>

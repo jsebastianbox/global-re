@@ -285,7 +285,7 @@ $(document).ready(function () {
                   <tr>
 
                     <td style="text-align:center" ><input type="text" id="" name="" placeholder="..."></td>
-                    <td style="text-align:center" ><span class="limiteAseguradoSpan">20020000</span></td>
+                    <td style="text-align:center" ><span class="limiteAseguradoSpan"></span></td>
                     <td style="text-align:center" ><input value="0" type="number" id="tasaAjuste" class="tasaAjusteInput" name="" placeholder="%" onkeyup="sumaLastTable()"></td>
                     <td style="text-align:center" ><span class="primaBrutaSpan">0</span></td>
                     <td style="text-align:center" ><span class="primaPartSpan">0</span></td>
@@ -352,7 +352,7 @@ $(document).ready(function () {
         prevText: 'Anterior',
         nextText: 'Siguiente',
         finalLabel: 'Listo',
-        finishText: 'Terminar',
+        /* finishText: 'Terminar', */
         final: 'Da click en el botón "Terminar" para finalizar con el proceso.',
         modalSize: 'lg'
     });
@@ -675,7 +675,7 @@ function addRowCalculosTable(event, type) {
 
 function addRowCalculosTable2(event, type) {
     event.preventDefault()
-
+    let limiteAsegurado = $('#value_for_calculos').val()
     let rowCount = document.getElementById(`${type}Table`).rows.length
 
     const calculosTableBody = document.getElementById(`${type}Body`)
@@ -686,8 +686,8 @@ function addRowCalculosTable2(event, type) {
     tr.innerHTML =
         `
         <td style="text-align:center" ><input type="text" id="" name="" placeholder="..."></td>
-        <td style="text-align:center" ><span class="limiteAseguradoSpan">  126758642.23   </span></td>
-        <td style="text-align:center" ><input value="0.30185" type="number" id="tasaAjuste" class="tasaAjusteInput" name="" placeholder="%" onkeyup="sumaLastTable()"></td>
+        <td style="text-align:center" ><span class="limiteAseguradoSpan">${limiteAsegurado}</span></td>
+        <td style="text-align:center" ><input value="0" type="number" id="tasaAjuste" class="tasaAjusteInput" name="" placeholder="%" onkeyup="sumaLastTable()"></td>
         <td style="text-align:center" ><span class="primaBrutaSpan">0</span></td>
         <td style="text-align:center" ><span class="primaPartSpan">0</span></td>
         <td style="text-align:center" ><span class="comisionSpan">0</span></td>
@@ -728,6 +728,8 @@ var contador = 0;
 
 function refreshPonderacion() {
 
+    
+    $('.limiteAseguradoSpan').text($('#value_for_calculos').val())
 
     // inputs
     let inputsParticipation = calculosBody.getElementsByClassName("participacionInput")
@@ -775,10 +777,10 @@ function refreshPonderacion() {
                 ${numRow}
             </td>
             <td><span name="partPonderada">${inputsParticipation[i].value}</span>%</td>
-            <td><span name="tasaPonderada">${(tasaPonderadaPorFila * 100).toFixed(2)}</span>%</td>
-            <td><span name="netaPonderada">${(tasaNetaRiPorFila).toFixed(6)}</span>%</td>
+            <td><span name="tasaPonderada">${parseFloat(tasaPonderadaPorFila * 100).toFixed(2)}</span>%</td>
+            <td><span name="netaPonderada">${parseFloat(tasaNetaRiPorFila).toFixed(6)}</span>%</td>
             <td><span name="brutaPonderada">${parseFloat(brutaPorFila).toFixed(6)}</span>%</td>
-            <td><span name="comisionPonderada">${(comisionPorFila * 100).toFixed(2)}</span>%</td>`
+            <td><span name="comisionPonderada">${parseFloat(comisionPorFila * 100).toFixed(2)}</span>%</td>`
             
             numRow++
 

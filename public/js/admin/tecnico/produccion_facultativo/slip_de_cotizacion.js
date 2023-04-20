@@ -2547,7 +2547,7 @@ function incendioSumaAsegurableTotales(row, col, table) {
         $(`#input_sumaAsegurableEnergia`).val(parseFloat(sumaTotal3).toFixed(2))
     }
     if (table === 'activos_fijos') {
-        $(`#input_sumaAsegurada`).val(parseFloat(sumaTotal3).toFixed(2))
+        $(`#value_for_calculos`).val(parseFloat(sumaTotal3).toFixed(2))
     }
 
 }

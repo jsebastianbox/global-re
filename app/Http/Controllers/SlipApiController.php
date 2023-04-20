@@ -1068,6 +1068,7 @@ class SlipApiController extends Controller
             'clause_additional_additional.*' => 'nullable|string',
             'clause_additional_usd.*' => 'nullable|numeric',
             'clause_additional_additional2.*' => 'nullable|string',
+            'valor_asegurado' => 'nullable|numeric|min:0|max:9999999999999999',
             'reinsurer_rate' => 'nullable|numeric|min:0|max:9999999999999999',
             'reinsurance_premium' => 'nullable|numeric|min:0|max:9999999999999999',
             'description_deductible.*' => 'nullable|string|max:255',

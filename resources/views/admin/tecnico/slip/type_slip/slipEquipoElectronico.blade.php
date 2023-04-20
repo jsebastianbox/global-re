@@ -125,9 +125,9 @@
     </div>
 
     <div class="form_group2">
-        <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Suma Asegurada y Suma Asegurable</h3>
-
+        
         @if ($slip->type_coverage === 11)
+            <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Suma Asegurada y Suma Asegurable</h3>
             <div class="two-sides">
                 <div class="left_side">
                     <div class="input_group">
@@ -255,31 +255,31 @@
 
             </div>
         @endif
+
+        {{-- Coberturas adicionales --}}
+        <h3 class="slipTitle"> <span class="badge badge-secondary"></span> Coberturas Adicionales</h3>
+
+        @include('admin.comercial.include.edit_tablaCoberturas')
+                
     </div>
 
     <div class="form_group3">
-        {{-- Coberturas adicionales --}}
-        <h3 class="slipTitle"> <span class="badge badge-secondary">3</span> Coberturas Adicionales</h3>
+        {{-- Cláusulas Adicionales --}}
+        <h3 class="slipTitle"> <span class="badge badge-secondary"></span> Cláusulas Adicionales</h3>
 
-        @include('admin.comercial.include.edit_tablaCoberturas')
-        
+        @include('admin.comercial.include.edit_tablaClausulas')
     </div>
 
     <div class="form_group4">
-        {{-- Cláusulas Adicionales --}}
-        <h3 class="slipTitle"> <span class="badge badge-secondary">4</span> Cláusulas Adicionales</h3>
-        
-        @include('admin.comercial.include.edit_tablaClausulas')
-
         {{-- Exclusiones --}}
-        <h3 class="slipTitle"> <span class="badge badge-secondary">5</span> Exclusiones</h3>
+        <h3 class="slipTitle"> <span class="badge badge-secondary"></span> Exclusiones</h3>
 
         @include('admin.tecnico.slip.slips_generales.exclusiones')
 
     </div>
 
     <div class="form_group5">
-        <h3 class="slipTitle"> <span class="badge badge-secondary">6</span> Deducibles</h3>
+        <h3 class="slipTitle"> <span class="badge badge-secondary"></span> Deducibles</h3>
 
         @include('admin.tecnico.slip.slips_generales.deducibles')
         
