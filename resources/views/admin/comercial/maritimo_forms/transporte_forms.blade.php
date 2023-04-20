@@ -278,34 +278,31 @@
             </div>
             <div class="col-md-6">
                 <div class="input-group mb-3">
-                    <input class="form-control" type="file" name="coverageDetail" hidden="true" id="coverageDetail" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="coverageDetail" id="coverageDetailFileLabel">Detalle de bienes asegurados
+                    <input class="form-control" type="file" name="quotationForm" hidden="true" id="quotationForm" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="quotationForm" id="quotationFormFileLabel">Formulario de cotización
                     </label>
-                    @if ($coverageDetail)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="coverageDetailDownload">Detalle de bienes asegurados - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglecoverageDetail()" id="coverageDetailFileToggle">Modificar</button>
+                    @if ($quotationForm)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="quotationFormDownload">Formulario de cotización - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglequotationForm()" id="quotationFormFileToggle">Modificar</button>
                     <script>
-                        let toggledcoverageDetailFile = false;
-                        const coverageDetailInput = document.getElementById('coverageDetail');
-                        const coverageDetailDownload = document.getElementById('coverageDetailDownload');
-                        const coverageDetailLabel = document.getElementById('coverageDetailFileLabel');
-                        const coverageDetailToggle = document.getElementById('coverageDetailFileToggle');
+                        let toggledquotationFormFile = false;
+                        const quotationFormInput = document.getElementById('quotationForm');
+                        const quotationFormDownload = document.getElementById('quotationFormDownload');
+                        const quotationFormLabel = document.getElementById('quotationFormFileLabel');
+                        const quotationFormToggle = document.getElementById('quotationFormFileToggle');
 
-                        function togglecoverageDetail() {
-                            toggledcoverageDetailFile = !toggledcoverageDetailFile;
-                            coverageDetailInput.hidden = !toggledcoverageDetailFile;
-                            coverageDetailDownload.hidden = toggledcoverageDetailFile;
-                            coverageDetailLabel.hidden = !toggledcoverageDetailFile;
-                            coverageDetailToggle.textContent = toggledcoverageDetailFile ? 'Usar previo' : 'Modificar'
-                            if (toggledcoverageDetailFile) coverageDetailInput.click()
+                        function togglequotationForm() {
+                            toggledquotationFormFile = !toggledquotationFormFile;
+                            quotationFormInput.hidden = !toggledquotationFormFile;
+                            quotationFormDownload.hidden = toggledquotationFormFile;
+                            quotationFormLabel.hidden = !toggledquotationFormFile;
+                            quotationFormToggle.textContent = toggledquotationFormFile ? 'Usar previo' : 'Modificar'
+                            if (toggledquotationFormFile) quotationFormInput.click()
                         }
                     </script>
-                    @else<input type="file" name="coverageDetail" id="coverageDetail" class="form-control">
-                    <label for="coverageDetail" class="input-group-text">Detalle de bienes asegurados</label>
+                    @else<input type="file" name="quotationForm" id="quotationForm" class="form-control">
+                    <label for="quotationForm" class="input-group-text">Formulario de cotización</label>
                     @endif
-
-                    <label class="input-group-text" for="quotationForm">Formulario de cotización</label>
-                    <input type="file" name="quotationForm" id="quotationForm">
                 </div>
             </div>
         </div>

@@ -794,13 +794,6 @@
             <hr style="background-color: darkgrey; width: 70%">
         </div>
 
-        {{-- <div class="row">
-            <div class="col-md-6">
-                <label class="input-group-text" for="desglose">Agregar archivo si hay varias ubicaciones</label>
-                <input type="file" name="" id="">
-            </div>
-        </div> TODO:PONER EN JS  --}}
-
         <div class="row">
             <div class="tableContainer" style="margin: 2rem 0">
                 <div class="my-2">
@@ -1030,12 +1023,6 @@
                     <input type="file" name="quote_form_file" id="" class="form-control">
                     <label for="" class="input-group-text">Formularios de cotización</label>
                 </div>
-                {{-- <div class="col-md-6">
-                        <div class="input-group my-2" id="formularioCotizacionLucro" style="display: none">
-                            <input type="file" name="quote_form_file" id="" class="form-control">
-                            <label for="" class="input-group-text">Formularios de cotización</label>
-                        </div>
-                    </div> --}}
             </div>
         </div>
         <div class="row">
