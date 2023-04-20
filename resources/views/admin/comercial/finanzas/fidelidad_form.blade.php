@@ -37,6 +37,26 @@
             anchor.download = 'vida_siniestralidad_previa.{{$accidentRateExtension}}'
         }
     });
+    const quotationReport_raw = "{{$quotationReport}}";
+    let quotationReport;
+    fetch(`data:application/*;base64,${quotationReport_raw}`).then(base64 => base64.blob()).then(blob => {
+        quotationReport = URL.createObjectURL(blob)
+        const anchor = document.getElementById('quotationReportDownload')
+        if (anchor) {
+            anchor.href = quotationReport
+            anchor.download = 'vida_siniestralidad_previa.{{$quotationReportExtension}}'
+        }
+    });
+    const financialReport_raw = "{{$financialReport}}";
+    let financialReport;
+    fetch(`data:application/*;base64,${financialReport_raw}`).then(base64 => base64.blob()).then(blob => {
+        financialReport = URL.createObjectURL(blob)
+        const anchor = document.getElementById('financialReportDownload')
+        if (anchor) {
+            anchor.href = financialReport
+            anchor.download = 'vida_siniestralidad_previa.{{$financialReportExtension}}'
+        }
+    });
 </script>
 <style>
     hr {
@@ -295,20 +315,69 @@ margin-top: 1.3rem;
 
             <div class="row">
                 <div class="col-md-6">
-                    <div style="input-group">
-                        <label class="input-group-text" for="accidentRate">Formulario de cotización relleno y
-                            firmado</label>
-                        <input class="inputForm" type="file" name="quotationReport" id="quotationReport">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div style="input-group">
-                        <label class="input-group-text" for="accidentRate">Estados Financieros</label>
-                        <input class="inputForm" type="file" name="financialReport" id="financialReport">
-                    </div>
+                    <input class="form-control" type="file" name="quotationReport" hidden="true" id="quotationReport" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="quotationReport" id="quotationReportFileLabel">Formulario de cotización relleno y
+                        firmado
+                    </label>
+                    @if ($quotationReport ?? '')
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="quotationReportDownload">Formulario de cotización relleno y
+                        firmado - Previa</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglequotationReport()" id="quotationReportFileToggle">Modificar</button>
+                    <script>
+                        let toggledquotationReportFile = false;
+                        const quotationReportInput = document.getElementById('quotationReport');
+                        const quotationReportDownload = document.getElementById('quotationReportDownload');
+                        const quotationReportLabel = document.getElementById('quotationReportFileLabel');
+                        const quotationReportToggle = document.getElementById('quotationReportFileToggle');
+    
+                        function togglequotationReport() {
+                            toggledquotationReportFile = !toggledquotationReportFile;
+                            quotationReportInput.hidden = !toggledquotationReportFile;
+                            quotationReportDownload.hidden = toggledquotationReportFile;
+                            quotationReportLabel.hidden = !toggledquotationReportFile;
+                            quotationReportToggle.textContent = toggledquotationReportFile ? 'Usar previo' : 'Modificar'
+                            if (toggledquotationReportFile) quotationReportInput.click()
+                        }
+                    </script>
+                    @else<input class="form-control" type="file" name="quotationReport" id="quotationReport">
+                    <label class="input-group-text" for="quotationReport">Formulario de cotización relleno y
+                        firmado</label>
+                    @endif
                 </div>
 
+                <div class="col-md-6">
+                    <input class="form-control" type="file" name="financialReport" hidden="true" id="financialReport" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="financialReport" id="financialReportFileLabel">Formulario de cotización relleno y
+                        firmado
+                    </label>
+                    @if ($financialReport ?? '')
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="financialReportDownload">Formulario de cotización relleno y
+                        firmado - Previa</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="togglefinancialReport()" id="financialReportFileToggle">Modificar</button>
+                    <script>
+                        let toggledfinancialReportFile = false;
+                        const financialReportInput = document.getElementById('financialReport');
+                        const financialReportDownload = document.getElementById('financialReportDownload');
+                        const financialReportLabel = document.getElementById('financialReportFileLabel');
+                        const financialReportToggle = document.getElementById('financialReportFileToggle');
+    
+                        function togglefinancialReport() {
+                            toggledfinancialReportFile = !toggledfinancialReportFile;
+                            financialReportInput.hidden = !toggledfinancialReportFile;
+                            financialReportDownload.hidden = toggledfinancialReportFile;
+                            financialReportLabel.hidden = !toggledfinancialReportFile;
+                            financialReportToggle.textContent = toggledfinancialReportFile ? 'Usar previo' : 'Modificar'
+                            if (toggledfinancialReportFile) financialReportInput.click()
+                        }
+                    </script>
+                    @else<input class="form-control" type="file" name="financialReport" id="financialReport">
+                    <label class="input-group-text" for="financialReport">Formulario de cotización relleno y
+                        firmado</label>
+                    @endif
+                </div>
             </div>
+
+
             <div>
                 <div style="float:right;" class="row">
                     <div class="input-group mb-3">
