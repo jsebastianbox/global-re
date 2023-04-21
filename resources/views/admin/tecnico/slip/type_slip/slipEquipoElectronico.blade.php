@@ -12,6 +12,131 @@
 
         @include('admin.tecnico.slip.slips_generales.objectInsuranceAndCoverage')
 
+        @if ($slip->type_coverage === 13)
+            <div class="two-sides">
+                <div class="left_side">
+                    <div class="input_group">
+                        <label for="">Límite de indemnización</label>
+                        <input value="{{$slip_type->limit_compensation}}" type="number" step="any" class="form-control" name="limit_compensation">
+                    </div>
+                    <div class="input_group">
+                        <label for="">Forma:</label>
+                        <select name="" id="">
+                            <option value="">Seleccionar</option>
+                            <option value="">Inglesa</option>
+                            <option value="">Americana</option>
+                        </select>
+                    </div>
+
+
+                </div>
+                <div class="right_side">
+                    @if ($slip_type->asegurable_electronico > 0)
+                    
+                        <div class="input_group">
+                            <label for="">Suma asegurable:</label>
+                            <input value="{{$slip_type->asegurable_electronico}}" type="number" step="any" placeholder="Suma asegurada" name="asegurable_electronico">
+
+                        </div>
+                    @elseif($slip_type->asegurada_electronico > 0)
+                        <div class="input_group">
+                            <label for="">Suma asegurada:</label>
+                            <input value="{{$slip_type->asegurada_electronico}}"type="number" step="any" placeholder="Suma asegurable" name="asegurada_electronico">
+                        </div>
+                    @endif
+                    <div class="input_group">
+                        <label for="">Periodo Indemnizacion</label>
+                        <input type="text" placeholder="No. Meses">
+                    </div>
+                </div>
+            </div>
+        @endif
+
+        @if ($slip->type_coverage === 13)
+            <div class="tableContainer">
+                @if ($slip_type->asegurable_electronico > 0)
+                <h4 class="slipTitle mb-2">Tabla suma asegurable</h4>
+                @elseif($slip_type->asegurada_electronico > 0)
+                <h4 class="slipTitle mb-2">Tabla suma asegurada</h4>
+                @endif
+        
+                <button type="button" onclick="refreshSumaAseguradaPerdida()" class="btn btn-info my-2">
+                    Actualizar
+                </button>
+                <table id="perdidaSumaAseguradaTable" class="indemnizacionTable">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">#</th>
+                            <th style="text-align: center">Ubicación</th>
+                            <th style="text-align: center">machine</th>
+                            <th style="text-align: center">TOTAL</th>
+                            <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Add row">
+
+                                <button type="button" onclick="addRowSumaPerdida(event, 'perdida')" class="btn btn-success btn-xs">
+                                    +
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    {{-- tbody --}}
+
+                    <tbody id="perdidaSumaAseguradaTableBody">
+                        @if (count($sum_assured) > 0)
+                            @foreach ($sum_assured as $key => $item)
+                            <tr>
+                                <td>{{$key+1}}</td>
+                                <td style="text-align: center">
+                                    <input type="text" value="{{$item->location}}" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
+                                </td>
+                                <td style="text-align: center">
+                                    <input value="{{$item->machine}}" class="col1 row{{$key+1}}" onkeyup="incendioSumaAsegurableTotales({{$key+1}}, 1, 'perdida')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px" >
+                                </td>
+                                <td style="text-align: center">
+                                    <span class="slipTitle col12" id="rowTotal{{$key+1}}">0</span>$
+                                </td>
+                                <td></td>
+                            </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td>1</td>
+                                <td style="text-align: center">
+                                    <input type="text" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
+                                </td>
+                                <td style="text-align: center">
+                                    <input class="col1 row1" onkeyup="incendioSumaAsegurableTotales(1, 1, 'perdida')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px" >
+                                </td>
+                                <td style="text-align: center">
+                                    <span class="slipTitle col12" id="rowTotal1">0</span>$
+                                </td>
+                                <td></td>
+                            </tr>
+                        @endif
+
+
+                    </tbody>
+
+                    <tfoot>
+
+                        <tr>
+                            <td style="text-align: center">
+                            </td>
+                            <td style="text-align: center">
+                                <h5 class="slipTitle">Total</h5>
+                            </td>
+                            <td style="text-align: center">
+                                <span id="colTotal1" class="slipTitle">0</span>$
+                            </td>
+                            <td style="text-align: center">
+                                <span class="slipTitle " id="incendioTotalTotal">0</span>$
+                            </td>
+                        </tr>
+
+                    </tfoot>
+
+                </table>
+            </div>
+        @endif
 
         <div class="tableContainer">
 
@@ -273,44 +398,7 @@
         @if ($slip->type_coverage === 11)
             <h3 class="slipTitle"> <span class="badge badge-secondary">5</span> Tabla De Depreciación Para Pérdidas
                 totales</h3>
-
-            <div class="flexRowWrapContainer">
-                <div>
-                    <h5 class="slipTitle"> Rotura de maquinaria:</h5>
-                    <table class="indemnizacionTable">
-                        <thead>
-                            <tr>
-                                <th style="text-align: center">Años</th>
-                                <th style="text-align: center">Demetito (anual)</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td><input type="text" name="" id=""> años</td>
-                                <td>
-                                    <input type="number" name="equipoMaquinaria1" placeholder="%">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td><input type="text" name="" id="">años</td>
-                                <td>
-                                    <input type="number" name="equipoMaquinaria1" placeholder="%">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td><input type="text" name="" id="">años</td>
-                                <td>
-                                    <input type="number" name="equipoMaquinaria1" placeholder="max. 75%">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div>
+                <div class="tableContainer">
                     <h5 class="slipTitle"> Equipo electrónico:</h5>
                     <table class="indemnizacionTable">
                         <thead>
@@ -372,7 +460,6 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
         @endif
 
         @if ($slip->type_coverage === 12)
@@ -411,6 +498,7 @@
                 </table>
             </div>
         @endif
+
     </div>
 
     <div class="form_group4">

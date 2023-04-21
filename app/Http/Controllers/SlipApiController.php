@@ -328,6 +328,17 @@ class SlipApiController extends Controller
                 $slip->slip_type_id = "4";
                 $slip->save();
 
+                //Suma Asegurada
+                for ($i = 0; $i < count($request->location); $i++) {
+                    if (isset($request->location[$i])) {
+                        $sumAssured = new SumAssured([
+                            'location' => $request->location[$i] ?? null,
+                            'machine' => $request->machine[$i] ?? null,
+                            'slip_id' => $slip->id
+                        ]);
+                        $sumAssured->save();
+                    }
+                }
                 //coberturas adicionales
                 for ($i = 0; $i < count($request->description_coverage_additional); $i++) {
                     if (isset($request->description_coverage_additional[$i])) {

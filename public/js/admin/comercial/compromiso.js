@@ -629,7 +629,9 @@ function updateS4() {
     element.setAttribute('hidden', 'true');
 
     let formularioElectronico = document.querySelector('#showElectronico');
+    let showPerdidaBeneficios = document.querySelector('#showPerdidaBeneficios');
     value === "ee" ? formularioElectronico.style.display = "initial" : formularioElectronico.style.display = "none"
+    value === "pbrm" ? showPerdidaBeneficios.style.display = "initial" : showPerdidaBeneficios.style.display = "none"
 
     switch (value) {
         case "ee":
@@ -2001,10 +2003,38 @@ function chooseTypeSuma2(event) {
 
     }
 }
+function chooseTypeSuma3(event) {
+    event.preventDefault()
+
+    const sumaAsegurable = document.getElementById('sumaAsegurable3')
+    const sumaAsegurada = document.getElementById('sumaAsegurada3')
+
+    if (sumaAsegurada.checked) {
+        $('#sumaAsegurada3Container').show();
+        $('#inputSumaAsegurada3').show();
+        $('#sumaAsegurable3Container').hide();
+        $('#inputSumaAsegurable3').hide();
+
+    }
+    if (sumaAsegurable.checked) {
+        $('#sumaAsegurable3Container').show();
+        $('#inputSumaAsegurable3').show();
+        $('#sumaAsegurada3Container').hide();
+        $('#inputSumaAsegurada3').hide();
+
+    }
+}
 
 
 //suma asegurable / table suma asegurada rama:incendio
 
+function refreshSumaAseguradaPerdida() {
+    let row = $('#perdidaSumaAseguradaTableBody').find('tr').length
+    
+    for (let i = 1; i <= row; i++) {
+            incendioSumaAsegurableTotales(i, 1, 'perdida');
+    }
+}
 function refreshSumaAseguradaTable() {
     let row = $('#activos_fijosSumaAseguradaTableBody').find('tr').length
     let column = $('#activos_fijosSumaAseguradaTableBody').find('tr:first-child td').length - 4;
@@ -3159,3 +3189,40 @@ function putUbicaciones_edit(table) {
 
 
 }
+
+
+function addRowSumaPerdida(event, type) {
+    event.preventDefault()
+    let rowCount = document.getElementById(`${type}SumaAseguradaTable`).rows.length-1
+
+    const SumaAseguradaTableBody = document.getElementById(`${type}SumaAseguradaTableBody`)
+    const tr = document.createElement('tr')
+
+    SumaAseguradaTableBody.appendChild(tr)
+    tr.id = `newRowSumaAseguradaTable${rowCount}`
+    tr.innerHTML =
+        `
+        <td  style="text-align: center">${rowCount}</td>
+        <td style="text-align: center">
+            <input type="text" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
+        </td>
+        <td style="text-align: center">
+            <input class="col1 row${rowCount}" onkeyup="incendioSumaAsegurableTotales(${rowCount}, 1, 'perdida')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px" >
+        </td>
+        <td style="text-align: center">
+            <span class="slipTitle col12" id="rowTotal${rowCount}">0</span>$
+        </td>
+        <td>
+            <button id="${rowCount}" type="button" class="btn btn-danger btn-xs btn-delete-perdida"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        </td>
+        `
+}
+
+
+$(document).on('click', '.btn-delete-perdida', function (e) {
+    e.preventDefault()
+
+    let id = $(this).attr('id')
+
+    $(`#newRowSumaAseguradaTable${id}`).remove()
+})

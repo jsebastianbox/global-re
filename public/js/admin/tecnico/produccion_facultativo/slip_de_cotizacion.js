@@ -2647,3 +2647,11 @@ function coberturasSelect(class_selector = ".selectCobertura", main_branch, sub_
     $(class_selector).append('<option value="" selected>Seleccionar</option>');
 }
 
+
+function refreshSumaAseguradaPerdida() {
+    let row = $('#perdidaSumaAseguradaTableBody').find('tr').length
+    
+    for (let i = 1; i <= row; i++) {
+            incendioSumaAsegurableTotales(i, 1, 'perdida');
+    }
+}
