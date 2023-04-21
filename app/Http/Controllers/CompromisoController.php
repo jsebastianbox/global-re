@@ -308,9 +308,10 @@ class CompromisoController extends Controller
         $type_coverage = TypeCoverage::all();
         $slip = Slip::find($id);
 
-        $sum_assured = SumAssured::where('slip_id', $id);
         $slip_type = SlipTechnicalBranch::where('slip_id', $id)->first();
+        $sum_assured = SumAssured::where('slip_id', $id)->get();
 
+        $alopQuote  = null;
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
         $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
@@ -323,6 +324,7 @@ class CompromisoController extends Controller
             ->with('sum_assured', $sum_assured)
             ->with('coberturasSelect', $coberturasSelect)
             ->with('clausulasSelect', $clausulasSelect)
+            ->with('alopQuote', $alopQuote)
             ->with('slip', $slip)
             ->with('slip_type', $slip_type);
 

@@ -286,6 +286,8 @@
                                     <option value="{{ $clausulaSelect->name }}" 
                                             @if ($clausulaSelect->id == $item->description_clause_additional) 
                                                 selected 
+                                            @elseif($clausulaSelect->name == $item->description_clause_additional)
+                                                selected
                                             @endif >
                                         {{ $clausulaSelect->name }}
                                     </option>

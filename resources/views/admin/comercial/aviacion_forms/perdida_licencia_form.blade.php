@@ -432,6 +432,7 @@
         <div class="row">
             <div class="tableContainer" style="margin: 2rem 0">
                 <table id="aviacion_licenciaCoberturasAdicionalesTable" class="indemnizacionTable">
+                    <caption>No olvidar de llenar mínimo una cláusula.</caption>
                     <thead>
                         <tr>
                             <th style="text-align: center; width: 42px;">#</th>
@@ -482,6 +483,7 @@
         <div class="row">
             <div class="tableContainer" style="margin: 2rem 0">
                 <table id="aviacion_licenciaClausulasAdicionalesTable" class="indemnizacionTable">
+                    <caption>No olvidar de llenar mínimo una cláusula.</caption>
                     <thead>
                         <tr>
                             <th style="text-align: center; width: 42px;">#</th>

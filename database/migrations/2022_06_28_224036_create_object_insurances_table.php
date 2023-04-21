@@ -18,13 +18,19 @@ class CreateObjectInsurancesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('model_id');
             $table->string('model_type');
+            $table->string('object_model');
+            $table->string('type');
             $table->string('number')->nullable();
             $table->string('name')->nullable();
             $table->string('birthday')->nullable();
             $table->string('sex_merchant')->nullable();
             $table->string('activity_merchant')->nullable();
             $table->double('age')->nullable();
+            $table->double('year')->nullable();
+            $table->string('brand')->nullable();
+            $table->string('serie')->nullable();
             $table->double('limit')->nullable();
+            $table->double('object_insured_val')->nullable();
             $table->foreignIdFor(Slip::class);
             // $table->foreignId('slip_id')->constrained('slip_lives')
             //     ->onDelete("cascade")

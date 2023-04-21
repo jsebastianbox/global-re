@@ -14,13 +14,19 @@ class ObjectInsurance extends Model
     protected $fillable = [
         'model_id',
         'model_type',
+        'type',
+        'object_model',
         'number',
         'name',
         'birthday',
         'activity_merchant',
         'sex_merchant',
         'age',
+        'brand',
         'limit',
+        'year',
+        'object_insured_val',
+        'serie',
         'slip_id'
     ];
 

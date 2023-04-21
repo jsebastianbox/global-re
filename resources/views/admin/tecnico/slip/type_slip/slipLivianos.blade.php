@@ -12,16 +12,8 @@
 
         @include('admin.tecnico.slip.slips_generales.initial')
 
-        {{-- Objeto del seguro --}}
-        <div class="flexColumnCenterContainer">
-            <div class="input_group" style="max-width: 450px">
-                <label for="incendioObjetoSeguro">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                    Objeto del seguro
-                </label>
-                <textarea name="object_insurance" id="object_insurance" cols="30" rows="1">{{ $slip_type->object_insurance }}</textarea>
-            </div>
-        </div>
+        @include('admin.tecnico.slip.slips_generales.objectInsuranceAndCoverage')
+
 
         <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Placa vehículo(s)</h3>
 

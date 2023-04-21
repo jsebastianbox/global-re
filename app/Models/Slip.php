@@ -58,6 +58,7 @@ class Slip extends Model
         'insured_sum',
         'insurable_sum',
         'insured_value',
+        'valor_asegurado',
         'object_insured_value',
         'person_insured_value',
         'insurable_value',

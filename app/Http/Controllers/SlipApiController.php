@@ -328,6 +328,17 @@ class SlipApiController extends Controller
                 $slip->slip_type_id = "4";
                 $slip->save();
 
+                //Suma Asegurada
+                for ($i = 0; $i < count($request->location); $i++) {
+                    if (isset($request->location[$i])) {
+                        $sumAssured = new SumAssured([
+                            'location' => $request->location[$i] ?? null,
+                            'machine' => $request->machine[$i] ?? null,
+                            'slip_id' => $slip->id
+                        ]);
+                        $sumAssured->save();
+                    }
+                }
                 //coberturas adicionales
                 for ($i = 0; $i < count($request->description_coverage_additional); $i++) {
                     if (isset($request->description_coverage_additional[$i])) {
@@ -1030,6 +1041,7 @@ class SlipApiController extends Controller
             'sector' => 'nullable|string|min:6|max:7',
             'insurer' => 'nullable|string|min:0|max:255',
             'activity' => 'nullable|string|min:0|max:255',
+            'first_risk' => 'nullable|string|min:0|max:255',
             'object_insurance' => 'nullable|string|min:0|max:5000',
             'object_insured' => 'nullable|string|min:0|max:2000',
             'person_insured' => 'nullable|string|min:0|max:300',
@@ -1068,6 +1080,7 @@ class SlipApiController extends Controller
             'clause_additional_additional.*' => 'nullable|string',
             'clause_additional_usd.*' => 'nullable|numeric',
             'clause_additional_additional2.*' => 'nullable|string',
+            'valor_asegurado' => 'nullable|numeric|min:0|max:9999999999999999',
             'reinsurer_rate' => 'nullable|numeric|min:0|max:9999999999999999',
             'reinsurance_premium' => 'nullable|numeric|min:0|max:9999999999999999',
             'description_deductible.*' => 'nullable|string|max:255',

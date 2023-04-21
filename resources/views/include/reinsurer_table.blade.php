@@ -176,6 +176,9 @@
         getReinsurers('.select_reinsurer', 'RI');
 
         addRowCalculosTableReinsurer(event, 'calculos')
+        addRowSecurityProportional(event)
+        addRowSecurityNoProportional(event)
+
 
     });
 

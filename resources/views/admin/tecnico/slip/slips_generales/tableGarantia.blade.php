@@ -85,6 +85,9 @@
                 <th style="text-align: center;">
                     <input type="text" placeholder="..." name="installation[]">
                 </th>
+                <th style="text-align: center;">
+                    <input type="date"  name="date_installation[]">
+                </th>
                 <th>
                 </th>
             </tr>

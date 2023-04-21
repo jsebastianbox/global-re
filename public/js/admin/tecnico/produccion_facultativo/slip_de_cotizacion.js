@@ -636,6 +636,9 @@ function addInstalamento(event) {
             <input type="text" placeholder="..." name="installation[]">
         </th>
         <th style="text-align: center;">
+            <input type="date"  name="date_installation[]">
+        </th>
+        <th style="text-align: center;">
             <button id="${instalamentoA}" type="button" class="btn btn-danger btn-xs btn-delete-instalamento"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         </th>
         `
@@ -2547,7 +2550,7 @@ function incendioSumaAsegurableTotales(row, col, table) {
         $(`#input_sumaAsegurableEnergia`).val(parseFloat(sumaTotal3).toFixed(2))
     }
     if (table === 'activos_fijos') {
-        $(`#input_sumaAsegurada`).val(parseFloat(sumaTotal3).toFixed(2))
+        $(`#value_for_calculos`).val(parseFloat(sumaTotal3).toFixed(2))
     }
 
 }
@@ -2573,3 +2576,131 @@ function addMatriculaRow(event) {
 
         `
 }
+
+
+
+//Select2 para clausulas
+function clausulasSelect(class_selector = ".selectClausula", main_branch, sub_branch) {
+    $(class_selector).select2({
+        language: 'es',
+        tags: true,
+        placeholder: 'Seleccionar',
+        ajax: {
+            url: `${window.location.origin}/api/clausulas_selectors`,
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    main_branch: main_branch,
+                    sub_branch: sub_branch,
+                    q: params.term // Include search query parameter
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: $.map(data.data, function (item) {
+                        return {
+                            text: item.name,
+                            id: item.id
+                        };
+                    })
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 0 // Set to 0 to always show options on focus
+    });
+    $(class_selector).append('<option value="" selected>Seleccionar</option>');
+}
+
+//Select2 para coberturas
+function coberturasSelect(class_selector = ".selectCobertura", main_branch, sub_branch) {
+    $(class_selector).select2({
+        language: 'es',
+        tags: true,
+        placeholder: 'Seleccionar',
+        ajax: {
+            url: `${window.location.origin}/api/coberturas_selectors`,
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    main_branch: main_branch,
+                    sub_branch: sub_branch,
+                    q: params.term // Include search query parameter
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: $.map(data.data, function (item) {
+                        return {
+                            text: item.name,
+                            id: item.id
+                        };
+                    })
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 0 // Set to 0 to always show options on focus
+    });
+    $(class_selector).append('<option value="" selected>Seleccionar</option>');
+}
+
+
+function refreshSumaAseguradaPerdida() {
+    let row = $('#perdidaSumaAseguradaTableBody').find('tr').length
+    
+    for (let i = 1; i <= row; i++) {
+            incendioSumaAsegurableTotales(i, 1, 'perdida');
+    }
+}
+
+
+function addObjectInsuranceMaquinaria(event) {
+    event.preventDefault()
+
+    let rowCount = document.getElementById(`maquinariaObjectInsurance`).rows.length
+
+    const objectos = document.getElementById(`maquinariaObjectInsuranceBody`)
+    const tr = document.createElement('tr')
+    tr.id = `newRowMaquinaria${rowCount}`
+
+    objectos.appendChild(tr)
+    tr.innerHTML =
+        `
+        <td scope="row">${rowCount}</td>
+        <td>
+            <input type="text" name="type[]" placeholder="...">
+        </td>
+
+        <td>
+            <input type="text" name="brand[]" placeholder="...">
+        </td>
+        <td>
+            <input type="text" name="object_model[]" placeholder="...">
+        </td>
+
+        <td>
+            <input type="number" name="year[]" placeholder="">
+        </td>
+        <td>
+            <input type="text" placeholder="..." name="serie[]">
+        </td>
+        <td>
+            <input type="text" placeholder="..." name="object_insured_val[]" class="row1">
+        </td>
+        <td>
+            <button id="${rowCount}" type="button"  class="btn btn-danger btn-delete-maquinaria"></button>
+        </td>
+
+        `
+}
+
+$(document).on('click', '.btn-delete-maquinaria', function (e) {
+e.preventDefault()
+
+let id = $(this).attr('id')
+
+$(`#newRowMaquinaria${id}`).remove()
+})

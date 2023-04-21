@@ -285,7 +285,9 @@
                                 @foreach ($coberturasSelect as $coberturaSelect)
                                     <option value="{{ $coberturaSelect->name }}" 
                                             @if ($coberturaSelect->id == $item->description_coverage_additional) 
-                                                selected 
+                                                selected
+                                            @elseif($coberturaSelect->name == $item->description_coverage_additional)
+                                            selected
                                             @endif >
                                         {{ $coberturaSelect->name }}
                                     </option>

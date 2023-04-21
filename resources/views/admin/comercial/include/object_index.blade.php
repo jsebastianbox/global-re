@@ -160,7 +160,7 @@
             </div>
         </div> --}}
         <div class="col-md-4 my-3" 
-            @if($slip->type_coverage === 11 || $slip->type_coverage === 18 || $slip->type_coverage === 19 || $slip->type_coverage === 20)
+            @if($slip->type_coverage === 11 || $slip->type_coverage === 13 || $slip->type_coverage === 18 || $slip->type_coverage === 19 || $slip->type_coverage === 20)
                 style="display:none;"
             @elseif($slip->insurable_sum > 0 || $slip->insured_sum > 0)
                 style="display:none;"
@@ -171,8 +171,8 @@
             <div class="input-group mb-3">
                 <label class="input-group-text">Valor asegurado</label>
                 <input type="number" step="any" placeholder="Valor.." 
-                    name="insured_value" class="form-control" 
-                    value="{{$slip->insured_value}}">
+                    name="valor_asegurado" class="form-control" 
+                    value="{{$slip->valor_asegurado}}">
             </div>
         </div>
 
@@ -338,7 +338,7 @@
         <div class="col-md-4 my-3 valorAseguradoContainer">
             <div class="input-group mb-3">
                 <label class="input-group-text">Valor asegurado</label>
-                <input type="number" step="any" placeholder="Valor.." name="insured_value" class="form-control">
+                <input type="number" step="any" placeholder="Valor.." name="valor_asegurado" class="form-control">
             </div>
         </div>
         <div class="col-md-4 my-3">
