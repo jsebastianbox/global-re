@@ -133,8 +133,8 @@ class SlipController extends Controller
                 $slip_type = SlipEnergy::where('slip_id', $id)->first();
                 $sum_assured = SumAssured::where('slip_id', $id)->get();
                 //clausulas y cobertura to find
-                $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
-                $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
+                $coberturasSelect = CoberturasSelector::where('main_branch', 'energia')->get();
+                $clausulasSelect = Clausulas_selector::where('main_branch', 'energia')->get();
                 
                 break;
 
@@ -143,8 +143,8 @@ class SlipController extends Controller
                 $slip_type = SlipMaritimeOne::where('slip_id', $id)->first();
                 $boat_detail = BoatDetailSlip::where('slip_id', $id)->get();
                 //clausulas y cobertura to find
-                $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
-                $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
 
                 break;
 
@@ -152,8 +152,8 @@ class SlipController extends Controller
                 $slip_type = SlipMaritimeTwo::where('slip_id', $id)->first();
                 $boat_detail = BoatDetailSlip::where('slip_id', $id)->get();
                 //clausulas y cobertura to find
-                $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
-                $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
 
                 break;
 
@@ -163,8 +163,8 @@ class SlipController extends Controller
                 $slip_type = SlipMaritimeThree::where('slip_id', $id)->first();
                 $boat_detail = BoatDetailSlip::where('slip_id', $id)->get();
                 //clausulas y cobertura to find
-                $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
-                $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
 
                 break;
 
@@ -176,8 +176,8 @@ class SlipController extends Controller
                 $slip_type = SlipMaritimeFour::where('slip_id', $id)->first();
                 $boat_detail = BoatDetailSlip::where('slip_id', $id)->get();
                 //clausulas y cobertura to find
-                $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
-                $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
                 
                 break;
 
@@ -187,16 +187,16 @@ class SlipController extends Controller
                 $information_aerial = InformationAerialHelmets::where('slip_id', $id)->get();
                 $aviation_extras = AviacionExtras::where('slip_id', $id)->get();
                 //clausulas y cobertura to find
-                $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
-                $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
 
                 break;
 
             case '34':
                 $slip_type = SlipAviationTwo::where('slip_id', $id)->first();
                 //clausulas y cobertura to find
-                $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
-                $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
 
                 break;
 
@@ -205,8 +205,8 @@ class SlipController extends Controller
             case '37':
                 $slip_type = SlipAviationThree::where('slip_id', $id)->first();
                 //clausulas y cobertura to find
-                $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
-                $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
 
                 break;
 
@@ -218,8 +218,8 @@ class SlipController extends Controller
             case '43':
                 $slip_type = SlipCivilLiability::where('slip_id', $id)->first();
                 //clausulas y cobertura to find
-                $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
-                $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
 
                 break;
 

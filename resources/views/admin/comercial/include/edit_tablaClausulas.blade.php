@@ -281,7 +281,7 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>
-                            <select name="description_clause_additional[]" {{-- class="selectClausula" --}}>
+                            <select name="description_clause_additional[]" disabled="false">
                                 @foreach ($clausulasSelect as $clausulaSelect)
                                     <option value="{{ $clausulaSelect->name }}" 
                                             @if ($clausulaSelect->id == $item->description_clause_additional) 
