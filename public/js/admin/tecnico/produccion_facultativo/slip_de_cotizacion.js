@@ -2103,9 +2103,11 @@ function sumaAseguradaV2() {
 function addEndosoAdicional(event) {
     event.preventDefault()
 
+
+    let rowCount = document.getElementById('endososTable').rows.length
     const endososTableBody = document.getElementById('endososTableBody')
     const tr = document.createElement('tr')
-
+    tr.id = `newRowEndosos${rowCount}`
     endososTableBody.appendChild(tr)
     tr.innerHTML =
         `
@@ -2121,11 +2123,18 @@ function addEndosoAdicional(event) {
                     name="">
             </td>
             <td>
-
+                <button id="${rowCount}" type="button" class="btn btn-danger btn-xs btn-delete-endosos"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
             </td>
         `
 
 }
+
+$(document).on('click', '.btn-delete-endosos', function(e) {
+    e.preventDefault();
+    var id = $(this).attr('id')
+
+    $(`#newRowEndosos${id}`).remove()
+})
 
 //objeto del seguro table
 const objetoSeguroSuma1 = document.getElementById('objetoSeguroSuma1')
