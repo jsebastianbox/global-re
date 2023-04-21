@@ -75,7 +75,7 @@
 <div class="tableContainer" style="1.2rem 0">
     <h4 class="slipTitle">Security</h4>
 
-    @include('admin.tecnico.slip.slips_generales.tableSecurity')
+    {{-- @include('admin.tecnico.slip.slips_generales.tableSecurity') --}}
 </div>
 
 
