@@ -15,640 +15,1279 @@ class ExclusionesSelectorSeeder extends Seeder
     public function run()
     {
         $data = [
-            //Vida
-            [
-                'name' => 'name_Exclusion',
-                'main_branch' => 'vida',
-                'sub_branch' => 'vida'
-            ],
+            // vida - accidente_personales                      
+			[
+				'name'  => 'Las personas que excedan los límites de edad mencionados en este Slip.',
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+			[
+				'name'  => 'Daños extracontractuales, daños punitivos o ejemplares. ',
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+			[
+				'name'  => 'Cualquier pago ex gracia',   
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+			[
+				'name'  => 'Coberturas de Desempleo',
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+			[
+				'name'  => 'Coberturas de Invalidez Parcial',
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+			[
+				'name'  => 'Coberturas de Invalidez Temporal',
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+			[
+				'name'  => 'Coberturas de Invalidez Profesional',
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+			[
+				'name'  => 'Cobertura de Pérdida de Licencia',
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+			[
+				'name'  => 'Cualquier tipo de Reserva Matemática',
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+			[
+				'name'  => 'Personas menores de xxxxx años de edad',
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+			[
+				'name'  => 'Para todas las coberturas las personas de nuevo ingreso mayores de xxxx años de edad.',
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+			[
+				'name'  => 'Policías Judiciales',
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+			[
+				'name'  => 'Guardaespaldas',
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+			[
+				'name'  => 'Cualquier cuerpo especializado en lucha contra el narcotráfico y delincuencia organizada',
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+			[
+				'name'  => 'Aviación Particular',
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+			[
+				'name'  => 'Aviación Privada',
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+			[
+				'name'  => 'Deportes y aficiones peligrosas si son practicadas de manera profesional',
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+			[
+				'name'  => 'Empleados que se encuentren pensionados, jubilados, en proceso o estado de invalidez.',
+				'main_branch' => 'vida',
+				'sub_branch' => 'accidente_personales'
+			],
+
+            // vida - accidente_personales                      
+			[
+				'name'  => 'Las personas que excedan los límites de edad mencionados en este Slip.',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
+			[
+				'name'  => 'Daños extracontractuales, daños punitivos o ejemplares. ',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
+			[
+				'name'  => 'Cualquier pago ex gracia',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
+			[
+				'name'  => 'Coberturas de Desempleo',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
+			[
+				'name'  => 'Coberturas de Invalidez Parcial',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
+			[
+				'name'  => 'Coberturas de Invalidez Temporal',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
+			[
+				'name'  => 'Coberturas de Invalidez Profesional',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
+			[
+				'name'  => 'Cobertura de Pérdida de Licencia',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
+			[
+				'name'  => 'Cualquier tipo de Reserva Matemática',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
+			[
+				'name'  => 'Personas menores de xxxxx años de edad',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
+			[
+				'name'  => 'Para todas las coberturas las personas de nuevo ingreso mayores de xxxx años de edad.',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
+			[
+				'name'  => 'Policías Judiciales',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
+			[
+				'name'  => 'Guardaespaldas',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
+			[
+				'name'  => 'Cualquier cuerpo especializado en lucha contra el narcotráfico y delincuencia organizada',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
+			[
+				'name'  => 'Aviación Particular',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
+			[
+				'name'  => 'Aviación Privada',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
+			[
+				'name'  => 'Deportes y aficiones peligrosas si son practicadas de manera profesional',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
+			[
+				'name'  => 'Empleados que se encuentren pensionados, jubilados, en proceso o estado de invalidez.',
+				'main_branch' => 'vida',
+				'sub_branch' => 'vida'
+			],
             
-            //Activos Fijos
+            // activos_personales - incendio  
+			[
+				'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'incendio'
+			],
+			[
+				'name'  => 'Daño y pérdida de información tecnológica',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'incendio'
+			],
+			[
+				'name'  => 'Cualquier tipo de multas y penalizaciones.',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'incendio'
+			],
+			[
+				'name'  => 'Guerra, guerra civil y sus consecuencias ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'incendio'
+			],
+			[
+				'name'  => 'Reacción nuclear ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'incendio'
+			],
+			[
+				'name'  => 'Cláusula de exclusión cibernética ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'incendio'
+			],
+			[
+				'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'incendio'
+			],
+			[
+				'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'incendio'
+			],
+			[
+				'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'incendio'
+			],
+			[
+				'name'  => 'Responsabilidad Civil ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'incendio'
+			],
+			[
+				'name'  => 'Transporte de mercancías. ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'incendio'
+			],
+			[
+				'name'  => 'Infidelidad o actos deshonestos de los administradores o cualquiera de los trabajadores del Asegurado.',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'incendio'
+			],
+			[
+				'name'  => 'Los faltantes y pérdidas misteriosas e inexplicables y otras pérdidas descubiertas después de realizar el inventario.',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'incendio'
+			],
+			[
+				'name'  => 'Pérdidas indirectas, pérdidas consecuenciales por cualquier causa y pérdidas de mercado',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'incendio'
+			],
+            
+            // activos_personales - lucro_cesante  
             [
-                'name' => 'Bienes bajo cuidado, custodia y control hasta',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
+				'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'lucro_cesante'
+			],
+			[
+				'name'  => 'Daño y pérdida de información tecnológica',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'lucro_cesante'
+			],
+			[
+				'name'  => 'Cualquier tipo de multas y penalizaciones.',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'lucro_cesante'
+			],
+			[
+				'name'  => 'Guerra, guerra civil y sus consecuencias ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'lucro_cesante'
+			],
+			[
+				'name'  => 'Reacción nuclear ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'lucro_cesante'
+			],
+			[
+				'name'  => 'Cláusula de exclusión cibernética ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'lucro_cesante'
+			],
+			[
+				'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'lucro_cesante'
+			],
+			[
+				'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'lucro_cesante'
+			],
+			[
+				'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'lucro_cesante'
+			],
+			[
+				'name'  => 'Responsabilidad Civil ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'lucro_cesante'
+			],
+			[
+				'name'  => 'Transporte de mercancías. ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'lucro_cesante'
+			],
+			[
+				'name'  => 'Infidelidad o actos deshonestos de los administradores o cualquiera de los trabajadores del Asegurado.',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'lucro_cesante'
+			],
+			[
+				'name'  => 'Los faltantes y pérdidas misteriosas e inexplicables y otras pérdidas descubiertas después de realizar el inventario.',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'lucro_cesante'
+			],
+			[
+				'name'  => 'Pérdidas indirectas, pérdidas consecuenciales por cualquier causa y pérdidas de mercado',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'lucro_cesante'
+			],
+
+            // activos_personales - robo  
+			[
+				'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'robo'
+			],
+			[
+				'name'  => 'Daño y pérdida de información tecnológica',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'robo'
+			],
+			[
+				'name'  => 'Cualquier tipo de multas y penalizaciones.',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'robo'
+			],
+			[
+				'name'  => 'Guerra, guerra civil y sus consecuencias ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'robo'
+			],
+			[
+				'name'  => 'Reacción nuclear ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'robo'
+			],
+			[
+				'name'  => 'Cláusula de exclusión cibernética ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'robo'
+			],
+			[
+				'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'robo'
+			],
+			[
+				'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'robo'
+			],
+			[
+				'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'robo'
+			],
+			[
+				'name'  => 'Responsabilidad Civil ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'robo'
+			],
+			[
+				'name'  => 'Transporte de mercancías. ',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'robo'
+			],
+			[
+				'name'  => 'Infidelidad o actos deshonestos de los administradores o cualquiera de los trabajadores del Asegurado.',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'robo'
+			],
+			[
+				'name'  => 'Los faltantes y pérdidas misteriosas e inexplicables y otras pérdidas descubiertas después de realizar el inventario.',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'robo'
+			],
+			[
+				'name'  => 'Pérdidas indirectas, pérdidas consecuenciales por cualquier causa y pérdidas de mercado',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'robo'
+			],
+
+            // activos_personales - sabotaje_terrorismo
+			[
+				'name'  => 'Pagos ex gratia',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'sabotaje_terrorismo'
+			],
+			[
+				'name'  => 'Cualquier tipo de responsabilidad civil',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'sabotaje_terrorismo'
+			],
+			[
+				'name'  => 'Excluye BI/CBI',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'sabotaje_terrorismo'
+			],
+			[
+				'name'  => 'Actos de crimen organizado',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'sabotaje_terrorismo'
+			],
+			[
+				'name'  => 'Automóviles',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'sabotaje_terrorismo'
+			],
+			[
+				'name'  => 'Bienes en tránsito',
+				'main_branch' => 'activos_personales',
+				'sub_branch' => 'sabotaje_terrorismo'
+			],
+
+            // maritimo - casco_maquinaria
+            [
+				'name'  => 'Confiscación, apresamiento, detención, apropiación, etc.',
+				'main_branch' => 'maritimo',
+				'sub_branch' => 'casco_maquinaria'
+			],
+			[
+				'name'  => 'Daños consecuenciales (lucro cesante).',
+				'main_branch' => 'maritimo',
+				'sub_branch' => 'casco_maquinaria'
+			],
+			[
+				'name'  => 'Riesgos de filtración y polución.',
+				'main_branch' => 'maritimo',
+				'sub_branch' => 'casco_maquinaria'
+			],
+			[
+				'name'  => 'Competencias de velocidad o eventos con fines lucrativos.',
+				'main_branch' => 'maritimo',
+				'sub_branch' => 'casco_maquinaria'
+			],
+			[
+				'name'  => 'Pagos comerciales y/o exgratia.',
+				'main_branch' => 'maritimo',
+				'sub_branch' => 'casco_maquinaria'
+			],
+			[
+				'name'  => 'Rige Cláusula de exclusión garantías financieras y Riesgos de crédito.',
+				'main_branch' => 'maritimo',
+				'sub_branch' => 'casco_maquinaria'
+			],
+			[
+				'name'  => 'Rige Cláusula de exclusión de asbestos.',
+				'main_branch' => 'maritimo',
+				'sub_branch' => 'casco_maquinaria'
+			],
+			[
+				'name'  => 'Excluyendo Sabotaje, Vandalismo, Actos Maliciosos y Piratería.',
+				'main_branch' => 'maritimo',
+				'sub_branch' => 'casco_maquinaria'
+			],
+			[
+				'name'  => 'Toda clase de Charter y/o alquiler de la embarcación.',
+				'main_branch' => 'maritimo',
+				'sub_branch' => 'casco_maquinaria'
+			],
+			[
+				'name'  => 'Se excluye pérdida de calidad, ejecución, rendimiento o performance',
+				'main_branch' => 'maritimo',
+				'sub_branch' => 'casco_maquinaria'
+			],
+			[
+				'name'  => 'Daño o pérdida de Obras de Arte y esculturas de cualquier clase.',
+				'main_branch' => 'maritimo',
+				'sub_branch' => 'casco_maquinaria'
+			],
+			[
+				'name'  => 'Daño o pérdida de artículos y/o efectos personales',
+				'main_branch' => 'maritimo',
+				'sub_branch' => 'casco_maquinaria'
+			],
+			[
+				'name'  => 'Se excluye cualquier pérdida o daño a la embarcación cuando esta sea utilizada para otras actividades distintas a las estipuladas en la Póliza.',
+				'main_branch' => 'maritimo',
+				'sub_branch' => 'casco_maquinaria'
+			],
+			[
+				'name'  => 'Devolución de primas por estadía o inactividad',
+				'main_branch' => 'maritimo',
+				'sub_branch' => 'casco_maquinaria'
+			],
+			[
+				'name'  => 'Se excluye RC Esquis y/o Jet Ski',
+				'main_branch' => 'maritimo',
+				'sub_branch' => 'casco_maquinaria'
+			],
+
+            /*
+                Maritimo: 
+
+                    Protección e Indemnización
+                    vacío
+
+                    RC Portuaria
+                    vacío
+
+                    RC Armadores
+                    vacío
+
+                    RC Astilleros
+                    vacío
+
+                    Transporte Interno
+                    vacío
+
+                    Transporte Importaciones
+                    vacío
+
+                    Transporte Exportaciones
+                    vacío
+
+                    Stock Throughput STP
+                    vacío
+
+                Aviación: 
+                    Casco aéreo
+                    vacío
+                    
+                    Perdida licencia
+                    vacío
+                    
+                    Perdida licencia
+                    vacío
+            
+            */
+
+            // energia - riesgo_petrolero
+            [
+				'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
+				'main_branch' => 'energia',
+				'sub_branch' => 'riesgo_petrolero'
+			],
+			[
+				'name'  => 'Daño y pérdida de información tecnológica',
+				'main_branch' => 'energia',
+				'sub_branch' => 'riesgo_petrolero'
+			],
+			[
+				'name'  => 'Cualquier tipo de multas y penalizaciones.',
+				'main_branch' => 'energia',
+				'sub_branch' => 'riesgo_petrolero'
+			],
+			[
+				'name'  => 'Guerra, guerra civil y sus consecuencias ',
+				'main_branch' => 'energia',
+				'sub_branch' => 'riesgo_petrolero'
+			],
+			[
+				'name'  => 'Reacción nuclear ',
+				'main_branch' => 'energia',
+				'sub_branch' => 'riesgo_petrolero'
+			],
+			[
+				'name'  => 'Cláusula de exclusión cibernética ',
+				'main_branch' => 'energia',
+				'sub_branch' => 'riesgo_petrolero'
+			],
+			[
+				'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
+				'main_branch' => 'energia',
+				'sub_branch' => 'riesgo_petrolero'
+			],
+			[
+				'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
+				'main_branch' => 'energia',
+				'sub_branch' => 'riesgo_petrolero'
+			],
+			[
+				'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
+				'main_branch' => 'energia',
+				'sub_branch' => 'riesgo_petrolero'
+			],
+			[
+				'name'  => 'Responsabilidad Civil ',
+				'main_branch' => 'energia',
+				'sub_branch' => 'riesgo_petrolero'
+			],
+			[
+				'name'  => 'Transporte de mercancías. ',
+				'main_branch' => 'energia',
+				'sub_branch' => 'riesgo_petrolero'
+			],
+			[
+				'name'  => 'Infidelidad o actos deshonestos de los administradores o cualquiera de los trabajadores del Asegurado.',
+				'main_branch' => 'energia',
+				'sub_branch' => 'riesgo_petrolero'
+			],
+			[
+				'name'  => 'Los faltantes y pérdidas misteriosas e inexplicables y otras pérdidas descubiertas después de realizar el inventario.',
+				'main_branch' => 'energia',
+				'sub_branch' => 'riesgo_petrolero'
+			],
+			[
+				'name'  => 'Pérdidas indirectas, pérdidas consecuenciales por cualquier causa y pérdidas de mercado',
+				'main_branch' => 'energia',
+				'sub_branch' => 'riesgo_petrolero'
+			],
+
+
+            /*
+                Fianza:
+                    Fianza
+                    vacio
+            */
+
+            // fianza - fidelidad
+			[
+				'name'  => ' Fraude, robo, ratería, hurto',
+				'main_branch' => 'fianza',
+				'sub_branch' => 'fidelidad'
+			],
+			[
+				'name'  => ' Desfalco, Peculado, Falsificación, Malversación, Sustracción fraudulenta,',
+				'main_branch' => 'fianza',
+				'sub_branch' => 'fidelidad'
+			],
+			[
+				'name'  => ' Mal uso premeditado.',
+				'main_branch' => 'fianza',
+				'sub_branch' => 'fidelidad'
+			],
+			[
+				'name'  => ' Falta de integridad y/o fidelidad y/o cualquier acto doloso y/o ímprobo y/o contrarios a la ley de cualquier clase, según lo descrito en el objeto del seguro de esta póliza.',
+				'main_branch' => 'fianza',
+				'sub_branch' => 'fidelidad'
+			],
+
+            /*
+                Responsabilidad Civil:
+                    Extracontractual LPO
+                    vacío
+
+                    Contractual 
+                    vacío
+
+                    Errores y omisiones 
+                    vacío
+
+                    Responsabilidad civil profesional
+                    vacío
+
+                    Directores y administradores
+                    vacío
+
+                    Responsabilidad civil medica
+                    vacío
+
+
+                Riesgo financiero:
+                    Bancos e instituciones financieras
+                    vacío
+                    
+                    Entidades no financieras
+                    vacío
+            */
+
+            // tecnicos - riesgo_contratistas
+			[   
+				'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'riesgo_contratistas'
+			],
+			[
+				'name'  => 'Cualquier tipo de multas y penalizaciones.',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'riesgo_contratistas'
+			],
+			[
+				'name'  => 'Guerra, guerra civil y sus consecuencias ',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'riesgo_contratistas'
+			],
+			[
+				'name'  => 'Reacción nuclear ',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'riesgo_contratistas'
+			],
+			[
+				'name'  => 'Cláusula de exclusión cibernética ',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'riesgo_contratistas'
+			],
+			[
+				'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'riesgo_contratistas'
+			],
+			[
+				'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'riesgo_contratistas'
+			],
+			[
+				'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'riesgo_contratistas'
+			],
+
+
+
+
+
+            // tecnicos - riesgo_montaje
+            [
+				'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'riesgo_montaje'
+			],
+			[
+				'name'  => 'Cualquier tipo de multas y penalizaciones.',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'riesgo_montaje'
+			],
+			[
+				'name'  => 'Guerra, guerra civil y sus consecuencias ',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'riesgo_montaje'
+			],
+			[
+				'name'  => 'Reacción nuclear ',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'riesgo_montaje'
+			],
+			[
+				'name'  => 'Cláusula de exclusión cibernética ',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'riesgo_montaje'
+			],
+			[
+				'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'riesgo_montaje'
+			],
+			[
+				'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'riesgo_montaje'
+			],
+			[
+				'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'riesgo_montaje'
+			],
+
+            // tecnicos - equipo_electrico
+            [
+                'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'equipo_electrico'
+            ],
+            [
+                'name'  => 'Daño y pérdida de información tecnológica',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'equipo_electrico'
+            ],
+            [
+                'name'  => 'Cualquier tipo de multas y penalizaciones.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'equipo_electrico'
+            ],
+            [
+                'name'  => 'Guerra, guerra civil y sus consecuencias ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'equipo_electrico'
+            ],
+            [
+                'name'  => 'Reacción nuclear ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'equipo_electrico'
+            ],
+            [
+                'name'  => 'Cláusula de exclusión cibernética ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'equipo_electrico'
+            ],
+            [
+                'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'equipo_electrico'
+            ],
+            [
+                'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'equipo_electrico'
+            ],
+            [
+                'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'equipo_electrico'
+            ],
+            [
+                'name'  => 'Responsabilidad Civil ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'equipo_electrico'
+            ],
+            [
+                'name'  => 'Transporte de mercancías. ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'equipo_electrico'
+            ],
+            [
+                'name'  => 'Infidelidad o actos deshonestos de los administradores o cualquiera de los trabajadores del Asegurado.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'equipo_electrico'
+            ],
+            [
+                'name'  => 'Los faltantes y pérdidas misteriosas e inexplicables y otras pérdidas descubiertas después de realizar el inventario.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'equipo_electrico'
+            ],
+            [
+                'name'  => 'Pérdidas indirectas, pérdidas consecuenciales por cualquier causa y pérdidas de mercado',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'equipo_electrico'
             ],
 
+
+            // tecnicos - rotura_maquina
             [
-                'name' => 'Rotura de tanques y derrame de contenido',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
+                'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'rotura_maquina'
+            ],
+            [
+                'name'  => 'Daño y pérdida de información tecnológica',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'rotura_maquina'
+            ],
+            [
+                'name'  => 'Cualquier tipo de multas y penalizaciones.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'rotura_maquina'
+            ],
+            [
+                'name'  => 'Guerra, guerra civil y sus consecuencias ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'rotura_maquina'
+            ],
+            [
+                'name'  => 'Reacción nuclear ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'rotura_maquina'
+            ],
+            [
+                'name'  => 'Cláusula de exclusión cibernética ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'rotura_maquina'
+            ],
+            [
+                'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'rotura_maquina'
+            ],
+            [
+                'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'rotura_maquina'
+            ],
+            [
+                'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'rotura_maquina'
+            ],
+            [
+                'name'  => 'Responsabilidad Civil ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'rotura_maquina'
+            ],
+            [
+                'name'  => 'Transporte de mercancías. ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'rotura_maquina'
+            ],
+            [
+                'name'  => 'Infidelidad o actos deshonestos de los administradores o cualquiera de los trabajadores del Asegurado.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'rotura_maquina'
+            ],
+            [
+                'name'  => 'Los faltantes y pérdidas misteriosas e inexplicables y otras pérdidas descubiertas después de realizar el inventario.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'rotura_maquina'
+            ],
+            [
+                'name'  => 'Pérdidas indirectas, pérdidas consecuenciales por cualquier causa y pérdidas de mercado',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'rotura_maquina'
+            ],
+                
+            // tecnicos - perdida_beneficio_rotura_maquinaria
+            [ 
+                'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'perdida_beneficio_rotura_maquinaria'
+            ],
+            [
+                'name'  => 'Daño y pérdida de información tecnológica',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'perdida_beneficio_rotura_maquinaria'
+            ],
+            [
+                'name'  => 'Cualquier tipo de multas y penalizaciones.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'perdida_beneficio_rotura_maquinaria'
+            ],
+            [
+                'name'  => 'Guerra, guerra civil y sus consecuencias ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'perdida_beneficio_rotura_maquinaria'
+            ],
+            [
+                'name'  => 'Reacción nuclear ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'perdida_beneficio_rotura_maquinaria'
+            ],
+            [
+                'name'  => 'Cláusula de exclusión cibernética ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'perdida_beneficio_rotura_maquinaria'
+            ],
+            [
+                'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'perdida_beneficio_rotura_maquinaria'
+            ],
+            [
+                'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'perdida_beneficio_rotura_maquinaria'
+            ],
+            [
+                'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'perdida_beneficio_rotura_maquinaria'
+            ],
+            [
+                'name'  => 'Responsabilidad Civil ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'perdida_beneficio_rotura_maquinaria'
+            ],
+            [
+                'name'  => 'Transporte de mercancías. ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'perdida_beneficio_rotura_maquinaria'
+            ],
+            [
+                'name'  => 'Infidelidad o actos deshonestos de los administradores o cualquiera de los trabajadores del Asegurado.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'perdida_beneficio_rotura_maquinaria'
+            ],
+            [
+                'name'  => 'Los faltantes y pérdidas misteriosas e inexplicables y otras pérdidas descubiertas después de realizar el inventario.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'perdida_beneficio_rotura_maquinaria'
+            ],
+            [
+                'name'  => 'Pérdidas indirectas, pérdidas consecuenciales por cualquier causa y pérdidas de mercado',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'perdida_beneficio_rotura_maquinaria'
             ],
 
+
+            // tecnicos - todo_riesgo_equipo_maquinaria
             [
-                'name' => 'Honorarios de Ingenieros, Arquitectos',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
+                'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'todo_riesgo_equipo_maquinaria'
+            ],
+            [
+                'name'  => 'Daño y pérdida de información tecnológica',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'todo_riesgo_equipo_maquinaria'
+            ],
+            [
+                'name'  => 'Cualquier tipo de multas y penalizaciones.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'todo_riesgo_equipo_maquinaria'
+            ],
+            [
+                'name'  => 'Guerra, guerra civil y sus consecuencias ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'todo_riesgo_equipo_maquinaria'
+            ],
+            [
+                'name'  => 'Reacción nuclear ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'todo_riesgo_equipo_maquinaria'
+            ],
+            [
+                'name'  => 'Cláusula de exclusión cibernética ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'todo_riesgo_equipo_maquinaria'
+            ],
+            [
+                'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'todo_riesgo_equipo_maquinaria'
+            ],
+            [
+                'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'todo_riesgo_equipo_maquinaria'
+            ],
+            [
+                'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'todo_riesgo_equipo_maquinaria'
+            ],
+            [
+                'name'  => 'Responsabilidad Civil ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'todo_riesgo_equipo_maquinaria'
+            ],
+            [
+                'name'  => 'Transporte de mercancías. ',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'todo_riesgo_equipo_maquinaria'
+            ],
+            [
+                'name'  => 'Infidelidad o actos deshonestos de los administradores o cualquiera de los trabajadores del Asegurado.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'todo_riesgo_equipo_maquinaria'
+            ],
+            [
+                'name'  => 'Los faltantes y pérdidas misteriosas e inexplicables y otras pérdidas descubiertas después de realizar el inventario.',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'todo_riesgo_equipo_maquinaria'
+            ],
+            [
+                'name'  => 'Pérdidas indirectas, pérdidas consecuenciales por cualquier causa y pérdidas de mercado',
+                'main_branch' => 'tecnicos',
+                'sub_branch' => 'todo_riesgo_equipo_maquinaria'
             ],
 
+            // tecnicos - alop
             [
-                'name' => 'Remoción de escombros (desarme, demolición, obras provisionales como consecuencia de un siniestro amparado por la presente póliza)',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
-            ],
+				'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'alop'
+			],
+			[
+				'name'  => 'Daño y pérdida de información tecnológica',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'alop'
+			],
+			[
+				'name'  => 'Cualquier tipo de multas y penalizaciones.',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'alop'
+			],
+			[
+				'name'  => 'Guerra, guerra civil y sus consecuencias ',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'alop'
+			],
+			[
+				'name'  => 'Reacción nuclear ',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'alop'
+			],
+			[
+				'name'  => 'Cláusula de exclusión cibernética ',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'alop'
+			],
+			[
+				'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'alop'
+			],
+			[
+				'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'alop'
+			],
+			[
+				'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'alop'
+			],
+			[
+				'name'  => 'Responsabilidad Civil ',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'alop'
+			],
+			[
+				'name'  => 'Transporte de mercancías. ',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'alop'
+			],
+			[
+				'name'  => 'Infidelidad o actos deshonestos de los administradores o cualquiera de los trabajadores del Asegurado.',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'alop'
+			],
+			[
+				'name'  => 'Los faltantes y pérdidas misteriosas e inexplicables y otras pérdidas descubiertas después de realizar el inventario.',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'alop'
+			],
+			[
+				'name'  => 'Pérdidas indirectas, pérdidas consecuenciales por cualquier causa y pérdidas de mercado',
+				'main_branch' => 'tecnicos',
+				'sub_branch' => 'alop'
+			],
 
-            [
-                'name' => 'Gastos para reducir perdidas y daños',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
-            ],
 
+            // veiculos - livianos
             [
-                'name' => 'Traslado temporal, bienes propios únicamente (excluye daños durante el trasporte, carga, descarga y hurto)',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
-            ],
+				'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Daño y pérdida de información tecnológica',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Cualquier tipo de multas y penalizaciones.',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Guerra, guerra civil y sus consecuencias ',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Reacción nuclear ',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Cláusula de exclusión cibernética ',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Responsabilidad Civil ',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Transporte de mercancías. ',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Infidelidad o actos deshonestos de los administradores o cualquiera de los trabajadores del Asegurado.',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Los faltantes y pérdidas misteriosas e inexplicables y otras pérdidas descubiertas después de realizar el inventario.',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Pérdidas indirectas, pérdidas consecuenciales por cualquier causa y pérdidas de mercado',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
 
-            [
-                'name' => 'Gastos para acelerar reparaciones (expediting expenses)',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
-            ],
-
-            [
-                'name' => 'Honorarios, gastos de viaje y estadía',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
-            ],
-
-            [
-                'name' => 'Vidrios y cristales',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
-            ],
-
-            [
-                'name' => 'Honorarios de auditores, revisores y contadores',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
-            ],
-
-            [
-                'name' => 'Alteraciones y reparaciones',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
-            ],
-
-            [
-                'name' => 'Intereses de contratista',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
-            ],
-
-            [
-                'name' => 'Gastos adicionales (flete aéreo, horas extras, días feriados, trabajos nocturnos aplicable a cualquier cobertura de la póliza)',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
-            ],
-
-            [
-                'name' => 'Documentos y modelos',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
-            ],
-
-            [
-                'name' => 'Extintores',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
-            ],
-
-            [
-                'name' => 'Refrigeración',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
-            ],
-
-            [
-                'name' => 'Arrendamientos',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
-            ],
-
-            [
-                'name' => 'Gastos extraordinarios',
-                'main_branch' => 'activos',
-                'sub_branch' => 'incendio'
-            ],
-            //Lucro cesante
-            [
-                'name' => 'Gastos de auditores y revisores',
-                'main_branch' => 'activos',
-                'sub_branch' => 'lucro'
-            ],
-            [
-                'name' => 'Gastos de viaje y estadía',
-                'main_branch' => 'activos',
-                'sub_branch' => 'lucro'
-            ],
-            [
-                'name' => 'Gastos extraordinarios',
-                'main_branch' => 'activos',
-                'sub_branch' => 'lucro'
-            ],
-            [
-                'name' => 'Hurto',
-                'main_branch' => 'activos',
-                'sub_branch' => 'robo'
-            ],
-
-            //Sabotaje y terrorismo no hay
-
-            //casco buques no hay
-
-            //P&I, rc portuaria, rc armadores, astilleros no hay
-
-            //No hay ninguna de transporte
-
-            //Casco aereo
-
-            [
-                'name' => 'Errores u Omisiones',
-                'main_branch' => 'aviacion',
-                'sub_branch' => 'casco'
-            ],
-            [
-                'name' => 'Cancelación Anticipada',
-                'main_branch' => 'aviacion',
-                'sub_branch' => 'casco'
-            ],
-            [
-                'name' => 'Liquidación de Cláusulas U.P.I',
-                'main_branch' => 'aviacion',
-                'sub_branch' => 'casco'
-            ],
-            [
-                'name' => 'Liquidación de AVN 26 A',
-                'main_branch' => 'aviacion',
-                'sub_branch' => 'casco'
-            ],
-            [
-                'name' => 'Liquidación de Inclusiones y Exclusiones de Aeronaves',
-                'main_branch' => 'aviacion',
-                'sub_branch' => 'casco'
-            ],
-            [
-                'name' => 'Extensión de vigencia a prorrata',
-                'main_branch' => 'aviacion',
-                'sub_branch' => 'casco'
-            ],
-            //Perdida de licencia
-            [
-                'name' => 'Errores u Omisiones',
-                'main_branch' => 'aviacion',
-                'sub_branch' => 'pl'
-            ],
-            [
-                'name' => 'Cancelación Anticipada',
-                'main_branch' => 'aviacion',
-                'sub_branch' => 'pl'
-            ],
-            [
-                'name' => 'Liquidación de Cláusulas U.P.I',
-                'main_branch' => 'aviacion',
-                'sub_branch' => 'pl'
-            ],
-            [
-                'name' => 'Liquidación de AVN 26 A',
-                'main_branch' => 'aviacion',
-                'sub_branch' => 'pl'
-            ],
-            [
-                'name' => 'Liquidación de Inclusiones y Exclusiones de Aeronaves',
-                'main_branch' => 'aviacion',
-                'sub_branch' => 'pl'
-            ],
-            [
-                'name' => 'Extensión de vigencia a prorrata',
-                'main_branch' => 'aviacion',
-                'sub_branch' => 'pl'
-            ],
-            //Energia Todo riesgo petrolero
-            [
-                'name' => 'Bienes bajo cuidado, custodia y control hasta',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            [
-                'name' => 'Rotura de tanques y derrame de contenido',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            [
-                'name' => 'Honorarios de Ingenieros, Arquitectos',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            [
-                'name' => 'Remoción de escombros (desarme, demolición, obras provisionales como consecuencia de un siniestro amparado por la presente póliza)',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            [
-                'name' => 'Gastos para reducir perdidas y daños',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            [
-                'name' => 'Traslado temporal, bienes propios únicamente (excluye daños durante el trasporte, carga, descarga y hurto)',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            [
-                'name' => 'Gastos para acelerar reparaciones (expediting expenses)',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            [
-                'name' => 'Honorarios, gastos de viaje y estadía',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            [
-                'name' => 'Vidrios y cristales',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            [
-                'name' => 'Honorarios de auditores, revisores y contadores',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            [
-                'name' => 'Alteraciones y reparaciones',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            [
-                'name' => 'Intereses de contratista',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            [
-                'name' => 'Gastos adicionales (flete aéreo, horas extras, días feriados, trabajos nocturnos aplicable a cualquier cobertura de la póliza)',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            [
-                'name' => 'Documentos y modelos',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            [
-                'name' => 'Extintores',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            [
-                'name' => 'Refrigeración',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            [
-                'name' => 'Arrendamientos',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            [
-                'name' => 'Gastos extraordinarios',
-                'main_branch' => 'energia',
-                'sub_branch' => 'trp'
-            ],
-            //Fianzas no hay
-            //Fidelidad (asumiendo que es de fianzas, no de riesgos financieros)
-            [
-                'name' => 'Honorarios profesionales',
-                'main_branch' => 'fianzas',
-                'sub_branch' => 'fidelidad'
-            ],
-            //Resposabilidad civil
-            [
-                'name' => 'Gastos Médicos hasta',
-                'main_branch' => 'responsabilidad_civil',
-                'sub_branch' => 'extracontractual'
-            ],
-            [
-                'name' => 'Gastos de defensa, liquidación o ajuste de pagos suplementarios',
-                'main_branch' => 'responsabilidad_civil',
-                'sub_branch' => 'extracontractual'
-            ],
-            [
-                'name' => 'Responsabilidad Civil Patronal en exceso de los montos cubiertos por el Seguro Social hasta',
-                'main_branch' => 'responsabilidad_civil',
-                'sub_branch' => 'extracontractual'
-            ],
-            [
-                'name' => 'Responsabilidad Civil por Contaminación súbita imprevista y accidental',
-                'main_branch' => 'responsabilidad_civil',
-                'sub_branch' => 'extracontractual'
-            ],
-            [
-                'name' => 'Responsabilidad Civil por vehículos propios y no propios en exceso de la póliza de la póliza principal de vehículos hasta',
-                'main_branch' => 'responsabilidad_civil',
-                'sub_branch' => 'extracontractual'
-            ],
-            [
-                'name' => 'Bienes bajo cuidado, custodia y control',
-                'main_branch' => 'responsabilidad_civil',
-                'sub_branch' => 'extracontractual'
-            ],
-            [
-                'name' => 'Contratistas y subcontratistas',
-                'main_branch' => 'responsabilidad_civil',
-                'sub_branch' => 'extracontractual'
-            ],
-            //Contractual
-            [
-                'name' => 'Gastos Médicos hasta',
-                'main_branch' => 'responsabilidad_civil',
-                'sub_branch' => 'contractual'
-            ],
-            [
-                'name' => 'Gastos de defensa, liquidación o ajuste de pagos suplementarios',
-                'main_branch' => 'responsabilidad_civil',
-                'sub_branch' => 'contractual'
-            ],
-            [
-                'name' => 'Responsabilidad Civil Patronal en exceso de los montos cubiertos por el Seguro Social hasta',
-                'main_branch' => 'responsabilidad_civil',
-                'sub_branch' => 'contractual'
-            ],
-            [
-                'name' => 'Responsabilidad Civil por Contaminación súbita imprevista y accidental',
-                'main_branch' => 'responsabilidad_civil',
-                'sub_branch' => 'contractual'
-            ],
-            [
-                'name' => 'Responsabilidad Civil por vehículos propios y no propios en exceso de la póliza de la póliza principal de vehículos hasta',
-                'main_branch' => 'responsabilidad_civil',
-                'sub_branch' => 'contractual'
-            ],
-            [
-                'name' => 'Bienes bajo cuidado, custodia y control',
-                'main_branch' => 'responsabilidad_civil',
-                'sub_branch' => 'contractual'
-            ],
-            [
-                'name' => 'Contratistas y subcontratistas',
-                'main_branch' => 'responsabilidad_civil',
-                'sub_branch' => 'contractual'
-            ],
-            // Errores y omisiones no hay, rc medica, rc profesional, directores y administradores tampoco
-            //Ramos tecnicos (construccion  y montaje)
-            [
-                'name' => 'Cobertura principal A - Daño Material: Este seguro cubre los daños materiales que sufran los bienes asegurados detallados en las condiciones particulares por cualquier causa que no sea excluida expresamente y que no pudiera ser cubierta bajo las coberturasadicionales(hurto, dif.de inventarios/ desgastepaulatino, corrosión, deteriorogradual / daños existentes / otros(texto)',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'construccion'
-            ],
-            [
-                'name' => 'Cobertura B: Terremoto, Temblor, Tsunami y Erupción Volcánica',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'construccion'
-            ],
-            [
-                'name' => 'Cobertura C: Ciclón, Huracán, Tormenta, Ventarrón e Inundación',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'construccion'
-            ],
-            [
-                'name' => 'Cobertura D: Mantenimiento',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'construccion'
-            ],
-            [
-                'name' => 'Cobertura E y F: Responsabilidad Civil',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'construccion'
-            ],
-            [
-                'name' => 'Cobertura G: Remosión de Escombros',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'construccion'
-            ],
-            //Riesgo Montaje
-            [
-                'name' => 'Cobertura principal A - Daño Material: Este seguro cubre los daños materiales que sufran los bienes asegurados detallados en las condiciones particulares causados por:
-                a. Errores durante el montaje.
-                b. Impericia, descuido y actos malintencionados de obreros y empleados del Aseguradoo de extraños.
-                c. Caídade partesdel objetoquese monta, comoconsecuenciade roturade cables o cadenas, hundimiento o deslizamiento del equipo de montaje u otros accidentesanálogos.
-                d. Robo, de acuerdo con la siguiente definición: se entenderá por robo las pérdidas por substracción de los bienes aseguradosy los daños que se causen a los mismos como consecuencia del intento o la consumación del robo, siempre y cuando la persona quelocometa haya penetrado al lugar por medios violentos o de fuerza y en forma tal que en el lugar de entrada o de salida queden huellas visibles de tal acto de violencia. El Asegurado se obliga a presentar una denuncia de los hechos, de que trata este inciso, ante la autoridadcompetente.
-                e. Incendio, rayo, explosión.
-                f. Hundimientode tierrao desprendimientode tierrao de rocas.
-                g. Cortocircuitos, arcos voltaicos, así como la acción indirecta de la electricidadatmosférica.
-                h. Caída de aviones o parte de ellos.
-                i. Otros accidentes durante el montaje y que no pudieran ser cubiertos bajo los amparos adicionales de la Cláusula Segunda y,cuando se trate de bienes nuevos, también durante las pruebas de resistencia o de operación.
-                ',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'montaje'
-            ],
-            [
-                'name' => 'Cobertura principal A - Daño Material: Este seguro cubre los daños materiales que sufran los bienes asegurados detallados en las condiciones particulares causados por:',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'montaje'
-            ],
-            [
-                'name' => 'Cobertura B: Terremoto, Temblor, Tsunami y Erupción Volcánica',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'montaje'
-            ],
-            [
-                'name' => 'Cobertura C: Ciclón, Huracán, Tormenta, Ventarrón e Inundación',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'montaje'
-            ],
-            [
-                'name' => 'Cobertura D: Mantenimiento',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'montaje'
-            ],
-            [
-                'name' => 'Cobertura E y F: Responsabilidad Civil',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'montaje'
-            ],
-            [
-                'name' => 'Cobertura G: Remosión de Escombros',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'montaje'
-            ],
-            //Equipo electronico
-            [
-                'name' => 'Bienes bajo cuidado, custodia y control hasta',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'electronico'
-            ],
-            [
-                'name' => 'Alteraciones y reparaciones',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'electronico'
-            ],
-            [
-                'name' => 'Honorarios de Ingenieros, Arquitectos',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'electronico'
-            ],
-            [
-                'name' => 'Remoción de escombros (desarme, demolición, obras provisionales como consecuencia de un siniestro amparado por la presente póliza)',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'electronico'
-            ],
-            [
-                'name' => 'Gastos para reducir perdidas y daños',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'electronico'
-            ],
-            [
-                'name' => 'Traslado temporal, bienes propios únicamente (excluye daños durante el trasporte, carga, descarga y hurto)',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'electronico'
-            ],
-            [
-                'name' => 'Gastos para acelerar reparaciones (expediting expenses)',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'electronico'
-            ],
-            [
-                'name' => 'Honorarios, gastos de viaje y estadía',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'electronico'
-            ],
-            [
-                'name' => 'Honorarios de auditores, revisores y contadores',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'electronico'
-            ],
-            [
-                'name' => 'Gastos adicionales (flete aéreo, horas extras, días feriados, trabajos nocturnos aplicable a cualquier cobertura de la póliza)',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'electronico'
-            ],
-            [
-                'name' => 'Gastos extraordinarios',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'electronico'
-            ],
-            //Rotura maquinaria
-            [
-                'name' => 'Huelga, Motín, Conmoción Civil',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'rotura_maquinaria'
-            ],
-            [
-                'name' => 'Gastos adicionales por Horas Extras, Trabajos Nocturno, Trabajos en Días Feriados',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'rotura_maquinaria'
-            ],
-            [
-                'name' => 'Flete Expreso',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'rotura_maquinaria'
-            ],
-            [
-                'name' => 'Gastos Adicionales por Flete Aéreo',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'rotura_maquinaria'
-            ],
-            [
-                'name' => 'Propiedad Adyacente y/o Responsabilidad Civil',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'rotura_maquinaria'
-            ],
-            [
-                'name' => 'Derrame de Tanques y Contenidos',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'rotura_maquinaria'
-            ],
-            [
-                'name' => 'Aceites, Lubricantes y Refrigerantes',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'rotura_maquinaria'
-            ],
-            [
-                'name' => 'Honorarios, gastos de viaje y estadía',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'rotura_maquinaria'
-            ],
-            //Pérdida de beneficios
-            [
-                'name' => 'Gastos de auditores y revisores',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'beneficios'
-            ],
-            [
-                'name' => 'Gastos de viaje y estadía',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'beneficios'
-            ],
-            [
-                'name' => 'Gastos extraordinarios',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'beneficios'
-            ],
-            //Equipo y maquinaria
-            [
-                'name' => 'Actos mal Intensionados de Terceros, Huelga, Motín, Conmoción Civil',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'equipo_maquinaria'
-            ],
-            [
-                'name' => 'Gastos adicionales por Horas Extras, Trabajos Nocturno, Trabajos en Días Feriados',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'equipo_maquinaria'
-            ],
-            [
-                'name' => 'Flete Expreso',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'equipo_maquinaria'
-            ],
-            [
-                'name' => 'Gastos Adicionales por Flete Aéreo',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'equipo_maquinaria'
-            ],
-            [
-                'name' => 'Propiedad Adyacente y/o Responsabilidad Civil',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'equipo_maquinaria'
-            ],
-            [
-                'name' => 'Derrame de Tanques y Contenidos',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'equipo_maquinaria'
-            ],
-            [
-                'name' => 'Aceites, Lubricantes y Refrigerantes',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'equipo_maquinaria'
-            ],
-            [
-                'name' => 'Honorarios, gastos de viaje y estadía',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'equipo_maquinaria'
-            ],
-            [
-                'name' => 'Robo y/o Asalto',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'equipo_maquinaria'
-            ],
-            [
-                'name' => 'Responsabilidad Civil Extracontractual',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'equipo_maquinaria'
-            ],
-            //ALOP
-            [
-                'name' => 'Gastos de auditores y revisores',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'alop'
-            ],
-
-            //Vehiculos
-            [
-                'name' => 'Actos mal Intensionados de Terceros, Huelga, Motín, Conmoción Civil',
-                'main_branch' => 'tecnico',
-                'sub_branch' => 'vehiculos'
-            ],
-
+            // vehiculos - pesados
+            [
+				'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Daño y pérdida de información tecnológica',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Cualquier tipo de multas y penalizaciones.',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Guerra, guerra civil y sus consecuencias ',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Reacción nuclear ',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Cláusula de exclusión cibernética ',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Responsabilidad Civil ',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Transporte de mercancías. ',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Infidelidad o actos deshonestos de los administradores o cualquiera de los trabajadores del Asegurado.',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Los faltantes y pérdidas misteriosas e inexplicables y otras pérdidas descubiertas después de realizar el inventario.',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+			[
+				'name'  => 'Pérdidas indirectas, pérdidas consecuenciales por cualquier causa y pérdidas de mercado',
+				'main_branch' => 'vehiculos',
+				'sub_branch' => 'livianos'
+			],
+        
         ];
 
         foreach ($data as $item) {
