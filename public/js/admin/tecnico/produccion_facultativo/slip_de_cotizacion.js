@@ -2655,3 +2655,52 @@ function refreshSumaAseguradaPerdida() {
             incendioSumaAsegurableTotales(i, 1, 'perdida');
     }
 }
+
+
+function addObjectInsuranceMaquinaria(event) {
+    event.preventDefault()
+
+    let rowCount = document.getElementById(`maquinariaObjectInsurance`).rows.length
+
+    const objectos = document.getElementById(`maquinariaObjectInsuranceBody`)
+    const tr = document.createElement('tr')
+    tr.id = `newRowMaquinaria${rowCount}`
+
+    objectos.appendChild(tr)
+    tr.innerHTML =
+        `
+        <td scope="row">${rowCount}</td>
+        <td>
+            <input type="text" name="type[]" placeholder="...">
+        </td>
+
+        <td>
+            <input type="text" name="brand[]" placeholder="...">
+        </td>
+        <td>
+            <input type="text" name="object_model[]" placeholder="...">
+        </td>
+
+        <td>
+            <input type="number" name="year[]" placeholder="">
+        </td>
+        <td>
+            <input type="text" placeholder="..." name="serie[]">
+        </td>
+        <td>
+            <input type="text" placeholder="..." name="object_insured_val[]" class="row1">
+        </td>
+        <td>
+            <button id="${rowCount}" type="button"  class="btn btn-danger btn-delete-maquinaria"></button>
+        </td>
+
+        `
+}
+
+$(document).on('click', '.btn-delete-maquinaria', function (e) {
+e.preventDefault()
+
+let id = $(this).attr('id')
+
+$(`#newRowMaquinaria${id}`).remove()
+})
