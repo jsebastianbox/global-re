@@ -323,6 +323,7 @@
         <div class="row">
             <div class="tableContainer" style="margin: 2rem 0">
                 <table id="maritimo_rcCoberturasAdicionalesTable" class="indemnizacionTable">
+                    <caption>No olvidar de llenar mínimo una cláusula.</caption>
                     <thead>
                         <tr>
                             <th style="text-align: center; width: 42px;">#</th>
@@ -374,6 +375,7 @@
         <div class="row">
             <div class="tableContainer" style="margin: 2rem 0">
                 <table id="maritimo_rcClausulasAdicionalesTable" class="indemnizacionTable">
+                    <caption>No olvidar de llenar mínimo una cláusula.</caption>
                     <thead>
                         <tr>
                             <th style="text-align: center; width: 42px;">#</th>
