@@ -140,26 +140,27 @@
         <hr style="color:darkgrey; width:70%">
 
 
+        @if (count($sum_assured) > 0)
+            <div class="row">
+                <div id="sumaAseguradaContainer" class="tableContainer" style="margin:1.5rem 0;">
+                    @if ($slip->insurable_sum > 0)
+                    <h4 class="slipTitle mb-2">Tabla suma asegurable</h4>
+                    @elseif($slip->insured_sum > 0)
+                    <h4 class="slipTitle mb-2">Tabla suma asegurada</h4>
+                    @endif
 
-        <div class="row">
-            <div id="sumaAseguradaContainer" class="tableContainer" style="margin:1.5rem 0;">
-                @if ($slip->insurable_sum > 0)
-                <h4 class="slipTitle mb-2">Tabla suma asegurable</h4>
-                @elseif($slip->insured_sum > 0)
-                <h4 class="slipTitle mb-2">Tabla suma asegurada</h4>
-                @endif
+                    <div class="input-group ms-5">
+                        <input type="text" placeholder="Nombre columna.." id="columnNameactivos_fijosSumaAseguradaTable">
+                        <button type="button" class="btn btn-info" id="btnAddColumnSumas" onclick="addColumnSumas('activos_fijos')">Agregar columna</button>
+                    </div>
 
-                <div class="input-group ms-5">
-                    <input type="text" placeholder="Nombre columna.." id="columnNameactivos_fijosSumaAseguradaTable">
-                    <button type="button" class="btn btn-info" id="btnAddColumnSumas" onclick="addColumnSumas('activos_fijos')">Agregar columna</button>
+                    <button type="button" onclick="refreshSumaAseguradaTable()" class="btn btn-info my-2">
+                        Actualizar
+                    </button>
+                    @include('admin.tecnico.slip.slips_generales.tableSumaAsegurada')
                 </div>
-
-                <button type="button" onclick="refreshSumaAseguradaTable()" class="btn btn-info my-2">
-                    Actualizar
-                </button>
-                @include('admin.tecnico.slip.slips_generales.tableSumaAsegurada')
             </div>
-        </div>
+        @endif
 
         <div class="row mt-3">
             <div class="col-md-5">

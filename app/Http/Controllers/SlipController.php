@@ -225,17 +225,20 @@ class SlipController extends Controller
 
             case '44':
             case '45':
-                $slip_type = SlipFinancialRisk::where('id', $slip->model_id)
-                    ->with('compensation_limit')
-                    ->with('condition')
-                    ->first();
+                $slip_type = SlipFinancialRisk::where('slip_id', $id)->first();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
                 break;
 
             case '46':
-                $slip_type = SlipFianzaOne::where('id', $slip->model_id)
-                    ->with('object_insurance')
-                    ->with('compensation_limit')
-                    ->first();
+                $slip_type = SlipFianzaOne::where('slip_id', $id)->first();
+                $object_insurance = ObjectInsurance::where('slip_id', $id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
                 break;
 
             case '47':
@@ -244,9 +247,11 @@ class SlipController extends Controller
             case '50':
             case '51':
             case '52':
-                $slip_type = SlipFianzaTwo::where('id', $slip->model_id)
-                    ->with('compensation_limit')
-                    ->first();
+                $slip_type = SlipFianzaTwo::where('slip_id', $id)->first();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
                 break;
 
             default:

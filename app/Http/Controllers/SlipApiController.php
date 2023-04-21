@@ -1030,6 +1030,7 @@ class SlipApiController extends Controller
             'sector' => 'nullable|string|min:6|max:7',
             'insurer' => 'nullable|string|min:0|max:255',
             'activity' => 'nullable|string|min:0|max:255',
+            'first_risk' => 'nullable|string|min:0|max:255',
             'object_insurance' => 'nullable|string|min:0|max:5000',
             'object_insured' => 'nullable|string|min:0|max:2000',
             'person_insured' => 'nullable|string|min:0|max:300',

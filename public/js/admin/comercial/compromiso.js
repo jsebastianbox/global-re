@@ -728,7 +728,7 @@ function updateS4() {
             currentTab = 0;
             r_tecnicos.style.display = "block";
             valorAseguradoContainer.forEach(elemento => {
-                elemento.style.display = 'block';
+                elemento.style.display = 'none';
             })
             clausulasSelect(".selectClausula", "tecnico", "beneficios");
             coberturasSelect(".selectCobertura", "tecnico", "beneficios");

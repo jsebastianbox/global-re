@@ -256,6 +256,7 @@
             </div>
         @endif
 
+        
         {{-- Coberturas adicionales --}}
         <h3 class="slipTitle"> <span class="badge badge-secondary"></span> Coberturas Adicionales</h3>
 
@@ -268,6 +269,148 @@
         <h3 class="slipTitle"> <span class="badge badge-secondary"></span> Cláusulas Adicionales</h3>
 
         @include('admin.comercial.include.edit_tablaClausulas')
+
+        @if ($slip->type_coverage === 11)
+            <h3 class="slipTitle"> <span class="badge badge-secondary">5</span> Tabla De Depreciación Para Pérdidas
+                totales</h3>
+
+            <div class="flexRowWrapContainer">
+                <div>
+                    <h5 class="slipTitle"> Rotura de maquinaria:</h5>
+                    <table class="indemnizacionTable">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center">Años</th>
+                                <th style="text-align: center">Demetito (anual)</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td><input type="text" name="" id=""> años</td>
+                                <td>
+                                    <input type="number" name="equipoMaquinaria1" placeholder="%">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="text" name="" id="">años</td>
+                                <td>
+                                    <input type="number" name="equipoMaquinaria1" placeholder="%">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="text" name="" id="">años</td>
+                                <td>
+                                    <input type="number" name="equipoMaquinaria1" placeholder="max. 75%">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div>
+                    <h5 class="slipTitle"> Equipo electrónico:</h5>
+                    <table class="indemnizacionTable">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th style="text-align: center">Años</th>
+                                <th style="text-align: center">Demetito (anual)</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Equipos hasta</td>
+                                <td>
+                                    <input type="number" id="incendioEquipoElectronico1a" name="EquipoElectronico1a"
+                                        class="inputNumber">
+                                </td>
+                                <td>
+                                    <input type="number" id="incendioEquipoElectronico1b" name="EquipoElectronico1b"
+                                        class="inputNumber" min="0" value="0">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Equipos hasta</td>
+                                <td>
+                                    <input type="number" id="incendioEquipoElectronico2a" name="EquipoElectronico2a"
+                                        class="inputNumber">
+                                </td>
+                                <td>
+                                    <input type="number" id="incendioEquipoElectronico2b" name="EquipoElectronico2b"
+                                        class="inputNumber" min="0" value="0">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Equipos hasta</td>
+                                <td>
+                                    <input type="number" id="incendioEquipoElectronico3a" name="EquipoElectronico3a"
+                                        class="inputNumber">
+                                </td>
+                                <td>
+                                    <input type="number" id="incendioEquipoElectronico3b" name="EquipoElectronico3b"
+                                        class="inputNumber" min="0" value="0">
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Equipos más de</td>
+                                <td>
+                                    <input type="number" id="incendioEquipoElectronico4a" name="EquipoElectronico4a"
+                                        class="inputNumber">
+                                </td>
+                                <td>
+                                    <input type="number" id="incendioEquipoElectronico4b" name="EquipoElectronico4b"
+                                        class="inputNumber" min="0" value="0">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        @endif
+
+        @if ($slip->type_coverage === 12)
+            <div class="tableContainer">
+                <h5 class="slipTitle"> Rotura de maquinaria:</h5>
+                <table class="indemnizacionTable">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">Años</th>
+                            <th style="text-align: center">Demetito (anual)</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="" id=""> años</td>
+                            <td>
+                                <input type="number" name="equipoMaquinaria1" placeholder="%">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><input type="text" name="" id="">años</td>
+                            <td>
+                                <input type="number" name="equipoMaquinaria1" placeholder="%">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><input type="text" name="" id="">años</td>
+                            <td>
+                                <input type="number" name="equipoMaquinaria1" placeholder="max. 75%">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        @endif
     </div>
 
     <div class="form_group4">

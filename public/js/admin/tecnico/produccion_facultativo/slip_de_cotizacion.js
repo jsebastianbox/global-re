@@ -636,6 +636,9 @@ function addInstalamento(event) {
             <input type="text" placeholder="..." name="installation[]">
         </th>
         <th style="text-align: center;">
+            <input type="date"  name="date_installation[]">
+        </th>
+        <th style="text-align: center;">
             <button id="${instalamentoA}" type="button" class="btn btn-danger btn-xs btn-delete-instalamento"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         </th>
         `
