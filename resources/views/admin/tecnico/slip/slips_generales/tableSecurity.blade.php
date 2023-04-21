@@ -26,8 +26,21 @@
             </thead>
 
             <tbody id="proportionalTableBody">
-                <input type="text" disabled="false" name="np_name_reinsurer[]">
-                <input type="text" disabled="false" name="proportional_name_reinsurer[]">
+                <tr id="newRowProportionalSecurity1">
+                    <td class="security_proportional_reinsurers">
+                        <select class="select_reinsurer js-example-basic-single inputForm" name="np_name_reinsurer[]">
+                        </select>
+                    </td>
+                    <td>
+                        <input onkeyup="securitySuma()" type="number" name="proportional_porcentage[]"
+                            class="inputNumber" value="0" min="0">
+                    </td>
+                    <td>
+                        <button id="1" type="button"  class="btn btn-danger btn-xs btn-delete-proportional">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </button>
+                    </td>
+                </tr>
             </tbody>
 
             <tfoot>
@@ -66,7 +79,30 @@
             </thead>
 
             <tbody id="noproportionalTableBody">
-
+                <tr id="newRowNpSecurity1">
+                    <td class="security_np_reinsurers">
+                        <select class="select_reinsurer js-example-basic-single inputForm" name="np_name_reinsurer[]">
+                        </select>
+                    </td>
+                    <td>
+                        <input onkeyup="securitySuma()" type="number" id="securityPorcentaje1" name="np_porcentage[]"
+                            class="inputNumber" value="0" min="0">
+                    </td>
+                    <td>
+                        <input type="number" id="securityLimite" class="inputNumber" value="0" min="0" name="np_limit[]">
+                    </td>
+                    <td>
+                        XS
+                    </td>
+                    <td>
+                        <input type="number" id="securityPrioridad" class="inputNumber" name="np_priority[]" value="0" min="0">
+                    </td>
+                    <td>
+                        <button id="1" type="button"  class="btn btn-danger btn-xs btn-delete-np">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </button>
+                    </td>
+                </tr>
             </tbody>
 
             <tfoot>

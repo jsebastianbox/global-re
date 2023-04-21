@@ -22,9 +22,6 @@
             </div>
         </div>
 
-        @include('admin.tecnico.slip.slips_generales.tableSecurity')
-        @include('admin.tecnico.slip.slips_generales.deducibles')
-
         @if ($slip->insurable_sum > 0)
             <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Suma Asegurable</h3>
         @elseif($slip->insured_sum > 0)
@@ -235,7 +232,7 @@
         {{-- DEDUCIBLE --}}
         <h3 class="slipTitle"> <span class="badge badge-secondary">7</span> Deducibles</h3>
 
-        {{-- @include('admin.tecnico.slip.slips_generales.deducibles') --}}
+        @include('admin.tecnico.slip.slips_generales.deducibles')
 
     </div>
 

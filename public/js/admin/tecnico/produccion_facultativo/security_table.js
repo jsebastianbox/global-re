@@ -45,6 +45,8 @@ function addRowSecurityProportional(event) {
     const proportionalTableBody = document.getElementById('proportionalTableBody')
 
     const tr = document.createElement('tr')
+    tr.id = `newRowProportionalSecurity${rowCount}`
+
     proportionalTableBody.appendChild(tr)
 
     tr.innerHTML =
@@ -57,7 +59,11 @@ function addRowSecurityProportional(event) {
             <input onkeyup="securitySuma()" type="number" name="proportional_porcentage[]"
                 class="inputNumber" value="0" min="0">
         </td>
-        <td></td>
+        <td>
+            <button id="${rowCount}" type="button"  class="btn btn-danger btn-xs btn-delete-proportional">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
+        </td>
         `
 
     getReinsurers('.select_reinsurer', 'RI');
@@ -76,6 +82,8 @@ function addRowSecurityNoProportional(event) {
     const noproportionalTableBody = document.getElementById('noproportionalTableBody')
 
     const tr = document.createElement('tr')
+    tr.id = `newRowNpSecurity${rowCount}`
+
     noproportionalTableBody.appendChild(tr)
 
     tr.innerHTML =
@@ -97,7 +105,11 @@ function addRowSecurityNoProportional(event) {
         <td>
             <input type="number" id="securityPrioridad" class="inputNumber" name="np_priority[]" value="0" min="0">
         </td>
-        <td></td>
+        <td>
+            <button id="${rowCount}" type="button"  class="btn btn-danger btn-xs btn-delete-np">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
+        </td>
         `
 
     getReinsurers('.select_reinsurer', 'RI');
@@ -117,8 +129,8 @@ function putReinsurersInSecurity() {
         security_proportional_reinsurers[i].innerHTML = ''
         security_proportional_reinsurers[i].innerHTML = `<input type="text" disabled="false" name="proportional_name_reinsurer[]">`
         
-        security_np_reinsurers[i].innerHTML = `<input type="text" disabled="false" name="np_name_reinsurer[]">`
         security_np_reinsurers[i].innerHTML = ``
+        security_np_reinsurers[i].innerHTML = `<input type="text" disabled="false" name="np_name_reinsurer[]">`
         
     }
 
@@ -129,7 +141,7 @@ function putReinsurersInSecurity() {
 
     if (reinsurersSelectedArray.length > 0 && reinsurersProportional.length > 0) {
         for (let i = 0; i < reinsurersSelectedArray.length; i++) {
-
+            console.log(reinsurersSelectedArray[i].value);
             reinsurersProportional[i].value = reinsurersSelectedArray[i].value
             reinsurersNoProportional[i].value = reinsurersSelectedArray[i].value
             
@@ -138,7 +150,18 @@ function putReinsurersInSecurity() {
 
 }
 
+$(document).on('click', '.btn-delete-proportional', function (e) {
+    e.preventDefault()
 
-function refreshTableSecurity() {
+    let id = $(this).attr('id')
 
-}
+    $(`#newRowProportionalSecurity${id}`).remove()
+})
+
+$(document).on('click', '.btn-delete-np', function (e) {
+    e.preventDefault()
+
+    let id = $(this).attr('id')
+
+    $(`#newRowNpSecurity${id}`).remove()
+})
