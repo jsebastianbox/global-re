@@ -141,7 +141,7 @@
         </div>
 
         <div class="row">
-            <label class="lead">Coberturas adicionales</label>
+            <label class="lead">   </label>
             <hr style="background-color: darkgrey; width: 70%">
         </div>
 
@@ -303,6 +303,7 @@
         <div class="row">
             <div class="tableContainer" style="margin: 2rem 0">
                 <table id="vehiculosCoberturasAdicionalesTable" name="vehiculosCoberturasAdicionalesTable" class="indemnizacionTable">
+                    <caption>No olvidar de llenar mínimo una cláusula.</caption>
                     <thead>
                         <tr>
                             <th style="text-align: center; width: 42px;">#</th>
@@ -350,6 +351,7 @@
         <div class="row">
             <div class="tableContainer" style="margin: 2rem 0">
                 <table id="vehiculosClausulasAdicionalesTable" name="vehiculosClausulasAdicionalesTable" class="indemnizacionTable">
+                    <caption>No olvidar de llenar mínimo una cláusula.</caption>
                     <thead>
                         <tr>
                             <th style="text-align: center; width: 42px;">#</th>
