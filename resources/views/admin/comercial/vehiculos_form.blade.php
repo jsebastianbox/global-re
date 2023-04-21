@@ -44,7 +44,7 @@
         const anchor = document.getElementById('informeDownload')
         if (anchor) {
             anchor.href = informe
-            anchor.download = 'vida_siniestralidad_previa.{{$informeExtension}}'
+            anchor.download = 'informe_de_inspección_previa.{{$informeExtension}}'
         }
     });
 </script>
@@ -193,7 +193,7 @@
                     <label class="input-group-text" hidden="true" for="informe" id="informeFileLabel">Informe de inspección
                     </label>
                     @if ($informe)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="informeDownload">Informe de inspección - Previa</a>
+                    <a download="Informe_de_inspección_previa" style="padding:1rem; color: #000" id="informeDownload">Informe de inspección - Previa</a>
                     <button type="button" class="btn btn-info" style="color: white" onclick="toggleInforme()" id="informeFileToggle">Modificar</button>
                     <script>
                         let toggledInformeFile = false;
@@ -443,10 +443,10 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="input-group">
                     <input class="form-control" type="file" name="informe" id="informe">
-                    <label class="input-group-text" for="accidentRate">Informe de inspección</label>
+                    <label class="input-group-text" for="informe">Informe de inspección</label>
                 </div>
                 <div class="my-2 input-group">
                     <input class="form-control" type="file" name="accidentRate" id="accidentRate">
