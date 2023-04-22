@@ -199,251 +199,251 @@ class ExclusionesSelectorSeeder extends Seeder
 				'sub_branch' => 'vida'
 			],
             
-            // activos_personales - incendio  
+            // activos - incendio  
 			[
 				'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'incendio'
 			],
 			[
 				'name'  => 'Daño y pérdida de información tecnológica',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'incendio'
 			],
 			[
 				'name'  => 'Cualquier tipo de multas y penalizaciones.',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'incendio'
 			],
 			[
 				'name'  => 'Guerra, guerra civil y sus consecuencias ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'incendio'
 			],
 			[
 				'name'  => 'Reacción nuclear ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'incendio'
 			],
 			[
 				'name'  => 'Cláusula de exclusión cibernética ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'incendio'
 			],
 			[
 				'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'incendio'
 			],
 			[
 				'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'incendio'
 			],
 			[
 				'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'incendio'
 			],
 			[
 				'name'  => 'Responsabilidad Civil ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'incendio'
 			],
 			[
 				'name'  => 'Transporte de mercancías. ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'incendio'
 			],
 			[
 				'name'  => 'Infidelidad o actos deshonestos de los administradores o cualquiera de los trabajadores del Asegurado.',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'incendio'
 			],
 			[
 				'name'  => 'Los faltantes y pérdidas misteriosas e inexplicables y otras pérdidas descubiertas después de realizar el inventario.',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'incendio'
 			],
 			[
 				'name'  => 'Pérdidas indirectas, pérdidas consecuenciales por cualquier causa y pérdidas de mercado',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'incendio'
 			],
             
-            // activos_personales - lucro_cesante  
+            // activos - lucro_cesante  
             [
 				'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'lucro_cesante'
 			],
 			[
 				'name'  => 'Daño y pérdida de información tecnológica',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'lucro_cesante'
 			],
 			[
 				'name'  => 'Cualquier tipo de multas y penalizaciones.',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'lucro_cesante'
 			],
 			[
 				'name'  => 'Guerra, guerra civil y sus consecuencias ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'lucro_cesante'
 			],
 			[
 				'name'  => 'Reacción nuclear ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'lucro_cesante'
 			],
 			[
 				'name'  => 'Cláusula de exclusión cibernética ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'lucro_cesante'
 			],
 			[
 				'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'lucro_cesante'
 			],
 			[
 				'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'lucro_cesante'
 			],
 			[
 				'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'lucro_cesante'
 			],
 			[
 				'name'  => 'Responsabilidad Civil ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'lucro_cesante'
 			],
 			[
 				'name'  => 'Transporte de mercancías. ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'lucro_cesante'
 			],
 			[
 				'name'  => 'Infidelidad o actos deshonestos de los administradores o cualquiera de los trabajadores del Asegurado.',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'lucro_cesante'
 			],
 			[
 				'name'  => 'Los faltantes y pérdidas misteriosas e inexplicables y otras pérdidas descubiertas después de realizar el inventario.',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'lucro_cesante'
 			],
 			[
 				'name'  => 'Pérdidas indirectas, pérdidas consecuenciales por cualquier causa y pérdidas de mercado',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'lucro_cesante'
 			],
 
-            // activos_personales - robo  
+            // activos - robo  
 			[
 				'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'robo'
 			],
 			[
 				'name'  => 'Daño y pérdida de información tecnológica',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'robo'
 			],
 			[
 				'name'  => 'Cualquier tipo de multas y penalizaciones.',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'robo'
 			],
 			[
 				'name'  => 'Guerra, guerra civil y sus consecuencias ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'robo'
 			],
 			[
 				'name'  => 'Reacción nuclear ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'robo'
 			],
 			[
 				'name'  => 'Cláusula de exclusión cibernética ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'robo'
 			],
 			[
 				'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'robo'
 			],
 			[
 				'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'robo'
 			],
 			[
 				'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'robo'
 			],
 			[
 				'name'  => 'Responsabilidad Civil ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'robo'
 			],
 			[
 				'name'  => 'Transporte de mercancías. ',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'robo'
 			],
 			[
 				'name'  => 'Infidelidad o actos deshonestos de los administradores o cualquiera de los trabajadores del Asegurado.',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'robo'
 			],
 			[
 				'name'  => 'Los faltantes y pérdidas misteriosas e inexplicables y otras pérdidas descubiertas después de realizar el inventario.',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'robo'
 			],
 			[
 				'name'  => 'Pérdidas indirectas, pérdidas consecuenciales por cualquier causa y pérdidas de mercado',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'robo'
 			],
 
-            // activos_personales - sabotaje_terrorismo
+            // activos - sabotaje_terrorismo
 			[
 				'name'  => 'Pagos ex gratia',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'sabotaje_terrorismo'
 			],
 			[
 				'name'  => 'Cualquier tipo de responsabilidad civil',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'sabotaje_terrorismo'
 			],
 			[
 				'name'  => 'Excluye BI/CBI',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'sabotaje_terrorismo'
 			],
 			[
 				'name'  => 'Actos de crimen organizado',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'sabotaje_terrorismo'
 			],
 			[
 				'name'  => 'Automóviles',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'sabotaje_terrorismo'
 			],
 			[
 				'name'  => 'Bienes en tránsito',
-				'main_branch' => 'activos_personales',
+				'main_branch' => 'activos',
 				'sub_branch' => 'sabotaje_terrorismo'
 			],
 

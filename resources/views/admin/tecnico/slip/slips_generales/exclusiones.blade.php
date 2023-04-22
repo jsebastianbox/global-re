@@ -12,22 +12,22 @@
 
                     @switch($slip->type_coverage)
                         @case(1)
-                            <button onclick="addRowExclusion(event, '', 'vida','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowExclusion(event, '', 'vida','vida')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(2)
-                            <button onclick="addRowExclusion(event, '', 'vida','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowExclusion(event, '', 'vida','vida')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(3)
-                            <button onclick="addRowExclusion(event, '', 'vida','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowExclusion(event, '', 'vida','accidente_personales')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(4)
-                            <button onclick="addRowExclusion(event, '', 'vida','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowExclusion(event, '', 'vida','accidente_personales')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
@@ -37,7 +37,7 @@
                             </button>
                             @break
                         @case(6)
-                            <button onclick="addRowExclusion(event, '', 'activos','lucro')" class="btn btn-success btn-xs">
+                            <button onclick="addRowExclusion(event, '', 'activos','lucro_cesante')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break

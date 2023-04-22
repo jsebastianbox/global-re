@@ -2038,7 +2038,7 @@ $(document).on('click', '.btn-delete-fidelidad-objeto', function (e) {
 
 
 
-function addRowExclusion(event, type, typeRamo, typeExclusion) {
+function addRowExclusion(event, type, typeRamo, typeCobertura) {
     event.preventDefault()
 
     let rowCount = document.getElementById('exclusionesAdicionalesTable').rows.length
@@ -2069,6 +2069,9 @@ function addRowExclusion(event, type, typeRamo, typeExclusion) {
             <button id="${rowCount}" type="button" class="btn btn-danger btn-xs btn-delete-exclusion"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         </td>
         `
+
+        coberturasSelect(`#description_coverage_additional_${rowCount}`, `${typeRamo}`, `${typeSubCobertura}`);
+
 }
 
 $(document).on('click', '.btn-delete-exclusion', function (e) {
