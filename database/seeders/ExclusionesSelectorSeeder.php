@@ -1220,72 +1220,72 @@ class ExclusionesSelectorSeeder extends Seeder
             [
 				'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
 				'main_branch' => 'vehiculos',
-				'sub_branch' => 'livianos'
+				'sub_branch' => 'pesados'
 			],
 			[
 				'name'  => 'Daño y pérdida de información tecnológica',
 				'main_branch' => 'vehiculos',
-				'sub_branch' => 'livianos'
+				'sub_branch' => 'pesados'
 			],
 			[
 				'name'  => 'Cualquier tipo de multas y penalizaciones.',
 				'main_branch' => 'vehiculos',
-				'sub_branch' => 'livianos'
+				'sub_branch' => 'pesados'
 			],
 			[
 				'name'  => 'Guerra, guerra civil y sus consecuencias ',
 				'main_branch' => 'vehiculos',
-				'sub_branch' => 'livianos'
+				'sub_branch' => 'pesados'
 			],
 			[
 				'name'  => 'Reacción nuclear ',
 				'main_branch' => 'vehiculos',
-				'sub_branch' => 'livianos'
+				'sub_branch' => 'pesados'
 			],
 			[
 				'name'  => 'Cláusula de exclusión cibernética ',
 				'main_branch' => 'vehiculos',
-				'sub_branch' => 'livianos'
+				'sub_branch' => 'pesados'
 			],
 			[
 				'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
 				'main_branch' => 'vehiculos',
-				'sub_branch' => 'livianos'
+				'sub_branch' => 'pesados'
 			],
 			[
 				'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
 				'main_branch' => 'vehiculos',
-				'sub_branch' => 'livianos'
+				'sub_branch' => 'pesados'
 			],
 			[
 				'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
 				'main_branch' => 'vehiculos',
-				'sub_branch' => 'livianos'
+				'sub_branch' => 'pesados'
 			],
 			[
 				'name'  => 'Responsabilidad Civil ',
 				'main_branch' => 'vehiculos',
-				'sub_branch' => 'livianos'
+				'sub_branch' => 'pesados'
 			],
 			[
 				'name'  => 'Transporte de mercancías. ',
 				'main_branch' => 'vehiculos',
-				'sub_branch' => 'livianos'
+				'sub_branch' => 'pesados'
 			],
 			[
 				'name'  => 'Infidelidad o actos deshonestos de los administradores o cualquiera de los trabajadores del Asegurado.',
 				'main_branch' => 'vehiculos',
-				'sub_branch' => 'livianos'
+				'sub_branch' => 'pesados'
 			],
 			[
 				'name'  => 'Los faltantes y pérdidas misteriosas e inexplicables y otras pérdidas descubiertas después de realizar el inventario.',
 				'main_branch' => 'vehiculos',
-				'sub_branch' => 'livianos'
+				'sub_branch' => 'pesados'
 			],
 			[
 				'name'  => 'Pérdidas indirectas, pérdidas consecuenciales por cualquier causa y pérdidas de mercado',
 				'main_branch' => 'vehiculos',
-				'sub_branch' => 'livianos'
+				'sub_branch' => 'pesados'
 			],
         
         ];

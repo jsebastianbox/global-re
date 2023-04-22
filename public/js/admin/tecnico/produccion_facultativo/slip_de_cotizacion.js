@@ -957,7 +957,7 @@ const incendioCobertura = document.getElementById('incendioCobertura')
 
 //coberturas
 
-function addRowCoberturaV2(event) {
+/* function addRowCoberturaV2(event) {
     event.preventDefault()
 
     let rowCount = document.getElementById('coberturasAdicionalesTable').rows.length
@@ -998,7 +998,7 @@ $(document).on('click', '.btn-delete-cobertura', function (e) {
 
     $(`#newRowCoberturaAdicional${id}`).remove()
 
-})
+}) */
 
 
 
@@ -2038,7 +2038,7 @@ $(document).on('click', '.btn-delete-fidelidad-objeto', function (e) {
 
 
 
-function addRowExclusion(event) {
+function addRowExclusion(event, type, typeRamo, typeExclusion) {
     event.preventDefault()
 
     let rowCount = document.getElementById('exclusionesAdicionalesTable').rows.length
