@@ -82,6 +82,7 @@ class SlipController extends Controller
         $boat_detail = [];
         $information_aerial = [];
         $aviation_extras = [];
+        $exclusionesSelect = [];
 
         switch ($slip->type_coverage) {
             case '1':

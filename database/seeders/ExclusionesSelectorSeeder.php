@@ -781,76 +781,76 @@ class ExclusionesSelectorSeeder extends Seeder
 				'sub_branch' => 'riesgo_montaje'
 			],
 
-            // tecnicos - equipo_electrico
+            // tecnicos - equipo_electronico
             [
                 'name'  => 'Eventos químicos, biológicos, nucleares, radiológicos, cibernéticos.',
                 'main_branch' => 'tecnicos',
-                'sub_branch' => 'equipo_electrico'
+                'sub_branch' => 'equipo_electronico'
             ],
             [
                 'name'  => 'Daño y pérdida de información tecnológica',
                 'main_branch' => 'tecnicos',
-                'sub_branch' => 'equipo_electrico'
+                'sub_branch' => 'equipo_electronico'
             ],
             [
                 'name'  => 'Cualquier tipo de multas y penalizaciones.',
                 'main_branch' => 'tecnicos',
-                'sub_branch' => 'equipo_electrico'
+                'sub_branch' => 'equipo_electronico'
             ],
             [
                 'name'  => 'Guerra, guerra civil y sus consecuencias ',
                 'main_branch' => 'tecnicos',
-                'sub_branch' => 'equipo_electrico'
+                'sub_branch' => 'equipo_electronico'
             ],
             [
                 'name'  => 'Reacción nuclear ',
                 'main_branch' => 'tecnicos',
-                'sub_branch' => 'equipo_electrico'
+                'sub_branch' => 'equipo_electronico'
             ],
             [
                 'name'  => 'Cláusula de exclusión cibernética ',
                 'main_branch' => 'tecnicos',
-                'sub_branch' => 'equipo_electrico'
+                'sub_branch' => 'equipo_electronico'
             ],
             [
                 'name'  => 'Cláusula de sanciones, limitaciones y exclusiones ',
                 'main_branch' => 'tecnicos',
-                'sub_branch' => 'equipo_electrico'
+                'sub_branch' => 'equipo_electronico'
             ],
             [
                 'name'  => 'Cláusula de exclusión de filtración, polución y contaminación',
                 'main_branch' => 'tecnicos',
-                'sub_branch' => 'equipo_electrico'
+                'sub_branch' => 'equipo_electronico'
             ],
             [
                 'name'  => 'Cualquier cobertura de pérdidas consecuenciales.',
                 'main_branch' => 'tecnicos',
-                'sub_branch' => 'equipo_electrico'
+                'sub_branch' => 'equipo_electronico'
             ],
             [
                 'name'  => 'Responsabilidad Civil ',
                 'main_branch' => 'tecnicos',
-                'sub_branch' => 'equipo_electrico'
+                'sub_branch' => 'equipo_electronico'
             ],
             [
                 'name'  => 'Transporte de mercancías. ',
                 'main_branch' => 'tecnicos',
-                'sub_branch' => 'equipo_electrico'
+                'sub_branch' => 'equipo_electronico'
             ],
             [
                 'name'  => 'Infidelidad o actos deshonestos de los administradores o cualquiera de los trabajadores del Asegurado.',
                 'main_branch' => 'tecnicos',
-                'sub_branch' => 'equipo_electrico'
+                'sub_branch' => 'equipo_electronico'
             ],
             [
                 'name'  => 'Los faltantes y pérdidas misteriosas e inexplicables y otras pérdidas descubiertas después de realizar el inventario.',
                 'main_branch' => 'tecnicos',
-                'sub_branch' => 'equipo_electrico'
+                'sub_branch' => 'equipo_electronico'
             ],
             [
                 'name'  => 'Pérdidas indirectas, pérdidas consecuenciales por cualquier causa y pérdidas de mercado',
                 'main_branch' => 'tecnicos',
-                'sub_branch' => 'equipo_electrico'
+                'sub_branch' => 'equipo_electronico'
             ],
 
 
