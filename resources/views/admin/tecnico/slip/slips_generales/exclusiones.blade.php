@@ -281,7 +281,7 @@
             <tr>
                 <td>1</td>
                 <td>
-                    <textarea name="description_exclusion_additional[]"></textarea>
+                    <select id="description_coverage_additional_1" name="description_coverage_additional[]" class="selectCobertura"></select>
                 </td>
                 <td>
                     <input type="text" placeholder="..." name="exclusion_additional_additional[]">
