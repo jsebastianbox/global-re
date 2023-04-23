@@ -265,10 +265,7 @@ trait HasUploadFiles
         }
         return $keys;
     }
-    public function getSlipFiles(string $case, $id, string $slip_route = null)
-    {
-        $slip_route = $slip_route ?? $case;
-    }
+
     public function chargeFilesIntoView(string $slip_route, $case, $id, View $view): View
     {
         foreach ($this->keysFiles($case) as $key) {
