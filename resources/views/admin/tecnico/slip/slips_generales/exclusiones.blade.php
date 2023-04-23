@@ -281,7 +281,7 @@
             <tr>
                 <td>1</td>
                 <td>
-                    <select id="description_coverage_additional_1" name="description_coverage_additional[]" class="selectCobertura"></select>
+                    <select id="description_exclusion_additional_1" name="description_exclusion_additional[]" class="selectExclusiones"></select>
                 </td>
                 <td>
                     <input type="text" placeholder="..." name="exclusion_additional_additional[]">
