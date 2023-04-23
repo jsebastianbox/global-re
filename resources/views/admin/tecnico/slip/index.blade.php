@@ -123,6 +123,10 @@ Administración | Técnico
     function downloadFile(file) {
         console.log(file)
     }
+
+    function closeModal() {
+        $('#files-container').empty()
+    }
 </script>
 
 <div id="slip" class="card" style="padding-inline: 2.5rem; padding-block: 4rem">
@@ -166,7 +170,7 @@ Administración | Técnico
                                 <div class="modal-content">
                                     <div class="modal-header" style="padding: 0.25rem;font-size:large;">
                                         <h5 class="modal-title" id="showFilesBtn" style="margin: 0"> Ver adjuntos </h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
@@ -174,7 +178,7 @@ Administración | Técnico
                                         <div id="files-container" style="width: 100%;height: 100%;display: flex;flex-direction: column;align-items: center;justify-content: center; gap:1rem;"></div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"> Cerrar </button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal()"> Cerrar </button>
                                         <button type="button" class="btn btn-primary"> Guardar cambios </button>
                                     </div>
                                 </div>
