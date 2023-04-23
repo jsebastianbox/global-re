@@ -22,27 +22,33 @@ use App\Models\SlipVehicle;
 
 trait HasSlipsType
 {
+    use HasUploadFiles;
     public function getSlipType(Slip $slip)
     {
         $id = $slip->id;
         $slip_type = null;
+        $slip_case = null;
+
         switch ($slip->type_coverage) {
             case '1':
             case '2':
             case '3':
             case '4':
                 $slip_type = SlipLifePersonlAccident::where('slip_id', $id)->first();
+                $slip_case = 'vida';
                 break;
             case '5':
             case '6':
             case '7':
             case '8':
                 $slip_type = SlipPropertyFixedAsset::where('slip_id', $id)->first();
+                $slip_case = 'activos_fijos';
                 break;
 
             case '9':
             case '10':
                 $slip_type = SlipVehicle::where('slip_id', $id)->first();
+                $slip_case = 'vehiculos';
                 break;
             case '11':
             case '12':
@@ -52,26 +58,31 @@ trait HasSlipsType
             case '16':
             case '17':
                 $slip_type = SlipTechnicalBranch::where('slip_id', $id)->first();
+                $slip_case = 'tecnico';
                 break;
             case '18':
             case '19':
             case '20':
                 $slip_type = SlipEnergy::where('slip_id', $id)->first();
+                $slip_case = 'energia';
                 break;
 
             case '21':
             case '22':
                 $slip_type = SlipMaritimeOne::where('slip_id', $id)->first();
+                $slip_case = 'maritimo_1';
                 break;
 
             case '23':
                 $slip_type = SlipMaritimeTwo::where('slip_id', $id)->first();
+                $slip_case = 'maritimo_2';
                 break;
 
             case '24':
             case '25':
             case '26':
                 $slip_type = SlipMaritimeThree::where('slip_id', $id)->first();
+                $slip_case = 'maritimo_3';
                 break;
 
             case '27':
@@ -80,21 +91,25 @@ trait HasSlipsType
             case '30':
             case '31':
                 $slip_type = SlipMaritimeFour::where('slip_id', $id)->first();
+                $slip_case = 'maritimo_4';
                 break;
 
             case '32':
             case '33':
                 $slip_type = SlipAviationOne::where('slip_id', $id)->first();
+                $slip_case = 'aviacion_1';
                 break;
 
             case '34':
                 $slip_type = SlipAviationTwo::where('slip_id', $id)->first();
+                $slip_case = 'aviacion_2';
                 break;
 
             case '35':
             case '36':
             case '37':
                 $slip_type = SlipAviationThree::where('slip_id', $id)->first();
+                $slip_case = 'aviacion_3';
                 break;
 
             case '38':
@@ -104,15 +119,18 @@ trait HasSlipsType
             case '42':
             case '43':
                 $slip_type = SlipCivilLiability::where('slip_id', $id)->first();
+                $slip_case = 'responsabilidad';
                 break;
 
             case '44':
             case '45':
                 $slip_type = SlipFinancialRisk::where('slip_id', $id)->first();
+                $slip_case = 'riesgo';
                 break;
 
             case '46':
                 $slip_type = SlipFianzaOne::where('slip_id', $id)->first();
+                $slip_case = 'finanzas_1';
                 break;
 
             case '47':
@@ -122,13 +140,13 @@ trait HasSlipsType
             case '51':
             case '52':
                 $slip_type = SlipFianzaTwo::where('slip_id', $id)->first();
+                $slip_case = 'finanzas_2';
                 break;
 
             default:
-                return 'other';
                 break;
         }
-        return $slip_type;
+        return [$slip_type, $slip_case];
     }
 
     public function getFileInfo($name): array
@@ -216,7 +234,7 @@ trait HasSlipsType
                 break;
             case "barrelValue":
                 $file_info['name'] = "Siniestralidad";
-                break
+                break;
             case "quotationReport":
                 $file_info['name'] = "Siniestralidad";
                 break;
@@ -234,7 +252,7 @@ trait HasSlipsType
             case "financialStatements":
                 $file_info['name'] = "Siniestralidad";
                 break;
-           case "modelMakeHours":
+            case "modelMakeHours":
                 $file_info['name'] = "Siniestralidad";
                 break;
 
@@ -356,7 +374,24 @@ trait HasSlipsType
         }
         return $file_info;
     }
-    public function getSlipFiles( Slip $slip){
 
+    public function getFilesListed(string $case, $id, string $route = null)
+    {
+        $route = $route ?? $case;
+        $files_info = [];
+        if ($route == 'activos_fijos') {
+            $route = 'activos-fijos';
+        }
+        $files_names = $this->keysFiles($case);
+        foreach ($files_names as $name) {
+            $file_info = $this->getFileInfo($name);
+            $file_path = 'slips/' . $route . '/' . $id . '/' . $name . '.*';
+            if ($file = $this->getFile($file_path)) {
+                $file_info['file'] = $this->getBase64FromFile($file);
+                $file_info['extension'] = $this->getExtensionFromName($file);
+                $files_info[] = $file_info;
+            }
+        }
+        return $files_info;
     }
 }

@@ -10,8 +10,7 @@ use Illuminate\Http\Request;
 
 class SlipsApi extends Controller
 {
-    use HasSlipsType;
-    use HasUploadFiles;
+    use HasSlipsType, HasUploadFiles;
     /**
      * Display a listing of the resource.
      *
@@ -94,24 +93,8 @@ class SlipsApi extends Controller
     public function slipFiles(Request $request, $id)
     {
         $slip = Slip::find($id);
-        $slip_type = $this->getSlipType($slip);
-
-        return [
-            [
-                'name' => 'Machine list',
-                'file' => 'base64',
-                'extension' => 'file extension',
-            ],
-            [
-                'name' => 'Machine list',
-                'file' => 'base64',
-                'extension' => 'file extension',
-            ],
-            [
-                'name' => 'Machine list',
-                'file' => 'base64',
-                'extension' => 'file extension',
-            ],
-        ];
+        [$slip_type, $case] = $this->getSlipType($slip);
+        $files = $this->getFilesListed($case, $slip_type->id);
+        return $files;
     }
 }
