@@ -51,7 +51,7 @@
                 </div>
             </div>
         @endif
-
+        
         @if ($slip->type_coverage === 13)
             <div class="tableContainer">
                 @if ($slip_type->asegurable_electronico > 0)
@@ -140,9 +140,10 @@
 
 
         @if ($slip->type_coverage === 14)
-        @include('admin.tecnico.slip.slips_generales.limiteIndem')
+            @include('admin.tecnico.slip.slips_generales.limiteIndem')
 
             <div class="tableContainer" style="margin: 2rem 0">
+                <h3>Objeto(s) del seguro</h3>
                 <table id="maquinariaObjectInsurance" class="indemnizacionTable">
                     <thead>
                         <tr>
@@ -194,114 +195,69 @@
                 </table>
             </div>
         @endif
-        <div class="tableContainer">
+        
+        @if ($slip->type_coverage === 16)
+            <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Suma Asegurada</h3>
 
-            {{-- <table class="indemnizacionTable bigTable" style="margin: 2rem 0">
-                <thead>
-                    <tr>
-                        <th style="text-align: center">#</th>
-                        <th style="text-align: center">Equipo</th>
-                        <th style="text-align: center">Marca</th>
-                        <th style="text-align: center">Modelo</th>
-                        <th style="text-align: center">Año</th>
-                        <th style="text-align: center">Serie</th>
-                        <th style="text-align: center">Suma Asegurada (USD)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="text-align: center">
-                            1
-                        </td>
-                        <td style="text-align: center">
-                            <input type="text" name="description2_deductible[]" placeholder="...">
-                        </td>
-                        <td style="text-align: center">
-                            <input type="text" name="description2_deductible[]" placeholder="...">
-                        </td>
-                        <td style="text-align: center">
-                            <input type="text" name="description2_deductible[]" placeholder="...">
-                        </td>
-                        <td style="text-align: center">
-                            <input type="text" name="description2_deductible[]" placeholder="...">
-                        </td>
-                        <td style="text-align: center">
-                            <input type="text" name="description2_deductible[]" placeholder="...">
-                        </td>
-
-                        <td style="text-align: center">
-                            <input  id="objetoSeguroSuma1" onkeyup="objetoSeguroSuma(event)" type="number" value="0">
-                        </td>
-                      
-                    </tr>
-                    <tr>
-                        <td style="text-align: center">
-                            2
-                        </td>
-                        <td style="text-align: center">
-                            <input type="text" name="description2_deductible[]" placeholder="...">
-                        </td>
-                        <td style="text-align: center">
-                            <input type="text" name="description2_deductible[]" placeholder="...">
-                        </td>
-                        <td style="text-align: center">
-                            <input type="text" name="description2_deductible[]" placeholder="...">
-                        </td>
-                        <td style="text-align: center">
-                            <input type="text" name="description2_deductible[]" placeholder="...">
-                        </td>
-                        <td style="text-align: center">
-                            <input type="text" name="description2_deductible[]" placeholder="...">
-                        </td>
-
-                        <td style="text-align: center">
-                            <input id="objetoSeguroSuma2" onkeyup="objetoSeguroSuma(event)" type="number" value="0">
-                        </td>
-                      
-                    </tr>
-                    <tr>
-                        <td style="text-align: center">
-                            3
-                        </td>
-                        <td style="text-align: center">
-                            <input type="text" name="description2_deductible[]" placeholder="...">
-                        </td>
-                        <td style="text-align: center">
-                            <input type="text" name="description2_deductible[]" placeholder="...">
-                        </td>
-                        <td style="text-align: center">
-                            <input type="text" name="description2_deductible[]" placeholder="...">
-                        </td>
-                        <td style="text-align: center">
-                            <input type="text" name="description2_deductible[]" placeholder="...">
-                        </td>
-                        <td style="text-align: center">
-                            <input type="text" name="description2_deductible[]" placeholder="...">
-                        </td>
-
-                        <td style="text-align: center">
-                            <input id="objetoSeguroSuma3" onkeyup="objetoSeguroSuma(event)" type="number" value="0">
-                        </td>
-                      
-                    </tr>
-                </tbody>
-                
-                <tfoot>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <h5 class="slipTitle" style="text-align: center">Total: </h5>
-                        </td>
-                        <td style="text-align: center">
-                            <span id="objetoSeguroSumaTotal" class="slipTitle" >0</span>$
-                        </td>
-                </tfoot>
-            </table> --}}
-        </div>
+            <div class="tableContainer">
+                <table class="indemnizacionTable">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">Cobertura</th>
+                            <th style="text-align: center">USD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center">Cobertura A: Daño Material</td>
+                            <td>
+                                <input type="number" class="inputNumber" id="coberturaSumaAsegurada1" value="0" name="" onkeyup="sumaAseguradaV2()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">Cobertura B: Terremoto, Temblor, Tsunami y Erupción Volcánica</td>
+                            <td>
+                                <input type="number" class="inputNumber" id="coberturaSumaAsegurada2" value="0" name="" onkeyup="sumaAseguradaV2()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">Cobertura C: Ciclón, Huracán, Tormenta, Ventarrón e Inundación</td>
+                            <td>
+                                <input type="number" class="inputNumber" id="coberturaSumaAsegurada3" value="0" name="" onkeyup="sumaAseguradaV2()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">Cobertura D: Mantenimiento</td>
+                            <td>
+                                <input type="number" class="inputNumber" id="coberturaSumaAsegurada4" value="0" name="" onkeyup="sumaAseguradaV2()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">Cobertura E y F: Responsabilidad Civil </td>
+                            <td>    
+                                <input type="number" class="inputNumber" id="coberturaSumaAsegurada5" value="0" name="" onkeyup="sumaAseguradaV2()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">Cobertura G: Remosión de Escombros </td>
+                            <td>
+                                <input type="number" class="inputNumber" id="coberturaSumaAsegurada6" value="0" name="" onkeyup="sumaAseguradaV2()">
+                            </td>
+                        </tr>
+                    </tbody>
+                    
+                    <tfoot>
+                        <tr>
+                            <td>
+                                <h5 class="slipTitle" style="text-align: center">Total: </h5>
+                            </td>
+                            <td style="text-align: center">
+                                <span id="coberturaSumaTotal" class="slipTitle" >0</span>$
+                            </td>
+                    </tfoot>
+                </table>
+            </div>
+        @endif
 
     </div>
 
@@ -437,7 +393,475 @@
             </div>
         @endif
 
-        
+        @if ($slip->type_coverage === 16)
+            <h3 class="slipTitle"> <span class="badge badge-secondary"></span> Endosos Adicionales</h3>
+            
+            <div class="tableContainer">
+                <table id="endososTable" class="indemnizacionTable">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">Endoso (Número: nombre)</th>
+                            <th style="text-align: center">USD</th>
+                            <th style="text-align: center">Campo adicional</th>
+                            <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1"
+                                colspan="1" aria-label="Add row">
+
+                                <button onclick="addEndosoAdicional(event)" class="btn btn-success btn-xs">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    {{-- tbody --}}
+
+                    <tbody id="endososTableBody">
+                        <td>
+                            <textarea name=""></textarea>
+                        </td>
+                        <td>
+                            <input type="number" placeholder="0"
+                                name="">
+                        </td>
+                        <td>
+                        <input type="text" placeholder="..."
+                                name="">
+                        </td>
+                        <td>
+            
+                        </td>
+                    </tbody>
+
+                    {{-- <tbody id="endososTableBody">
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">001: Huelga, Motín y Conmoción Civil </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">002: Responsabilidad Civil Cruzada </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">004: Mantenimiento Amplio </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">005: Cronograma de Avance de los Trabajos de Construcción y/o Montaje </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">006: Horas Extras, Trabajo Nocturno, Trabajos en Días Festivos, Flete Expreso   </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea readonly name="">007: Flete Aéreo    </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea readonly name="">008: Obras sitas en Zonas Sísmicas </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea readonly name="">012: Exclusión de Vientos Huracanados </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">013: Bienes Alamacenados Fuera de Sitio </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">100: Prueba de Máquina e Instalaciones  </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">101: Túneles y Galerias </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">102: Cables Subterraneos, Tuberías y demás Instalaciones </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">103: Cosechas, Bosques y Cultivos </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">104: Presas y Embalses </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">106: Trabajos por Secciones </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">107: Campamentos y Almacenes de Materiales de Construcción </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">108: Equipo y Maquinaria de Construcción y Montaje </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">109: Almacenaje de Material de Construcción </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">110: Responsabilidad Civil Cruzada</textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">111: Remoción de Escombros despúes del Corrimiento de Tierras </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">112: Equipos Extintores de Incendios y Protección en Sitios de Obra </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <textarea readonly name="">113: Transportes Nacionales </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea readonly name="">114: Siniestro en Serie </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea readonly name="">115: Riesgos de Diseño </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea readonly name="">116: Obras Civiles Aseguradas Recibidas y/o Puestas en Operación </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea readonly name="">117: Tendido de Tuberias de Agua y Desagues</textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea readonly name="">118: Trabajos de Perforación para Pozos de Agua </textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea readonly name="">119: Propiedad Existente</textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea readonly name="">114: Siniestro en Serie</textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea readonly name="">120: Vibraciones</textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea readonly name="">121: Cimentaciones por Pilotaje y Tablestacados para Fosas de Obras</textarea>
+                            </td>
+                            <td>
+                                <input type="number" placeholder="0"
+                                    name="">
+                            </td>
+                            <td>
+                                <input type="text" placeholder="..."
+                                    name="">
+                            </td>
+                        </tr>
+
+
+                    </tbody> --}}
+
+                </table>
+            </div>
+        @endif
+
         {{-- Coberturas adicionales --}}
         <h3 class="slipTitle"> <span class="badge badge-secondary"></span> Coberturas Adicionales</h3>
 
@@ -557,6 +981,7 @@
 
         @if ($slip->type_coverage === 14)
             <div class="tableContainer">
+                <h3>Tabla de depreciación para pérdidas totales</h3>
                 <h5 class="slipTitle"> Equipo electrónico:</h5>
                 <table class="indemnizacionTable">
                     <thead>

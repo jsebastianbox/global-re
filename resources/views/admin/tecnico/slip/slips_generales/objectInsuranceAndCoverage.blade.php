@@ -13,4 +13,13 @@
         </label>
         <textarea name="coverage" id="coverage" cols="30" rows="1">{{ $slip->coverage }}</textarea>
     </div>
+    @if ($slip->type_coverage === 16)
+        <div class="input_group" style="max-width: 450px">
+            <label>
+                <i class="fa-solid fa-bars-staggered"></i>
+                Periodo de mantenimiento:
+            </label>
+            <input type="text" name="period_compensation">
+        </div>
+    @endif
 </div>

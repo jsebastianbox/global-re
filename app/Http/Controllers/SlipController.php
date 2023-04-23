@@ -15,6 +15,7 @@ use App\Models\CoverageSlip;
 use App\Models\DeductibleSlip;
 use App\Models\DetailPerdios;
 use App\Models\EquipmentListInsured;
+use App\Models\exclusiones_selectors;
 use App\Models\File;
 use App\Models\GuaranteePayment;
 use App\Models\InformationAerialHelmets;
@@ -81,6 +82,7 @@ class SlipController extends Controller
         $boat_detail = [];
         $information_aerial = [];
         $aviation_extras = [];
+        $exclusionesSelect = [];
 
         switch ($slip->type_coverage) {
             case '1':
@@ -92,6 +94,7 @@ class SlipController extends Controller
                 //clausulas y cobertura to find
                 $coberturasSelect = CoberturasSelector::where('main_branch', 'vida')->get();
                 $clausulasSelect = Clausulas_selector::where('main_branch', 'vida')->get();
+                $exclusionesSelect = exclusiones_selectors::all();
                 break;
             case '5':
             case '6':
@@ -273,6 +276,7 @@ class SlipController extends Controller
             ->with('aviation_extras', $aviation_extras)
             ->with('vehicles_details', $vehicles_details)
             ->with('coberturasSelect', $coberturasSelect)
+            ->with('exclusionesSelect', $exclusionesSelect)
             ->with('clausulasSelect', $clausulasSelect)
             ->with('object_insurance', $object_insurance);
 

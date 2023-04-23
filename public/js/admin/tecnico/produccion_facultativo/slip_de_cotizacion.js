@@ -957,7 +957,7 @@ const incendioCobertura = document.getElementById('incendioCobertura')
 
 //coberturas
 
-function addRowCoberturaV2(event) {
+/* function addRowCoberturaV2(event) {
     event.preventDefault()
 
     let rowCount = document.getElementById('coberturasAdicionalesTable').rows.length
@@ -998,7 +998,7 @@ $(document).on('click', '.btn-delete-cobertura', function (e) {
 
     $(`#newRowCoberturaAdicional${id}`).remove()
 
-})
+}) */
 
 
 
@@ -2038,7 +2038,7 @@ $(document).on('click', '.btn-delete-fidelidad-objeto', function (e) {
 
 
 
-function addRowExclusion(event) {
+function addRowExclusion(event, type, typeRamo, typeCobertura) {
     event.preventDefault()
 
     let rowCount = document.getElementById('exclusionesAdicionalesTable').rows.length
@@ -2069,6 +2069,9 @@ function addRowExclusion(event) {
             <button id="${rowCount}" type="button" class="btn btn-danger btn-xs btn-delete-exclusion"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
         </td>
         `
+
+        coberturasSelect(`#description_coverage_additional_${rowCount}`, `${typeRamo}`, `${typeSubCobertura}`);
+
 }
 
 $(document).on('click', '.btn-delete-exclusion', function (e) {
@@ -2103,9 +2106,11 @@ function sumaAseguradaV2() {
 function addEndosoAdicional(event) {
     event.preventDefault()
 
+
+    let rowCount = document.getElementById('endososTable').rows.length
     const endososTableBody = document.getElementById('endososTableBody')
     const tr = document.createElement('tr')
-
+    tr.id = `newRowEndosos${rowCount}`
     endososTableBody.appendChild(tr)
     tr.innerHTML =
         `
@@ -2121,11 +2126,18 @@ function addEndosoAdicional(event) {
                     name="">
             </td>
             <td>
-
+                <button id="${rowCount}" type="button" class="btn btn-danger btn-xs btn-delete-endosos"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
             </td>
         `
 
 }
+
+$(document).on('click', '.btn-delete-endosos', function(e) {
+    e.preventDefault();
+    var id = $(this).attr('id')
+
+    $(`#newRowEndosos${id}`).remove()
+})
 
 //objeto del seguro table
 const objetoSeguroSuma1 = document.getElementById('objetoSeguroSuma1')
