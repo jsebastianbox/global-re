@@ -100,18 +100,19 @@ Administración | Técnico
             success: function(response) {
                 $('#files-container-spinner').remove()
                 response.forEach((file) => {
-                    console.log(file)
                     $('#files-container').append(`
                     <div style="display:flex;gap: 1rem;"> 
                     <span> ${file.name} </span>
-                    <button type="button" class="btn btn-success btn-xs download-btn" data-file="${file.file}"> Descargar </button>
+                    <button type="button" class="btn btn-success btn-xs download-btn" data-file="${file.file}" data-extension="${file.extension}" data-name="${file.name}"> Descargar </button>
                      </div>
                     `)
                 })
 
                 $('.download-btn').click(function() {
                     const file = $(this).data('file');
-                    downloadFile(file);
+                    const name = $(this).data('name');
+                    const extension = $(this).data('extension');
+                    downloadFile(file, name, extension);
                 });
             },
             error: function() {
@@ -120,12 +121,40 @@ Administración | Técnico
         });
     }
 
-    function downloadFile(file) {
-        console.log(file)
+    function downloadFile(file, name, extension) {
+        const decodedFile = atob(file);
+        const blob = new Blob([decodedFile], {
+            type: 'application/octet-stream'
+        });
+
+        fetch(`data:application/*;base64,${file}`).then(base64 => base64.blob()).then(blob => {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${name}.${extension}`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+        });
     }
 
     function closeModal() {
         $('#files-container').empty()
+    }
+
+    window.addEventListener("click", function(event) {
+        if (event.target === document.getElementById("files-modal")) {
+            closeModal()
+        }
+    });
+
+    async function showPdf(slip) {
+        const response = await fetch(`api/slips/${slip.id}/pdf`);
+        const pdfBlob = await response.json();
+        console.log(pdfBlob);
+        const pdfUrl = URL.createObjectURL(pdfBlob);
+        window.open(pdfUrl);
+        URL.revokeObjectURL(pdfUrl);
     }
 </script>
 
@@ -156,13 +185,15 @@ Administración | Técnico
                     </td>
                     <td style="text-align: center">{{ $slip->updated_at }}</td>
                     <td style="text-align: center">
-                        <a href="{{ url('/slip_selected', [$slip->id]) }}" class="btn btn-info btn-xs" style="margin-right:16px;"> Seleccionar Slip
+                        <a href="{{ url('/slip_selected', [$slip->id]) }}" class="btn btn-info btn-xs"> Seleccionar Slip
                         </a>
 
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#files-modal" onclick="fetchFiles({{$slip}})">
                             Adjuntos
                         </button>
+
+                        <button type="button" class="btn btn-info btn-xs" onclick="showPdf({{$slip}})"> Ver PDF del slip </button>
 
                         <!-- Modal -->
                         <div class="modal fade" id="files-modal" tabindex="-1" role="dialog" aria-labelledby="files-modal" aria-hidden="true">
