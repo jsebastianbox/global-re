@@ -166,6 +166,7 @@ Route::resource('/statuses', StatusesApi::class);
 Route::apiResource('/users', UsersApi::class);
 Route::resource('/countries', CountriesApi::class);
 Route::resource('/slips', SlipsApi::class);
+Route::get('/slips/{id}/files', [SlipsApi::class, 'slipFiles']);
 
 Route::resource('/adjusters', AdjusterRecords::class);
 Route::resource('/reinsurers', ReinsurerRecords::class);

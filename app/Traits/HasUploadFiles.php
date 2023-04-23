@@ -258,12 +258,16 @@ trait HasUploadFiles
             case 'finanzas_2':
                 $keys[] = "sourceDoc";
                 break;
-            
+
             default:
 
                 break;
         }
         return $keys;
+    }
+    public function getSlipFiles(string $case, $id, string $slip_route = null)
+    {
+        $slip_route = $slip_route ?? $case;
     }
     public function chargeFilesIntoView(string $slip_route, $case, $id, View $view): View
     {
