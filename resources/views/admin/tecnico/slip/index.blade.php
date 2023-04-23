@@ -101,7 +101,7 @@ Administración | Técnico
                 $('#files-container-spinner').remove()
                 response.forEach((file) => {
                     $('#files-container').append(`
-                    <div style="display:flex;gap: 1rem;"> 
+                    <div style="display:flex;gap: 1rem;">
                     <span> ${file.name} </span>
                     <button type="button" class="btn btn-success btn-xs download-btn" data-file="${file.file}" data-extension="${file.extension}" data-name="${file.name}"> Descargar </button>
                      </div>
@@ -122,11 +122,6 @@ Administración | Técnico
     }
 
     function downloadFile(file, name, extension) {
-        const decodedFile = atob(file);
-        const blob = new Blob([decodedFile], {
-            type: 'application/octet-stream'
-        });
-
         fetch(`data:application/*;base64,${file}`).then(base64 => base64.blob()).then(blob => {
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -134,7 +129,6 @@ Administración | Técnico
             a.download = `${name}.${extension}`;
             a.click();
             URL.revokeObjectURL(url);
-
         });
     }
 
@@ -149,12 +143,11 @@ Administración | Técnico
     });
 
     async function showPdf(slip) {
-        const response = await fetch(`api/slips/${slip.id}/pdf`);
-        const pdfBlob = await response.json();
-        console.log(pdfBlob);
-        const pdfUrl = URL.createObjectURL(pdfBlob);
-        window.open(pdfUrl);
-        URL.revokeObjectURL(pdfUrl);
+        fetch(`api/slips/${slip.id}/pdf`).then(base64 => base64.blob()).then(blob => {
+            const pdfBlob = URL.createObjectURL(blob);
+            window.open(pdfBlob);
+            URL.revokeObjectURL(pdfBlob);
+        });
     }
 </script>
 

@@ -1,1 +1,1 @@
-<p>Tesdf</p>
+<p>{{$slip_type}}</p>
