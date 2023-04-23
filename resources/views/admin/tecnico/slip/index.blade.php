@@ -38,6 +38,7 @@ Administración | Técnico
 @endsection
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 @if (session('success'))
 <script>
     let timerInterval;
@@ -70,6 +71,60 @@ Administración | Técnico
 </script>
 @endif
 
+<style>
+    .spinner {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-top-color: #3498db;
+        animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<script>
+    function fetchFiles(slip) {
+        $.ajax({
+            url: `api/slips/${slip.id}/files`,
+            type: 'GET',
+            data: {},
+            beforeSend: function() {
+                $('#files-container').append('<div id="files-container-spinner" class="spinner"></div>');
+            },
+            success: function(response) {
+                $('#files-container-spinner').remove()
+                response.forEach((file) => {
+                    console.log(file)
+                    $('#files-container').append(`
+                    <div style="display:flex;gap: 1rem;"> 
+                    <span> ${file.name} </span>
+                    <button type="button" class="btn btn-success btn-xs download-btn" data-file="${file.file}"> Descargar </button>
+                     </div>
+                    `)
+                })
+
+                $('.download-btn').click(function() {
+                    const file = $(this).data('file');
+                    downloadFile(file);
+                });
+            },
+            error: function() {
+                alert('Error al cargar los archivos.');
+            }
+        });
+    }
+
+    function downloadFile(file) {
+        console.log(file)
+    }
+</script>
+
 <div id="slip" class="card" style="padding-inline: 2.5rem; padding-block: 4rem">
     <div class="card-body">
         <div class="card-title" style="font-size: 2.25rem; font-weight: 600; padding-block: 1.75rem">
@@ -100,12 +155,31 @@ Administración | Técnico
                         <a href="{{ url('/slip_selected', [$slip->id]) }}" class="btn btn-info btn-xs" style="margin-right:16px;"> Seleccionar Slip
                         </a>
 
-                        <script>
-                            function test(msg) {
-                                console.log(msg)
-                            }
-                        </script>
-                        <button onclick="test('dsaf')">Adjuntos</button>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#files-modal" onclick="fetchFiles({{$slip}})">
+                            Adjuntos
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="files-modal" tabindex="-1" role="dialog" aria-labelledby="files-modal" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="padding: 0.25rem;font-size:large;">
+                                        <h5 class="modal-title" id="showFilesBtn" style="margin: 0"> Ver adjuntos </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+                                        <div id="files-container" style="width: 100%;height: 100%;display: flex;flex-direction: column;align-items: center;justify-content: center; gap:1rem;"></div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"> Cerrar </button>
+                                        <button type="button" class="btn btn-primary"> Guardar cambios </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
