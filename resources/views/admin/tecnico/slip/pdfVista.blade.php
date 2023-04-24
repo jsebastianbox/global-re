@@ -1,32 +1,23 @@
-@extends('admin.layout')
-
-@section('content')
-<link rel="stylesheet" href="{{ asset('css/admin/tecnico/produccion_facultativo/slip_de_cotizacion.css') }}">
-<script defer src="{{ asset('js/admin/tecnico/produccion_facultativo/slip_de_cotizacion.js') }}"></script>
-<script defer src="{{ asset('js/admin/tecnico/produccion_facultativo/security_table.js') }}"></script>
-
-@include('include.datatable')
-
-@endsection
+@include('admin.tecnico.slip.pdf-generales.baseData')
 @switch($slip->type_coverage)
 @case('1')
 @case('2')
 
 @case('3')
 @case('4')
-@include('admin.tecnico.slip.type_slip.sliplife')
+@include('admin.tecnico.slip.pdf-slips-types.life')
 @break
 
 @case('5')
 @case('6')
 @case('7')
 @case('8')
-@include('admin.tecnico.slip.type_slip.slipfire')
+@include('admin.tecnico.slip.pdf-slips-types.fire')
 @break
 
 @case('9')
 @case('10')
-@include('admin.tecnico.slip.type_slip.slipLivianos')
+@include('admin.tecnico.slip.pdf-slips-types.livianos')
 @break;
 @case('11')
 @case('12')
@@ -38,30 +29,29 @@
 @case('16')
 
 @case('17')
-@include('admin.tecnico.slip.type_slip.slipEquipoElectronico')
+@include('admin.tecnico.slip.pdf-slips-types.equipoElectronico')
 @break
 
 @case('18')
 @case('19')
 
 @case('20')
-@include('admin.tecnico.slip.type_slip.slipPetrolero')
+@include('admin.tecnico.slip.pdf-slips-types.petrolero')
 @break
-
 @case('21')
 @case('22')
-@include('admin.tecnico.slip.type_slip.slipcasco')
+@include('admin.tecnico.slip.pdf-slips-types.casco')
 @break
 
 @case('23')
-@include('admin.tecnico.slip.type_slip.slipproteccion')
+@include('admin.tecnico.slip.pdf-slips-types.proteccion')
 @break
 
 @case('24')
 @case('25')
 
 @case('26')
-@include('admin.tecnico.slip.type_slip.slipPortuaria')
+@include('admin.tecnico.slip.pdf-slips-types.portuaria')
 @break
 
 @case('27')
@@ -71,23 +61,23 @@
 @case('30')
 
 @case('31')
-@include('admin.tecnico.slip.type_slip.slipInterno')
+@include('admin.tecnico.slip.pdf-slips-types.interno')
 @break
 
 @case('32')
 @case('33')
-@include('admin.tecnico.slip.type_slip.slipCascoAereo')
+@include('admin.tecnico.slip.pdf-slips-types.cascoAereo')
 @break
 
 @case('34')
-@include('admin.tecnico.slip.type_slip.slipLicencia')
+@include('admin.tecnico.slip.pdf-slips-types.licencia')
 @break
 
 @case('35')
 @case('36')
 
 @case('37')
-@include('admin.tecnico.slip.type_slip.slipAviacion3') {{-- SLIP PENDIENTE --}}
+@include('admin.tecnico.slip.pdf-slips-types.aviacion') {{-- SLIP PENDIENTE --}}
 @break
 
 @case('38')
@@ -97,20 +87,20 @@
 @case('41')
 
 @case('42')
-@include('admin.tecnico.slip.type_slip.slipResponsabilidadCivil')
+@include('admin.tecnico.slip.pdf-slips-types.responsabilidadCivil')
 @break
 
 @case('43')
-@include('admin.tecnico.slip.type_slip.slipDirectores')
+@include('admin.tecnico.slip.pdf-slips-types.directores')
 @break
 
 @case('44')
 @case('45')
-@include('admin.tecnico.slip.type_slip.slipBankers')
+@include('admin.tecnico.slip.pdf-slips-types.bankers')
 @break
 
 @case('46')
-@include('admin.tecnico.slip.type_slip.slipFidelidad')
+@include('admin.tecnico.slip.pdf-slips-types.fidelidad')
 @break
 
 @case('47')
@@ -119,12 +109,11 @@
 @case('50')
 @case('51')
 @case('52')
-@include('admin.tecnico.slip.type_slip.slipFianzas')
+@include('admin.tecnico.slip.pdf-slips-types.fianzas')
 @break
 
 @default
 @endswitch
 
-<script defer src="{{ asset('js/admin/tecnico/produccion_facultativo/indexSlips.js') }}"></script>
 
-@endsection
+@include('admin.tecnico.slip.pdf-generales.footerData')

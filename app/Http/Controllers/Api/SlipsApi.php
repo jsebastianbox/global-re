@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Slip;
 use App\Traits\HasSlipsType;
 use App\Traits\HasUploadFiles;
@@ -101,10 +102,32 @@ class SlipsApi extends Controller
     public function slipPDF(Request $request, $id)
     {
         $slip = Slip::find($id);
-        [$slip_type, $case] = $this->getSlipType($slip);
+        $user = Auth::user();
+        [$slip_type, [
+            $sum_assured,
+            $boat_detail,
+            $information_aerial,
+            $aviation_extras,
+            $vehicles_details,
+            $coberturasSelect,
+            $exclusionesSelect,
+            $clausulasSelect,
+            $object_insurance
+
+        ]] = $this->getSlipWithExtras($slip);
         $pdf = PDF::loadView('admin.tecnico.slip.pdfVista', [
             'slip_type' => $slip_type,
-            'slip' => $slip
+            'slip' => $slip,
+            'user' => $user,
+            'sum_assured' => $sum_assured,
+            'boat_detail' => $boat_detail,
+            'information_aerial' => $information_aerial,
+            'aviation_extras' => $aviation_extras,
+            'vehicles_details' => $vehicles_details,
+            'coberturasSelect' => $coberturasSelect,
+            'exclusionesSelect' => $exclusionesSelect,
+            'clausulasSelect' => $clausulasSelect,
+            'object_insurance' => $object_insurance
         ]);
         return $pdf->download('slip_informe.pdf');
     }
