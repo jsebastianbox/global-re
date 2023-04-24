@@ -183,27 +183,30 @@
             </div>
         </div>
 
-        @if ($slip->type_coverage === 11)
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <span class="input-group-text">Suma asegurable</span>
-                        <input value="{{$slip_type->asegurable_electronico}}" type="number" step="any" class="form-control" name="asegurable_electronico">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <span class="input-group-text">Suma asegurada</span>
-                        <input value="{{$slip_type->asegurada_electronico}}" type="number" step="any" class="form-control" name="asegurada_electronico">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <span class="input-group-text">Límite de indemnización</span>
-                        <input value="{{$slip_type->limit_compensation}}" type="number" name="limit_compensation" id="" class="form-control" step="any">
-                    </div>
+        <div class="row mb-3">
+            @if ($slip->type_coverage !== 15 && $slip->type_coverage !== 16 && $slip->type_coverage !== 17)
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-text">Suma asegurable</span>
+                    <input value="{{$slip_type->asegurable_electronico}}" type="number" step="any" class="form-control" name="asegurable_electronico">
                 </div>
             </div>
+            
+            @endif
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-text">Suma asegurada</span>
+                    <input value="{{$slip_type->asegurada_electronico}}" type="number" step="any" class="form-control" name="asegurada_electronico">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-text">Límite de indemnización</span>
+                    <input value="{{$slip_type->limit_compensation}}" type="number" name="limit_compensation" id="" class="form-control" step="any">
+                </div>
+            </div>
+        </div>
+        @if ($slip->type_coverage === 11)
             <div class="row">
                 <div class="col-md-10">
                     <table class="table table-hover table-light table-responsive-lg">
@@ -298,39 +301,6 @@
             </div>
         @endif
 
-
-        @if ($slip_type->asegurable_electronico > 0)
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="input-group">
-                        <span class="input-group-text">Límite de indemnizacion</span>
-                        <input value="{{$slip_type->limit_compensation}}" type="number" step="any" class="form-control" name="limit_compensation">
-                    </div>
-                </div>
-
-                <div class="col-md-6" id="inputSumaAsegurable3">
-                    <div class="input-group mb-3">
-                        <label class="input-group-text">Suma asegurable</label>
-                        <input value="{{$slip_type->asegurable_electronico}}" id="input_sumaAsegurable" type="number" step="any" placeholder="Suma asegurable" name="asegurable_electronico">
-                    </div>
-                </div>
-            </div>
-        @else
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="input-group">
-                        <span class="input-group-text">Límite de indemnizacion</span>
-                        <input value="{{$slip_type->limit_compensation}}" type="number" step="any" class="form-control" name="limit_compensation">
-                    </div>
-                </div>
-                <div class="col-md-6" id="inputSumaAsegurada3" style="display:flex">
-                    <div class="input-group mb-3">
-                        <label class="input-group-text">Suma asegurada</label>
-                        <input value="{{$slip_type->asegurada_electronico}}" id="input_sumaAsegurada" type="number" step="any" placeholder="Suma asegurada" name="asegurada_electronico">
-                    </div>
-                </div>
-            </div>
-        @endif
         @if ($slip->type_coverage === 13)
         
             <div class="tableContainer">
@@ -423,6 +393,7 @@
             <label class="lead">Coberturas adicionales</label>
             <hr style="background-color: darkgrey; width: 70%">
         </div>
+
 
         <div class="row">
             @include('admin.comercial.include.edit_tablaCoberturas')
@@ -729,26 +700,36 @@
         </div>
     </div>
 
-    <div class="tab">
+    <div class="tab">`
+        <div class="row">
+            <div class="col-md-6" id="inputSumaAsegurable3">
+                <div class="input-group">
+                    <span class="input-group-text">Suma asegurable</span>
+                    <input id="input_sumaAsegurable" type="number" step="any" class="form-control" name="asegurable_electronico">
+                </div>
+            </div>
+            <div class="col-md-6" id="inputSumaAsegurada3">
+                <div class="input-group">
+                    <span class="input-group-text">Suma asegurada</span>
+                    <input id="input_sumaAsegurada" type="number" step="any" class="form-control" name="asegurada_electronico">
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-2">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text">Límite de indemnizacion</span>
+                    <input type="number" name="limit_compensation" id="" class="form-control" step="any">
+                </div>
+            </div>
+        </div>
         <div id="showElectronico" style="display: none">
             <div class="row">
                 <label class="lead">Suma asegurada y/o asegurable</label>
                 <hr style="background-color: darkgrey; width: 70%">
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="input-group">
-                        <span class="input-group-text">Suma asegurable</span>
-                        <input type="number" step="any" class="form-control" name="asegurable_electronico">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="input-group">
-                        <span class="input-group-text">Suma asegurada</span>
-                        <input type="number" step="any" class="form-control" name="asegurada_electronico">
-                    </div>
-                </div>
-            </div>
+            
             <div class="row my-2">
                 <div class="col-md-8">
                     <table class="table table-hover table-light table-responsive-lg">
@@ -808,12 +789,7 @@
                 <hr style="background-color: darkgrey; width: 70%">
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <span class="input-group-text">Límite</span>
-                        <input type="number" name="limit_compensation" id="" class="form-control" step="any">
-                    </div>
-                </div>
+                
                 <div class="col-md-8">
                     <table class="table table-hover table-light table-responsive-lg">
                         <caption>Cuadro resumen</caption>
@@ -995,30 +971,13 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-4">
-                <div class="input-group">
-                    <span class="input-group-text">Límite de indemnizacion</span>
-                    <input type="number" step="any" class="form-control" name="limit_compensation">
-                </div>
-            </div>
-            <div class="col-md-4" id="inputSumaAsegurada3" style="display:flex">
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="insuredSum">Suma asegurada</label>
-                    <input id="input_sumaAsegurada" type="number" step="any" placeholder="Suma asegurada" name="asegurable_electronico">
-                </div>
-            </div>
-
-            <div class="col-md-4" id="inputSumaAsegurable3" style="display:none">
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="insuredSum">Suma asegurable</label>
-                    <input id="input_sumaAsegurable" type="number" step="any" placeholder="Suma asegurable" name="asegurada_electronico">
-                </div>
-            </div>
+        <div id="tituloCoberturas" class="row">
+            <label class="lead">Coberturas adicionales</label>
+            <hr style="background-color: darkgrey; width: 70%">
         </div>
 
-        <div class="row">
-            <label class="lead">Coberturas adicionales</label>
+        <div id="tituloCobertura" class="row" style="display:none">
+            <label class="lead">Coberturas</label>
             <hr style="background-color: darkgrey; width: 70%">
         </div>
 

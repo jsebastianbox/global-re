@@ -12,6 +12,32 @@
 
         @include('admin.tecnico.slip.slips_generales.objectInsuranceAndCoverage')
 
+
+        @if ($slip->type_coverage !== 13 && $slip->type_coverage !== 14 && $slip->type_coverage !== 17)
+            <div class="two-sides">
+                <div class="left_side">
+                    <div class="input_group">
+                        <label for="">Límite de indemnización</label>
+                        <input value="{{$slip_type->limit_compensation}}" type="number" step="any" class="form-control" name="limit_compensation">
+                    </div>
+                </div>
+
+                <div class="right_side">
+                    @if ($slip->type_coverage !== 15 && $slip->type_coverage !== 16)
+                        <div class="input_group">
+                            <label for="">Suma asegurable:</label>
+                            <input value="{{$slip_type->asegurable_electronico}}" type="number" step="any" placeholder="Suma asegurada" name="asegurable_electronico">
+                        </div>
+                    
+                    @endif
+                    <div class="input_group">
+                        <label for="">Suma asegurada:</label>
+                        <input value="{{$slip_type->asegurada_electronico}}"type="number" step="any" placeholder="Suma asegurable" name="asegurada_electronico">
+                    </div>
+                </div>  
+            </div>
+        @endif
+
         @if ($slip->type_coverage === 13 || $slip->type_coverage === 17)
             <div class="two-sides">
                 <div class="left_side">
@@ -27,11 +53,20 @@
                             <option value="">Americana</option>
                         </select>
                     </div>
-
-
                 </div>
+                
                 <div class="right_side">
-                    @if ($slip_type->asegurable_electronico > 0)
+                    @if($slip_type->asegurada_electronico > 0 && $slip_type->asegurable_electronico > 0)
+                    <div class="input_group">
+                        <label for="">Suma asegurada:</label>
+                        <input value="{{$slip_type->asegurada_electronico}}"type="number" step="any" placeholder="Suma asegurable" name="asegurada_electronico">
+                    </div>
+                    <div class="input_group">
+                        <label for="">Suma asegurable:</label>
+                        <input value="{{$slip_type->asegurable_electronico}}" type="number" step="any" placeholder="Suma asegurada" name="asegurable_electronico">
+
+                    </div>
+                    @elseif ($slip_type->asegurable_electronico > 0)
                     
                         <div class="input_group">
                             <label for="">Suma asegurable:</label>
@@ -43,6 +78,7 @@
                             <label for="">Suma asegurada:</label>
                             <input value="{{$slip_type->asegurada_electronico}}"type="number" step="any" placeholder="Suma asegurable" name="asegurada_electronico">
                         </div>
+
                     @endif
                     <div class="input_group">
                         <label for="">Periodo Indemnizacion</label>
@@ -139,7 +175,7 @@
         @endif
 
 
-        @if ($slip->type_coverage === 14 || $slip->type_coverage === 15)
+        @if ($slip->type_coverage === 14)
             @include('admin.tecnico.slip.slips_generales.limiteIndem')
 
             <div class="tableContainer" style="margin: 2rem 0">
@@ -196,7 +232,7 @@
             </div>
         @endif
         
-        @if ($slip->type_coverage === 16)
+        @if ($slip->type_coverage === 15 || $slip->type_coverage === 16)
             <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Suma Asegurada</h3>
 
             <div class="tableContainer">
@@ -393,8 +429,20 @@
             </div>
         @endif
 
-        @if ($slip->type_coverage === 16)
-            <h3 class="slipTitle"> <span class="badge badge-secondary"></span> Endosos Adicionales</h3>
+
+
+        {{-- Coberturas adicionales --}}
+        @if ($slip->type_coverage === 15 ||$slip->type_coverage === 16)
+        <h3 class="slipTitle"> <span class="badge badge-secondary"></span> Coberturas</h3>
+
+        @endif
+        <h3 class="slipTitle"> <span class="badge badge-secondary"></span> Coberturas Adicionales</h3>
+
+        @include('admin.comercial.include.edit_tablaCoberturas')
+                
+
+        @if ($slip->type_coverage === 15 ||$slip->type_coverage === 16)
+            <h3 class="slipTitle"> <span class="badge badge-secondary"></span> Coberturas Adicionales</h3>
             
             <div class="tableContainer">
                 <table id="endososTable" class="indemnizacionTable">
@@ -414,7 +462,7 @@
                     </thead>
                     {{-- tbody --}}
 
-                    <tbody id="endososTableBody">
+                    {{-- <tbody id="endososTableBody">
                         <td>
                             <textarea name=""></textarea>
                         </td>
@@ -429,9 +477,9 @@
                         <td>
             
                         </td>
-                    </tbody>
+                    </tbody> --}}
 
-                    {{-- <tbody id="endososTableBody">
+                    <tbody id="endososTableBody">
 
                         <tr>
                             <td>
@@ -856,17 +904,11 @@
                         </tr>
 
 
-                    </tbody> --}}
+                    </tbody>
 
                 </table>
             </div>
         @endif
-
-        {{-- Coberturas adicionales --}}
-        <h3 class="slipTitle"> <span class="badge badge-secondary"></span> Coberturas Adicionales</h3>
-
-        @include('admin.comercial.include.edit_tablaCoberturas')
-                
     </div>
 
     <div class="form_group3">
@@ -876,7 +918,7 @@
         @include('admin.comercial.include.edit_tablaClausulas')
 
 
-        @if ($slip->type_coverage === 12 || $slip->type_coverage === 15)
+        @if ($slip->type_coverage === 12)
             @include('admin.tecnico.slip.slips_generales.tableRoturaMaquinaria')
         @endif
 
