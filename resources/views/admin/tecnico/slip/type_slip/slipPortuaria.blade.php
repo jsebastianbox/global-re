@@ -22,6 +22,15 @@
             </div>
 
             
+            {{-- Cobertura --}}
+            <div class="input_group" style="max-width: 600px; margin-bottom:2rem">
+                <label>
+                    <i class="fa-solid fa-bars-staggered"></i>
+                    Cobertura
+                </label>
+                <textarea name="coverage" id="coverage" style="resize:both;width:100%;" 
+                cols="30" rows="1">{{ $slip_type->coverage }}</textarea>
+            </div>
 
             {{-- Limite de Indemnizacion: --}}
             <div class="input_group" style="max-width: 340px; margin-bottom:2rem">
@@ -33,39 +42,16 @@
                     disabled value="{{ $slip_type->limit_compensation }}">
             </div>
 
-            {{-- Cobertura --}}
-            <div class="input_group" style="max-width: 600px; margin-bottom:2rem">
-                <label>
-                    <i class="fa-solid fa-bars-staggered"></i>
-                    Cobertura
-                </label>
-                <textarea name="coverage" id="coverage" style="resize:both;width:100%;" 
- cols="30" rows="1">{{ $slip_type->coverage }}</textarea>
-            </div>
 
         </div>
 
-        <div class="two-sides">
-
-        
-
-
-                
-
-            <div class="right_side">
-
-                
-
-            </div>
-
-        </div>
     </div>
 
     <div class="form_group2">
         {{-- Coberturas adicionales --}}
         <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Coberturas Adicionales</h3>
 
-        @include('admin.tecnico.slip.slips_generales.tableCoberturasAdicionales')
+        @include('admin.comercial.include.edit_tablaCoberturas')
 
     </div>
 
@@ -73,7 +59,7 @@
         {{-- Cláusulas Adicionales --}}
         <h3 class="slipTitle"> <span class="badge badge-secondary">3</span> Cláusulas Adicionales</h3>
 
-        @include('admin.tecnico.slip.slips_generales.clausulasAdicionales')
+        @include('admin.comercial.include.edit_tablaClausulas')
 
     </div>
 
