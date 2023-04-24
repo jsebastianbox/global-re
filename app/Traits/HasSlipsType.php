@@ -160,6 +160,8 @@ trait HasSlipsType
         switch ($name) {
 
             case "siniestralidadCincoAnios":
+                $file_info['name'] = "Siniestralidad embarcación";
+                break;
             case "accidentRate":
                 $file_info['name'] = "Siniestralidad últmios 5 años";
                 break;
@@ -168,203 +170,158 @@ trait HasSlipsType
                 $file_info['name'] = "Formularios de cotización";
                 break;
             case "inspection_control_file":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Informe de inspección";
                 break;
             case "machine_list_file":
                 $file_info['name'] = "Listado de maquinaria";
                 break;
             case "devices_list_file":
-                $file_info['name'] = "Listado de equipos (Valorados para equipo
-                        electrónico)";
+                $file_info['name'] = "Listado de equipos";
                 break;
             case "desglose_file":
-                $file_info['name'] = "Detalle/Desglose (Valor asegurado por
-                        ubicación y por rubro)";
+                $file_info['name'] = "Detalle/Desglose";
                 break;
             case "informe":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Informe de inspección";
                 break;
             case "coverageDetail":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Detalle de bienes asegurados";
                 break;
             case "schedule":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Cronograma";
                 break;
             case "soilStudy":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Estudio de suelos";
                 break;
             case "quotationForm":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Formulario de cotización";
                 break;
             case "experience":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Experiencia";
                 break;
 
             case "workMemory":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Memoria de la obra";
                 break;
             case "valueDetail":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Detalle/Desglose: ubicación rubro";
                 break;
 
             case "petroleumDenValue":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "etalle/Desglose:pozo energia";
                 break;
 
             case "report":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Informe de inspección";
                 break;
 
             case "anualIncome":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Ingresos estimados anuales";
                 break;
 
             case "employees":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Informe de inspección";
                 break;
 
             case "vehicles":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "No. Vehículos";
                 break;
 
             case "payroll":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Valor de la nómina";
                 break;
             case "dailyProduction":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Produccion barriles por día";
                 break;
             case "barrelValue":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Costo extracción por barril";
                 break;
+            case "quotationReport":
+                $file_info['name'] = "Formulario cotización relleno y firmado";
+                break;
+
+            case "financialStatements":
+                $file_info['name'] = "Estados financieros";
+                break;
+
+                break;
+
             case "quotationReport":
                 $file_info['name'] = "Siniestralidad";
                 break;
 
-            case "financialStatements":
-                $file_info['name'] = "Siniestralidad";
-                break;
-            case "quotationReport":
-                $file_info['name'] = "Siniestralidad";
-                break;
             case "financialStatements":
                 $file_info['name'] = "Siniestralidad";
                 break;
             case "modelMakeHours":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Horas en marca y modelo";
                 break;
             case "otherForms":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Formularios Hangares y formularios varios por cobertura";
                 break;
 
             case "crFormSigned":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Formulario casco relleno y firmado";
                 break;
 
             case "pilotExperienceFormSigned":
-                $file_info['name'] = "Siniestralidad";
-                break;
-
+                $file_info['name'] = "Formulario experiencia pilotos: relleno y firmado";
                 break;
 
             case "pilotos":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Detalle pilotos asegurados";
                 break;
 
             case "signedForm":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Formulario cotización: relleno y firmado";
                 break;
 
             case "medicTest":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Exámenes médicos";
                 break;
 
-                break;
-
-            case "crFormSigned":
-                $file_info['name'] = "Siniestralidad";
-                break;
             case "copiaMatricula":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Copia matrícula embarcación";
                 break;
             case "informeInspeccion":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Informe inspección actualizado";
                 break;
             case "siniestralidad_armador":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Siniestralidad armador";
                 break;
             case "otrasEmbarcaciones":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Otras embarcaciones armador";
                 break;
 
             case "experienciaArmador":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Experiencia armador otras embarcaciones";
                 break;
             case "detalleMantenimiento":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Detalles de mantenimiento: incluyendo maquinaria y costos";
                 break;
             case "tripulacionInfo":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Información de la tripulación";
                 break;
             case "detalleLicencia":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Detalle licencias requerida para navegación";
                 break;
             case "detalleViaje":
                 $file_info['name'] = "Detalles de los viajes de pesca (en
                     caso de requerir casco pesquero)";
                 break;
             case "detalleValorReemplazo":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Detalle valor para reemplazar maquinaria";
                 break;
             case "formularioFirmado":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Formulario relleno y firmado";
                 break;
-            case "copiaMatricula":
-                $file_info['name'] = "Siniestralidad";
-                break;
-            case "informeInspeccion":
-                $file_info['name'] = "Siniestralidad";
-                break;
-            case "siniestralidad_armador":
-                $file_info['name'] = "Siniestralidad";
-                break;
-            case "otrasEmbarcaciones":
-                $file_info['name'] = "Siniestralidad";
-                break;
-            case "experienciaArmador":
-                $file_info['name'] = "Siniestralidad";
-                break;
-            case "detalleMantenimiento":
-                $file_info['name'] = "Siniestralidad";
-                break;
-            case "tripulacionInfo":
-                $file_info['name'] = "Siniestralidad";
-                break;
-            case "detalleLicencia":
-                $file_info['name'] = "Siniestralidad";
-                break;
-            case "detalleViajeFile":
-                $file_info['name'] = "Siniestralidad";
-                break;
-            case "detalleValorReemplazo":
-                $file_info['name'] = "Siniestralidad";
-                break;
-            case "formularioFirmado":
-                $file_info['name'] = "Siniestralidad";
-                break;
-            case "report":
-                $file_info['name'] = "Siniestralidad";
-                break;
-            case "signedForm":
-                $file_info['name'] = "Siniestralidad";
-                break;
-            case "quotationReport":
-                $file_info['name'] = "Siniestralidad";
-                break;
+
+
             case "financialReport":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Formulario cotización relleno y firmado";
                 break;
             case "sourceDoc":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Documento fuente";
                 break;
             default:
                 break;
