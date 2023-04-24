@@ -12,7 +12,7 @@
 
         @include('admin.tecnico.slip.slips_generales.objectInsuranceAndCoverage')
 
-        @if ($slip->type_coverage === 13)
+        @if ($slip->type_coverage === 13 || $slip->type_coverage === 17)
             <div class="two-sides">
                 <div class="left_side">
                     <div class="input_group">
