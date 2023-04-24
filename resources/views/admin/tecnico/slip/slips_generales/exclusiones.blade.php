@@ -272,12 +272,10 @@
                     @break
                     @endswitch
                     <script>
-                        setTimeout(() => {
-                            const button = document.getElementById('addRowExclusionButton');
+                        $(document).ready(function () {
+                            const button = $('#addRowExclusionButton');                            
                             button.click()
-
-                        }, 500)
-                        
+                        })              
                     </script>
                 </th>
             </tr>
