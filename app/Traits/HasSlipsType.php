@@ -163,7 +163,7 @@ trait HasSlipsType
                 $file_info['name'] = "Siniestralidad embarcación";
                 break;
             case "accidentRate":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Siniestralidad últmios 5 años";
                 break;
 
             case "quote_form_file":
@@ -230,7 +230,6 @@ trait HasSlipsType
             case "payroll":
                 $file_info['name'] = "Valor de la nómina";
                 break;
-
             case "dailyProduction":
                 $file_info['name'] = "Produccion barriles por día";
                 break;
@@ -245,10 +244,18 @@ trait HasSlipsType
                 $file_info['name'] = "Estados financieros";
                 break;
 
+                break;
+
+            case "quotationReport":
+                $file_info['name'] = "Siniestralidad";
+                break;
+
+            case "financialStatements":
+                $file_info['name'] = "Siniestralidad";
+                break;
             case "modelMakeHours":
                 $file_info['name'] = "Horas en marca y modelo";
                 break;
-
             case "otherForms":
                 $file_info['name'] = "Formularios Hangares y formularios varios por cobertura";
                 break;
@@ -298,8 +305,9 @@ trait HasSlipsType
             case "detalleLicencia":
                 $file_info['name'] = "Detalle licencias requerida para navegación";
                 break;
-            case "detalleViajeFile":
-                $file_info['name'] = "Detalles de viajes pesca ";
+            case "detalleViaje":
+                $file_info['name'] = "Detalles de los viajes de pesca (en
+                    caso de requerir casco pesquero)";
                 break;
             case "detalleValorReemplazo":
                 $file_info['name'] = "Detalle valor para reemplazar maquinaria";

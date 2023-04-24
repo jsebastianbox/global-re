@@ -134,14 +134,14 @@
     });
 
 
-    const detalleViajeFile_raw = "{{$detalleViajeFile}}";
-    let detalleViajeFile;
-    fetch(`data:application/*;base64,${detalleViajeFile_raw}`).then(base64 => base64.blob()).then(blob => {
-        detalleViajeFile = URL.createObjectURL(blob)
-        const anchor = document.getElementById('detalleViajeFileDownload')
+    const detalleViaje_raw = "{{$detalleViaje}}";
+    let detalleViaje;
+    fetch(`data:application/*;base64,${detalleViaje_raw}`).then(base64 => base64.blob()).then(blob => {
+        detalleViaje = URL.createObjectURL(blob)
+        const anchor = document.getElementById('detalleViajeDownload')
         if (anchor) {
-            anchor.href = detalleViajeFile
-            anchor.download = 'vida_siniestralidad_previa.{{$detalleViajeFileExtension}}'
+            anchor.href = detalleViaje
+            anchor.download = 'vida_siniestralidad_previa.{{$detalleViajeExtension}}'
         }
     });
 
@@ -569,32 +569,32 @@
 
             <div class="col-md-6">
                 <div class="input-group">
-                    <input class="form-control" type="file" name="siniestralidadCincoAnios" hidden="true" id="siniestralidadCincoAnios" accept="application/*">
-                    <label class="input-group-text" hidden="true" for="siniestralidadCincoAnios" id="siniestralidadCincoAniosFileLabel">Siniestralidad 5 años de
+                    <input class="form-control" type="file" name="accidentRate" hidden="true" id="accidentRate" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="accidentRate" id="accidentRateFileLabel">Siniestralidad 5 años de
                         embarcación
                     </label>
-                    @if ($siniestralidadCincoAnios)
-                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="siniestralidadCincoAniosDownload">Siniestralidad 5 años de
+                    @if ($accidentRate)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="accidentRateDownload">Siniestralidad 5 años de
                         embarcación - Previo</a>
-                    <button type="button" class="btn btn-info" style="color: white" onclick="togglesiniestralidadCincoAnios()" id="siniestralidadCincoAniosFileToggle">Modificar</button>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggleaccidentRate()" id="accidentRateFileToggle">Modificar</button>
                     <script>
-                        let toggledsiniestralidadCincoAniosFile = false;
-                        const siniestralidadCincoAniosInput = document.getElementById('siniestralidadCincoAnios');
-                        const siniestralidadCincoAniosDownload = document.getElementById('siniestralidadCincoAniosDownload');
-                        const siniestralidadCincoAniosLabel = document.getElementById('siniestralidadCincoAniosFileLabel');
-                        const siniestralidadCincoAniosToggle = document.getElementById('siniestralidadCincoAniosFileToggle');
+                        let toggledaccidentRateFile = false;
+                        const accidentRateInput = document.getElementById('accidentRate');
+                        const accidentRateDownload = document.getElementById('accidentRateDownload');
+                        const accidentRateLabel = document.getElementById('accidentRateFileLabel');
+                        const accidentRateToggle = document.getElementById('accidentRateFileToggle');
 
-                        function togglesiniestralidadCincoAnios() {
-                            toggledsiniestralidadCincoAniosFile = !toggledsiniestralidadCincoAniosFile;
-                            siniestralidadCincoAniosInput.hidden = !toggledsiniestralidadCincoAniosFile;
-                            siniestralidadCincoAniosDownload.hidden = toggledsiniestralidadCincoAniosFile;
-                            siniestralidadCincoAniosLabel.hidden = !toggledsiniestralidadCincoAniosFile;
-                            siniestralidadCincoAniosToggle.textContent = toggledsiniestralidadCincoAniosFile ? 'Usar previo' : 'Modificar'
-                            if (toggledsiniestralidadCincoAniosFile) siniestralidadCincoAniosInput.click()
+                        function toggleaccidentRate() {
+                            toggledaccidentRateFile = !toggledaccidentRateFile;
+                            accidentRateInput.hidden = !toggledaccidentRateFile;
+                            accidentRateDownload.hidden = toggledaccidentRateFile;
+                            accidentRateLabel.hidden = !toggledaccidentRateFile;
+                            accidentRateToggle.textContent = toggledaccidentRateFile ? 'Usar previo' : 'Modificar'
+                            if (toggledaccidentRateFile) accidentRateInput.click()
                         }
                     </script>
-                    @else<input type="file" name="siniestralidadCincoAnios" id="siniestralidadCincoAnios" class="form-control">
-                    <label for="siniestralidadCincoAnios" class="input-group-text">Siniestralidad 5 años de
+                    @else<input type="file" name="accidentRate" id="accidentRate" class="form-control">
+                    <label for="accidentRate" class="input-group-text">Siniestralidad 5 años de
                         embarcación</label>
                     @endif
 
@@ -1317,7 +1317,7 @@
 
             <div class="col-md-6">
                 <div class="input-group">
-                    <label class="input-group-text" for="siniestralidadCincoAnios">Siniestralidad 5 años de
+                    <label class="input-group-text" for="accidentRate">Siniestralidad 5 años de
                         embarcación</label>
                     <input type="file" name="accidentRate" id="accidentRate">
                 </div>
@@ -1392,7 +1392,7 @@
                         de
                         requerir casco pesquero)</label>
                     <input type="text" name="detail_boat">
-                    <input type="file" name="detalleViajeFile" id="detalleViajeFile">
+                    <input type="file" name="detalleViaje" id="detalleViaje">
                 </div>
             </div>
 
