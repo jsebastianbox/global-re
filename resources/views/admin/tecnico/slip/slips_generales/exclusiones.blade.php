@@ -277,6 +277,7 @@
                             button.click()
 
                         }, 500)
+                        
                     </script>
                 </th>
             </tr>

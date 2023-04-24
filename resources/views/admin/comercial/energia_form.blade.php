@@ -230,23 +230,29 @@
         <label class="lead">Suma elegida</label>
         <hr style="color:darkgrey; width:70%">
 
-        <div id="sumaAsegurableContainer" class="flexColumnCenterContainer" style="{{$slip->insurable_sum > 0 ? 'display:flex' : 'display:none'}};margin:1.5rem 0;">
-            <h4 class="slipTitle">Tabla suma asegurable</h4>
-            <button type="button" onclick="refreshSumaAsegurableTable()" class="btn btn-info my-2">
-                Actualizar
-            </button>
-            @include('admin.tecnico.slip.slips_generales.tableSumaAsegurable')
-        </div>
 
-        <div class="row">
-            <div id="sumaAseguradaContainer" class="tableContainer" style="{{$slip->insured_sum > 0 ? 'display:flex' : 'display:none'}};margin:1.5rem 0;">
-                <h4 class="slipTitle">Tabla suma asegurada</h4>
-                <button type="button" onclick="refreshSumaAseguradaTable()" class="btn btn-info my-2">
-                    Actualizar
-                </button>
-                @include('admin.tecnico.slip.slips_generales.tableSumaAsegurada')
+        @if (count($sum_assured) > 0)
+            <div class="row">
+                <div id="sumaAseguradaContainer" class="tableContainer" style="margin:1.5rem 0;">
+                    @if ($slip->insurable_sum > 0)
+                    <h4 class="slipTitle mb-2">Tabla suma asegurable</h4>
+                    @elseif($slip->insured_sum > 0)
+                    <h4 class="slipTitle mb-2">Tabla suma asegurada</h4>
+                    @endif
+
+                    <div class="input-group ms-5">
+                        <input type="text" placeholder="Nombre columna.." id="columnNameactivos_fijosSumaAseguradaTable">
+                        <button type="button" class="btn btn-info" id="btnAddColumnSumas" onclick="addColumnSumas('activos_fijos')">Agregar columna</button>
+                    </div>
+
+                    <button type="button" onclick="refreshSumaAseguradaTable()" class="btn btn-info my-2">
+                        Actualizar
+                    </button>
+                    @include('admin.tecnico.slip.slips_generales.tableSumaAsegurada')
+                </div>
             </div>
-        </div>
+        @endif
+
         <div class="row">
             <div class="col-md-6">
                 <div class="input-group">
@@ -254,19 +260,22 @@
                     <input type="number" step="any" placeholder="..." name="limit_compensation" data-money class="form-control" value="{{ $slip->limit_compensation }}">
                 </div>
             </div>
-            <div class="col-md-6" id="inputSumaAsegurada" style="{{$slip->insured_sum > 0 ? 'display:flex' : 'display:none'}};">
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="insuredSum">Suma asegurada</label>
-                    <input value="{{$slip->insured_sum}}" id="input_sumaAsegurada" type="number" step="any" placeholder="Suma asegurada" name="insured_sum">
-                </div>
-            </div>
 
-            <div class="col-md-6" id="inputSumaAsegurable" style="{{$slip->insurable_sum > 0 ? 'display:flex' : 'display:none'}};">
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="insuredSum">Suma asegurable</label>
-                    <input value="{{$slip->insurable_sum}}" id="input_sumaAsegurable" type="number" step="any" placeholder="Suma asegurable" name="insurable_sum">
+            @if ($slip->insurable_sum > 0)
+                <div class="col-md-6" id="inputSumaAsegurable">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="insuredSum">Suma asegurable</label>
+                        <input value="{{$slip->insurable_sum}}" id="input_sumaAsegurable" type="number" step="any" placeholder="Suma asegurable" name="insurable_sum">
+                    </div>
                 </div>
-            </div>
+            @elseif($slip->insured_sum > 0)
+                <div class="col-md-6" id="inputSumaAsegurada">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="insuredSum">Suma asegurada</label>
+                        <input value="{{$slip->insured_sum}}" id="input_sumaAsegurada" type="number" step="any" placeholder="Suma asegurada" name="insured_sum">
+                    </div>
+                </div>
+            @endif
         </div>
 
         <div class="row">
@@ -662,10 +671,10 @@
             <div class="d-flex justify-content-around mb-2">
                 <div class="input-group">
                     <input type="text" placeholder="Nombre columna.." id="columnNameenergia1SumaAseguradaTable">
-                    <button type="button" class="btn btn-info" id="btnAddColumnSumas" onclick="addColumnSumas('energia1SumaAseguradaTable')">Agregar columna</button>
+                    <button type="button" class="btn btn-info" id="btnAddColumnSumas" onclick="addColumnSumas('energia1')">Agregar columna</button>
                 </div>
 
-                <button type="button" id="btnDeleteColumnSumas" class="btn btn-danger btn-xl" onclick="removeColumnSumas('energia1SumaAseguradaTable')">
+                <button type="button" id="btnDeleteColumnSumas" class="btn btn-danger btn-xl" onclick="removeColumnSumas('energia1')">
                     Eliminar columna
                 </button>
             </div>
@@ -700,25 +709,25 @@
                             <input type="text" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
                         </td>
                         <td>
-                            <input onkeyup="incendioSumaAsegurableTotales(1, 'energia1')" type="number" step="any" data-money name="edification[]" value="0" novalidate style="width: 95px" class="edificacionInput row1">
+                            <input onkeyup="incendioSumaAsegurableTotales(1, 1, 'energia1')" type="number" step="any" data-money name="edification[]" value="0" novalidate style="width: 95px" class="col1 row1">
                         </td>
                         <td>
-                            <input onkeyup="incendioSumaAsegurableTotales(1, 'energia1')" type="number" step="any" data-money name="contents[]" value="0" novalidate style="width: 95px" class="contenidosInput row1">
+                            <input onkeyup="incendioSumaAsegurableTotales(1, 2, 'energia1')" type="number" step="any" data-money name="contents[]" value="0" novalidate style="width: 95px" class="col2 row1">
                         </td>
                         <td>
-                            <input onkeyup="incendioSumaAsegurableTotales(1, 'energia1')" type="number" step="any" data-money name="equipment[]" value="0" novalidate style="width: 95px" class="maquinariaEquiposInput row1">
+                            <input onkeyup="incendioSumaAsegurableTotales(1, 3, 'energia1')" type="number" step="any" data-money name="equipment[]" value="0" novalidate style="width: 95px" class="col3 row1">
                         </td>
                         <td>
-                            <input onkeyup="incendioSumaAsegurableTotales(1, 'energia1')" type="number" step="any" data-money name="machine[]" value="0" novalidate style="width: 95px" class="mueblesInput row1">
+                            <input onkeyup="incendioSumaAsegurableTotales(1, 4, 'energia1')" type="number" step="any" data-money name="machine[]" value="0" novalidate style="width: 95px" class="col4 row1">
                         </td>
                         <td>
-                            <input onkeyup="incendioSumaAsegurableTotales(1, 'energia1')" type="number" step="any" data-money name="commodity[]" value="0" novalidate style="width: 95px" class="mercaderiasInput row1">
+                            <input onkeyup="incendioSumaAsegurableTotales(1, 5, 'energia1')" type="number" step="any" data-money name="commodity[]" value="0" novalidate style="width: 95px" class="col5 row1">
                         </td>
                         <td>
-                            <input onkeyup="incendioSumaAsegurableTotales(1, 'energia1')" type="number" step="any" name="other_sum_assured[]" value="0" novalidate style="width: 95px" class="otrosInput row1">
+                            <input onkeyup="incendioSumaAsegurableTotales(1, 6, 'energia1')" type="number" step="any" name="other_sum_assured[]" value="0" novalidate style="width: 95px" class="col6 row1">
                         </td>
                         <td style="text-align: center">
-                            <span class="slipTitle incendioTotalSpan" id="rowTotal1">0</span>$
+                            <span class="slipTitle col12" id="rowTotal1">0</span>$
                         </td>
                         <td></td>
                     </tr>
@@ -733,30 +742,31 @@
                             <h5 class="slipTitle">Total</h5>
                         </td>
                         <td style="text-align: center">
-                            <span id="incendioEdificacionTotal" class="slipTitle">0</span>$
+                            <span id="colTotal1" class="slipTitle">0</span>$
                         </td>
                         <td style="text-align: center">
-                            <span id="incendioContenidosTotal" class="slipTitle">0</span>$
+                            <span id="colTotal2" class="slipTitle">0</span>$
                         </td>
                         <td style="text-align: center">
-                            <span id="incendioMaquinariaEquiposTotal" class="slipTitle">0</span>$
+                            <span id="colTotal3" class="slipTitle">0</span>$
                         </td>
                         <td style="text-align: center">
-                            <span id="incendioMueblesTotal" class="slipTitle">0</span>$
+                            <span id="colTotal4" class="slipTitle">0</span>$
                         </td>
                         <td style="text-align: center">
-                            <span id="incendioMercaderiasTotal" class="slipTitle">0</span>$
+                            <span id="colTotal5" class="slipTitle">0</span>$
                         </td>
                         <td style="text-align: center">
-                            <span id="incendioOtrosTotal" class="slipTitle">0</span>$
+                            <span id="colTotal6" class="slipTitle">0</span>$
                         </td>
                         <td style="text-align: center">
-                            <span id="incendioTotalTotal" class="slipTitle">0</span>$
+                            <span class="slipTitle " id="incendioTotalTotal">0</span>$
                         </td>
                         <td></td>
                     </tr>
 
                 </tfoot>
+                <caption>Recuerda: solo podrás agregar un número determinado de filas en esta sección. ¡Revisa bien!</caption>
 
             </table>
 
@@ -766,10 +776,10 @@
             <div class="d-flex justify-content-around mb-2">
                 <div class="input-group">
                     <input type="text" placeholder="Nombre columna.." id="columnNameenergiaSumaAseguradaTable">
-                    <button type="button" class="btn btn-info" id="btnAddColumnSumas" onclick="addColumnSumas('energiaSumaAseguradaTable')">Agregar columna</button>
+                    <button type="button" class="btn btn-info" id="btnAddColumnSumas" onclick="addColumnSumas('energia')">Agregar columna</button>
                 </div>
 
-                <button type="button" id="btnDeleteColumnSumas" class="btn btn-danger btn-xl" onclick="removeColumnSumas('energiaSumaAseguradaTable')">
+                <button type="button" id="btnDeleteColumnSumas" class="btn btn-danger btn-xl" onclick="removeColumnSumas('energia')">
                     Eliminar columna
                 </button>
             </div>
@@ -788,7 +798,7 @@
                         <th style="text-align: center">TOTAL</th>
                         <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Add row">
 
-                            <button type="button" onclick="addRowSumaAseguradaEnergia(event, 'energia')" class="btn btn-success btn-xs">
+                            <button type="button" onclick="addRowSumaAseguradaIncendio(event, 'energia')" class="btn btn-success btn-xs">
                                 +
                             </button>
                         </th>
@@ -801,32 +811,31 @@
                     <tr>
                         <td>1</td>
                         <td>
-                            <input type="text" name="location[]" style="width: 95px" placeholder="..." novalidate>
+                            <input type="text" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
                         </td>
                         <td>
-                            <input onkeyup="energiaSumaAsegurableTotales('1')" type="number" name="edification[]" data-money value="0" novalidate style="width: 95px" class="edificacionInput row1">
+                            <input onkeyup="incendioSumaAsegurableTotales(1, 1, 'energia')" type="number" step="any" data-money name="edification[]" value="0" novalidate style="width: 95px" class="col1 row1">
                         </td>
                         <td>
-                            <input onkeyup="energiaSumaAsegurableTotales('1')" type="number" name="contents[]" data-money value="0" novalidate style="width: 95px" class="contenidosInput row1">
+                            <input onkeyup="incendioSumaAsegurableTotales(1, 2, 'energia')" type="number" step="any" data-money name="contents[]" value="0" novalidate style="width: 95px" class="col2 row1">
                         </td>
                         <td>
-                            <input onkeyup="energiaSumaAsegurableTotales('1')" type="number" name="equipment[]" data-money value="0" novalidate style="width: 95px" class="maquinariaEquiposInput row1">
+                            <input onkeyup="incendioSumaAsegurableTotales(1, 3, 'energia')" type="number" step="any" data-money name="equipment[]" value="0" novalidate style="width: 95px" class="col3 row1">
                         </td>
                         <td>
-                            <input onkeyup="energiaSumaAsegurableTotales('1')" type="number" name="machine[]" data-money value="0" novalidate style="width: 95px" class="mueblesInput row1">
+                            <input onkeyup="incendioSumaAsegurableTotales(1, 4, 'energia')" type="number" step="any" data-money name="machine[]" value="0" novalidate style="width: 95px" class="col4 row1">
                         </td>
                         <td>
-                            <input onkeyup="energiaSumaAsegurableTotales('1')" type="number" name="commodity[]" data-money value="0" novalidate style="width: 95px" class="mercaderiasInput row1">
+                            <input onkeyup="incendioSumaAsegurableTotales(1, 5, 'energia')" type="number" step="any" data-money name="commodity[]" value="0" novalidate style="width: 95px" class="col5 row1">
                         </td>
                         <td>
-                            <input onkeyup="energiaSumaAsegurableTotales('1')" type="number" name="other_sum_assured[]" data-money value="0" novalidate style="width: 95px" class="otrosInput row1">
+                            <input onkeyup="incendioSumaAsegurableTotales(1, 6, 'energia')" type="number" step="any" data-money name="other_sum_assured[]" value="0" novalidate style="width: 95px" class="col6 row1">
                         </td>
                         <td style="text-align: center">
-                            <span class="slipTitle energiaTotalSpan" id="rowTotal1">0</span>$
+                            <span class="slipTitle col12" id="rowTotal1">0</span>$
                         </td>
                         <td></td>
                     </tr>
-
 
                 </tbody>
 
@@ -839,29 +848,30 @@
                             <h5 class="slipTitle">Total</h5>
                         </td>
                         <td style="text-align: center">
-                            <span id="energiaEdificacionTotal" class="slipTitle">0</span>$
+                            <span id="colTotal1" class="slipTitle">0</span>$
                         </td>
                         <td style="text-align: center">
-                            <span id="energiaContenidosTotal" class="slipTitle">0</span>$
+                            <span id="colTotal2" class="slipTitle">0</span>$
                         </td>
                         <td style="text-align: center">
-                            <span id="energiaMaquinariaEquiposTotal" class="slipTitle">0</span>$
+                            <span id="colTotal3" class="slipTitle">0</span>$
                         </td>
                         <td style="text-align: center">
-                            <span id="energiaMueblesTotal" class="slipTitle">0</span>$
+                            <span id="colTotal4" class="slipTitle">0</span>$
                         </td>
                         <td style="text-align: center">
-                            <span id="energiaMercaderiasTotal" class="slipTitle">0</span>$
+                            <span id="colTotal5" class="slipTitle">0</span>$
                         </td>
                         <td style="text-align: center">
-                            <span id="energiaOtrosTotal" class="slipTitle">0</span>$
+                            <span id="colTotal6" class="slipTitle">0</span>$
                         </td>
                         <td style="text-align: center">
-                            <span id="energiaTotalTotal" class="slipTitle">0</span>$
+                            <span class="slipTitle " id="incendioTotalTotal">0</span>$
                         </td>
                     </tr>
 
                 </tfoot>
+                <caption>Recuerda: solo podrás agregar un número determinado de filas en esta sección. ¡Revisa bien!</caption>
 
             </table>
 
