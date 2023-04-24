@@ -992,7 +992,7 @@
                     <input type="number" step="any" class="form-control" name="limit_compensation">
                 </div>
             </div>
-            <div class="col-md-4" id="inputSumaAsegurada3" style="display:flex">
+            <div class="col-md-4" id="inputSumaAsegurada3" style="display:none">
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="insuredSum">Suma asegurada</label>
                     <input id="input_sumaAsegurada" type="number" step="any" placeholder="Suma asegurada" name="asegurable_electronico">

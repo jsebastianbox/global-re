@@ -2683,21 +2683,21 @@ function addObjectInsuranceMaquinaria(event) {
         `
         <td scope="row">${rowCount}</td>
         <td>
-            <input type="text" name="type[]" placeholder="...">
+            <input type="text" name="type[]" placeholder="..." class="inputNumber">
         </td>
 
         <td>
-            <input type="text" name="brand[]" placeholder="...">
+            <input type="text" name="brand[]" placeholder="..." class="inputNumber">
         </td>
         <td>
-            <input type="text" name="object_model[]" placeholder="...">
+            <input type="text" name="object_model[]" placeholder="..." class="inputNumber">
         </td>
 
         <td>
-            <input type="number" name="year[]" placeholder="">
+            <input type="number" name="year[]" placeholder="" class="inputNumber">
         </td>
         <td>
-            <input type="text" placeholder="..." name="serie[]">
+            <input type="text" placeholder="..." name="serie[]" class="inputNumber">
         </td>
         <td>
             <input type="text" placeholder="..." name="object_insured_val[]" class="row1">
