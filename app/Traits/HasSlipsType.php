@@ -161,11 +161,11 @@ trait HasSlipsType
 
             case "siniestralidadCincoAnios":
             case "accidentRate":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Siniestralidad últmios 5 años";
                 break;
 
             case "quote_form_file":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Formularios de cotización";
                 break;
             case "inspection_control_file":
                 $file_info['name'] = "Siniestralidad";
@@ -308,8 +308,9 @@ trait HasSlipsType
             case "detalleLicencia":
                 $file_info['name'] = "Siniestralidad";
                 break;
-            case "detalleViajeFile":
-                $file_info['name'] = "Siniestralidad";
+            case "detalleViaje":
+                $file_info['name'] = "Detalles de los viajes de pesca (en
+                    caso de requerir casco pesquero)";
                 break;
             case "detalleValorReemplazo":
                 $file_info['name'] = "Siniestralidad";

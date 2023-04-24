@@ -224,21 +224,21 @@ trait HasUploadFiles
                 $keys[] = "detalleMantenimiento";
                 $keys[] = "tripulacionInfo";
                 $keys[] = "detalleLicencia";
-                $keys[] = "detalleViajeFile";
+                $keys[] = "detalleViaje";
                 $keys[] = "detalleValorReemplazo";
                 $keys[] = "formularioFirmado";
                 break;
             case 'maritimo_2':
                 $keys[] = "copiaMatricula";
                 $keys[] = "informeInspeccion";
-                $keys[] = "siniestralidadCincoAnios";
+                $keys[] = "accidentRate";
                 $keys[] = "siniestralidad_armador";
                 $keys[] = "otrasEmbarcaciones";
                 $keys[] = "experienciaArmador";
                 $keys[] = "detalleMantenimiento";
                 $keys[] = "tripulacionInfo";
                 $keys[] = "detalleLicencia";
-                $keys[] = "detalleViajeFile";
+                $keys[] = "detalleViaje";
                 $keys[] = "detalleValorReemplazo";
                 $keys[] = "formularioFirmado";
                 break;

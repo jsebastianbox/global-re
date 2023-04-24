@@ -493,7 +493,7 @@ class SlipApiController extends Controller
                             }
                         }
 
-                        $this->saveFilesFromRequest($request, $basePath, 'matitimo_1',  $slip_maritimo_1->id);
+                        $this->saveFilesFromRequest($request, $basePath, 'maritimo_1',  $slip_maritimo_1->id);
                         break;
                     case 'maritimo_2_form':
                         $slip_maritimo_2 = new SlipMaritimeTwo();
@@ -519,7 +519,7 @@ class SlipApiController extends Controller
                             }
                         }
 
-                        $this->saveFilesFromRequest($request, $basePath, 'matitimo_2',  $slip_maritimo_2->id);
+                        $this->saveFilesFromRequest($request, $basePath, 'maritimo_2',  $slip_maritimo_2->id);
                         break;
                     case 'maritimo_3_form':
                         $slip_maritimo_3 = new SlipMaritimeThree();
@@ -528,7 +528,7 @@ class SlipApiController extends Controller
                         $slip_maritimo_3->save();
                         $type_slip = SlipMaritimeThree::where('id', $slip->id);
 
-                        $this->saveFilesFromRequest($request, $basePath, 'matitimo_3',  $slip_maritimo_3->id);
+                        $this->saveFilesFromRequest($request, $basePath, 'maritimo_3',  $slip_maritimo_3->id);
                         break;
                     case 'maritimo_4_form':
                         $slip_maritimo_4 = new SlipMaritimeFour();
@@ -536,7 +536,7 @@ class SlipApiController extends Controller
                         $slip_maritimo_4->slip_id = $slip->id;
                         $slip_maritimo_4->save();
                         $type_slip = SlipMaritimeFour::where('id', $slip->id);
-                        $this->saveFilesFromRequest($request, $basePath, 'matitimo_4',  $slip_maritimo_4->id);
+                        $this->saveFilesFromRequest($request, $basePath, 'maritimo_4',  $slip_maritimo_4->id);
                         break;
                     default:
                         break;

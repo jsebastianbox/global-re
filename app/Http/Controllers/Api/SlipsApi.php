@@ -104,6 +104,7 @@ class SlipsApi extends Controller
         [$slip_type, $case] = $this->getSlipType($slip);
         $pdf = PDF::loadView('admin.tecnico.slip.pdfVista', [
             'slip_type' => $slip_type,
+            'slip' => $slip
         ]);
         return $pdf->download('slip_informe.pdf');
     }
