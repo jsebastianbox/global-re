@@ -275,8 +275,7 @@
                         $(document).ready(function () {
                             const button = $('#addRowExclusionButton');                            
                             button.click()
-                        })
-
+                        })              
                     </script>
                 </th>
             </tr>

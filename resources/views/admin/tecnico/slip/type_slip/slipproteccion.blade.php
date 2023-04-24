@@ -9,16 +9,8 @@
 
         @include('admin.tecnico.slip.slips_generales.initial')
 
-        <div class="tableContainer">
-            {{-- Objeto del seguro --}}
-            <div class="input_group" style="max-width:600px">
-                <label for="cascoBuquesObjetoSeguro" >
-                    <i class="fa-solid fa-bars-staggered"></i>
-                    Objeto del seguro
-                </label>
-                <textarea name="object_insurance" id="object_insurance" cols="30" rows="1">{{ $slip_type->object_insurance }}</textarea>
-            </div>
-        </div>
+        @include('admin.tecnico.slip.slips_generales.objectInsuranceAndCoverage')
+        
     </div>
 
     <div class="form_group2">
@@ -192,14 +184,14 @@
                         value="{{ $slip_type->limit_compensation }}" >
                 </div>
                 
-                <div class="input_group">
+               {{--  <div class="input_group">
                     <label >
                         <i class="fa-solid fa-bars-staggered"></i>
                         Suma asegurada
                     </label>
                     <input type="number" name="insured_sum"
                         value="{{ $slip_type->insured_sum }}" >
-                </div>
+                </div> --}}
 
                 <div class="input_group">
                     <label for="cascoBuquesUsos">
@@ -248,17 +240,7 @@
 
         </div>
 
-        <div class="tableContainer">
-            {{-- Cobertura --}}
-            <div class="input_group" style="max-width: 600px">
-                <label for="cascoBuquesCobertura">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                    Cobertura
-                </label>
-                <textarea name="coverage" id="coverage" style="resize:both;width:100%;" 
- cols="30" rows="1">{{ $slip_type->coverage }}</textarea>
-            </div>
-        </div>
+
 
     </div>
 
@@ -266,7 +248,8 @@
         {{-- Coberturas adicionales --}}
         <h3 class="slipTitle"> <span class="badge badge-secondary">3</span> Coberturas Adicionales</h3>
 
-        @include('admin.tecnico.slip.slips_generales.tableCoberturasAdicionales')
+        @include('admin.comercial.include.edit_tablaCoberturas')
+
 
     </div>
 
@@ -274,7 +257,8 @@
         {{-- Cláusulas Adicionales --}}
         <h3 class="slipTitle"> <span class="badge badge-secondary">4</span> Cláusulas Adicionales</h3>
 
-        @include('admin.tecnico.slip.slips_generales.clausulasAdicionales')
+        @include('admin.comercial.include.edit_tablaClausulas')
+
 
         {{-- Exclusiones --}}
         <h3 class="slipTitle"> <span class="badge badge-secondary">5</span> Exclusiones</h3>

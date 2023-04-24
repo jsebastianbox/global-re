@@ -429,6 +429,27 @@
             </div>
         </div>
 
+    
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <label class="input-group-text" for="areaNavegacion">&Aacute;rea principal de
+                        navegación</label>
+                    <input type="text" name="navigation" value="{{$slip_type->navigation}}" placeholder="...">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="input-group">
+                    <label class="input-group-text" for="nombreArmador">Nombre del armador</label>
+                    <input class="inputForm" type="text" name="name_armador" id="nombreArmador" placeholder="Nombre.." value="{{ $slip_type->name_armador }}">
+                </div>
+            </div>
+        </div>
+
+    
+
         <div class="row">
             <label class="lead">Coberturas adicionales</label>
             <hr style="background-color: darkgrey; width: 70%">
@@ -473,16 +494,6 @@
         </div>
 
         @include('admin.comercial.include.edit_deducibles')
-
-        <div class="row mb-3">
-
-            <div class="col-md-12">
-                <div class="input-group">
-                    <label class="input-group-text" for="nombreArmador">Nombre del armador</label>
-                    <input class="inputForm" type="text" name="name_armador" id="nombreArmador" placeholder="Nombre.." value="{{ $slip_type->name_armador }}">
-                </div>
-            </div>
-        </div>
 
         <div class="row mb-3">
 
@@ -804,7 +815,7 @@
         </div>
 
         <div class="row mb-3">
-            <div class="col-md-7">
+            <div class="col-md-10">
                 <div class="input-group">
                     <input class="form-control" type="file" name="detalleViaje" hidden="true" id="detalleViaje" accept="application/*">
                     <label class="input-group-text" hidden="true" for="detalleViaje" id="detalleViajeFileLabel">Detalles de los viajes de pesca (en caso de
@@ -837,13 +848,6 @@
                 </div>
             </div>
 
-            <div class="col-md-5">
-                <div class="input-group">
-                    <label class="input-group-text" for="areaNavegacion">&Aacute;rea principal de
-                        navegación</label>
-                    <input type="text" name="navigation" id="areaNavegacion" value="{{ $slip_type->navigation }}">
-                </div>
-            </div>
         </div>
 
         <div class="row mb-3">
@@ -1382,7 +1386,7 @@
         </div>
 
         <div class="row mb-3">
-            <div class="col-md-7">
+            <div class="col-md-10">
                 <div class="input-group">
                     <label class="input-group-text" for="detalleViaje">Detalles de los viajes de pesca (en caso
                         de
@@ -1392,13 +1396,7 @@
                 </div>
             </div>
 
-            <div class="col-md-5">
-                <div class="input-group">
-                    <label class="input-group-text" for="areaNavegacion">&Aacute;rea principal de
-                        navegación</label>
-                    <input type="text" name="navigation" id="areaNavegacion">
-                </div>
-            </div>
+
 
         </div>
 
