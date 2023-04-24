@@ -2038,12 +2038,12 @@ $(document).on('click', '.btn-delete-fidelidad-objeto', function (e) {
 
 
 
-function addRowExclusion(event, type, typeRamo, typeCobertura) {
+function addRowExclusion(event, type, typeRamo, typeSubRamo) {
     event.preventDefault()
 
-    let rowCount = document.getElementById('exclusionesAdicionalesTable').rows.length
+    let rowCount = document.getElementById(`${type}exclusionesAdicionalesTable`).rows.length
 
-    const exclusionesAdicionalesTableBody = document.getElementById('exclusionesAdicionalesTableBody')
+    const exclusionesAdicionalesTableBody = document.getElementById(`${type}exclusionesAdicionalesTableBody`)
     const tr = document.createElement('tr')
 
     exclusionesAdicionalesTableBody.appendChild(tr)
@@ -2054,7 +2054,9 @@ function addRowExclusion(event, type, typeRamo, typeCobertura) {
             ${rowCount}
         </td>
         <td>
-            <textarea name="description_exclusion_additional[]"></textarea>
+            <select id="description_exclusion_additional_${rowCount}" name="description_exclusion_additional[]" class="selectExclusiones">
+                <option selected disabled>Seleccionar</option>
+            </select>
         </td>
         <td>
             <input type="text" placeholder="..." name="exclusion_additional_additional[]">
@@ -2066,11 +2068,16 @@ function addRowExclusion(event, type, typeRamo, typeCobertura) {
             <input type="text" placeholder="..." name="exclusion_additional_additional2[]">
         </td>
         <td>
-            <button id="${rowCount}" type="button" class="btn btn-danger btn-xs btn-delete-exclusion"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+            <button id="${rowCount}" type="button" class="btn btn-danger btn-xs btn-delete-exclusion">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
         </td>
         `
 
-        coberturasSelect(`#description_coverage_additional_${rowCount}`, `${typeRamo}`, `${typeSubCobertura}`);
+
+
+        $('#description_exclusion_additional_' + rowCount).select2();
+        exclusionesSelect(`#description_exclusion_additional_${rowCount}`, `${typeRamo}`, `${typeSubRamo}`);
 
 }
 
@@ -2425,8 +2432,11 @@ function addRowClausula(event, type, typeRamo, typeSubCobertura) {
                 <input type="text" placeholder="..." name="clause_additional_additional2[]">
             </td>
             <td>
-                <button id="${rowCount}" type="button" class="btn btn-danger btn-delete-clausula"></button>
+                <button id="${rowCount}" type="button" class="btn btn-danger btn-delete-clausula btn-xs">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
             </td>
+        </td>
         `
     $('#description_clause_additional_' + rowCount).select2();
     clausulasSelect(`#description_clause_additional_${rowCount}`, `${typeRamo}`, `${typeSubCobertura}`);
@@ -2471,7 +2481,9 @@ function addRowCoberturaV2(event, type, typeRamo, typeSubCobertura) {
                 <input type="text" placeholder="..." name="coverage_additional_additional2[]">
             </td>
             <td>
-                <button id="${rowCount}" type="button"  class="btn btn-danger btn-delete-cobertura"></button>
+                <button id="${rowCount}" type="button"  class="btn btn-danger btn-delete-cobertura btn-xs">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
             </td>
         `
 
@@ -2656,6 +2668,41 @@ function coberturasSelect(class_selector = ".selectCobertura", main_branch, sub_
         },
         minimumInputLength: 0 // Set to 0 to always show options on focus
     });
+    $(class_selector).append('<option value="" selected>Seleccionar</option>');
+}
+
+//Select2 para exclusiones
+function exclusionesSelect(class_selector = ".selectExclusiones", main_branch, sub_branch) {
+    $(class_selector).select2({
+        language: 'es',
+        tags: true,
+        placeholder: 'Seleccionar',
+        ajax: {
+            url: `${window.location.origin}/api/exclusiones_selectors`,
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    main_branch: main_branch,
+                    sub_branch: sub_branch,
+                    q: params.term // Include search query parameter
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: $.map(data.data, function (item) {
+                        return {
+                            text: item.name,
+                            id: item.id
+                        };
+                    })
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 0 // Set to 0 to always show options on focus
+    });
+    console.log( class_selector )
     $(class_selector).append('<option value="" selected>Seleccionar</option>');
 }
 

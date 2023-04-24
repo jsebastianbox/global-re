@@ -66,8 +66,8 @@ use App\Http\Controllers\Api\UsersApi;
 use App\Http\Controllers\InvoicePaymentController;
 use App\Http\Controllers\ClausulasSelectorController;
 use App\Http\Controllers\CoberturasSelectorController;
+use App\Http\Controllers\ExclusionesSelectorController;
 use App\Http\Controllers\SlipApiController;
-use Database\Seeders\ExclusionesSelectorSeeder;
 
 /*
 |--------------------------------------------------------------------------
@@ -186,7 +186,7 @@ Route::resource('/installation', InstallationRecords::class);
 
 Route::apiResource('/clausulas_selectors', ClausulasSelectorController::class);
 Route::apiResource('/coberturas_selectors', CoberturasSelectorController::class);
-Route::apiResource('/exclusiones_selectors', ExclusionesSelectorSeeder::class);
+Route::apiResource('/exclusiones_selectors', ExclusionesSelectorController::class);
 
 Route::apiResource('/storeSlip', SlipApiController::class);
 //End Ricardo

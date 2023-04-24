@@ -36,6 +36,8 @@ class DatabaseSeeder extends Seeder
             SlipTypeSeeder::class,
             ClausulasSelectorSeeder::class,
             CoberturasSelectorSeeder::class,
+            CitySeeder::class,
+            ExclusionesSelectorSeeder::class
         ]);
     }
 }

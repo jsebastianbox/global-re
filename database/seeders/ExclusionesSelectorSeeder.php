@@ -15,99 +15,99 @@ class ExclusionesSelectorSeeder extends Seeder
     public function run()
     {
         $data = [
-            // vida - accidente_personales                      
+            // vida - accidentes_personales                      
 			[
 				'name'  => 'Las personas que excedan los límites de edad mencionados en este Slip.',
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 			[
 				'name'  => 'Daños extracontractuales, daños punitivos o ejemplares. ',
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 			[
 				'name'  => 'Cualquier pago ex gracia',   
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 			[
 				'name'  => 'Coberturas de Desempleo',
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 			[
 				'name'  => 'Coberturas de Invalidez Parcial',
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 			[
 				'name'  => 'Coberturas de Invalidez Temporal',
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 			[
 				'name'  => 'Coberturas de Invalidez Profesional',
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 			[
 				'name'  => 'Cobertura de Pérdida de Licencia',
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 			[
 				'name'  => 'Cualquier tipo de Reserva Matemática',
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 			[
 				'name'  => 'Personas menores de xxxxx años de edad',
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 			[
 				'name'  => 'Para todas las coberturas las personas de nuevo ingreso mayores de xxxx años de edad.',
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 			[
 				'name'  => 'Policías Judiciales',
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 			[
 				'name'  => 'Guardaespaldas',
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 			[
 				'name'  => 'Cualquier cuerpo especializado en lucha contra el narcotráfico y delincuencia organizada',
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 			[
 				'name'  => 'Aviación Particular',
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 			[
 				'name'  => 'Aviación Privada',
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 			[
 				'name'  => 'Deportes y aficiones peligrosas si son practicadas de manera profesional',
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 			[
 				'name'  => 'Empleados que se encuentren pensionados, jubilados, en proceso o estado de invalidez.',
 				'main_branch' => 'vida',
-				'sub_branch' => 'accidente_personales'
+				'sub_branch' => 'accidentes_personales'
 			],
 
-            // vida - accidente_personales                      
+            // vida - vida                      
 			[
 				'name'  => 'Las personas que excedan los límites de edad mencionados en este Slip.',
 				'main_branch' => 'vida',
