@@ -298,25 +298,35 @@
             </div>
         @endif
 
-        @if ($slip->type_coverage === 13)
+
+        @if ($slip_type->asegurable_electronico > 0)
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="input-group">
                         <span class="input-group-text">Límite de indemnizacion</span>
                         <input value="{{$slip_type->limit_compensation}}" type="number" step="any" class="form-control" name="limit_compensation">
                     </div>
                 </div>
-                <div class="col-md-4" id="inputSumaAsegurada3" style="display:flex">
+
+                <div class="col-md-6" id="inputSumaAsegurable3">
                     <div class="input-group mb-3">
-                        <label class="input-group-text" for="insuredSum">Suma asegurada</label>
-                        <input value="{{$slip_type->asegurable_electronico}}" id="input_sumaAsegurada" type="number" step="any" placeholder="Suma asegurada" name="asegurable_electronico">
+                        <label class="input-group-text">Suma asegurable</label>
+                        <input value="{{$slip_type->asegurable_electronico}}" id="input_sumaAsegurable" type="number" step="any" placeholder="Suma asegurable" name="asegurable_electronico">
                     </div>
                 </div>
-
-                <div class="col-md-4" id="inputSumaAsegurable3" style="display:none">
+            </div>
+        @else
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text">Límite de indemnizacion</span>
+                        <input value="{{$slip_type->limit_compensation}}" type="number" step="any" class="form-control" name="limit_compensation">
+                    </div>
+                </div>
+                <div class="col-md-6" id="inputSumaAsegurada3" style="display:flex">
                     <div class="input-group mb-3">
-                        <label class="input-group-text" for="insuredSum">Suma asegurable</label>
-                        <input value="{{$slip_type->asegurada_electronico}}" id="input_sumaAsegurable" type="number" step="any" placeholder="Suma asegurable" name="asegurada_electronico">
+                        <label class="input-group-text">Suma asegurada</label>
+                        <input value="{{$slip_type->asegurada_electronico}}" id="input_sumaAsegurada" type="number" step="any" placeholder="Suma asegurada" name="asegurada_electronico">
                     </div>
                 </div>
             </div>
@@ -933,7 +943,7 @@
                         <tr>
                             <th style="text-align: center">#</th>
                             <th style="text-align: center">Ubicación</th>
-                            <th style="text-align: center">machine</th>
+                            <th style="text-align: center">Maquinaria</th>
                             <th style="text-align: center">TOTAL</th>
                             <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Add row">
 

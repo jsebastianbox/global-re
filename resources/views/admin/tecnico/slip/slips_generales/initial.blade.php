@@ -152,7 +152,7 @@
             <input type="text" id="insuranceBroker" name="insuranceBroker" value="{{ $slip->insuranceBroker }}" disabled>
         </div>
 
-        @if ($slip->type_coverage != 2 && $slip->type_coverage !== 4 && $slip->type_coverage !== 5 && $slip->type_coverage !== 6 && $slip->type_coverage !== 7 && $slip->type_coverage !== 8 && $slip->type_coverage !== 11 )
+        @if ($slip->type_coverage != 2 && $slip->type_coverage !== 4 && $slip->type_coverage !== 5 && $slip->type_coverage !== 6 && $slip->type_coverage !== 7 && $slip->type_coverage !== 8 && $slip->type_coverage !== 11 && $slip->type_coverage !== 16 && $slip->type_coverage !== 17)
             <div class="input_group">
                 <label >
                     <i class="fa-solid fa-bars-staggered"></i>

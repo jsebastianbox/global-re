@@ -12,7 +12,7 @@
 
         @include('admin.tecnico.slip.slips_generales.objectInsuranceAndCoverage')
 
-        @if ($slip->type_coverage === 13)
+        @if ($slip->type_coverage === 13 || $slip->type_coverage === 17)
             <div class="two-sides">
                 <div class="left_side">
                     <div class="input_group">
@@ -68,7 +68,7 @@
                         <tr>
                             <th style="text-align: center">#</th>
                             <th style="text-align: center">Ubicación</th>
-                            <th style="text-align: center">machine</th>
+                            <th style="text-align: center">Maquinaria</th>
                             <th style="text-align: center">TOTAL</th>
                             <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Add row">
 
@@ -139,7 +139,7 @@
         @endif
 
 
-        @if ($slip->type_coverage === 14)
+        @if ($slip->type_coverage === 14 || $slip->type_coverage === 15)
             @include('admin.tecnico.slip.slips_generales.limiteIndem')
 
             <div class="tableContainer" style="margin: 2rem 0">
@@ -942,7 +942,7 @@
                 </div>
         @endif
 
-        @if ($slip->type_coverage === 12)
+        @if ($slip->type_coverage === 12 || $slip->type_coverage === 15)
             <div class="tableContainer">
                 <h5 class="slipTitle"> Rotura de maquinaria:</h5>
                 <table class="indemnizacionTable">
@@ -955,23 +955,38 @@
 
                     <tbody>
                         <tr>
-                            <td><input type="text" name="" id=""> años</td>
                             <td>
-                                <input type="number" name="equipoMaquinaria1" placeholder="%">
+                                <input class="inputNumber" type="text" name="" id=""> años
+                            </td>
+                            <td>
+                                <div class="labelStyle2Container">
+                                    <span>%</span>
+                                    <input class="inputNumber" type="number" name="equipoMaquinaria1" placeholder="%">
+                                </div>
                             </td>
                         </tr>
 
                         <tr>
-                            <td><input type="text" name="" id="">años</td>
                             <td>
-                                <input type="number" name="equipoMaquinaria1" placeholder="%">
+                                <input class="inputNumber" type="text" name="" id=""> años
+                            </td>
+                            <td>
+                                <div class="labelStyle2Container">
+                                    <span>%</span>
+                                    <input class="inputNumber" type="number" name="equipoMaquinaria1" placeholder="%">
+                                </div>
                             </td>
                         </tr>
 
                         <tr>
-                            <td><input type="text" name="" id="">años</td>
                             <td>
-                                <input type="number" name="equipoMaquinaria1" placeholder="max. 75%">
+                                <input class="inputNumber" type="text" name="" id=""> años
+                            </td>
+                            <td>
+                                <div class="labelStyle2Container">
+                                    <span>%</span>
+                                    <input class="inputNumber" type="number" name="equipoMaquinaria1" placeholder="%">
+                                </div>
                             </td>
                         </tr>
                     </tbody>
