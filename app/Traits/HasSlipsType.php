@@ -171,13 +171,15 @@ trait HasSlipsType
                 $file_info['name'] = "Siniestralidad";
                 break;
             case "machine_list_file":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Listado de maquinaria";
                 break;
             case "devices_list_file":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Listado de equipos (Valorados para equipo
+                        electrónico)";
                 break;
             case "desglose_file":
-                $file_info['name'] = "Siniestralidad";
+                $file_info['name'] = "Detalle/Desglose (Valor asegurado por
+                        ubicación y por rubro)";
                 break;
             case "informe":
                 $file_info['name'] = "Siniestralidad";
@@ -228,7 +230,6 @@ trait HasSlipsType
             case "payroll":
                 $file_info['name'] = "Siniestralidad";
                 break;
-
             case "dailyProduction":
                 $file_info['name'] = "Siniestralidad";
                 break;
@@ -242,20 +243,15 @@ trait HasSlipsType
             case "financialStatements":
                 $file_info['name'] = "Siniestralidad";
                 break;
-
-                break;
-
             case "quotationReport":
                 $file_info['name'] = "Siniestralidad";
                 break;
-
             case "financialStatements":
                 $file_info['name'] = "Siniestralidad";
                 break;
             case "modelMakeHours":
                 $file_info['name'] = "Siniestralidad";
                 break;
-
             case "otherForms":
                 $file_info['name'] = "Siniestralidad";
                 break;
