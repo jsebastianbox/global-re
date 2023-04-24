@@ -435,6 +435,8 @@ class CompromisoController extends Controller
         $slip = Slip::find($id);
 
         $user = Auth::user();
+        $siniestralidadCincoAnios = null;
+        $detalleViaje = null;
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::all();
         $clausulasSelect = Clausulas_selector::all();
@@ -446,6 +448,8 @@ class CompromisoController extends Controller
             ->with('type_coverage', $type_coverage)
             ->with('coberturasSelect', $coberturasSelect)
             ->with('clausulasSelect', $clausulasSelect)
+            ->with('detalleViaje', $detalleViaje)
+            ->with('siniestralidadCincoAnios', $siniestralidadCincoAnios)
             ->with('slip', $slip);
 
         switch ($slip->type_coverage) {
