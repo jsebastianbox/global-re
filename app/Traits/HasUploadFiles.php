@@ -258,13 +258,14 @@ trait HasUploadFiles
             case 'finanzas_2':
                 $keys[] = "sourceDoc";
                 break;
-            
+
             default:
 
                 break;
         }
         return $keys;
     }
+
     public function chargeFilesIntoView(string $slip_route, $case, $id, View $view): View
     {
         foreach ($this->keysFiles($case) as $key) {
