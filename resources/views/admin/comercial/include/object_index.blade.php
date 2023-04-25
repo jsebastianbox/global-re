@@ -160,7 +160,7 @@
             </div>
         </div> --}}
         <div class="col-md-4 my-3" 
-            @if($slip->type_coverage === 11 || $slip->type_coverage === 13 || $slip->type_coverage === 16 || $slip->type_coverage === 17  || $slip->type_coverage === 18 || $slip->type_coverage === 19 || $slip->type_coverage === 20)
+            @if($slip->type_coverage === 11 || $slip->type_coverage === 12 || $slip->type_coverage === 13 || $slip->type_coverage === 14 || $slip->type_coverage === 15 || $slip->type_coverage === 16 || $slip->type_coverage === 17  || $slip->type_coverage === 18 || $slip->type_coverage === 19 || $slip->type_coverage === 20)
                 style="display:none;"
             @elseif($slip->insurable_sum > 0 || $slip->insured_sum > 0)
                 style="display:none;"

@@ -763,7 +763,7 @@ function updateS4() {
             currentTab = 0;
             r_tecnicos.style.display = "block";
             valorAseguradoContainer.forEach(elemento => {
-                elemento.style.display = 'block';
+                elemento.style.display = 'none';
             })
             clausulasSelect(".selectClausula", "tecnico", "equipo_maquinaria");
             coberturasSelect(".selectCobertura", "tecnico", "equipo_maquinaria");
@@ -791,7 +791,7 @@ function updateS4() {
             currentTab = 0;
             r_tecnicos.style.display = "block";
             valorAseguradoContainer.forEach(elemento => {
-                elemento.style.display = 'block';
+                elemento.style.display = 'none';
             })
             clausulasSelect(".selectClausula", "tecnico", "construccion");
             coberturasSelect(".selectCobertura", "tecnico", "construccion");

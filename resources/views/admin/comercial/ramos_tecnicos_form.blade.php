@@ -183,7 +183,7 @@
             </div>
         </div>
 
-        @if ($slip->type_coverage === 11 || $slip->type_coverage === 12)
+        @if ($slip->type_coverage === 11 || $slip->type_coverage === 12 || $slip->type_coverage === 14)
             <div class="row mb-3">
                 <div class="col-md-4">
                     <div class="input-group">
@@ -232,7 +232,7 @@
             </div>
         @endif
 
-        @if ($slip->type_coverage === 15 && $slip->type_coverage === 16 && $slip->type_coverage === 17)
+        @if ($slip->type_coverage === 15 || $slip->type_coverage === 16 || $slip->type_coverage === 17)
             <div class="row mb-3">
                 <div class="col-md-4">
                     <div class="input-group">
@@ -248,6 +248,7 @@
                 </div>
             </div>
         @endif
+        
         @if ($slip->type_coverage === 11)
             <div class="row">
                 <div class="col-md-10">

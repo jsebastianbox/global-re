@@ -399,7 +399,11 @@ form h4 {
     background-color: #fff;
     overflow-x: hidden;
     overflow-y: scroll;
-    height: 97vh;
+    height: 96vh;
+}
+
+select option {
+    text-align: left;
 }
 
 .sidenav {
