@@ -115,20 +115,34 @@ class SlipsApi extends Controller
             $object_insurance
 
         ]] = $this->getSlipWithExtras($slip);
-        $pdf = PDF::loadView('admin.tecnico.slip.pdfVista', [
-            'slip_type' => $slip_type,
-            'slip' => $slip,
-            'user' => $user,
-            'sum_assured' => $sum_assured,
-            'boat_detail' => $boat_detail,
-            'information_aerial' => $information_aerial,
-            'aviation_extras' => $aviation_extras,
-            'vehicles_details' => $vehicles_details,
-            'coberturasSelect' => $coberturasSelect,
-            'exclusionesSelect' => $exclusionesSelect,
-            'clausulasSelect' => $clausulasSelect,
-            'object_insurance' => $object_insurance
-        ]);
-        return $pdf->download('slip_informe.pdf');
+        // $pdf = PDF::loadView('admin.tecnico.slip.pdfVista', [
+        //     'slip_type' => $slip_type,
+        //     'slip' => $slip,
+        //     'user' => $user,
+        //     'sum_assured' => $sum_assured,
+        //     'boat_detail' => $boat_detail,
+        //     'information_aerial' => $information_aerial,
+        //     'aviation_extras' => $aviation_extras,
+        //     'vehicles_details' => $vehicles_details,
+        //     'coberturasSelect' => $coberturasSelect,
+        //     'exclusionesSelect' => $exclusionesSelect,
+        //     'clausulasSelect' => $clausulasSelect,
+        //     'object_insurance' => $object_insurance
+        // ]);
+        $view = view('admin.tecnico.slip.pdfVista')
+            ->with('slip_type', $slip_type)
+            ->with('slip', $slip)
+            ->with('user', $user)
+            ->with('sum_assured', $sum_assured)
+            ->with('boat_detail', $boat_detail)
+            ->with('information_aerial', $information_aerial)
+            ->with('aviation_extras', $aviation_extras)
+            ->with('vehicles_details', $vehicles_details)
+            ->with('coberturasSelect', $coberturasSelect)
+            ->with('exclusionesSelect', $exclusionesSelect)
+            ->with('clausulasSelect', $clausulasSelect)
+            ->with('object_insurance', $object_insurance);
+
+        return $view;
     }
 }
