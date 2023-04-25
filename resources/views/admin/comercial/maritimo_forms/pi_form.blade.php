@@ -207,7 +207,7 @@ margin-top: 1.3rem;
 <script src="{{ asset('js/admin/comercial/ajax.js') }}" defer></script>
 
 <div class="card" style="padding-inline: 1rem; padding-block: 1.75rem">
-    <form enctype="multipart/form-data" method="POST" id="maritimo_2_form" onsubmit="maritimoform2()">
+    <form enctype="multipart/form-data"  action="{{ route('slip.update', $slip->id) }}"  method="POST" id="maritimo_2_form">
         @csrf
         @method('PUT')
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
@@ -265,6 +265,7 @@ margin-top: 1.3rem;
                             <th style="text-align: center">Puntal (mts)</th>
                             <th style="text-align: center">Casco (USD)</th>
                             <th style="text-align: center">Maquina (USD)</th>
+                            <th style="text-align: center">Deducibles (USD)</th>
                             <th style="text-align: center">Total (USD)</th>
                             <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Add row">
 
@@ -321,6 +322,9 @@ margin-top: 1.3rem;
                             <td>
                                 <input onkeyup="sumaCascoMaquina({{ $key + 1 }}, 2, 'cascoBuques')" type="number" step="any" class="row{{ $key + 1 }} col2" name="machine_boat[]" value="{{ $item->machine_boat }}">
                             </td>
+                            <td>
+                                <input onkeyup="sumaCascoMaquina({{ $key + 1 }}, 4, 'maritimo_pi')" type="number" data-money step="any" class="row{{ $key + 1 }} col4" name="deducible_boat[]" value="0">
+                            </td>
                             <td style="text-align: center">
                                 <span class="slipTitle col3" id="rowTotal{{ $key + 1 }}">0</span>$
                             </td>
@@ -363,6 +367,9 @@ margin-top: 1.3rem;
                             <td>
                                 <input onkeyup="sumaCascoMaquina(1, 2, 'cascoBuques')" type="number" step="any" class="row1 col2" name="machine_boat[]" value="0">
                             </td>
+                            <td>
+                                <input onkeyup="sumaCascoMaquina(1, 4, 'maritimo_pi')" type="number" data-money step="any" class="row1 col4" name="deducible_boat[]" value="0">
+                            </td>
                             <td style="text-align: center">
                                 <span class="slipTitle col3" id="rowTotal1">0</span>$
                             </td>
@@ -385,6 +392,9 @@ margin-top: 1.3rem;
                         </td>
                         <td style="text-align: center">
                             <span class="slipTitle" id="colTotal2">0</span>$
+                        </td>
+                        <td style="text-align: center">
+                            <span class="slipTitle" id="colTotal4">0</span>$
                         </td>
                         <td style="text-align: center">
                             <span class="slipTitle" id="totalTotal">0</span>$
@@ -978,6 +988,7 @@ margin-top: 1.3rem;
                             <th style="text-align: center">Puntal (mts)</th>
                             <th style="text-align: center">Casco (USD)</th>
                             <th style="text-align: center">Maquina (USD)</th>
+                            <th style="text-align: center">Deducible (USD)</th>
                             <th style="text-align: center">Total (USD)</th>
                             <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Add row">
 
@@ -1019,10 +1030,13 @@ margin-top: 1.3rem;
                                 <input type="number" step="any" name="puntual_boat[]" placeholder="metros..">
                             </td>
                             <td>
-                                <input onkeyup="sumaCascoMaquina(1, 1, 'maritimo_pi')" type="number" data-money step="any" class="row1 col1" name="shell_boat[]" value="0">
+                                <input onkeyup="sumaCascoDeducible(1, 1, 'maritimo_pi')" type="number" data-money step="any" class="row1 col1" name="shell_boat[]" value="0">
                             </td>
                             <td>
                                 <input onkeyup="sumaCascoMaquina(1, 2, 'maritimo_pi')" type="number" data-money step="any" class="row1 col2" name="machine_boat[]" value="0">
+                            </td>
+                            <td>
+                                <input onkeyup="sumaCascoMaquina(1, 4, 'maritimo_pi')" type="number" data-money step="any" class="row1 col4" name="deducible_boat[]" value="0">
                             </td>
                             <td style="text-align: center">
                                 <span class="slipTitle col3" id="rowTotal1">0</span>$
@@ -1065,6 +1079,9 @@ margin-top: 1.3rem;
                             <td>
                                 <input onkeyup="sumaCascoMaquina(2, 2, 'maritimo_pi')" type="number" data-money step="any" class="row2 col2" name="machine_boat[]" value="0">
                             </td>
+                            <td>
+                                <input onkeyup="sumaCascoMaquina(2, 4, 'maritimo_pi')" type="number" data-money step="any" class="row2 col4" name="deducible_boat[]" value="0">
+                            </td>
                             <td style="text-align: center">
                                 <span class="slipTitle col3" id="rowTotal2">0</span>$
                             </td>
@@ -1086,6 +1103,9 @@ margin-top: 1.3rem;
                         </td>
                         <td style="text-align: center">
                             <span class="slipTitle" id="colTotal2">0</span>$
+                        </td>
+                        <td style="text-align: center">
+                            <span class="slipTitle" id="colTotal4">0</span>$
                         </td>
                         <td style="text-align: center">
                             <span class="slipTitle" id="totalTotal">0</span>$
@@ -1120,7 +1140,7 @@ margin-top: 1.3rem;
                             <th style="text-align: center">Campo adicional</th>
                             <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Add row">
 
-                                <button type="button" onclick="addRowCoberturaV2(event, 'maritimo_proteccion')" class="btn btn-success btn-xs">
+                                <button type="button" onclick="addRowCoberturaV2(event, 'maritimo_proteccion', 'maritimo', 'proteccion_indemnizacion')" class="btn btn-success btn-xs">
                                     +
                                 </button>
                             </th>
@@ -1173,7 +1193,7 @@ margin-top: 1.3rem;
                             <th style="text-align: center">Campo adicional</th>
                             <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Add row">
 
-                                <button type="button" onclick="addRowClausula(event, 'maritimo_proteccion')" class="btn btn-success btn-xs">
+                                <button id="btnClausulasM2" type="button" onclick="addRowClausula(event, 'maritimo_proteccion', 'maritimo', 'casco')" class="btn btn-success btn-xs" style="display: block">
                                     +
                                 </button>
                             </th>

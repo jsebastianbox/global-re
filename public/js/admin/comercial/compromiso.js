@@ -709,7 +709,7 @@ function updateS4() {
             currentTab = 0;
             r_tecnicos.style.display = "block";
             valorAseguradoContainer.forEach(elemento => {
-                elemento.style.display = 'block';
+                elemento.style.display = 'none';
             })
             clausulasSelect(".selectClausula", "tecnico", "rotura_maquinaria");
             coberturasSelect(".selectCobertura", "tecnico", "rotura_maquinaria");
@@ -763,7 +763,7 @@ function updateS4() {
             currentTab = 0;
             r_tecnicos.style.display = "block";
             valorAseguradoContainer.forEach(elemento => {
-                elemento.style.display = 'block';
+                elemento.style.display = 'none';
             })
             clausulasSelect(".selectClausula", "tecnico", "equipo_maquinaria");
             coberturasSelect(".selectCobertura", "tecnico", "equipo_maquinaria");
@@ -791,7 +791,7 @@ function updateS4() {
             currentTab = 0;
             r_tecnicos.style.display = "block";
             valorAseguradoContainer.forEach(elemento => {
-                elemento.style.display = 'block';
+                elemento.style.display = 'none';
             })
             clausulasSelect(".selectClausula", "tecnico", "construccion");
             coberturasSelect(".selectCobertura", "tecnico", "construccion");
@@ -952,14 +952,22 @@ function updateS6() {
 
     switch (value) {
         case "cm":
-            clausulasSelect(".selectClausula", "maritimo", "casco_maquinaria");
-            coberturasSelect(".selectCobertura", "maritimo", "casco_maquinaria");
-            currentTab = 0;
+            document.getElementById('btnClausulasM1').style.display = "block"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "none"
+            document.getElementById('btnClausulasM4').style.display = "none"
+            document.getElementById('btnCoberturasM1').style.display = "block"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "none"
+            document.getElementById('btnCoberturasM4').style.display = "none"
+            clausulasSelect(".selectClausula", "maritimo", "casco")
+            coberturasSelect(".selectCobertura", "maritimo", "casco")
+            currentTab = 0
             currentForm = "#maritimo_1_form"
-            x = maritimo_1_form.getElementsByClassName("tab");
-            nextBtn = maritimo.getElementsByTagName('button').nextBtn;
-            prevBtn = maritimo.getElementsByTagName('button').prevBtn;
-            submitBtn = maritimo.getElementsByTagName('button').submitBtn;
+            x = maritimo_1_form.getElementsByClassName("tab")
+            nextBtn = maritimo.getElementsByTagName('button').nextBtn
+            prevBtn = maritimo.getElementsByTagName('button').prevBtn
+            submitBtn = maritimo.getElementsByTagName('button').submitBtn
             showTab(currentTab); // Display the crurrent tab
             maritimo.style.display = "block";
             maritimo2.style.display = "none";
@@ -973,8 +981,16 @@ function updateS6() {
             maritimo.appendChild(element);
             break;
         case "mrc":
-            clausulasSelect(".selectClausula", "maritimo", "mrc");
-            coberturasSelect(".selectCobertura", "maritimo", "mrc");
+            document.getElementById('btnClausulasM1').style.display = "block"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "none"
+            document.getElementById('btnClausulasM4').style.display = "none"
+            document.getElementById('btnCoberturasM1').style.display = "block"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "none"
+            document.getElementById('btnCoberturasM4').style.display = "none"
+            clausulasSelect(".selectClausula", "maritimo", "casco");
+            coberturasSelect(".selectCobertura", "maritimo", "casco");
             currentTab = 0;
             currentForm = "#maritimo_1_form"
             x = maritimo_1_form.getElementsByClassName("tab");
@@ -994,8 +1010,16 @@ function updateS6() {
             maritimo.appendChild(element);
             break;
         case "pi":
-            clausulasSelect(".selectClausula", "maritimo", "pi");
-            coberturasSelect(".selectCobertura", "maritimo", "pi");
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "block"
+            document.getElementById('btnClausulasM3').style.display = "none"
+            document.getElementById('btnClausulasM4').style.display = "none"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "block"
+            document.getElementById('btnCoberturasM3').style.display = "none"
+            document.getElementById('btnCoberturasM4').style.display = "none"
+            clausulasSelect(".selectClausula", "maritimo", "proteccion_indemnizacion")
+            coberturasSelect(".selectCobertura", "maritimo", "casco")
             currentTab = 0;
             currentForm = '#maritimo_2_form'
             x = maritimo_2_form.getElementsByClassName("tab");
@@ -1011,6 +1035,14 @@ function updateS6() {
             maritimo2.appendChild(element);
             break;
         case "rcp":
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "block"
+            document.getElementById('btnClausulasM4').style.display = "none"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "block"
+            document.getElementById('btnCoberturasM4').style.display = "none"
             clausulasSelect(".selectClausula", "maritimo", "rcp");
             coberturasSelect(".selectCobertura", "maritimo", "rcp");
             currentTab = 0;
@@ -1028,6 +1060,14 @@ function updateS6() {
             maritimo3.appendChild(element);
             break;
         case "rcas":
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "block"
+            document.getElementById('btnClausulasM4').style.display = "none"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "block"
+            document.getElementById('btnCoberturasM4').style.display = "none"
             clausulasSelect(".selectClausula", "maritimo", "rcas");
             coberturasSelect(".selectCobertura", "maritimo", "rcas");
             currentTab = 0;
@@ -1045,6 +1085,14 @@ function updateS6() {
             maritimo3.appendChild(element);
             break;
         case "rcar":
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "block"
+            document.getElementById('btnClausulasM4').style.display = "none"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "block"
+            document.getElementById('btnCoberturasM4').style.display = "none"
             clausulasSelect(".selectClausula", "maritimo", "rcar");
             coberturasSelect(".selectCobertura", "maritimo", "rcar");
             currentTab = 0;
@@ -1062,6 +1110,14 @@ function updateS6() {
             maritimo3.appendChild(element);
             break;
         case "tin":
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "none"
+            document.getElementById('btnClausulasM4').style.display = "block"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "none"
+            document.getElementById('btnCoberturasM4').style.display = "block"
             currentTab = 0;
             currentForm = '#maritimo_4_form'
             x = maritimo_4_form.getElementsByClassName("tab");
@@ -1079,6 +1135,14 @@ function updateS6() {
             coberturasSelect(".selectCobertura", "tecnico", "tin");
             break;
         case "ex":
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "none"
+            document.getElementById('btnClausulasM4').style.display = "block"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "none"
+            document.getElementById('btnCoberturasM4').style.display = "block"
             currentTab = 0;
             currentForm = '#maritimo_4_form'
             x = maritimo_4_form.getElementsByClassName("tab");
@@ -1096,6 +1160,14 @@ function updateS6() {
             coberturasSelect(".selectCobertura", "tecnico", "ex");
             break;
         case "im":
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "none"
+            document.getElementById('btnClausulasM4').style.display = "block"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "none"
+            document.getElementById('btnCoberturasM4').style.display = "block"
             currentTab = 0;
             currentForm = '#maritimo_4_form'
             x = maritimo_4_form.getElementsByClassName("tab");
@@ -1114,6 +1186,14 @@ function updateS6() {
             coberturasSelect(".selectCobertura", "tecnico", "im");
             break;
         case "stp":
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "none"
+            document.getElementById('btnClausulasM4').style.display = "block"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "none"
+            document.getElementById('btnCoberturasM4').style.display = "block"
             currentTab = 0;
             currentForm = '#maritimo_4_form'
             x = maritimo_4_form.getElementsByClassName("tab");
@@ -1131,6 +1211,14 @@ function updateS6() {
             coberturasSelect(".selectCobertura", "tecnico", "stp");
             break;
         case "td":
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "none"
+            document.getElementById('btnClausulasM4').style.display = "block"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "none"
+            document.getElementById('btnCoberturasM4').style.display = "block"
             currentTab = 0;
             currentForm = '#maritimo_4_form'
             x = maritimo_4_form.getElementsByClassName("tab");
@@ -2612,6 +2700,7 @@ function refreshSumaCascoMaquina(table) {
         console.log(i);
         sumaCascoMaquina(i, 1, `${table}`)
         sumaCascoMaquina(i, 2, `${table}`)
+        sumaCascoMaquina(i, 4, `${table}`)
     }
 
 }
@@ -2718,6 +2807,9 @@ function addRowEmbarcaciones(event, type) {
         <td>
             <input onkeyup="sumaCascoMaquina(${rowCount}, 2, '${type}')" type="number" data-money step="any" class="row${rowCount} col2"
                 name="machine_boat[]" value="0">
+        </td>
+        <td>
+            <input onkeyup="sumaCascoMaquina(${rowCount}, 4, '${type}')" type="number" data-money step="any" class="row${rowCount} col4" name="deducible_boat[]" value="0">
         </td>
         <td style="text-align: center">
             <span class="slipTitle col3" id="rowTotal${rowCount}">0</span>$
@@ -3224,7 +3316,7 @@ function addRowSumaPerdida(event, type) {
             <input type="text" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
         </td>
         <td style="text-align: center">
-            <input class="col1 row${rowCount}" onkeyup="incendioSumaAsegurableTotales(${rowCount}, 1, 'perdida')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px" >
+            <input class="col1 row${rowCount}" onkeyup="incendioSumaAsegurableTotales(${rowCount}, 1, '${type}')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px" >
         </td>
         <td style="text-align: center">
             <span class="slipTitle col12" id="rowTotal${rowCount}">0</span>$

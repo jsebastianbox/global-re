@@ -20,6 +20,7 @@ class BoatDetailSlip extends Model
         'puntual_boat',
         'shell_boat',
         'machine_boat',
+        'deducible_boat',
         'slip_id'
     ];
 

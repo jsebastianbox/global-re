@@ -487,6 +487,7 @@ class SlipApiController extends Controller
                                     'puntual_boat' => $request->puntual_boat[$i] ?? null,
                                     'shell_boat' => $request->shell_boat[$i] ?? null,
                                     'machine_boat' => $request->machine_boat[$i] ?? null,
+                                    'deducible_boat' => $request->deducible_boat[$i] ?? null,
                                     'slip_id' => $slip->id
                                 ]);
                                 $boats->save();
@@ -513,6 +514,7 @@ class SlipApiController extends Controller
                                     'puntual_boat' => $request->puntual_boat[$i] ?? null,
                                     'shell_boat' => $request->shell_boat[$i] ?? null,
                                     'machine_boat' => $request->machine_boat[$i] ?? null,
+                                    'deducible_boat' => $request->deducible_boat[$i] ?? null,
                                     'slip_id' => $slip->id
                                 ]);
                                 $boats->save();
