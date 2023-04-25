@@ -170,53 +170,65 @@
                         render: function(data, type, row) {
                             let coverage = type_coverages[row.type_coverage - 1].branch_id
                             let button = ``;
+
+                            destroyForm = `
+                            <form action="/admin/comercial/destroy/${data}" method="POST">
+                                @csrf
+                                @method('POST')
+                                <button type="submit" class="btn btn-danger btn-xs mb-1">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true">Borrar</span>
+                                </button>
+                            </form>
+                            `;
+
                             switch (coverage) {
                                 case '1':
-                                    button =
-                                        `<a class="btn btn-primary" href="/admin/comercial/edit_compromiso/vida/${data}">Editar Compromiso</a>`;
+                                    button =`<a class="btn btn-primary btn-xs mb-1" href="/admin/comercial/edit_compromiso/vida/${data}">Editar</a>`;
+                                    button += destroyForm;
                                     break;
                                 case '2':
-                                    button =
-                                        `<a class="btn btn-primary" href="/admin/comercial/edit_compromiso/activos/${data}">Editar Compromiso</a>`;
+                                    button =`<a class="btn btn-primary btn-xs mb-1" href="/admin/comercial/edit_compromiso/activos/${data}">Editar</a>`;
+                                    button += destroyForm;
                                     break;
                                 case '3':
-                                    button =
-                                        `<a class="btn btn-primary" href="/admin/comercial/edit_compromiso/vehiculos/${data}">Editar Compromiso</a>`;
+                                    button =`<a class="btn btn-primary btn-xs mb-1" href="/admin/comercial/edit_compromiso/vehiculos/${data}">Editar</a>`;
+                                    button += destroyForm;
                                     break;
                                 case '4':
-                                    button =
-                                        `<a class="btn btn-primary" href="/admin/comercial/edit_compromiso/tecnico/${data}">Editar Compromiso</a>`;
+                                    button =`<a class="btn btn-primary btn-xs mb-1" href="/admin/comercial/edit_compromiso/tecnico/${data}">Editar</a>`;
+                                    button += destroyForm;
                                     break;
                                 case '5':
-                                    button =
-                                        `<a class="btn btn-primary" href="/admin/comercial/edit_compromiso/energia/${data}">Editar Compromiso</a>`;
+                                    button =`<a class="btn btn-primary btn-xs mb-1" href="/admin/comercial/edit_compromiso/energia/${data}">Editar</a>`;
+                                    button += destroyForm;
                                     break;
                                 case '6':
-                                    button =
-                                        `<a class="btn btn-primary" href="/admin/comercial/edit_compromiso/maritimo/${data}">Editar Compromiso</a>`;
+                                    button =`<a class="btn btn-primary btn-xs mb-1" href="/admin/comercial/edit_compromiso/maritimo/${data}">Editar</a>`;
+                                    button += destroyForm;
                                     break;
                                 case '7':
-                                    button =
-                                        `<a class="btn btn-primary" href="/admin/comercial/edit_compromiso/aviacion/${data}">Editar Compromiso</a>`;
+                                    button =`<a class="btn btn-primary btn-xs mb-1" href="/admin/comercial/edit_compromiso/aviacion/${data}">Editar</a>`;
+                                    button += destroyForm;
                                     break;
                                 case '8':
-                                    button =
-                                        `<a class="btn btn-primary" href="/admin/comercial/edit_compromiso/responsabilidad/${data}">Editar Compromiso</a>`;
+                                    button =`<a class="btn btn-primary btn-xs mb-1" href="/admin/comercial/edit_compromiso/responsabilidad/${data}">Editar</a>`;
+                                    button += destroyForm;
                                     break;
                                 case '9':
-                                    button =
-                                        `<a class="btn btn-primary" href="/admin/comercial/edit_compromiso/riesgos/${data}">Editar Compromiso</a>`;
+                                    button =`<a class="btn btn-primary btn-xs mb-1" href="/admin/comercial/edit_compromiso/riesgos/${data}">Editar</a>`;
+                                    button += destroyForm;
                                     break;
                                 case '10':
-                                    button =
-                                        `<a class="btn btn-primary" href="/admin/comercial/edit_compromiso/fianzas/${data}">Editar Compromiso</a>`;
+                                    button =`<a class="btn btn-primary btn-xs mb-1" href="/admin/comercial/edit_compromiso/fianzas/${data}">Editar</a>`;
+                                    button += destroyForm;
                                     break;
                                 default:
                                     break;
                             }
                             return button;
                         }
-                    }
+                    },
+                    
                 ],
                 language: {
                     url: "//cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
