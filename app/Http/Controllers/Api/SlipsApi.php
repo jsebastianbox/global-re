@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Slip;
 use App\Traits\HasSlipsType;
 use App\Traits\HasUploadFiles;
+use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -89,7 +90,7 @@ class SlipsApi extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
     public function slipFiles(Request $request, $id)
     {
@@ -100,12 +101,13 @@ class SlipsApi extends Controller
     }
     public function slipPDF(Request $request, $id)
     {
-        $slip = Slip::find($id);
+        /* $slip = Slip::find($id);
         [$slip_type, $case] = $this->getSlipType($slip);
-        $pdf = PDF::loadView('admin.tecnico.slip.pdfVista', [
+        $pdf = Dompdf::loadView('admin.tecnico.slip.pdfVista', [
             'slip_type' => $slip_type,
             'slip' => $slip
         ]);
-        return $pdf->download('slip_informe.pdf');
+        return $pdf->download('slip_informe.pdf'); */
+
     }
 }

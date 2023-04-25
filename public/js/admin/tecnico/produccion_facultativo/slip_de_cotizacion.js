@@ -2122,7 +2122,33 @@ function addEndosoAdicional(event) {
     tr.innerHTML =
         `
             <td>
-                <textarea name=""></textarea>
+                <select name="" id="">
+                    <option value="Endoso 001: Huelga, Motín y Conmoción Civil"> Endoso 001: Huelga, Motín y Conmoción Civil </option>
+                    <option value="Endoso 002: Responsabilidad Civil Cruzada"> Endoso 002: Responsabilidad Civil Cruzada</option>
+                    <option value="Endoso 003: Mantenimiento"> Endoso 003: Mantenimiento </option>
+                    <option value="Endoso 004: Mantenimiento Amplio"> Endoso 004: Mantenimiento Amplio </option>
+                    <option value="Endoso 005: Cronograma de Avance de los Trabajos de Construcción y/o Montaje"> Endoso 005: Cronograma de Avance de los Trabajos de Construcción y/o Montaje </option>
+                    <option value="Endoso 006: Horas Extras, Trabajo Nocturno, Trabajos en Días Festivos, Flete Expreso"> Endoso 006: Horas Extras, Trabajo Nocturno, Trabajos en Días Festivos, Flete Expreso </option>
+                    <option value="Endoso 007: Flete Aéreo"> Endoso 007: Flete Aéreo </option>
+                    <option value="Endoso 008: Obras sitas en Zonas Sísmicas"> Endoso 008: Obras sitas en Zonas Sísmicas </option>
+                    <option value="Endoso 009: Exclusión de Pérdida, Daño o Responsabilidad Debido a Terremoto y Temblor"> Endoso 009: Exclusión de Pérdida, Daño o Responsabilidad Debido a Terremoto y Temblor </option>
+                    <option value="Endoso 010: Condición Especial Concerniente a Pérdida, Daño o Responsabilidad debidos a Civlón, Avenida e Inundación"> Endoso 010: Condición Especial Concerniente a Pérdida, Daño o Responsabilidad debidos a Civlón, Avenida e Inundación</option>
+                    <option value="Endoso 201: Garantía"> Endoso 201: Garantía</option>
+                    <option value="Endoso 202: Cobertura de Maquinaria de Construcción / Montaje"> Endoso 202: Cobertura de Maquinaria de Construcción / Montaje </option>
+                    <option value="Endoso 203: Exclusiones Relativas a Maquinaria Usada"> Endoso 203: Exclusiones Relativas a Maquinaria Usada </option>
+                    <option value="Endoso 204: Condición Especial 1 para Industrias de Procesamiento de Hidrocarburos"> Endoso 204: Condición Especial 1 para Industrias de Procesamiento de Hidrocarburos</option>
+                    <option value="Endoso 205: Condición Especial 2 para Industrias de Procesamiento de Hidrocarburos Amparo de Medios Catalizadores"> Endoso 205: Condición Especial 2 para Industrias de Procesamiento de Hidrocarburos Amparo de Medios Catalizadores </option>
+                    <option value="Endoso 206: Condiciones Especiales para Equipos Extintores de Incendio"> Endoso 206: Condiciones Especiales para Equipos Extintores de Incendio </option>
+                    <option value="Endoso 207: Campamentos y Almacenes de Materiales de Construcción"> Endoso 207: Campamentos y Almacenes de Materiales de Construcción</option>
+                    <option value="Endoso 208: Condiciones Especiales Relativas a Cables y Tuberias Subterráneas"> Endoso 208: Condiciones Especiales Relativas a Cables y Tuberias Subterráneas </option>
+                    <option value="Endoso 209: Condiciones Especiales Relativas a Pérdidas de o Daño a Siembras, Bosques y Cultivos"> Endoso 209: Condiciones Especiales Relativas a Pérdidas de o Daño a Siembras, Bosques y Cultivos</option>
+                    <option value="Endoso 210: Cobertura para Propiedad Adyacente"> Endoso 210: Cobertura para Propiedad Adyacente </option>
+                    <option value="Endoso 211: Inclusión de Elementos Combustibles"> Endoso 211: Inclusión de Elementos Combustibles </option>
+                    <option value="Endoso 212: Cobertura de Gastos para la Descontaminación"> Endoso 212: Cobertura de Gastos para la Descontaminación </option>
+                    <option value="Endoso 217: Condiciones Especiales para la Cobertura del Tendido de Oleoductos, Tuberías y Cables en Zanjas Abiertas"> Endoso 217: Condiciones Especiales para la Cobertura del Tendido de Oleoductos, Tuberías y Cables en Zanjas Abiertas</option>
+                    <option value="Endoso 218: Cobertura de Gastos para Localizar Fugas que Ocurran durante el Tendido de Tuberías"> Endoso 218: Cobertura de Gastos para Localizar Fugas que Ocurran durante el Tendido de Tuberías</option>
+                    <option value="Endoso 221: Cobertura de Riesgos del Fabricante"> Endoso 221: Cobertura de Riesgos del Fabricante </option>  
+                </select
             </td>
             <td>
                 <input type="number" placeholder="0"
