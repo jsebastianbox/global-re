@@ -106,17 +106,17 @@
                             </button>
                             @break
                         @case(20)
-                            <button onclick="addRowCoberturaV2(event, '', 'energia','trp')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'energia','casco')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(21)
-                            <button onclick="addRowCoberturaV2(event, '', 'maritimo','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'maritimo','casco')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break
                         @case(22)
-                            <button onclick="addRowCoberturaV2(event, '', 'maritimo','all')" class="btn btn-success btn-xs">
+                            <button onclick="addRowCoberturaV2(event, '', 'maritimo','proteccion_indemnizacion')" class="btn btn-success btn-xs">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
                             @break

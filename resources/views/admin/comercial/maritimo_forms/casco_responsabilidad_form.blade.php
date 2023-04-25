@@ -240,6 +240,7 @@
                             <th style="text-align: center">Puntal (mts)</th>
                             <th style="text-align: center">Casco (USD)</th>
                             <th style="text-align: center">Maquina (USD)</th>
+                            <th style="text-align: center">Deducible (USD)</th>
                             <th style="text-align: center">Total (USD)</th>
                             <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Add row">
 
@@ -296,6 +297,9 @@
                             <td>
                                 <input onkeyup="sumaCascoMaquina({{ $key + 1 }}, 2, 'cascoBuques')" type="number" step="any" class="row{{ $key + 1 }} col2" name="machine_boat[]" value="{{ $item->machine_boat }}">
                             </td>
+                            <td>
+                                <input onkeyup="sumaCascoMaquina({{ $key + 1 }}, 4, 'cascoBuques')" type="number" step="any" class="row{{ $key + 1 }} col4" name="deducible_boat[]" value="{{ $item->deducible_boat }}">
+                            </td>
                             <td style="text-align: center">
                                 <span class="slipTitle col3" id="rowTotal{{ $key + 1 }}">0</span>$
                             </td>
@@ -338,6 +342,9 @@
                             <td>
                                 <input onkeyup="sumaCascoMaquina(1, 2, 'cascoBuques')" type="number" step="any" class="row1 col2" name="machine_boat[]" value="0">
                             </td>
+                            <td>
+                                <input onkeyup="sumaCascoMaquina(1, 4, 'cascoBuques')" type="number" step="any" class="row1 col4" name="deducible_boat[]" value="0">
+                            </td>
                             <td style="text-align: center">
                                 <span class="slipTitle col3" id="rowTotal1">0</span>$
                             </td>
@@ -360,6 +367,9 @@
                         </td>
                         <td style="text-align: center">
                             <span class="slipTitle" id="colTotal2">0</span>$
+                        </td>
+                        <td style="text-align: center">
+                            <span class="slipTitle" id="colTotal4">0</span>$
                         </td>
                         <td style="text-align: center">
                             <span class="slipTitle" id="totalTotal">0</span>$
@@ -957,6 +967,7 @@
                             <th style="text-align: center">Puntal (mts)</th>
                             <th style="text-align: center">Casco (USD)</th>
                             <th style="text-align: center">Maquina (USD)</th>
+                            <th style="text-align: center">Deducibles (USD)</th>
                             <th style="text-align: center">Total (USD)</th>
                             <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Add row">
 
@@ -1003,6 +1014,9 @@
                             <td>
                                 <input onkeyup="sumaCascoMaquina(1, 2, 'cascoBuques')" type="number" data-money step="any" class="row1 col2" name="machine_boat[]" value="0">
                             </td>
+                            <td>
+                                <input onkeyup="sumaCascoMaquina(1, 4, 'cascoBuques')" type="number" data-money step="any" class="row1 col4" name="deducible_boat[]" value="0">
+                            </td>
                             <td style="text-align: center">
                                 <span class="slipTitle col3" id="rowTotal1">0</span>$
                             </td>
@@ -1044,6 +1058,9 @@
                             <td>
                                 <input onkeyup="sumaCascoMaquina(2, 2, 'cascoBuques')" type="number" data-money step="any" class="row2 col2" name="machine_boat[]" value="0">
                             </td>
+                            <td>
+                                <input onkeyup="sumaCascoMaquina(2, 4, 'cascoBuques')" type="number" data-money step="any" class="row2 col4" name="deducible_boat[]" value="0">
+                            </td>
                             <td style="text-align: center">
                                 <span class="slipTitle col3" id="rowTotal2">0</span>$
                             </td>
@@ -1065,6 +1082,9 @@
                         </td>
                         <td style="text-align: center">
                             <span class="slipTitle" id="colTotal2">0</span>$
+                        </td>
+                        <td style="text-align: center">
+                            <span class="slipTitle" id="colTotal4">0</span>$
                         </td>
                         <td style="text-align: center">
                             <span class="slipTitle" id="totalTotal">0</span>$
@@ -1145,7 +1165,16 @@
                             <th style="text-align: center">Campo adicional</th>
                             <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Add row">
 
-                                <button type="button" onclick="addRowCoberturaV2(event, 'maritimo_casco')" class="btn btn-success btn-xs">
+                                <button id="btnCoberturasM1" type="button" onclick="addRowCoberturaV2(event, 'maritimo_casco', 'maritimo', 'casco')" class="btn btn-success btn-xs" style="display: none">
+                                    +
+                                </button>
+                                <button id="btnCoberturasM2" type="button" onclick="addRowCoberturaV2(event, 'maritimo_casco')" class="btn btn-success btn-xs" style="display: none">
+                                    +
+                                </button>
+                                <button id="btnCoberturasM3" type="button" onclick="addRowCoberturaV2(event, 'maritimo_casco')" class="btn btn-success btn-xs" style="display: none">
+                                    +
+                                </button>
+                                <button id="btnCoberturasM4" type="button" onclick="addRowCoberturaV2(event, 'maritimo_casco')" class="btn btn-success btn-xs" style="display: none">
                                     +
                                 </button>
                             </th>
@@ -1197,7 +1226,16 @@
                             <th style="text-align: center">Campo adicional</th>
                             <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Add row">
 
-                                <button type="button" onclick="addRowClausula(event, 'maritimo_casco')" class="btn btn-success btn-xs">
+                                <button id="btnClausulasM1" type="button" onclick="addRowClausula(event, 'maritimo_casco', 'maritimo', 'casco')" class="btn btn-success btn-xs" style="display: none">
+                                    +
+                                </button>
+                                <button id="btnClausulasM2" type="button" onclick="addRowClausula(event, 'maritimo_casco')" class="btn btn-success btn-xs" style="display: none">
+                                    +
+                                </button>
+                                <button id="btnClausulasM3" type="button" onclick="addRowClausula(event, 'maritimo_casco')" class="btn btn-success btn-xs" style="display: none">
+                                    +
+                                </button>
+                                <button id="btnClausulasM4" type="button" onclick="addRowClausula(event, 'maritimo_casco')" class="btn btn-success btn-xs" style="display: none">
                                     +
                                 </button>
                             </th>

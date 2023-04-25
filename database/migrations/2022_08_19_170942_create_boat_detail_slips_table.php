@@ -26,6 +26,7 @@ class CreateBoatDetailSlipsTable extends Migration
             $table->string('puntual_boat')->nullable();
             $table->string('shell_boat')->nullable();
             $table->string('machine_boat')->nullable();
+            $table->string('deducible_boat')->nullable();
             /* $table->foreignId('slip_id')->constrained('slips')
                 ->onDelete("cascade")
                 ->onUpdate("cascade"); */

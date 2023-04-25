@@ -31,6 +31,7 @@
                         <th style="text-align: center">Puntal (mts)</th>
                         <th style="text-align: center">Casco (USD)</th>
                         <th style="text-align: center">Maquina (USD)</th>
+                        <th style="text-align: center">Deducible (USD)</th>
                         <th style="text-align: center">Total (USD)</th>
                         <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1"
                             colspan="1" aria-label="Add row">
@@ -44,9 +45,9 @@
 
                 <tbody id="cascoBuquesTableEmbarcacionesBody">
 
-                    @if (count($slip_type->boat_detail) > 0)
+                    @if (count($boat_detail) > 0)
 
-                        @foreach ($slip_type->boat_detail as $key => $item)
+                        @foreach ($boat_detail as $key => $item)
                             <tr>
                                 <td style="text-align: center">
                                     {{ $key+1 }}
@@ -95,6 +96,10 @@
                                     <input onkeyup="sumaCascoMaquina({{$key+1}}, 2, 'cascoBuques')" type="number" step="any" class="row{{$key+1}} col2"
                                         name="machine_boat[]" value="{{ $item->machine_boat }}">
                                 </td>
+                                <td>
+                                    <input onkeyup="sumaCascoMaquina({{$key+1}}, 4, 'cascoBuques')" type="number" step="any" class="row{{$key+1}} col4"
+                                        name="deducible_boat[]" value="{{ $item->deducible_boat }}">
+                                </td>
                                 <td style="text-align: center">
                                     <span class="slipTitle col3" id="rowTotal{{$key+1}}">0</span>$
                                 </td>
@@ -139,6 +144,10 @@
                                 <input onkeyup="sumaCascoMaquina(1, 2, 'cascoBuques')" type="number" step="any" class="row1 col2"
                                     name="machine_boat[]" value="0">
                             </td>
+                            <td>
+                                <input onkeyup="sumaCascoMaquina(1, 4, 'cascoBuques')" type="number" step="any" class="row1 col4"
+                                    name="deducible_boat[]" value="0">
+                            </td>
                             <td style="text-align: center">
                                 <span class="slipTitle col3" id="rowTotal1">0</span>$
                             </td>
@@ -163,6 +172,9 @@
                         <span class="slipTitle" id="colTotal2">0</span>$
                     </td>
                     <td style="text-align: center">
+                        <span class="slipTitle" id="colTotal4">0</span>$
+                    </td>
+                    <td style="text-align: center">
                         <span class="slipTitle" id="totalTotal">0</span>$
                     </td>
                     <td></td>
@@ -181,7 +193,7 @@
                         Suma asegurada
                     </label>
                     <input type="number" id="cascoBuquesSumaAsegurada" name="insured_sum"
-                        value="{{ $slip_type->insured_sum }}" disabled>
+                        value="{{ $slip_type->insured_sum }}" >
                 </div>
 
                 <div class="input_group">
@@ -190,7 +202,7 @@
                         Usos:
                     </label>
                     <select name="use_boat" id="cascoBuquesUsos">
-                        <option value="0" selected disabled>Selecciona</option>
+                        <option value="0" selected >Selecciona</option>
                         <option value="mercantes" @if ($slip_type->use_boat == 'mercantes') selected @endif>Mercantes</option>
                         <option value="turismo"@if ($slip_type->use_boat == 'turismo') selected @endif>Turismo</option>
                         <option value="pesquero"@if ($slip_type->use_boat == 'pesquero') selected @endif>Pesquero</option>
@@ -209,7 +221,7 @@
                         Nombre del armador:
                     </label>
                     <input type="text" name="name_armador"
-                        value="{{ $slip_type->name_armador }}" disabled>
+                        value="{{ $slip_type->name_armador }}" >
                 </div>
         
             </div>
@@ -222,7 +234,7 @@
                         Material de construcción:
                     </label>
                     <select name="construction_material">
-                        <option value="0" selected disabled>Selecciona</option>
+                        <option value="0" selected >Selecciona</option>
                         <option value="madera" @if ($slip_type->construction_material == 'madera') selected @endif>Madera</option>
                         <option value="vidrio"@if ($slip_type->construction_material == 'vidrio') selected @endif>Vidrio</option>
                         <option value="acero"@if ($slip_type->construction_material == 'acero') selected @endif>Acero</option>
@@ -239,7 +251,7 @@
                         Área de navegación:
                     </label>
                     <input type="text" id="cascoBuquesAreaNavegacion" name="navigation"
-                        value="{{ $slip_type->navigation }}" disabled>
+                        value="{{ $slip_type->navigation }}" >
                 </div>
 
             </div>
