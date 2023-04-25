@@ -128,7 +128,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Slip select
     Route::get('/slip_selected/{id}', [SlipController::class, 'slipSelected'])->name('slip.selected');
-    Route::post('/slip_destroy/{id}', [SlipController::class, 'destroy'])->name('slip.destroy');
     //david
     Route::resource('/sercorp', SercorpController::class);
     Route::resource('/slip', SlipController::class);
@@ -221,6 +220,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/comercial/edit_compromiso/riesgos/{id}', [CompromisoController::class, 'riesgos'])->name('edit.riesgos');
     Route::get('/admin/comercial/edit_compromiso/fianzas/{id}', [CompromisoController::class, 'fianzas'])->name('edit.fianzas');
     
+    //Eliminar compromisos
+    Route::post('/admin/comercial/destroy/{id}', [CompromisoController::class, 'destroy'])->name('destroy');
 });
 
 

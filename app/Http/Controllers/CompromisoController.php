@@ -39,12 +39,14 @@ use App\Models\TransportSlipStock;
 use App\Models\User;
 use App\Models\VehicleDetail;
 use App\Traits\HasUploadFiles;
+use App\Traits\HasSlipsType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CompromisoController extends Controller
 {
     use HasUploadFiles;
+    use HasSlipsType;
 
     public function compromiso()
     {
@@ -122,6 +124,36 @@ class CompromisoController extends Controller
     {
         $slips = Slip::with('country', 'type_coverage', 'user', 'slip_status')->orderBy('updated_at', 'asc')->get();
         return json_encode($slips);
+    }
+
+    public function destroy($id){
+        
+        $slip = Slip::find($id);
+        
+        if(!$slip){
+            return redirect()->route('/');
+        }
+        
+        ObjectInsurance::where('slip_id', $id)->delete();
+
+        $arr = $this->getSlipType($slip);
+
+        $slip_type = $arr[0];
+        $case = $arr[1];
+        $case = $case == "activos_fijos" ? "activos-fijos" : $case;
+        $path = "app/slips/". $case ."/" . $slip_type->id . "/";
+
+        // Elinina archivos del directorio
+        $this->removeDir($path."*.*");
+        
+        // Elimina el directorio
+        $this->removeDirectory($path);
+
+        $slip->delete($id);
+      
+        return redirect('/compromisosList');
+
+
     }
 
     public function editCompromiso($id)
