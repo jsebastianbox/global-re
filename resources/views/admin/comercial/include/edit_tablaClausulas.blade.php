@@ -111,17 +111,17 @@
                         </button>
                         @break
                     @case(21)
-                        <button onclick="addRowClausula(event, '', 'maritimo','all')" class="btn btn-success btn-xs">
+                        <button onclick="addRowClausula(event, '', 'maritimo','casco')" class="btn btn-success btn-xs">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         </button>
                         @break
                     @case(22)
-                        <button onclick="addRowClausula(event, '', 'maritimo','all')" class="btn btn-success btn-xs">
+                        <button onclick="addRowClausula(event, '', 'maritimo','casco')" class="btn btn-success btn-xs">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         </button>
                         @break
                     @case(23)
-                        <button onclick="addRowClausula(event, '', 'maritimo','all')" class="btn btn-success btn-xs">
+                        <button onclick="addRowClausula(event, '', 'maritimo','casco')" class="btn btn-success btn-xs">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         </button>
                         @break

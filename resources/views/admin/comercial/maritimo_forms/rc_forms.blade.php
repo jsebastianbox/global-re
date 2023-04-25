@@ -280,7 +280,8 @@
         <div>
             <div style="float:right;" class="row">
                 <div class="col-md">
-                    <button type="submit" id="submitBtn" style="display: none" class="btn btn-info mx-2" style="color: white">Enviar a dpto. Técnico</button>
+                    <button type="submit" id="submitBtn" class="btn btn-info mx-2" style="color: white">Enviar
+                        a dpto. Técnico</button>
                 </div>
             </div>
         </div>

@@ -1019,7 +1019,7 @@ function updateS6() {
             document.getElementById('btnCoberturasM3').style.display = "none"
             document.getElementById('btnCoberturasM4').style.display = "none"
             clausulasSelect(".selectClausula", "maritimo", "proteccion_indemnizacion")
-            coberturasSelect(".selectCobertura", "maritimo", "proteccion_indemnizacion")
+            coberturasSelect(".selectCobertura", "maritimo", "casco")
             currentTab = 0;
             currentForm = '#maritimo_2_form'
             x = maritimo_2_form.getElementsByClassName("tab");

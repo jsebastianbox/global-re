@@ -1228,10 +1228,7 @@
 
                                 <button id="btnClausulasM1" type="button" onclick="addRowClausula(event, 'maritimo_casco', 'maritimo', 'casco')" class="btn btn-success btn-xs" style="display: none">
                                     +
-                                </button>
-                                <button id="btnClausulasM2" type="button" onclick="addRowClausula(event, 'maritimo_casco')" class="btn btn-success btn-xs" style="display: none">
-                                    +
-                                </button>
+                                </button> 
                                 <button id="btnClausulasM3" type="button" onclick="addRowClausula(event, 'maritimo_casco')" class="btn btn-success btn-xs" style="display: none">
                                     +
                                 </button>
