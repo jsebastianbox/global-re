@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Slip;
 use App\Traits\HasSlipsType;
 use App\Traits\HasUploadFiles;
@@ -101,13 +102,48 @@ class SlipsApi extends Controller
     }
     public function slipPDF(Request $request, $id)
     {
-        /* $slip = Slip::find($id);
-        [$slip_type, $case] = $this->getSlipType($slip);
-        $pdf = Dompdf::loadView('admin.tecnico.slip.pdfVista', [
-            'slip_type' => $slip_type,
-            'slip' => $slip
-        ]);
-        return $pdf->download('slip_informe.pdf'); */
+        $slip = Slip::find($id);
+        $user = Auth::user();
+        [$slip_type, [
+            $sum_assured,
+            $boat_detail,
+            $information_aerial,
+            $aviation_extras,
+            $vehicles_details,
+            $coberturasSelect,
+            $exclusionesSelect,
+            $clausulasSelect,
+            $object_insurance
 
+        ]] = $this->getSlipWithExtras($slip);
+        // $pdf = PDF::loadView('admin.tecnico.slip.pdfVista', [
+        //     'slip_type' => $slip_type,
+        //     'slip' => $slip,
+        //     'user' => $user,
+        //     'sum_assured' => $sum_assured,
+        //     'boat_detail' => $boat_detail,
+        //     'information_aerial' => $information_aerial,
+        //     'aviation_extras' => $aviation_extras,
+        //     'vehicles_details' => $vehicles_details,
+        //     'coberturasSelect' => $coberturasSelect,
+        //     'exclusionesSelect' => $exclusionesSelect,
+        //     'clausulasSelect' => $clausulasSelect,
+        //     'object_insurance' => $object_insurance
+        // ]);
+        $view = view('admin.tecnico.slip.pdfVista')
+            ->with('slip_type', $slip_type)
+            ->with('slip', $slip)
+            ->with('user', $user)
+            ->with('sum_assured', $sum_assured)
+            ->with('boat_detail', $boat_detail)
+            ->with('information_aerial', $information_aerial)
+            ->with('aviation_extras', $aviation_extras)
+            ->with('vehicles_details', $vehicles_details)
+            ->with('coberturasSelect', $coberturasSelect)
+            ->with('exclusionesSelect', $exclusionesSelect)
+            ->with('clausulasSelect', $clausulasSelect)
+            ->with('object_insurance', $object_insurance);
+
+        return $view;
     }
 }

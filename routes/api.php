@@ -167,9 +167,11 @@ Route::resource('/statuses', StatusesApi::class);
 Route::apiResource('/users', UsersApi::class);
 Route::resource('/countries', CountriesApi::class);
 Route::resource('/slips', SlipsApi::class);
+
+// Route::group(['middleware' => 'auth'], function () {
 Route::get('/slips/{id}/files', [SlipsApi::class, 'slipFiles']);
 Route::get('/slips/{id}/pdf', [SlipsApi::class, 'slipPDF']);
-
+// });
 Route::resource('/adjusters', AdjusterRecords::class);
 Route::resource('/reinsurers', ReinsurerRecords::class);
 Route::resource('/lloyds', LloydRecords::class);
@@ -187,6 +189,7 @@ Route::resource('/installation', InstallationRecords::class);
 Route::apiResource('/clausulas_selectors', ClausulasSelectorController::class);
 Route::apiResource('/coberturas_selectors', CoberturasSelectorController::class);
 Route::apiResource('/exclusiones_selectors', ExclusionesSelectorController::class);
+
 
 Route::apiResource('/storeSlip', SlipApiController::class);
 //End Ricardo

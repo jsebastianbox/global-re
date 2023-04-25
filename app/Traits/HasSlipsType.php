@@ -2,6 +2,13 @@
 
 namespace App\Traits;
 
+use App\Models\AviacionExtras;
+use App\Models\BoatDetailSlip;
+use App\Models\Clausulas_selector;
+use App\Models\CoberturasSelector;
+use App\Models\exclusiones_selectors;
+use App\Models\InformationAerialHelmets;
+use App\Models\ObjectInsurance;
 use App\Models\Slip;
 use App\Models\SlipAviationOne;
 use App\Models\SlipAviationThree;
@@ -19,6 +26,8 @@ use App\Models\SlipMaritimeTwo;
 use App\Models\SlipPropertyFixedAsset;
 use App\Models\SlipTechnicalBranch;
 use App\Models\SlipVehicle;
+use App\Models\SumAssured;
+use App\Models\VehicleDetail;
 
 trait HasSlipsType
 {
@@ -148,6 +157,212 @@ trait HasSlipsType
         }
         return [$slip_type, $slip_case];
     }
+    public function getSlipWithExtras(Slip $slip)
+    {
+
+        //variables nulls para no tirar error
+        $object_insurance = [];
+        $sum_assured = [];
+        $vehicles_details = [];
+        $boat_detail = [];
+        $information_aerial = [];
+        $aviation_extras = [];
+        $exclusionesSelect = [];
+
+        switch ($slip->type_coverage) {
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+                $slip_type = SlipLifePersonlAccident::where('slip_id', $slip->id)->first();
+                $object_insurance = ObjectInsurance::where('slip_id', $slip->id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::where('main_branch', 'vida')->get();
+                $clausulasSelect = Clausulas_selector::where('main_branch', 'vida')->get();
+                $exclusionesSelect = exclusiones_selectors::all();
+                break;
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+                $slip_type = SlipPropertyFixedAsset::where('slip_id', $slip->id)->first();
+                $sum_assured = SumAssured::where('slip_id', $slip->id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::where('main_branch', 'activos')->get();
+                $clausulasSelect = Clausulas_selector::where('main_branch', 'activos')->get();
+
+                break;
+
+            case '9':
+            case '10':
+                $slip_type = SlipVehicle::where('slip_id', $slip->id)->first();
+                $vehicles_details = VehicleDetail::where('slip_id', $slip->id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
+                $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
+
+                break;
+            case '11':
+            case '12':
+            case '13':
+            case '14':
+            case '15':
+            case '16':
+            case '17':
+                $slip_type = SlipTechnicalBranch::where('slip_id', $slip->id)->first();
+                $sum_assured = SumAssured::where('slip_id', $slip->id)->get();
+
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
+                $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
+
+                break;
+            case '18':
+            case '19':
+            case '20':
+                $slip_type = SlipEnergy::where('slip_id', $slip->id)->first();
+                $sum_assured = SumAssured::where('slip_id', $slip->id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::where('main_branch', 'energia')->get();
+                $clausulasSelect = Clausulas_selector::where('main_branch', 'energia')->get();
+
+                break;
+
+            case '21':
+            case '22':
+                $slip_type = SlipMaritimeOne::where('slip_id', $slip->id)->first();
+                $boat_detail = BoatDetailSlip::where('slip_id', $slip->id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
+                break;
+
+            case '23':
+                $slip_type = SlipMaritimeTwo::where('slip_id', $slip->id)->first();
+                $boat_detail = BoatDetailSlip::where('slip_id', $slip->id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
+                break;
+
+            case '24':
+            case '25':
+            case '26':
+                $slip_type = SlipMaritimeThree::where('slip_id', $slip->id)->first();
+                $boat_detail = BoatDetailSlip::where('slip_id', $slip->id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
+                break;
+
+            case '27':
+            case '28':
+            case '29':
+            case '30':
+            case '31':
+                $slip_type = SlipMaritimeFour::where('slip_id', $slip->id)->first();
+                $boat_detail = BoatDetailSlip::where('slip_id', $slip->id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
+                break;
+
+            case '32':
+            case '33':
+                $slip_type = SlipAviationOne::where('slip_id', $slip->id)->first();
+                $information_aerial = InformationAerialHelmets::where('slip_id', $slip->id)->get();
+                $aviation_extras = AviacionExtras::where('slip_id', $slip->id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
+                break;
+
+            case '34':
+                $slip_type = SlipAviationTwo::where('slip_id', $slip->id)->first();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
+                break;
+
+            case '35':
+            case '36':
+            case '37':
+                $slip_type = SlipAviationThree::where('slip_id', $slip->id)->first();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
+                break;
+
+            case '38':
+            case '39':
+            case '40':
+            case '41':
+            case '42':
+            case '43':
+                $slip_type = SlipCivilLiability::where('slip_id', $slip->id)->first();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
+                break;
+
+            case '44':
+            case '45':
+                $slip_type = SlipFinancialRisk::where('slip_id', $slip->id)->first();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
+                break;
+
+            case '46':
+                $slip_type = SlipFianzaOne::where('slip_id', $slip->id)->first();
+                $object_insurance = ObjectInsurance::where('slip_id', $slip->id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
+                break;
+
+            case '47':
+            case '48':
+            case '49':
+            case '50':
+            case '51':
+            case '52':
+                $slip_type = SlipFianzaTwo::where('slip_id', $slip->id)->first();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
+                break;
+
+            default:
+                return 'other';
+                break;
+        }
+
+
+        return [$slip_type, [
+            $sum_assured,
+            $boat_detail,
+            $information_aerial,
+            $aviation_extras,
+            $vehicles_details,
+            $coberturasSelect,
+            $exclusionesSelect,
+            $clausulasSelect,
+            $object_insurance
+
+        ]];
+    }
 
     public function getFileInfo($name): array
     {
@@ -163,7 +378,7 @@ trait HasSlipsType
                 $file_info['name'] = "Siniestralidad embarcación";
                 break;
             case "accidentRate":
-                $file_info['name'] = "Siniestralidad últmios 5 años";
+                $file_info['name'] = "Siniestralidad últimos 5 años";
                 break;
 
             case "quote_form_file":

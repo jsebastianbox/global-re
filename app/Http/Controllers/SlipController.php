@@ -126,7 +126,7 @@ class SlipController extends Controller
             case '17':
                 $slip_type = SlipTechnicalBranch::where('slip_id', $id)->first();
                 $sum_assured = SumAssured::where('slip_id', $slip->id)->get();
-                
+
                 //clausulas y cobertura to find
                 $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
                 $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
@@ -140,7 +140,7 @@ class SlipController extends Controller
                 //clausulas y cobertura to find
                 $coberturasSelect = CoberturasSelector::where('main_branch', 'energia')->get();
                 $clausulasSelect = Clausulas_selector::where('main_branch', 'energia')->get();
-                
+
                 break;
 
             case '21':
@@ -183,7 +183,7 @@ class SlipController extends Controller
                 //clausulas y cobertura to find
                 $coberturasSelect = CoberturasSelector::all();
                 $clausulasSelect = Clausulas_selector::all();
-                
+
                 break;
 
             case '32':
