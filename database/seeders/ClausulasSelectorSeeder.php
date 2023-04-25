@@ -385,6 +385,127 @@ class ClausulasSelectorSeeder extends Seeder
                 'main_branch' => 'transporte',
                 'sub_branch' => 'transporte'
             ],
+            //Maritimo
+
+            [
+                'name' => 'Translado Temporal',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+
+            [
+                'name' => 'Notificación de un siniestro, 30 días laborables desde conocimiento del evento',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+
+            [
+                'name' => 'Extensión de vigencia',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+
+            [
+                'name' => 'Cancelación anticipada 90 días',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+
+            [
+                'name' => 'Vigencia de la póliza, 365 días',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+
+            [
+                'name' => 'Obligaciones del asegurado',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+
+            [
+                'name' => 'Inclusiones y exclusiones en el contrato de seguro',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+
+            [
+                'name' => 'Impuestos y contribuciones',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+
+            [
+                'name' => 'Incorporación al contrato',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'Listado de documentos en caso de siniestros',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'Plazo y procedimiento para la cancelación de un siniestro',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'Errores y omisiones',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'Documentos del contrato de seguro',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'Cobertura provisional en caso de inclusiones',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'De adhesión',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'Cobertura provisional',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'De plazo y límite para inspecciones de siniestros',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'Zona de navegación',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'Inspección de riesgo',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'Devolución de prima por amarre',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'Beneficios adicionales para el asegurado',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'Cobertura provisional en Caso de inclusiones',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+
             //Casco aereo
             [
                 'name' => 'AVN1C Cláusula de casco, responsabilidad civil y responsabilidad civil para pasajeros.',

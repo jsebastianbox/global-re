@@ -952,14 +952,14 @@ function updateS6() {
 
     switch (value) {
         case "cm":
-            clausulasSelect(".selectClausula", "maritimo", "casco_maquinaria");
-            coberturasSelect(".selectCobertura", "maritimo", "casco_maquinaria");
-            currentTab = 0;
+            clausulasSelect(".selectClausula", "maritimo", "casco")
+            coberturasSelect(".selectCobertura", "maritimo", "casco")
+            currentTab = 0
             currentForm = "#maritimo_1_form"
-            x = maritimo_1_form.getElementsByClassName("tab");
-            nextBtn = maritimo.getElementsByTagName('button').nextBtn;
-            prevBtn = maritimo.getElementsByTagName('button').prevBtn;
-            submitBtn = maritimo.getElementsByTagName('button').submitBtn;
+            x = maritimo_1_form.getElementsByClassName("tab")
+            nextBtn = maritimo.getElementsByTagName('button').nextBtn
+            prevBtn = maritimo.getElementsByTagName('button').prevBtn
+            submitBtn = maritimo.getElementsByTagName('button').submitBtn
             showTab(currentTab); // Display the crurrent tab
             maritimo.style.display = "block";
             maritimo2.style.display = "none";
@@ -973,8 +973,8 @@ function updateS6() {
             maritimo.appendChild(element);
             break;
         case "mrc":
-            clausulasSelect(".selectClausula", "maritimo", "mrc");
-            coberturasSelect(".selectCobertura", "maritimo", "mrc");
+            clausulasSelect(".selectClausula", "maritimo", "casco");
+            coberturasSelect(".selectCobertura", "maritimo", "casco");
             currentTab = 0;
             currentForm = "#maritimo_1_form"
             x = maritimo_1_form.getElementsByClassName("tab");
@@ -994,8 +994,8 @@ function updateS6() {
             maritimo.appendChild(element);
             break;
         case "pi":
-            clausulasSelect(".selectClausula", "maritimo", "pi");
-            coberturasSelect(".selectCobertura", "maritimo", "pi");
+            clausulasSelect(".selectClausula", "maritimo", "proteccion_indemnizacion")
+            coberturasSelect(".selectCobertura", "maritimo", "proteccion_indemnizacion")
             currentTab = 0;
             currentForm = '#maritimo_2_form'
             x = maritimo_2_form.getElementsByClassName("tab");
