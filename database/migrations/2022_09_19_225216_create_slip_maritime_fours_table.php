@@ -37,10 +37,11 @@ class CreateSlipMaritimeFoursTable extends Migration
             $table->text('coverage')->nullable();
             $table->text('precedent_conditions')->nullable();
             //merchant
-            $table->boolean('ismerchandise')->default(false)->nullable(); //¿Existe transbordo de marcadería?
+            $table->string('ismerchandise')->nullable(); //¿Existe transbordo de marcadería?
             $table->string('port_entrance')->nullable();
             $table->string('status_transport')->nullable();
             //slip stock throughput stp
+            $table->string('beneficiary')->nullable();
             $table->string('valuation_and_loss')->nullable();
             $table->string('condition')->nullable();
             $table->string('entrance')->nullable();
