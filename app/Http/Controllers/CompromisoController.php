@@ -39,12 +39,14 @@ use App\Models\TransportSlipStock;
 use App\Models\User;
 use App\Models\VehicleDetail;
 use App\Traits\HasUploadFiles;
+use App\Traits\HasSlipsType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CompromisoController extends Controller
 {
     use HasUploadFiles;
+    use HasSlipsType;
 
     public function compromiso()
     {
@@ -134,7 +136,8 @@ class CompromisoController extends Controller
         }
 
 
-        $arr = $this->getSlipType($slip);
+        $arr = $this->getSlipTypesExtras($slip);
+        dd($arr);
 
         $slip_type = $arr[0];
         $case = $arr[1];

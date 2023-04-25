@@ -203,11 +203,13 @@ Administración | Técnico
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeModal()"> Cerrar </button>
-                                        <button type="button" class="btn btn-primary"> Guardar cambios </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
+                        
                     </td>
                 </tr>
                 @endforeach

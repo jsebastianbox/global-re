@@ -13,7 +13,7 @@
             <tr>
                 <td>Equipos hasta</td>
                 <td>
-                    <input type="number" id="incendioEquipoElectronico1a" name="EquipoElectronico1a"
+                    <input type="text" id="incendioEquipoElectronico1a" name="EquipoElectronico1a"
                         class="inputNumber">
                 </td>
                 <td>
@@ -25,7 +25,7 @@
             <tr>
                 <td>Equipos hasta</td>
                 <td>
-                    <input type="number" id="incendioEquipoElectronico2a" name="EquipoElectronico2a"
+                    <input type="text" id="incendioEquipoElectronico2a" name="EquipoElectronico2a"
                         class="inputNumber">
                 </td>
                 <td>
@@ -37,7 +37,7 @@
             <tr>
                 <td>Equipos hasta</td>
                 <td>
-                    <input type="number" id="incendioEquipoElectronico3a" name="EquipoElectronico3a"
+                    <input type="text" id="incendioEquipoElectronico3a" name="EquipoElectronico3a"
                         class="inputNumber">
                 </td>
                 <td>
@@ -49,7 +49,7 @@
             <tr>
                 <td>Equipos más de</td>
                 <td>
-                    <input type="number" id="incendioEquipoElectronico4a" name="EquipoElectronico4a"
+                    <input type="text" id="incendioEquipoElectronico4a" name="EquipoElectronico4a"
                         class="inputNumber">
                 </td>
                 <td>

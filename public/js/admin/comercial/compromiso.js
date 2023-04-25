@@ -649,6 +649,8 @@ function updateS4() {
             document.getElementById('btnClausulasTRC').style.display = "none";
             document.getElementById('btnClausulasMM').style.display = "none";
             document.getElementById('btnClausulasALOP').style.display = "none";
+            document.getElementById('tituloCoberturas').style.display = "block";
+            document.getElementById('tituloCobertura').style.display = "none";
             -
             element.setAttribute('value', '11');
             r_tecnicos.appendChild(element);
@@ -700,6 +702,8 @@ function updateS4() {
             document.getElementById('btnClausulasTRC').style.display = "none";
             document.getElementById('btnClausulasMM').style.display = "none";
             document.getElementById('btnClausulasALOP').style.display = "none";
+            document.getElementById('tituloCoberturas').style.display = "block";
+            document.getElementById('tituloCobertura').style.display = "none";
             element.setAttribute('value', '12');
             r_tecnicos.appendChild(element);
             currentTab = 0;
@@ -725,6 +729,8 @@ function updateS4() {
             document.getElementById('btnClausulasTRC').style.display = "none";
             document.getElementById('btnClausulasMM').style.display = "none";
             document.getElementById('btnClausulasALOP').style.display = "none";
+            document.getElementById('tituloCoberturas').style.display = "block";
+            document.getElementById('tituloCobertura').style.display = "none";
             element.setAttribute('value', '13');
             r_tecnicos.appendChild(element);
             currentTab = 0;
@@ -750,6 +756,8 @@ function updateS4() {
             document.getElementById('btnClausulasTRC').style.display = "none";
             document.getElementById('btnClausulasMM').style.display = "none";
             document.getElementById('btnClausulasALOP').style.display = "none";
+            document.getElementById('tituloCoberturas').style.display = "block";
+            document.getElementById('tituloCobertura').style.display = "none";
             element.setAttribute('value', '14');
             r_tecnicos.appendChild(element);
             currentTab = 0;
@@ -775,6 +783,9 @@ function updateS4() {
             document.getElementById('btnClausulasEE').style.display = "none";
             document.getElementById('btnClausulasMM').style.display = "none";
             document.getElementById('btnClausulasALOP').style.display = "none";
+            document.getElementById('tituloCoberturas').style.display = "none";
+            document.getElementById('inputSumaAsegurable3').style.display = "none";
+            document.getElementById('tituloCobertura').style.display = "block";
             element.setAttribute('value', '15');
             r_tecnicos.appendChild(element);
             currentTab = 0;
@@ -800,6 +811,9 @@ function updateS4() {
             document.getElementById('btnClausulasTRC').style.display = "none";
             document.getElementById('btnClausulasEE').style.display = "none";
             document.getElementById('btnClausulasALOP').style.display = "none";
+            document.getElementById('tituloCoberturas').style.display = "none";
+            document.getElementById('inputSumaAsegurable3').style.display = "none";
+            document.getElementById('tituloCobertura').style.display = "block";
             element.setAttribute('value', '16');
             r_tecnicos.appendChild(element);
             currentTab = 0;
@@ -812,7 +826,7 @@ function updateS4() {
             break;
         case "alop":
             document.getElementById('btnCoberturasALOP').style.display = "block";
-            document.getElementById('btnClausulasEE').style.display = "block";
+            document.getElementById('btnClausulasALOP').style.display = "block";
             document.getElementById('btnCoberturasRM').style.display = "none";
             document.getElementById('btnCoberturasPBRM').style.display = "none";
             document.getElementById('btnCoberturasEMC').style.display = "none";
@@ -825,6 +839,9 @@ function updateS4() {
             document.getElementById('btnClausulasTRC').style.display = "none";
             document.getElementById('btnClausulasMM').style.display = "none";
             document.getElementById('btnClausulasEE').style.display = "none";
+            document.getElementById('tituloCoberturas').style.display = "block";
+            document.getElementById('tituloCobertura').style.display = "none";
+            document.getElementById('inputSumaAsegurable3').style.display = "none";
             element.setAttribute('value', '17');
             r_tecnicos.appendChild(element);
             currentTab = 0;

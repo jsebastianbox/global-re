@@ -51,6 +51,7 @@ use Yajra\DataTables\DataTables;
 class SlipController extends Controller
 {
     use HasUploadFiles;
+
     /**
      * Display a listing of the resource.
      *

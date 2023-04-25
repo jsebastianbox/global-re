@@ -13,7 +13,7 @@
         </label>
         <textarea name="coverage" id="coverage" cols="10" rows="2">{{ $slip->coverage }}</textarea>
     </div>
-    @if ($slip->type_coverage === 16)
+    @if ($slip->type_coverage === 15 || $slip->type_coverage === 16)
         <div class="input_group" style="max-width: 450px">
             <label>
                 <i class="fa-solid fa-bars-staggered"></i>

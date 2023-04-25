@@ -61,37 +61,37 @@
                     </button>
                     @break
                     @case(11)
-                    <button id="addRowExclusionButton" onclick="addRowExclusion(event, '', 'tecnico','equipo_electronico')" class="btn btn-success btn-xs">
+                    <button id="addRowExclusionButton" onclick="addRowExclusion(event, '', 'tecnicos','equipo_electronico')" class="btn btn-success btn-xs">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </button>
                     @break
                     @case(12)
-                    <button id="addRowExclusionButton" onclick="addRowExclusion(event, '', 'tecnico','rotura_maquinaria')" class="btn btn-success btn-xs">
+                    <button id="addRowExclusionButton" onclick="addRowExclusion(event, '', 'tecnicos','rotura_maquina')" class="btn btn-success btn-xs">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </button>
                     @break
                     @case(13)
-                    <button id="addRowExclusionButton" onclick="addRowExclusion(event, '', 'tecnico','perdida_beneficio_rotura_maquinaria')" class="btn btn-success btn-xs">
+                    <button id="addRowExclusionButton" onclick="addRowExclusion(event, '', 'tecnicos','perdida_beneficio_rotura_maquinaria')" class="btn btn-success btn-xs">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </button>
                     @break
                     @case(14)
-                    <button id="addRowExclusionButton" onclick="addRowExclusion(event, '', 'tecnico','riesgo_contratistas')" class="btn btn-success btn-xs">
+                    <button id="addRowExclusionButton" onclick="addRowExclusion(event, '', 'tecnicos','rotura_maquina')" class="btn btn-success btn-xs">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </button>
                     @break
                     @case(15)
-                    <button id="addRowExclusionButton" onclick="addRowExclusion(event, '', 'tecnico','todo_riesgo_equipo_maquinaria')" class="btn btn-success btn-xs">
+                    <button id="addRowExclusionButton" onclick="addRowExclusion(event, '', 'tecnicos','todo_riesgo_equipo_maquinaria')" class="btn btn-success btn-xs">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </button>
                     @break
                     @case(16)
-                    <button id="addRowExclusionButton" onclick="addRowExclusion(event, '', 'tecnico','riesgo_montaje')" class="btn btn-success btn-xs">
+                    <button id="addRowExclusionButton" onclick="addRowExclusion(event, '', 'tecnicos','riesgo_montaje')" class="btn btn-success btn-xs">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </button>
                     @break
                     @case(17)
-                    <button id="addRowExclusionButton" onclick="addRowExclusion(event, '', 'tecnico','alop')" class="btn btn-success btn-xs">
+                    <button id="addRowExclusionButton" onclick="addRowExclusion(event, '', 'tecnicos','alop')" class="btn btn-success btn-xs">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </button>
                     @break
