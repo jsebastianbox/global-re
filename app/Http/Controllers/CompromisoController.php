@@ -131,7 +131,6 @@ class CompromisoController extends Controller
         $slip = Slip::find($id);
         $id = $slip->id;
         $slip_type = null;
-        $slip_case = null;
         
         if(!$slip){
             return redirect()->route('dashboard');
@@ -298,25 +297,24 @@ class CompromisoController extends Controller
             default:
                 break;
         }
-
+        
         $arr = $this->getSlipType($slip);
-
+        
         $slip_type = $arr[0];
         $case = $arr[1];
         $case = $case == "activos_fijos" ? "activos-fijos" : $case;
-        $path = "app/slips/". $case ."/" . $slip_type->id . "/";
-
+        $path = "app/slips/". $case ."/" . $id. "/";
+        
         // Elinina archivos del directorio
         $this->removeDir($path."*.*");
         
         // Elimina el directorio
         $this->removeDirectory($path);
-
+        
+        ObjectInsurance::where('slip_id', $id)->delete();
         $slip->delete($id);
-      
-        return redirect('/compromisosList');
-
-
+        
+        return redirect('/admin/compromiso/pending');
     }
 
     public function editCompromiso($id)
