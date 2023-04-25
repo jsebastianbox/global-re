@@ -355,7 +355,7 @@
             <div class="col-md-6">
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="crFormSigned">Formulario de cotización</label>
-                    <input class="inputForm" type="file" name="" id="">
+                    <input class="inputForm" type="file" name="crFormSigned" id="crFormSigned">
                 </div>
             </div>
         </div>

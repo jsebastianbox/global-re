@@ -124,6 +124,35 @@ class CompromisoController extends Controller
         return json_encode($slips);
     }
 
+    public function destroy($id)
+    {
+
+        $slip = Slip::find($id);
+
+        if (!$slip) {
+            return redirect()->route('/');
+        }
+
+
+        $arr = $this->getSlipType($slip);
+
+        $slip_type = $arr[0];
+        $case = $arr[1];
+        $case = $case == "activos_fijos" ? "activos-fijos" : $case;
+        $path = "app/slips/" . $case . "/" . $slip_type->id . "/";
+
+        // Elinina archivos del directorio
+        $this->removeDir($path . "*.*");
+
+        // Elimina el directorio
+        $this->removeDirectory($path);
+
+        ObjectInsurance::where('slip_id', $id)->delete();
+        $slip->delete($id);
+
+        return redirect('/compromisosList');
+    }
+
     public function editCompromiso($id)
     {
 
