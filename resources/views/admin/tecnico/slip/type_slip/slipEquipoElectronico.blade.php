@@ -13,7 +13,7 @@
         @include('admin.tecnico.slip.slips_generales.objectInsuranceAndCoverage')
 
 
-        @if ($slip->type_coverage !== 13 && $slip->type_coverage !== 14 && $slip->type_coverage !== 17)
+        @if ($slip->type_coverage !== 11 && $slip->type_coverage !== 13 && $slip->type_coverage !== 14 && $slip->type_coverage !== 17)
             <div class="two-sides">
                 <div class="left_side">
                     <div class="input_group">
@@ -57,28 +57,24 @@
                 
                 <div class="right_side">
                     @if($slip_type->asegurada_electronico > 0 && $slip_type->asegurable_electronico > 0)
-                    <div class="input_group">
-                        <label for="">Suma asegurada:</label>
-                        <input value="{{$slip_type->asegurada_electronico}}"type="number" step="any" placeholder="Suma asegurable" name="asegurada_electronico">
-                    </div>
-                    <div class="input_group">
-                        <label for="">Suma asegurable:</label>
-                        <input value="{{$slip_type->asegurable_electronico}}" type="number" step="any" placeholder="Suma asegurada" name="asegurable_electronico">
-
-                    </div>
-                    @elseif ($slip_type->asegurable_electronico > 0)
-                    
+                        <div class="input_group">
+                            <label for="">Suma asegurada:</label>
+                            <input value="{{$slip_type->asegurada_electronico}}"type="number" step="any" placeholder="Suma asegurable" name="asegurada_electronico">
+                        </div>
                         <div class="input_group">
                             <label for="">Suma asegurable:</label>
                             <input value="{{$slip_type->asegurable_electronico}}" type="number" step="any" placeholder="Suma asegurada" name="asegurable_electronico">
-
+                        </div>
+                    @elseif ($slip_type->asegurable_electronico > 0)
+                        <div class="input_group">
+                            <label for="">Suma asegurable:</label>
+                            <input value="{{$slip_type->asegurable_electronico}}" type="number" step="any" placeholder="Suma asegurada" name="asegurable_electronico">
                         </div>
                     @elseif($slip_type->asegurada_electronico > 0)
                         <div class="input_group">
                             <label for="">Suma asegurada:</label>
                             <input value="{{$slip_type->asegurada_electronico}}"type="number" step="any" placeholder="Suma asegurable" name="asegurada_electronico">
                         </div>
-
                     @endif
                     <div class="input_group">
                         <label for="">Periodo Indemnizacion</label>
@@ -96,10 +92,10 @@
                 <h4 class="slipTitle mb-2">Tabla suma asegurada</h4>
                 @endif
         
-                <button type="button" onclick="refreshSumaAseguradaPerdida()" class="btn btn-info my-2">
+                <button type="button" onclick="refreshSumaAseguradaPerdida()" class="btn btn-info">
                     Actualizar
                 </button>
-                <table id="perdidaSumaAseguradaTable" class="indemnizacionTable">
+                <table id="perdidaSumaAseguradaTable" class="indemnizacionTable marginTop">
                     <thead>
                         <tr>
                             <th style="text-align: center">#</th>

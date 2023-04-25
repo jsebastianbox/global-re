@@ -183,28 +183,71 @@
             </div>
         </div>
 
-        <div class="row mb-3">
-            @if ($slip->type_coverage !== 15 && $slip->type_coverage !== 16 && $slip->type_coverage !== 17)
+        @if ($slip->type_coverage === 11 || $slip->type_coverage === 12)
+            <div class="row mb-3">
                 <div class="col-md-4">
                     <div class="input-group">
                         <span class="input-group-text">Suma asegurable</span>
                         <input value="{{$slip_type->asegurable_electronico}}" type="number" step="any" class="form-control" name="asegurable_electronico">
                     </div>
                 </div>
-            @endif
-            <div class="col-md-4">
-                <div class="input-group">
-                    <span class="input-group-text">Suma asegurada</span>
-                    <input value="{{$slip_type->asegurada_electronico}}" type="number" step="any" class="form-control" name="asegurada_electronico">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-text">Suma asegurada</span>
+                        <input value="{{$slip_type->asegurada_electronico}}" type="number" step="any" class="form-control" name="asegurada_electronico">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-text">Límite de indemnización</span>
+                        <input value="{{$slip_type->limit_compensation}}" type="number" name="limit_compensation" id="" class="form-control" step="any">
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="input-group">
-                    <span class="input-group-text">Límite de indemnización</span>
-                    <input value="{{$slip_type->limit_compensation}}" type="number" name="limit_compensation" id="" class="form-control" step="any">
+        @endif
+        @if ($slip->type_coverage === 13)
+            <div class="row mb-3">
+                @if ($slip_type->asegurable_electronico > 0)
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-text">Suma asegurable</span>
+                            <input value="{{$slip_type->asegurable_electronico}}" type="number" step="any" class="form-control" name="asegurable_electronico">
+                        </div>
+                    </div>
+                @endif
+                @if ($slip_type->asegurada_electronico > 0)
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-text">Suma asegurada</span>
+                            <input value="{{$slip_type->asegurada_electronico}}" type="number" step="any" class="form-control" name="asegurada_electronico">
+                        </div>
+                    </div>
+                @endif
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-text">Límite de indemnización</span>
+                        <input value="{{$slip_type->limit_compensation}}" type="number" name="limit_compensation" id="" class="form-control" step="any">
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
+
+        @if ($slip->type_coverage === 15 && $slip->type_coverage === 16 && $slip->type_coverage === 17)
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-text">Suma asegurada</span>
+                        <input value="{{$slip_type->asegurada_electronico}}" type="number" step="any" class="form-control" name="asegurada_electronico">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-text">Límite de indemnización</span>
+                        <input value="{{$slip_type->limit_compensation}}" type="number" name="limit_compensation" id="" class="form-control" step="any">
+                    </div>
+                </div>
+            </div>
+        @endif
         @if ($slip->type_coverage === 11)
             <div class="row">
                 <div class="col-md-10">
@@ -340,24 +383,24 @@
 
                     <tbody id="perdidaSumaAseguradaTableBody">
                         @if (count($sum_assured) > 0)
-                        @foreach ($sum_assured as $key => $item)
-                        <tr>
-                            <td>{{$key+1}}</td>
-                            <td style="text-align: center">
-                                <input type="text" value="{{$item->location}}" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
-                            </td>
-                            <td style="text-align: center">
-                                <input value="{{$item->machine}}" class="col1 row{{$key+1}}" onkeyup="incendioSumaAsegurableTotales({{$key+1}}, 1, 'perdida')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px">
-                            </td>
-                            <td style="text-align: center">
-                                <span class="slipTitle col12" id="rowTotal{{$key+1}}">0</span>$
-                            </td>
-                            <td></td>
-                        </tr>
-                        @endforeach
+                            @foreach ($sum_assured as $key => $item)
+                            <tr>
+                                <td style="text-align: center">{{$key+1}}</td>
+                                <td style="text-align: center">
+                                    <input type="text" value="{{$item->location}}" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
+                                </td>
+                                <td style="text-align: center">
+                                    <input value="{{$item->machine}}" class="col1 row{{$key+1}}" onkeyup="incendioSumaAsegurableTotales({{$key+1}}, 1, 'perdida')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px">
+                                </td>
+                                <td style="text-align: center">
+                                    <span class="slipTitle col12" id="rowTotal{{$key+1}}">0</span>$
+                                </td>
+                                <td></td>
+                            </tr>
+                            @endforeach
                         @else
                         <tr>
-                            <td>1</td>
+                            <td style="text-align: center">1</td>
                             <td style="text-align: center">
                                 <input type="text" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
                             </td>
@@ -867,7 +910,7 @@
                     <tr>
                         <th style="text-align: center">#</th>
                         <th style="text-align: center">Ubicación</th>
-                        <th style="text-align: center">machine</th>
+                        <th style="text-align: center">Maquinaria</th>
                         <th style="text-align: center">TOTAL</th>
                         <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Add row">
 
@@ -942,7 +985,7 @@
                     <tbody id="perdida_beneficiosSumaAseguradaTableBody">
 
                         <tr>
-                            <td>1</td>
+                            <td style="text-align: center">1</td>
                             <td style="text-align: center">
                                 <input type="text" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
                             </td>

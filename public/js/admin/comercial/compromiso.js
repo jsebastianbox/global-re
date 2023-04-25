@@ -709,7 +709,7 @@ function updateS4() {
             currentTab = 0;
             r_tecnicos.style.display = "block";
             valorAseguradoContainer.forEach(elemento => {
-                elemento.style.display = 'block';
+                elemento.style.display = 'none';
             })
             clausulasSelect(".selectClausula", "tecnico", "rotura_maquinaria");
             coberturasSelect(".selectCobertura", "tecnico", "rotura_maquinaria");
@@ -3224,7 +3224,7 @@ function addRowSumaPerdida(event, type) {
             <input type="text" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
         </td>
         <td style="text-align: center">
-            <input class="col1 row${rowCount}" onkeyup="incendioSumaAsegurableTotales(${rowCount}, 1, 'perdida')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px" >
+            <input class="col1 row${rowCount}" onkeyup="incendioSumaAsegurableTotales(${rowCount}, 1, '${type}')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px" >
         </td>
         <td style="text-align: center">
             <span class="slipTitle col12" id="rowTotal${rowCount}">0</span>$

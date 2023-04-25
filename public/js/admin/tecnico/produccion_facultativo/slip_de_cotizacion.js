@@ -2789,3 +2789,40 @@ let id = $(this).attr('id')
 
 $(`#newRowMaquinaria${id}`).remove()
 })
+
+
+function addRowSumaPerdida(event, type) {
+    event.preventDefault()
+    let rowCount = document.getElementById(`${type}SumaAseguradaTable`).rows.length-1
+
+    const SumaAseguradaTableBody = document.getElementById(`${type}SumaAseguradaTableBody`)
+    const tr = document.createElement('tr')
+
+    SumaAseguradaTableBody.appendChild(tr)
+    tr.id = `newRowSumaAseguradaTable${rowCount}`
+    tr.innerHTML =
+        `
+        <td  style="text-align: center">${rowCount}</td>
+        <td style="text-align: center">
+            <input type="text" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
+        </td>
+        <td style="text-align: center">
+            <input class="col1 row${rowCount}" onkeyup="incendioSumaAsegurableTotales(${rowCount}, 1, '${type}')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px" >
+        </td>
+        <td style="text-align: center">
+            <span class="slipTitle col12" id="rowTotal${rowCount}">0</span>$
+        </td>
+        <td>
+            <button id="${rowCount}" type="button" class="btn btn-danger btn-xs btn-delete-perdida"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        </td>
+        `
+}
+
+
+$(document).on('click', '.btn-delete-perdida', function (e) {
+    e.preventDefault()
+
+    let id = $(this).attr('id')
+
+    $(`#newRowSumaAseguradaTable${id}`).remove()
+})
