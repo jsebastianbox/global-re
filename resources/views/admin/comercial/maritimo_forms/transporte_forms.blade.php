@@ -26,14 +26,14 @@
 @endsection
 @if (\Illuminate\Support\Str::contains(\Illuminate\Support\Facades\Request::url(), '/admin/comercial/edit_compromiso/'))
 <script>
-    const coverageDetail_raw = "{{$coverageDetail}}";
-    let coverageDetail;
-    fetch(`data:application/*;base64,${coverageDetail_raw}`).then(base64 => base64.blob()).then(blob => {
-        coverageDetail = URL.createObjectURL(blob)
-        const anchor = document.getElementById('coverageDetailDownload')
+    const quotationForm_raw = "{{$quotationForm}}";
+    let quotationForm;
+    fetch(`data:application/*;base64,${quotationForm_raw}`).then(base64 => base64.blob()).then(blob => {
+        quotationForm = URL.createObjectURL(blob)
+        const anchor = document.getElementById('quotationFormDownload')
         if (anchor) {
-            anchor.href = coverageDetail
-            anchor.download = 'vida_siniestralidad_previa.{{$coverageDetailExtension}}'
+            anchor.href = quotationForm
+            anchor.download = 'vida_siniestralidad_previa.{{$quotationFormExtension}}'
         }
     });
 </script>
