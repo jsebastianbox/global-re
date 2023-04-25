@@ -184,239 +184,239 @@
         </div>
 
         @if ($slip->type_coverage === 11)
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <span class="input-group-text">Suma asegurable</span>
-                        <input value="{{$slip_type->asegurable_electronico}}" type="number" step="any" class="form-control" name="asegurable_electronico">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <span class="input-group-text">Suma asegurada</span>
-                        <input value="{{$slip_type->asegurada_electronico}}" type="number" step="any" class="form-control" name="asegurada_electronico">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <span class="input-group-text">Límite de indemnización</span>
-                        <input value="{{$slip_type->limit_compensation}}" type="number" name="limit_compensation" id="" class="form-control" step="any">
-                    </div>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-text">Suma asegurable</span>
+                    <input value="{{$slip_type->asegurable_electronico}}" type="number" step="any" class="form-control" name="asegurable_electronico">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-10">
-                    <table class="table table-hover table-light table-responsive-lg">
-                        <caption>Cuadro resumen</caption>
-                        <thead>
-                            <th>Descripción</th>
-                            <th>Valor</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Sección I: Todo riesgo</td>
-                                <td>
-                                    <input value="{{$slip_type->todo_riesgo}}" type="number" name="todo_riesgo" data-money id="" step="any">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sección II: Portadores Externos de Datos</td>
-                                <td>
-                                    <input value="{{$slip_type->portadores_externos}}" type="number" name="portadores_externos" data-money id="" step="any">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sección III: Incremento en los costos de operación</td>
-                                <td>
-                                    <input value="{{$slip_type->incremento_costos}}" type="number" name="incremento_costos" data-money id="" step="any">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    a. Límite máximo Diario
-                                </td>
-                                <td>
-                                    <input value="{{$slip_type->limite_diario}}" type="number" name="limite_diario" placeholder="(en USD)" step="any">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>b. Periodo de Cobertura</td>
-                                <td>
-                                    <input value="{{$slip_type->periodo_cobertura}}" type="number" name="periodo_cobertura" id="" placeholder="No. Días" step="any">
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td>(=)Total Asegurado</td>
-                                <td>
-                                    <input value="{{$slip_type->total_cuadro1}}" type="number" name="total_cuadro1" id="" step="any">
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-text">Suma asegurada</span>
+                    <input value="{{$slip_type->asegurada_electronico}}" type="number" step="any" class="form-control" name="asegurada_electronico">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-10">
-                    <table class="table table-hover table-light table-responsive-lg">
-                        <caption>Cuadro resumen</caption>
-                        <thead>
-                            <th>Descripción</th>
-                            <th>Valor</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Sección I: Todo riesgo</td>
-                                <td>
-                                    <input value="{{$slip_type->todo_riesgo2}}" type="number" name="todo_riesgo2" data-money id="" step="any">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sección II: Portadores Externos de Datos</td>
-                                <td>
-                                    <input value="{{$slip_type->portadores_externos2}}" type="number" name="portadores_externos2" data-money id="" step="any">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sección III: Incremento en los costos de operación</td>
-                                <td>
-                                    <input value="{{$slip_type->incremento_costos2}}" type="number" name="incremento_costos2" data-money id="" step="any">
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td scope="col">(=)Total Asegurado</td>
-                                <td>
-                                    <input value="{{$slip_type->total_cuadro2}}" type="number" name="total_cuadro2" id="" step="any">
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <span class="input-group-text">Límite de indemnización</span>
+                    <input value="{{$slip_type->limit_compensation}}" type="number" name="limit_compensation" id="" class="form-control" step="any">
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <table class="table table-hover table-light table-responsive-lg">
+                    <caption>Cuadro resumen</caption>
+                    <thead>
+                        <th>Descripción</th>
+                        <th>Valor</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sección I: Todo riesgo</td>
+                            <td>
+                                <input value="{{$slip_type->todo_riesgo}}" type="number" name="todo_riesgo" data-money id="" step="any">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sección II: Portadores Externos de Datos</td>
+                            <td>
+                                <input value="{{$slip_type->portadores_externos}}" type="number" name="portadores_externos" data-money id="" step="any">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sección III: Incremento en los costos de operación</td>
+                            <td>
+                                <input value="{{$slip_type->incremento_costos}}" type="number" name="incremento_costos" data-money id="" step="any">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                a. Límite máximo Diario
+                            </td>
+                            <td>
+                                <input value="{{$slip_type->limite_diario}}" type="number" name="limite_diario" placeholder="(en USD)" step="any">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>b. Periodo de Cobertura</td>
+                            <td>
+                                <input value="{{$slip_type->periodo_cobertura}}" type="number" name="periodo_cobertura" id="" placeholder="No. Días" step="any">
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>(=)Total Asegurado</td>
+                            <td>
+                                <input value="{{$slip_type->total_cuadro1}}" type="number" name="total_cuadro1" id="" step="any">
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <table class="table table-hover table-light table-responsive-lg">
+                    <caption>Cuadro resumen</caption>
+                    <thead>
+                        <th>Descripción</th>
+                        <th>Valor</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sección I: Todo riesgo</td>
+                            <td>
+                                <input value="{{$slip_type->todo_riesgo2}}" type="number" name="todo_riesgo2" data-money id="" step="any">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sección II: Portadores Externos de Datos</td>
+                            <td>
+                                <input value="{{$slip_type->portadores_externos2}}" type="number" name="portadores_externos2" data-money id="" step="any">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sección III: Incremento en los costos de operación</td>
+                            <td>
+                                <input value="{{$slip_type->incremento_costos2}}" type="number" name="incremento_costos2" data-money id="" step="any">
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td scope="col">(=)Total Asegurado</td>
+                            <td>
+                                <input value="{{$slip_type->total_cuadro2}}" type="number" name="total_cuadro2" id="" step="any">
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
         @endif
 
 
         @if ($slip_type->asegurable_electronico > 0)
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="input-group">
-                        <span class="input-group-text">Límite de indemnizacion</span>
-                        <input value="{{$slip_type->limit_compensation}}" type="number" step="any" class="form-control" name="limit_compensation">
-                    </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text">Límite de indemnizacion</span>
+                    <input value="{{$slip_type->limit_compensation}}" type="number" step="any" class="form-control" name="limit_compensation">
                 </div>
+            </div>
 
-                <div class="col-md-6" id="inputSumaAsegurable3">
-                    <div class="input-group mb-3">
-                        <label class="input-group-text">Suma asegurable</label>
-                        <input value="{{$slip_type->asegurable_electronico}}" id="input_sumaAsegurable" type="number" step="any" placeholder="Suma asegurable" name="asegurable_electronico">
-                    </div>
+            <div class="col-md-6" id="inputSumaAsegurable3">
+                <div class="input-group mb-3">
+                    <label class="input-group-text">Suma asegurable</label>
+                    <input value="{{$slip_type->asegurable_electronico}}" id="input_sumaAsegurable" type="number" step="any" placeholder="Suma asegurable" name="asegurable_electronico">
                 </div>
             </div>
+        </div>
         @else
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="input-group">
-                        <span class="input-group-text">Límite de indemnizacion</span>
-                        <input value="{{$slip_type->limit_compensation}}" type="number" step="any" class="form-control" name="limit_compensation">
-                    </div>
-                </div>
-                <div class="col-md-6" id="inputSumaAsegurada3" style="display:flex">
-                    <div class="input-group mb-3">
-                        <label class="input-group-text">Suma asegurada</label>
-                        <input value="{{$slip_type->asegurada_electronico}}" id="input_sumaAsegurada" type="number" step="any" placeholder="Suma asegurada" name="asegurada_electronico">
-                    </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text">Límite de indemnizacion</span>
+                    <input value="{{$slip_type->limit_compensation}}" type="number" step="any" class="form-control" name="limit_compensation">
                 </div>
             </div>
+            <div class="col-md-6" id="inputSumaAsegurada3" style="display:flex">
+                <div class="input-group mb-3">
+                    <label class="input-group-text">Suma asegurada</label>
+                    <input value="{{$slip_type->asegurada_electronico}}" id="input_sumaAsegurada" type="number" step="any" placeholder="Suma asegurada" name="asegurada_electronico">
+                </div>
+            </div>
+        </div>
         @endif
         @if ($slip->type_coverage === 13)
-        
-            <div class="tableContainer">
-                @if ($slip_type->asegurable_electronico > 0)
-                <h4 class="slipTitle mb-2">Tabla suma asegurable</h4>
-                @elseif($slip_type->asegurada_electronico > 0)
-                <h4 class="slipTitle mb-2">Tabla suma asegurada</h4>
-                @endif
-        
-                <button type="button" onclick="refreshSumaAseguradaPerdida()" class="btn btn-info my-2">
-                    Actualizar
-                </button>
-                <table id="perdidaSumaAseguradaTable" class="indemnizacionTable">
-                    <thead>
-                        <tr>
-                            <th style="text-align: center">#</th>
-                            <th style="text-align: center">Ubicación</th>
-                            <th style="text-align: center">machine</th>
-                            <th style="text-align: center">TOTAL</th>
-                            <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Add row">
 
-                                <button type="button" onclick="addRowSumaPerdida(event, 'perdida')" class="btn btn-success btn-xs">
-                                    +
-                                </button>
-                            </th>
-                        </tr>
-                    </thead>
-                    {{-- tbody --}}
+        <div class="tableContainer">
+            @if ($slip_type->asegurable_electronico > 0)
+            <h4 class="slipTitle mb-2">Tabla suma asegurable</h4>
+            @elseif($slip_type->asegurada_electronico > 0)
+            <h4 class="slipTitle mb-2">Tabla suma asegurada</h4>
+            @endif
 
-                    <tbody id="perdidaSumaAseguradaTableBody">
-                        @if (count($sum_assured) > 0)
-                            @foreach ($sum_assured as $key => $item)
-                            <tr>
-                                <td>{{$key+1}}</td>
-                                <td style="text-align: center">
-                                    <input type="text" value="{{$item->location}}" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
-                                </td>
-                                <td style="text-align: center">
-                                    <input value="{{$item->machine}}" class="col1 row{{$key+1}}" onkeyup="incendioSumaAsegurableTotales({{$key+1}}, 1, 'perdida')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px" >
-                                </td>
-                                <td style="text-align: center">
-                                    <span class="slipTitle col12" id="rowTotal{{$key+1}}">0</span>$
-                                </td>
-                                <td></td>
-                            </tr>
-                            @endforeach
-                        @else
-                            <tr>
-                                <td>1</td>
-                                <td style="text-align: center">
-                                    <input type="text" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
-                                </td>
-                                <td style="text-align: center">
-                                    <input class="col1 row1" onkeyup="incendioSumaAsegurableTotales(1, 1, 'perdida')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px" >
-                                </td>
-                                <td style="text-align: center">
-                                    <span class="slipTitle col12" id="rowTotal1">0</span>$
-                                </td>
-                                <td></td>
-                            </tr>
-                        @endif
+            <button type="button" onclick="refreshSumaAseguradaPerdida()" class="btn btn-info my-2">
+                Actualizar
+            </button>
+            <table id="perdidaSumaAseguradaTable" class="indemnizacionTable">
+                <thead>
+                    <tr>
+                        <th style="text-align: center">#</th>
+                        <th style="text-align: center">Ubicación</th>
+                        <th style="text-align: center">machine</th>
+                        <th style="text-align: center">TOTAL</th>
+                        <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Add row">
+
+                            <button type="button" onclick="addRowSumaPerdida(event, 'perdida')" class="btn btn-success btn-xs">
+                                +
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                {{-- tbody --}}
+
+                <tbody id="perdidaSumaAseguradaTableBody">
+                    @if (count($sum_assured) > 0)
+                    @foreach ($sum_assured as $key => $item)
+                    <tr>
+                        <td>{{$key+1}}</td>
+                        <td style="text-align: center">
+                            <input type="text" value="{{$item->location}}" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
+                        </td>
+                        <td style="text-align: center">
+                            <input value="{{$item->machine}}" class="col1 row{{$key+1}}" onkeyup="incendioSumaAsegurableTotales({{$key+1}}, 1, 'perdida')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px">
+                        </td>
+                        <td style="text-align: center">
+                            <span class="slipTitle col12" id="rowTotal{{$key+1}}">0</span>$
+                        </td>
+                        <td></td>
+                    </tr>
+                    @endforeach
+                    @else
+                    <tr>
+                        <td>1</td>
+                        <td style="text-align: center">
+                            <input type="text" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
+                        </td>
+                        <td style="text-align: center">
+                            <input class="col1 row1" onkeyup="incendioSumaAsegurableTotales(1, 1, 'perdida')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px">
+                        </td>
+                        <td style="text-align: center">
+                            <span class="slipTitle col12" id="rowTotal1">0</span>$
+                        </td>
+                        <td></td>
+                    </tr>
+                    @endif
 
 
-                    </tbody>
+                </tbody>
 
-                    <tfoot>
+                <tfoot>
 
-                        <tr>
-                            <td style="text-align: center">
-                            </td>
-                            <td style="text-align: center">
-                                <h5 class="slipTitle">Total</h5>
-                            </td>
-                            <td style="text-align: center">
-                                <span id="colTotal1" class="slipTitle">0</span>$
-                            </td>
-                            <td style="text-align: center">
-                                <span class="slipTitle " id="incendioTotalTotal">0</span>$
-                            </td>
-                        </tr>
+                    <tr>
+                        <td style="text-align: center">
+                        </td>
+                        <td style="text-align: center">
+                            <h5 class="slipTitle">Total</h5>
+                        </td>
+                        <td style="text-align: center">
+                            <span id="colTotal1" class="slipTitle">0</span>$
+                        </td>
+                        <td style="text-align: center">
+                            <span class="slipTitle " id="incendioTotalTotal">0</span>$
+                        </td>
+                    </tr>
 
-                    </tfoot>
+                </tfoot>
 
-                </table>
-            </div>
-            
+            </table>
+        </div>
+
         @endif
 
         <div class="row">
@@ -903,7 +903,7 @@
                             <input type="text" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
                         </td>
                         <td style="text-align: center">
-                            <input class="col1 row1" onkeyup="incendioSumaAsegurableTotales(1, 1, 'perdida')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px" >
+                            <input class="col1 row1" onkeyup="incendioSumaAsegurableTotales(1, 1, 'perdida')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px">
                         </td>
                         <td style="text-align: center">
                             <span class="slipTitle col12" id="rowTotal1">0</span>$
@@ -962,8 +962,8 @@
                             <td style="text-align: center">
                                 <input type="text" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
                             </td>
-                            <td  style="text-align: center">
-                                <input class="col1 row1" onkeyup="incendioSumaAsegurableTotales(1, 1, 'perdida_beneficios')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px" >
+                            <td style="text-align: center">
+                                <input class="col1 row1" onkeyup="incendioSumaAsegurableTotales(1, 1, 'perdida_beneficios')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px">
                             </td>
                             <td style="text-align: center">
                                 <span class="slipTitle col12" id="rowTotal1">0</span>$
@@ -1217,7 +1217,7 @@
                         <div class="input-group">
                             <label class="input-group-text" for="accidentRate">Siniestralidad 5 años
                                 detallada</label>
-                            <input class="form-control" type="file" name="informe" id="informe">
+                            <input class="form-control" type="file" name="accidentRate" id="accidentRate">
                         </div>
                     </div>
                     <div class="col-md-6">
