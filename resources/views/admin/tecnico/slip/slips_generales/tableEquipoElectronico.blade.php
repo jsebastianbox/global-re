@@ -5,7 +5,7 @@
             <tr>
                 <th></th>
                 <th style="text-align: center">Años</th>
-                <th style="text-align: center">Demetito (anual)</th>
+                <th style="text-align: center">Demerito (anual)</th>
             </tr>
         </thead>
 
@@ -17,8 +17,11 @@
                         class="inputNumber">
                 </td>
                 <td>
-                    <input type="number" id="incendioEquipoElectronico1b" name="EquipoElectronico1b"
-                        class="inputNumber" min="0" value="0">
+                    <div class="labelStyle2Container">
+                        <span>%</span>
+                        <input type="number" class="inputNumber" id="incendioEquipoElectronico1b" name="EquipoElectronico1b"
+                             min="0" value="0">
+                    </div>
                 </td>
             </tr>
 
@@ -29,8 +32,11 @@
                         class="inputNumber">
                 </td>
                 <td>
-                    <input type="number" id="incendioEquipoElectronico2b" name="EquipoElectronico2b"
-                        class="inputNumber" min="0" value="0">
+                    <div class="labelStyle2Container">
+                        <span>%</span>
+                        <input type="number" class="inputNumber" id="incendioEquipoElectronico2b" name="EquipoElectronico2b"
+                            min="0" value="0">
+                    </div>
                 </td>
             </tr>
 
@@ -41,8 +47,11 @@
                         class="inputNumber">
                 </td>
                 <td>
-                    <input type="number" id="incendioEquipoElectronico3b" name="EquipoElectronico3b"
-                        class="inputNumber" min="0" value="0">
+                    <div class="labelStyle2Container">
+                        <span>%</span>
+                        <input type="number" class="inputNumber" id="incendioEquipoElectronico3b" name="EquipoElectronico3b"
+                             min="0" value="0">
+                    </div>
                 </td>
             </tr>
 
@@ -53,8 +62,11 @@
                         class="inputNumber">
                 </td>
                 <td>
-                    <input type="number" id="incendioEquipoElectronico4b" name="EquipoElectronico4b"
-                        class="inputNumber" min="0" value="0">
+                    <div class="labelStyle2Container">
+                        <span>%</span>
+                        <input type="number" class="inputNumber" id="incendioEquipoElectronico4b" name="EquipoElectronico4b"
+                             min="0" value="0">
+                    </div>
                 </td>
             </tr>
         </tbody>

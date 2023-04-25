@@ -4,7 +4,7 @@
         <thead>
             <tr>
                 <th style="text-align: center">Años</th>
-                <th style="text-align: center">Demetito (anual)</th>
+                <th style="text-align: center">Demerito (anual)</th>
             </tr>
         </thead>
 
