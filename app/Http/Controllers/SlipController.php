@@ -42,6 +42,7 @@ use App\Models\SlipVehicle;
 use App\Models\SumAssured;
 use App\Models\VehicleDetail;
 use App\Traits\HasUploadFiles;
+use App\Traits\HasSlipsType;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -51,6 +52,8 @@ use Yajra\DataTables\DataTables;
 class SlipController extends Controller
 {
     use HasUploadFiles;
+    use HasSlipsType;
+
     /**
      * Display a listing of the resource.
      *
@@ -922,11 +925,31 @@ class SlipController extends Controller
      */
     public function destroy($id)
     {
-        Slip::find($id)->delete($id);
+        $slip = Slip::find($id);
+        
+        if(!$slip){
+            return response()->json([
+                'error' => 'Record '.$id.' not found!'
+            ], 404);
+        }
 
-        return response()->json([
-            'success' => 'Record deleted successfully!',
-        ]);
+
+        $arr = $this->getSlipType($slip);
+
+        $slip_type = $arr[0];
+        $case = $arr[1];
+        $case = $case == "activos_fijos" ? "activos-fijos" : $case;
+        $path = "app/slips/". $case ."/" . $slip_type->id . "/";
+
+        // Elinina archivos del directorio
+        $this->removeDir($path."*.*");
+        
+        // Elimina el directorio
+        $this->removeDirectory($path);
+
+        $slip->delete($id);
+      
+        return redirect()->back()->with('success', 'Record '.$id.' deleted successfully!');
     }
 
     public function storecomercial(Request $request)

@@ -128,6 +128,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Slip select
     Route::get('/slip_selected/{id}', [SlipController::class, 'slipSelected'])->name('slip.selected');
+    Route::post('/slip_destroy/{id}', [SlipController::class, 'destroy'])->name('slip.destroy');
     //david
     Route::resource('/sercorp', SercorpController::class);
     Route::resource('/slip', SlipController::class);

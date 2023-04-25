@@ -207,6 +207,16 @@ Administración | Técnico
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Delete Button  -->
+                        <form action="{{ url('/slip_destroy', [$slip->id]) }}" method="POST">
+                            @csrf
+                            @method('POST')
+                            <button type="submit" class="btn btn-danger btn-xs">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>
+                        </form>
+                        
                     </td>
                 </tr>
                 @endforeach
