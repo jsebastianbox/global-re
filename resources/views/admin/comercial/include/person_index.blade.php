@@ -134,10 +134,11 @@
         <div class="row mt-3">
             <label for="" class="lead">Información general</label>
             <hr style="background-color: darkgray">
-            <div class="col-md-4" style="{{$slip->insurable_value > 0 ? 'display:none' : 'display:flex'}}">
+
+            <div class="col-md-4" >
                 {{-- Si es que es vida individual --}}
 
-                <div id="persona_asegurada">
+                <div id="persona_asegurada" style="{{$slip->insurable_value == 0 ? 'display:flex': 'display:none'}}">
                     <div class="input-group my-3">
                         <span class="input-group-text">Persona asegurada</span>
                         <input class="form-control" placeholder="Persona asegurada..." name="person_insured"
@@ -148,7 +149,7 @@
 
                 {{-- Si es que es vida colectiva --}}
 
-                <div id="objeto_asegurado" style="display: none">
+                <div id="objeto_asegurado" style="{{$slip->insurable_value > 0 ? 'display:flex': 'display:none'}}">
                     <div class="input-group my-3">
                         <span class="input-group-text">Objeto asegurado</span>
                         <input class="form-control" placeholder="Objeto asegurado..." name="object_insured"
@@ -331,7 +332,7 @@
 
                 {{-- Si es que es vida colectiva --}}
 
-                <div id="objeto_asegurado" style="display: none">
+                <div id="objeto_asegurado">
                     <div class="input-group my-3">
                         <span class="input-group-text">Objeto asegurado</span>
                         <input class="form-control" placeholder="Objeto asegurado..." name="object_insured"
