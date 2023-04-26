@@ -89,6 +89,69 @@
         });
     }
 
+    //addRpw
+    // add row
+    function addRowCalculosTableReinsurer(event, type) {
+        event.preventDefault()
+
+        let rowCount = document.getElementById(`${type}Table`).rows.length - 1
+
+        const calculosTableBody = document.getElementById(`${type}Body`)
+        const tr = document.createElement('tr')
+
+        calculosTableBody.appendChild(tr)
+        tr.id = `newRowCalculos${rowCount}`
+        tr.innerHTML =
+            `
+                <td>
+                    ${rowCount}
+                </td>
+                <td>
+                    <span name="name_insurer[]">
+
+                    </span>
+                </td>
+                <td>
+                    <input type="number" id="sumaAsegurada" name="sumaAsegurada" value="0" class="sumaAseguradaInput" onkeyup="infoReaseguradorSuma()">
+                </td>
+                <td>
+                    <div class="labelStyle2Container">
+                        <span>%</span>
+                        <input type="number" min="0" max="100" name="participacion" id="participacion" value="0" class="participacion participacionInput" onkeyup="infoReaseguradorSuma()">
+                    </div>
+                </td>
+                <td>
+                    <div class="labelStyle2Container">
+                        <span>%</span>
+                        <input type="number" min="0" max="100" name="tasaBruta" id="tasaBruta" value="0" class="tasaBrutaInput" onkeyup="infoReaseguradorSuma()">
+                    </div>
+                </td>
+                <td>
+                    <div class="labelStyle2Container">
+                        <span>%</span>
+                        <input type="number" min="0" max="100" name="dstos" id="dstos" value="0" class="dstosInput" onkeyup="infoReaseguradorSuma()" >
+                    </div>
+                </td>
+                <td>
+                    <div class="labelStyle2Container">
+                        <span>%</span>
+                        <input name="tasaNeta" type="number" step="any id="tasaNeta" class="tasaNetaSpan inputNumber" onkeyup="infoReaseguradorSuma()" value="0">
+                    </div>
+                </td>
+                <td>
+                    <span name="primaNeta" class="primaNetaSpan">0</span>
+                </td>
+                <td>
+                    <span name="primaPart" class="primaPartSpan">0</span>
+                </td>
+
+                <td>
+                    <button id="${rowCount}" type="button" class="btn btn-danger btn-xs btn-delete-calculos" style="color:black">x</button>
+                </td>
+            `
+            getReinsurers('.select_reinsurer', 'RI');
+    }
+
     // Denotes total number of rows.
     var rowIdx = 1;
     // jQuery button click event to add a row.
@@ -96,23 +159,26 @@
 
         // Adding a row inside the tbody.
         $('#tbody').append(`
-        <tr id="R${++rowIdx}">
-            <td name="number">${rowIdx}</td>
-            <td>
-                <select class="js-example-basic-single inputForm select_reinsurer" name="reaseguradores">
-                </select>
-            </td>
-            <td><input type="text" name="subscriber" id="subscriber" placeholder="..."></td>
-            <td><input type="number" name="percentage" id="percent" placeholder="%" /></td>
-            <td><textarea name="observation" id="observaciones" cols="6" rows="1" placeholder="..."></textarea></td>
-            <td><span id="creation_date" name="created_at">{{ $slip_type->creation_date != null ? $slip_type->creation_date : date('m/d/Y h:i:s a', time()) }}</span></td>
-            <td><span id="update_date" name="modified_at">{{ $slip_type->update_date != null ? $slip_type->update_date : date('m/d/Y h:i:s a', time()) }}</span></td>
-            <td><button class="btn btn-danger remove" type="button">X</button></td>
+            <tr id="R${++rowIdx}">
+                <td name="number">${rowIdx}</td>
+                <td>
+                    <select class="js-example-basic-single inputForm select_reinsurer" name="reaseguradores">
+                    </select>
+                </td>
+                <td><input type="text" name="subscriber" id="subscriber" placeholder="..."></td>
+                <td><input type="number" name="percentage" id="percent" placeholder="%" /></td>
+                <td><textarea name="observation" id="observaciones" cols="6" rows="1" placeholder="..."></textarea></td>
+                <td><span id="creation_date" name="created_at">{{ $slip_type->creation_date != null ? $slip_type->creation_date : date('m/d/Y h:i:s a', time()) }}</span></td>
+                <td><span id="update_date" name="modified_at">{{ $slip_type->update_date != null ? $slip_type->update_date : date('m/d/Y h:i:s a', time()) }}</span></td>
+                <td><button class="btn btn-danger remove" type="button">X</button></td>
             </tr>`);
 
         getReinsurers('.select_reinsurer', 'RI');
 
-        addRowCalculosTable(event, 'calculos')
+        addRowCalculosTableReinsurer(event, 'calculos')
+        addRowSecurityProportional(event)
+        addRowSecurityNoProportional(event)
+
 
     });
 
@@ -150,10 +216,4 @@
         rowIdx--;
     });
 
-
-    //---------david
-
-    getReinsurers('.select_reinsurer', 'RI');
-
-    //----------end david
 </script>

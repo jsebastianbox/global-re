@@ -9,7 +9,7 @@
                     País productor
                 </label>
                 <select class="js-example-basic-single inputForm select_country form-select" name="country_id" onchange="countryLeyJurisdiccion()">
-                    <option selected value="{{ $countries->find($slip->country_id)->name }}">{{ $countries->find($slip->country_id)->name }}</option>
+                    <option selected value="{{ $slip->country_id }}">{{ $countries->find($slip->country_id)->name }}</option>
                 </select>
             </div>
         </div>
@@ -75,7 +75,7 @@
         <div class="col-md-4">
             <div class="input-group mb-3">
                 <label class="input-group-text" for="sector">Sector</label>
-                <select class="form-select" name="sector" id="sector" required>
+                <select class="form-select" name="sector" id="sector">
                     <option value="" selected disabled>Selecciona</option>
                     <option {{ $slip->sector == "public" ? 'selected' : '' }} value="public">Público</option>
                     <option {{ $slip->sector == "private" ? 'selected' : '' }} value="private">Privado</option>
@@ -176,7 +176,7 @@
             <div class="col-md-4 my-3" style="{{$slip->insurable_value > 0 ? 'display:none' : 'display:flex'}}">
                 <div class="input-group mb-3">
                     <label class="input-group-text">Valor asegurado</label>
-                    <input type="number" step="any" placeholder="Valor.." name="person_insured_value" class="form-control" value="{{$slip->person_insured_value}}">
+                    <input type="number" step="any" placeholder="Valor.." name="insured_value" class="form-control" value="{{$slip->insured_value}}">
                 </div>
             </div>
         </div>
@@ -255,7 +255,7 @@
         <div class="col-md-4">
             <div class="input-group mb-3">
                 <label class="input-group-text" for="sector">Sector</label>
-                <select class="form-select" name="sector" id="sector" required>
+                <select class="form-select" name="sector" id="sector">
                     <option value="" selected disabled>Selecciona</option>
                     <option value="public">Público</option>
                     <option value="private">Privado</option>
@@ -357,7 +357,7 @@
             <div class="col-md-4 mt-3 valorAseguradoContainer">
                 <div class="input-group mb-3">
                     <label class="input-group-text">Valor asegurado</label>
-                    <input type="number" step="any" placeholder="Valor.." name="person_insured_value" class="form-control">
+                    <input type="number" step="any" placeholder="Valor.." name="insured_value" class="form-control">
                 </div>
             </div>
         </div>

@@ -86,6 +86,7 @@ class CreateSlipsTable extends Migration
             $table->string('main_risk')->nullable();
             $table->double('insurable_sum')->nullable();
             $table->double('insured_value')->nullable();
+            $table->double('valor_asegurado')->nullable();
             $table->double('person_insured_value')->nullable();
             $table->double('object_insured_value')->nullable();
             $table->double('insurable_value')->nullable();

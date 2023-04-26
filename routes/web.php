@@ -220,6 +220,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/comercial/edit_compromiso/riesgos/{id}', [CompromisoController::class, 'riesgos'])->name('edit.riesgos');
     Route::get('/admin/comercial/edit_compromiso/fianzas/{id}', [CompromisoController::class, 'fianzas'])->name('edit.fianzas');
     
+    //Eliminar compromisos
+    Route::post('/admin/comercial/destroy/{id}', [CompromisoController::class, 'destroy'])->name('destroy');
 });
 
 

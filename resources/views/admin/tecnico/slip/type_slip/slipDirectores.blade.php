@@ -30,7 +30,7 @@
                 </label>
                 <div class="input_group">
                     <textarea name="coverage" id="coverage" style="resize:both;width:100%;" 
- cols="15" rows="1"></textarea>
+                    cols="15" rows="1"></textarea>
                 </div>
 
             </div>

@@ -629,10 +629,29 @@ function updateS4() {
     element.setAttribute('hidden', 'true');
 
     let formularioElectronico = document.querySelector('#showElectronico');
+    let showPerdidaBeneficios = document.querySelector('#showPerdidaBeneficios');
     value === "ee" ? formularioElectronico.style.display = "initial" : formularioElectronico.style.display = "none"
+    value === "pbrm" ? showPerdidaBeneficios.style.display = "initial" : showPerdidaBeneficios.style.display = "none"
 
     switch (value) {
         case "ee":
+            document.getElementById('btnCoberturasEE').style.display = "block";
+            document.getElementById('btnClausulasEE').style.display = "block";
+            document.getElementById('btnCoberturasRM').style.display = "none";
+            document.getElementById('btnCoberturasPBRM').style.display = "none";
+            document.getElementById('btnCoberturasEMC').style.display = "none";
+            document.getElementById('btnCoberturasTRC').style.display = "none";
+            document.getElementById('btnCoberturasMM').style.display = "none";
+            document.getElementById('btnCoberturasALOP').style.display = "none";
+            document.getElementById('btnClausulasRM').style.display = "none";
+            document.getElementById('btnClausulasPBRM').style.display = "none";
+            document.getElementById('btnClausulasEMC').style.display = "none";
+            document.getElementById('btnClausulasTRC').style.display = "none";
+            document.getElementById('btnClausulasMM').style.display = "none";
+            document.getElementById('btnClausulasALOP').style.display = "none";
+            document.getElementById('tituloCoberturas').style.display = "block";
+            document.getElementById('tituloCobertura').style.display = "none";
+            -
             element.setAttribute('value', '11');
             r_tecnicos.appendChild(element);
             currentTab = 0;
@@ -669,70 +688,167 @@ function updateS4() {
             coberturasSelect(".selectCobertura", "tecnico", "electronico");
             break;
         case "rm":
+            document.getElementById('btnCoberturasRM').style.display = "block";
+            document.getElementById('btnClausulasRM').style.display = "block";
+            document.getElementById('btnCoberturasEE').style.display = "none";
+            document.getElementById('btnCoberturasPBRM').style.display = "none";
+            document.getElementById('btnCoberturasEMC').style.display = "none";
+            document.getElementById('btnCoberturasTRC').style.display = "none";
+            document.getElementById('btnCoberturasMM').style.display = "none";
+            document.getElementById('btnCoberturasALOP').style.display = "none";
+            document.getElementById('btnClausulasEE').style.display = "none";
+            document.getElementById('btnClausulasPBRM').style.display = "none";
+            document.getElementById('btnClausulasEMC').style.display = "none";
+            document.getElementById('btnClausulasTRC').style.display = "none";
+            document.getElementById('btnClausulasMM').style.display = "none";
+            document.getElementById('btnClausulasALOP').style.display = "none";
+            document.getElementById('tituloCoberturas').style.display = "block";
+            document.getElementById('tituloCobertura').style.display = "none";
             element.setAttribute('value', '12');
             r_tecnicos.appendChild(element);
             currentTab = 0;
             r_tecnicos.style.display = "block";
             valorAseguradoContainer.forEach(elemento => {
-                elemento.style.display = 'block';
+                elemento.style.display = 'none';
             })
             clausulasSelect(".selectClausula", "tecnico", "rotura_maquinaria");
             coberturasSelect(".selectCobertura", "tecnico", "rotura_maquinaria");
             break;
         case "pbrm":
+            document.getElementById('btnCoberturasPBRM').style.display = "block";
+            document.getElementById('btnClausulasPBRM').style.display = "block";
+            document.getElementById('btnCoberturasRM').style.display = "none";
+            document.getElementById('btnCoberturasEE').style.display = "none";
+            document.getElementById('btnCoberturasEMC').style.display = "none";
+            document.getElementById('btnCoberturasTRC').style.display = "none";
+            document.getElementById('btnCoberturasMM').style.display = "none";
+            document.getElementById('btnCoberturasALOP').style.display = "none";
+            document.getElementById('btnClausulasRM').style.display = "none";
+            document.getElementById('btnClausulasEE').style.display = "none";
+            document.getElementById('btnClausulasEMC').style.display = "none";
+            document.getElementById('btnClausulasTRC').style.display = "none";
+            document.getElementById('btnClausulasMM').style.display = "none";
+            document.getElementById('btnClausulasALOP').style.display = "none";
+            document.getElementById('tituloCoberturas').style.display = "block";
+            document.getElementById('tituloCobertura').style.display = "none";
             element.setAttribute('value', '13');
             r_tecnicos.appendChild(element);
             currentTab = 0;
             r_tecnicos.style.display = "block";
             valorAseguradoContainer.forEach(elemento => {
-                elemento.style.display = 'block';
+                elemento.style.display = 'none';
             })
             clausulasSelect(".selectClausula", "tecnico", "beneficios");
             coberturasSelect(".selectCobertura", "tecnico", "beneficios");
             break;
         case "emc":
+            document.getElementById('btnCoberturasEMC').style.display = "block";
+            document.getElementById('btnClausulasEMC').style.display = "block";
+            document.getElementById('btnCoberturasRM').style.display = "none";
+            document.getElementById('btnCoberturasPBRM').style.display = "none";
+            document.getElementById('btnCoberturasEE').style.display = "none";
+            document.getElementById('btnCoberturasTRC').style.display = "none";
+            document.getElementById('btnCoberturasMM').style.display = "none";
+            document.getElementById('btnCoberturasALOP').style.display = "none";
+            document.getElementById('btnClausulasRM').style.display = "none";
+            document.getElementById('btnClausulasPBRM').style.display = "none";
+            document.getElementById('btnClausulasEE').style.display = "none";
+            document.getElementById('btnClausulasTRC').style.display = "none";
+            document.getElementById('btnClausulasMM').style.display = "none";
+            document.getElementById('btnClausulasALOP').style.display = "none";
+            document.getElementById('tituloCoberturas').style.display = "block";
+            document.getElementById('tituloCobertura').style.display = "none";
             element.setAttribute('value', '14');
             r_tecnicos.appendChild(element);
             currentTab = 0;
             r_tecnicos.style.display = "block";
             valorAseguradoContainer.forEach(elemento => {
-                elemento.style.display = 'block';
+                elemento.style.display = 'none';
             })
             clausulasSelect(".selectClausula", "tecnico", "equipo_maquinaria");
             coberturasSelect(".selectCobertura", "tecnico", "equipo_maquinaria");
             break;
         case "trc":
+            document.getElementById('btnCoberturasTRC').style.display = "block";
+            document.getElementById('btnClausulasTRC').style.display = "block";
+            document.getElementById('btnCoberturasRM').style.display = "none";
+            document.getElementById('btnCoberturasPBRM').style.display = "none";
+            document.getElementById('btnCoberturasEMC').style.display = "none";
+            document.getElementById('btnCoberturasEE').style.display = "none";
+            document.getElementById('btnCoberturasMM').style.display = "none";
+            document.getElementById('btnCoberturasALOP').style.display = "none";
+            document.getElementById('btnClausulasRM').style.display = "none";
+            document.getElementById('btnClausulasPBRM').style.display = "none";
+            document.getElementById('btnClausulasEMC').style.display = "none";
+            document.getElementById('btnClausulasEE').style.display = "none";
+            document.getElementById('btnClausulasMM').style.display = "none";
+            document.getElementById('btnClausulasALOP').style.display = "none";
+            document.getElementById('tituloCoberturas').style.display = "none";
+            document.getElementById('inputSumaAsegurable3').style.display = "none";
+            document.getElementById('tituloCobertura').style.display = "block";
             element.setAttribute('value', '15');
             r_tecnicos.appendChild(element);
             currentTab = 0;
             r_tecnicos.style.display = "block";
             valorAseguradoContainer.forEach(elemento => {
-                elemento.style.display = 'block';
+                elemento.style.display = 'none';
             })
             clausulasSelect(".selectClausula", "tecnico", "construccion");
             coberturasSelect(".selectCobertura", "tecnico", "construccion");
             break;
         case "mm":
+            document.getElementById('btnCoberturasMM').style.display = "block";
+            document.getElementById('btnClausulasMM').style.display = "block";
+            document.getElementById('btnCoberturasRM').style.display = "none";
+            document.getElementById('btnCoberturasPBRM').style.display = "none";
+            document.getElementById('btnCoberturasEMC').style.display = "none";
+            document.getElementById('btnCoberturasTRC').style.display = "none";
+            document.getElementById('btnCoberturasEE').style.display = "none";
+            document.getElementById('btnCoberturasALOP').style.display = "none";
+            document.getElementById('btnClausulasRM').style.display = "none";
+            document.getElementById('btnClausulasPBRM').style.display = "none";
+            document.getElementById('btnClausulasEMC').style.display = "none";
+            document.getElementById('btnClausulasTRC').style.display = "none";
+            document.getElementById('btnClausulasEE').style.display = "none";
+            document.getElementById('btnClausulasALOP').style.display = "none";
+            document.getElementById('tituloCoberturas').style.display = "none";
+            document.getElementById('inputSumaAsegurable3').style.display = "none";
+            document.getElementById('tituloCobertura').style.display = "block";
             element.setAttribute('value', '16');
             r_tecnicos.appendChild(element);
             currentTab = 0;
             r_tecnicos.style.display = "block";
             valorAseguradoContainer.forEach(elemento => {
-                elemento.style.display = 'block';
+                elemento.style.display = 'none';
             })
             clausulasSelect(".selectClausula", "tecnico", "construccion");
             coberturasSelect(".selectCobertura", "tecnico", "montaje");
             break;
         case "alop":
+            document.getElementById('btnCoberturasALOP').style.display = "block";
+            document.getElementById('btnClausulasALOP').style.display = "block";
+            document.getElementById('btnCoberturasRM').style.display = "none";
+            document.getElementById('btnCoberturasPBRM').style.display = "none";
+            document.getElementById('btnCoberturasEMC').style.display = "none";
+            document.getElementById('btnCoberturasTRC').style.display = "none";
+            document.getElementById('btnCoberturasMM').style.display = "none";
+            document.getElementById('btnCoberturasEE').style.display = "none";
+            document.getElementById('btnClausulasRM').style.display = "none";
+            document.getElementById('btnClausulasPBRM').style.display = "none";
+            document.getElementById('btnClausulasEMC').style.display = "none";
+            document.getElementById('btnClausulasTRC').style.display = "none";
+            document.getElementById('btnClausulasMM').style.display = "none";
+            document.getElementById('btnClausulasEE').style.display = "none";
+            document.getElementById('tituloCoberturas').style.display = "block";
+            document.getElementById('tituloCobertura').style.display = "none";
+            document.getElementById('inputSumaAsegurable3').style.display = "none";
             element.setAttribute('value', '17');
             r_tecnicos.appendChild(element);
             currentTab = 0;
             r_tecnicos.style.display = "block";
             valorAseguradoContainer.forEach(elemento => {
-                elemento.style.display = 'block';
+                elemento.style.display = 'none';
             })
-
-            document.getElementById('formularioAlop').style.display = "block";
             clausulasSelect(".selectClausula", "tecnico", "alop");
             coberturasSelect(".selectCobertura", "tecnico", "alop");
             break;
@@ -836,14 +952,22 @@ function updateS6() {
 
     switch (value) {
         case "cm":
-            clausulasSelect(".selectClausula", "maritimo", "casco_maquinaria");
-            coberturasSelect(".selectCobertura", "maritimo", "casco_maquinaria");
-            currentTab = 0;
+            document.getElementById('btnClausulasM1').style.display = "block"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "none"
+            document.getElementById('btnClausulasM4').style.display = "none"
+            document.getElementById('btnCoberturasM1').style.display = "block"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "none"
+            document.getElementById('btnCoberturasM4').style.display = "none"
+            clausulasSelect(".selectClausula", "maritimo", "casco")
+            coberturasSelect(".selectCobertura", "maritimo", "casco")
+            currentTab = 0
             currentForm = "#maritimo_1_form"
-            x = maritimo_1_form.getElementsByClassName("tab");
-            nextBtn = maritimo.getElementsByTagName('button').nextBtn;
-            prevBtn = maritimo.getElementsByTagName('button').prevBtn;
-            submitBtn = maritimo.getElementsByTagName('button').submitBtn;
+            x = maritimo_1_form.getElementsByClassName("tab")
+            nextBtn = maritimo.getElementsByTagName('button').nextBtn
+            prevBtn = maritimo.getElementsByTagName('button').prevBtn
+            submitBtn = maritimo.getElementsByTagName('button').submitBtn
             showTab(currentTab); // Display the crurrent tab
             maritimo.style.display = "block";
             maritimo2.style.display = "none";
@@ -857,8 +981,16 @@ function updateS6() {
             maritimo.appendChild(element);
             break;
         case "mrc":
-            clausulasSelect(".selectClausula", "maritimo", "mrc");
-            coberturasSelect(".selectCobertura", "maritimo", "mrc");
+            document.getElementById('btnClausulasM1').style.display = "block"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "none"
+            document.getElementById('btnClausulasM4').style.display = "none"
+            document.getElementById('btnCoberturasM1').style.display = "block"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "none"
+            document.getElementById('btnCoberturasM4').style.display = "none"
+            clausulasSelect(".selectClausula", "maritimo", "casco");
+            coberturasSelect(".selectCobertura", "maritimo", "casco");
             currentTab = 0;
             currentForm = "#maritimo_1_form"
             x = maritimo_1_form.getElementsByClassName("tab");
@@ -878,8 +1010,16 @@ function updateS6() {
             maritimo.appendChild(element);
             break;
         case "pi":
-            clausulasSelect(".selectClausula", "maritimo", "pi");
-            coberturasSelect(".selectCobertura", "maritimo", "pi");
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "block"
+            document.getElementById('btnClausulasM3').style.display = "none"
+            document.getElementById('btnClausulasM4').style.display = "none"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "block"
+            document.getElementById('btnCoberturasM3').style.display = "none"
+            document.getElementById('btnCoberturasM4').style.display = "none"
+            clausulasSelect(".selectClausula", "maritimo", "proteccion_indemnizacion")
+            coberturasSelect(".selectCobertura", "maritimo", "casco")
             currentTab = 0;
             currentForm = '#maritimo_2_form'
             x = maritimo_2_form.getElementsByClassName("tab");
@@ -895,6 +1035,14 @@ function updateS6() {
             maritimo2.appendChild(element);
             break;
         case "rcp":
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "block"
+            document.getElementById('btnClausulasM4').style.display = "none"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "block"
+            document.getElementById('btnCoberturasM4').style.display = "none"
             clausulasSelect(".selectClausula", "maritimo", "rcp");
             coberturasSelect(".selectCobertura", "maritimo", "rcp");
             currentTab = 0;
@@ -912,6 +1060,14 @@ function updateS6() {
             maritimo3.appendChild(element);
             break;
         case "rcas":
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "block"
+            document.getElementById('btnClausulasM4').style.display = "none"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "block"
+            document.getElementById('btnCoberturasM4').style.display = "none"
             clausulasSelect(".selectClausula", "maritimo", "rcas");
             coberturasSelect(".selectCobertura", "maritimo", "rcas");
             currentTab = 0;
@@ -929,6 +1085,14 @@ function updateS6() {
             maritimo3.appendChild(element);
             break;
         case "rcar":
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "block"
+            document.getElementById('btnClausulasM4').style.display = "none"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "block"
+            document.getElementById('btnCoberturasM4').style.display = "none"
             clausulasSelect(".selectClausula", "maritimo", "rcar");
             coberturasSelect(".selectCobertura", "maritimo", "rcar");
             currentTab = 0;
@@ -946,6 +1110,14 @@ function updateS6() {
             maritimo3.appendChild(element);
             break;
         case "tin":
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "none"
+            document.getElementById('btnClausulasM4').style.display = "block"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "none"
+            document.getElementById('btnCoberturasM4').style.display = "block"
             currentTab = 0;
             currentForm = '#maritimo_4_form'
             x = maritimo_4_form.getElementsByClassName("tab");
@@ -963,6 +1135,14 @@ function updateS6() {
             coberturasSelect(".selectCobertura", "tecnico", "tin");
             break;
         case "ex":
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "none"
+            document.getElementById('btnClausulasM4').style.display = "block"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "none"
+            document.getElementById('btnCoberturasM4').style.display = "block"
             currentTab = 0;
             currentForm = '#maritimo_4_form'
             x = maritimo_4_form.getElementsByClassName("tab");
@@ -980,6 +1160,14 @@ function updateS6() {
             coberturasSelect(".selectCobertura", "tecnico", "ex");
             break;
         case "im":
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "none"
+            document.getElementById('btnClausulasM4').style.display = "block"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "none"
+            document.getElementById('btnCoberturasM4').style.display = "block"
             currentTab = 0;
             currentForm = '#maritimo_4_form'
             x = maritimo_4_form.getElementsByClassName("tab");
@@ -998,6 +1186,14 @@ function updateS6() {
             coberturasSelect(".selectCobertura", "tecnico", "im");
             break;
         case "stp":
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "none"
+            document.getElementById('btnClausulasM4').style.display = "block"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "none"
+            document.getElementById('btnCoberturasM4').style.display = "block"
             currentTab = 0;
             currentForm = '#maritimo_4_form'
             x = maritimo_4_form.getElementsByClassName("tab");
@@ -1015,6 +1211,14 @@ function updateS6() {
             coberturasSelect(".selectCobertura", "tecnico", "stp");
             break;
         case "td":
+            document.getElementById('btnClausulasM1').style.display = "none"
+            document.getElementById('btnClausulasM2').style.display = "none"
+            document.getElementById('btnClausulasM3').style.display = "none"
+            document.getElementById('btnClausulasM4').style.display = "block"
+            document.getElementById('btnCoberturasM1').style.display = "none"
+            document.getElementById('btnCoberturasM2').style.display = "none"
+            document.getElementById('btnCoberturasM3').style.display = "none"
+            document.getElementById('btnCoberturasM4').style.display = "block"
             currentTab = 0;
             currentForm = '#maritimo_4_form'
             x = maritimo_4_form.getElementsByClassName("tab");
@@ -1904,29 +2108,51 @@ function chooseTypeSuma2(event) {
 
     }
 }
+function chooseTypeSuma3(event) {
+    event.preventDefault()
+
+    const sumaAsegurable = document.getElementById('sumaAsegurable3')
+    const sumaAsegurada = document.getElementById('sumaAsegurada3')
+
+    if (sumaAsegurada.checked) {
+        $('#sumaAsegurada3Container').show();
+        $('#inputSumaAsegurada3').show();
+        $('#sumaAsegurable3Container').hide();
+        $('#inputSumaAsegurable3').hide();
+
+    }
+    if (sumaAsegurable.checked) {
+        $('#sumaAsegurable3Container').show();
+        $('#inputSumaAsegurable3').show();
+        $('#sumaAsegurada3Container').hide();
+        $('#inputSumaAsegurada3').hide();
+
+    }
+}
 
 
 //suma asegurable / table suma asegurada rama:incendio
-const incendioSumaAsegurable = document.getElementById('incendioSumaAsegurable')
 
-
-function refreshSumaAsegurableTable() {
-    let row = $('#activosSumaAseguradaTableBody').find('tr').length
-
-    for (let i = 0; i < row; i++) {
-        incendioSumaAsegurableTotales(i, 'activos')
+function refreshSumaAseguradaPerdida() {
+    let row = $('#perdidaSumaAseguradaTableBody').find('tr').length
+    
+    for (let i = 1; i <= row; i++) {
+            incendioSumaAsegurableTotales(i, 1, 'perdida');
     }
 }
 function refreshSumaAseguradaTable() {
-    console.log('a');
     let row = $('#activos_fijosSumaAseguradaTableBody').find('tr').length
-
-    for (let i = 0; i < row; i++) {
-        incendioSumaAsegurableTotales(i, 'activos_fijos')
+    let column = $('#activos_fijosSumaAseguradaTableBody').find('tr:first-child td').length - 4;
+    console.log(column);
+    
+    for (let i = 1; i <= row; i++) {
+        for (let j = 1; j <= column; j++) {
+            incendioSumaAsegurableTotales(i, j, 'activos_fijos');
+        }
     }
 }
 
-function incendioSumaAsegurableTotales(row, table) {
+function incendioSumaAsegurableTotales(row, col, table) {
     const activos_fijosSumaAseguradaTable = document.getElementById(`${table}SumaAseguradaTable`)
     //sumas filas
     let rowSelect = activos_fijosSumaAseguradaTable.getElementsByClassName(`row${row}`)
@@ -1942,95 +2168,48 @@ function incendioSumaAsegurableTotales(row, table) {
     let sumaTotal = rowTotalArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
 
     rowTotal.innerText = parseFloat(sumaTotal).toFixed(2)
-    //sumas columnas
 
-    let edificacionInput = activos_fijosSumaAseguradaTable.getElementsByClassName("edificacionInput")
-    let contenidosInput = activos_fijosSumaAseguradaTable.getElementsByClassName("contenidosInput")
-    let maquinariaEquiposInput = activos_fijosSumaAseguradaTable.getElementsByClassName("maquinariaEquiposInput")
-    let mueblesInput = activos_fijosSumaAseguradaTable.getElementsByClassName("mueblesInput")
-    let mercaderiasInput = activos_fijosSumaAseguradaTable.getElementsByClassName("mercaderiasInput")
-    let otrosInput = activos_fijosSumaAseguradaTable.getElementsByClassName("otrosInput")
-    let incendioTotalSpan = activos_fijosSumaAseguradaTable.getElementsByClassName("incendioTotalSpan")
+    //suma columnas
+    let colSelect = activos_fijosSumaAseguradaTable.getElementsByClassName(`col${col}`)
+    let colTotal = activos_fijosSumaAseguradaTable.querySelector(`#colTotal${col}`)
+    let colTotalArray = []
 
-    const incendioEdificacionTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioEdificacionTotal')
-    const incendioContenidosTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioContenidosTotal')
-    const incendioMaquinariaEquiposTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioMaquinariaEquiposTotal')
-    const incendioMueblesTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioMueblesTotal')
-    const incendioMercaderiasTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioMercaderiasTotal')
-    const incendioOtrosTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioOtrosTotal')
-    const incendioTotalTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioTotalTotal')
-
-    //totals
-    let incendioEdificacionArray = []
-    let incendioContenidosArray = []
-    let incendioMaquinariaEquiposArray = []
-    let incendioMueblesArray = []
-    let incendioMercaderiasArray = []
-    let incendioOtrosArray = []
-    let incendioTotalArray = []
-
-    for (let i = 0; i < edificacionInput.length; i++) {
-        if (edificacionInput[i].value > 0) {
-            incendioEdificacionArray.push(parseFloat(edificacionInput[i].value))
-        }
-    }
-    for (let i = 0; i < contenidosInput.length; i++) {
-        if (contenidosInput[i].value > 0) {
-            incendioContenidosArray.push(parseFloat(contenidosInput[i].value))
-        }
-    }
-    for (let i = 0; i < maquinariaEquiposInput.length; i++) {
-        if (maquinariaEquiposInput[i].value > 0) {
-            incendioMaquinariaEquiposArray.push(parseFloat(maquinariaEquiposInput[i].value))
-        }
-    }
-    for (let i = 0; i < mueblesInput.length; i++) {
-        if (mueblesInput[i].value > 0) {
-            incendioMueblesArray.push(parseFloat(mueblesInput[i].value))
-        }
-    }
-    for (let i = 0; i < mercaderiasInput.length; i++) {
-        if (mercaderiasInput[i].value > 0) {
-            incendioMercaderiasArray.push(parseFloat(mercaderiasInput[i].value))
-        }
-    }
-    for (let i = 0; i < otrosInput.length; i++) {
-        if (otrosInput[i].value > 0) {
-            incendioOtrosArray.push(parseFloat(otrosInput[i].value))
-        }
-    }
-    for (let i = 0; i < incendioTotalSpan.length; i++) {
-        if (incendioTotalSpan[i].innerText > 0) {
-            incendioTotalArray.push(parseFloat(incendioTotalSpan[i].innerText))
+    for (const element of colSelect) {
+        if (element.value > 0) {
+            colTotalArray.push(parseFloat(element.value))
         }
     }
 
-    let suma1 = incendioEdificacionArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
-    let suma2 = incendioContenidosArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
-    let suma3 = incendioMaquinariaEquiposArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
-    let suma4 = incendioMueblesArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
-    let suma5 = incendioMercaderiasArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
-    let suma6 = incendioOtrosArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
-    let suma7 = incendioTotalArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
+    let sumaTotal2 = colTotalArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
 
-    incendioEdificacionTotal.innerText = parseFloat(suma1).toFixed(2)
-    incendioContenidosTotal.innerText = parseFloat(suma2).toFixed(2)
-    incendioMaquinariaEquiposTotal.innerText = parseFloat(suma3).toFixed(2)
-    incendioMueblesTotal.innerText = parseFloat(suma4).toFixed(2)
-    incendioMercaderiasTotal.innerText = parseFloat(suma5).toFixed(2)
-    incendioOtrosTotal.innerText = parseFloat(suma6).toFixed(2)
-    incendioTotalTotal.innerText = parseFloat(suma7).toFixed(2)
+    colTotal.innerText = parseFloat(sumaTotal2).toFixed(2)
+
+    //total de los total
+    let colTotalTotal = activos_fijosSumaAseguradaTable.getElementsByClassName('col12')
+    console.log(colTotalTotal);
+    const totalTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioTotalTotal')
+    let colTotalTotalArray = []
+
+    for (const element of colTotalTotal) {
+        if (element.innerText > 0) {
+            colTotalTotalArray.push(parseFloat(element.innerText))
+        }
+    }
+
+    let sumaTotal3 = colTotalTotalArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
+
+    totalTotal.innerText = parseFloat(sumaTotal3).toFixed(2)
 
     //suma en input
 
     if (table === 'activos') {
-        $(`#input_sumaAsegurable`).val(parseFloat(suma7).toFixed(2))
+        $(`#input_sumaAsegurable`).val(parseFloat(sumaTotal3).toFixed(2))
     }
     if (table === 'energia1') {
-        $(`#input_sumaAsegurableEnergia`).val(parseFloat(suma7).toFixed(2))
+        $(`#input_sumaAsegurableEnergia`).val(parseFloat(sumaTotal3).toFixed(2))
     }
     if (table === 'activos_fijos') {
-        $(`#input_sumaAsegurada`).val(parseFloat(suma7).toFixed(2))
+        $(`#input_sumaAsegurada`).val(parseFloat(sumaTotal3).toFixed(2))
     }
 
 }
@@ -2051,39 +2230,43 @@ function addRowSumaAseguradaIncendio(event, type) {
                 ${rowCount}
             </td>
             <td>
-                <input type="text" class="inputLocation" name="location[]" style="width: 95px" placeholder="..." novalidate>
+                <input type="text" name="location[]" class="inputLocation" style="width: 95px"
+                    placeholder="..." novalidate>
             </td>
             <td>
-                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, '${type}')" type="number" step="any"
-                    name="edification[]" value="0" novalidate
-                    style="width: 95px" class="edificacionInput row${rowCount}">
+                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, 1, '${type}')" type="number"
+                    step="any" data-money name="edification[]" value="0" novalidate
+                    style="width: 95px" class="col1 row${rowCount}">
             </td>
             <td>
-                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, '${type}')" type="number" step="any"
-                    name="contents[]" value="0" novalidate
-                    style="width: 95px" class="contenidosInput row${rowCount}">
+                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, 2, '${type}')" type="number"
+                    step="any" data-money name="contents[]" value="0" novalidate
+                    style="width: 95px" class="col2 row${rowCount}">
             </td>
             <td>
-                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, '${type}')" type="number" step="any"
-                    name="equipment[]" value="0" novalidate
-                    style="width: 95px" class="maquinariaEquiposInput row${rowCount}">
+                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, 3, '${type}')" type="number"
+                    step="any" data-money name="equipment[]" value="0" novalidate
+                    style="width: 95px" class="col3 row${rowCount}">
             </td>
             <td>
-                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, '${type}')" type="number" step="any"
-                    name="machine[]" value="0" novalidate style="width: 95px" class="mueblesInput row${rowCount}">
+                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, 4, '${type}')" type="number"
+                    step="any" data-money name="machine[]" value="0" novalidate
+                    style="width: 95px" class="col4 row${rowCount}">
             </td>
             <td>
-                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, '${type}')" type="number" step="any"
-                    name="commodity[]" value="0" novalidate
-                    style="width: 95px" class="mercaderiasInput row${rowCount}">
+                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, 5, '${type}')" type="number"
+                    step="any" data-money name="commodity[]" value="0" novalidate
+                    style="width: 95px" class="col5 row${rowCount}">
             </td>
             <td>
-                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, '${type}')" type="number" step="any"
-                    name="other_sum_assured[]" value="0" novalidate style="width: 95px" class="otrosInput row${rowCount}">
+                <input onkeyup="incendioSumaAsegurableTotales(${rowCount}, 6, '${type}')" type="number"
+                    step="any" name="other_sum_assured[]" value="0" novalidate
+                    style="width: 95px" class="col6 row${rowCount}">
             </td>
             <td style="text-align: center">
-                <span class="slipTitle incendioTotalSpan" id="rowTotal${rowCount}">0</span>$
+                <span class="slipTitle col12" id="rowTotal${rowCount}">0</span>$
             </td>
+
             <td>
                 <button id="${rowCount}" type="button"  class="btn btn-danger btn-delete-suma"></button>
             </td>
@@ -2234,45 +2417,6 @@ $(document).on('click', '.btn-delete-cobertura', function (e) {
 
     $(`#newRowIncendioCoberturaAdicional${id}`).remove()
 })
-
-/* function clausulas adicionales incendio */
-
-// function addRowClausula(event, type, typeRamo, typeSubCobertura) {
-//     event.preventDefault()
-//     let rowCount = document.getElementById(`${type}ClausulasAdicionalesTable`).rows.length
-
-//     const clausulasAdicionalesTableBody = document.getElementById(`${type}ClausulasAdicionalesTableBody`)
-//     const tr = document.createElement('tr')
-
-//     clausulasAdicionalesTableBody.appendChild(tr)
-//     tr.id = `newRowClausulaAdicional${rowCount}`
-//     tr.innerHTML =
-//         `
-//             <td>
-//                 ${rowCount}
-//             </td>
-//             <td>
-//                 <select name="description_clause_additional[]"  class="selectClausula">
-//                     <option selected disabled>Seleccionar</option>
-//                 </select>
-//             </td>
-//             <td>
-//                 <input type="text" placeholder="..." name="clause_additional_additional[]">
-//             </td>
-//             <td>
-//                 <input type="number" step="any" placeholder="0" name="clause_additional_usd[]" data-money>
-//             </td>
-//             <td>
-//                 <input type="text" placeholder="..." name="clause_additional_additional2[]">
-//             </td>
-//             <td>
-//                 <button id="${rowCount}" type="button" class="btn btn-danger btn-delete-clausula"></button>
-//             </td>
-//         `
-//     clausulasSelect(".selectClausula", `${typeRamo}`, `${typeSubCobertura}`);
-
-// }
-
 
 function addRowClausula(event, type, typeRamo, typeSubCobertura) {
     event.preventDefault()
@@ -2556,6 +2700,7 @@ function refreshSumaCascoMaquina(table) {
         console.log(i);
         sumaCascoMaquina(i, 1, `${table}`)
         sumaCascoMaquina(i, 2, `${table}`)
+        sumaCascoMaquina(i, 4, `${table}`)
     }
 
 }
@@ -2662,6 +2807,9 @@ function addRowEmbarcaciones(event, type) {
         <td>
             <input onkeyup="sumaCascoMaquina(${rowCount}, 2, '${type}')" type="number" data-money step="any" class="row${rowCount} col2"
                 name="machine_boat[]" value="0">
+        </td>
+        <td>
+            <input onkeyup="sumaCascoMaquina(${rowCount}, 4, '${type}')" type="number" data-money step="any" class="row${rowCount} col4" name="deducible_boat[]" value="0">
         </td>
         <td style="text-align: center">
             <span class="slipTitle col3" id="rowTotal${rowCount}">0</span>$
@@ -2982,20 +3130,27 @@ function coberturasSelect(class_selector = ".selectCobertura", main_branch, sub_
 //add column suma asegurada / asegurable
 var rowCounter = 1
 var columnCounter = 1
+var columnCounter2 = 7
+var insertCell_sum = 8
 function addColumnSumas(tableName) {
 
     if (columnCounter <= 5) {
         columnCounter++
         $('#btnAddColumnSumas').removeAttr('disabled')
         // Obtener referencia de la tabla
-        let tabla = document.getElementById(`${tableName}`);
+        let tabla = document.getElementById(`${tableName}SumaAseguradaTable`);
 
-        // Crear encabezado de columna
+        // Crear encabezado de columna y input hidden
         let encabezado = document.createElement("th");
-        let inputName = document.getElementById(`columnName${tableName}`).value
+        let inputName = document.getElementById(`columnName${tableName}SumaAseguradaTable`).value
         encabezado.style.textAlign = 'center'
         encabezado.textContent = inputName
-        encabezado.name = `encabezado_${columnCounter}`
+        // Crear el elemento input
+        let input = document.createElement('input');
+        input.setAttribute('type', 'hidden');
+        input.setAttribute('name', `th_sum_assured_${columnCounter-1}`);
+        input.setAttribute('value', `${inputName}`);
+        encabezado.appendChild(input)
 
         // Agregar encabezado de columna a la primera fila de la tabla
         let ths = tabla.querySelectorAll('th')
@@ -3003,15 +3158,17 @@ function addColumnSumas(tableName) {
 
         // Recorrer cada fila de la tabla y agregar una celda en la nueva columna
         for (let i = 1; i < tabla.rows.length - 1; i++) {
-            let celda = tabla.rows[i].insertCell(8);
-            celda.innerHTML = `<input onkeyup="incendioSumaAsegurableTotales(${rowCounter}, 'activos_fijos')" style="width: 95px" type="number" name="column_${columnCounter}_${i}">`;
+            let celda = tabla.rows[i].insertCell(insertCell_sum);
+            celda.innerHTML = `<input onkeyup="incendioSumaAsegurableTotales(${rowCounter}, ${columnCounter2}, '${tableName}')" class="col${columnCounter2} row${rowCounter}" style="width: 95px" type="number" step="any" name="other_sum_assured_${columnCounter-1}[]">`;
             rowCounter++ 
         }
         rowCounter = 1
-        let celda = tabla.rows[tabla.rows.length - 1].insertCell(8);
+        let celda = tabla.rows[tabla.rows.length - 1].insertCell(insertCell_sum);
         celda.style.textAlign = 'center'
-
-        celda.innerHTML = ` <span id="incendioOtrosTotal" class="slipTitle">0</span>`;
+        insertCell_sum++
+        
+        celda.innerHTML = ` <span id="colTotal${columnCounter2}" class="slipTitle">0</span>$`;
+        columnCounter2++ 
 
 
     } else {
@@ -3020,13 +3177,64 @@ function addColumnSumas(tableName) {
     }
 }
 
+function addColumnSumasInEdit(tableName) {
+    let columnCounter2 = $('#activos_fijosSumaAseguradaTableBody').find('tr:first-child td').length - 3;
+
+    console.log(columnCounter2);
+
+
+    if (columnCounter <= 5) {
+        columnCounter++
+        $('#btnAddColumnSumas').removeAttr('disabled')
+        // Obtener referencia de la tabla
+        let tabla = document.getElementById(`${tableName}SumaAseguradaTable`);
+
+        // Crear encabezado de columna y input hidden
+        let encabezado = document.createElement("th");
+        let inputName = document.getElementById(`columnName${tableName}SumaAseguradaTable`).value
+        encabezado.style.textAlign = 'center'
+        encabezado.textContent = inputName
+        // Crear el elemento input
+        let input = document.createElement('input');
+        input.setAttribute('type', 'hidden');
+        input.setAttribute('name', `th_sum_assured_${columnCounter-1}`);
+        input.setAttribute('value', `${inputName}`);
+        encabezado.appendChild(input)
+
+        // Agregar encabezado de columna a la primera fila de la tabla
+        let ths = tabla.querySelectorAll('th')
+        tabla.rows[0].cells[ths.length - 3].insertAdjacentElement('afterend', encabezado)
+
+        // Recorrer cada fila de la tabla y agregar una celda en la nueva columna
+        for (let i = 1; i < tabla.rows.length - 1; i++) {
+            let celda = tabla.rows[i].insertCell(insertCell_sum);
+            celda.innerHTML = `<input onkeyup="incendioSumaAsegurableTotales(${rowCounter}, ${columnCounter2}, '${tableName}')" class="col${columnCounter2} row${rowCounter}" style="width: 95px" type="number" step="any" name="other_sum_assured_${columnCounter-1}[]">`;
+            rowCounter++ 
+        }
+        rowCounter = 1
+        let celda = tabla.rows[tabla.rows.length - 1].insertCell(insertCell_sum);
+        celda.style.textAlign = 'center'
+        insertCell_sum++
+        
+        celda.innerHTML = ` <span id="colTotal${columnCounter2}" class="slipTitle">0</span>$`;
+        columnCounter2++ 
+
+
+    } else {
+        $('#btnAddColumnSumas').attr('disabled')
+        $('#columnName').attr('disabled')
+    }
+}
+
+
+
 function removeColumnSumas(tableName) {
 
     if (columnCounter > 1) {
         $('#btnDeleteColumnSumas').removeAttr('disabled')
 
         // Obtener la referencia de la tabla
-        let tabla = document.getElementById(`${tableName}`);
+        let tabla = document.getElementById(`${tableName}SumaAseguradaTable`);
 
         // Obtener el número de columnas de la tabla
         let numColumnas = tabla.rows[0].cells.length - 3;
@@ -3038,7 +3246,8 @@ function removeColumnSumas(tableName) {
         }
 
         columnCounter--
-        console.log(columnCounter);
+        columnCounter2--
+        insertCell_sum--
     } else {
         $('#btnDeleteColumnSumas').attr('disabled')
     }
@@ -3050,6 +3259,7 @@ function putUbicaciones() {
     let newLocationsArray = []
 
     console.log(allLocationsArray);
+    console.log(inputsDirection);
 
     for (const element of allLocationsArray) {
         if (element.value.length > 0) {
@@ -3065,3 +3275,63 @@ function putUbicaciones() {
 
 
 }
+function putUbicaciones_edit(table) {
+    const tabla = document.getElementById(`${table}`)
+    let allLocationsArray = tabla.querySelectorAll('.inputLocation')
+    let inputsDirection = document.querySelectorAll('.inputDirection')
+    let newLocationsArray = []
+
+    console.log(allLocationsArray);
+    console.log(inputsDirection);
+
+    for (const element of allLocationsArray) {
+        if (element.value.length > 0) {
+            newLocationsArray.push(element.value)
+        }
+    }
+
+    for (let i = 0; i < newLocationsArray.length; i++) {
+
+        inputsDirection[i].value = newLocationsArray[i]
+
+    }
+
+
+}
+
+
+function addRowSumaPerdida(event, type) {
+    event.preventDefault()
+    let rowCount = document.getElementById(`${type}SumaAseguradaTable`).rows.length-1
+
+    const SumaAseguradaTableBody = document.getElementById(`${type}SumaAseguradaTableBody`)
+    const tr = document.createElement('tr')
+
+    SumaAseguradaTableBody.appendChild(tr)
+    tr.id = `newRowSumaAseguradaTable${rowCount}`
+    tr.innerHTML =
+        `
+        <td  style="text-align: center">${rowCount}</td>
+        <td style="text-align: center">
+            <input type="text" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
+        </td>
+        <td style="text-align: center">
+            <input class="col1 row${rowCount}" onkeyup="incendioSumaAsegurableTotales(${rowCount}, 1, '${type}')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px" >
+        </td>
+        <td style="text-align: center">
+            <span class="slipTitle col12" id="rowTotal${rowCount}">0</span>$
+        </td>
+        <td>
+            <button id="${rowCount}" type="button" class="btn btn-danger btn-xs btn-delete-perdida"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        </td>
+        `
+}
+
+
+$(document).on('click', '.btn-delete-perdida', function (e) {
+    e.preventDefault()
+
+    let id = $(this).attr('id')
+
+    $(`#newRowSumaAseguradaTable${id}`).remove()
+})

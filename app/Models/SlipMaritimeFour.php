@@ -34,6 +34,7 @@ class SlipMaritimeFour extends Model
         'status_transport',
         'valuation_and_loss',
         'condition',
+        'beneficiary',
         'utility_commission',
         'entrance',
         'custodia',

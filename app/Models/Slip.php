@@ -19,6 +19,7 @@ class Slip extends Model
         'insurer', //asegurador
         'sector',
         'direction',
+        'equivalence',
         'activity',
         'validity_since', //vigencia desde
         'validity_until', //vigencia hasta
@@ -57,6 +58,7 @@ class Slip extends Model
         'insured_sum',
         'insurable_sum',
         'insured_value',
+        'valor_asegurado',
         'object_insured_value',
         'person_insured_value',
         'insurable_value',

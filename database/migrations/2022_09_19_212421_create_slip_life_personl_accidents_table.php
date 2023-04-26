@@ -27,10 +27,11 @@ class CreateSlipLifePersonlAccidentsTable extends Migration
             $table->smallInteger('compensation_porcentage')->nullable();
             $table->string('beneficiary_disability')->nullable();
             $table->string('beneficiary_death')->nullable();
-            $table->string('coverage_foundation')->nullable(); //base de la cobertura
+            $table->double('coverage_foundation')->nullable(); //base de la cobertura
             //merchant
             $table->string('people_insurer')->nullable();
             $table->double('sum_insurer')->nullable();
+            $table->double('equivalence')->nullable();
             $table->string('siniestralidad')->nullable();
             $table->foreignIdFor(Slip::class);
             $table->timestamps();

@@ -207,11 +207,15 @@
         $(`${form}`).submit(function(event) {
             event.preventDefault();
             currencyToUSD();
-            let formData = $(this).serialize();
+            let formData = new FormData(this);
+
             $.ajax({
                 type: 'POST',
                 url: window.location.origin + "/api/storeSlip",
                 data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
                 success: function(response) {
                     Swal.fire({
                         icon: 'success',

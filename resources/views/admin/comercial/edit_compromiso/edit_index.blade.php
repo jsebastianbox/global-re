@@ -90,6 +90,23 @@
         @include('admin.comercial.vehiculos_form')
     @elseif (Route::is('edit.vida'))
         @include('admin.comercial.vida_forms')
+    @elseif (Route::is('edit.fianzas'))
+        @switch($slip->type_coverage)
+            @case('46')
+                @include('admin.comercial.finanzas.fidelidad_form')
+                @break
+
+            @case('47')
+            @case('48')
+            @case('49')
+            @case('50')
+            @case('51')
+            @case('52')
+                @include('admin.comercial.finanzas.seriedad_oferta_form')
+                @break
+            @default
+                
+        @endswitch
     @endif
 
 </div>

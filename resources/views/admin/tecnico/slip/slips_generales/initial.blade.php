@@ -124,6 +124,14 @@
             </label>
             <input name="coin" id="coin" placeholder="$" value="{{ $slip->coin }}">
         </div>
+        {{-- Tipo de cambio --}}
+        <div class="input_group">
+            <label for="coin">
+                <i class="fa-solid fa-coins"></i>
+                Tipo de cambio
+            </label>
+            <input name="equivalence" id="equivalence" placeholder="$" value="{{ $slip->equivalence }}">
+        </div>
         {{-- Vigencia --}}
         <h5 class="slipTitle">Vigencia:</h5>
         <div class="input_group">
@@ -151,6 +159,28 @@
             </label>
             <input type="text" id="insuranceBroker" name="insuranceBroker" value="{{ $slip->insuranceBroker }}" disabled>
         </div>
+
+        @if ($slip->type_coverage != 2 && $slip->type_coverage !== 4 && $slip->type_coverage !== 5 && $slip->type_coverage !== 6 && $slip->type_coverage !== 7 && $slip->type_coverage !== 8 && $slip->type_coverage !== 11 && $slip->type_coverage !== 12 && $slip->type_coverage !== 13 && $slip->type_coverage !== 14 && $slip->type_coverage !==15 && $slip->type_coverage !== 16 && $slip->type_coverage !== 17 && $slip->type_coverage !== 18 && $slip->type_coverage !== 19 && $slip->type_coverage !== 20)
+            <div class="input_group">
+                <label >
+                    <i class="fa-solid fa-bars-staggered"></i>
+                    Valor Asegurado
+                </label>
+                <input type="text" name="valor_asegurado" id="value_for_calculos" value="{{ $slip->valor_asegurado }}" disabled>
+            </div>
+        @endif
+
+    
+        {{-- campos con condicionales por tipo de cobertura --}}
+        @if ($slip->type_coverage === 2 || $slip->type_coverage === 4)
+            <div class="input_group">
+                <label >
+                    <i class="fa-solid fa-bars-staggered"></i>
+                    Cúmulo Asegurado
+                </label>
+                <input type="text" name="insurable_value" id="value_for_calculos" value="{{ $slip->insurable_value }}" disabled>
+            </div>
+        @endif
     </div>
 </div>
 

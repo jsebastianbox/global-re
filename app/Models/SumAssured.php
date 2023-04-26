@@ -17,8 +17,14 @@ class SumAssured extends Model
         'edification',
         'contents',
         'equipment',
+        'machine',
         'commodity',
         'other_sum_assured',
+        'other_sum_assured_1',
+        'other_sum_assured_2',
+        'other_sum_assured_3',
+        'other_sum_assured_4',
+        'other_sum_assured_5',
         'slip_id'
     ];
 

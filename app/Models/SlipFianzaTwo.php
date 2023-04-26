@@ -32,6 +32,7 @@ class SlipFianzaTwo extends Model
         'object_insurance',
         'condition_additional',
         'siniestralidad',
+        'bailText',
 
         'type_fianza',
         'mount_fianza',

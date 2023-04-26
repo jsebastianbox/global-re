@@ -2,7 +2,7 @@ const numberFormatter = Intl.NumberFormat('en-US');
 //Para dar formato a cualquier numero, usar numberFormatter.format(numero_a_dar_formato);
 
 //Detecta si el usuario está utilizando un dispositivo móvil.
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+/* if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     // document.querySelector('#slip').style.display = 'none';
     let timeLeft = 5;
     alert('Lo sentimos. El contenido de esta página es demasiado grande para que se pueda visualizar en tu teléfono. Por favor, ingresa desde un ordenador.')
@@ -19,7 +19,7 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     // setTimeout(() => {
     //     window.location.href = "/";
     // }, timer);
-}
+} */
 
 var token = $('meta[name="csrf-token"]').attr('content');
 function selectAjax(type, url, reference = '') {
@@ -327,7 +327,7 @@ function createButtons(numSlip) {
         form_group6[numSlip - 1].style.left = '-100vw'
         progress5.classList.toggle('active')
         progress6.classList.toggle('active')
-        validateForm()
+        /* validateForm() */
         currentTab--
         window.scrollTo(0, 0);
     }
@@ -344,7 +344,7 @@ function createButtons(numSlip) {
         form_group7[numSlip - 1].style.left = '0vw'
         progress6.classList.toggle('active')
         progress7.classList.toggle('active')
-        validateForm()
+        /* validateForm() */
         currentTab++
         window.scrollTo(0, 0);
     }
@@ -550,7 +550,7 @@ $(document).on('click', '.btn-delete-cobertura', function (e) {
     $(`#newRowCoberturaAdicional${id}`).remove()
 })
 //Deducibles
-
+let deducibleCounter = 1
 function addDeducible(event) {
     event.preventDefault()
 
@@ -560,10 +560,11 @@ function addDeducible(event) {
     deduciblesContainer.appendChild(div)
     div.className = 'flexColumnCenterContainer'
     div.style.margin = '2rem 0'
+    div.id = `newDeducible${deducibleCounter}`
     div.innerHTML =
         `
         <div class="flexRowWrapContainer" style="margin:1.2rem 0">
-        <input type="text" name="description_deductible[]"
+            <input type="text" name="description_deductible[]"
                         placeholder="Detalle..">
             <div class="labelStyleContainer">
                 <p>
@@ -588,8 +589,20 @@ function addDeducible(event) {
             </div>
             <textarea rows="1" type="text" name="description2_deductible[]" placeholder="..."></textarea>
         </div>
+        <button id="${deducibleCounter}" type="button" class="btn btn-danger btn-xs btn-delete-deducible">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
         `
+
+    deducibleCounter++
 }
+$(document).on('click', '.btn-delete-deducible', function (e) {
+    e.preventDefault()
+    let id = $(this).attr('id')
+    $(`#newDeducible${id}`).remove()
+    deducibleCounter--
+})
+
 
 
 const apIndemnizacion29 = document.getElementById('apIndemnizacion29')
@@ -621,6 +634,9 @@ function addInstalamento(event) {
         `
         <th style="text-align: center;">
             <input type="text" placeholder="..." name="installation[]">
+        </th>
+        <th style="text-align: center;">
+            <input type="date"  name="date_installation[]">
         </th>
         <th style="text-align: center;">
             <button id="${instalamentoA}" type="button" class="btn btn-danger btn-xs btn-delete-instalamento"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
@@ -765,7 +781,7 @@ function refreshSumaAsegurableTable(table) {
 }
 
 ///////////////////////funciones suma//////////////////////////////////
-function incendioSumaAsegurableTotales(row, table) {
+function incendioSumaAsegurableTotalesSINUSAR(row, table) {
     const activos_fijosSumaAseguradaTable = document.getElementById(`${table}SumaAseguradaTable`)
     //sumas filas
     let rowSelect = activos_fijosSumaAseguradaTable.getElementsByClassName(`row${row}`)
@@ -941,7 +957,7 @@ const incendioCobertura = document.getElementById('incendioCobertura')
 
 //coberturas
 
-function addRowCoberturaV2(event) {
+/* function addRowCoberturaV2(event) {
     event.preventDefault()
 
     let rowCount = document.getElementById('coberturasAdicionalesTable').rows.length
@@ -982,7 +998,7 @@ $(document).on('click', '.btn-delete-cobertura', function (e) {
 
     $(`#newRowCoberturaAdicional${id}`).remove()
 
-})
+}) */
 
 
 
@@ -1139,155 +1155,6 @@ $(document).on('click', '.btn-delete-lucro-deducible', function (e) {
 
 })
 
-////////////////////////////////////////////////////////////////
-
-
-
-
-
-/* SLIP ROBO Y/O ASALTO */
-
-const roboAsaltoObjetoSeguro = document.getElementById('roboAsaltoObjetoSeguro')
-
-//////////////////////////////////////////////////////////////////////////////
-const roboAsaltoLimiteIndem1 = document.getElementById('roboAsaltoLimiteIndem1')
-const roboAsaltoLimiteIndem2 = document.getElementById('roboAsaltoLimiteIndem2')
-
-const roboAsaltoCobertura = document.getElementById('roboAsaltoCobertura')
-
-
-//Coberturas adicionales
-
-const roboAsaltoCoberturasAdicionalesTable = document.getElementById('roboAsaltoCoberturasAdicionalesTable')
-
-const roboAsaltoCobertura1 = document.getElementById('roboAsaltoCobertura1')
-const roboAsaltoCobertura2 = document.getElementById('roboAsaltoCobertura2')
-const roboAsaltoCobertura3 = document.getElementById('roboAsaltoCobertura3')
-
-const roboAsaltoCobertura1a = document.getElementById('roboAsaltoCobertura1a')
-const roboAsaltoCobertura2a = document.getElementById('roboAsaltoCobertura2a')
-const roboAsaltoCobertura3a = document.getElementById('roboAsaltoCobertura3a')
-
-const roboAsaltoCobertura1b = document.getElementById('roboAsaltoCobertura1b')
-const roboAsaltoCobertura2b = document.getElementById('roboAsaltoCobertura2b')
-const roboAsaltoCobertura3b = document.getElementById('roboAsaltoCobertura3b')
-
-
-//Cláusulas adicionales
-const roboAsaltoClausulaAdicional1 = document.getElementById('roboAsaltoClausulaAdicional1')
-const roboAsaltoClausulaAdicional2 = document.getElementById('roboAsaltoClausulaAdicional2')
-const roboAsaltoClausulaAdicional3 = document.getElementById('roboAsaltoClausulaAdicional3')
-const roboAsaltoClausulaAdicional4 = document.getElementById('roboAsaltoClausulaAdicional4')
-const roboAsaltoClausulaAdicional5 = document.getElementById('roboAsaltoClausulaAdicional5')
-const roboAsaltoClausulaAdicional6 = document.getElementById('roboAsaltoClausulaAdicional6')
-const roboAsaltoClausulaAdicional7 = document.getElementById('roboAsaltoClausulaAdicional7')
-
-
-//Exclusiones
-const roboAsaltoExclusion1 = document.getElementById('roboAsaltoExclusion1')
-const roboAsaltoExclusion2 = document.getElementById('roboAsaltoExclusion2')
-const roboAsaltoExclusion3 = document.getElementById('roboAsaltoExclusion3')
-const roboAsaltoExclusion4 = document.getElementById('roboAsaltoExclusion4')
-const roboAsaltoExclusion5 = document.getElementById('roboAsaltoExclusion5')
-const roboAsaltoExclusion6 = document.getElementById('roboAsaltoExclusion6')
-const roboAsaltoExclusion7 = document.getElementById('roboAsaltoExclusion7')
-const roboAsaltoExclusion8 = document.getElementById('roboAsaltoExclusion8')
-const roboAsaltoExclusion9 = document.getElementById('roboAsaltoExclusion9')
-const roboAsaltoExclusion10 = document.getElementById('roboAsaltoExclusion10')
-const roboAsaltoExclusion11 = document.getElementById('roboAsaltoExclusion11')
-const roboAsaltoExclusion12 = document.getElementById('roboAsaltoExclusion12')
-const roboAsaltoExclusion13 = document.getElementById('roboAsaltoExclusion13')
-const roboAsaltoExclusion14 = document.getElementById('roboAsaltoExclusion14')
-
-
-/* SLIP SABOTAJE Y TERRORISMO */
-const sabotajeFecha = document.getElementById('sabotajeFecha')
-const sabotajeTipoCobertura = document.getElementById('sabotajeTipoCobertura')
-const sabotajePaisProductor = document.getElementById('sabotajePaisProductor')
-const sabotajeBrokerLocal = document.getElementById('sabotajeBrokerLocal')
-const sabotajeCedente = document.getElementById('sabotajeCedente')
-const sabotajeSector = document.getElementById('sabotajeSector')
-const sabotajeSumaAsegurable = document.getElementById('sabotajeSumaAsegurable')
-const sabotajeLimiteIndem = document.getElementById('sabotajeLimiteIndem')
-
-const sabotajeAsegurado = document.getElementById('sabotajeAsegurado')
-const sabotajeDireccion = document.getElementById('sabotajeDireccion')
-const sabotajeActividad = document.getElementById('sabotajeActividad')
-const sabotajeVigenciaDesde = document.getElementById('sabotajeVigenciaDesde')
-const sabotajeVigenciaHasta = document.getElementById('sabotajeVigenciaHasta')
-const sabotajeObjetoSeguro = document.getElementById('sabotajeObjetoSeguro')
-const sabotajeCobertura = document.getElementById('sabotajeCobertura')
-
-//Coberturas adicionales
-
-const sabotajeCoberturasAdicionalesTable = document.getElementById('sabotajeCoberturasAdicionalesTable')
-
-const sabotajeCobertura1 = document.getElementById('sabotajeCobertura1')
-const sabotajeCobertura2 = document.getElementById('sabotajeCobertura2')
-const sabotajeCobertura3 = document.getElementById('sabotajeCobertura3')
-
-const sabotajeCobertura1a = document.getElementById('sabotajeCobertura1a')
-const sabotajeCobertura2a = document.getElementById('sabotajeCobertura2a')
-const sabotajeCobertura3a = document.getElementById('sabotajeCobertura3a')
-
-const sabotajeCobertura1b = document.getElementById('sabotajeCobertura1b')
-const sabotajeCobertura2b = document.getElementById('sabotajeCobertura2b')
-const sabotajeCobertura3b = document.getElementById('sabotajeCobertura3b')
-
-
-//Cláusulas adicionales
-const sabotajeClausulaAdicional1 = document.getElementById('sabotajeClausulaAdicional1')
-const sabotajeClausulaAdicional2 = document.getElementById('sabotajeClausulaAdicional2')
-const sabotajeClausulaAdicional3 = document.getElementById('sabotajeClausulaAdicional3')
-const sabotajeClausulaAdicional4 = document.getElementById('sabotajeClausulaAdicional4')
-const sabotajeClausulaAdicional5 = document.getElementById('sabotajeClausulaAdicional5')
-const sabotajeClausulaAdicional6 = document.getElementById('sabotajeClausulaAdicional6')
-const sabotajeClausulaAdicional7 = document.getElementById('sabotajeClausulaAdicional7')
-const sabotajeClausulaAdicional8 = document.getElementById('sabotajeClausulaAdicional8')
-const sabotajeClausulaAdicional9 = document.getElementById('sabotajeClausulaAdicional9')
-const sabotajeClausulaAdicional10 = document.getElementById('sabotajeClausulaAdicional10')
-const sabotajeClausulaAdicional11 = document.getElementById('sabotajeClausulaAdicional11')
-const sabotajeClausulaAdicional12 = document.getElementById('sabotajeClausulaAdicional12')
-
-
-//Exclusiones
-const sabotajeExclusion1 = document.getElementById('sabotajeExclusion1')
-const sabotajeExclusion2 = document.getElementById('sabotajeExclusion2')
-const sabotajeExclusion3 = document.getElementById('sabotajeExclusion3')
-const sabotajeExclusion4 = document.getElementById('sabotajeExclusion4')
-const sabotajeExclusion5 = document.getElementById('sabotajeExclusion5')
-const sabotajeExclusion6 = document.getElementById('sabotajeExclusion6')
-
-
-//Deducibles
-
-////////////////////////////////////////////////////////////////
-
-//Adicionales
-const sabotajeAclaraciones = document.getElementById('sabotajeAclaraciones')
-const sabotajeTasaPrima1 = document.getElementById('sabotajeTasaPrima1')
-const sabotajeTasaPrima2 = document.getElementById('sabotajeTasaPrima2')
-const sabotajeDeducciones1 = document.getElementById('sabotajeDeducciones1')
-const sabotajeDeducciones2 = document.getElementById('sabotajeDeducciones2')
-const sabotajeNofificacionSiniestros = document.getElementById('sabotajeNofificacionSiniestros')
-const sabotajeRetencionSeguros = document.getElementById('sabotajeRetencionSeguros')
-
-const sabotajeEsquemaColocacion = document.getElementById('sabotajeEsquemaColocacion')
-const sabotajeCondicionesRea = document.getElementById('sabotajeCondicionesRea')
-const sabotajeSujetoA = document.getElementById('sabotajeSujetoA')
-const sabotajeInformacion = document.getElementById('sabotajeInformacion')
-const sabotajeCesionRea = document.getElementById('sabotajeCesionRea')
-
-
-////////////////////////////////////////////////////////////////
-
-
-/* SLIP CASCO DE BUQUES Y MAQUINARIA */
-const cascoBuquesSumaAsegurada = document.getElementById('cascoBuquesSumaAsegurada')
-const cascoBuquesAreaNavegacion = document.getElementById('cascoBuquesAreaNavegacion')
-
-const cascoBuquesObjetoSeguro = document.getElementById('cascoBuquesObjetoSeguro')
-const cascoBuquesCobertura = document.getElementById('cascoBuquesCobertura')
 
 //table detalle embarcaciones
 
@@ -1414,50 +1281,21 @@ $(document).on('click', '.btn-delete-embarcacion', function (e) {
 
 //function sumar totales table embarcaciones
 
-function actualizarSumaEmbarcaciones(tableName) {
-    const table = document.getElementById(`${tableName}TableEmbarcaciones`)
+function actualizarSumaEmbarcaciones(table) {
+    
+    let row = $(`#${table}TableEmbarcaciones`).find('tr').length
 
-    const total1 = table.querySelector('#colTotal1')
-    const total2 = table.querySelector('#colTotal2')
-    const totalTotal = table.querySelector('#totalTotal')
-
-    const col1 = table.getElementsByClassName('col1')
-    const col2 = table.getElementsByClassName('col2')
-    const col3 = table.getElementsByClassName('col3')
-
-    let col1Array = []
-    let col2Array = []
-    let col3Array = []
-
-    let rowsArray = []
-
-
-    for (let i = 0; i < col1.length; i++) {
-        col1Array.push(col1[i].value)
-        col2Array.push(col2[i].value)
-
-        rowsArray.push(parseFloat(col1[i].value) + parseFloat(col2[i].value))
-        col3[i].innerText = rowsArray[i]
-
-        col3Array.push(col3[i].innerText)
-
+    for (let i = 1; i < row; i++) {
+        console.log(i);
+        sumaCascoMaquina(i, 1, `${table}`)
+        sumaCascoMaquina(i, 2, `${table}`)
+        sumaCascoMaquina(i, 4, `${table}`)
     }
-
-
-    let colTotal1 = col1Array.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
-    let colTotal2 = col2Array.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
-    let totalFinal = col3Array.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
-
-
-
-    total1.innerText = parseFloat(colTotal1).toFixed(2)
-    total2.innerText = parseFloat(colTotal2).toFixed(2)
-    totalTotal.innerText = parseFloat(totalFinal).toFixed(2)
 
     $('#actualizarSuma').fadeOut(250)
 
-}
 
+}
 //
 
 const cascoBuquesCondicionesPrecedentes = document.getElementById('cascoBuquesCondicionesPrecedentes')
@@ -2171,12 +2009,12 @@ $(document).on('click', '.btn-delete-fidelidad-objeto', function (e) {
 
 
 
-function addRowExclusion(event) {
+function addRowExclusion(event, type, typeRamo, typeSubRamo) {
     event.preventDefault()
 
-    let rowCount = document.getElementById('exclusionesAdicionalesTable').rows.length
+    let rowCount = document.getElementById(`${type}exclusionesAdicionalesTable`).rows.length
 
-    const exclusionesAdicionalesTableBody = document.getElementById('exclusionesAdicionalesTableBody')
+    const exclusionesAdicionalesTableBody = document.getElementById(`${type}exclusionesAdicionalesTableBody`)
     const tr = document.createElement('tr')
 
     exclusionesAdicionalesTableBody.appendChild(tr)
@@ -2187,7 +2025,9 @@ function addRowExclusion(event) {
             ${rowCount}
         </td>
         <td>
-            <textarea name="description_exclusion_additional[]"></textarea>
+            <select id="description_exclusion_additional_${rowCount}" name="description_exclusion_additional[]" class="selectExclusiones">
+                <option selected disabled>Seleccionar</option>
+            </select>
         </td>
         <td>
             <input type="text" placeholder="..." name="exclusion_additional_additional[]">
@@ -2199,9 +2039,17 @@ function addRowExclusion(event) {
             <input type="text" placeholder="..." name="exclusion_additional_additional2[]">
         </td>
         <td>
-            <button id="${rowCount}" type="button" class="btn btn-danger btn-xs btn-delete-exclusion"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+            <button id="${rowCount}" type="button" class="btn btn-danger btn-xs btn-delete-exclusion">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
         </td>
         `
+
+
+
+        $('#description_exclusion_additional_' + rowCount).select2();
+        exclusionesSelect(`#description_exclusion_additional_${rowCount}`, `${typeRamo}`, `${typeSubRamo}`);
+
 }
 
 $(document).on('click', '.btn-delete-exclusion', function (e) {
@@ -2236,14 +2084,42 @@ function sumaAseguradaV2() {
 function addEndosoAdicional(event) {
     event.preventDefault()
 
+
+    let rowCount = document.getElementById('endososTable').rows.length
     const endososTableBody = document.getElementById('endososTableBody')
     const tr = document.createElement('tr')
-
+    tr.id = `newRowEndosos${rowCount}`
     endososTableBody.appendChild(tr)
     tr.innerHTML =
         `
             <td>
-                <textarea name=""></textarea>
+                <select name="" id="">
+                    <option value="Endoso 001: Huelga, Motín y Conmoción Civil"> Endoso 001: Huelga, Motín y Conmoción Civil </option>
+                    <option value="Endoso 002: Responsabilidad Civil Cruzada"> Endoso 002: Responsabilidad Civil Cruzada</option>
+                    <option value="Endoso 003: Mantenimiento"> Endoso 003: Mantenimiento </option>
+                    <option value="Endoso 004: Mantenimiento Amplio"> Endoso 004: Mantenimiento Amplio </option>
+                    <option value="Endoso 005: Cronograma de Avance de los Trabajos de Construcción y/o Montaje"> Endoso 005: Cronograma de Avance de los Trabajos de Construcción y/o Montaje </option>
+                    <option value="Endoso 006: Horas Extras, Trabajo Nocturno, Trabajos en Días Festivos, Flete Expreso"> Endoso 006: Horas Extras, Trabajo Nocturno, Trabajos en Días Festivos, Flete Expreso </option>
+                    <option value="Endoso 007: Flete Aéreo"> Endoso 007: Flete Aéreo </option>
+                    <option value="Endoso 008: Obras sitas en Zonas Sísmicas"> Endoso 008: Obras sitas en Zonas Sísmicas </option>
+                    <option value="Endoso 009: Exclusión de Pérdida, Daño o Responsabilidad Debido a Terremoto y Temblor"> Endoso 009: Exclusión de Pérdida, Daño o Responsabilidad Debido a Terremoto y Temblor </option>
+                    <option value="Endoso 010: Condición Especial Concerniente a Pérdida, Daño o Responsabilidad debidos a Civlón, Avenida e Inundación"> Endoso 010: Condición Especial Concerniente a Pérdida, Daño o Responsabilidad debidos a Civlón, Avenida e Inundación</option>
+                    <option value="Endoso 201: Garantía"> Endoso 201: Garantía</option>
+                    <option value="Endoso 202: Cobertura de Maquinaria de Construcción / Montaje"> Endoso 202: Cobertura de Maquinaria de Construcción / Montaje </option>
+                    <option value="Endoso 203: Exclusiones Relativas a Maquinaria Usada"> Endoso 203: Exclusiones Relativas a Maquinaria Usada </option>
+                    <option value="Endoso 204: Condición Especial 1 para Industrias de Procesamiento de Hidrocarburos"> Endoso 204: Condición Especial 1 para Industrias de Procesamiento de Hidrocarburos</option>
+                    <option value="Endoso 205: Condición Especial 2 para Industrias de Procesamiento de Hidrocarburos Amparo de Medios Catalizadores"> Endoso 205: Condición Especial 2 para Industrias de Procesamiento de Hidrocarburos Amparo de Medios Catalizadores </option>
+                    <option value="Endoso 206: Condiciones Especiales para Equipos Extintores de Incendio"> Endoso 206: Condiciones Especiales para Equipos Extintores de Incendio </option>
+                    <option value="Endoso 207: Campamentos y Almacenes de Materiales de Construcción"> Endoso 207: Campamentos y Almacenes de Materiales de Construcción</option>
+                    <option value="Endoso 208: Condiciones Especiales Relativas a Cables y Tuberias Subterráneas"> Endoso 208: Condiciones Especiales Relativas a Cables y Tuberias Subterráneas </option>
+                    <option value="Endoso 209: Condiciones Especiales Relativas a Pérdidas de o Daño a Siembras, Bosques y Cultivos"> Endoso 209: Condiciones Especiales Relativas a Pérdidas de o Daño a Siembras, Bosques y Cultivos</option>
+                    <option value="Endoso 210: Cobertura para Propiedad Adyacente"> Endoso 210: Cobertura para Propiedad Adyacente </option>
+                    <option value="Endoso 211: Inclusión de Elementos Combustibles"> Endoso 211: Inclusión de Elementos Combustibles </option>
+                    <option value="Endoso 212: Cobertura de Gastos para la Descontaminación"> Endoso 212: Cobertura de Gastos para la Descontaminación </option>
+                    <option value="Endoso 217: Condiciones Especiales para la Cobertura del Tendido de Oleoductos, Tuberías y Cables en Zanjas Abiertas"> Endoso 217: Condiciones Especiales para la Cobertura del Tendido de Oleoductos, Tuberías y Cables en Zanjas Abiertas</option>
+                    <option value="Endoso 218: Cobertura de Gastos para Localizar Fugas que Ocurran durante el Tendido de Tuberías"> Endoso 218: Cobertura de Gastos para Localizar Fugas que Ocurran durante el Tendido de Tuberías</option>
+                    <option value="Endoso 221: Cobertura de Riesgos del Fabricante"> Endoso 221: Cobertura de Riesgos del Fabricante </option>  
+                </select
             </td>
             <td>
                 <input type="number" placeholder="0"
@@ -2254,11 +2130,18 @@ function addEndosoAdicional(event) {
                     name="">
             </td>
             <td>
-
+                <button id="${rowCount}" type="button" class="btn btn-danger btn-xs btn-delete-endosos"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
             </td>
         `
 
 }
+
+$(document).on('click', '.btn-delete-endosos', function(e) {
+    e.preventDefault();
+    var id = $(this).attr('id')
+
+    $(`#newRowEndosos${id}`).remove()
+})
 
 //objeto del seguro table
 const objetoSeguroSuma1 = document.getElementById('objetoSeguroSuma1')
@@ -2416,4 +2299,501 @@ $(document).on('click', '.btn-delete-respaldo', function (e) {
 
     $(`#newRowRespaldo${id}`).remove()
 
+})
+
+
+
+
+/* new function de comercial > edit */
+
+
+///////////////////////////////////////////////////////////////
+
+
+/* function addrow listado personas aseguradas */
+
+function addPersonaAseguradaRow(event, type) {
+    event.preventDefault()
+
+    let rowCount = document.getElementById(`${type}ListadoPersonasAseguradasTable`).rows.length
+
+    const ListadoPersonasAseguradasTableBody = document.getElementById(`${type}ListadoPersonasAseguradasTableBody`)
+    const tr = document.createElement('tr')
+
+    ListadoPersonasAseguradasTableBody.appendChild(tr)
+    tr.id = `newRowListadoPersonas${rowCount}`
+    tr.innerHTML =
+        `
+            <td>
+                ${rowCount}
+            </td>
+            <td>
+                <input type="text" name="name[]" placeholder="Nombre..">
+            </td>
+
+            <td>
+                <input type="date" name="birthday[]" id="birthDate" class="birthdateInput" oninput="putAge('personaAdicional')">
+            </td>
+
+            <td>
+                <input type="number" class="ageInput" name="age[]" id="personAge" min="1"
+                        max="110">
+            </td>
+
+            <td>
+                <select name="sex_merchant[]" id="sex">
+                    <option value="" selected disabled>Seleccionar</option>
+                    <option value="Masculino" selected>Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                </select>
+            </td>
+            <td>
+                <input type="text" placeholder="..." name="activity_merchant[]">
+            </td>
+            <td>
+                <input type="text" placeholder="..." name="limit[]">
+            </td>
+            <td>
+                <button id="${rowCount}" type="button"  class="btn btn-danger btn-delete-listado"></button>
+            </td>
+        `
+
+}
+
+$(document).on('click', '.btn-delete-listado', function (e) {
+    e.preventDefault()
+
+    let id = $(this).attr('id')
+
+    $(`#newRowListadoPersonas${id}`).remove()
+})
+
+function putAge(tableName) {
+    const inputsFechaNacimiento = document.querySelectorAll('.birthdateInput')
+
+    inputsFechaNacimiento.forEach(input => {
+        input.addEventListener('input', () => {
+            let fechaNacimiento = new Date(input.value);
+            let hoy = new Date();
+            let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+            if (hoy < new Date(hoy.getFullYear(), fechaNacimiento.getMonth(), fechaNacimiento.getDate())) {
+                edad--;
+            }
+            let fila = input.closest('tr');
+            fila.querySelector('.ageInput').value = edad;
+
+            // Recorrer todas las filas y actualizar la edad
+            let tabla = document.getElementById(`${tableName}`)
+            let filas = tabla.querySelectorAll(' tbody tr');
+            filas.forEach(fila => {
+                let fechaNacimientoFila = new Date(fila.querySelector('.birthdateInput').value);
+                let hoy = new Date();
+                let edad = hoy.getFullYear() - fechaNacimientoFila.getFullYear();
+                if (hoy < new Date(hoy.getFullYear(), fechaNacimientoFila.getMonth(), fechaNacimientoFila.getDate())) {
+                    edad--;
+                }
+                fila.querySelector('.ageInput').value = edad;
+            })
+        })
+    })
+}
+
+/* add row */
+
+function addRowClausula(event, type, typeRamo, typeSubCobertura) {
+    event.preventDefault()
+    let rowCount = document.getElementById(`${type}ClausulasAdicionalesTable`).rows.length
+
+    const clausulasAdicionalesTableBody = document.getElementById(`${type}ClausulasAdicionalesTableBody`)
+    const tr = document.createElement('tr')
+
+    clausulasAdicionalesTableBody.appendChild(tr)
+    tr.id = `newRowClausulaAdicional${rowCount}`
+    tr.innerHTML =
+        `
+            <td>
+                ${rowCount}
+            </td>
+            <td>
+                <select id="description_clause_additional_${rowCount}" name="description_clause_additional[]" class="selectClausula">
+                    <option selected disabled>Seleccionar</option>
+                </select>
+            </td>
+            <td>
+                <input type="text" placeholder="..." name="clause_additional_additional[]">
+            </td>
+            <td>
+                <input type="number" step="any" placeholder="0" name="clause_additional_usd[]" data-money>
+            </td>
+            <td>
+                <input type="text" placeholder="..." name="clause_additional_additional2[]">
+            </td>
+            <td>
+                <button id="${rowCount}" type="button" class="btn btn-danger btn-delete-clausula btn-xs">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+            </td>
+        </td>
+        `
+    $('#description_clause_additional_' + rowCount).select2();
+    clausulasSelect(`#description_clause_additional_${rowCount}`, `${typeRamo}`, `${typeSubCobertura}`);
+}
+
+
+$(document).on('click', '.btn-delete-clausula', function (e) {
+    e.preventDefault()
+
+    let id = $(this).attr('id')
+
+    $(`#newRowClausulaAdicional${id}`).remove()
+})
+
+
+
+function addRowCoberturaV2(event, type, typeRamo, typeSubCobertura) {
+    event.preventDefault()
+
+    let rowCount = document.getElementById(`${type}CoberturasAdicionalesTable`).rows.length
+
+    const coberturasAdicionalesTableBody = document.getElementById(`${type}CoberturasAdicionalesTableBody`)
+    const tr = document.createElement('tr')
+
+    coberturasAdicionalesTableBody.appendChild(tr)
+    tr.id = `newRowIncendioCoberturaAdicional${rowCount}`
+    tr.innerHTML =
+        `
+            <td>
+                ${rowCount}
+            </td>
+            <td>
+                <select id="description_coverage_additional_${rowCount}" name="description_coverage_additional[]" class="selectCobertura"></select>
+            </td>
+            <td>
+                <input type="text" placeholder="..." name="coverage_additional_additional[]">
+            </td>
+            <td>
+                <input type="number" step="any" placeholder="0" name="coverage_additional_usd[]" data-money>
+            </td>
+            <td>
+                <input type="text" placeholder="..." name="coverage_additional_additional2[]">
+            </td>
+            <td>
+                <button id="${rowCount}" type="button"  class="btn btn-danger btn-delete-cobertura btn-xs">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+            </td>
+        `
+
+    $('#description_coverage_additional_' + rowCount).select2();
+    coberturasSelect(`#description_coverage_additional_${rowCount}`, `${typeRamo}`, `${typeSubCobertura}`);
+
+}
+
+
+$(document).on('click', '.btn-delete-cobertura', function (e) {
+    e.preventDefault()
+
+    let id = $(this).attr('id')
+
+    $(`#newRowIncendioCoberturaAdicional${id}`).remove()
+})
+
+//suma asegurable / table suma asegurada rama:incendio
+
+function refreshSumaAseguradaTable() {
+    let row = $('#activos_fijosSumaAseguradaTableBody').find('tr').length
+    let column = $('#activos_fijosSumaAseguradaTableBody').find('tr:first-child td').length - 4;
+    console.log(column);
+    
+    for (let i = 1; i <= row; i++) {
+        for (let j = 1; j <= column; j++) {
+            incendioSumaAsegurableTotales(i, j, 'activos_fijos');
+        }
+    }
+
+    $('#btnRefreshSuma').fadeOut();
+}
+
+function incendioSumaAsegurableTotales(row, col, table) {
+    const activos_fijosSumaAseguradaTable = document.getElementById(`${table}SumaAseguradaTable`)
+    //sumas filas
+    let rowSelect = activos_fijosSumaAseguradaTable.getElementsByClassName(`row${row}`)
+    let rowTotal = activos_fijosSumaAseguradaTable.querySelector(`#rowTotal${row}`)
+    let rowTotalArray = []
+
+    for (let i = 0; i < rowSelect.length; i++) {
+        if (rowSelect[i].value > 0) {
+            rowTotalArray.push(parseFloat(rowSelect[i].value))
+        }
+    }
+
+    let sumaTotal = rowTotalArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
+
+    rowTotal.innerText = parseFloat(sumaTotal).toFixed(2)
+
+    //suma columnas
+    let colSelect = activos_fijosSumaAseguradaTable.getElementsByClassName(`col${col}`)
+    let colTotal = activos_fijosSumaAseguradaTable.querySelector(`#colTotal${col}`)
+    let colTotalArray = []
+
+    for (const element of colSelect) {
+        if (element.value > 0) {
+            colTotalArray.push(parseFloat(element.value))
+        }
+    }
+
+    let sumaTotal2 = colTotalArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
+
+    colTotal.innerText = parseFloat(sumaTotal2).toFixed(2)
+
+    //total de los total
+    let colTotalTotal = activos_fijosSumaAseguradaTable.getElementsByClassName('col12')
+    console.log(colTotalTotal);
+    const totalTotal = activos_fijosSumaAseguradaTable.querySelector('#incendioTotalTotal')
+    let colTotalTotalArray = []
+
+    for (const element of colTotalTotal) {
+        if (element.innerText > 0) {
+            colTotalTotalArray.push(parseFloat(element.innerText))
+        }
+    }
+
+    let sumaTotal3 = colTotalTotalArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
+
+    totalTotal.innerText = parseFloat(sumaTotal3).toFixed(2)
+
+    //suma en input
+
+    if (table === 'activos') {
+        $(`#input_sumaAsegurable`).val(parseFloat(sumaTotal3).toFixed(2))
+    }
+    if (table === 'energia1') {
+        $(`#input_sumaAsegurableEnergia`).val(parseFloat(sumaTotal3).toFixed(2))
+    }
+    if (table === 'activos_fijos') {
+        $(`#value_for_calculos`).val(parseFloat(sumaTotal3).toFixed(2))
+    }
+
+}
+
+
+/* VEHICULOS */
+
+function addMatriculaRow(event) {
+    event.preventDefault()
+
+    let rowCount = document.getElementById(`vehiculosMatriculasTable`).rows.length
+
+    const fidelidadObjetosTableBody = document.getElementById(`vehiculosMatriculasTableBody`)
+    const tr = document.createElement('tr')
+
+    fidelidadObjetosTableBody.appendChild(tr)
+    tr.innerHTML =
+        `
+        <th scope="row">${rowCount}</th>
+        <td>
+            <input type="text" name="plate_vehicle[]" >
+        </td>
+
+        `
+}
+
+
+
+//Select2 para clausulas
+function clausulasSelect(class_selector = ".selectClausula", main_branch, sub_branch) {
+    $(class_selector).select2({
+        language: 'es',
+        tags: true,
+        placeholder: 'Seleccionar',
+        ajax: {
+            url: `${window.location.origin}/api/clausulas_selectors`,
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    main_branch: main_branch,
+                    sub_branch: sub_branch,
+                    q: params.term // Include search query parameter
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: $.map(data.data, function (item) {
+                        return {
+                            text: item.name,
+                            id: item.id
+                        };
+                    })
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 0 // Set to 0 to always show options on focus
+    });
+    $(class_selector).append('<option value="" selected>Seleccionar</option>');
+}
+
+//Select2 para coberturas
+function coberturasSelect(class_selector = ".selectCobertura", main_branch, sub_branch) {
+    $(class_selector).select2({
+        language: 'es',
+        tags: true,
+        placeholder: 'Seleccionar',
+        ajax: {
+            url: `${window.location.origin}/api/coberturas_selectors`,
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    main_branch: main_branch,
+                    sub_branch: sub_branch,
+                    q: params.term // Include search query parameter
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: $.map(data.data, function (item) {
+                        return {
+                            text: item.name,
+                            id: item.id
+                        };
+                    })
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 0 // Set to 0 to always show options on focus
+    });
+    $(class_selector).append('<option value="" selected>Seleccionar</option>');
+}
+
+//Select2 para exclusiones
+function exclusionesSelect(class_selector = ".selectExclusiones", main_branch, sub_branch) {
+    $(class_selector).select2({
+        language: 'es',
+        tags: true,
+        placeholder: 'Seleccionar',
+        ajax: {
+            url: `${window.location.origin}/api/exclusiones_selectors`,
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    main_branch: main_branch,
+                    sub_branch: sub_branch,
+                    q: params.term // Include search query parameter
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: $.map(data.data, function (item) {
+                        return {
+                            text: item.name,
+                            id: item.id
+                        };
+                    })
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 0 // Set to 0 to always show options on focus
+    });
+    console.log( class_selector )
+    $(class_selector).append('<option value="" selected>Seleccionar</option>');
+}
+
+
+function refreshSumaAseguradaPerdida() {
+    let row = $('#perdidaSumaAseguradaTableBody').find('tr').length
+    
+    for (let i = 1; i <= row; i++) {
+            incendioSumaAsegurableTotales(i, 1, 'perdida');
+    }
+}
+
+
+function addObjectInsuranceMaquinaria(event) {
+    event.preventDefault()
+
+    let rowCount = document.getElementById(`maquinariaObjectInsurance`).rows.length
+
+    const objectos = document.getElementById(`maquinariaObjectInsuranceBody`)
+    const tr = document.createElement('tr')
+    tr.id = `newRowMaquinaria${rowCount}`
+
+    objectos.appendChild(tr)
+    tr.innerHTML =
+        `
+        <td scope="row">${rowCount}</td>
+        <td>
+            <input type="text" name="type[]" placeholder="..." class="inputNumber">
+        </td>
+
+        <td>
+            <input type="text" name="brand[]" placeholder="..." class="inputNumber">
+        </td>
+        <td>
+            <input type="text" name="object_model[]" placeholder="..." class="inputNumber">
+        </td>
+
+        <td>
+            <input type="number" name="year[]" placeholder="" class="inputNumber">
+        </td>
+        <td>
+            <input type="text" placeholder="..." name="serie[]" class="inputNumber">
+        </td>
+        <td>
+            <input type="text" placeholder="..." name="object_insured_val[]" class="row1">
+        </td>
+        <td>
+            <button id="${rowCount}" type="button"  class="btn btn-danger btn-delete-maquinaria"></button>
+        </td>
+
+        `
+}
+
+$(document).on('click', '.btn-delete-maquinaria', function (e) {
+e.preventDefault()
+
+let id = $(this).attr('id')
+
+$(`#newRowMaquinaria${id}`).remove()
+})
+
+
+function addRowSumaPerdida(event, type) {
+    event.preventDefault()
+    let rowCount = document.getElementById(`${type}SumaAseguradaTable`).rows.length-1
+
+    const SumaAseguradaTableBody = document.getElementById(`${type}SumaAseguradaTableBody`)
+    const tr = document.createElement('tr')
+
+    SumaAseguradaTableBody.appendChild(tr)
+    tr.id = `newRowSumaAseguradaTable${rowCount}`
+    tr.innerHTML =
+        `
+        <td  style="text-align: center">${rowCount}</td>
+        <td style="text-align: center">
+            <input type="text" name="location[]" class="inputLocation" style="width: 95px" placeholder="..." novalidate>
+        </td>
+        <td style="text-align: center">
+            <input class="col1 row${rowCount}" onkeyup="incendioSumaAsegurableTotales(${rowCount}, 1, '${type}')" type="number" step="any" name="machine[]" value="0" novalidate style="width: 95px" >
+        </td>
+        <td style="text-align: center">
+            <span class="slipTitle col12" id="rowTotal${rowCount}">0</span>$
+        </td>
+        <td>
+            <button id="${rowCount}" type="button" class="btn btn-danger btn-xs btn-delete-perdida"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        </td>
+        `
+}
+
+
+$(document).on('click', '.btn-delete-perdida', function (e) {
+    e.preventDefault()
+
+    let id = $(this).attr('id')
+
+    $(`#newRowSumaAseguradaTable${id}`).remove()
 })

@@ -41,6 +41,7 @@ class CreateSlipFianzaTwosTable extends Migration
             $table->string('type_fianza')->nullable();
             $table->string('from_date_mount_fianza')->nullable();
             $table->string('to_date_mount_fianza')->nullable();
+            $table->string('bailText')->nullable();
             $table->string('from_date_mount_contract')->nullable();
             $table->string('to_date_mount_contract')->nullable();
             $table->string('contract_percentage')->nullable();

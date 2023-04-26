@@ -23,7 +23,7 @@ class CreateSlipPropertyFixedAssetsTable extends Migration
             $table->string('limit_compensation')->nullable()->default(0);
             $table->text('coverage')->nullable();
             //$table->enum('type_loss_profits',['Inglesa','Americana']);
-            $table->string('type_loss_profits')->nullable()->default('Inglesa');
+            $table->string('type_loss_profits')->nullable();
             $table->string('period_compensation')->nullable();
 
             //incendio y lineas aliadas
@@ -37,7 +37,12 @@ class CreateSlipPropertyFixedAssetsTable extends Migration
             //$table->string('object_insurance')->nullable();
             //$table->string('limit_compensation')->nullable();
             //$table->enum('first_risk', ['Absoluto', 'Relativo']);
-            $table->string('first_risk')->nullable()->default('Absoluto');
+            $table->string('first_risk')->nullable();
+            $table->string('th_sum_assured_1')->nullable();
+            $table->string('th_sum_assured_2')->nullable();
+            $table->string('th_sum_assured_3')->nullable();
+            $table->string('th_sum_assured_4')->nullable();
+            $table->string('th_sum_assured_5')->nullable();
 
             //sabotaje y terrorismo
             //$table->string('coverage')->nullable();

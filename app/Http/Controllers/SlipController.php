@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdditionalCoverage;
+use App\Models\AviacionExtras;
 use App\Models\BoatDetailSlip;
 use App\Models\ClauseSlip;
+use App\Models\Clausulas_selector;
+use App\Models\CoberturasSelector;
 use App\Models\CompensationLimit;
 use App\Models\Country;
 use App\Models\CoverageLimit;
@@ -12,6 +15,7 @@ use App\Models\CoverageSlip;
 use App\Models\DeductibleSlip;
 use App\Models\DetailPerdios;
 use App\Models\EquipmentListInsured;
+use App\Models\exclusiones_selectors;
 use App\Models\File;
 use App\Models\GuaranteePayment;
 use App\Models\InformationAerialHelmets;
@@ -37,6 +41,7 @@ use App\Models\SlipTechnicalBranch;
 use App\Models\SlipVehicle;
 use App\Models\SumAssured;
 use App\Models\VehicleDetail;
+use App\Traits\HasUploadFiles;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -45,6 +50,8 @@ use Yajra\DataTables\DataTables;
 
 class SlipController extends Controller
 {
+    use HasUploadFiles;
+
     /**
      * Display a listing of the resource.
      *
@@ -67,48 +74,48 @@ class SlipController extends Controller
 
     public function slipSelected($id)
     {
-        /* $user = Auth::user();
-        $slips = Slip::all();
-        $countries = Country::all();
-        $type_coverage = TypeCoverage::all();
-        $slipsUser = $slips->where('user_id', $user->id);
-        $slipSelected = $slipsUser->where('id', $id)->first();
-        $selectedCountry = $countries->where('id', $slipSelected->country_id)->first();
-        $selectedCoverage = $type_coverage->where('id', $slipSelected->type_coverage)->first(); */
-        //dd($slipSelected);
-        //$object = Slip::where('id', $id)->with('slip_object')->first();
+        $slip = Slip::find($id);
 
-        $type_coverage = Slip::select('type_coverage')->where('id', $id)->first();
-        $slip = Slip::where('id', $id)
-            ->with('type')->with('security')
-            ->with('guarantee_payment')->with('deductible')
-            ->with('coverage')->with('clause_aditional')->with('coverage_additional')
-            ->with('country_politics_one')
-            ->with('excluye')->with('limit_insured')->with('file')->with('limit_coverage')
-            ->with('user')->with('country')->first();
+        //variables nulls para no tirar error
+        $object_insurance = [];
+        $sum_assured = [];
+        $vehicles_details = [];
+        $boat_detail = [];
+        $information_aerial = [];
+        $aviation_extras = [];
+        $exclusionesSelect = [];
 
-        switch ($type_coverage->type_coverage) {
+        switch ($slip->type_coverage) {
             case '1':
             case '2':
             case '3':
             case '4':
-                $slip_type = SlipLifePersonlAccident::where('id', $slip->model_id)->with('object_insurance')->first();
+                $slip_type = SlipLifePersonlAccident::where('slip_id', $id)->first();
+                $object_insurance = ObjectInsurance::where('slip_id', $slip->id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::where('main_branch', 'vida')->get();
+                $clausulasSelect = Clausulas_selector::where('main_branch', 'vida')->get();
+                $exclusionesSelect = exclusiones_selectors::all();
                 break;
             case '5':
             case '6':
             case '7':
             case '8':
-                $slip_type = SlipPropertyFixedAsset::where('id', $slip->model_id)
-                    ->with('sum_assured')
-                    ->with('detail_perdios')
-                    ->with('equipment_list')
-                    ->first();
+                $slip_type = SlipPropertyFixedAsset::where('slip_id', $id)->first();
+                $sum_assured = SumAssured::where('slip_id', $slip->id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::where('main_branch', 'activos')->get();
+                $clausulasSelect = Clausulas_selector::where('main_branch', 'activos')->get();
+
                 break;
 
             case '9':
             case '10':
-                $slip_type = SlipVehicle::where('id', $slip->model_id)
-                    ->with('vehicle_detail')->first();
+                $slip_type = SlipVehicle::where('slip_id', $id)->first();
+                $vehicles_details = VehicleDetail::where('slip_id', $slip->id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
+                $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
 
                 break;
             case '11':
@@ -118,42 +125,53 @@ class SlipController extends Controller
             case '15':
             case '16':
             case '17':
-                $slip_type = SlipTechnicalBranch::where('id', $slip->model_id)
-                    ->with('sum_rc_assured')
-                    ->with('detail_machin')
-                    ->with('compensation_limit')
-                    ->with('sum_assured')
-                    ->first();
+                $slip_type = SlipTechnicalBranch::where('slip_id', $id)->first();
+                $sum_assured = SumAssured::where('slip_id', $slip->id)->get();
+
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::where('main_branch', 'tecnico')->get();
+                $clausulasSelect = Clausulas_selector::where('main_branch', 'tecnico')->get();
+
                 break;
             case '18':
             case '19':
             case '20':
-                $slip_type = SlipEnergy::where('id', $slip->model_id)
-                    ->with('sum_assured')
-                    ->first();
+                $slip_type = SlipEnergy::where('slip_id', $id)->first();
+                $sum_assured = SumAssured::where('slip_id', $id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::where('main_branch', 'energia')->get();
+                $clausulasSelect = Clausulas_selector::where('main_branch', 'energia')->get();
+
                 break;
 
             case '21':
             case '22':
-                $slip_type = SlipMaritimeOne::where('id', $slip->model_id)
-                    ->with('boat_detail')
-                    ->first();
+                $slip_type = SlipMaritimeOne::where('slip_id', $id)->first();
+                $boat_detail = BoatDetailSlip::where('slip_id', $id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
 
                 break;
 
             case '23':
-                $slip_type = SlipMaritimeTwo::where('id', $slip->model_id)
-                    ->with('boat_detail')
-                    ->first();
+                $slip_type = SlipMaritimeTwo::where('slip_id', $id)->first();
+                $boat_detail = BoatDetailSlip::where('slip_id', $id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
 
                 break;
 
             case '24':
             case '25':
             case '26':
-                $slip_type = SlipMaritimeThree::where('id', $slip->model_id)
-                    ->with('object_insurance')
-                    ->first();
+                $slip_type = SlipMaritimeThree::where('slip_id', $id)->first();
+                $boat_detail = BoatDetailSlip::where('slip_id', $id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
                 break;
 
             case '27':
@@ -161,34 +179,41 @@ class SlipController extends Controller
             case '29':
             case '30':
             case '31':
-                $slip_type = SlipMaritimeFour::where('id', $slip->model_id)
-                    //->with('storage_stock')
-                    //->with('transport_stock')
-                    ->first();
+                $slip_type = SlipMaritimeFour::where('slip_id', $id)->first();
+                $boat_detail = BoatDetailSlip::where('slip_id', $id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
                 break;
 
             case '32':
             case '33':
-                $slip_type = SlipAviationOne::where('id', $slip->model_id)
-                    ->with('information_aerial')
-                    ->with('coverage')
-                    ->first();
+                $slip_type = SlipAviationOne::where('slip_id', $id)->first();
+                $information_aerial = InformationAerialHelmets::where('slip_id', $id)->get();
+                $aviation_extras = AviacionExtras::where('slip_id', $id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
 
                 break;
 
             case '34':
-                $slip_type = SlipAviationTwo::where('id', $slip->model_id)
-                    ->with('object_insurance')
-                    ->first();
+                $slip_type = SlipAviationTwo::where('slip_id', $id)->first();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
 
                 break;
 
             case '35':
             case '36':
             case '37':
-                $slip_type = SlipAviationThree::where('id', $slip->model_id)
-                    ->with('object_insurance')
-                    ->first();
+                $slip_type = SlipAviationThree::where('slip_id', $id)->first();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
                 break;
 
             case '38':
@@ -197,27 +222,29 @@ class SlipController extends Controller
             case '41':
             case '42':
             case '43':
+                $slip_type = SlipCivilLiability::where('slip_id', $id)->first();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
 
-                $slip_type = SlipCivilLiability::where('id', $slip->model_id)
-                    ->with('compensation_limit')
-                    ->first();
-
-                /* dd($slip_type->compensation_limit[0]->limit_event); */
                 break;
 
             case '44':
             case '45':
-                $slip_type = SlipFinancialRisk::where('id', $slip->model_id)
-                    ->with('compensation_limit')
-                    ->with('condition')
-                    ->first();
+                $slip_type = SlipFinancialRisk::where('slip_id', $id)->first();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
                 break;
 
             case '46':
-                $slip_type = SlipFianzaOne::where('id', $slip->model_id)
-                    ->with('object_insurance')
-                    ->with('compensation_limit')
-                    ->first();
+                $slip_type = SlipFianzaOne::where('slip_id', $id)->first();
+                $object_insurance = ObjectInsurance::where('slip_id', $id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
                 break;
 
             case '47':
@@ -226,9 +253,11 @@ class SlipController extends Controller
             case '50':
             case '51':
             case '52':
-                $slip_type = SlipFianzaTwo::where('id', $slip->model_id)
-                    ->with('compensation_limit')
-                    ->first();
+                $slip_type = SlipFianzaTwo::where('slip_id', $id)->first();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
+
                 break;
 
             default:
@@ -241,7 +270,16 @@ class SlipController extends Controller
         return view('admin.tecnico.slip.slipSelected')
             ->with('user', $user)
             ->with('slip', $slip)
-            ->with('slip_type', $slip_type);
+            ->with('slip_type', $slip_type)
+            ->with('sum_assured', $sum_assured)
+            ->with('boat_detail', $boat_detail)
+            ->with('information_aerial', $information_aerial)
+            ->with('aviation_extras', $aviation_extras)
+            ->with('vehicles_details', $vehicles_details)
+            ->with('coberturasSelect', $coberturasSelect)
+            ->with('exclusionesSelect', $exclusionesSelect)
+            ->with('clausulasSelect', $clausulasSelect)
+            ->with('object_insurance', $object_insurance);
 
         //$object = $slip_life->with('slip_object')->first();
 
@@ -363,42 +401,36 @@ class SlipController extends Controller
 
         $selectSlip = Slip::where('id', $id)->select('model_id', 'type_coverage')->first();
 
-        $idModel = $selectSlip->model_id;
-
-        switch ($selectSlip->type_coverage) {
+        $slip->slip_status_id = '3';
+        $basePath = "slips";
+        switch ($slip->type_coverage) {
                 //vida y accidentes personales
             case '1':
             case '2':
             case '3':
             case '4':
-                SlipLifePersonlAccident::find($idModel)->update($request->all());
+                $type_slip = SlipLifePersonlAccident::where('slip_id', $id)->first();
+                $type_slip->update($request->all());
 
-                $type_slip = SlipLifePersonlAccident::find($idModel);
-                $type_slip->object_insurance()->delete();
+                ObjectInsurance::where('slip_id', $id)->delete();
 
-                if ($request->has('aditional_coverage') | $request->has('age')) {
-                    //objeto del seguro
-                    for ($i = 0; $i < count($request->age); $i++) {
-                        $object = new ObjectInsurance([
-                            'number' => $request->number[$i],
-                            'name' => $request->name[$i],
-                            'age' => $request->age[$i],
-                            'birthday' => $request->birthday[$i],
-                            'limit' => $request->limit[$i],
+                //Objeto del Seguro
+                if ($request->has('birthday')) {
+                    for ($i = 0; $i < count($request->birthday); $i++) {
+                        $object_insurance = new ObjectInsurance([
+                            'birthday' => $request->birthday[$i] ?? null,
+                            'name' => $request->name[$i] ?? null,
+                            'age' => $request->age[$i] ?? null,
+                            'sex_merchant' => $request->sex_merchant[$i] ?? null,
+                            'activity_merchant' => $request->activity_merchant[$i] ?? null,
+                            'limit' => $request->limit[$i] ?? null,
+                            'slip_id' => $slip->id
                         ]);
-                        $type_slip->object_insurance()->save($object);
-                    }
-
-                    //coberturas adicionales
-                    for ($i = 0; $i < count($request->aditional_coverage); $i++) {
-                        if (isset($request->aditional_coverage[$i])) {
-                            $coverage = new CoverageSlip([
-                                'aditional_coverage' => $request->aditional_coverage[$i],
-                            ]);
-                            $slip->coverage()->save($coverage);
-                        }
+                        $object_insurance->save();
                     }
                 }
+
+                $this->saveFilesFromRequest($request, $basePath, 'vida', $type_slip->id);
 
                 break;
                 //Propiedad activos fijos
@@ -406,86 +438,73 @@ class SlipController extends Controller
             case '6':
             case '7':
             case '8':
-                SlipPropertyFixedAsset::find($idModel)->update($request->all());
-                $type_slip = SlipPropertyFixedAsset::find($idModel);
-                $type_slip->sum_assured()->delete();
-                $type_slip->detail_perdios()->delete();
-                $type_slip->equipment_list()->delete();
+                $type_slip = SlipPropertyFixedAsset::where('slip_id', $id)->first();
+                $type_slip->update($request->all());
 
-                //Suma asegurada
+                DetailPerdios::where('slip_id', $id)->delete();
+                SumAssured::where('slip_id', $id)->delete();
+
+                //predios
+                if ($request->has('direction_perdios')) {
+                    for ($i = 0; $i < count($request->direction_perdios); $i++) {
+                        if (isset($request->direction_perdios[$i])) {
+                            $detailPredios = new DetailPerdios([
+                                'province_perdios' => $request->province_perdios[$i] ?? null,
+                                'city_perdios' => $request->city_perdios[$i] ?? null,
+                                'direction_perdios' => $request->direction_perdios[$i] ?? null,
+                                'slip_id' => $slip->id
+                            ]);
+                            $detailPredios->save();
+                        }
+                    }
+                }
+
+                //Suma Asegurada
                 if ($request->has('location')) {
                     for ($i = 0; $i < count($request->location); $i++) {
                         if (isset($request->location[$i])) {
-                            $object = new SumAssured([
-                                //'equipment_name' => isset($request->equipment_name[$i]) ? $request->equipment_name[$i] : null,
-                                'location' => isset($request->location[$i]) ? $request->location[$i] : null,
-                                'edification' => isset($request->edification[$i]) ? $request->edification[$i] : null,
-                                'contents' => isset($request->contents[$i]) ? $request->contents[$i] : null,
-                                'equipment' => isset($request->equipment[$i]) ? $request->equipment[$i] : null,
-                                'machine' => isset($request->machine[$i]) ? $request->machine[$i] : null,
-                                'commodity' => isset($request->commodity[$i]) ? $request->commodity[$i] : null,
-                                'other_sum_assured' => isset($request->other_sum_assured[$i]) ? $request->other_sum_assured[$i] : null,
+                            $sumAssured = new SumAssured([
+                                'location' => $request->location[$i] ?? null,
+                                'edification' => $request->edification[$i] ?? null,
+                                'contents' => $request->contents[$i] ?? null,
+                                'equipment' => $request->equipment[$i] ?? null,
+                                'machine' => $request->machine[$i] ?? null,
+                                'commodity' => $request->commodity[$i] ?? null,
+                                'other_sum_assured' => $request->other_sum_assured[$i] ?? null,
+                                'other_sum_assured_1' => $request->other_sum_assured_1[$i] ?? null,
+                                'other_sum_assured_2' => $request->other_sum_assured_2[$i] ?? null,
+                                'other_sum_assured_3' => $request->other_sum_assured_3[$i] ?? null,
+                                'other_sum_assured_4' => $request->other_sum_assured_4[$i] ?? null,
+                                'other_sum_assured_5' => $request->other_sum_assured_5[$i] ?? null,
+                                'slip_id' => $slip->id
                             ]);
-                            $type_slip->sum_assured()->save($object);
+                            $sumAssured->save();
                         }
                     }
                 }
-
-                if ($request->has('province_perdios') | $request->has('name_equipment')) {
-                    //predios
-                    for ($i = 0; $i < count($request->province_perdios); $i++) {
-                        if (isset($request->province_perdios[$i])) {
-                            $detail = new DetailPerdios([
-                                'province_perdios' => $request->province_perdios[$i],
-                                'city_perdios' => $request->city_perdios[$i],
-                                'direction_perdios' => $request->direction_perdios[$i],
-                            ]);
-                            $type_slip->detail_perdios()->save($detail);
-                        }
-                    }
-
-                    //Listado de equipos a ser asegurados
-                    if ($request->name_equipment > 1) {
-                        for ($i = 0; $i < count($request->name_equipment); $i++) {
-                            if (isset($request->name_equipment[$i])) {
-                                $detail = new EquipmentListInsured([
-                                    'name_equipment' => $request->name_equipment[$i],
-                                ]);
-                                $type_slip->detail_perdios()->save($detail);
-                            }
-                        }
-                    }
-                }
-
+                $this->saveFilesFromRequest($request, $basePath, 'activos_fijos', $type_slip->id, 'activos-fijos');
                 break;
                 //Vehículos
             case '9':
             case '10':
-                SlipVehicle::find($idModel)->update($request->all());
+                $type_slip = SlipVehicle::where('slip_id', $id)->first();
+                $type_slip->update($request->all());
 
-                $type_slip = SlipVehicle::find($idModel);
-                $type_slip->vehicle_detail()->delete();
-
+                VehicleDetail::where('slip_id', $id)->delete();
+                //tabla vehiculos
                 if ($request->has('plate_vehicle')) {
                     for ($i = 0; $i < count($request->plate_vehicle); $i++) {
                         if (isset($request->plate_vehicle[$i])) {
-                            $vehicle = new VehicleDetail([
-                                //'plate_vehicle' => $request->plate_vehicle[$i]
-                                'number_vehicle' => isset($request->number_vehicle[$i]) ? $request->number_vehicle[$i] : null,
-                                'plate_vehicle' => isset($request->plate_vehicle[$i]) ? $request->plate_vehicle[$i] : null,
-                                'type_vehicle' => isset($request->type_vehicle[$i]) ? $request->type_vehicle[$i] : null,
-                                'mark_vehicle' => isset($request->mark_vehicle[$i]) ? $request->mark_vehicle[$i] : null,
-                                'model_vehicle' => isset($request->model_vehicle[$i]) ? $request->model_vehicle[$i] : null,
-                                'year_vehicle' => isset($request->year_vehicle[$i]) ? $request->year_vehicle[$i] : null,
-                                'chasis_vehicle' => isset($request->chasis_vehicle[$i]) ? $request->chasis_vehicle[$i] : null,
-                                'passenger_vehicle' => isset($request->passenger_vehicle[$i]) ? $request->passenger_vehicle[$i] : null,
+                            $plate = new VehicleDetail([
+                                'plate_vehicle' => $request->plate_vehicle[$i] ?? null,
+                                'slip_id' => $slip->id
                             ]);
-
-                            $type_slip->vehicle_detail()->save($vehicle);
+                            $plate->save();
                         }
                     }
                 }
 
+                $this->saveFilesFromRequest($request, $basePath, 'vehiculos', $type_slip->id);
                 break;
                 //Ramos Técnicos
             case '11':
@@ -495,34 +514,44 @@ class SlipController extends Controller
             case '15':
             case '16':
             case '17':
-                SlipTechnicalBranch::find($idModel)->update($request->all());
+                $type_slip = SlipTechnicalBranch::where('slip_id', $id)->first();
+                $type_slip->update($request->all());
+
+                $this->saveFilesFromRequest($request, $basePath, 'tecnico',  $type_slip->id);
                 break;
                 //energia
             case '18':
             case '19':
             case '20':
-                SlipEnergy::find($idModel)->update($request->all());
+                $type_slip = SlipEnergy::where('slip_id', $id)->first();
+                $type_slip->update($request->all());
 
-                $type_slip = SlipEnergy::find($idModel);
-                $type_slip->sum_assured()->delete();
+                SumAssured::where('slip_id', $id)->delete();
 
                 if ($request->has('location')) {
                     for ($i = 0; $i < count($request->location); $i++) {
                         if (isset($request->location[$i])) {
-                            $object = new SumAssured([
-                                'location' => isset($request->location[$i]) ? $request->location[$i] : null,
-                                'edification' => isset($request->edification[$i]) ? $request->edification[$i] : null,
-                                'contents' => isset($request->contents[$i]) ? $request->contents[$i] : null,
-                                'equipment' => isset($request->equipment[$i]) ? $request->equipment[$i] : null,
-                                'machine' => isset($request->machine[$i]) ? $request->machine[$i] : null,
-                                'commodity' => isset($request->commodity[$i]) ? $request->commodity[$i] : null,
-                                'other_sum_assured' => isset($request->other_sum_assured[$i]) ? $request->other_sum_assured[$i] : null,
+                            $sumAssured = new SumAssured([
+                                'location' => $request->location[$i] ?? null,
+                                'edification' => $request->edification[$i] ?? null,
+                                'contents' => $request->contents[$i] ?? null,
+                                'equipment' => $request->equipment[$i] ?? null,
+                                'machine' => $request->machine[$i] ?? null,
+                                'commodity' => $request->commodity[$i] ?? null,
+                                'other_sum_assured' => $request->other_sum_assured[$i] ?? null,
+                                'other_sum_assured_1' => $request->other_sum_assured[$i] ?? null,
+                                'other_sum_assured_2' => $request->other_sum_assured[$i] ?? null,
+                                'other_sum_assured_3' => $request->other_sum_assured[$i] ?? null,
+                                'other_sum_assured_4' => $request->other_sum_assured[$i] ?? null,
+                                'other_sum_assured_5' => $request->other_sum_assured[$i] ?? null,
+                                'slip_id' => $slip->id
                             ]);
-                            $type_slip->sum_assured()->save($object);
+                            $sumAssured->save();
                         }
                     }
                 }
 
+                $this->saveFilesFromRequest($request, $basePath, 'energia',  $type_slip->id);
                 break;
                 //Maritimo
             case '21':
@@ -537,57 +566,67 @@ class SlipController extends Controller
             case '30':
             case '31':
 
-                switch ($selectSlip->type_coverage) {
+                switch ($slip->type_coverage) {
                     case '21':
                     case '22':
-                        SlipMaritimeOne::find($idModel)->update($request->all());
-                        $type_slip = SlipMaritimeOne::find($idModel);
-                        $type_slip->boat_detail()->delete();
+                        $type_slip = SlipMaritimeOne::where('slip_id', $id)->first();
+                        $type_slip->update($request->all());
+
+                        BoatDetailSlip::where('slip_id', $id)->delete();
+
+                        $this->saveFilesFromRequest($request, $basePath, 'maritimo_1',  $type_slip->id);
                         break;
 
                     case '23':
-                        SlipMaritimeTwo::find($idModel)->update($request->all());
-                        $type_slip = SlipMaritimeTwo::find($idModel);
-                        $type_slip->boat_detail()->delete();
+                        $type_slip = SlipMaritimeTwo::where('slip_id', $id)->first();
+                        $type_slip->update($request->all());
+
+                        BoatDetailSlip::where('slip_id', $id)->delete();
+
+                        $this->saveFilesFromRequest($request, $basePath, 'maritimo_2',  $type_slip->id);
                         break;
 
                     case '24':
                     case '25':
                     case '26':
-                        SlipMaritimeThree::find($idModel)->update($request->all());
-                        $type_slip = SlipMaritimeThree::find($idModel);
-                        $type_slip->object_insurance()->delete();
+                        $type_slip = SlipMaritimeThree::where('slip_id', $id)->first();
+                        $type_slip->update($request->all());
+
+                        $this->saveFilesFromRequest($request, $basePath, 'maritimo_3',  $type_slip->id);
                         break;
                     case '27':
                     case '28':
                     case '29':
                     case '30':
                     case '31':
-                        SlipMaritimeFour::find($idModel)->update($request->all());
-                        $type_slip = SlipMaritimeFour::find($idModel);
-                        /* $type_slip->storage_stock()->delete();
-                        $type_slip->transport_stock()->delete(); */
+                        $type_slip = SlipMaritimeFour::where('slip_id', $id)->first();
+                        $type_slip->update($request->all());
+
+                        $this->saveFilesFromRequest($request, $basePath, 'maritimo_4',  $type_slip->id);
                         break;
                 }
 
+                //tabla detalle barcos:
                 if ($request->has('name_boat')) {
                     for ($i = 0; $i < count($request->name_boat); $i++) {
                         if (isset($request->name_boat[$i])) {
-                            $boat = new BoatDetailSlip([
-                                'name_boat' => $request->name_boat[$i],
-                                'registration_boat' => $request->registration_boat[$i],
-                                'material_boat' => $request->material_boat[$i],
-                                'manga_boat' => $request->manga_boat[$i],
-                                'eslora_boat' => $request->eslora_boat[$i],
-                                'puntual_boat' => $request->puntual_boat[$i],
-                                'shell_boat' => $request->shell_boat[$i],
-                                'machine_boat' => $request->machine_boat[$i],
+                            $boats = new BoatDetailSlip([
+                                'name_boat' => $request->name_boat[$i] ?? null,
+                                'registration_boat' => $request->registration_boat[$i] ?? null,
+                                'material_boat' => $request->material_boat[$i] ?? null,
+                                'manga_boat' => $request->manga_boat[$i] ?? null,
+                                'eslora_boat' => $request->eslora_boat[$i] ?? null,
+                                'puntual_boat' => $request->puntual_boat[$i] ?? null,
+                                'shell_boat' => $request->shell_boat[$i] ?? null,
+                                'machine_boat' => $request->machine_boat[$i] ?? null,
+                                'deducible_boat' => $request->deducible_boat[$i] ?? null,
+                                'slip_id' => $slip->id
                             ]);
-
-                            $type_slip->boat_detail()->save($boat);
+                            $boats->save();
                         }
                     }
                 }
+
                 break;
 
                 //aviacion
@@ -600,40 +639,103 @@ class SlipController extends Controller
                 switch ($selectSlip->type_coverage) {
                     case '32':
                     case '33':
-                        SlipAviationOne::find($idModel)->update($request->all());
-                        $type_slip = SlipAviationOne::find($idModel);
-                        $type_slip->information_aerial()->delete();
-                        $type_slip->coverage()->delete();
+                        $type_slip = SlipAviationOne::where('slip_id', $id)->first();
+                        $type_slip->update($request->all());
+
+
+                        InformationAerialHelmets::where('slip_id', $id)->delete();
+                        AviacionExtras::where('slip_id', $id)->delete();
+                        // Datos de la aeronave
+                        if (isset($request->type_ala_aerial)) {
+                            for ($i = 0; $i < count($request->type_ala_aerial); $i++) {
+                                if (isset($request->type_ala_aerial[$i])) {
+                                    $informationAerialHelmet = new InformationAerialHelmets([
+                                        'type_ala_aerial' => $request->type_ala_aerial[$i] ?? null,
+                                        'serie_aerial' => $request->serie_aerial[$i] ?? null,
+                                        'marca_aerial' => $request->marca_aerial[$i] ?? null,
+                                        'model_aerial' => $request->model_aerial[$i] ?? null,
+                                        'year_manufacture_aerial' => $request->year_manufacture_aerial[$i] ?? null,
+                                        'cap_crew' => $request->cap_crew[$i] ?? null,
+                                        'cap_pax' => $request->cap_pax[$i] ?? null,
+                                        'sum_insured' => $request->sum_insured[$i] ?? null,
+                                        'slip_aviation_one_id' => $slip->id,
+                                        'slip_id' => $slip->id
+                                    ]);
+                                    $informationAerialHelmet->save();
+                                }
+                            }
+                        }
+                        //coberturas y limite de coberturas
+                        for ($i = 0; $i < count($request->description_coverage); $i++) {
+                            if (isset($request->description_coverage[$i])) {
+                                $aviacion_extras = new AviacionExtras([
+                                    'description_coverage' => $request->description_coverage[$i] ?? null,
+                                    'aditional_coverage' => $request->aditional_coverage[$i] ?? null,
+                                    'limit_description_coverage' => $request->limit_description_coverage[$i] ?? null,
+                                    'limit_aditional_coverage' => $request->limit_aditional_coverage[$i] ?? null,
+                                    'slip_id' => $slip->id
+                                ]);
+                                $aviacion_extras->save();
+                            }
+                        }
+
+                        $this->saveFilesFromRequest($request, $basePath, 'aviacion_1',  $type_slip->id);
                         break;
                     case '34':
-                        SlipAviationTwo::find($idModel)->update($request->all());
-                        $type_slip = SlipAviationTwo::find($idModel);
+                        $type_slip = ObjectInsurance::where('slip_id', $id)->first();
+                        $type_slip->update($request->all());
+
+                        BoatDetailSlip::where('slip_id', $id)->delete();
+
                         $type_slip->object_insurance()->delete();
+                        $this->saveFilesFromRequest($request, $basePath, 'aviacion_2',  $type_slip->id);
                         break;
                     case '35':
                     case '36':
                     case '37':
-                        SlipAviationThree::find($idModel)->update($request->all());
-                        $type_slip = SlipAviationThree::find($idModel);
-                        $type_slip->object_insurance()->delete();
+                        $type_slip = SlipAviationThree::where('slip_id', $id)->first();
+                        $type_slip->update($request->all());
+
+                        $this->saveFilesFromRequest($request, $basePath, 'aviacion_3',  $type_slip->id);
                         break;
                     default:
                         # code...
                         break;
                 }
 
+                // Datos de la aeronave
+                if ($request->has('type_ala_aerial')) {
+                    for ($i = 0; $i < count($request->type_ala_aerial); $i++) {
+                        if (isset($request->type_ala_aerial[$i])) {
+                            $informationAerialHelmet = new InformationAerialHelmets([
+                                'type_ala_aerial' => $request->type_ala_aerial[$i] ?? null,
+                                'serie_aerial' => $request->serie_aerial[$i] ?? null,
+                                'marca_aerial' => $request->marca_aerial[$i] ?? null,
+                                'model_aerial' => $request->model_aerial[$i] ?? null,
+                                'year_manufacture_aerial' => $request->year_manufacture_aerial[$i] ?? null,
+                                'cap_crew' => $request->cap_crew[$i] ?? null,
+                                'cap_pax' => $request->cap_pax[$i] ?? null,
+                                'sum_insured' => $request->sum_insured[$i] ?? null,
+                                'slip_aviation_one_id' => $type_slip->id,
+                                'slip_id' => $slip->id
+                            ]);
+                            $informationAerialHelmet->save();
+                        }
+                    }
+                }
+
                 //Objeto del seguro
                 if ($request->has('age')) {
-                    for ($i = 0; $i < count($request->age); $i++) {
-                        if (isset($request->age[$i])) {
-                            $object = new ObjectInsurance([
-                                'age' => isset($request->age[$i]) ? $request->age[$i] : null,
-                                'birthday' => isset($request->birthday[$i]) ? $request->birthday[$i] : null,
-                                'sex_merchant' => isset($request->sex_merchant[$i]) ? $request->sex_merchant[$i] : null,
-                                'activity_merchant' => isset($request->activity_merchant[$i]) ? $request->activity_merchant[$i] : null,
+                    for ($i = 0; $i < count($request->birthday); $i++) {
+                        if (isset($request->birthday[$i])) {
+                            $object_insurance = new ObjectInsurance([
+                                'limit' => $request->limit[$i] ?? null,
+                                'age' => $request->age[$i] ?? null,
+                                'birthday' => $request->birthday[$i] ?? null,
+                                'name' => $request->name[$i] ?? null,
+                                'slip_id' => $slip->id
                             ]);
-
-                            $type_slip->object_insurance()->save($object);
+                            $object_insurance->save();
                         }
                     }
                 }
@@ -646,40 +748,19 @@ class SlipController extends Controller
             case '41':
             case '42':
             case '43':
-                SlipCivilLiability::find($idModel)->update($request->all());
-                $type_slip = SlipCivilLiability::find($idModel);
-                $type_slip->compensation_limit()->delete();
+                $type_slip = SlipCivilLiability::where('slip_id', $id)->first();
+                $type_slip->update($request->all());
 
-                if ($request->has('limit_event')) {
-                    $object = new CompensationLimit([
-                        'limit_event' => isset($request->limit_event) ? $request->limit_event : null,
-                        'limit_annual' => isset($request->limit_annual) ? $request->limit_annual : null,
-                    ]);
-
-                    $type_slip->compensation_limit()->save($object);
-                }
+                $this->saveFilesFromRequest($request, $basePath, 'responsabilidad',  $type_slip->id);
                 break;
 
                 //Riesgos Financieros
             case '44':
             case '45':
-                SlipFinancialRisk::find($idModel)->update($request->all());
+                $type_slip = SlipFinancialRisk::where('slip_id', $id)->first();
+                $type_slip->update($request->all());
 
-                $type_slip = SlipFinancialRisk::find($idModel);
-                $type_slip->compensation_limit()->delete();
-                $type_slip->condition()->delete();
-
-                //limite de compensacion
-                if ($request->has('description_compensation_limit')) {
-                    for ($i = 0; $i < count($request->description_compensation_limit); $i++) {
-                        if (isset($request->description_compensation_limit[$i])) {
-                            $object = new CompensationLimit([
-                                'description_compensation_limit' => isset($request->description_compensation_limit[$i]) ? $request->description_compensation_limit[$i] : null,
-                            ]);
-                            $type_slip->compensation_limit()->save($object);
-                        }
-                    }
-                }
+                $this->saveFilesFromRequest($request, $basePath, 'riesgo',  $type_slip->id);
                 break;
                 //fianza
             case '46':
@@ -692,10 +773,27 @@ class SlipController extends Controller
 
                 switch ($selectSlip->type_coverage) {
                     case '46':
-                        SlipFianzaOne::find($idModel)->update($request->all());
-                        $type_slip = SlipFianzaOne::find($idModel);
-                        $type_slip->object_insurance()->delete();
-                        $type_slip->compensation_limit()->delete();
+                        $type_slip = SlipFianzaOne::where('slip_id', $id)->first();
+                        $type_slip->update($request->all());
+
+                        ObjectInsurance::where('slip_id', $id)->delete();
+
+                        //objeto asegurado
+                        if ($request->has('activity_merchant')) {
+                            for ($i = 0; $i < count($request->activity_merchant); $i++) {
+                                if (isset($request->activity_merchant[$i])) {
+                                    $object_insurance = new ObjectInsurance([
+                                        'number' => $request->number[$i] ?? null,
+                                        'name' => $request->name[$i] ?? null,
+                                        'activity_merchant' => $request->activity_merchant[$i] ?? null,
+                                        'limit' => $request->limit[$i] ?? null,
+                                        'slip_id' => $slip->id
+                                    ]);
+                                    $object_insurance->save();
+                                }
+                            }
+                        }
+                        $this->saveFilesFromRequest($request, $basePath, 'fianza_1',  $type_slip->id);
                         break;
 
                     case '47':
@@ -704,52 +802,64 @@ class SlipController extends Controller
                     case '50':
                     case '51':
                     case '52':
-                        SlipFianzaTwo::find($idModel)->update($request->all());
-                        $type_slip = SlipFianzaTwo::find($idModel);
-                        $type_slip->compensation_limit()->delete();
+                        $type_slip = SlipFianzaTwo::where('slip_id', $id)->first();
+                        $type_slip->update($request->all());
+                        $this->saveFilesFromRequest($request, $basePath, 'fianza_2',  $type_slip->id);
                         break;
                 }
 
-                //limite de indemendizacion
-                if ($request->has('limit_event')) {
-                    $object = new CompensationLimit([
-                        'limit_event' => isset($request->limit_event) ? $request->limit_event : null,
-                        'limit_annual' => isset($request->limit_annual) ? $request->limit_annual : null,
-                    ]);
-
-                    $type_slip->compensation_limit()->save($object);
-                }
-
-                //limite de compensacion
-                if ($request->has('description_compensation_limit')) {
-                    for ($i = 0; $i < count($request->description_compensation_limit); $i++) {
-                        if (isset($request->description_compensation_limit[$i])) {
-                            $compensation = new CompensationLimit([
-                                'description_compensation_limit' => $request->description_compensation_limit[$i],
-                            ]);
-                            $type_slip->compensation_limit()->save($compensation);
-                        }
-                    }
-                }
-
-                //Objeto del seguro
-                if ($request->has('number')) {
-                    for ($i = 0; $i < count($request->number); $i++) {
-                        if (isset($request->number[$i])) {
-                            $object = new ObjectInsurance([
-                                'number' => isset($request->number[$i]) ? $request->number[$i] : null,
-                                'name' => isset($request->name[$i]) ? $request->name[$i] : null,
-                                'activity_merchant' => isset($request->activity_merchant[$i]) ? $request->activity_merchant[$i] : null,
-                                'limit' => isset($request->limit[$i]) ? $request->limit[$i] : null,
-                            ]);
-                            $type_slip->object_insurance()->save($object);
-                        }
-                    }
-                }
                 break;
             default:
                 return 'slip no encotrado';
                 break;
+        }
+        //coberturas adicionales
+        if ($request->has('description_coverage_additional')) {
+            for ($i = 0; $i < count($request->description_coverage_additional); $i++) {
+                if (isset($request->description_coverage_additional[$i])) {
+                    $additional_coverages = new AdditionalCoverage([
+                        'description_coverage_additional' => $request->description_coverage_additional[$i] ?? null,
+                        'coverage_additional_additional' => $request->coverage_additional_additional[$i] ?? null,
+                        'coverage_additional_usd' => $request->coverage_additional_usd[$i] ?? null,
+                        'coverage_additional_additional2' => $request->coverage_additional_additional2[$i] ?? null,
+                        'slip_id' => $slip->id
+                    ]);
+                    $additional_coverages->save();
+                }
+            }
+        }
+
+        //clausulas adicionales
+        if ($request->has('description_clause_additional')) {
+            for ($i = 0; $i < count($request->description_clause_additional); $i++) {
+                if (isset($request->description_clause_additional[$i])) {
+                    $additional_clauses = new ClauseSlip([
+                        'description_clause_additional' => $request->description_clause_additional[$i] ?? null,
+                        'clause_additional_additional' => $request->clause_additional_additional[$i] ?? null,
+                        'clause_additional_usd' => $request->clause_additional_usd[$i] ?? null,
+                        'clause_additional_additional2' => $request->clause_additional_additional2[$i] ?? null,
+                        'slip_id' => $slip->id
+                    ]);
+                    $additional_clauses->save();
+                }
+            }
+        }
+
+        //deductibles
+        if ($request->has('description_deductible')) {
+            for ($i = 0; $i < count($request->description_deductible); $i++) {
+                if (isset($request->description_deductible[$i])) {
+                    $deductibles = new DeductibleSlip([
+                        'description_deductible' => $request->description_deductible[$i] ?? null,
+                        'sinister_value' => $request->sinister_value[$i] ?? null,
+                        'insured_value' => $request->insured_value[$i] ?? null,
+                        'minimum' => $request->minimum[$i] ?? null,
+                        'description2_deductible' => $request->description2_deductible[$i] ?? null,
+                        'slip_id' => $slip->id
+                    ]);
+                    $deductibles->save();
+                }
+            }
         }
 
         //limite de cobertura
@@ -765,54 +875,6 @@ class SlipController extends Controller
             }
         }
 
-        //deducible
-        if ($request->has('sinister_value') || $request->has('description_deductible')) {
-            //return 'existe';
-            for ($i = 0; $i < count($request->sinister_value); $i++) {
-                if (isset($request->sinister_value[$i])) {
-                    $deductible = new DeductibleSlip([
-                        'description_deductible' => isset($request->description_deductible[$i]) ? $request->description_deductible[$i] : null,
-                        'sinister_value' => isset($request->sinister_value[$i]) ? $request->sinister_value[$i] : null,
-                        'insured_value' => isset($request->insured_value[$i]) ? $request->insured_value[$i] : null,
-                        'minimum' => isset($request->minimum[$i]) ? $request->minimum[$i] : null,
-                        'description2_deductible' => isset($request->description2_deductible[$i]) ? $request->description2_deductible[$i] : null,
-                    ]);
-                    $slip->deductible()->save($deductible);
-                }
-            }
-        }
-
-        //Cláusulas adicionales
-        if ($request->has('description_clause_additional')) {
-            //$description_clause_additional = $request->description_clause_additional;
-            for ($i = 0; $i < count($request->description_clause_additional); $i++) {
-                if (isset($request->description_clause_additional[$i])) {
-                    $deductible = new ClauseSlip([
-                        'description_clause_additional' => $request->description_clause_additional[$i],
-                        'clause_additional_additional' => isset($request->clause_additional_additional[$i]) ? $request->clause_additional_additional[$i] : null,
-                        'clause_additional_additional2' => isset($request->clause_additional_additional2[$i]) ? $request->clause_additional_additional2[$i] : null,
-                        'clause_additional_usd' => isset($request->clause_additional_usd[$i]) ? $request->clause_additional_usd[$i] : null,
-                    ]);
-                    $slip->clause_aditional()->save($deductible);
-                }
-            }
-        }
-
-        //coberturas adicionales
-        if ($request->has('description_coverage_additional')) {
-            //$iscovorage = $request->type_slip != 'rc' && $request->type_slip != 'transporte' && $request->type_slip != 'licencia' ? true : false;
-            for ($i = 0; $i < count($request->description_coverage_additional); $i++) {
-                if (isset($request->description_coverage_additional[$i])) {
-                    $object = new AdditionalCoverage([
-                        'description_coverage_additional' => $request->description_coverage_additional[$i],
-                        'coverage_additional_usd' => isset($request->coverage_additional_usd) ? $request->coverage_additional_usd[$i] : null,
-                        'coverage_additional_additional' => isset($request->coverage_additional_additional) ? $request->coverage_additional_additional[$i] : null,
-                        'coverage_additional_additional2' => isset($request->coverage_additional_additional2) ? $request->coverage_additional_additional2[$i] : null,
-                    ]);
-                    $slip->coverage_additional()->save($object);
-                }
-            }
-        }
 
         //security
         if ($request->has('name_insurer')) {
@@ -859,20 +921,17 @@ class SlipController extends Controller
             }
         }
 
-        $slipsUser = Slip::where('slip_status_id', '3')->get();
-        $slip_statuses = SlipStatus::all();
-        $user = Auth::user();
-
+        //update & save
         $slip->update($request->all());
-        $slip->slip_status_id = '3';
         $slip->save();
 
+        $user = Auth::user();
         if ($user->role === "comercial") {
-            return redirect('/admin/compromiso/pending')
-            ->with('success', 'El Slip ha sido modificado y enviado al departamento técnico de manera exitosa.');
+            return redirect('/slip')
+                ->with('success', 'El Slip ha sido modificado y enviado al departamento técnico de manera exitosa.');
         } else {
-            return view('admin.tecnico.slip.index')
-            ->with('success', 'El Slip ha sido modificado y enviado al departamento técnico de manera exitosa.');
+            return redirect('/slip')
+                ->with('success', 'El Slip ha sido modificado y enviado al departamento técnico de manera exitosa.');
         }
     }
 
@@ -1073,7 +1132,7 @@ class SlipController extends Controller
                             $type_slip = SlipMaritimeFour::find($idslip->id);
                             break;
                         default:
-                        break;
+                            break;
                     }
 
                     if ($request->has('name_boat')) {
@@ -1358,7 +1417,7 @@ class SlipController extends Controller
             }
 
             //archivos
-            if ($request->has("file")) {
+            /* if ($request->has("file")) {
                 $files = $request->file;
 
                 foreach ($files as $key) {
@@ -1368,7 +1427,7 @@ class SlipController extends Controller
 
                     $slip->file()->save($newFile);
                 }
-            }
+            } */
 
             return redirect()->route('compromiso')
                 ->with('success', 'El slip se creó exitosamente.');

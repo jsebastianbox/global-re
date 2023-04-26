@@ -178,7 +178,172 @@ class CoberturasSelectorSeeder extends Seeder
 
             //Sabotaje y terrorismo no hay
 
-            //casco buques no hay
+            //Marítimo
+
+            //Casco marítimo
+            [
+                'name' => 'CL 280 – Cláusulas a término del Instituto Casco con ¾ de Responsabilidad por colisión suprimida',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'CL 281 – Cláusula del Instituto para Guerra y Huelgas',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'CL 311 – Cláusula a término. Riesgos de Puerto',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'CL 328 – Cláusula para Yates',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'CL 333 – Cláusula para embarcaciones rápidas. Condiciones Especiales y Riesgos adicionalmente excluidos',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'CL 370 – Cláusula del Instituto de exclusión de contaminación radioactiva, química, biológica, bioquímica, y armas electromagnéticas',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'CL 380 – Cláusula del Instituto de exclusión de ataques cibernéticos',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+            [
+                'name' => 'Se cubre robo, incluye robo de motores',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'casco'
+            ],
+
+            //Maritimo Proteccion 
+
+            [
+                'name' => 'Responsabilidades respecto a gente de mar',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+
+            [
+                'name' => 'Responsabilidad respecto a pasajeros',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+
+            [
+                'name' => 'Gastos de cambio de derrota',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+
+            [
+                'name' => 'Gastos de cambio de derrota',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+
+            [
+                'name' => 'Responsabilidades por salvamento de vidas humanas',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+
+            [
+                'name' => 'Responsabilidad por colisión con otros buques',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+
+            [
+                'name' => 'Responsabilidad por pérdida o daño a la propiedad',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+
+            [
+                'name' => 'Responsabilidad por contaminación ambiental',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+
+            [
+                'name' => 'Responsabilidad por remolque',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+
+            [
+                'name' => 'Responsabilidad derivada de ciertas indemnizaciones y contratos',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+
+            [
+                'name' => 'Responsabilidad por naufragio',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+
+            [
+                'name' => 'Gastos por cuarentena',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+
+            [
+                'name' => 'Contribuciones en avería gruesa no recuperables',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+
+            [
+                'name' => 'Proporción del buque en la avería gruesa',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+
+            [
+                'name' => 'Propiedad a bordo del buque asegurado',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+            [
+                'name' => 'Remuneración especial a los salvadores',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+            [
+                'name' => 'Multas',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+            [
+                'name' => 'Investigaciones y procedimientos penales',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+            [
+                'name' => 'Responsabilidades y gastos incurridos por orden de los Administradores',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+            [
+                'name' => 'Costes jurídicos y de medidas preventivas',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+            [
+                'name' => 'Responsabilidad Civil ante otros terceros',
+                'main_branch' => 'maritimo',
+                'sub_branch' => 'proteccion_indemnizacion'
+            ],
+
 
             //P&I, rc portuaria, rc armadores, astilleros no hay
 

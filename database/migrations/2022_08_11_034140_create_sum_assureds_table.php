@@ -27,6 +27,11 @@ class CreateSumAssuredsTable extends Migration
             //$table->string('furnishing_enseres')->nullable();
             $table->string('commodity')->nullable(); //mercaderia
             $table->string('other_sum_assured')->nullable(); //otros
+            $table->string('other_sum_assured_1')->nullable(); //otros
+            $table->string('other_sum_assured_2')->nullable(); //otros
+            $table->string('other_sum_assured_3')->nullable(); //otros
+            $table->string('other_sum_assured_4')->nullable(); //otros
+            $table->string('other_sum_assured_5')->nullable(); //otros
             $table->foreignIdFor(Slip::class);
             $table->timestamps();
         });
