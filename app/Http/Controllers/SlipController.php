@@ -645,7 +645,26 @@ class SlipController extends Controller
 
                         InformationAerialHelmets::where('slip_id', $id)->delete();
                         AviacionExtras::where('slip_id', $id)->delete();
-
+                        // Datos de la aeronave
+                        if (isset($request->type_ala_aerial)) {
+                            for ($i = 0; $i < count($request->type_ala_aerial); $i++) {
+                                if (isset($request->type_ala_aerial[$i])) {
+                                    $informationAerialHelmet = new InformationAerialHelmets([
+                                        'type_ala_aerial' => $request->type_ala_aerial[$i] ?? null,
+                                        'serie_aerial' => $request->serie_aerial[$i] ?? null,
+                                        'marca_aerial' => $request->marca_aerial[$i] ?? null,
+                                        'model_aerial' => $request->model_aerial[$i] ?? null,
+                                        'year_manufacture_aerial' => $request->year_manufacture_aerial[$i] ?? null,
+                                        'cap_crew' => $request->cap_crew[$i] ?? null,
+                                        'cap_pax' => $request->cap_pax[$i] ?? null,
+                                        'sum_insured' => $request->sum_insured[$i] ?? null,
+                                        'slip_aviation_one_id' => $slip->id,
+                                        'slip_id' => $slip->id
+                                    ]);
+                                    $informationAerialHelmet->save();
+                                }
+                            }
+                        }
                         //coberturas y limite de coberturas
                         for ($i = 0; $i < count($request->description_coverage); $i++) {
                             if (isset($request->description_coverage[$i])) {

@@ -80,8 +80,8 @@
                 </thead>
 
                 <tbody>
-                    @if (count($slip_type->information_aerial) > 0)
-                        @foreach ($slip_type->information_aerial as $key => $item)
+                    @if (count($information_aerial) > 0)
+                        @foreach ($information_aerial as $key => $item)
                             <tr>
                                 <td>{{ $key +1 }}</td>
                                 <td>
@@ -179,179 +179,37 @@
     </div>
 
     <div class="form_group3">
-        <h3 class="slipTitle"> <span class="badge badge-secondary">4</span> Coberturas</h3>
-
-        <div class="two-sides">
+        <h3 class="slipTitle"> <span class="badge badge-secondary">4</span> Coberturas y Límites</h3>
 
 
-
-            <div class="left_side">
                 
-                @if (count($slip->coverage) > 0)
-                    @foreach ($slip->coverage as $key => $item )
+        @if (count($aviation_extras) > 0)
+            @foreach ($aviation_extras as $key => $item )
+                <p class="slipTitle">{{$item->description_coverage}}:</p>
+                <div class="two-sides" style="justify-content:space-between">
+                    <div class="left_side">
                         <div class="input_group">
-                            <label for="">
-                                <i class="fa-solid fa-bars-staggered"></i>
-                                {{$item->description_coverage}}:
+                            <label for="" style="margin-right:1rem">
+                                Cobertura
                             </label>
                             <input type="hidden" name="description_coverage[]" value="{{$item->description_coverage}}">
                             <input type="text" name="aditional_coverage[]" value="{{$item->aditional_coverage}}" >
                         </div>
-                    @endforeach
-                @else
-                
-                    <div class="input_group">
-                        <label for="">
-                            <i class="fa-solid fa-bars-staggered"></i>
-                            Guerra ejemplo:
-                        </label>
-                        <input type="text" name="aditional_coverage[]" placeholder="..." >
                     </div>
-                @endif
-
-
-            </div>
-
-            <div class="right_side">
-                {{-- Responsavilidad civil: --}}
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Responsabilidad civil:
-                    </label>
-                    <input type="text" name="aditional_coverage[]" placeholder="..." >
-                </div>
-                {{-- Seguro de deducibles: --}}
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Seguro de deducibles:
-                    </label>
-                    <input type="text" name="aditional_coverage[]" placeholder="..." >
-                </div>
-                {{-- Partes y repuestos: --}}
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Partes y repuestos:
-                    </label>
-                    <input type="text" name="aditional_coverage[]" placeholder="..." >
-                </div>
-                {{-- Carga y equipaje: --}}
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Carga y equipaje:
-                    </label>
-                    <input type="text" name="aditional_coverage[]" placeholder="...">
-                </div>
-                {{-- Seguro de prima no devengada: --}}
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Seguro de prima no devengada:
-                    </label>
-                    <input type="text" name="aditional_coverage[]" placeholder="...">
-                </div>
-                {{-- Seguro de busqueda y rescate: --}}
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Seguro de busqueda y rescate:
-                    </label>
-                    <input type="text" name="aditional_coverage[]" placeholder="...">
-                </div>
-        
-
-            </div>
-        </div>
-
-        <h3 class="slipTitle"> <span class="badge badge-secondary"></span>Límites de Cobertura</h3>
-
-        <div class="two-sides">
-
-
-
-            <div class="left_side">
-                
-                @if (count($slip->limit_coverage) > 0)
-                    @foreach ($slip->limit_coverage as $key => $item )
+                    <div class="right_side">
                         <div class="input_group">
-                            <label for="">
-                                <i class="fa-solid fa-bars-staggered"></i>
-                                {{$item->limit_description_coverage}}:
+                            <label for="" style="margin-right:1rem">
+                                Límite
                             </label>
                             <input type="hidden" name="limit_description_coverage[]" value="{{$item->limit_description_coverage}}">
                             <input type="text" name="limit_aditional_coverage[]" value="{{$item->limit_aditional_coverage}}" >
                         </div>
-                    @endforeach
-                @else
-                
-                    <div class="input_group">
-                        <label for="">
-                            <i class="fa-solid fa-bars-staggered"></i>
-                            Guerra ejemplo:
-                        </label>
-                        <input type="text" name="limit_aditional_coverage[]" placeholder="..." >
                     </div>
-                @endif
+                </div>
+            @endforeach
+        @endif
 
 
-            </div>
-
-            <div class="right_side">
-                {{-- Responsavilidad civil: --}}
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Responsabilidad civil:
-                    </label>
-                    <input type="text" name="limit_aditional_coverage[]" placeholder="..." >
-                </div>
-                {{-- Seguro de deducibles: --}}
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Seguro de deducibles:
-                    </label>
-                    <input type="text" name="limit_aditional_coverage[]" placeholder="..." >
-                </div>
-                {{-- Partes y repuestos: --}}
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Partes y repuestos:
-                    </label>
-                    <input type="text" name="limit_aditional_coverage[]" placeholder="..." >
-                </div>
-                {{-- Carga y equipaje: --}}
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Carga y equipaje:
-                    </label>
-                    <input type="text" name="limit_aditional_coverage[]" placeholder="...">
-                </div>
-                {{-- Seguro de prima no devengada: --}}
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Seguro de prima no devengada:
-                    </label>
-                    <input type="text" name="limit_aditional_coverage[]" placeholder="...">
-                </div>
-                {{-- Seguro de busqueda y rescate: --}}
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Seguro de busqueda y rescate:
-                    </label>
-                    <input type="text" name="limit_aditional_coverage[]" placeholder="...">
-                </div>
-        
-
-            </div>
-        </div>
     </div>
 
     <div class="form_group4">

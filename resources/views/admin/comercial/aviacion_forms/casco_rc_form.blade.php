@@ -132,40 +132,40 @@
                     <tbody>
 
                         @if (count($information_aerial) > 0)
-                        @foreach ($information_aerial as $key => $item)
-                        <tr>
-                            <th scope="row">{{ $key +1 }}</th>
-                            <td>
-                                <select name="type_ala_aerial[]" id="ala">
-                                    <option {{ $item->type_ala_aerial === 'fija' ? 'selected' : '' }} value="fija">
-                                        Fija</option>
-                                    <option {{ $item->type_ala_aerial === 'fija' ? 'selected' : '' }} value="rotativa">
-                                        Rotativa</option>
-                                </select>
-                            </td>
-                            <td>
-                                <input value="{{ $item->serie_aerial }}" type="text" name="serie_aerial[]" id="series">
-                            </td>
-                            <td>
-                                <input value="{{ $item->marca_aerial }}" type="text" name="marca_aerial[]" id="brand">
-                            </td>
-                            <td>
-                                <input value="{{ $item->model_aerial }}" type="text" name="model_aerial[]" id="model">
-                            </td>
-                            <td>
-                                <input value="{{ $item->year_manufacture_aerial }}" type="number" step="any" name="year_manufacture_aerial[]" id="makeYear" min="1960">
-                            </td>
-                            <td>
-                                <input value="{{ $item->cap_crew }}" type="text" name="cap_crew[]" id="capacity" min="1" step="1">
-                            </td>
-                            <td>
-                                <input value="{{ $item->cap_pax }}" type="number" step="any" name="cap_pax[]" id="passengers">
-                            </td>
-                            <td>
-                                <input value="{{ $item->sum_insured }}" type="number" step="any" placeholder="Suma asegurada" name="sum_insured[]" id="insuredSum" data-money>
-                            </td>
-                        </tr>
-                        @endforeach
+                            @foreach ($information_aerial as $key => $item)
+                            <tr>
+                                <th scope="row">{{ $key +1 }}</th>
+                                <td>
+                                    <select name="type_ala_aerial[]" id="ala">
+                                        <option {{ $item->type_ala_aerial === 'fija' ? 'selected' : '' }} value="Fija">
+                                            Fija</option>
+                                        <option {{ $item->type_ala_aerial === 'rotativa' ? 'selected' : '' }} value="Rotativa">
+                                            Rotativa</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input value="{{ $item->serie_aerial }}" type="text" name="serie_aerial[]" id="series">
+                                </td>
+                                <td>
+                                    <input value="{{ $item->marca_aerial }}" type="text" name="marca_aerial[]" id="brand">
+                                </td>
+                                <td>
+                                    <input value="{{ $item->model_aerial }}" type="text" name="model_aerial[]" id="model">
+                                </td>
+                                <td>
+                                    <input value="{{ $item->year_manufacture_aerial }}" type="number" step="any" name="year_manufacture_aerial[]" id="makeYear" min="1960">
+                                </td>
+                                <td>
+                                    <input value="{{ $item->cap_crew }}" type="text" name="cap_crew[]" id="capacity" min="1" step="1">
+                                </td>
+                                <td>
+                                    <input value="{{ $item->cap_pax }}" type="number" step="any" name="cap_pax[]" id="passengers">
+                                </td>
+                                <td>
+                                    <input value="{{ $item->sum_insured }}" type="number" step="any" placeholder="Suma asegurada" name="sum_insured[]" id="insuredSum" data-money>
+                                </td>
+                            </tr>
+                            @endforeach
                         @else
                         <th scope="row">1</th>
                         <td>
@@ -248,158 +248,6 @@
                     </div>
                 </div>
             @endforeach
-        @else
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="input_group mb-3">
-                        <label class="input-group-text">
-
-                            Casco Aéreo:
-                        </label>
-                        <input type="hidden" name="description_coverage[]" value="Casco Aéreo">
-                        <input type="number" step="any" name="aditional_coverage[]" placeholder="...">
-                    </div>
-
-                    <div class="input_group mb-3">
-                        <label class="input-group-text">
-
-                            Responsabilidad Civil:
-                        </label>
-                        <input type="hidden" name="description_coverage[]" value="Responsabilidad Civil">
-                        <input type="number" step="any" name="aditional_coverage[]" placeholder="...">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="input_group mb-3">
-                        <label class="input-group-text">
-
-                            Casco Guerra:
-                        </label>
-                        <input type="hidden" name="description_coverage[]" value="Casco Guerra">
-                        <input type="number" step="any" name="aditional_coverage[]" placeholder="...">
-                    </div>
-
-                    <div class="input_group mb-3">
-                        <label class="input-group-text">
-
-                            Deducibles:
-                        </label>
-                        <input type="hidden" name="description_coverage[]" value="Deducibles">
-                        <input type="number" step="any" name="aditional_coverage[]" placeholder="...">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="input_group mb-3">
-                        <label class="input-group-text">
-
-                            Repuestos:
-                        </label>
-                        <input type="hidden" name="description_coverage[]" value="Repuestos">
-                        <input type="number" step="any" name="aditional_coverage[]" placeholder="...">
-                    </div>
-
-                    <div class="input_group mb-3">
-                        <label class="input-group-text">
-
-                            Accidentes Personales:
-                        </label>
-                        <input type="hidden" name="description_coverage[]" value="Accidentes Personales">
-                        <input type="number" step="any" name="aditional_coverage[]" placeholder="...">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="input_group mb-3">
-                        <label class="input-group-text">
-
-                            Gastos Médicos:
-                        </label>
-                        <input type="hidden" name="description_coverage[]" value="Gastos Médicos">
-                        <input type="number" step="any" name="aditional_coverage[]" placeholder="...">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row my-3">
-                <label class="lead">Límites de cobertura</label>
-                <hr style="background-color: darkgrey; width: 70%">
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="input_group mb-3">
-                        <label class="input-group-text">
-
-                            Casco Aéreo:
-                        </label>
-                        <input type="hidden" name="limit_description_coverage[]" value="Casco Aéreo">
-                        <input type="number" step="any" name="limit_aditional_coverage[]" placeholder="...">
-                    </div>
-
-                    <div class="input_group mb-3">
-                        <label class="input-group-text">
-
-                            Responsabilidad Civil:
-                        </label>
-                        <input type="hidden" name="limit_description_coverage[]" value="Responsabilidad Civil">
-                        <input type="number" step="any" name="limit_aditional_coverage[]" placeholder="...">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="input_group mb-3">
-                        <label class="input-group-text">
-
-                            Casco Guerra:
-                        </label>
-                        <input type="hidden" name="limit_description_coverage[]" value="Casco Guerra">
-                        <input type="number" step="any" name="limit_aditional_coverage[]" placeholder="...">
-                    </div>
-
-                    <div class="input_group mb-3">
-                        <label class="input-group-text">
-
-                            Deducibles:
-                        </label>
-                        <input type="hidden" name="limit_description_coverage[]" value="Deducibles">
-                        <input type="number" step="any" name="limit_aditional_coverage[]" placeholder="...">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="input_group mb-3">
-                        <label class="input-group-text">
-
-                            Repuestos:
-                        </label>
-                        <input type="hidden" name="limit_description_coverage[]" value="Repuestos">
-                        <input type="number" step="any" name="limit_aditional_coverage[]" placeholder="...">
-                    </div>
-
-                    <div class="input_group mb-3">
-                        <label class="input-group-text">
-
-                            Accidentes Personales:
-                        </label>
-                        <input type="hidden" name="limit_description_coverage[]" value="Accidentes Personales">
-                        <input type="number" step="any" name="limit_aditional_coverage[]" placeholder="...">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="input_group mb-3">
-                        <label class="input-group-text">
-
-                            Gastos Médicos:
-                        </label>
-                        <input type="hidden" name="limit_description_coverage[]" value="Gastos Médicos">
-                        <input type="number" step="any" name="limit_aditional_coverage[]" placeholder="...">
-                    </div>
-                </div>
-            </div>
         @endif
 
         <div class="row">
@@ -745,9 +593,9 @@
                 <div class="input_group mb-3">
                     <label class="input-group-text">
 
-                        Responsabilidad Civil:
+                        Guerra:
                     </label>
-                    <input type="hidden" name="description_coverage[]" value="Responsabilidad Civil">
+                    <input type="hidden" name="description_coverage[]" value="Guerra">
                     <input type="number" step="any" name="aditional_coverage[]" placeholder="...">
                 </div>
             </div>
@@ -755,18 +603,18 @@
                 <div class="input_group mb-3">
                     <label class="input-group-text">
 
-                        Casco Guerra:
+                        Responsabilidad Civil:
                     </label>
-                    <input type="hidden" name="description_coverage[]" value="Casco Guerra">
+                    <input type="hidden" name="description_coverage[]" value="Responsabilidad Civil">
                     <input type="number" step="any" name="aditional_coverage[]" placeholder="...">
                 </div>
 
                 <div class="input_group mb-3">
                     <label class="input-group-text">
 
-                        Deducibles:
+                        Seguro de Deducibles:
                     </label>
-                    <input type="hidden" name="description_coverage[]" value="Deducibles">
+                    <input type="hidden" name="description_coverage[]" value="Seguro de Deducibles">
                     <input type="number" step="any" name="aditional_coverage[]" placeholder="...">
                 </div>
             </div>
@@ -777,9 +625,40 @@
                 <div class="input_group mb-3">
                     <label class="input-group-text">
 
-                        Repuestos:
+                        Partes y Respuestos:
                     </label>
-                    <input type="hidden" name="description_coverage[]" value="Repuestos">
+                    <input type="hidden" name="description_coverage[]" value="Partes y Respuestos">
+                    <input type="number" step="any" name="aditional_coverage[]" placeholder="...">
+                </div>
+
+                <div class="input_group mb-3">
+                    <label class="input-group-text">
+
+                        Carga y Equipaje:
+                    </label>
+                    <input type="hidden" name="description_coverage[]" value="Carga y Equipaje">
+                    <input type="number" step="any" name="aditional_coverage[]" placeholder="...">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input_group mb-3">
+                    <label class="input-group-text">
+
+                        Seguro de Prima no Devengada:
+                    </label>
+                    <input type="hidden" name="description_coverage[]" value="Seguro de Prima no Devengada">
+                    <input type="number" step="any" name="aditional_coverage[]" placeholder="...">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input_group mb-3">
+                    <label class="input-group-text">
+
+                        Seguro de Busqueda y Rescate:
+                    </label>
+                    <input type="hidden" name="description_coverage[]" value="Seguro de Busqueda y Rescate">
                     <input type="number" step="any" name="aditional_coverage[]" placeholder="...">
                 </div>
 
@@ -823,9 +702,9 @@
                 <div class="input_group mb-3">
                     <label class="input-group-text">
 
-                        Responsabilidad Civil:
+                        Guerra:
                     </label>
-                    <input type="hidden" name="limit_description_coverage[]" value="Responsabilidad Civil">
+                    <input type="hidden" name="limit_description_coverage[]" value="Guerra">
                     <input type="number" step="any" name="limit_aditional_coverage[]" placeholder="...">
                 </div>
             </div>
@@ -842,9 +721,9 @@
                 <div class="input_group mb-3">
                     <label class="input-group-text">
 
-                        Deducibles:
+                        Seguro de Deducibles:
                     </label>
-                    <input type="hidden" name="limit_description_coverage[]" value="Deducibles">
+                    <input type="hidden" name="limit_description_coverage[]" value="Seguro de Deducibles">
                     <input type="number" step="any" name="limit_aditional_coverage[]" placeholder="...">
                 </div>
             </div>
@@ -855,9 +734,41 @@
                 <div class="input_group mb-3">
                     <label class="input-group-text">
 
-                        Repuestos:
+                        Partes y Respuestos:
                     </label>
-                    <input type="hidden" name="limit_description_coverage[]" value="Repuestos">
+                    <input type="hidden" name="limit_description_coverage[]" value="Partes y Respuestos">
+                    <input type="number" step="any" name="limit_aditional_coverage[]" placeholder="...">
+                </div>
+
+                <div class="input_group mb-3">
+                    <label class="input-group-text">
+
+                        Carga y Equipaje:
+                    </label>
+                    <input type="hidden" name="limit_description_coverage[]" value="Carga y Equipaje">
+                    <input type="number" step="any" name="limit_aditional_coverage[]" placeholder="...">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input_group mb-3">
+                    <label class="input-group-text">
+
+                        Seguro de Prima no Devengada:
+                    </label>
+                    <input type="hidden" name="limit_description_coverage[]" value="Seguro de Prima no Devengada">
+                    <input type="number" step="any" name="limit_aditional_coverage[]" placeholder="...">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input_group mb-3">
+                    <label class="input-group-text">
+
+                        Seguro de Busqueda y Rescate:
+                    </label>
+                    <input type="hidden" name="limit_description_coverage[]" value="Seguro de Busqueda y Rescate">
                     <input type="number" step="any" name="limit_aditional_coverage[]" placeholder="...">
                 </div>
 

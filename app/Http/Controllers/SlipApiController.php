@@ -620,7 +620,6 @@ class SlipApiController extends Controller
                                         'cap_crew' => $request->cap_crew[$i] ?? null,
                                         'cap_pax' => $request->cap_pax[$i] ?? null,
                                         'sum_insured' => $request->sum_insured[$i] ?? null,
-                                        'slip_aviation_one_id' => $slip_aereo->id,
                                         'slip_id' => $slip->id
                                     ]);
                                     $informationAerialHelmet->save();
