@@ -38,7 +38,6 @@ Administración | Técnico
 @endsection
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 @if (session('success'))
 <script>
     let timerInterval;
@@ -87,6 +86,11 @@ Administración | Técnico
         }
     }
 </style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.2/purify.min.js"></script>
+
 
 <script>
     function fetchFiles(slip) {
@@ -142,11 +146,23 @@ Administración | Técnico
         }
     });
 
+
     async function showPdf(slip) {
-        fetch(`api/slips/${slip.id}/pdf`).then(base64 => base64.blob()).then(blob => {
-            const pdfBlob = URL.createObjectURL(blob);
-            window.open(pdfBlob);
-            URL.revokeObjectURL(pdfBlob);
+        fetch(`api/slips/${slip.id}/pdf`).then(res => res.text()).then(html => {
+            const {
+                jsPDF
+            } = window.jspdf;
+            const pdf = new jsPDF('p', 'mm', 'a4', true);
+
+            pdf.html(html, {
+                callback: function(pdf) {
+                    window.open(pdf.output('bloburl'), '_blank');
+                    URL.revokeObjectURL(pdf);
+
+                },
+                x: 10,
+                y: 10
+            });
         });
     }
 </script>
@@ -209,7 +225,7 @@ Administración | Técnico
                         </div>
 
 
-                        
+
                     </td>
                 </tr>
                 @endforeach
