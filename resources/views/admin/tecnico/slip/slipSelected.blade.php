@@ -140,11 +140,8 @@
     @case('41')
 
     @case('42')
-        @include('admin.tecnico.slip.type_slip.slipResponsabilidadCivil')
-    @break
-
     @case('43')
-        @include('admin.tecnico.slip.type_slip.slipDirectores')
+        @include('admin.tecnico.slip.type_slip.slipResponsabilidadCivil')
     @break
     
     @case('44')

@@ -26,7 +26,7 @@ class SlipAviationOne extends Model
 
     public function information_aerial()
     {
-        return $this->hasMany(InformationAerialHelmets::class,'slip_aviation_ones_id');
+        return $this->hasMany(InformationAerialHelmets::class,'slip_aviation_one_id');
     }
 
     public function slip()

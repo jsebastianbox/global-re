@@ -34,7 +34,7 @@
                         Cobertura
                     </label>
                     <textarea name="coverage" id="coverage" style="resize:both;width:100%;" 
- cols="30" rows="1"></textarea>
+                        cols="30" rows="1"></textarea>
                 </div>
 
             </div>
@@ -60,48 +60,6 @@
             </div>
 
         </div>
-
-        <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Coberturas</h3>
-
-
-        <div class="two-sides">
-            <div class="left_side">
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-rectangle-list"></i>
-                        Incendio
-                    </label>
-                    <input type="checkbox" id="" value="Incendio" name="description_coverage[]">
-                </div>
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-rectangle-list"></i>
-                        Explosión
-                    </label>
-                    <input type="checkbox" id="" value="Explosión" name="description_coverage[]">
-                </div>
-
-            </div>
-            <div class="right_side">
-
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-rectangle-list"></i>
-                        Daños por humo
-                    </label>
-                    <input type="checkbox" id="" value="Daños por humo" name="description_coverage[]">
-                </div>
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-rectangle-list"></i>
-                        Daños por agua
-                    </label>
-                    <input type="checkbox" id="" value="Daños por agua" name="description_coverage[]">
-                </div>
-
-            </div>
-        </div>
-
 
 
     </div>
