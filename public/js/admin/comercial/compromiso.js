@@ -1305,8 +1305,8 @@ function updateS7() {
             })
             element.setAttribute('value', '33');
             aviacion_1_form.appendChild(element);
-            clausulasSelect(".selectClausula", "aviacion", "rc");
-            coberturasSelect(".selectCobertura", "aviacion", "rc");
+            clausulasSelect(".selectClausula", "aviacion", "casco");
+            coberturasSelect(".selectCobertura", "aviacion", "casco");
             break;
         case "pl":
             currentTab = 0;
@@ -1952,27 +1952,31 @@ function addAeronaveRow(tableID) {
                 </select>`;
                     break;
                 case 2:
-                    cell.innerHTML = `<input type="text" name="serie_aerial[]" id="series" oninput="this.className = ''">`;
+                    cell.innerHTML = `<input type="text" name="serie_aerial[]"  class="inputNumber">`;
                     break;
                 case 3:
-                    cell.innerHTML = `<input type="text" name="marca_aerial[]" id="brand" oninput="this.className = ''">`;
+                    cell.innerHTML = `<input type="text" name="marca_aerial[]"  class="inputNumber">`;
                     break;
                 case 4:
-                    cell.innerHTML = `<input type="text" name="model_aerial[]" id="model" oninput="this.className = ''">`;
+                    cell.innerHTML = `<input type="text" name="model_aerial[]" class="inputNumber">`;
                     break;
                 case 5:
                     cell.innerHTML = `<input type="number" step="any" min="1960" name="year_manufacture_aerial[]" id="makeYear"
-                            oninput="this.className = ''">`;
+                        >`;
                     break;
                 case 6:
-                    cell.innerHTML = `<input type="text" name="cap_crew[]" id="capacity" min="1" step="1"
-                            oninput="this.className = ''">`;
+                    cell.innerHTML = `<input type="text" name="cap_crew[]" id="capacity" min="1" step="1" class="inputNumber"
+                        >`;
                     break;
                 case 7:
-                    cell.innerHTML = `<input type="number" step="any" name="cap_pax[]" id="passengers" oninput="this.className = ''">`;
+                    cell.innerHTML = `<input type="number" step="any" name="cap_pax[]" id="passengers" class="inputNumber">`;
                     break;
                 case 8:
-                    cell.innerHTML = `<input type="number" step="any" placeholder="Suma asegurada" data-money oninput="this.className = ''"
+                    cell.innerHTML = `<input type="number" step="any" placeholder="..." data-money
+                    name="deducible_aerial[]">`;
+                    break;
+                case 9:
+                    cell.innerHTML = `<input type="number" step="any" placeholder="Suma asegurada" data-money
                     name="sum_insured[]" id="insuredSum">`;
                     break;
                 default:

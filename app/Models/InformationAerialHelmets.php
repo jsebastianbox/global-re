@@ -20,6 +20,7 @@ class InformationAerialHelmets extends Model
         'cap_crew',
         'cap_pax',
         'sum_insured',
+        'deducible_aerial',
         'slip_aviation_one_id',
         'slip_id'
     ];

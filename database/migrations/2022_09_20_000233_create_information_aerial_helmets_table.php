@@ -28,6 +28,7 @@ class CreateInformationAerialHelmetsTable extends Migration
             $table->string('cap_crew')->nullable();
             $table->string('cap_pax')->nullable();
             $table->string('sum_insured')->nullable();
+            $table->string('deducible_aerial')->nullable();
             // $table->foreignId('slip_aviation_ones_id')->constrained('slip_aviation_ones')
             //     ->onDelete("cascade")
             //     ->onUpdate("cascade");

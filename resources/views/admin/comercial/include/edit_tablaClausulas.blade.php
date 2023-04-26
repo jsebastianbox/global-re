@@ -261,7 +261,7 @@
                         </button>
                         @break
                     @case(51)
-                        <button onclick="addRowClausula(event, '', 'fianzas','all')" class="btn btn-success btn-xs">
+                    <button onclick="addRowClausula(event, '', 'fianzas','all')" class="btn btn-success btn-xs">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         </button>
                         @break
@@ -281,17 +281,18 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>
-                            <select name="description_clause_additional[]" {{-- class="selectClausula" --}}>
+                            <select name="description_clause_additional[]" {{-- class="selectClausula" --}} disabled>
                                 @foreach ($clausulasSelect as $clausulaSelect)
                                     <option value="{{ $clausulaSelect->name }}" 
                                             @if ($clausulaSelect->id == $item->description_clause_additional) 
                                                 selected 
                                             @elseif($clausulaSelect->name == $item->description_clause_additional)
                                                 selected
-                                            @endif >
+                                            @endif >    
                                         {{ $clausulaSelect->name }}
                                     </option>
                                 @endforeach
+                                <option value="{{$item->description_clause_additional}}">{{$item->description_clause_additional}}</option>
                             </select>
                         </td>
                         <td>
