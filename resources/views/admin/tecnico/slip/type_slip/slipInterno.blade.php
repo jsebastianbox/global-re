@@ -12,7 +12,158 @@
         @include('admin.tecnico.slip.slips_generales.initial')
 
         @include('admin.tecnico.slip.slips_generales.objectInsuranceAndCoverage')
+        
+        @if ($slip->type_coverage !== 31)
+            <div class="two-sides" style='margin-top:50px'>
+                <div class="left_side">
+                    @if ($slip->type_coverage === 30)
+                        
+                        <div class="input_group">
+                            <label>
+                                <i class="fa-solid fa-bars-staggered"></i>
+                                Beneficiario:
+                            </label>
+                            <input type="text" name="beneficiary" 
+                                placeholder="...">
+                        </div>
+                        <div class="input_group">
+                            <label>
+                                <i class="fa-solid fa-bars-staggered"></i>
+                                Base de valoración y liquidación de pérdida:
+                            </label>
+                            <input type="text" name="valuation_and_loss" 
+                                placeholder="...">
+                        </div>
+                        <div class="input_group">
+                            <label>
+                                <i class="fa-solid fa-bars-staggered"></i>
+                                Comisión sobre utilidades:
+                            </label>
+                            <input type="text" name="utility_commission" 
+                                placeholder="...">
+                        </div>
+                    @endif
+                    {{-- Trayecto asegurado --}}
+                    <div class="input_group">
+                        <label for="internoTrayectoAsegurado">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Trayecto asegurado:
+                        </label>
+                        <input type="text" id="internoTrayectoAsegurado" name="insured_journey" 
+                            placeholder="..." value="{{ $slip_type->insured_journey }}">
+                    </div>
+                    {{-- Clase de mercancía --}}
 
+                    <div class="input_group">
+                        <label for="internoClase">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Clase de mercancía:
+                        </label>
+                        <select name="type_merchandise" id="internoClase">
+                            <option value="0" >Selecciona</option>
+                            <option value="granel" @if ($slip_type->type_merchandise == 'granel') selected @endif>granel</option>
+                            <option value="perecible"@if ($slip_type->type_merchandise == 'perecible') selected @endif>Perecible (refrigerados, congelados o calefacción)</option>
+                            <option value="valiosa"@if ($slip_type->type_merchandise == 'valiosa') selected @endif>Mercancía valiosa</option>
+                            <option value="tfibra"@if ($slip_type->type_merchandise == 'peligrosa') selected @endif>Mercancía Peligrosa</option>
+                            <option value="tplastico"@if ($slip_type->type_merchandise == 'semovientes') selected @endif>Semovientes</option>
+                            <option value="general"@if ($slip_type->type_merchandise == 'general') selected @endif>Mercancía general</option>
+                        </select>
+                    </div>
+                    {{-- Tipo de embalaje --}}
+                    <div class="input_group">
+                        <label for="internoTipoEmbalaje">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Tipo de embalaje:
+                        </label>
+                        <select name="type_packing" id="internoTipoEmbalaje">
+                            <option value="0" >Selecciona</option>
+                            <option value="vidon" @if ($slip_type->type_packing == 'vidon') selected @endif>Vidones/Toneles</option>
+                            <option value="huacal"@if ($slip_type->type_packing == 'huacal') selected @endif>Huacales</option>
+                            <option value="caja"@if ($slip_type->type_packing == 'caja') selected @endif>Cajas de fibra</option>
+                            <option value="tfibra"@if ($slip_type->type_packing == 'tfibra') selected @endif>Tambores de fibra</option>
+                            <option value="tplastico"@if ($slip_type->type_packing == 'tplastico') selected @endif>Tambores de plástico</option>
+                            <option value="tmetal"@if ($slip_type->type_packing == 'tmetal') selected @endif>Tambores de metal</option>
+                            <option value="bobina"@if ($slip_type->type_packing == 'bobina') selected @endif>Bobinas</option>
+                            <option value="bala"@if ($slip_type->type_packing == 'bala') selected @endif>Balas</option>
+                        </select>
+                    </div>
+
+                    
+                    
+                </div>
+
+                <div class="right_side">
+                {{-- Tipo de unificador --}}
+                    <div class="input_group">
+                        <label for="internoTipoUnificador">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Tipo de unificador:
+                        </label>
+                        <select name="type_unify" id="internoTipoUnificador">
+                            <option value="0" >Selecciona</option>
+                            <option value="pallet" @if ($slip_type->type_unify == 'pallet') selected @endif>Pallet</option>
+                            <option value="contenedor"@if ($slip_type->type_unify == 'contenedor') selected @endif>Contenedores</option>
+                            <option value="intermodal"@if ($slip_type->type_unify == 'intermodal') selected @endif>Intermodales</option>
+                            <option value="iglu"@if ($slip_type->type_unify == 'iglu') selected @endif>Iglu (aéreo)</option>
+                        </select>
+                    </div>
+                    {{-- Medio de transporte --}}
+                    <div class="input_group">
+                        <label for="internoMedioTransporte">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Medio de transporte:
+                        </label>
+                        <select name="transportation" id="internoMedioTransporte">
+                            <option value="0" >Selecciona</option>
+                            <option value="maritimo" @if ($slip_type->transportation == 'maritimo') selected @endif>Marítimo</option>
+                            <option value="aereo"@if ($slip_type->transportation == 'aereo') selected @endif>Aéreo</option>
+                            <option value="terrestre"@if ($slip_type->transportation == 'terrestre') selected @endif>Terrestre</option>
+                            <option value="ferreo"@if ($slip_type->transportation == 'ferreo') selected @endif>Férreo</option>
+                            <option value="combinado"@if ($slip_type->transportation == 'combinado') selected @endif>Combinado</option>
+                        </select>
+                    </div>
+                    {{-- Estimado de movilización anual --}}
+                    <div class="input_group">
+                        <label for="internoMovilizacion">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Estimado de movilización anual:
+                        </label>
+                        <input type="number" step="any" id="internoMovilizacion" name="annual_mobilization" placeholder="0" 
+                            value="{{ $slip_type->annual_mobilization }}">
+                    </div>
+                    {{-- Límite por embarque --}}
+                    <div class="input_group">
+                        <label for="internoLimiteEmbarque">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Límite por embarque:
+                        </label>
+                        <input type="number" step="any" id="internoLimiteEmbarque" name="limit_shipment" placeholder="0" 
+                            value="{{ $slip_type->limit_shipment }}">
+                    </div>
+                    {{-- Fecha aproximada de salida --}}
+                    <div class="input_group">
+                        <label for="internoFechaSalida">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Fecha aproximada de salida:
+                        </label>
+                        <input type="text" id="internoFechaSalida" name="departure_date" placeholder="0" 
+                            value="{{ $slip_type->departure_date }}">
+                    </div>
+                    {{-- Fecha aproximada de llegada --}}
+                    <div class="input_group">
+                        <label for="internoFechaLlegada">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Fecha aproximada de llegada:
+                        </label>
+                        <input type="text" id="internoFechaLlegada" name="arrival_date" placeholder="0" 
+                            value="{{ $slip_type->arrival_date }}">
+                    </div>
+                    
+                </div>
+            </div>  
+        @endif
+
+        @if ($slip->type_coverage === 31)
         <div class="two-sides" style='margin-top:50px'>
             <div class="left_side">
                 @if ($slip->type_coverage === 30)
@@ -51,59 +202,6 @@
                     <input type="text" id="internoTrayectoAsegurado" name="insured_journey" 
                         placeholder="..." value="{{ $slip_type->insured_journey }}">
                 </div>
-                {{-- Clase de mercancía --}}
-                <div class="input_group">
-                    <label for="internoClase">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Clase de mercancía:
-                    </label>
-                    <select name="type_merchandise" id="internoClase">
-                        <option value="0" >Selecciona</option>
-                        <option value="granel" @if ($slip_type->type_merchandise == 'granel') selected @endif>granel</option>
-                        <option value="perecible"@if ($slip_type->type_merchandise == 'perecible') selected @endif>Perecible (refrigerados, congelados o calefacción)</option>
-                        <option value="valiosa"@if ($slip_type->type_merchandise == 'valiosa') selected @endif>Mercancía valiosa</option>
-                        <option value="tfibra"@if ($slip_type->type_merchandise == 'peligrosa') selected @endif>Mercancía Peligrosa</option>
-                        <option value="tplastico"@if ($slip_type->type_merchandise == 'semovientes') selected @endif>Semovientes</option>
-                        <option value="general"@if ($slip_type->type_merchandise == 'general') selected @endif>Mercancía general</option>
-                    </select>
-                </div>
-                {{-- Tipo de embalaje --}}
-                <div class="input_group">
-                    <label for="internoTipoEmbalaje">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Tipo de embalaje:
-                    </label>
-                    <select name="type_packing" id="internoTipoEmbalaje">
-                        <option value="0" >Selecciona</option>
-                        <option value="vidon" @if ($slip_type->type_packing == 'vidon') selected @endif>Vidones/Toneles</option>
-                        <option value="huacal"@if ($slip_type->type_packing == 'huacal') selected @endif>Huacales</option>
-                        <option value="caja"@if ($slip_type->type_packing == 'caja') selected @endif>Cajas de fibra</option>
-                        <option value="tfibra"@if ($slip_type->type_packing == 'tfibra') selected @endif>Tambores de fibra</option>
-                        <option value="tplastico"@if ($slip_type->type_packing == 'tplastico') selected @endif>Tambores de plástico</option>
-                        <option value="tmetal"@if ($slip_type->type_packing == 'tmetal') selected @endif>Tambores de metal</option>
-                        <option value="bobina"@if ($slip_type->type_packing == 'bobina') selected @endif>Bobinas</option>
-                        <option value="bala"@if ($slip_type->type_packing == 'bala') selected @endif>Balas</option>
-                    </select>
-                </div>
-                
-                
-            </div>
-
-            <div class="right_side">
-                {{-- Tipo de unificador --}}
-                <div class="input_group">
-                    <label for="internoTipoUnificador">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Tipo de unificador:
-                    </label>
-                    <select name="type_unify" id="internoTipoUnificador">
-                        <option value="0" >Selecciona</option>
-                        <option value="pallet" @if ($slip_type->type_unify == 'pallet') selected @endif>Pallet</option>
-                        <option value="contenedor"@if ($slip_type->type_unify == 'contenedor') selected @endif>Contenedores</option>
-                        <option value="intermodal"@if ($slip_type->type_unify == 'intermodal') selected @endif>Intermodales</option>
-                        <option value="iglu"@if ($slip_type->type_unify == 'iglu') selected @endif>Iglu (aéreo)</option>
-                    </select>
-                </div>
                 {{-- Medio de transporte --}}
                 <div class="input_group">
                     <label for="internoMedioTransporte">
@@ -127,7 +225,10 @@
                     </label>
                     <input type="number" step="any" id="internoMovilizacion" name="annual_mobilization" placeholder="0" 
                         value="{{ $slip_type->annual_mobilization }}">
-                </div>
+                </div>                
+            </div>
+
+            <div class="right_side">
                 {{-- Límite por embarque --}}
                 <div class="input_group">
                     <label for="internoLimiteEmbarque">
@@ -157,7 +258,8 @@
                 </div>
                 
             </div>
-        </div>
+        </div>  
+        @endif
 
     </div>
 

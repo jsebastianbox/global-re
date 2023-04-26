@@ -671,6 +671,7 @@ class CompromisoController extends Controller
             case '28':
             case '29':
             case '30':
+            case '31':
                 $slip_type = SlipMaritimeFour::where('slip_id', $id)->first();
                 $view = $this->chargeFilesIntoView("maritimo_4", "maritimo_4", $slip_type->id, $view);
                 $boat_detail = [];
