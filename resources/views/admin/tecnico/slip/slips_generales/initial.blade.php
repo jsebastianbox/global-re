@@ -160,7 +160,7 @@
             <input type="text" id="insuranceBroker" name="insuranceBroker" value="{{ $slip->insuranceBroker }}" disabled>
         </div>
 
-        @if ($slip->type_coverage != 2 && $slip->type_coverage !== 4 && $slip->type_coverage !== 5 && $slip->type_coverage !== 6 && $slip->type_coverage !== 7 && $slip->type_coverage !== 8 && $slip->type_coverage !== 11 && $slip->type_coverage !== 12 && $slip->type_coverage !== 13 && $slip->type_coverage !== 14 && $slip->type_coverage !==15 && $slip->type_coverage !== 16 && $slip->type_coverage !== 17 && $slip->type_coverage !== 18 && $slip->type_coverage !== 19 && $slip->type_coverage !== 20)
+        @if ($slip->type_coverage != 2 && $slip->type_coverage !== 4 && $slip->type_coverage !== 5 && $slip->type_coverage !== 6 && $slip->type_coverage !== 7 && $slip->type_coverage !== 8 && $slip->type_coverage !== 11 && $slip->type_coverage !== 12 && $slip->type_coverage !== 13 && $slip->type_coverage !== 14 && $slip->type_coverage !==15 && $slip->type_coverage !== 16 && $slip->type_coverage !== 17 && $slip->type_coverage !== 18 && $slip->type_coverage !== 19 && $slip->type_coverage !== 20 && $slip->type_coverage !== 33 && $slip->type_coverage !== 35 && $slip->type_coverage !== 36 && $slip->type_coverage !== 37)
             <div class="input_group">
                 <label >
                     <i class="fa-solid fa-bars-staggered"></i>

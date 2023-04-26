@@ -12,52 +12,8 @@
 
         @include('admin.tecnico.slip.slips_generales.initial')
 
-        <div class="two-sides">
+        @include('admin.tecnico.slip.slips_generales.objectInsuranceAndCoverage')
 
-            <div class="left_side">
-                {{-- Objeto del seguro: --}}
-                <div class="input_group">
-                    <label for="cascoAereoObjetoSeguro">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Objeto del seguro:
-                    </label>
-                    <textarea name="object_insurance" cols="30" rows="1">{{ $slip_type->object_insurance }}</textarea>
-                </div>
-
-                {{-- Usos: --}}
-                <div class="input_group">
-                    <label for="cascoAereoUsos">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Usos:
-                    </label>
-                    <input type="text" id="cascoAereoUsos" name="use_aerial" placeholder="...">
-                </div>
-
-            </div>
-
-            <div class="right_side">
-
-                {{-- Límite geográfico: --}}
-                <div class="input_group">
-                    <label for="cascoAereoGeografico">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Límite geográfico:
-                    </label>
-                    <input type="text" value="{{ $slip_type->geography_limit }}" name="geography_limit">
-                </div>
-                {{-- Pilotos autorizados --}}
-                <div class="input_group">
-                    <label>
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Pilotos autorizados:
-                    </label>
-                    <input type="text" value="{{ $slip_type->pilot_authorized }}" name="pilot_authorized">
-                </div>
-
-
-            </div>
-
-        </div>
     </div>
 
     <div class="form_group2">
@@ -161,62 +117,126 @@
 
             </table>
 
-            <div class="input_group" style="margin-top: 2rem; max-width:400px">
-                <label>
-                    <i class="fa-sharp fa-solid fa-plane"></i>
-                    Tipo de aviación
-                </label>
-                <select name="type_aviation" id="tipoAviacion">
-                    <option value="" selected disabled>Seleccionar</option>
-                    <option value="comercial" @if($slip_type->type_aviation == 'comercial') selected @endif >Comercial</option>
-                    <option value="general" @if($slip_type->type_aviation == 'general') selected @endif >General</option>
-                    <option value="escuela" @if($slip_type->type_aviation == 'escuela') selected @endif >Escuelas de aviación</option>
-                    <option value="fumigacion" @if($slip_type->type_aviation == 'fumigacion') selected @endif >Fumigación</option>
-                    <option value="privado" @if($slip_type->type_aviation == 'privado') selected @endif >Privado placer</option>
-                </select>
+            <div class="two-sides">
+
+                <div class="left_side">
+                    @if ($slip->type_coverage === 33)
+                        <div class="input_group">
+                            <label >
+                                <i class="fa-solid fa-bars-staggered"></i>
+                                Valor Asegurado
+                            </label>
+                            <input type="text" name="valor_asegurado" id="value_for_calculos" value="{{ $slip->valor_asegurado }}">
+                        </div>
+                        <div class="input_group">
+                            <label >
+                                <i class="fa-solid fa-bars-staggered"></i>
+                                Límite de indemnización
+                            </label>
+                            <input type="text" name="limit_compensation" value="{{ $slip_type->limit_compensation }}">
+                        </div>
+                    @endif
+                    <div class="input_group">
+                        <label>
+                            <i class="fa-sharp fa-solid fa-plane"></i>
+                            Tipo de aviación
+                        </label>
+                        <select name="type_aviation" id="tipoAviacion">
+                            <option value="" selected disabled>Seleccionar</option>
+                            <option value="comercial" @if($slip_type->type_aviation == 'comercial') selected @endif >Comercial</option>
+                            <option value="general" @if($slip_type->type_aviation == 'general') selected @endif >General</option>
+                            <option value="escuela" @if($slip_type->type_aviation == 'escuela') selected @endif >Escuelas de aviación</option>
+                            <option value="fumigacion" @if($slip_type->type_aviation == 'fumigacion') selected @endif >Fumigación</option>
+                            <option value="privado" @if($slip_type->type_aviation == 'privado') selected @endif >Privado placer</option>
+                        </select>
+                    </div>
+    
+                    {{-- Usos: --}}
+                    <div class="input_group">
+                        <label for="cascoAereoUsos">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Usos:
+                        </label>
+                        <input type="text" id="cascoAereoUsos" name="use_aerial" placeholder="...">
+                    </div>
+    
+                </div>
+    
+                <div class="right_side">
+    
+                    {{-- Límite geográfico: --}}
+                    <div class="input_group">
+                        <label for="cascoAereoGeografico">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Límite geográfico:
+                        </label>
+                        <input type="text" value="{{ $slip_type->geography_limit }}" name="geography_limit">
+                    </div>
+                    {{-- Pilotos autorizados --}}
+                    <div class="input_group">
+                        <label>
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Pilotos autorizados:
+                        </label>
+                        <input type="text" value="{{ $slip_type->pilot_authorized }}" name="pilot_authorized">
+                    </div>
+    
+    
+                </div>
+    
             </div>
+
+            
         </div>
     </div>
 
     <div class="form_group3">
-        <h3 class="slipTitle"> <span class="badge badge-secondary">4</span> Coberturas y Límites</h3>
-
-
-                
-        @if (count($aviation_extras) > 0)
-            @foreach ($aviation_extras as $key => $item )
-                <p class="slipTitle">{{$item->description_coverage}}:</p>
-                <div class="two-sides" style="justify-content:space-between">
-                    <div class="left_side">
-                        <div class="input_group">
-                            <label for="" style="margin-right:1rem">
-                                Cobertura
-                            </label>
-                            <input type="hidden" name="description_coverage[]" value="{{$item->description_coverage}}">
-                            <input type="text" name="aditional_coverage[]" value="{{$item->aditional_coverage}}" >
-                        </div>
-                    </div>
-                    <div class="right_side">
-                        <div class="input_group">
-                            <label for="" style="margin-right:1rem">
-                                Límite
-                            </label>
-                            <input type="hidden" name="limit_description_coverage[]" value="{{$item->limit_description_coverage}}">
-                            <input type="text" name="limit_aditional_coverage[]" value="{{$item->limit_aditional_coverage}}" >
-                        </div>
-                    </div>
-                </div>
-            @endforeach
+        @if ($slip->type_coverage === 33)
+            <h3 class="slipTitle"> <span class="badge badge-secondary">5</span> Coberturas Adicionales</h3>
+            
+            @include('admin.comercial.include.edit_tablaCoberturas')
         @endif
+        @if ($slip->type_coverage === 32)
+            <h3 class="slipTitle"> <span class="badge badge-secondary">4</span> Coberturas y Límites</h3>
 
+
+                    
+            @if (count($aviation_extras) > 0)
+                @foreach ($aviation_extras as $key => $item )
+                    <p class="slipTitle">{{$item->description_coverage}}:</p>
+                    <div class="two-sides" style="justify-content:space-between">
+                        <div class="left_side">
+                            <div class="input_group">
+                                <label for="" style="margin-right:1rem">
+                                    Cobertura
+                                </label>
+                                <input type="hidden" name="description_coverage[]" value="{{$item->description_coverage}}">
+                                <input type="text" name="aditional_coverage[]" value="{{$item->aditional_coverage}}" >
+                            </div>
+                        </div>
+                        <div class="right_side">
+                            <div class="input_group">
+                                <label for="" style="margin-right:1rem">
+                                    Límite
+                                </label>
+                                <input type="hidden" name="limit_description_coverage[]" value="{{$item->limit_description_coverage}}">
+                                <input type="text" name="limit_aditional_coverage[]" value="{{$item->limit_aditional_coverage}}" >
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
+        @endif
 
     </div>
 
     <div class="form_group4">
-        <h3 class="slipTitle"> <span class="badge badge-secondary">5</span> Coberturas Adicionales</h3>
-        
 
-        @include('admin.comercial.include.edit_tablaCoberturas')
+        @if ($slip->type_coverage === 32)
+            <h3 class="slipTitle"> <span class="badge badge-secondary">5</span> Coberturas Adicionales</h3>
+            
+            @include('admin.comercial.include.edit_tablaCoberturas')
+        @endif
 
         
         {{-- Cláusulas Adicionales --}}
@@ -240,13 +260,6 @@
     </div>
 
     <div class="form_group6">
-
-        <div class="tableContainer" style="1.2rem 0">
-            <h4 class="slipTitle">Siniestralidad ultimos 5 años</h4>
-            <div class="flexColumnCenterContainer" style="max-width:450px">
-                <textarea name="accidentRate">{{$slip->accidentRate}}</textarea>
-            </div>
-        </div>
 
         <div class="tableContainer" style="1.2rem 0">
             <h4 class="slipTitle">Condiciones precedentes de cobertura</h4>

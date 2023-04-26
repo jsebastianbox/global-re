@@ -1345,8 +1345,8 @@ function updateS7() {
             })
             element.setAttribute('value', '35');
             aviacion_3_form.appendChild(element);
-            clausulasSelect(".selectClausula", "maritimo", "rca");
-            coberturasSelect(".selectCobertura", "maritimo", "rca");
+            clausulasSelect(".selectClausula", "aviacion", "casco");
+            coberturasSelect(".selectCobertura", "aviacion", "casco");
             break;
         case "rch":
             currentTab = 0;
@@ -1364,8 +1364,8 @@ function updateS7() {
             })
             element.setAttribute('value', '36');
             aviacion_3_form.appendChild(element);
-            clausulasSelect(".selectClausula", "maritimo", "rch");
-            coberturasSelect(".selectCobertura", "maritimo", "rch");
+            clausulasSelect(".selectClausula", "aviacion", "casco");
+            coberturasSelect(".selectCobertura", "aviacion", "casco");
             break;
         case "ariel":
             currentTab = 0;
@@ -1383,8 +1383,8 @@ function updateS7() {
             })
             element.setAttribute('value', '37');
             aviacion_3_form.appendChild(element);
-            clausulasSelect(".selectClausula", "maritimo", "ariel");
-            coberturasSelect(".selectCobertura", "maritimo", "ariel");
+            clausulasSelect(".selectClausula", "aviacion", "casco");
+            coberturasSelect(".selectCobertura", "aviacion", "casco");
             break;
         default:
             currentTab = 0;
