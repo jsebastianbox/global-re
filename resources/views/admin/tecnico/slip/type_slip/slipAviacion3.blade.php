@@ -11,80 +11,8 @@
 
         @include('admin.tecnico.slip.slips_generales.initial')
 
-        {{-- table Objetos del seguro --}}
-        <div class="tableContainer">
-            <h4 class="slipTitle">Objeto(s) del seguro</h4>
+        @include('admin.tecnico.slip.slips_generales.objectInsuranceAndCoverage')
 
-            <table id="tableObjetosSeguro" class="indemnizacionTable">
-                <thead>
-                    <tr>
-                        <th style="text-align: center">Número</th>
-                        <th style="text-align: center">Nombre</th>
-                        <th style="text-align: center">Fecha de nacimiento</th>
-                        <th style="text-align: center">Edad</th>
-                        <th style="text-align: center">Ingreso anual</th>
-                        <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1"
-                            colspan="1" aria-label="Add row">
-                            <button type="button" onclick="addRowObjetoSeguroV2(event)" class="btn btn-success btn-xs">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                            </button>
-                        </th>
-                    </tr>
-                </thead>
-
-                <tbody id="objetosTableBody">
-
-                    {{-- @if (count($slip_type->object_insurance) > 0)
-                        @foreach ($slip_type->object_insurance as $key => $item)
-                            <tr>
-                                <td style="text-align: center">
-                                    <input type="text" name="number[]" value="{{ $item->number }}">
-                                </td>
-
-                                <td style="text-align: center">
-                                    <input type="text" name="name[]" value="{{ $item->name }}">
-                                </td>
-                                <td style="text-align: center">
-                                    <input type="date" name="birthday[]" value="{{ $item->birthday }}">
-                                </td>
-                                <td style="text-align: center">
-                                    <input type="number" step="any" name="age[]" value="{{ $item->age }}">
-                                </td>
-                                <td style="text-align: center">
-                                    <input type="number" step="any" name="limit[]" value="{{ $item->limit }}">
-                                </td>
-                                
-                                <td></td>
-                            </tr>
-                        @endforeach
-                    @else --}}
-                        <tr>
-                            <td style="text-align: center">
-                                <input type="text" name="number[]">
-                            </td>
-                            <td style="text-align: center">
-                                <input type="text" name="name[]">
-                            </td>
-                            <td style="text-align: center">
-                                <input type="date" name="birthday[]">
-                            </td>
-                            <td style="text-align: center">
-                                <input type="number" step="any" name="age[]">
-                            </td>
-                            <td style="text-align: center">
-                                <input type="number" step="any" name="limit[]">
-                            </td>
-                            
-                            <td></td>
-                        </tr>
-                    {{-- @endif --}}
-
-                    
-                </tbody>
-
-            </table>
-
-        </div>
 
         <div class="two-sides">
             <div class="left_side">
@@ -126,13 +54,15 @@
         {{-- Coberturas adicionales --}}
         <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Coberturas Adicionales</h3>
 
-        @include('admin.tecnico.slip.slips_generales.tableCoberturasAdicionales')
+        @include('admin.comercial.include.edit_tablaCoberturas')
+
     </div>
 
     <div class="form_group3">
         <h3 class="slipTitle"> <span class="badge badge-secondary">3</span> Cláusulas Adicionales</h3>
 
-        @include('admin.tecnico.slip.slips_generales.clausulasAdicionales')
+        @include('admin.comercial.include.edit_tablaClausulas')
+
 
     </div>
 

@@ -41,7 +41,6 @@
                         <input type="text" name="utility_commission" 
                             placeholder="...">
                     </div>
-
                 @endif
                 {{-- Trayecto asegurado --}}
                 <div class="input_group">
