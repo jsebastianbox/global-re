@@ -209,6 +209,10 @@
             currencyToUSD();
             let formData = new FormData(this);
 
+            for (let [clave, valor] of formData.entries()) {
+                console.log(clave + ': ' + valor);
+            }
+
             $.ajax({
                 type: 'POST',
                 url: window.location.origin + "/api/storeSlip",

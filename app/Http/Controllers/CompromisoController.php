@@ -126,14 +126,13 @@ class CompromisoController extends Controller
         return json_encode($slips);
     }
 
-    public function destroy($id){
-        
+    public function destroy($id)
+    {
+
         $slip = Slip::find($id);
-        $id = $slip->id;
-        $slip_type = null;
         
         if(!$slip){
-            return redirect()->route('dashboard');
+            return redirect()->route('/');
         }
         
         switch ($slip->type_coverage) {
@@ -306,8 +305,8 @@ class CompromisoController extends Controller
         $path = "app/slips/". $case ."/" . $id. "/";
         
         // Elinina archivos del directorio
-        $this->removeDir($path."*.*");
-        
+        $this->removeDir($path . "*.*");
+
         // Elimina el directorio
         $this->removeDirectory($path);
         

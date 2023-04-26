@@ -2326,7 +2326,7 @@ function addDeducible(event, slipType) {
             <div class="input-group">
                 <span class="input-group-text">%</span>
                 <input class="form-control" type="number" min="0" max="100" step="any"
-                    name="insured_value[]">
+                    name="insured_value_array[]">
                 <span class="input-group-text">del valor asegurado</span>
             </div>
                     <div class="input-group">
@@ -3040,13 +3040,10 @@ function countryLeyJurisdiccion() {
     $('[name="country_id"]').each(function () {
         arrCountries.push($(this).find('option:selected').text())
     })
-    console.log(arrCountries)
 
     var countryFound = arrCountries.filter(function(elemento) {
         return elemento !== '';
     })[0];
-
-    console.log(countryFound);
 
     for (let i = 0; i < country2Select.length; i++) {
         countrySpan[i].innerText = countryFound

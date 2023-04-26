@@ -158,7 +158,6 @@ function toggleClass(el, className) {
 function addResizeListeners() {
     $(window).resize(function (e) {
         const width = window.innerWidth;
-        console.log("width: ", width);
 
         if (width > 750) {
             sidenavEl.removeClass(SIDENAV_ACTIVE_CLASS);
