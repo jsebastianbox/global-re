@@ -3028,8 +3028,6 @@ function countryLeyJurisdiccion() {
         return elemento !== '';
     })[0];
 
-    console.log(countryFound);
-
     for (let i = 0; i < country2Select.length; i++) {
         countrySpan[i].innerText = countryFound
         country2Select[i].innerText = countryFound
