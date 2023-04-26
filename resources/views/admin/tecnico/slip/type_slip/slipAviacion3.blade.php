@@ -15,37 +15,62 @@
 
 
         <div class="two-sides">
+
             <div class="left_side">
+                    <div class="input_group">
+                        <label >
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Valor Asegurado
+                        </label>
+                        <input type="text" name="valor_asegurado" id="value_for_calculos" value="{{ $slip->valor_asegurado }}">
+                    </div>
+                    <div class="input_group">
+                        <label >
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Límite de indemnización
+                        </label>
+                        <input type="text" name="limit_compensation" value="{{ $slip_type->limit_compensation }}">
+                    </div>
                 <div class="input_group">
-                    <label >
-                        <i class="fa-solid fa-pager"></i>
-                        Límite de indemnización:
+                    <label>
+                        <i class="fa-sharp fa-solid fa-plane"></i>
+                        Tipo de aviación
                     </label>
-                    <input type="text" name="limit_compensation" value="{{ $slip->limit_compensation }}">
+                    <select name="type_aviation" id="tipoAviacion">
+                        <option value="" selected disabled>Seleccionar</option>
+                        <option value="comercial" @if($slip_type->type_aviation == 'comercial') selected @endif >Comercial</option>
+                        <option value="general" @if($slip_type->type_aviation == 'general') selected @endif >General</option>
+                        <option value="escuela" @if($slip_type->type_aviation == 'escuela') selected @endif >Escuelas de aviación</option>
+                        <option value="fumigacion" @if($slip_type->type_aviation == 'fumigacion') selected @endif >Fumigación</option>
+                        <option value="privado" @if($slip_type->type_aviation == 'privado') selected @endif >Privado placer</option>
+                    </select>
                 </div>
 
-                <div class="input_group">
-                    <label for="licenciaGeografico">
-                        <i class="fa-solid fa-pager"></i>
-                        Límite geográfico:
-                    </label>
-                    <input type="text" id="licenciaGeografico" name="geography_limit">
-                </div>
 
             </div>
 
             <div class="right_side">
+                {{-- Usos: --}}
                 <div class="input_group">
-                    <label for="licenciaUsos" style="margin-right: 3rem">
-                        <i class="fa-solid fa-pager"></i>
+                    <label for="cascoAereoUsos">
+                        <i class="fa-solid fa-bars-staggered"></i>
                         Usos:
                     </label>
-                    <input type="text" id="licenciaUsos" name="use_loss_license'">
+                    <input type="text" id="cascoAereoUsos" name="use_aerial" placeholder="...">
+                </div>
+                
+                {{-- Límite geográfico: --}}
+                <div class="input_group">
+                    <label for="cascoAereoGeografico">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                        Ubicación:
+                    </label>
+                    <input type="text" value="{{ $slip_type->geography_limit }}" name="geography_limit">
                 </div>
 
-                
 
             </div>
+
         </div>
 
     </div>

@@ -275,19 +275,20 @@
         @endif
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-7">
+                <div class="input-group mb-3">
+                    <label class="input-group-text">Pilotos autorizados</label>
+                    <textarea name="pilot_authorized" cols="35" rows="2">{{ $slip_type->pilot_authorized }}</textarea>
+                </div>
+            </div>
+            <div class="col-md-5">
                 <div class="input-group mb-3">
                     <label class="input-group-text">Límite geográfico</label>
                     <input type="text" name="geography_limit" value="{{ $slip_type->geography_limit }}">
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="input-group mb-3">
-                    <label class="input-group-text">Pilotos autorizados</label>
-                    <input type="text" name="pilot_authorized" value="{{ $slip_type->pilot_authorized }}">
-                </div>
-            </div>
+
         </div>
 
 
@@ -845,19 +846,20 @@
 
     <div class="tab">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-7">
+                <div class="input-group mb-3">
+                    <label class="input-group-text">Pilotos autorizados</label>
+                    <textarea name="pilot_authorized" cols="35" rows="2"></textarea>
+                </div>
+            </div>
+            <div class="col-md-5">
                 <div class="input-group mb-3">
                     <label class="input-group-text">Límite geográfico</label>
                     <input type="text" name="geography_limit">
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="input-group mb-3">
-                    <label class="input-group-text">Pilotos autorizados</label>
-                    <input type="text" name="pilot_authorized">
-                </div>
-            </div>
+
         </div>
 
         <div class="row mb-3">

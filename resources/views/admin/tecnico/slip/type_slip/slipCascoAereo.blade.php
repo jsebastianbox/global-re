@@ -178,7 +178,8 @@
                             <i class="fa-solid fa-bars-staggered"></i>
                             Pilotos autorizados:
                         </label>
-                        <input type="text" value="{{ $slip_type->pilot_authorized }}" name="pilot_authorized">
+                        <textarea name="pilot_authorized" cols="30" rows="10">{{ $slip_type->pilot_authorized }}</textarea>
+
                     </div>
     
     

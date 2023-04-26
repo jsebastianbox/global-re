@@ -49,7 +49,7 @@
 </script>
 <div class="card py-4 px-2">
     <form enctype="multipart/form-data" method="POST" action="{{ route('slip.update', $slip->id) }}" id="aviacion_3_form">
-
+        @method('PUT')
         @csrf
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="hidden" name="type_slip" value="aviacion_3_form">
@@ -182,65 +182,6 @@
     </div>
 
     <div class="tab">
-
-        <div class="row my-3">
-            <label class="lead">Datos de la Aeronave</label>
-            <hr>
-        </div>
-
-        <div class="row">
-            <table class="table" style="overflow-x: auto" id="aeronaveAdicional2">
-                <thead>
-                    <tr>
-                        <th scope="col">No.</th>
-                        <th scope="col">Tipo Ala</th>
-                        <th scope="col">Serie</th>
-                        <th scope="col">Marca</th>
-                        <th scope="col">Modelo</th>
-                        <th scope="col">Año fabricación</th>
-                        <th scope="col">Capacidad tripulantes</th>
-                        <th scope="col">Capacidad pasajeros</th>
-                        <th scope="col">Deducibles</th>
-                        <th scope="col">Suma asegurada</th>
-                        <th scope="col"><input type="button" value="Agregar campo" onclick="addAeronaveRow('aeronaveAdicional2')"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <th scope="row">1</th>
-                    <td>
-                        <select name="type_ala_aerial[]" id="ala">
-                            <option value="" selected disabled>Seleccionar</option>
-                            <option value="fija">Fija</option>
-                            <option value="rotativa">Rotativa</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input type="text" name="serie_aerial[]" class="inputNumber">
-                    </td>
-                    <td>
-                        <input type="text" name="marca_aerial[]" class="inputNumber">
-                    </td>
-                    <td>
-                        <input type="text" name="model_aerial[]"  class="inputNumber">
-                    </td>
-                    <td>
-                        <input type="number" step="any" name="year_manufacture_aerial[]" min="1960">
-                    </td>
-                    <td>
-                        <input type="number" name="cap_crew[]" id="capacity" min="1" step="1" class="inputNumber">
-                    </td>
-                    <td>
-                        <input type="number" step="any" name="cap_pax[]" class="inputNumber">
-                    </td>
-                    <td>
-                        <input type="number" step="any" name="deducible_aerial[]">
-                    </td>
-                    <td>
-                        <input type="number" step="any" placeholder="Suma asegurada" name="sum_insured[]" id="insuredSum" data-money>
-                    </td>
-                </tbody>
-            </table>
-        </div>
 
         <div class="row">
 
