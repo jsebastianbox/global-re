@@ -11,16 +11,7 @@
 
         @include('admin.tecnico.slip.slips_generales.initial')
 
-        <div class="tableContainer">
-            <div class="input_group" style="max-width:600px">
-                <label for="licenciaCobertura">
-                    <i class="fa-solid fa-pager"></i>
-                    Cobertura:
-                </label>
-                <textarea name="coverage" id="coverage" style="resize:both;width:100%;" 
- cols="30" rows="1">{{ $slip_type->coverage }}</textarea>
-            </div>
-        </div>
+        @include('admin.tecnico.slip.slips_generales.objectInsuranceAndCoverage')
 
         {{-- table Objetos del seguro --}}
         <div class="tableContainer">
@@ -29,7 +20,7 @@
             <table id="tableObjetosSeguro" class="indemnizacionTable">
                 <thead>
                     <tr>
-                        <th style="text-align: center">Número</th>
+                        <th style="text-align: center">#</th>
                         <th style="text-align: center">Nombre</th>
                         <th style="text-align: center">Fecha de nacimiento</th>
                         <th style="text-align: center">Edad</th>
@@ -44,52 +35,50 @@
                 </thead>
 
                 <tbody id="objetosTableBody">
+                    @if (count($object_insurance) > 0)
 
-                    @if (count($slip_type->object_insurance) > 0)
-                        @foreach ($slip_type->object_insurance as $key => $item)
-                            <tr>
-                                <td style="text-align: center">
-                                    <input type="text" name="number[]" value="{{ $item->number }}">
-                                </td>
+                        @foreach ($object_insurance as $key => $item)
+                        <tr>
+                            <td style="text-align: center">
+                                <span>{{ $key + 1 }}</span>
+                            </td>
+                            <td style="text-align: center">
+                                <input value="{{ $item->name }}" type="text" name="name[]">
+                            </td>
+                            <td style="text-align: center">
+                                <input value="{{ $item->birthday }}" type="date" class="birthdateInput" name="birthday[]" onchange="putAge('aviacion_licenciaTableObjetosSeguro')">
+                            </td>
+                            <td style="text-align: center">
+                                <input value="{{ $item->age }}" type="number" step="any" name="age[]" class="ageInput">
+                            </td>
+                            <td style="text-align: center">
+                                <input value="{{ $item->limit }}" type="number" data-money step="any" name="limit[]">
+                            </td>
 
-                                <td style="text-align: center">
-                                    <input type="text" name="name[]" value="{{ $item->name }}">
-                                </td>
-                                <td style="text-align: center">
-                                    <input type="date" name="birthday[]" value="{{ $item->birthday }}">
-                                </td>
-                                <td style="text-align: center">
-                                    <input type="number" step="any" name="age[]" value="{{ $item->age }}">
-                                </td>
-                                <td style="text-align: center">
-                                    <input type="number" step="any" name="limit[]" value="{{ $item->limit }}">
-                                </td>
-                                
-                                <td></td>
-                            </tr>
+                            <td></td>
+                        </tr>
                         @endforeach
                     @else
                         <tr>
                             <td style="text-align: center">
-                                <input type="text" name="number[]">
+                                <span>1</span>
                             </td>
                             <td style="text-align: center">
                                 <input type="text" name="name[]">
                             </td>
                             <td style="text-align: center">
-                                <input type="date" name="birthday[]">
+                                <input type="date" class="birthdateInput" name="birthday[]" onchange="putAge('aviacion_licenciaTableObjetosSeguro')">
                             </td>
                             <td style="text-align: center">
-                                <input type="number" step="any" name="age[]">
+                                <input type="number" step="any" name="age[]" class="ageInput">
                             </td>
                             <td style="text-align: center">
-                                <input type="number" step="any" name="limit[]">
+                                <input type="number" data-money step="any" name="limit[]">
                             </td>
-                            
+
                             <td></td>
                         </tr>
                     @endif
-
                     
                 </tbody>
 
@@ -99,13 +88,13 @@
 
         <div class="two-sides">
             <div class="left_side">
-                <div class="input_group">
+                {{-- <div class="input_group">
                     <label >
                         <i class="fa-solid fa-pager"></i>
                         Límite de indemnización:
                     </label>
                     <input type="text" name="limit_compensation" value="{{ $slip->limit_compensation }}">
-                </div>
+                </div> --}}
 
                 <div class="input_group">
                     <label for="licenciaGeografico">
@@ -137,13 +126,14 @@
         {{-- Coberturas adicionales --}}
         <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Coberturas Adicionales</h3>
 
-        @include('admin.tecnico.slip.slips_generales.tableCoberturasAdicionales')
+        @include('admin.comercial.include.edit_tablaCoberturas')
+
     </div>
 
     <div class="form_group3">
         <h3 class="slipTitle"> <span class="badge badge-secondary">3</span> Cláusulas Adicionales</h3>
 
-        @include('admin.tecnico.slip.slips_generales.clausulasAdicionales')
+        @include('admin.comercial.include.edit_tablaClausulas')
 
     </div>
 

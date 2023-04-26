@@ -72,7 +72,8 @@
 </script>
 
 <div class="card px-4 py-2">
-    <form action="{{ route('slip.update', $slip->id) }}" enctype="multipart/form-data" method="POST" id="aviacion_2_form">
+    <form enctype="multipart/form-data" method="POST" action="{{ route('slip.update', $slip->id) }}" id="aviacion_2_form">
+        @method('PUT')
 
         @csrf
         <input type="hidden" name="type_slip" value="aviacion_2_form">
@@ -86,10 +87,10 @@
 
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="tecnico">Asignar t&eacute;cnico</label>
-
                     <select class="js-example-basic-single inputForm select_assigned form-select" name="user_id">
+                        <option selected value="{{ $users->find($slip->user_id)->id }}">
+                            {{ $users->find($slip->user_id)->name . ' ' . $users->find($slip->user_id)->surname }}</option>
                     </select>
-
                 </div>
             </div>
         </div>
