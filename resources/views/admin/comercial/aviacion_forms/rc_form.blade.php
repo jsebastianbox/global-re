@@ -46,6 +46,16 @@
             anchor.download = 'vida_siniestralidad_previa.{{$crFormSignedExtension}}'
         }
     });
+    const detalleAeronaves_raw = "{{$detalleAeronaves}}";
+    let detalleAeronaves;
+    fetch(`data:application/*;base64,${detalleAeronaves_raw}`).then(base64 => base64.blob()).then(blob => {
+        detalleAeronaves = URL.createObjectURL(blob)
+        const anchor = document.getElementById('detalleAeronavesDownload')
+        if (anchor) {
+            anchor.href = detalleAeronaves
+            anchor.download = 'vida_siniestralidad_previa.{{$detalleAeronavesExtension}}'
+        }
+    });
 </script>
 <div class="card py-4 px-2">
     <form enctype="multipart/form-data" method="POST" action="{{ route('slip.update', $slip->id) }}" id="aviacion_3_form">
@@ -121,6 +131,33 @@
 
 
             <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <input class="form-control" type="file" name="detalleAeronaves" hidden="true" id="detalleAeronaves" accept="application/*">
+                    <label class="input-group-text" hidden="true" for="detalleAeronaves" id="detalleAeronavesFileLabel" Detalle Aeronaves>
+                    </label>
+                    @if ($detalleAeronaves)
+                    <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="detalleAeronavesDownload">Detalle Aeronaves - Previo</a>
+                    <button type="button" class="btn btn-info" style="color: white" onclick="toggledetalleAeronaves()" id="detalleAeronavesFileToggle">Modificar</button>
+                    <script>
+                        let toggleddetalleAeronavesFile = false;
+                        const detalleAeronavesInput = document.getElementById('detalleAeronaves');
+                        const detalleAeronavesDownload = document.getElementById('detalleAeronavesDownload');
+                        const detalleAeronavesLabel = document.getElementById('detalleAeronavesFileLabel');
+                        const detalleAeronavesToggle = document.getElementById('detalleAeronavesFileToggle');
+
+                        function toggledetalleAeronaves() {
+                            toggleddetalleAeronavesFile = !toggleddetalleAeronavesFile;
+                            detalleAeronavesInput.hidden = !toggleddetalleAeronavesFile;
+                            detalleAeronavesDownload.hidden = toggleddetalleAeronavesFile;
+                            detalleAeronavesLabel.hidden = !toggleddetalleAeronavesFile;
+                            detalleAeronavesToggle.textContent = toggleddetalleAeronavesFile ? 'Usar previo' : 'Modificar'
+                            if (toggleddetalleAeronavesFile) detalleAeronavesInput.click()
+                        }
+                    </script>
+                    @else<input type="file" name="detalleAeronaves" id="detalleAeronaves" class="form-control">
+                    <label for="detalleAeronaves" class="input-group-text">Detalle Aeronaves</label>
+                    @endif
+                </div>
                 <div class="input-group mb-3">
                     <input class="form-control" type="file" name="crFormSigned" hidden="true" id="crFormSigned" accept="application/*">
                     <label class="input-group-text" hidden="true" for="crFormSigned" id="crFormSignedFileLabel">Formulario de cotización
@@ -198,10 +235,6 @@
                     </select>
                 </div>
 
-                <div class="input-group my-2">
-                    <label class="input-group-text">Detalles aeronaves</label>
-                    <input class="inputForm" type="file" name="detalleAeronaves" id="detalleAeronaves">
-                </div>
             </div>
 
             <div class="col-md-6">
@@ -210,7 +243,7 @@
                     <input type="number" step="any" placeholder="Valor.." name="valor_asegurado" class="form-control">
                 </div>
 
-                <div class="input-group my-2" >
+                <div class="input-group my-2">
                     <label class="input-group-text">Límite de indemnización</label>
                     <input type="number" step="any" placeholder="..." name="limit_compensation" class="form-control">
                 </div>
@@ -319,7 +352,7 @@
             </div>
         </div>
 
-        
+
     </div>
 
     <div class="tab">
@@ -380,7 +413,13 @@
 
         <div class="row">
 
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="detalleAeronaves">Detalles aeronaves</label>
+                    <input class="inputForm" type="file" name="detalleAeronaves" id="detalleAeronaves">
+                </div>
 
+            </div>
             <div class="col-md-6">
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="crFormSigned">Formulario de cotización</label>
