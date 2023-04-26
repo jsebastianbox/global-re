@@ -17,7 +17,7 @@
                     <i class="fa-solid fa-percent"></i>
                     valor asegurado
                 </p>
-                <input type="number" placeholder="..." name="insured_value[]" min="0" data-money
+                <input type="number" placeholder="..." name="insured_value_array[]" min="0" data-money
                     class="inputDeducible" style="width: max-content;text-align: end;">
             </div>
             <div class="labelStyleContainer">
@@ -46,7 +46,7 @@
                     <i class="fa-solid fa-percent"></i>
                     % valor asegurado
                 </p>
-                <input type="number" placeholder="..." name="insured_value[]" min="0"
+                <input type="number" placeholder="..." name="insured_value_array[]" min="0"
                     class="inputDeducible" style="width: max-content;text-align: end;">
             </div>
             <div class="labelStyleContainer">
@@ -83,7 +83,7 @@
                     <i class="fa-solid fa-percent"></i>
                     valor asegurado
                 </p>
-                <input type="number" placeholder="..." name="insured_value[]" min="0" data-money
+                <input type="number" placeholder="..." name="insured_value_array[]" min="0" data-money
                     class="inputDeducible" style="width: max-content;text-align: end;">
             </div>
             <div class="labelStyleContainer">
@@ -112,7 +112,7 @@
                     <i class="fa-solid fa-percent"></i>
                     % valor asegurado
                 </p>
-                <input type="number" placeholder="..." name="insured_value[]" min="0"
+                <input type="number" placeholder="..." name="insured_value_array[]" min="0"
                     class="inputDeducible" style="width: max-content;text-align: end;">
             </div>
             <div class="labelStyleContainer">

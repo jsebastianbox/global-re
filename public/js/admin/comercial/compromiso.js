@@ -2309,7 +2309,7 @@ function addDeducible(event, slipType) {
             <div class="input-group">
                 <span class="input-group-text">%</span>
                 <input class="form-control" type="number" min="0" max="100" step="any"
-                    name="insured_value[]">
+                    name="insured_value_array[]">
                 <span class="input-group-text">del valor asegurado</span>
             </div>
                     <div class="input-group">

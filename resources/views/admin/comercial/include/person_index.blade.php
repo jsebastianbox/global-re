@@ -161,8 +161,9 @@
             <div class="col-md-4 my-3">
                 <div class="input-group">
                     <label class="input-group-text" for="coverage">Cobertura</label>
-                    <textarea name="coverage" id="coverage" style="resize:both;width:100%;" 
- cols="30" rows="1" class="form-control">{{ $slip->coverage }}</textarea>
+                    <textarea name="coverage" id="coverage" style="resize:both;width:100%;" cols="30" rows="1" class="form-control">
+                        {{ $slip->coverage }}
+                    </textarea>
                 </div>
             </div>
             <div class="col-md-4 my-3">
@@ -176,7 +177,7 @@
             <div class="col-md-4 my-3" style="{{$slip->insurable_value > 0 ? 'display:none' : 'display:flex'}}">
                 <div class="input-group mb-3">
                     <label class="input-group-text">Valor asegurado</label>
-                    <input type="number" step="any" placeholder="Valor.." name="insured_value" class="form-control" value="{{$slip->insured_value}}">
+                    <input type="number" step="any" placeholder="Valor.." id="insured_value" name="insured_value" class="form-control" value="{{$slip->insured_value}}">
                 </div>
             </div>
         </div>
@@ -348,7 +349,7 @@
             </div>
             <div class="col-md-4 my-3">
                 <div class="input-group">
-                    <label class="input-group-text" for="assignor">Retrocedente</label>
+                    <label class="input-group-text" for="retrocedente">Retrocedente</label>
                     <input class="form-control" type="text" name="retrocedente" id="retrocedente">
                 </div>
             </div>
@@ -356,8 +357,8 @@
         <div class="row">
             <div class="col-md-4 mt-3 valorAseguradoContainer">
                 <div class="input-group mb-3">
-                    <label class="input-group-text">Valor asegurado</label>
-                    <input type="number" step="any" placeholder="Valor.." name="insured_value" class="form-control">
+                    <label class="input-group-text" for="insured_value">Valor asegurado</label>
+                    <input type="number" step="any" placeholder="Valor.." name="insured_value" id="insured_value" class="form-control">
                 </div>
             </div>
         </div>

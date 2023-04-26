@@ -299,14 +299,14 @@
                 <div class="input_group">
                     <input type="text" id="lucroCesanteDeducible1a" name="sinister_value[]"
                         placeholder="Deducible..">
-                    <input type="number" id="lucroCesanteDeducible1b" name="insured_value[]"
+                    <input type="number" id="lucroCesanteDeducible1b" name="insured_value_array[]"
                         placeholder="No. Días">
                 </div>
 
                 <div class="input_group">
                     <input type="text" id="lucroCesanteDeducible2a" name="sinister_value[]"
                         placeholder="Deducible..">
-                    <input type="number" id="lucroCesanteDeducible2b" name="insured_value[]"
+                    <input type="number" id="lucroCesanteDeducible2b" name="insured_value_array[]"
                         placeholder="No. Días">
                 </div>
 

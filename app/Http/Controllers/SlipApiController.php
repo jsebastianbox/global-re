@@ -73,8 +73,10 @@ class SlipApiController extends Controller
         //         'message' => 'CSRF token mismatch',
         //     ], 422);
         // }
-
+            
+        
         $validatedData = $this->validateData($request);
+        
         $basePath = "slips";
         //Guarda el slip general
         $slip = new Slip();
@@ -1216,10 +1218,9 @@ class SlipApiController extends Controller
             'siniestralidad_embarcacion' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
             'detalleLicencia' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
             'report' => 'nullable|file|mimetypes:application/*,text/csv|max:16384', //permite archivos de hasta máximo 16MB
+            'insured_value' => 'nullable|numeric|max:99999999999999',
+            'insured_value_array.*' => 'nullable|numeric|max:99999999999999',
         ]); //aviacion rc no hay
-
-        $is_array = is_array($request->input('insured_value'));
-        $validatedData['insured_value' . ($is_array ? '.*' : '')] = $is_array ? $request->validate(['insured_value.*' => 'nullable|numeric|max:99999999999999']) : $request->validate(['insured_value' => 'nullable|numeric|max:9999999999999999']);
 
         return $validatedData;
     }

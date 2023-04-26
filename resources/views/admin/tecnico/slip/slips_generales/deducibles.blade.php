@@ -17,7 +17,7 @@
                             <i class="fa-solid fa-percent"></i>
                             valor asegurado
                         </p>
-                        <input type="number" value="{{ $item->insured_value }}" name="insured_value[]" min="0"
+                        <input type="number" value="{{ $item->insured_value }}" name="insured_value_array[]" min="0"
                             style="max-width:95px;text-align: end;">
                     </div>
                     <div class="labelStyleContainer">
@@ -49,7 +49,7 @@
                         <i class="fa-solid fa-percent"></i>
                         valor asegurado
                     </p>
-                    <input type="number" placeholder="%" name="insured_value[]" min="0"
+                    <input type="number" placeholder="%" name="insured_value_array[]" min="0"
                         style="max-width:95px;text-align: end;">
                 </div>
                 <div class="labelStyleContainer">
