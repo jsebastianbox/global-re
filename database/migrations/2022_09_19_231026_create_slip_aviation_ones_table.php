@@ -28,6 +28,7 @@ class CreateSlipAviationOnesTable extends Migration
             $table->string('type_aviation')->nullable();
             $table->text('coverage')->nullable();
             $table->string('coverage_limit')->nullable();
+            $table->double('limit_compensation')->nullable();
             $table->string('pilot_authorized')->nullable();
             $table->string('time_model_mark')->nullable();
             $table->foreignIdFor(Slip::class);

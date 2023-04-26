@@ -620,6 +620,7 @@ class SlipApiController extends Controller
                                         'cap_crew' => $request->cap_crew[$i] ?? null,
                                         'cap_pax' => $request->cap_pax[$i] ?? null,
                                         'sum_insured' => $request->sum_insured[$i] ?? null,
+                                        'deducible_aerial' => $request->deducible_aerial[$i] ?? null,
                                         'slip_id' => $slip->id
                                     ]);
                                     $informationAerialHelmet->save();
@@ -628,16 +629,18 @@ class SlipApiController extends Controller
                         }
 
                         //coberturas y limite de coberturas
-                        for ($i = 0; $i < count($request->description_coverage); $i++) {
-                            if (isset($request->description_coverage[$i])) {
-                                $aviacion_extras = new AviacionExtras([
-                                    'description_coverage' => $request->description_coverage[$i] ?? null,
-                                    'aditional_coverage' => $request->aditional_coverage[$i] ?? null,
-                                    'limit_description_coverage' => $request->limit_description_coverage[$i] ?? null,
-                                    'limit_aditional_coverage' => $request->limit_aditional_coverage[$i] ?? null,
-                                    'slip_id' => $slip->id
-                                ]);
-                                $aviacion_extras->save();
+                        if (isset($request->description_coverage)) {
+                            for ($i = 0; $i < count($request->description_coverage); $i++) {
+                                if (isset($request->description_coverage[$i])) {
+                                    $aviacion_extras = new AviacionExtras([
+                                        'description_coverage' => $request->description_coverage[$i] ?? null,
+                                        'aditional_coverage' => $request->aditional_coverage[$i] ?? null,
+                                        'limit_description_coverage' => $request->limit_description_coverage[$i] ?? null,
+                                        'limit_aditional_coverage' => $request->limit_aditional_coverage[$i] ?? null,
+                                        'slip_id' => $slip->id
+                                    ]);
+                                    $aviacion_extras->save();
+                                }
                             }
                         }
 
@@ -672,6 +675,27 @@ class SlipApiController extends Controller
                         $slip_aereo_3->fill($validatedData);
                         $slip_aereo_3->slip_id = $slip->id;
                         $slip_aereo_3->save();
+
+                        // Datos de la aeronave
+                        if (isset($request->type_ala_aerial)) {
+                            for ($i = 0; $i < count($request->type_ala_aerial); $i++) {
+                                if (isset($request->type_ala_aerial[$i])) {
+                                    $informationAerialHelmet = new InformationAerialHelmets([
+                                        'type_ala_aerial' => $request->type_ala_aerial[$i] ?? null,
+                                        'serie_aerial' => $request->serie_aerial[$i] ?? null,
+                                        'marca_aerial' => $request->marca_aerial[$i] ?? null,
+                                        'model_aerial' => $request->model_aerial[$i] ?? null,
+                                        'year_manufacture_aerial' => $request->year_manufacture_aerial[$i] ?? null,
+                                        'cap_crew' => $request->cap_crew[$i] ?? null,
+                                        'cap_pax' => $request->cap_pax[$i] ?? null,
+                                        'sum_insured' => $request->sum_insured[$i] ?? null,
+                                        'deducible_aerial' => $request->deducible_aerial[$i] ?? null,
+                                        'slip_id' => $slip->id
+                                    ]);
+                                    $informationAerialHelmet->save();
+                                }
+                            }
+                        }
 
                         $type_slip = SlipAviationThree::where('id', $slip->id);
                         $this->saveFilesFromRequest($request, $basePath, 'aviacion_3',  $slip_aereo_3->id);

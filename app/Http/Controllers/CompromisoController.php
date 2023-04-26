@@ -601,7 +601,7 @@ class CompromisoController extends Controller
             case '36':
             case '37':
                 $slip_type = SlipAviationThree::where('slip_id', $id)->first();
-                $information_aerial = [];
+                $information_aerial = InformationAerialHelmets::where('slip_id', $id)->get();
                 $aviation_extras = [];
                 $object_insurance = [];
 

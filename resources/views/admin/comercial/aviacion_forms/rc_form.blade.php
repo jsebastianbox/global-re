@@ -179,17 +179,103 @@
 
         </div>
 
-        <div class="row mt-3">
-            <div class="col-md-6">
-                <div class="input-group ">
-                    <label class="input-group-text" for="insuredSum">Límite de indemnización</label>
-                    <input type="text" placeholder="..." name="limit_compensation">
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="tab">
+
+        <div class="row my-3">
+            <label class="lead">Datos de la Aeronave</label>
+            <hr>
+        </div>
+
+        <div class="row">
+            <table class="table" style="overflow-x: auto" id="aeronaveAdicional2">
+                <thead>
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Tipo Ala</th>
+                        <th scope="col">Serie</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Año fabricación</th>
+                        <th scope="col">Capacidad tripulantes</th>
+                        <th scope="col">Capacidad pasajeros</th>
+                        <th scope="col">Deducibles</th>
+                        <th scope="col">Suma asegurada</th>
+                        <th scope="col"><input type="button" value="Agregar campo" onclick="addAeronaveRow('aeronaveAdicional2')"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <th scope="row">1</th>
+                    <td>
+                        <select name="type_ala_aerial[]" id="ala">
+                            <option value="" selected disabled>Seleccionar</option>
+                            <option value="fija">Fija</option>
+                            <option value="rotativa">Rotativa</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" name="serie_aerial[]" class="inputNumber">
+                    </td>
+                    <td>
+                        <input type="text" name="marca_aerial[]" class="inputNumber">
+                    </td>
+                    <td>
+                        <input type="text" name="model_aerial[]"  class="inputNumber">
+                    </td>
+                    <td>
+                        <input type="number" step="any" name="year_manufacture_aerial[]" min="1960">
+                    </td>
+                    <td>
+                        <input type="number" name="cap_crew[]" id="capacity" min="1" step="1" class="inputNumber">
+                    </td>
+                    <td>
+                        <input type="number" step="any" name="cap_pax[]" class="inputNumber">
+                    </td>
+                    <td>
+                        <input type="number" step="any" name="deducible_aerial[]">
+                    </td>
+                    <td>
+                        <input type="number" step="any" placeholder="Suma asegurada" name="sum_insured[]" id="insuredSum" data-money>
+                    </td>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="input-group">
+                    <label class="input-group-text">Tipo de aviación</label>
+                    <select name="type_aviation" id="tipoAviacion">
+                        <option value="" selected disabled>Seleccionar</option>
+                        <option value="comercial">Comercial</option>
+                        <option value="general">General</option>
+                        <option value="escuela">Escuelas de aviación</option>
+                        <option value="fumigacion">Fumigación</option>
+                        <option value="privado">Privado placer</option>
+                    </select>
+                </div>
+
+                <div class="input-group my-2">
+                    <label class="input-group-text">Detalles aeronaves</label>
+                    <input class="inputForm" type="file" name="detalleAeronaves" id="detalleAeronaves">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="input-group">
+                    <label class="input-group-text">Valor asegurado</label>
+                    <input type="number" step="any" placeholder="Valor.." name="valor_asegurado" class="form-control">
+                </div>
+
+                <div class="input-group my-2" >
+                    <label class="input-group-text">Límite de indemnización</label>
+                    <input type="number" step="any" placeholder="..." name="limit_compensation" class="form-control">
+                </div>
+            </div>
+        </div>
+
         <div class="row mb-3">
             <label class="lead">Coberturas adicionales</label>
             <hr>
@@ -292,6 +378,11 @@
             </div>
         </div>
 
+        
+    </div>
+
+    <div class="tab">
+
         <div class="row">
             <div class="col-md-6">
                 <div class="input-group mb-3">
@@ -343,9 +434,6 @@
             <button type="button" class="btn btn-info" style="color: white" onclick="addDeducible(event, 'aviacion_rcrc')">Agregar deducible</button>
         </div>
 
-    </div>
-
-    <div class="tab">
 
         @include('admin.comercial.include.leyJurisdiccion')
 

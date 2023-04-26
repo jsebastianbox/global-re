@@ -1271,6 +1271,8 @@ function updateS7() {
 
     switch (value) {
         case "ca":
+            document.querySelector('#forType32').style.display = 'block'
+            document.querySelector('#forType33').style.display = 'none'
             currentTab = 0;
             currentForm = '#aviacion_1_form'
             x = aviacion_1_form.getElementsByClassName("tab");
@@ -1290,6 +1292,8 @@ function updateS7() {
             coberturasSelect(".selectCobertura", "aviacion", "casco");
             break;
         case "rc":
+            document.querySelector('#forType32').style.display = 'none'
+            document.querySelector('#forType33').style.display = 'flex'
             currentTab = 0;
             currentForm = '#aviacion_1_form'
             x = aviacion_1_form.getElementsByClassName("tab");
@@ -1336,6 +1340,9 @@ function updateS7() {
             aviacion_1_form.style.display = "none";
             aviacion_2_form.style.display = "none";
             aviacion_3_form.style.display = "block";
+            valorAseguradoContainer.forEach(elemento => {
+                elemento.style.display = 'none';
+            })
             element.setAttribute('value', '35');
             aviacion_3_form.appendChild(element);
             clausulasSelect(".selectClausula", "maritimo", "rca");
@@ -1352,6 +1359,9 @@ function updateS7() {
             aviacion_1_form.style.display = "none";
             aviacion_2_form.style.display = "none";
             aviacion_3_form.style.display = "block";
+            valorAseguradoContainer.forEach(elemento => {
+                elemento.style.display = 'none';
+            })
             element.setAttribute('value', '36');
             aviacion_3_form.appendChild(element);
             clausulasSelect(".selectClausula", "maritimo", "rch");
@@ -1368,6 +1378,9 @@ function updateS7() {
             aviacion_1_form.style.display = "none";
             aviacion_2_form.style.display = "none";
             aviacion_3_form.style.display = "block";
+            valorAseguradoContainer.forEach(elemento => {
+                elemento.style.display = 'none';
+            })
             element.setAttribute('value', '37');
             aviacion_3_form.appendChild(element);
             clausulasSelect(".selectClausula", "maritimo", "ariel");

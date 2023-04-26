@@ -648,16 +648,18 @@ class SlipController extends Controller
                         AviacionExtras::where('slip_id', $id)->delete();
 
                         //coberturas y limite de coberturas
-                        for ($i = 0; $i < count($request->description_coverage); $i++) {
-                            if (isset($request->description_coverage[$i])) {
-                                $aviacion_extras = new AviacionExtras([
-                                    'description_coverage' => $request->description_coverage[$i] ?? null,
-                                    'aditional_coverage' => $request->aditional_coverage[$i] ?? null,
-                                    'limit_description_coverage' => $request->limit_description_coverage[$i] ?? null,
-                                    'limit_aditional_coverage' => $request->limit_aditional_coverage[$i] ?? null,
-                                    'slip_id' => $slip->id
-                                ]);
-                                $aviacion_extras->save();
+                        if (isset($request->description_coverage)) {
+                            for ($i = 0; $i < count($request->description_coverage); $i++) {
+                                if (isset($request->description_coverage[$i])) {
+                                    $aviacion_extras = new AviacionExtras([
+                                        'description_coverage' => $request->description_coverage[$i] ?? null,
+                                        'aditional_coverage' => $request->aditional_coverage[$i] ?? null,
+                                        'limit_description_coverage' => $request->limit_description_coverage[$i] ?? null,
+                                        'limit_aditional_coverage' => $request->limit_aditional_coverage[$i] ?? null,
+                                        'slip_id' => $slip->id
+                                    ]);
+                                    $aviacion_extras->save();
+                                }
                             }
                         }
 
@@ -697,6 +699,7 @@ class SlipController extends Controller
                                 'cap_crew' => $request->cap_crew[$i] ?? null,
                                 'cap_pax' => $request->cap_pax[$i] ?? null,
                                 'sum_insured' => $request->sum_insured[$i] ?? null,
+                                'deducible_aerial' => $request->deducible_aerial[$i] ?? null,
                                 'slip_aviation_one_id' => $type_slip->id,
                                 'slip_id' => $slip->id
                             ]);

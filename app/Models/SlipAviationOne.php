@@ -17,6 +17,7 @@ class SlipAviationOne extends Model
         'object_insurance',
         'use_aerial',
         'geography_limit',
+        'limit_compensation',
         'type_aviation',
         'coverage',
         'coverage_limit',
