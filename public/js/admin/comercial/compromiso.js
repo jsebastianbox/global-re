@@ -3023,7 +3023,6 @@ function countryLeyJurisdiccion() {
     $('[name="country_id"]').each(function () {
         arrCountries.push($(this).find('option:selected').text())
     })
-    console.log(arrCountries)
 
     var countryFound = arrCountries.filter(function(elemento) {
         return elemento !== '';
