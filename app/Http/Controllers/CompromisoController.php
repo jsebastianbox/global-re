@@ -129,31 +129,192 @@ class CompromisoController extends Controller
     public function destroy($id){
         
         $slip = Slip::find($id);
+        $id = $slip->id;
+        $slip_type = null;
         
         if(!$slip){
-            return redirect()->route('/');
+            return redirect()->route('dashboard');
         }
         
-        ObjectInsurance::where('slip_id', $id)->delete();
+        switch ($slip->type_coverage) {
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+                SlipLifePersonlAccident::where('slip_id', $id)->delete();
+                ObjectInsurance::where('slip_id', $id)->delete();
+                AdditionalCoverage::where('slip_id', $id)->delete();
+                ClauseSlip::where('slip_id', $id)->delete();
+                DeductibleSlip::where('slip_id', $id)->delete();
+                break;
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+                SlipPropertyFixedAsset::where('slip_id', $id)->delete();
+                SumAssured::where('slip_id', $id)->delete();
+                DetailPerdios::where('slip_id', $id)->delete();
+                AdditionalCoverage::where('slip_id', $id)->delete();
+                ClauseSlip::where('slip_id', $id)->delete();
+                DeductibleSlip::where('slip_id', $id)->delete();
+                break;
 
+            case '9':
+            case '10':
+                SlipVehicle::where('slip_id', $id)->delete();
+                VehicleDetail::where('slip_id', $id)->delete();
+                AdditionalCoverage::where('slip_id', $id)->delete();
+                ClauseSlip::where('slip_id', $id)->delete();
+                DeductibleSlip::where('slip_id', $id)->delete();
+                break;
+            case '11':
+            case '12':
+            case '13':
+            case '14':
+            case '15':
+            case '16':
+            case '17':
+                SlipTechnicalBranch::where('slip_id', $id)->delete();
+                SumAssured::where('slip_id', $id)->delete();
+                AdditionalCoverage::where('slip_id', $id)->delete();
+                ClauseSlip::where('slip_id', $id)->delete();
+                DeductibleSlip::where('slip_id', $id)->delete();
+                break;
+            case '18':
+            case '19':
+            case '20':
+                SlipEnergy::where('slip_id', $id)->delete();
+                SumAssured::where('slip_id', $id)->delete();
+                AdditionalCoverage::where('slip_id', $id)->delete();
+                ClauseSlip::where('slip_id', $id)->delete();
+                DeductibleSlip::where('slip_id', $id)->delete();
+                break;
+
+            case '21':
+            case '22':
+                SlipMaritimeOne::where('slip_id', $id)->delete();
+                BoatDetailSlip::where('slip_id', $id)->delete();
+                AdditionalCoverage::where('slip_id', $id)->delete();
+                ClauseSlip::where('slip_id', $id)->delete();
+                DeductibleSlip::where('slip_id', $id)->delete();
+                break;
+
+            case '23':
+                SlipMaritimeTwo::where('slip_id', $id)->delete();
+                BoatDetailSlip::where('slip_id', $id)->delete();
+                AdditionalCoverage::where('slip_id', $id)->delete();
+                ClauseSlip::where('slip_id', $id)->delete();
+                DeductibleSlip::where('slip_id', $id)->delete();
+                break;
+
+            case '24':
+            case '25':
+            case '26':
+                SlipMaritimeThree::where('slip_id', $id)->delete();
+                AdditionalCoverage::where('slip_id', $id)->delete();
+                ClauseSlip::where('slip_id', $id)->delete();
+                DeductibleSlip::where('slip_id', $id)->delete();
+                break;
+
+            case '27':
+            case '28':
+            case '29':
+            case '30':
+            case '31':
+                SlipMaritimeFour::where('slip_id', $id)->delete();
+                AdditionalCoverage::where('slip_id', $id)->delete();
+                ClauseSlip::where('slip_id', $id)->delete();
+                DeductibleSlip::where('slip_id', $id)->delete();
+                break;
+
+            case '32':
+            case '33':
+                SlipAviationOne::where('slip_id', $id)->delete();
+                InformationAerialHelmets::where('slip_id', $id)->delete();
+                AviacionExtras::where('slip_id', $id)->delete();
+                AdditionalCoverage::where('slip_id', $id)->delete();
+                ClauseSlip::where('slip_id', $id)->delete();
+                DeductibleSlip::where('slip_id', $id)->delete();
+                break;
+            case '34':
+                SlipAviationTwo::where('slip_id', $id)->delete();
+                ObjectInsurance::where('slip_id', $id)->delete();
+                ClauseSlip::where('slip_id', $id)->delete();
+                AdditionalCoverage::where('slip_id', $id)->delete();
+                DeductibleSlip::where('slip_id', $id)->delete();
+                break;
+
+            case '35':
+            case '36':
+            case '37':
+                SlipAviationThree::where('slip_id', $id)->delete();
+                AdditionalCoverage::where('slip_id', $id)->delete();
+                ClauseSlip::where('slip_id', $id)->delete();
+                DeductibleSlip::where('slip_id', $id)->delete();
+                break;
+
+            case '38':
+            case '39':
+            case '40':
+            case '41':
+            case '42':
+            case '43':
+                SlipCivilLiability::where('slip_id', $id)->delete();
+                AdditionalCoverage::where('slip_id', $id)->delete();
+                ClauseSlip::where('slip_id', $id)->delete();
+                DeductibleSlip::where('slip_id', $id)->delete();
+
+                break;
+
+            case '44':
+            case '45':
+                SlipFinancialRisk::where('slip_id', $id)->first();
+                AdditionalCoverage::where('slip_id', $id)->first();
+                ClauseSlip::where('slip_id', $id)->first();
+                DeductibleSlip::where('slip_id', $id)->first();
+                break;
+
+            case '46':
+                SlipFianzaOne::where('slip_id', $id)->first();
+                ObjectInsurance::where('slip_id', $id)->first();
+                AdditionalCoverage::where('slip_id', $id)->first();
+                ClauseSlip::where('slip_id', $id)->first();
+                DeductibleSlip::where('slip_id', $id)->first();
+                break;
+
+            case '47':
+            case '48':
+            case '49':
+            case '50':
+            case '51':
+            case '52':
+                SlipFianzaTwo::where('slip_id', $id)->first();
+                AdditionalCoverage::where('slip_id', $id)->first();
+                ClauseSlip::where('slip_id', $id)->first();
+                DeductibleSlip::where('slip_id', $id)->first();
+                break;
+
+            default:
+                break;
+        }
+        
         $arr = $this->getSlipType($slip);
-
+        
         $slip_type = $arr[0];
         $case = $arr[1];
         $case = $case == "activos_fijos" ? "activos-fijos" : $case;
-        $path = "app/slips/". $case ."/" . $slip_type->id . "/";
-
+        $path = "app/slips/". $case ."/" . $id. "/";
+        
         // Elinina archivos del directorio
         $this->removeDir($path."*.*");
         
         // Elimina el directorio
         $this->removeDirectory($path);
-
+        
+        ObjectInsurance::where('slip_id', $id)->delete();
         $slip->delete($id);
-      
-        return redirect('/compromisosList');
-
-
+        
+        return redirect('/admin/compromiso/pending');
     }
 
     public function editCompromiso($id)
