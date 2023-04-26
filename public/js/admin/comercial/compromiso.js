@@ -2891,7 +2891,7 @@ $(document).on('click', '.btn-delete-objeto', function (e) {
 function addRowObjetoSeguroV2(event, type) {
     event.preventDefault()
 
-    let rowCount = document.getElementById(`${type}TableObjetosSeguro`).rows.length
+    let rowCount = document.getElementById(`${type}TableObjetosSeguro`).rows.length-1
 
     const fidelidadObjetosTableBody = document.getElementById(`${type}ObjetosTableBody`)
     const tr = document.createElement('tr')
@@ -2913,7 +2913,7 @@ function addRowObjetoSeguroV2(event, type) {
             <input type="number" step="any" name="age[]" class="ageInput">
         </td>
         <td style="text-align: center">
-            <input type="number" data-money step="any" name="limit[]">
+            <input type="number" data-money step="any" name="limit[]" class="col1" onkeyup="sumaAviacion(1, 1, 'aviacion_licenciaTableObjetosSeguro')">
         </td>
         <td>
             <button id="${rowCount}" type="button" class="btn btn-danger btn-xs btn-delete-objeto"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
@@ -3349,3 +3349,31 @@ $(document).on('click', '.btn-delete-perdida', function (e) {
 
     $(`#newRowSumaAseguradaTable${id}`).remove()
 })
+
+
+//table detalle embarcaciones
+function sumaAviacion(row, col, typeTable) {
+
+    //tabla
+    const table = document.getElementById(`${typeTable}`)
+    console.log(table);
+
+    //suma columnas
+    let colSelect = table.getElementsByClassName(`col${col}`)
+    let colTotal = table.querySelector(`#colTotal${col}`)
+    let colTotalArray = []
+
+    for (const element of colSelect) {
+        if (element.value > 0) {
+            colTotalArray.push(parseFloat(element.value))
+        }
+    }
+
+    let sumaTotal2 = colTotalArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
+
+    colTotal.innerText = parseFloat(sumaTotal2).toFixed(2)
+
+
+    $('#suma_asegurada_lol').val(sumaTotal2)
+
+}

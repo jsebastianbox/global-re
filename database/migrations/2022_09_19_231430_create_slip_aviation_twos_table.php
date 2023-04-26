@@ -23,6 +23,7 @@ class CreateSlipAviationTwosTable extends Migration
             $table->text('geography_limit')->nullable();
             //merchant
             $table->string('compensation_limit')->nullable();
+            $table->double('suma_asegurada_lol')->nullable();
             $table->foreignIdFor(Slip::class);
             $table->timestamps();
         });

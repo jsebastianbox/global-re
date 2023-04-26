@@ -109,7 +109,7 @@
                             <th style="text-align: center">Nombre</th>
                             <th style="text-align: center">Fecha de nacimiento</th>
                             <th style="text-align: center">Edad</th>
-                            <th style="text-align: center">Ingreso anual</th>
+                            <th style="text-align: center">Suma Asegurada</th>
                             <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Add row">
                                 <button type="button" onclick="addRowObjetoSeguroV2(event, 'aviacion_licencia')" class="btn btn-success btn-xs">
                                     +
@@ -136,7 +136,7 @@
                                 <input value="{{ $item->age }}" type="number" step="any" name="age[]" class="ageInput">
                             </td>
                             <td style="text-align: center">
-                                <input value="{{ $item->limit }}" type="number" data-money step="any" name="limit[]">
+                                <input value="{{ $item->limit }}" class="col1" type="number" data-money step="any"onkeyup="sumaAviacion(1, 1, 'aviacion_licenciaTableObjetosSeguro')"  name="limit[]">
                             </td>
 
                             <td></td>
@@ -157,15 +157,34 @@
                                 <input type="number" step="any" name="age[]" class="ageInput">
                             </td>
                             <td style="text-align: center">
-                                <input type="number" data-money step="any" name="limit[]">
+                                <input type="number" class="col1" data-money step="any"onkeyup="sumaAviacion(1, 1, 'aviacion_licenciaTableObjetosSeguro')"  name="limit[]">
                             </td>
 
                             <td></td>
                         </tr>
                         @endif
                     </tbody>
-
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td class="slipTitle">Total</td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <span id="totalSumaAseguradaLicencia"></span>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <label for="" class="input-group-text">Suma Asegurada</label>
+                        <input type="number" step="any" name="suma_asegurada_lol">
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -370,7 +389,7 @@
                             <th style="text-align: center">Nombre</th>
                             <th style="text-align: center">Fecha de nacimiento</th>
                             <th style="text-align: center">Edad</th>
-                            <th style="text-align: center">Ingreso anual</th>
+                            <th style="text-align: center">Suma Asegurada</th>
                             <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Add row">
                                 <button type="button" onclick="addRowObjetoSeguroV2(event, 'aviacion_licencia')" class="btn btn-success btn-xs">
                                     +
@@ -395,17 +414,36 @@
                                 <input type="number" step="any" name="age[]" class="ageInput">
                             </td>
                             <td style="text-align: center">
-                                <input type="number" data-money step="any" name="limit[]">
+                                <input type="number" data-money step="any" class="col1" onkeyup="sumaAviacion(1, 1, 'aviacion_licenciaTableObjetosSeguro')"  name="limit[]">
                             </td>
 
                             <td></td>
                         </tr>
                     </tbody>
 
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td style="text-align: center" class="slipTitle">Total</td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: center">
+                                <span class="slipTitle" id="colTotal1">0</span>$
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
-        </div>
 
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <label for="" class="input-group-text">Suma Asegurada LOL</label>
+                        <input type="number" step="any" name="suma_asegurada_lol" id="suma_asegurada_lol">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="tab">
