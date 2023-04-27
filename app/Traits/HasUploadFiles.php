@@ -205,6 +205,7 @@ trait HasUploadFiles
                 $keys[] = "otherForms";
                 $keys[] = "crFormSigned";
                 $keys[] = "pilotExperienceFormSigned";
+                $keys[] = "detalleAeronaves";
                 break;
             case 'aviacion_2':
                 $keys[] = "pilotos";
@@ -213,6 +214,7 @@ trait HasUploadFiles
                 break;
             case 'aviacion_3':
                 $keys[] = "crFormSigned";
+                $keys[] = "detalleAeronaves";
                 break;
             case 'maritimo_1':
                 $keys[] = "copiaMatricula";

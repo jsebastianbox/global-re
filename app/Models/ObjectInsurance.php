@@ -27,6 +27,7 @@ class ObjectInsurance extends Model
         'year',
         'object_insured_val',
         'serie',
+        'person_type',
         'slip_id'
     ];
 

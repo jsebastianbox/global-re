@@ -7,6 +7,7 @@ use App\Models\AviacionExtras;
 use App\Models\BoatDetailSlip;
 use App\Models\ClauseSlip;
 use App\Models\Clausulas_selector;
+use App\Models\CoberturasPilotos;
 use App\Models\CoberturasSelector;
 use App\Models\Compromiso;
 use App\Models\Country;
@@ -591,6 +592,8 @@ class CompromisoController extends Controller
             case '34':
                 $slip_type = SlipAviationTwo::where('slip_id', $id)->first();
                 $object_insurance = ObjectInsurance::where('slip_id', $id)->get();
+                $coverages_pilots = CoberturasPilotos::where('slip_id', $id)->get();
+                $count = count($coverages_pilots);
                 $information_aerial = [];
                 $aviation_extras = [];
                 $view = $this->chargeFilesIntoView("aviacion_2", "aviacion_2", $slip_type->id, $view);
@@ -614,6 +617,8 @@ class CompromisoController extends Controller
         $view->with('slip_type', $slip_type)
             ->with('information_aerial', $information_aerial)
             ->with('aviation_extras', $aviation_extras)
+            ->with('coverages_pilots', $coverages_pilots)
+            ->with('count', $count)
             ->with('object_insurance', $object_insurance);
 
         return    $view;
