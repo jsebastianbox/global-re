@@ -1,64 +1,99 @@
-<h1>Hola {{$slip}}</h1>
-<div class="tableContainer" style="margin: 2rem 0">
-    <table id="clausulasAdicionalesTable" class="indemnizacionTable">
-        <thead>
-            <tr>
-                <th style="text-align: center; width: 42px;">#</th>
-                <th style="text-align: center">Cláusulas</th>
-                <th style="text-align: center">Campo adicional</th>
-                <th style="text-align: center">USD</th>
-                <th style="text-align: center">Campo adicional</th>
-                <th style="text-align: center; width: 42px;" class="sorting_" rowspan="1" colspan="1" aria-label="Add row">
+<div
+    style="
+        width: 210px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        padding: 0.25rem;
+    "
+>
+    <div
+        style="
+            width: 100%;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            font-size: 12px;
+        "
+    >
+        <!-- <span
+            style="
+                color: #fff;
+                background-color: #ccc;
+                padding: 0.25rem;
+                border-radius: 50%;
+                height: 10px;
+                width: fit-content;
+                font-size: 10px;
+                line-height: 5px;
+                text-align: center;
+            "
+        >
+            1
+        </span> -->
+    <div style="font-weight: 600"> {{ $slip->type->name }} </div>
+    </div>
 
-                    <button type="button" onclick="addRowClausula(event)" class="btn btn-success btn-xs">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    </button>
-                </th>
-            </tr>
-        </thead>
+    <div
+        style="
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 6px;
+        "
+    >
+        <div>
+            Persona asignada: {{ $slip->user->name }} {{ $slip->user->surname }}
+        </div>
+        <div>Fecha: {{ $slip->updated_at }}</div>
+        <div>Tipo de cobertura: {{ $slip->type->name }}</div>
+        <div>País productor: {{ $slip->country->name }}</div>
 
+        @if ($slip->broker == 'new_sercorp')
+        <div>Broker local: {{ $slip->country->name }}</div>
+        @else
+        <div>Broker local: {{ $slip->broker }}</div>
+        @endif
 
-        {{-- tbody --}}
-        <tbody id="clausulasAdicionalesTableBody">
+        <div>Cedente: {{ $slip->assignor }}</div>
 
-            @if (count($slip->clause_aditional) > 0)
-            @foreach ($slip->clause_aditional as $key => $item)
-            <tr>
-                <td>{{ $key+1 }}</td>
-                <td>
-                    <textarea name="description_clause_additional[]">{{ $item->description_clause_additional }}</textarea>
-                </td>
-                <td>
-                    <input type="text" name="clause_additional_additional[]" value="{{ $item->clause_additional_additional }}">
-                </td>
-                <td>
-                    <input type="number" name="clause_additional_usd[]" value="{{ $item->clause_additional_usd }}">
-                </td>
-                <td>
-                    <input type="text" name="clause_additional_additional2[]" value="{{ $item->clause_additional_additional2 }}">
-                </td>
-            </tr>
-            @endforeach
-            @else
-            <tr>
-                <td>1</td>
-                <td>
-                    <textarea name="description_clause_additional[]"></textarea>
-                </td>
-                <td>
-                    <input type="text" placeholder="..." name="clause_additional_additional[]">
-                </td>
-                <td>
-                    <input type="number" placeholder="0" name="clause_additional_usd[]">
-                </td>
-                <td>
-                    <input type="text" placeholder="..." name="clause_additional_additional2[]">
-                </td>
-            </tr>
-            @endif
+        @if ($slip->sector != 'private')
+        <div>Cedente: Público</div>
+        @else
+        <div>Cedente: Privado</div>
+        @endif
 
+        <div>Retrocedente: {{ $slip->retrocedente }}</div>
+        <div>Asegurado: {{ $slip->insurer }}</div>
+        <div>Dirección: {{ $slip->direction }}</div>
+        <div>Actividad: {{$slip->activity }}</div>
+        <div>Moneda: {{ $slip->coin }}</div>
+        <div>Tipo de cambio: ${{ $slip->equivalence }}</div>
+        <div>
+            Vigencia: Desde {{ $slip->validity_since }} hasta
+            {{$slip->validity_until}}
+        </div>
+        <div>Intermediario de seguros: {{ $slip->insuranceBroker }}</div>
 
-        </tbody>
+        @if ($slip->type_coverage != 2 && $slip->type_coverage !== 4 &&
+        $slip->type_coverage !== 5 && $slip->type_coverage !== 6 &&
+        $slip->type_coverage !== 7 && $slip->type_coverage !== 8 &&
+        $slip->type_coverage !== 11 && $slip->type_coverage !== 12 &&
+        $slip->type_coverage !== 13 && $slip->type_coverage !== 14 &&
+        $slip->type_coverage !==15 && $slip->type_coverage !== 16 &&
+        $slip->type_coverage !== 17 && $slip->type_coverage !== 18 &&
+        $slip->type_coverage !== 19 && $slip->type_coverage !== 20 &&
+        $slip->type_coverage !== 33 && $slip->type_coverage !== 35 &&
+        $slip->type_coverage !== 36 && $slip->type_coverage !== 37)
+        <div>Valor Asegurado: {{ $slip->valor_asegurado }}</div>
+        @endif 
+        
+        @if ($slip->type_coverage === 2 || $slip->type_coverage === 4)
+        <div>Cúmulo Asegurado:{{ $slip->insurable_value }}</div>
+        @endif
 
-    </table>
+    </div>
 </div>
