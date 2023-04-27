@@ -497,6 +497,9 @@
             30%
         </div>
     </div>
+
 </div>
 
 </div>
+@include('admin.tecnico.slip.pdf-generales.footerData')
+@include('admin.tecnico.slip.pdf-generales.footerData2')
