@@ -6,6 +6,7 @@ use App\Models\AdditionalCoverage;
 use App\Models\AviacionExtras;
 use App\Models\BoatDetailSlip;
 use App\Models\ClauseSlip;
+use App\Models\CoberturasPilotos;
 use App\Models\CompensationLimit;
 use App\Models\CoverageSlip;
 use App\Models\DeductibleSlip;
@@ -654,6 +655,23 @@ class SlipApiController extends Controller
 
                         $type_slip = SlipAviationTwo::where('id', $slip->id);
 
+                        //coberturas adicionales
+                        for ($i = 0; $i < count($request->description_coverage_additional); $i++) {
+                            if (isset($request->description_coverage_additional[$i])) {
+                                $additional_coverages = new CoberturasPilotos([
+                                    'description_coverage_additional' => $request->description_coverage_additional[$i] ?? null,
+                                    'coverage_additional_additional' => $request->coverage_additional_additional[$i] ?? null,
+                                    'coverage_additional_usd' => $request->coverage_additional_usd[$i] ?? null,
+                                    'coverage_additional_additional2' => $request->coverage_additional_additional2[$i] ?? null,
+                                    'sum_assured' => $request->sum_assured[$i] ?? null,
+                                    'pilots_quantity' => $request->pilots_quantity[$i] ?? null,
+                                    'total_assured' => $request->total_assured[$i] ?? null,
+                                    'slip_id' => $slip->id
+                                ]);
+                                $additional_coverages->save();
+                            }
+                        }
+
                         //Objeto del Seguro
                         for ($i = 0; $i < count($request->birthday); $i++) {
                             if (isset($request->birthday[$i])) {
@@ -662,6 +680,7 @@ class SlipApiController extends Controller
                                     'age' => $request->age[$i] ?? null,
                                     'birthday' => $request->birthday[$i] ?? null,
                                     'name' => $request->name[$i] ?? null,
+                                    'person_type' => $request->person_type[$i] ?? null,
                                     'slip_id' => $slip->id
                                 ]);
                                 $object_insurance->save();

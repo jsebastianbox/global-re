@@ -14,6 +14,10 @@ input[type="file"] {
     color: var(--global-grey);
 
 }
+#aviacion_licenciaCoberturasAdicionalesTableBody tr td input
+{
+    max-width: 90px;
+}
 
 .navList__subheading {
     background-color: var(--accent-4) !important;

@@ -2435,6 +2435,61 @@ $(document).on('click', '.btn-delete-cobertura', function (e) {
     $(`#newRowIncendioCoberturaAdicional${id}`).remove()
 })
 
+function addRowCoberturaV3(event, type, typeRamo, typeSubCobertura) {
+    event.preventDefault()
+
+    let rowCount = document.getElementById(`${type}CoberturasAdicionalesTable`).rows.length
+
+    const coberturasAdicionalesTableBody = document.getElementById(`${type}CoberturasAdicionalesTableBody`)
+    const tr = document.createElement('tr')
+
+    coberturasAdicionalesTableBody.appendChild(tr)
+    tr.id = `newRowIncendioCoberturaAdicional${rowCount}`
+    tr.innerHTML =
+        `
+            <td>
+                ${rowCount}
+            </td>
+            <td>
+                <select id="description_coverage_additional_${rowCount}" name="description_coverage_additional[]" class="selectCobertura"></select>
+            </td>
+            <td>
+                <input type="text" placeholder="..." name="coverage_additional_additional[]">
+            </td>
+            <td>
+                <input type="number" step="any" placeholder="0" name="coverage_additional_usd[]" data-money>
+            </td>
+            <td>
+                <input type="text" placeholder="..." name="coverage_additional_additional2[]">
+            </td>
+            <td>
+                <input onkeyup="actualizarTotalAsegurado(${rowCount}, 'aviacion_licenciaCoberturasAdicionalesTable')" name="sum_assured[]" class="row${rowCount}" type="number" step="any" >
+            </td>
+            <td>
+                <input onkeyup="actualizarTotalAsegurado(${rowCount}, 'aviacion_licenciaCoberturasAdicionalesTable')" name="pilots_quantity[]" class="row${rowCount}" type="number" step="any" >
+            </td>
+            <td>
+                <input onkeyup="actualizarTotalAsegurado(${rowCount}, 'aviacion_licenciaCoberturasAdicionalesTable')" name="total_assured[]" class="rowTotal${rowCount}" type="number" step="any" >
+            </td>
+            <td>
+                <button id="${rowCount}" type="button"  class="btn btn-danger btn-delete-cobertura"></button>
+            </td>
+        `
+
+    $('#description_coverage_additional_' + rowCount).select2();
+    coberturasSelect(`#description_coverage_additional_${rowCount}`, `${typeRamo}`, `${typeSubCobertura}`);
+
+}
+
+
+$(document).on('click', '.btn-delete-cobertura', function (e) {
+    e.preventDefault()
+
+    let id = $(this).attr('id')
+
+    $(`#newRowIncendioCoberturaAdicional${id}`).remove()
+})
+
 function addRowClausula(event, type, typeRamo, typeSubCobertura) {
     event.preventDefault()
     let rowCount = document.getElementById(`${type}ClausulasAdicionalesTable`).rows.length
@@ -2900,11 +2955,18 @@ function addRowObjetoSeguroV2(event, type) {
     tr.id = `newRowObjetoSeguro${rowCount}`
     tr.innerHTML =
         `
-        <td>
+        <td style="text-align: center">
             ${rowCount}
         </td>
         <td style="text-align: center">
             <input type="text" name="name[]">
+        </td>
+        <td>
+            <select name="person_type">
+                <option value="" selected>Seleccionar</option>
+                <option value="Piloto">Piloto</option>
+                <option value="Tripulante">Tripulante</option>
+            </select>
         </td>
         <td style="text-align: center">
             <input type="date" class="birthdateInput" name="birthday[]" onchange="putAge('aviacion_licenciaTableObjetosSeguro')">
@@ -3376,4 +3438,22 @@ function sumaAviacion(row, col, typeTable) {
 
     $('#suma_asegurada_lol').val(sumaTotal2)
 
+}
+
+
+function actualizarTotalAsegurado(row, table) {
+    const tableSelect = document.getElementById(`${table}`)
+    // Obtener los valores de las columnas
+    //multiplicar filas
+    let rowSelect = tableSelect.getElementsByClassName(`row${row}`)
+    let rowTotal = tableSelect.querySelector(`.rowTotal${row}`)
+
+    let result = 1
+    for (let i = 0; i < rowSelect.length; i++) {
+        if (rowSelect[i].value > 0) {
+            result *= rowSelect[i].value
+        }
+    }
+
+    rowTotal.value = result
 }

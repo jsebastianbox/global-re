@@ -28,6 +28,7 @@ class CreateObjectInsurancesTable extends Migration
             $table->double('age')->nullable();
             $table->double('year')->nullable();
             $table->string('brand')->nullable();
+            $table->string('person_type')->nullable();
             $table->string('serie')->nullable();
             $table->double('limit')->nullable();
             $table->double('object_insured_val')->nullable();

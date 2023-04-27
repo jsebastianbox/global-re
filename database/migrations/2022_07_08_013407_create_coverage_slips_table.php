@@ -17,7 +17,6 @@ class CreateCoverageSlipsTable extends Migration
             $table->id();
             $table->string('description_coverage')->nullable();
             $table->string('aditional_coverage')->nullable();
-
             $table->foreignId('slip_id')->constrained('slips')
                 ->onDelete("cascade")
                 ->onUpdate("cascade");
