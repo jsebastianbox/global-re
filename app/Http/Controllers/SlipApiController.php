@@ -95,7 +95,6 @@ class SlipApiController extends Controller
                 $slip->slip_type_id = "1";
                 $slip->save();
 
-                $type_slip = SlipLifePersonlAccident::where('id', $slip->id);
                 //Objeto del Seguro
                 for ($i = 0; $i < count($request->birthday); $i++) {
                     if (isset($request->birthday[$i])) {
@@ -141,19 +140,8 @@ class SlipApiController extends Controller
                 }
 
                 //deductibles
-                for ($i = 0; $i < count($request->description_deductible); $i++) {
-                    if (isset($request->description_deductible[$i])) {
-                        $deductibles = new DeductibleSlip([
-                            'description_deductible' => $request->description_deductible[$i] ?? null,
-                            'sinister_value' => $request->sinister_value[$i] ?? null,
-                            'insured_value' => $request->insured_value[$i] ?? null,
-                            'minimum' => $request->minimum[$i] ?? null,
-                            'description2_deductible' => $request->description2_deductible[$i] ?? null,
-                            'slip_id' => $slip->id
-                        ]);
-                        $deductibles->save();
-                    }
-                }
+                $this->chargeDeductibles($request, $slip);
+
 
 
                 if ($request->hasFile('accidentRate')) {
@@ -235,19 +223,8 @@ class SlipApiController extends Controller
                 }
 
                 //deductibles
-                for ($i = 0; $i < count($request->description_deductible); $i++) {
-                    if (isset($request->description_deductible[$i])) {
-                        $deductibles = new DeductibleSlip([
-                            'description_deductible' => $request->description_deductible[$i] ?? null,
-                            'sinister_value' => $request->sinister_value[$i] ?? null,
-                            'insured_value' => $request->insured_value[$i] ?? null,
-                            'minimum' => $request->minimum[$i] ?? null,
-                            'description2_deductible' => $request->description2_deductible[$i] ?? null,
-                            'slip_id' => $slip->id
-                        ]);
-                        $deductibles->save();
-                    }
-                }
+                $this->chargeDeductibles($request, $slip);
+                $this->chargeDeductibles($request, $slip);
                 $this->saveFilesFromRequest($request, $basePath, 'activos_fijos', $slip_activos_fijos->id, "activos-fijos");
 
                 break;
@@ -303,20 +280,7 @@ class SlipApiController extends Controller
                 }
 
                 //deductibles
-                for ($i = 0; $i < count($request->description_deductible); $i++) {
-                    if (isset($request->description_deductible[$i])) {
-                        $deductibles = new DeductibleSlip([
-                            'description_deductible' => $request->description_deductible[$i] ?? null,
-                            'sinister_value' => $request->sinister_value[$i] ?? null,
-                            'insured_value' => $request->insured_value[$i] ?? null,
-                            'minimum' => $request->minimum[$i] ?? null,
-                            'description2_deductible' => $request->description2_deductible[$i] ?? null,
-                            'slip_id' => $slip->id
-                        ]);
-                        $deductibles->save();
-                    }
-                }
-
+                $this->chargeDeductibles($request, $slip);
 
                 $this->saveFilesFromRequest($request, $basePath, 'vehiculos',  $slip_vehiculos->id);
 
@@ -369,20 +333,7 @@ class SlipApiController extends Controller
                 }
 
                 //deductibles
-                for ($i = 0; $i < count($request->description_deductible); $i++) {
-                    if (isset($request->description_deductible[$i])) {
-                        $deductibles = new DeductibleSlip([
-                            'description_deductible' => $request->description_deductible[$i] ?? null,
-                            'sinister_value' => $request->sinister_value[$i] ?? null,
-                            'insured_value' => $request->insured_value[$i] ?? null,
-                            'minimum' => $request->minimum[$i] ?? null,
-                            'description2_deductible' => $request->description2_deductible[$i] ?? null,
-                            'slip_id' => $slip->id
-                        ]);
-                        $deductibles->save();
-                    }
-                }
-
+                $this->chargeDeductibles($request, $slip);
                 $this->saveFilesFromRequest($request, $basePath, 'tecnico',  $slip_ramos_tecnicos->id);
 
                 break;
@@ -446,20 +397,7 @@ class SlipApiController extends Controller
                 }
 
                 //deductibles
-                for ($i = 0; $i < count($request->description_deductible); $i++) {
-                    if (isset($request->description_deductible[$i])) {
-                        $deductibles = new DeductibleSlip([
-                            'description_deductible' => $request->description_deductible[$i] ?? null,
-                            'sinister_value' => $request->sinister_value[$i] ?? null,
-                            'insured_value' => $request->insured_value[$i] ?? null,
-                            'minimum' => $request->minimum[$i] ?? null,
-                            'description2_deductible' => $request->description2_deductible[$i] ?? null,
-                            'slip_id' => $slip->id
-                        ]);
-                        $deductibles->save();
-                    }
-                }
-
+                $this->chargeDeductibles($request, $slip);
                 $this->saveFilesFromRequest($request, $basePath, 'energia',  $slip_energia->id);
 
 
@@ -579,20 +517,7 @@ class SlipApiController extends Controller
                 }
 
                 //deductibles
-                for ($i = 0; $i < count($request->description_deductible); $i++) {
-                    if (isset($request->description_deductible[$i])) {
-                        $deductibles = new DeductibleSlip([
-                            'description_deductible' => $request->description_deductible[$i] ?? null,
-                            'sinister_value' => $request->sinister_value[$i] ?? null,
-                            'insured_value' => $request->insured_value[$i] ?? null,
-                            'minimum' => $request->minimum[$i] ?? null,
-                            'description2_deductible' => $request->description2_deductible[$i] ?? null,
-                            'slip_id' => $slip->id
-                        ]);
-                        $deductibles->save();
-                    }
-                }
-
+                $this->chargeDeductibles($request, $slip);
 
                 break;
             case 'aviacion_1_form':
@@ -753,20 +678,7 @@ class SlipApiController extends Controller
                 }
 
                 //deductibles
-                for ($i = 0; $i < count($request->description_deductible); $i++) {
-                    if (isset($request->description_deductible[$i])) {
-                        $deductibles = new DeductibleSlip([
-                            'description_deductible' => $request->description_deductible[$i] ?? null,
-                            'sinister_value' => $request->sinister_value[$i] ?? null,
-                            'insured_value' => $request->insured_value[$i] ?? null,
-                            'minimum' => $request->minimum[$i] ?? null,
-                            'description2_deductible' => $request->description2_deductible[$i] ?? null,
-                            'slip_id' => $slip->id
-                        ]);
-                        $deductibles->save();
-                    }
-                }
-
+                $this->chargeDeductibles($request, $slip);
                 $slip->save();
                 break;
             case 'finanzas_1_form':
@@ -841,19 +753,7 @@ class SlipApiController extends Controller
                 }
 
                 //deductibles
-                for ($i = 0; $i < count($request->description_deductible); $i++) {
-                    if (isset($request->description_deductible[$i])) {
-                        $deductibles = new DeductibleSlip([
-                            'description_deductible' => $request->description_deductible[$i] ?? null,
-                            'sinister_value' => $request->sinister_value[$i] ?? null,
-                            'insured_value' => $request->insured_value[$i] ?? null,
-                            'minimum' => $request->minimum[$i] ?? null,
-                            'description2_deductible' => $request->description2_deductible[$i] ?? null,
-                            'slip_id' => $slip->id
-                        ]);
-                        $deductibles->save();
-                    }
-                }
+                $this->chargeDeductibles($request, $slip);
                 break;
             case 'responsabilidad_form':
                 $slip_responsabilidad = new SlipCivilLiability();
@@ -893,20 +793,7 @@ class SlipApiController extends Controller
                 }
 
                 //deductibles
-                for ($i = 0; $i < count($request->description_deductible); $i++) {
-                    if (isset($request->description_deductible[$i])) {
-                        $deductibles = new DeductibleSlip([
-                            'description_deductible' => $request->description_deductible[$i] ?? null,
-                            'sinister_value' => $request->sinister_value[$i] ?? null,
-                            'insured_value' => $request->insured_value[$i] ?? null,
-                            'minimum' => $request->minimum[$i] ?? null,
-                            'description2_deductible' => $request->description2_deductible[$i] ?? null,
-                            'slip_id' => $slip->id
-                        ]);
-                        $deductibles->save();
-                    }
-                }
-
+                $this->chargeDeductibles($request, $slip);
                 $this->saveFilesFromRequest($request, $basePath, 'responsabilidad',  $slip_responsabilidad->id);
 
                 break;
@@ -948,20 +835,7 @@ class SlipApiController extends Controller
                 }
 
                 //deductibles
-                for ($i = 0; $i < count($request->description_deductible); $i++) {
-                    if (isset($request->description_deductible[$i])) {
-                        $deductibles = new DeductibleSlip([
-                            'description_deductible' => $request->description_deductible[$i] ?? null,
-                            'sinister_value' => $request->sinister_value[$i] ?? null,
-                            'insured_value' => $request->insured_value[$i] ?? null,
-                            'minimum' => $request->minimum[$i] ?? null,
-                            'description2_deductible' => $request->description2_deductible[$i] ?? null,
-                            'slip_id' => $slip->id
-                        ]);
-                        $deductibles->save();
-                    }
-                }
-
+                $this->chargeDeductibles($request, $slip);
                 $this->saveFilesFromRequest($request, $basePath, 'riesgo',  $slip_riesgos->id);
                 break;
             default:
@@ -1413,5 +1287,22 @@ class SlipApiController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function chargeDeductibles(Request $request, Slip $slip)
+    {
+        for ($i = 0; $i < count($request->description_deductible); $i++) {
+            if (isset($request->description_deductible[$i])) {
+                $deductibles = new DeductibleSlip([
+                    'description_deductible' => $request->description_deductible[$i] ?? null,
+                    'sinister_value' => $request->sinister_value[$i] ?? null,
+                    'insured_value' => $request->insured_value[$i] ?? null,
+                    'minimum' => $request->minimum[$i] ?? null,
+                    'description2_deductible' => $request->description2_deductible[$i] ?? null,
+                    'slip_id' => $slip->id
+                ]);
+
+                $deductibles->save();
+            }
+        }
     }
 }
