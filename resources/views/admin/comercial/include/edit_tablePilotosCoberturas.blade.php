@@ -21,7 +21,7 @@
         </thead>
         {{-- tbody --}}
         <tbody id="aviacion_licenciaCoberturasAdicionalesTableBody">
-            @if ($count > 0))
+            @if ($count > 0)
                 @foreach ($coverages_pilots as $key => $item)
                     <tr>
                         <td>1</td>

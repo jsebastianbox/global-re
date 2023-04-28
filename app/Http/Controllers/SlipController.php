@@ -7,6 +7,7 @@ use App\Models\AviacionExtras;
 use App\Models\BoatDetailSlip;
 use App\Models\ClauseSlip;
 use App\Models\Clausulas_selector;
+use App\Models\CoberturasPilotos;
 use App\Models\CoberturasSelector;
 use App\Models\CompensationLimit;
 use App\Models\Country;
@@ -201,6 +202,8 @@ class SlipController extends Controller
             case '34':
                 $slip_type = SlipAviationTwo::where('slip_id', $id)->first();
                 $object_insurance = ObjectInsurance::where('slip_id', $id)->get();
+                $coverages_pilots = CoberturasPilotos::where('slip_id', $id)->get();
+                $count = count($coverages_pilots);
                 //clausulas y cobertura to find
                 $coberturasSelect = CoberturasSelector::where('main_branch', 'aviacion')->get();
                 $clausulasSelect = Clausulas_selector::where('main_branch', 'aviacion')->get();
@@ -277,6 +280,8 @@ class SlipController extends Controller
             ->with('information_aerial', $information_aerial)
             ->with('aviation_extras', $aviation_extras)
             ->with('vehicles_details', $vehicles_details)
+            ->with('coverages_pilots', $coverages_pilots)
+            ->with('count', $count)
             ->with('coberturasSelect', $coberturasSelect)
             ->with('exclusionesSelect', $exclusionesSelect)
             ->with('clausulasSelect', $clausulasSelect)
@@ -670,6 +675,25 @@ class SlipController extends Controller
                         $type_slip->update($request->all());
 
                         ObjectInsurance::where('slip_id', $id)->delete();
+                        CoberturasPilotos::where('slip_id', $id)->delete();
+
+                        if (isset($request->quantity_pilots)) {
+                            for ($i = 0; $i < count($request->description_coverage_additional); $i++) {
+                                if (isset($request->description_coverage_additional[$i])) {
+                                    $additional_coverages = new CoberturasPilotos([
+                                        'description_coverage_additional' => $request->description_coverage_additional[$i] ?? null,
+                                        'coverage_additional_additional' => $request->coverage_additional_additional[$i] ?? null,
+                                        'coverage_additional_usd' => $request->coverage_additional_usd[$i] ?? null,
+                                        'coverage_additional_additional2' => $request->coverage_additional_additional2[$i] ?? null,
+                                        'sum_assured' => $request->sum_assured[$i] ?? null,
+                                        'pilots_quantity' => $request->pilots_quantity[$i] ?? null,
+                                        'total_assured' => $request->total_assured[$i] ?? null,
+                                        'slip_id' => $slip->id
+                                    ]);
+                                    $additional_coverages->save();
+                                }
+                            }
+                        }
 
                         $this->saveFilesFromRequest($request, $basePath, 'aviacion_2',  $type_slip->id);
                         break;
@@ -717,6 +741,7 @@ class SlipController extends Controller
                                 'age' => $request->age[$i] ?? null,
                                 'birthday' => $request->birthday[$i] ?? null,
                                 'name' => $request->name[$i] ?? null,
+                                'person_type' => $request->person_type[$i] ?? null,
                                 'slip_id' => $slip->id
                             ]);
                             $object_insurance->save();

@@ -17,72 +17,9 @@
         <div class="tableContainer">
             <h4 class="slipTitle">Objeto(s) del seguro</h4>
 
-            <table id="tableObjetosSeguro" class="indemnizacionTable">
-                <thead>
-                    <tr>
-                        <th style="text-align: center">#</th>
-                        <th style="text-align: center">Nombre</th>
-                        <th style="text-align: center">Fecha de nacimiento</th>
-                        <th style="text-align: center">Edad</th>
-                        <th style="text-align: center">Ingreso anual</th>
-                        <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1"
-                            colspan="1" aria-label="Add row">
-                            <button type="button" onclick="addRowObjetoSeguroV2(event)" class="btn btn-success btn-xs">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                            </button>
-                        </th>
-                    </tr>
-                </thead>
-
-                <tbody id="objetosTableBody">
-                    @if (count($object_insurance) > 0)
-
-                        @foreach ($object_insurance as $key => $item)
-                        <tr>
-                            <td style="text-align: center">
-                                <span>{{ $key + 1 }}</span>
-                            </td>
-                            <td style="text-align: center">
-                                <input value="{{ $item->name }}" type="text" name="name[]">
-                            </td>
-                            <td style="text-align: center">
-                                <input value="{{ $item->birthday }}" type="date" class="birthdateInput" name="birthday[]" onchange="putAge('aviacion_licenciaTableObjetosSeguro')">
-                            </td>
-                            <td style="text-align: center">
-                                <input value="{{ $item->age }}" type="number" step="any" name="age[]" class="ageInput">
-                            </td>
-                            <td style="text-align: center">
-                                <input value="{{ $item->limit }}" type="number" data-money step="any" name="limit[]">
-                            </td>
-
-                            <td></td>
-                        </tr>
-                        @endforeach
-                    @else
-                        <tr>
-                            <td style="text-align: center">
-                                <span>1</span>
-                            </td>
-                            <td style="text-align: center">
-                                <input type="text" name="name[]">
-                            </td>
-                            <td style="text-align: center">
-                                <input type="date" class="birthdateInput" name="birthday[]" onchange="putAge('aviacion_licenciaTableObjetosSeguro')">
-                            </td>
-                            <td style="text-align: center">
-                                <input type="number" step="any" name="age[]" class="ageInput">
-                            </td>
-                            <td style="text-align: center">
-                                <input type="number" data-money step="any" name="limit[]">
-                            </td>
-
-                            <td></td>
-                        </tr>
-                    @endif
-                    
-                </tbody>
-
-            </table>
+            <div class="tableContainer">
+                @include('admin.comercial.include.tablePilotosAviacion')
+            </div>
 
         </div>
 
@@ -126,7 +63,7 @@
         {{-- Coberturas adicionales --}}
         <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Coberturas Adicionales</h3>
 
-        @include('admin.comercial.include.edit_tablaCoberturas')
+        @include('admin.comercial.include.edit_tablePilotosCoberturas')
 
     </div>
 
