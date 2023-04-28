@@ -115,5 +115,3 @@
 @default
 @endswitch
 
-
-@include('admin.tecnico.slip.pdf-generales.footerData')
