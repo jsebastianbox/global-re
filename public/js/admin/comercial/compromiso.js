@@ -2913,9 +2913,8 @@ function addRowObjetoSeguro(event, type) {
     tr.id = `newRowFidelidadObjetoSeguro${rowCount}`
     tr.innerHTML =
         `
-        <th>
-            <input type="text" name="number[]"
-                placeholder="...">
+        <th style="text-align:center">
+            ${rowCount}
         </th>
         <th>
             <input type="text" name="name[]"

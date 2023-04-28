@@ -12,23 +12,7 @@
 
         @include('admin.tecnico.slip.slips_generales.initial')
 
-        <div class="flexColumnCenterContainer">
-            <div class="input_group" style="max-width: 400px">
-                <label for="bankersObjetoSeguro">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                    Objeto del seguro
-                </label>
-                <textarea name="object_insurance" cols="30" rows="1"></textarea>
-            </div>
-
-            <div class="input_group" style="max-width: 400px">
-                <label>
-                    <i class="fa-solid fa-bars-staggered"></i>
-                    Cobertura
-                </label>
-                <textarea name="coverage" cols="30" rows="1"></textarea>
-            </div>
-        </div>
+        @include('admin.tecnico.slip.slips_generales.objectInsuranceAndCoverage')
 
     </div>
 
@@ -46,21 +30,21 @@
                         <i class="fa-solid fa-bars-staggered"></i>
                         Seccion I: BBB
                     </label>
-                    <input type="text" id="" name="description_compensation_limit[]" placeholder="...">
+                    <input type="text" value="{{$slip_type->description_compensation_limit}}" name="description_compensation_limit" placeholder="...">
                 </div>
                 <div class="input_group">
                     <label for="">
                         <i class="fa-solid fa-bars-staggered"></i>
                         Seccion II: Crimen por computador
                     </label>
-                    <input type="text" id="" name="description_compensation_limit2[]" placeholder="...">
+                    <input type="text" value="{{$slip_type->description_compensation_limit2}}" name="description_compensation_limit2" placeholder="...">
                 </div>
                 <div class="input_group">
                     <label for="">
                         <i class="fa-solid fa-bars-staggered"></i>
                         Seccion III: Directores y administradores
                     </label>
-                    <input type="text" id="" name="description_compensation_limit3[]" placeholder="...">
+                    <input type="text" value="{{$slip_type->description_compensation_limit3}}" name="description_compensation_limit3" placeholder="...">
                 </div>
 
             </div>
@@ -101,14 +85,15 @@
 
         <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Coberturas Adicionales</h3>
 
-        @include('admin.tecnico.slip.slips_generales.tableCoberturasAdicionales')
+        @include('admin.comercial.include.edit_tablaCoberturas')
 
     </div>
 
     <div class="form_group4">
         <h3 class="slipTitle"> <span class="badge badge-secondary">3</span> Cláusulas Adicionales</h3>
 
-        @include('admin.tecnico.slip.slips_generales.clausulasAdicionales')
+        @include('admin.comercial.include.edit_tablaClausulas')
+
     </div>
 
     <div class="form_group5">

@@ -11,6 +11,18 @@
 
         @include('admin.tecnico.slip.slips_generales.initial')
 
+        <div class="tableContainer">
+            {{-- Cobertura --}}
+            <div class="input_group" style="max-width: 450px">
+                <label for="">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                    Cobertura
+                </label>
+                <textarea name="coverage" id="coverage" style="resize:both;width:100%;" 
+                     cols="30" rows="1">{{ $slip->coverage }}</textarea>
+            </div>
+        </div>
+
         <div class="two-sides">
 
             <div class="left_side">
@@ -27,15 +39,7 @@
                         <option value="Nominal">Nominal</option>
                     </select>
                 </div>
-                {{-- Cobertura --}}
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Cobertura
-                    </label>
-                    <textarea name="coverage" id="coverage" style="resize:both;width:100%;" 
- cols="30" rows="1"></textarea>
-                </div>
+                
                 {{-- Periodo de descubrimiento --}}
                 <div class="input_group">
                     <label for="">
@@ -43,6 +47,13 @@
                         Periodo de descubrimiento
                     </label>
                     <input type="text" id="" name="discovery_period">
+                </div>
+                <div class="input_group">
+                    <label for="">
+                        <i class="fa-solid fa-rectangle-list"></i>
+                        Giro del negocio
+                    </label>
+                    <input type="text" id="" name="business">
                 </div>
 
 
@@ -68,8 +79,27 @@
                     </label>
                     <input type="text" value="{{ $slip_type->limit_colusorio_text}}" name="limit_colusorio_text">
                 </div>
+            </div>
+        </div>
 
-
+        <div class="two-sides">
+            <div class="left_side">
+                <div class="input_group">
+                    <label for="">
+                        <i class="fa-solid fa-rectangle-list"></i>
+                        Límite de indemnización
+                    </label>
+                    <input type="number" step="any" value="{{ $slip_type->limit_compensation}}" name="limit_compensation">
+                </div>
+            </div>
+            <div class="right_side">
+                <div class="input_group">
+                    <label for="">
+                        <i class="fa-solid fa-rectangle-list"></i>
+                        Límite Agregado
+                    </label>
+                    <input type="number" step="any" value="{{ $slip_type->limit_aggregate}}" name="limit_aggregate">
+                </div>
             </div>
         </div>
 
@@ -87,79 +117,23 @@
                 <input type="file" id="" name="file">
             </div>
 
-            <table id="fidelidadTableObjetosSeguro" class="table table-striped table-bordered no-footer" cellspacing="0"
-                width="80%" aria-describedby="example_info">
-                <thead>
-                    <tr role="row">
-                        <th>Número</th>
-                        <th>Nombre(s)</th>
-                        <th>Cargo</th>
-                        <th>Ingreso anual</th>
-                        <th style="text-align: center; width: 42px;" class="sorting_disabled" rowspan="1"
-                            colspan="1" aria-label="Add row">
-
-                            <button onclick="addRowFidelidadObjetoSeguro(event)" class="btn btn-success btn-xs">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                            </button>
-                        </th>
-                    </tr>
-                </thead>
-
-                <tbody id="fidelidadObjetosTableBody">
-
-                    @if (count($slip_type->object_insurance) > 0 )
-                        @foreach ($slip_type->object_insurance as $key => $item)
-                            <tr>
-                                <th style="text-align: center">
-                                    <input type="text" name="number[]" value="{{ $item->number }}">
-                                </th>
-                                <th style="text-align: center">
-                                    <input type="text" name="name[]" value="{{ $item->name }}">
-                                </th>
-                                <th style="text-align: center">
-                                    <input type="text" name="activity_merchant[]" value="{{ $item->activity_merchant }}">
-                                </th>
-    
-                                <th style="text-align: center">
-                                    <input type="text" name="limit[]" value="{{ $item->limit }}">
-                                </th>
-                            </tr>
-                        @endforeach
-                    @else
-                        <tr>
-                            <th style="text-align: center">
-                                <input type="text" name="number[]" placeholder="...">
-                            </th>
-                            <th style="text-align: center">
-                                <input type="text" name="name[]" placeholder="...">
-                            </th>
-                            <th style="text-align: center">
-                                <input type="text" name="activity_merchant[]">
-                            </th>
-
-                            <th style="text-align: center">
-                                <input type="text" name="limit[]" placeholder="...">
-                            </th>
-                        </tr>
-                    @endif
-                    
-                </tbody>
-            </table>
+            @include('admin.comercial.include.tableObjetoSeguroFidelidad')
+            
         </div>
     </div>
 
     <div class="form_group3">
         <h3 class="slipTitle"> <span class="badge badge-secondary">3</span> Coberturas Adicionales</h3>
 
-        @include('admin.tecnico.slip.slips_generales.tableCoberturasAdicionales')
+        @include('admin.comercial.include.edit_tablaCoberturas')
+
     </div>
 
     <div class="form_group4">
         {{-- Cláusulas Adicionales --}}
         <h3 class="slipTitle"> <span class="badge badge-secondary">4</span> Cláusulas Adicionales</h3>
         
-        
-        @include('admin.tecnico.slip.slips_generales.clausulasAdicionales')
+        @include('admin.comercial.include.edit_tablaClausulas')
 
     </div>
 

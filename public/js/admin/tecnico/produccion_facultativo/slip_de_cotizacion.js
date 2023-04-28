@@ -2797,3 +2797,45 @@ $(document).on('click', '.btn-delete-perdida', function (e) {
 
     $(`#newRowSumaAseguradaTable${id}`).remove()
 })
+
+
+function addRowObjetoSeguro(event, type) {
+    event.preventDefault()
+
+    let rowCount = document.getElementById(`${type}TableObjetosSeguro`).rows.length
+
+    const fidelidadObjetosTableBody = document.getElementById(`${type}ObjetosTableBody`)
+    const tr = document.createElement('tr')
+
+    fidelidadObjetosTableBody.appendChild(tr)
+    tr.id = `newRowFidelidadObjetoSeguro${rowCount}`
+    tr.innerHTML =
+        `
+        <th style="text-align:center">
+            ${rowCount}
+        </th>
+        <th>
+            <input type="text" name="name[]"
+                placeholder="...">
+        </th>
+        <th>
+            <input type="text" name="activity_merchant[]">
+        </th>
+
+        <th>
+            <input type="text" name="limit[]"
+                placeholder="...">
+        </th>
+        <th>
+            <button id="${rowCount}" type="button" class="btn btn-danger btn-xs btn-delete-objeto"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        </th>
+        `
+
+}
+$(document).on('click', '.btn-delete-objeto', function (e) {
+    e.preventDefault();
+
+    let id = $(this).attr('id');
+    $('#newRowFidelidadObjetoSeguro' + id).remove()
+
+})

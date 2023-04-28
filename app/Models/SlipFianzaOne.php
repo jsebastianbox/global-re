@@ -17,6 +17,7 @@ class SlipFianzaOne extends Model
         'discovery_period',
         'limit_colusorio_value', //
         'limit_colusorio_text', //
+        'business', //
         'coverage',
         'condition_additional',
         'siniestralidad',
