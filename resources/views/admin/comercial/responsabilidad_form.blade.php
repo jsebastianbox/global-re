@@ -1,4 +1,4 @@
-{{-- Responsabilidad Civil --}}
+    {{-- Responsabilidad Civil --}}
 @section('tab_title')
 <div id="date"></div>
 <script>
