@@ -83,7 +83,7 @@ class SlipController extends Controller
         $vehicles_details = [];
         $boat_detail = [];
         $information_aerial = [];
-        $aviation_extras = [];
+        $aviation_extras = []; 
         $coverages_pilots = [];
         $count = 0;
         $exclusionesSelect = [];

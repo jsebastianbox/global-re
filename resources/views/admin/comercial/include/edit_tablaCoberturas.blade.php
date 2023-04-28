@@ -281,7 +281,7 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>
-                            <select name="description_coverage_additional[]"{{--  class="selectCobertura" --}} disabled>
+                            <select name="description_coverage_additional[]"{{--  class="selectCobertura" --}}>
                                 @foreach ($coberturasSelect as $coberturaSelect)
                                     <option value="{{ $coberturaSelect->name }}" 
                                             @if ($coberturaSelect->id == $item->description_coverage_additional) 
