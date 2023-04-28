@@ -84,6 +84,8 @@ class SlipController extends Controller
         $boat_detail = [];
         $information_aerial = [];
         $aviation_extras = [];
+        $coverages_pilots = [];
+        $count = 0;
         $exclusionesSelect = [];
 
         switch ($slip->type_coverage) {
@@ -405,8 +407,6 @@ class SlipController extends Controller
         $slip->security()->delete();
         $slip->guarantee_payment()->delete();
 
-        $selectSlip = Slip::where('id', $id)->select('model_id', 'type_coverage')->first();
-
         $slip->slip_status_id = '3';
         $basePath = "slips";
         switch ($slip->type_coverage) {
@@ -677,7 +677,7 @@ class SlipController extends Controller
                         ObjectInsurance::where('slip_id', $id)->delete();
                         CoberturasPilotos::where('slip_id', $id)->delete();
 
-                        if (isset($request->quantity_pilots)) {
+                        if (isset($request->pilots_quantity)) {
                             for ($i = 0; $i < count($request->description_coverage_additional); $i++) {
                                 if (isset($request->description_coverage_additional[$i])) {
                                     $additional_coverages = new CoberturasPilotos([
@@ -780,7 +780,7 @@ class SlipController extends Controller
             case '51':
             case '52':
 
-                switch ($selectSlip->type_coverage) {
+                switch ($slip->type_coverage) {
                     case '46':
                         $type_slip = SlipFianzaOne::where('slip_id', $id)->first();
                         $type_slip->update($request->all());

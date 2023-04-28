@@ -25,13 +25,13 @@
 
         <div class="two-sides">
             <div class="left_side">
-                {{-- <div class="input_group">
+                <div class="input_group">
                     <label >
                         <i class="fa-solid fa-pager"></i>
-                        Límite de indemnización:
+                        Suma Asegurada LOL:
                     </label>
-                    <input type="text" name="limit_compensation" value="{{ $slip->limit_compensation }}">
-                </div> --}}
+                    <input type="number" step="any" name="suma_asegurada_lol" value="{{ $slip_type->suma_asegurada_lol }}">
+                </div>
 
                 <div class="input_group">
                     <label for="licenciaGeografico">

@@ -109,7 +109,7 @@
                 <div class="col-md-6">
                     <div class="input-group">
                         <label for="" class="input-group-text">Suma Asegurada</label>
-                        <input type="number" step="any" name="suma_asegurada_lol">
+                        <input type="number" value="{{$slip_type->suma_asegurada_lol}}" step="any" name="suma_asegurada_lol">
                     </div>
                 </div>
             </div>
