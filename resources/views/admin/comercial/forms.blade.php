@@ -53,7 +53,7 @@
 {{-- completo --}}
 @include('admin.comercial.maritimo_forms.pi_form')
 
-{{-- RC prtuaria, astilleros, armadores --}}
+{{-- RC portuaria, astilleros, armadores --}}
 {{-- completo --}}
 @include('admin.comercial.maritimo_forms.rc_forms')
 

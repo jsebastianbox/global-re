@@ -87,25 +87,31 @@
 
         @include('admin.comercial.include.edit_tablaCoberturas')
 
-    </div>
-
-    <div class="form_group4">
         <h3 class="slipTitle"> <span class="badge badge-secondary">3</span> Cláusulas Adicionales</h3>
 
         @include('admin.comercial.include.edit_tablaClausulas')
 
-    </div>
-
-    <div class="form_group5">
         {{-- Exclusiones --}}
         <h3 class="slipTitle"> <span class="badge badge-secondary">4</span> Exclusiones</h3>
 
         @include('admin.tecnico.slip.slips_generales.exclusiones')
 
-        <h3 class="slipTitle"> <span class="badge badge-secondary">6</span> Deducibles</h3>
+    </div>
+
+    <div class="form_group4">
+
+        <h3 class="slipTitle"> <span class="badge badge-secondary">5</span> Deducibles</h3>
 
         @include('admin.tecnico.slip.slips_generales.deducibles')
 
+    </div>
+
+    <div class="form_group5">
+
+        <h3 class="slipTitle"> <span class="badge badge-secondary">6</span> Deducibles</h3>
+
+        @include('admin.tecnico.slip.slips_generales.condicionesBBB')
+        
     </div>
 
     <div class="form_group6">
@@ -119,17 +125,6 @@
                         Condiciones precedentes de cobertura
                     </label>
                     <input type="text" name="precedent_conditions" placeholder="...">
-                </div>
-            </div>
-        </div>
-
-        <div class="tableContainer" style="1.2rem 0">
-            <h4 class="slipTitle">Siniestralidad</h4>
-            <div class="flexColumnCenterContainer">
-                <div class="input_group" style="width:400px">
-                    
-                    <input type="text" value="" placeholder="...">
-                    <input type="file" name="siniestralidad" placeholder="No. Días">
                 </div>
             </div>
         </div>
