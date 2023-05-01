@@ -21,7 +21,7 @@ class CreateSlipFianzaOnesTable extends Migration
             $table->id();
             $table->string('type_coverage_fidelidad')->nullable();
             $table->string('discovery_period')->nullable();
-            $table->string('limit_colusorio_value')->nullable()->default(0);
+            $table->double('limit_colusorio_value')->nullable();
             $table->string('limit_colusorio_text')->nullable();
             $table->text('coverage')->nullable();
             $table->text('condition_additional')->nullable();

@@ -701,6 +701,10 @@ class CompromisoController extends Controller
 
         $slip_type = SlipFinancialRisk::where('slip_id', $id)->first();
 
+        $object_insurance = ObjectInsurance::where('slip_id', $id)->get();
+        if (count($object_insurance) === 0) {
+            $object_insurance = [];
+        }
         //clausulas y cobertura to find
         $coberturasSelect = CoberturasSelector::all();
         $clausulasSelect = Clausulas_selector::all();
@@ -710,6 +714,7 @@ class CompromisoController extends Controller
             ->with('countries', $countries)
             ->with('slip_statuses', $slip_statuses)
             ->with('type_coverage', $type_coverage)
+            ->with('object_insurance', $object_insurance)
             ->with('coberturasSelect', $coberturasSelect)
             ->with('clausulasSelect', $clausulasSelect)
             ->with('slip', $slip)

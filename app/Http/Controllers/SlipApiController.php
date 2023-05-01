@@ -806,6 +806,19 @@ class SlipApiController extends Controller
 
                 $type_slip = SlipFinancialRisk::where('id', $slip->id);
 
+                //objeto asegurado
+                for ($i = 0; $i < count($request->activity_merchant); $i++) {
+                    if (isset($request->activity_merchant[$i])) {
+                        $object_insurance = new ObjectInsurance([
+                            'name' => $request->name[$i] ?? null,
+                            'activity_merchant' => $request->activity_merchant[$i] ?? null,
+                            'limit' => $request->limit[$i] ?? null,
+                            'slip_id' => $slip->id
+                        ]);
+                        $object_insurance->save();
+                    }
+                }
+
                 //coberturas adicionales
                 for ($i = 0; $i < count($request->description_coverage_additional); $i++) {
                     if (isset($request->description_coverage_additional[$i])) {

@@ -236,6 +236,11 @@ class SlipController extends Controller
                 break;
 
             case '44':
+                $slip_type = SlipFinancialRisk::where('slip_id', $id)->first();
+                $object_insurance = ObjectInsurance::where('slip_id', $id)->get();
+                //clausulas y cobertura to find
+                $coberturasSelect = CoberturasSelector::all();
+                $clausulasSelect = Clausulas_selector::all();
             case '45':
                 $slip_type = SlipFinancialRisk::where('slip_id', $id)->first();
                 //clausulas y cobertura to find

@@ -48,15 +48,6 @@
                     </label>
                     <input type="text" id="" name="discovery_period">
                 </div>
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-rectangle-list"></i>
-                        Giro del negocio
-                    </label>
-                    <input type="text" id="" name="business">
-                </div>
-
-
 
             </div>
 

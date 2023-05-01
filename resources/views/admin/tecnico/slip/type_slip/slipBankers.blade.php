@@ -17,67 +17,149 @@
     </div>
 
     <div class="form_group2">
+        
+        @if ($slip->type_coverage === 44)
+            <div class="two-sides">
 
-        <div class="two-sides">
-
-            <div class="left_side">
+                <div class="left_side">
 
 
-                {{-- Limite Indemnización --}}
-                <h5 class="slipTitle">Límite de indemnización (USD):</h5>
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Seccion I: BBB
-                    </label>
-                    <input type="text" value="{{$slip_type->description_compensation_limit}}" name="description_compensation_limit" placeholder="...">
+                    {{-- Limite Indemnización --}}
+                    <h5 class="slipTitle">Límite de indemnización (USD):</h5>
+                    <div class="input_group">
+                        <label for="">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Seccion I: BBB
+                        </label>
+                        <input type="text" value="{{$slip_type->description_compensation_limit}}" name="description_compensation_limit" placeholder="...">
+                    </div>
+                    <div class="input_group">
+                        <label for="">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Seccion II: Crimen por computador
+                        </label>
+                        <input type="text" value="{{$slip_type->description_compensation_limit2}}" name="description_compensation_limit2" placeholder="...">
+                    </div>
+                    <div class="input_group">
+                        <label for="">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Seccion III: Directores y administradores
+                        </label>
+                        <input type="text" value="{{$slip_type->description_compensation_limit3}}" name="description_compensation_limit3" placeholder="...">
+                    </div>
+
                 </div>
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Seccion II: Crimen por computador
-                    </label>
-                    <input type="text" value="{{$slip_type->description_compensation_limit2}}" name="description_compensation_limit2" placeholder="...">
+
+                <div class="right_side">
+
+                    {{-- Cobertura --}}
+                    <h5 class="slipTitle">Coberturas:</h5>
+                    <div class="input_group">
+                        <label for="">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Seccion I: BBB
+                        </label>
+                        <input type="text" id="" name="description_coverage[]" placeholder="...">
+                    </div>
+                    <div class="input_group">
+                        <label for="">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Seccion II: Crimen por computador
+                        </label>
+                        <input type="text" id="" name="description_coverage[]" placeholder="...">
+                    </div>
+                    <div class="input_group">
+                        <label for="">
+                            <i class="fa-solid fa-bars-staggered"></i>
+                            Seccion III: Directores y administradores
+                        </label>
+                        <input type="text" id="" name="description_coverage[]" placeholder="...">
+                    </div>
+
                 </div>
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Seccion III: Directores y administradores
-                    </label>
-                    <input type="text" value="{{$slip_type->description_compensation_limit3}}" name="description_compensation_limit3" placeholder="...">
+            </div>
+        @endif
+
+        @if ($slip->type_coverage === 45)
+            <div class="two-sides">
+
+                <div class="left_side">
+
+                    {{-- Tipo de cobertura --}}
+                    <div class="input_group">
+                        <label for="">
+                            <i class="fa-solid fa-rectangle-list"></i>
+                            Tipo de cobertura
+                        </label>
+                        <select name="type_coverage_fidelidad" id="">
+                            <option value="0" selected disabled>Selecciona</option>
+                            <option value="Blanket">Blanket</option>
+                            <option value="Nominal">Nominal</option>
+                        </select>
+                    </div>
+                    
+                    {{-- Periodo de descubrimiento --}}
+                    <div class="input_group">
+                        <label for="">
+                            <i class="fa-solid fa-rectangle-list"></i>
+                            Periodo de descubrimiento
+                        </label>
+                        <input type="text" id="" name="discovery_period">
+                    </div>
+
                 </div>
 
+                <div class="right_side">
+
+
+                    {{-- Limite colusorio --}}
+                    <h5 class="slipTitle">Límite colusorio:</h5>
+                    <div class="input_group">
+                        <label for="">
+                            <i class="fa-solid fa-rectangle-list"></i>
+                            Numérico
+                        </label>
+                        <input type="number" value="{{ $slip_type->limit_colusorio_value}}" name="limit_colusorio_value">
+                    </div>
+                    <div class="input_group">
+                        <label for="">
+                            <i class="fa-solid fa-rectangle-list"></i>
+                            Texto
+                        </label>
+                        <input type="text" value="{{ $slip_type->limit_colusorio_text}}" name="limit_colusorio_text">
+                    </div>
+                </div>
             </div>
 
-            <div class="right_side">
-
-                {{-- Cobertura --}}
-                <h5 class="slipTitle">Coberturas:</h5>
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Seccion I: BBB
-                    </label>
-                    <input type="text" id="" name="description_coverage[]" placeholder="...">
+            <div class="two-sides">
+                <div class="left_side">
+                    <div class="input_group">
+                        <label for="">
+                            <i class="fa-solid fa-rectangle-list"></i>
+                            Límite de indemnización
+                        </label>
+                        <input type="number" step="any" value="{{ $slip_type->limit_compensation}}" name="limit_compensation">
+                    </div>
                 </div>
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Seccion II: Crimen por computador
-                    </label>
-                    <input type="text" id="" name="description_coverage[]" placeholder="...">
+                <div class="right_side">
+                    <div class="input_group">
+                        <label for="">
+                            <i class="fa-solid fa-rectangle-list"></i>
+                            Límite Agregado
+                        </label>
+                        <input type="number" step="any" value="{{ $slip_type->limit_aggregate}}" name="limit_aggregate">
+                    </div>
                 </div>
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-bars-staggered"></i>
-                        Seccion III: Directores y administradores
-                    </label>
-                    <input type="text" id="" name="description_coverage[]" placeholder="...">
-                </div>
-
             </div>
-        </div>
 
+            {{-- table Objetos del seguro --}}
+            <div class="tableContainer">
+                <h4 class="slipTitle">Tabla Objeto(s) del seguro</h4>
+    
+                @include('admin.comercial.include.tableObjetoSeguroFidelidad')
+                
+            </div>
+        @endif
 
     </div>
 

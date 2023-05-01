@@ -17,8 +17,11 @@ class SlipFinancialRisk extends Model
         'object_insurance',
         'condition_additional',
         'siniestralidad',
-        'siniestralidad',
         'limit_compensation',
+        'limit_colusorio_value',
+        'limit_colusorio_text',
+        'limit_compensation',
+        'limit_aggregate',
         'description_compensation_limit',
         'description_compensation_limit2',
         'description_compensation_limit3'
