@@ -123,7 +123,8 @@
         {{-- Coberturas adicionales --}}
         <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Coberturas Adicionales</h3>
 
-        @include('admin.tecnico.slip.slips_generales.tableCoberturasAdicionales')
+        @include('admin.comercial.include.edit_tablaCoberturas')
+
 
     </div>
 
@@ -131,7 +132,8 @@
         <h3 class="slipTitle"> <span class="badge badge-secondary">3</span> Cláusulas Adicionales</h3>
 
         {{-- Cláusulas Adicionales --}}
-        @include('admin.tecnico.slip.slips_generales.clausulasAdicionales')
+        @include('admin.comercial.include.edit_tablaClausulas')
+
 
     </div>
 

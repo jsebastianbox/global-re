@@ -741,12 +741,13 @@ class CompromisoController extends Controller
             ->with('clausulasSelect', $clausulasSelect)
             ->with('slip', $slip);
         switch ($slip->type_coverage) {
-            case '46':
+            case 'null':
                 $slip_type = SlipFianzaOne::where('slip_id', $id)->first();
                 $object_insurance = ObjectInsurance::where('slip_id', $id)->get();
                 $view = $this->chargeFilesIntoView("finanzas_1", "finanzas_1", $slip_type->id, $view);
                 break;
-
+                
+            case '46':
             case '47':
             case '48':
             case '49':

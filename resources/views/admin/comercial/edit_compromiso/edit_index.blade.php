@@ -92,10 +92,10 @@
         @include('admin.comercial.vida_forms')
     @elseif (Route::is('edit.fianzas'))
         @switch($slip->type_coverage)
-            @case('46')
-                @include('admin.comercial.finanzas.fidelidad_form')
-                @break
-
+        {{-- @include('admin.comercial.finanzas.fidelidad_form')
+        @break
+         --}}
+            @case('46') 
             @case('47')
             @case('48')
             @case('49')

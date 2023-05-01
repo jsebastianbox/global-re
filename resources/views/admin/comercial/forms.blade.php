@@ -89,7 +89,7 @@
 
 {{-- Fidelidad --}}
 {{-- completo --}}
-@include('admin.comercial.finanzas.fidelidad_form')
+@include('admin.comercial.finanzas.fidelidad_form') {{-- sin usar --}}
 
 {{-- Seriedad de oferta && Cumplimiento de contrato && Buen uso de anticipo && Ejecucion de obra y buena calidad de materiales && garantías aduaneras && Otras garantías --}}
 @include('admin.comercial.finanzas.seriedad_oferta_form')
@@ -194,9 +194,6 @@
 
     fianzasSelector.addEventListener('change', function() {
         switch (this.value) {
-            case 'fi':
-                form = "form.fianzas"
-                break;
             default:
                 form = "form.fianzas2"
                 break;

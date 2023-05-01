@@ -37,6 +37,7 @@ class CreateSlipFianzaTwosTable extends Migration
             $table->string('validity_contract')->nullable();
             $table->string('counter_guarantee_detail')->nullable(); //detalle de contragarantia
             $table->text('coverage')->nullable();
+            $table->text('object_insurance')->nullable();
 
             $table->string('type_fianza')->nullable();
             $table->string('from_date_mount_fianza')->nullable();

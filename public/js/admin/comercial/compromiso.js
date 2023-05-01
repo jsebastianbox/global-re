@@ -1536,16 +1536,16 @@ function updateS10() {
     switch (value) {
         case "fi":
             currentTab = 0;
-            currentForm = '#finanzas_1_form'
-            x = finanzas_1.getElementsByClassName("tab");
-            nextBtn = finanzas_1.getElementsByTagName('button').nextBtn;
-            prevBtn = finanzas_1.getElementsByTagName('button').prevBtn;
-            submitBtn = finanzas_1.getElementsByTagName('button').submitBtn;
+            currentForm = '#finanzas_2_form'
+            x = finanzas_2.getElementsByClassName("tab");
+            nextBtn = finanzas_2.getElementsByTagName('button').nextBtn;
+            prevBtn = finanzas_2.getElementsByTagName('button').prevBtn;
+            submitBtn = finanzas_2.getElementsByTagName('button').submitBtn;
             showTab(currentTab); // Display the crurrent tab
-            finanzas_1.style.display = "block";
-            finanzas_2.style.display = "none";
+            finanzas_1.style.display = "none";
+            finanzas_2.style.display = "block";
             element.setAttribute('value', '46');
-            finanzas_1.appendChild(element);
+            finanzas_2.appendChild(element);
             clausulasSelect(".selectClausula", "fianzas", "fidelidad");
             coberturasSelect(".selectCobertura", "fianzas", "fidelidad");
             break;

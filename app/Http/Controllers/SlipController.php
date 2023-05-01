@@ -244,7 +244,7 @@ class SlipController extends Controller
 
                 break;
 
-            case '46':
+            case 'null':
                 $slip_type = SlipFianzaOne::where('slip_id', $id)->first();
                 $object_insurance = ObjectInsurance::where('slip_id', $id)->get();
                 //clausulas y cobertura to find
@@ -253,6 +253,7 @@ class SlipController extends Controller
 
                 break;
 
+            case '46':
             case '47':
             case '48':
             case '49':
@@ -781,7 +782,7 @@ class SlipController extends Controller
             case '52':
 
                 switch ($slip->type_coverage) {
-                    case '46':
+                    case 'null':
                         $type_slip = SlipFianzaOne::where('slip_id', $id)->first();
                         $type_slip->update($request->all());
 
@@ -805,6 +806,7 @@ class SlipController extends Controller
                         $this->saveFilesFromRequest($request, $basePath, 'fianza_1',  $type_slip->id);
                         break;
 
+                    case '46':
                     case '47':
                     case '48':
                     case '49':
