@@ -87,87 +87,130 @@ margin-top: 1.3rem;
 
             @include('admin.comercial.include.object_index')
 
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="input-group mb-3">
-                        <label for="obligationGuarantee" class="input-group-text">Obligación a garantizar</label>
-                        <textarea name="unsecured_obligation" id="" cols="30" rows="10">{{$slip_type->unsecured_obligation}}</textarea>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="input-group mb-3">
-                        <label for="entrenched" class="input-group-text">Afianzado</label>
-                        <input value="{{$slip_type->entrenched}}" placeholder="Afianzado..." name="entrenched">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="input-group mb-3">
-                        <label for="recipient" class="input-group-text">Beneficiario</label>
-                        <input value="{{$slip_type->beneficiary}}" placeholder="Beneficiario..." name="beneficiary">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="input-group mb-3">
-                        <label for="financeType" class="input-group-text">Tipo de fianza</label>
-                        <input value="{{$slip_type->type_fianza}}" placeholder="Tipo de finanza..." name="type_fianza" class="">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="input-group mb-3">
-                        <label for="financeAmount" class="input-group-text">Monto de fianza</label>
-                        <input value="{{$slip_type->mount_fianza}}" placeholder="123456" name="mount_fianza" type="number" step="any"
-                            data-money>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <h5 class="input-group-text">Vigencia fianza</h5>
-                    <div class="d-flex flex-column">
+            @if ($slip->type_coverage !== 46)
+                <div class="row">
+                    <div class="col-md-4">
                         <div class="input-group mb-3">
-                            <label for="from_date" class="input-group-text">Desde</label>
-                            <input value="{{$slip_type->from_date_mount_fianza}}" type="date" name="from_date_mount_fianza">
-                        </div>
-                        <div class="input-group">
-                            <label for="to_date" class="input-group-text">Hasta</label>
-                            <input value="{{$slip_type->to_date_mount_fianza}}" type="date" name="to_date_mount_fianza">
+                            <label for="obligationGuarantee" class="input-group-text">Obligación a garantizar</label>
+                            <textarea name="unsecured_obligation" id="" cols="30" rows="10">{{$slip_type->unsecured_obligation}}</textarea>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="input-group mb-3">
-                        <label for="contractAmount" class="input-group-text">Monto contrato</label>
-                        <input value="{{$slip_type->mount_contract}}" placeholder="123456" name="mount_contract" type="number" step="any"
-                            data-money>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <h5 class="input-group-text">Vigencia del contrato</h5>
-                    <div class="d-flex flex-column">
+                    <div class="col-md-4">
                         <div class="input-group mb-3">
-                            <label for="contract_from_date" class="input-group-text">Desde</label>
-                            <input value="{{$slip_type->from_date_mount_contract}}" type="date" name="from_date_mount_contract">
+                            <label for="entrenched" class="input-group-text">Afianzado</label>
+                            <input value="{{$slip_type->entrenched}}" placeholder="Afianzado..." name="entrenched">
                         </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="input-group mb-3">
-                            <label for="contract_to_date" class="input-group-text">Hasta</label>
-                            <input value="{{$slip_type->to_date_mount_contract}}" type="date" name="to_date_mount_contract">
+                            <label for="recipient" class="input-group-text">Beneficiario</label>
+                            <input value="{{$slip_type->beneficiary}}" placeholder="Beneficiario..." name="beneficiary">
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group mb-3">
+                            <label for="financeType" class="input-group-text">Tipo de fianza</label>
+                            <input value="{{$slip_type->type_fianza}}" placeholder="Tipo de finanza..." name="type_fianza" class="">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-3">
+                            <label for="financeAmount" class="input-group-text">Monto de fianza</label>
+                            <input value="{{$slip_type->mount_fianza}}" placeholder="123456" name="mount_fianza" type="number" step="any"
+                                ¡>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="input-group-text">Vigencia fianza</h5>
+                        <div class="d-flex flex-column">
+                            <div class="input-group mb-3">
+                                <label for="from_date" class="input-group-text">Desde</label>
+                                <input value="{{$slip_type->from_date_mount_fianza}}" type="date" name="from_date_mount_fianza">
+                            </div>
+                            <div class="input-group">
+                                <label for="to_date" class="input-group-text">Hasta</label>
+                                <input value="{{$slip_type->to_date_mount_fianza}}" type="date" name="to_date_mount_fianza">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group mb-3">
+                            <label for="contractAmount" class="input-group-text">Monto contrato</label>
+                            <input value="{{$slip_type->mount_contract}}" placeholder="123456" name="mount_contract" type="number" step="any"
+                                ¡>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="input-group-text">Vigencia del contrato</h5>
+                        <div class="d-flex flex-column">
+                            <div class="input-group mb-3">
+                                <label for="contract_from_date" class="input-group-text">Desde</label>
+                                <input value="{{$slip_type->from_date_mount_contract}}" type="date" name="from_date_mount_contract">
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="contract_to_date" class="input-group-text">Hasta</label>
+                                <input value="{{$slip_type->to_date_mount_contract}}" type="date" name="to_date_mount_contract">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="input-group mb-3">
+                            <label for="contractPercentage" class="input-group-text">Porcentaje del contrato que cubre la
+                                fianza</label>
+                            <input value="{{$slip_type->contract_percentage}}" placeholder="0" min="0" name="contract_percentage" type="number" step="any">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                </div>
+            @endif
 
-            <div class="row">
-                <div class="col-md-10">
-                    <div class="input-group mb-3">
-                        <label for="contractPercentage" class="input-group-text">Porcentaje del contrato que cubre la
-                            fianza</label>
-                        <input value="{{$slip_type->contract_percentage}}" placeholder="0" min="0" name="contract_percentage" type="number" step="any">
-                        <span class="input-group-text">%</span>
+            @if ($slip->type_coverage === 46)
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <div class="input-group-text">Tipo de cobertura:</div>
+                            <select name="type_coverage_fidelidad">
+                                <option value="" selected>Seleccionar</option>
+                                <option value="Blanket" {{$slip_type->type_coverage_fidelidad == 'Blanket' ? 'selected' : ''}} >Blanket</option>
+                                <option value="Nominal" {{$slip_type->type_coverage_fidelidad == 'Nominal' ? 'selected' : ''}} >Nominal</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <div class="input-group-text">Periodo de descubrimiento:</div>
+                            <input type="text" name="periodo_descubrimiento" value="{{$slip_type->periodo_descubrimiento}}">
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                <div class="row mb-3">
+                    <label class="lead">Límite Colusorio</label>
+                    <hr>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <input type="number" step="any" placeholder="0" name="limit_colusorio_value"
+                               value="{{$slip_type->limit_colusorio_value}}" >
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <input type="text" placeholder="..." name="limit_colusorio_text"
+                           value="{{$slip_type->limit_colusorio_text}}" >
+                        </div>
+                    </div>
+                </div>
+            @endif
 
             <label for="" class="lead">Coberturas adicionales</label>
             <hr style="background-color: darkgrey; width: 70%">
@@ -198,7 +241,7 @@ margin-top: 1.3rem;
                 <div class="col-md-6">
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="deducible">Prima de reaseguros</label>
-                        <input type="number" step="any" data-money placeholder="USD"
+                        <input type="number" step="any" ¡ placeholder="USD"
                             name="reinsurance_premium" value="{{ $slip->reinsurance_premium }}">
                     </div>
                 </div>
@@ -214,96 +257,99 @@ margin-top: 1.3rem;
 
             @include('admin.comercial.include.leyJurisdiccion')
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="sentenceInput">
-                        <ol style="list-style-type:upper-roman;">
-                            <li class="my-2">
-                                <h4 style="text-align: center; text-transform: uppercase">Condiciones de reafianzamiento
-                                </h4>
-                                <ul>
-                                    <li>Retención neta de la cedente y monto cedido a contrato</li>
-                                    <li>Monto propuesto al reasegurador</li>
-                                    <li>Comisión de Reafianzamiento</li>
-                                    <li>En caso de colocarse totalmente en forma facultativa, indicar la razón</li>
-                                </ul>
-                            </li>
-                            <li class="my-2">
-                                <h4 style="text-align: center; text-transform: uppercase">antecedentes del afianzado</h4>
-                                <ul>
-                                    <li>Giro</li>
-                                    <li>Dirección</li>
-                                    <li>Pertenecen a algún grupo económico</li>
-                                    <li>Cúmulo de responsabilidades vigentes que tenga la cedente con el afianzado como
-                                        consecuencia de fianzas anteriores</li>
-                                    <li>Cúmulo de responsabilidades vigentes real cedido a contrato</li>
-                                    <li>Información de la experiencia o trayectoria del afianzado</li>
-                                    <li>Desde cuando es afianzado de la Compañía Cedente</li>
-                                </ul>
-                            </li>
-                            <li class="my-2">
-                                <h4 style="text-align: center; text-transform: uppercase">Contragarantías</h4>
-                                <ul>
-                                    <li>Detalle de las contragarantías</li>
-                                </ul>
-                            </li>
-                            <li class="my-2">
-                                <h4 style="text-align: center; text-transform: uppercase">Información financiera</h4>
-                                <ul>
-                                    <li>Estados financieros del afianzado y en su caso, del obligado solidario de los
-                                        últimos 3 años</li>
-                                </ul>
-                            </li>
-                            <li class="my-2">
-                                <h4 style="text-align: center; text-transform: uppercase">Anexos</h4>
-                                <ul>
-                                    <li class="my-2">
+            @if ($slip->type_coverage !== 46)
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="sentenceInput">
+                            <ol style="list-style-type:upper-roman;">
+                                <li class="my-2">
+                                    <h4 style="text-align: center; text-transform: uppercase">Condiciones de reafianzamiento
+                                    </h4>
+                                    <ul>
+                                        <li>Retención neta de la cedente y monto cedido a contrato</li>
+                                        <li>Monto propuesto al reasegurador</li>
+                                        <li>Comisión de Reafianzamiento</li>
+                                        <li>En caso de colocarse totalmente en forma facultativa, indicar la razón</li>
+                                    </ul>
+                                </li>
+                                <li class="my-2">
+                                    <h4 style="text-align: center; text-transform: uppercase">antecedentes del afianzado</h4>
+                                    <ul>
+                                        <li>Giro</li>
+                                        <li>Dirección</li>
+                                        <li>Pertenecen a algún grupo económico</li>
+                                        <li>Cúmulo de responsabilidades vigentes que tenga la cedente con el afianzado como
+                                            consecuencia de fianzas anteriores</li>
+                                        <li>Cúmulo de responsabilidades vigentes real cedido a contrato</li>
+                                        <li>Información de la experiencia o trayectoria del afianzado</li>
+                                        <li>Desde cuando es afianzado de la Compañía Cedente</li>
+                                    </ul>
+                                </li>
+                                <li class="my-2">
+                                    <h4 style="text-align: center; text-transform: uppercase">Contragarantías</h4>
+                                    <ul>
+                                        <li>Detalle de las contragarantías</li>
+                                    </ul>
+                                </li>
+                                <li class="my-2">
+                                    <h4 style="text-align: center; text-transform: uppercase">Información financiera</h4>
+                                    <ul>
+                                        <li>Estados financieros del afianzado y en su caso, del obligado solidario de los
+                                            últimos 3 años</li>
+                                    </ul>
+                                </li>
+                                <li class="my-2">
+                                    <h4 style="text-align: center; text-transform: uppercase">Anexos</h4>
+                                    <ul>
+                                        <li class="my-2">
 
-                                        <div class="input-group">
+                                            <div class="input-group">
 
-                                            @if ($sourceDoc)
-                                            <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="sourceDocDownload">Documento fuente</a>
-                                            <button type="button" class="btn btn-info" style="color: white" onclick="toggleInputs()" id="sourceDocFileToggle">Modificar</button>
-                                            <script>
-                                                let toggledsourceDocFile = false;
-                                                const sourceDocInput = document.getElementById('sourceDoc');
-                                                const sourceDocDownload = document.getElementById('sourceDocDownload');
-                                                const sourceDocLabel = document.getElementById('sourceDocFileLabel');
-                                                const sourceDocToggle = document.getElementById('sourceDocFileToggle');
-                        
-                                                function toggleInputs() {
-                                                    toggledsourceDocFile = !toggledsourceDocFile;
-                                                    sourceDocInput.hidden = !toggledsourceDocFile;
-                                                    sourceDocDownload.hidden = toggledsourceDocFile;
-                                                    sourceDocLabel.hidden = !toggledsourceDocFile;
-                                                    sourceDocToggle.textContent = toggledsourceDocFile ? 'Usar previo' : 'Modificar'
-                                                    if (toggledsourceDocFile) sourceDocInput.click()
-                                                }
-                                            </script>
-                                            @else
-                                            <input class="form-control" type="file" name="sourceDoc" id="sourceDoc" accept="application/*">
-                                            <label class="input-group-text" for="sourceDoc">Documento fuente
-                                            </label>
-                                            @endif
-                                            
+                                                @if ($sourceDoc)
+                                                <a download="siniestralidad_previa" style="padding:1rem; color: #000" id="sourceDocDownload">Documento fuente</a>
+                                                <button type="button" class="btn btn-info" style="color: white" onclick="toggleInputs()" id="sourceDocFileToggle">Modificar</button>
+                                                <script>
+                                                    let toggledsourceDocFile = false;
+                                                    const sourceDocInput = document.getElementById('sourceDoc');
+                                                    const sourceDocDownload = document.getElementById('sourceDocDownload');
+                                                    const sourceDocLabel = document.getElementById('sourceDocFileLabel');
+                                                    const sourceDocToggle = document.getElementById('sourceDocFileToggle');
+                            
+                                                    function toggleInputs() {
+                                                        toggledsourceDocFile = !toggledsourceDocFile;
+                                                        sourceDocInput.hidden = !toggledsourceDocFile;
+                                                        sourceDocDownload.hidden = toggledsourceDocFile;
+                                                        sourceDocLabel.hidden = !toggledsourceDocFile;
+                                                        sourceDocToggle.textContent = toggledsourceDocFile ? 'Usar previo' : 'Modificar'
+                                                        if (toggledsourceDocFile) sourceDocInput.click()
+                                                    }
+                                                </script>
+                                                @else
+                                                <input class="form-control" type="file" name="sourceDoc" id="sourceDoc" accept="application/*">
+                                                <label class="input-group-text" for="sourceDoc">Documento fuente
+                                                </label>
+                                                @endif
+                                                
 
-                                        </div>
+                                            </div>
 
 
 
-                                    </li>
-                                    <li class="my-2">
-                                        <div class="input-group">
-                                            <label for="bailText" class="input-group-text">Texto de la fianza</label>
-                                            <input value="{{$slip_type->bailText}}" type="text" name="bailText" id="bailText">
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ol>
+                                        </li>
+                                        <li class="my-2">
+                                            <div class="input-group">
+                                                <label for="bailText" class="input-group-text">Texto de la fianza</label>
+                                                <input value="{{$slip_type->bailText}}" type="text" name="bailText" id="bailText">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endif
+
             <div>
                 <div style="float:right;" class="row">
                     <div class="input-group mb-3">
@@ -331,87 +377,130 @@ margin-top: 1.3rem;
         
         @include('admin.comercial.include.object_index')
 
-        <div class="row">
-            <div class="col-md-4">
-                <div class="input-group mb-3">
-                    <label for="obligationGuarantee" class="input-group-text">Obligación a garantizar</label>
-                    <textarea name="unsecured_obligation" id="" cols="30" rows="10"></textarea>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="input-group mb-3">
-                    <label for="entrenched" class="input-group-text">Afianzado</label>
-                    <input placeholder="Afianzado..." name="entrenched">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="input-group mb-3">
-                    <label for="recipient" class="input-group-text">Beneficiario</label>
-                    <input placeholder="Beneficiario..." name="beneficiary">
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="input-group mb-3">
-                    <label for="financeType" class="input-group-text">Tipo de fianza</label>
-                    <input placeholder="Tipo de finanza..." name="type_fianza" class="">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="input-group mb-3">
-                    <label for="financeAmount" class="input-group-text">Monto de fianza</label>
-                    <input placeholder="123456" name="mount_fianza" type="number" step="any"
-                        data-money>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <h5 class="input-group-text">Vigencia fianza</h5>
-                <div class="d-flex flex-column">
+        <div id="forCoverageFianzas" style="display:none">
+            <div class="row">
+                <div class="col-md-4">
                     <div class="input-group mb-3">
-                        <label for="from_date" class="input-group-text">Desde</label>
-                        <input type="date" name="from_date_mount_fianza">
+                        <label for="obligationGuarantee" class="input-group-text">Obligación a garantizar</label>
+                        <textarea name="unsecured_obligation" id="" cols="30" rows="10"></textarea>
                     </div>
-                    <div class="input-group">
-                        <label for="to_date" class="input-group-text">Hasta</label>
-                        <input type="date" name="to_date_mount_fianza">
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-3">
+                        <label for="entrenched" class="input-group-text">Afianzado</label>
+                        <input placeholder="Afianzado..." name="entrenched">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-3">
+                        <label for="recipient" class="input-group-text">Beneficiario</label>
+                        <input placeholder="Beneficiario..." name="beneficiary">
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="input-group mb-3">
-                    <label for="contractAmount" class="input-group-text">Monto contrato</label>
-                    <input placeholder="123456" name="mount_contract" type="number" step="any"
-                        data-money>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="input-group mb-3">
+                        <label for="financeType" class="input-group-text">Tipo de fianza</label>
+                        <input placeholder="Tipo de finanza..." name="type_fianza" class="">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-3">
+                        <label for="financeAmount" class="input-group-text">Monto de fianza</label>
+                        <input placeholder="123456" name="mount_fianza" type="number" step="any"
+                            ¡>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="input-group-text">Vigencia fianza</h5>
+                    <div class="d-flex flex-column">
+                        <div class="input-group mb-3">
+                            <label for="from_date" class="input-group-text">Desde</label>
+                            <input type="date" name="from_date_mount_fianza">
+                        </div>
+                        <div class="input-group">
+                            <label for="to_date" class="input-group-text">Hasta</label>
+                            <input type="date" name="to_date_mount_fianza">
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <h5 class="input-group-text">Vigencia del contrato</h5>
-                <div class="d-flex flex-column">
+            <div class="row">
+                <div class="col-md-4">
                     <div class="input-group mb-3">
-                        <label for="contract_from_date" class="input-group-text">Desde</label>
-                        <input type="date" name="from_date_mount_contract">
+                        <label for="contractAmount" class="input-group-text">Monto contrato</label>
+                        <input placeholder="123456" name="mount_contract" type="number" step="any"
+                            ¡>
                     </div>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="input-group-text">Vigencia del contrato</h5>
+                    <div class="d-flex flex-column">
+                        <div class="input-group mb-3">
+                            <label for="contract_from_date" class="input-group-text">Desde</label>
+                            <input type="date" name="from_date_mount_contract">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="contract_to_date" class="input-group-text">Hasta</label>
+                            <input type="date" name="to_date_mount_contract">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-10">
                     <div class="input-group mb-3">
-                        <label for="contract_to_date" class="input-group-text">Hasta</label>
-                        <input type="date" name="to_date_mount_contract">
+                        <label for="contractPercentage" class="input-group-text">Porcentaje del contrato que cubre la
+                            fianza</label>
+                        <input placeholder="0" min="0" name="contract_percentage" type="number" step="any">
+                        <span class="input-group-text">%</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-10">
-                <div class="input-group mb-3">
-                    <label for="contractPercentage" class="input-group-text">Porcentaje del contrato que cubre la
-                        fianza</label>
-                    <input placeholder="0" min="0" name="contract_percentage" type="number" step="any">
-                    <span class="input-group-text">%</span>
+        <div id="forCoverageFidelidad">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <div class="input-group-text">Tipo de cobertura:</div>
+                        <select name="type_coverage_fidelidad">
+                            <option value="" selected>Seleccionar</option>
+                            <option value="Blanket">Blanket</option>
+                            <option value="Nominal">Nominal</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <div class="input-group-text">Periodo de descubrimiento:</div>
+                        <input type="text" name="periodo_descubrimiento">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <label class="lead">Límite Colusorio</label>
+                <hr>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <input type="number" step="any" placeholder="0" name="limit_colusorio_value"
+                            >
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <input type="text" placeholder="..." name="limit_colusorio_text">
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 
     <div class="tab">
@@ -459,7 +548,7 @@ margin-top: 1.3rem;
                             </td>
                             <td>
                                 <input type="number" step="any" placeholder="0"
-                                    name="coverage_additional_usd[]" data-money>
+                                    name="coverage_additional_usd[]" ¡>
                             </td>
                             <td>
                                 <input type="text" placeholder="..." name="coverage_additional_additional2[]">
@@ -514,7 +603,7 @@ margin-top: 1.3rem;
                             </td>
                             <td>
                                 <input type="number" step="any" placeholder="0" name="clause_additional_usd[]"
-                                    data-money>
+                                    ¡>
                             </td>
                             <td>
                                 <input type="text" placeholder="..." name="clause_additional_additional2[]">
@@ -540,7 +629,7 @@ margin-top: 1.3rem;
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="deducible">Prima de reaseguros</label>
                     <input class="inputForm" type="number" step="any" placeholder="USD"
-                        name="reinsurance_premium" data-money>
+                        name="reinsurance_premium" ¡>
                 </div>
             </div>
         </div>
@@ -587,64 +676,66 @@ margin-top: 1.3rem;
     <div class="tab">
         @include('admin.comercial.include.leyJurisdiccion')
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="sentenceInput">
-                    <ol style="list-style-type:upper-roman;">
-                        <li class="my-2">
-                            <h4 style="text-align: center; text-transform: uppercase">Condiciones de reafianzamiento
-                            </h4>
-                            <ul>
-                                <li>Retención neta de la cedente y monto cedido a contrato</li>
-                                <li>Monto propuesto al reasegurador</li>
-                                <li>Comisión de Reafianzamiento</li>
-                                <li>En caso de colocarse totalmente en forma facultativa, indicar la razón</li>
-                            </ul>
-                        </li>
-                        <li class="my-2">
-                            <h4 style="text-align: center; text-transform: uppercase">antecedentes del afianzado</h4>
-                            <ul>
-                                <li>Giro</li>
-                                <li>Dirección</li>
-                                <li>Pertenecen a algún grupo económico</li>
-                                <li>Cúmulo de responsabilidades vigentes que tenga la cedente con el afianzado como
-                                    consecuencia de fianzas anteriores</li>
-                                <li>Cúmulo de responsabilidades vigentes real cedido a contrato</li>
-                                <li>Información de la experiencia o trayectoria del afianzado</li>
-                                <li>Desde cuando es afianzado de la Compañía Cedente</li>
-                            </ul>
-                        </li>
-                        <li class="my-2">
-                            <h4 style="text-align: center; text-transform: uppercase">Contragarantías</h4>
-                            <ul>
-                                <li>Detalle de las contragarantías</li>
-                            </ul>
-                        </li>
-                        <li class="my-2">
-                            <h4 style="text-align: center; text-transform: uppercase">Información financiera</h4>
-                            <ul>
-                                <li>Estados financieros del afianzado y en su caso, del obligado solidario de los
-                                    últimos 3 años</li>
-                            </ul>
-                        </li>
-                        <li class="my-2">
-                            <h4 style="text-align: center; text-transform: uppercase">Anexos</h4>
-                            <ul>
-                                <li class="my-2">
-                                    <div class="input-group">
-                                        <label for="sourceDoc" class="input-group-text">Documento fuente</label>
-                                        <input type="file" name="sourceDoc" id="sourceDoc">
-                                    </div>
-                                </li>
-                                <li class="my-2">
-                                    <div class="input-group">
-                                        <label for="bailText" class="input-group-text">Texto de la fianza</label>
-                                        <input type="text" name="bailText" id="bailText">
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ol>
+        <div id="forCoverageFianzas2" style="display: none">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="sentenceInput">
+                        <ol style="list-style-type:upper-roman;">
+                            <li class="my-2">
+                                <h4 style="text-align: center; text-transform: uppercase">Condiciones de reafianzamiento
+                                </h4>
+                                <ul>
+                                    <li>Retención neta de la cedente y monto cedido a contrato</li>
+                                    <li>Monto propuesto al reasegurador</li>
+                                    <li>Comisión de Reafianzamiento</li>
+                                    <li>En caso de colocarse totalmente en forma facultativa, indicar la razón</li>
+                                </ul>
+                            </li>
+                            <li class="my-2">
+                                <h4 style="text-align: center; text-transform: uppercase">antecedentes del afianzado</h4>
+                                <ul>
+                                    <li>Giro</li>
+                                    <li>Dirección</li>
+                                    <li>Pertenecen a algún grupo económico</li>
+                                    <li>Cúmulo de responsabilidades vigentes que tenga la cedente con el afianzado como
+                                        consecuencia de fianzas anteriores</li>
+                                    <li>Cúmulo de responsabilidades vigentes real cedido a contrato</li>
+                                    <li>Información de la experiencia o trayectoria del afianzado</li>
+                                    <li>Desde cuando es afianzado de la Compañía Cedente</li>
+                                </ul>
+                            </li>
+                            <li class="my-2">
+                                <h4 style="text-align: center; text-transform: uppercase">Contragarantías</h4>
+                                <ul>
+                                    <li>Detalle de las contragarantías</li>
+                                </ul>
+                            </li>
+                            <li class="my-2">
+                                <h4 style="text-align: center; text-transform: uppercase">Información financiera</h4>
+                                <ul>
+                                    <li>Estados financieros del afianzado y en su caso, del obligado solidario de los
+                                        últimos 3 años</li>
+                                </ul>
+                            </li>
+                            <li class="my-2">
+                                <h4 style="text-align: center; text-transform: uppercase">Anexos</h4>
+                                <ul>
+                                    <li class="my-2">
+                                        <div class="input-group">
+                                            <label for="sourceDoc" class="input-group-text">Documento fuente</label>
+                                            <input type="file" name="sourceDoc" id="sourceDoc">
+                                        </div>
+                                    </li>
+                                    <li class="my-2">
+                                        <div class="input-group">
+                                            <label for="bailText" class="input-group-text">Texto de la fianza</label>
+                                            <input type="text" name="bailText" id="bailText">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>

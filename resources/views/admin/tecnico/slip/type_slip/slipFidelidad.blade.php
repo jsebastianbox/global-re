@@ -11,17 +11,8 @@
 
         @include('admin.tecnico.slip.slips_generales.initial')
 
-        <div class="tableContainer">
-            {{-- Cobertura --}}
-            <div class="input_group" style="max-width: 450px">
-                <label for="">
-                    <i class="fa-solid fa-bars-staggered"></i>
-                    Cobertura
-                </label>
-                <textarea name="coverage" id="coverage" style="resize:both;width:100%;" 
-                     cols="30" rows="1">{{ $slip->coverage }}</textarea>
-            </div>
-        </div>
+        @include('admin.tecnico.slip.slips_generales.objectInsuranceAndCoverage')
+
 
         <div class="two-sides">
 
@@ -34,9 +25,8 @@
                         Tipo de cobertura
                     </label>
                     <select name="type_coverage_fidelidad" id="">
-                        <option value="0" selected disabled>Selecciona</option>
-                        <option value="Blanket">Blanket</option>
-                        <option value="Nominal">Nominal</option>
+                        <option value="Blanket" {{$slip_type->type_coverage_fidelidad == 'Blanket' ? 'selected' : ''}} >Blanket</option>
+                        <option value="Nominal" {{$slip_type->type_coverage_fidelidad == 'Nominal' ? 'selected' : ''}} >Nominal</option>
                     </select>
                 </div>
                 
@@ -46,7 +36,7 @@
                         <i class="fa-solid fa-rectangle-list"></i>
                         Periodo de descubrimiento
                     </label>
-                    <input type="text" id="" name="discovery_period">
+                    <input type="text" id="" name="periodo_descubrimiento" value="{{$slip_type->periodo_descubrimiento}}">
                 </div>
 
             </div>
@@ -73,56 +63,23 @@
             </div>
         </div>
 
-        <div class="two-sides">
-            <div class="left_side">
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-rectangle-list"></i>
-                        Límite de indemnización
-                    </label>
-                    <input type="number" step="any" value="{{ $slip_type->limit_compensation}}" name="limit_compensation">
-                </div>
-            </div>
-            <div class="right_side">
-                <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-rectangle-list"></i>
-                        Límite Agregado
-                    </label>
-                    <input type="number" step="any" value="{{ $slip_type->limit_aggregate}}" name="limit_aggregate">
-                </div>
-            </div>
-        </div>
 
     </div>
 
     <div class="form_group2">
-        <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Objeto Del Seguro</h3>
-
-        {{-- table Objetos del seguro --}}
-        <div class="tableContainer">
-            <h4 class="slipTitle">Tabla Objeto(s) del seguro</h4>
-
-            <div class="input_group" style="max-width: 550px; margin:4rem 0">
-                <label for=""> Si el listado es de 20 o mas confirmar si se puede subir un archivo excel</label>
-                <input type="file" id="" name="file">
-            </div>
-
-            @include('admin.comercial.include.tableObjetoSeguroFidelidad')
-            
-        </div>
-    </div>
-
-    <div class="form_group3">
-        <h3 class="slipTitle"> <span class="badge badge-secondary">3</span> Coberturas Adicionales</h3>
+        <h3 class="slipTitle"> <span class="badge badge-secondary">2</span> Coberturas Adicionales</h3>
 
         @include('admin.comercial.include.edit_tablaCoberturas')
 
     </div>
 
+    <div class="form_group3">
+
+    </div>
+
     <div class="form_group4">
         {{-- Cláusulas Adicionales --}}
-        <h3 class="slipTitle"> <span class="badge badge-secondary">4</span> Cláusulas Adicionales</h3>
+        <h3 class="slipTitle"> <span class="badge badge-secondary">3</span> Cláusulas Adicionales</h3>
         
         @include('admin.comercial.include.edit_tablaClausulas')
 
@@ -140,17 +97,6 @@
     </div>
 
     <div class="form_group6">
-
-        <div class="tableContainer" style="1.2rem 0">
-            <h4 class="slipTitle">Siniestralidad</h4>
-            <div class="flexColumnCenterContainer">
-                <div class="input_group" style="width:400px">
-
-                    <input type="text" value="{{ $slip->accidentRate }}" placeholder="...">
-                    <input type="file" name="siniestralidad" placeholder="No. Días">
-                </div>
-            </div>
-        </div>
 
         <div class="tableContainer" style="1.2rem 0">
             <h4 class="slipTitle">Condiciones adicionales</h4>

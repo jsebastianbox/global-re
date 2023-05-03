@@ -149,10 +149,11 @@
         @include('admin.tecnico.slip.type_slip.slipBankers')
     @break
     
-    @include('admin.tecnico.slip.type_slip.slipFidelidad')
+    @case('46')
+    
+        @include('admin.tecnico.slip.type_slip.slipFidelidad')
     @break
     
-    @case('46')
     @case('47')
     @case('48')
     @case('49')

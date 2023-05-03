@@ -1537,6 +1537,14 @@ function updateS10() {
     element.setAttribute('id', 'type_coverage');
     element.setAttribute('hidden', 'true');
 
+    const forCoverageFianzas = document.getElementById('forCoverageFianzas')
+    const forCoverageFianzas2 = document.getElementById('forCoverageFianzas2')
+    const forCoverageFidelidad = document.getElementById('forCoverageFidelidad')
+
+    value === "fi" ? forCoverageFianzas.style.display = "none" : forCoverageFianzas.style.display = "block"
+    value === "fi" ? forCoverageFidelidad.style.display = "block" : forCoverageFidelidad.style.display = "none"
+    value === "fi" ? forCoverageFianzas2.style.display = "none" : forCoverageFianzas2.style.display = "block"
+
     switch (value) {
         case "fi":
             currentTab = 0;

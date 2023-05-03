@@ -18,6 +18,12 @@ class SlipFianzaTwo extends Model
     use HasFactory;
 
     protected $fillable = [
+        //fidelidad
+        'type_coverage_fidelidad',
+        'limit_colusorio_value',
+        'limit_colusorio_text',
+        'periodo_descubrimiento',
+        //
         'unsecured_obligation', //obligacion a garantizar
         'entrenched', //afianzado
         'beneficiary',

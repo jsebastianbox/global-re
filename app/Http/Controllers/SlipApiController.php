@@ -1093,6 +1093,8 @@ class SlipApiController extends Controller
             'th_sum_assured_3' => 'nullable|string|max:255',
             'th_sum_assured_4' => 'nullable|string|max:255',
             'th_sum_assured_5' => 'nullable|string|max:255',
+            'periodo_descubrimiento' => 'nullable|string|max:255',
+            'type_coverage_fidelidad' => 'nullable|string|max:255',
             'limit_colusorio_text' => 'nullable|string|max:255',
             'bailText' => 'nullable|string|max:255',
             'custodia' => 'nullable|string|max:255',

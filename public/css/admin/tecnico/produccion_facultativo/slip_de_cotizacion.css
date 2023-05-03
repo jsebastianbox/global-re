@@ -405,7 +405,9 @@ form h4 {
     height: 96vh;
 }
 
-select option {
+select option,
+select optgroup
+{
     text-align: left;
 }
 

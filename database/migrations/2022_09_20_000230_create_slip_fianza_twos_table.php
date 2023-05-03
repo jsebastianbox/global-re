@@ -25,7 +25,12 @@ class CreateSlipFianzaTwosTable extends Migration
     {
         Schema::create('slip_fianza_twos', function (Blueprint $table) {
             $table->id();
-            //unsecured obligation
+            //fidelidad
+            $table->string('type_coverage_fidelidad')->nullable();
+            $table->double('limit_colusorio_value')->nullable();
+            $table->string('limit_colusorio_text')->nullable();
+            $table->string('periodo_descubrimiento')->nullable();
+            //
             $table->text('unsecured_obligation')->nullable();
             $table->string('entrenched')->nullable(); //afianzado
             $table->string('person_insured')->nullable(); //afianzado
