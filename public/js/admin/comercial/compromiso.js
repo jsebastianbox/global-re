@@ -1501,6 +1501,8 @@ function updateS9() {
             riesgos.style.display = "block";
             element.setAttribute('value', '44');
             riesgos.appendChild(element);
+            document.querySelector("#forCoverage44").style.display = 'block'
+            document.querySelector("#forCoverage45").style.display = 'none'
             coberturasSelect(".selectCobertura", "riesgos_financieros", "bbb");
             clausulasSelect(".selectClausula", "riesgos_financieros", "bbb");
             break;
@@ -1509,6 +1511,8 @@ function updateS9() {
             riesgos.style.display = "block";
             element.setAttribute('value', '45');
             riesgos.appendChild(element);
+            document.querySelector("#forCoverage44").style.display = 'none'
+            document.querySelector("#forCoverage45").style.display = 'block'
             coberturasSelect(".selectCobertura", "riesgos_financieros", "fif");
             clausulasSelect(".selectClausula", "riesgos_financieros", "fif");
             break;

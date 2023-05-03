@@ -350,7 +350,7 @@
     </div>
 
     <div class="tab">
-        <div id="forCoverage44">
+        <div id="forCoverage44" style="display:none">
             <div class="row mb-3">
                 <div class="flexColumnCenterContainer">
                     <label class="lead">Límite de indemnización</label>
@@ -379,7 +379,7 @@
             </div>
         </div>
 
-        <div id="forCoverage45">
+        <div id="forCoverage45" style="display:none">
             <div class="row mb-3">
                 <div class="row mb-3">
                     <label class="lead">Límite Colusorio</label>

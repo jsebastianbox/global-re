@@ -173,26 +173,40 @@
 
         @include('admin.comercial.include.edit_tablaClausulas')
 
-        {{-- Exclusiones --}}
-        <h3 class="slipTitle"> <span class="badge badge-secondary">4</span> Exclusiones</h3>
+        @if ($slip->type_coverage === 44)
+            <h3 class="slipTitle"> <span class="badge badge-secondary">4</span> Exclusiones</h3>
+            @include('admin.tecnico.slip.slips_generales.exclusiones')
+        @endif
 
-        @include('admin.tecnico.slip.slips_generales.exclusiones')
 
     </div>
 
     <div class="form_group4">
 
-        <h3 class="slipTitle"> <span class="badge badge-secondary">5</span> Deducibles</h3>
+        @if ($slip->type_coverage === 45)
+            <h3 class="slipTitle"> <span class="badge badge-secondary">4</span> Exclusiones</h3>
+            @include('admin.tecnico.slip.slips_generales.exclusiones')
+        @endif
 
-        @include('admin.tecnico.slip.slips_generales.deducibles')
+        @if ($slip->type_coverage === 44)
+            <h3 class="slipTitle"> <span class="badge badge-secondary">5</span> Deducibles</h3>
 
+            @include('admin.tecnico.slip.slips_generales.deducibles')
+        @endif
+        
     </div>
 
     <div class="form_group5">
+        @if ($slip->type_coverage === 44)
+            <h3 class="slipTitle"> <span class="badge badge-secondary">6</span> Condiciones</h3>
+            @include('admin.tecnico.slip.slips_generales.condicionesBBB')
+        @endif
+        @if ($slip->type_coverage === 45)
+            <h3 class="slipTitle"> <span class="badge badge-secondary">5</span> Deducibles</h3>
 
-        <h3 class="slipTitle"> <span class="badge badge-secondary">6</span> Deducibles</h3>
+            @include('admin.tecnico.slip.slips_generales.deducibles')
+        @endif
 
-        @include('admin.tecnico.slip.slips_generales.condicionesBBB')
         
     </div>
 
