@@ -33,7 +33,7 @@ class CreateSlipPropertyFixedAssetsTable extends Migration
             $table->string('coverage_foundation')->nullable();
 
             //robo
-            //$table->string('coverage')->nullable();
+            $table->string('coverage')->nullable();
             //$table->string('object_insurance')->nullable();
             //$table->string('limit_compensation')->nullable();
             //$table->enum('first_risk', ['Absoluto', 'Relativo']);
@@ -43,6 +43,8 @@ class CreateSlipPropertyFixedAssetsTable extends Migration
             $table->string('th_sum_assured_3')->nullable();
             $table->string('th_sum_assured_4')->nullable();
             $table->string('th_sum_assured_5')->nullable();
+            $table->double('insured_sum')->nullable();
+            $table->int('anios')->nullable();
 
             //sabotaje y terrorismo
             //$table->string('coverage')->nullable();

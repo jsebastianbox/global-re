@@ -130,7 +130,7 @@
 
                         <tbody>
                             <tr>
-                                <td><input type="text" name="" id=""> años</td>
+                                <td><input type="text" name="anios" id="anios"> años</td>
                                 <td>
                                     <input type="number" name="equipoMaquinaria1" placeholder="%">
                                 </td>

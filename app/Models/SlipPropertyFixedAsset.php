@@ -28,6 +28,8 @@ class SlipPropertyFixedAsset extends Model
         'th_sum_assured_3',
         'th_sum_assured_4',
         'th_sum_assured_5',
+        'insured_sum',
+        'anios',
         'first_risk'
     ];
 
