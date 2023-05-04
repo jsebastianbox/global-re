@@ -47,17 +47,9 @@
                 {{-- Limite colusorio --}}
                 <h5 class="slipTitle">Límite colusorio:</h5>
                 <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-rectangle-list"></i>
-                        Numérico
-                    </label>
                     <input type="number" value="{{ $slip_type->limit_colusorio_value}}" name="limit_colusorio_value">
                 </div>
                 <div class="input_group">
-                    <label for="">
-                        <i class="fa-solid fa-rectangle-list"></i>
-                        Texto
-                    </label>
                     <input type="text" value="{{ $slip_type->limit_colusorio_text}}" name="limit_colusorio_text">
                 </div>
             </div>
