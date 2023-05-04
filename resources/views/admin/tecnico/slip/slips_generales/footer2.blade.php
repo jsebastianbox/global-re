@@ -29,10 +29,6 @@
             </tr>
         </tbody>
     </table>
-
-    {{-- <div class="flexColumnCenterContainer">
-        <textarea placeholder="p/d 100%" name="reinsurance_withholding"></textarea>
-    </div> --}}
 </div>
 
 <div class="tableContainer" style="1.2rem 0">
@@ -65,10 +61,6 @@
             </tr>
         </tbody>
     </table>
-
-    {{-- <div class="flexColumnCenterContainer">
-        <textarea placeholder="p/d 100%" name="reinsurance_assignment"></textarea>
-    </div> --}}
 </div>
 
 {{-- Aqui iria security --}}
