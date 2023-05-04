@@ -17,14 +17,14 @@ class CreateSlipLifePersonlAccidentsTable extends Migration
     {
         Schema::create('slip_life_personl_accidents', function (Blueprint $table) {
             $table->id();
-            $table->smallInteger('num_insurer')->nullable();
+            $table->string('num_insurer')->nullable();
             $table->integer('accumulation')->nullable();
             //Límite Asegurado
-            $table->smallInteger('max_age_approve')->nullable();
-            $table->smallInteger('max_age_cancel')->nullable();
-            $table->smallInteger('compensation_since')->nullable();
-            $table->smallInteger('compensation_until')->nullable();
-            $table->smallInteger('compensation_porcentage')->nullable();
+            $table->string('max_age_approve')->nullable();
+            $table->string('max_age_cancel')->nullable();
+            $table->string('compensation_since')->nullable();
+            $table->string('compensation_until')->nullable();
+            $table->string('compensation_porcentage')->nullable();
             $table->string('beneficiary_disability')->nullable();
             $table->string('beneficiary_death')->nullable();
             $table->double('coverage_foundation')->nullable(); //base de la cobertura

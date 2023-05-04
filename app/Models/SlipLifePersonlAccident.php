@@ -18,8 +18,8 @@ class SlipLifePersonlAccident extends Model
     protected $fillable = [
         'num_insurer',
         'accumulation',
-        'max_age_approve',
         'max_age_cancel',
+        'max_age_approve',
         'compensation_since',
         'compensation_until',
         'compensation_porcentage',
