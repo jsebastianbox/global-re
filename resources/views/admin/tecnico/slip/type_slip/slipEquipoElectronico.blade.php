@@ -47,10 +47,10 @@
                     </div>
                     <div class="input_group">
                         <label for="">Forma:</label>
-                        <select name="" id="">
+                        <select name="nacionality" id="nacionality">
                             <option value="">Seleccionar</option>
-                            <option value="">Inglesa</option>
-                            <option value="">Americana</option>
+                            <option value="Inglesa">Inglesa</option>
+                            <option value="Americana">Americana</option>
                         </select>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                     @endif
                     <div class="input_group">
                         <label for="">Periodo Indemnizacion</label>
-                        <input type="text" placeholder="No. Meses">
+                        <input type="text" id="no_month" name="no_month" placeholder="No. Meses">
                     </div>
                 </div>
             </div>

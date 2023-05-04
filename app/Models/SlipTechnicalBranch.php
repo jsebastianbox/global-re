@@ -42,7 +42,9 @@ class SlipTechnicalBranch extends Model
         'todo_riesgo2',
         'portadores_externos2',
         'incremento_costos2',
-        'total_cuadro2'
+        'total_cuadro2',
+        'no_month',
+        'nacionality'
     ];
 
     public function slip()

@@ -60,6 +60,8 @@ class CreateSlipTechnicalBranchesTable extends Migration
             $table->string('portadores_externos2')->nullable();
             $table->string('incremento_costos2')->nullable();
             $table->string('total_cuadro2')->nullable();
+            $table->string('nacionality')->nullable();
+            $table->string('no_month')->nullable();
 
             $table->timestamps();
         });
