@@ -53,3 +53,11 @@ migracion:Slip_Maritime_One..
 vista:slipproteccion
 modelo:SlipMaritimeTwo
 migracion:Slip_Maritime_Two
+
+vista:slipPortuaria
+modelo:slipMaritimeThree
+migracion:Slip_Maritime_Three
+
+vista:slipPortuaria
+modelo:slipMaritimeThree
+migracion:Slip_Maritime_Three
