@@ -22,7 +22,11 @@ class CreateSlipAviationThreesTable extends Migration
         Schema::create('slip_aviation_threes', function (Blueprint $table) {
             $table->id();
             $table->text('object_insurance')->nullable();
+            $table->text('valor_asegurado')->nullable();
             $table->string('limit_compensation')->nullable();
+            $table->string('geography_limit')->nullable();
+            $table->string('type_aviation')->nullable();
+            $table->text('use_aerial')->nullable();
             $table->foreignIdFor(Slip::class);
             $table->timestamps();
         });

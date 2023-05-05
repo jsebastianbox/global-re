@@ -11,6 +11,10 @@ class SlipAviationThree extends Model
 
     protected $fillable = [
         'object_insurance',
+        'valor_asegurado',
+        'type_aviation',
+        'use_aerial',
+        'geography_limit',
         'limit_compensation'
     ];
 
