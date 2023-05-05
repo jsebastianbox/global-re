@@ -24,7 +24,7 @@
                         <i class="fa-solid fa-rectangle-list"></i>
                         Tipo de cobertura
                     </label>
-                    <select name="type_coverage_fidelidad" id="">
+                    <select name="type_coverage_fidelidad" id="type_coverage_fidelidad">
                         <option value="Blanket" {{$slip_type->type_coverage_fidelidad == 'Blanket' ? 'selected' : ''}} >Blanket</option>
                         <option value="Nominal" {{$slip_type->type_coverage_fidelidad == 'Nominal' ? 'selected' : ''}} >Nominal</option>
                     </select>

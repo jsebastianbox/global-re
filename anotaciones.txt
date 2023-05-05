@@ -70,13 +70,13 @@ modelo:SlipCivilLiability
 migracion:2022_09_19_233138_create_slip_civil_liabilities_table
 
 vista:slipBankers
-modelo:
-migracion:
+modelo:SlipFinancialRisk
+migracion:2022_09_19_234924_create_slip_financial_risks_table
 
 vista:slipFidelidad
-modelo:
-migracion:
+modelo:SlipFianzaTwo
+migracion:2022_09_19_234924_create_slip_financial_risks_table
 
 vista:slipFianzas
-modelo:
+modelo:SlipFianzaTwo
 migracion:

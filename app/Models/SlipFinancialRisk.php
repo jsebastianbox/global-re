@@ -20,8 +20,11 @@ class SlipFinancialRisk extends Model
         'limit_compensation',
         'limit_colusorio_value',
         'limit_colusorio_text',
-        'limit_compensation',
+        // 'limit_compensation',
         'limit_aggregate',
+        'discovery_period',
+        'precedent_conditions',
+        'type_coverage_fidelidad',
         'description_compensation_limit',
         'description_compensation_limit2',
         'description_compensation_limit3'

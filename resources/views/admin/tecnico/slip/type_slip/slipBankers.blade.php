@@ -91,7 +91,7 @@
                             <i class="fa-solid fa-rectangle-list"></i>
                             Tipo de cobertura
                         </label>
-                        <select name="type_coverage_fidelidad" id="">
+                        <select name="type_coverage_fidelidad" id="type_coverage_fidelidad">
                             <option value="0" selected disabled>Selecciona</option>
                             <option value="Blanket">Blanket</option>
                             <option value="Nominal">Nominal</option>

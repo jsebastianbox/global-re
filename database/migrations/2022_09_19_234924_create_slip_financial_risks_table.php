@@ -33,6 +33,9 @@ class CreateSlipFinancialRisksTable extends Migration
             $table->string('description_compensation_limit2')->nullable();
             $table->string('description_compensation_limit3')->nullable();
             $table->string('limit_compensation')->nullable();
+            $table->string('type_coverage_fidelidad')->nullable();
+            $table->string('discovery_period')->nullable();
+            $table->string('precedent_conditions')->nullable();
             $table->text('limit_aggregate')->nullable();
             $table->foreignIdFor(Slip::class);
             $table->timestamps();
