@@ -44,3 +44,8 @@ Slip life:
 Tablas qué contiene:
 Indemnización,
 Objeto del seguro
+
+slipcasco
+vista:slipcasco
+modelo:SlipMaritimeOne
+migracion:create_slip_fixed..

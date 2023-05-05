@@ -20,7 +20,7 @@ class SlipMaritimeOne extends Model
         'construction_material',
         'detail_boat',
         'name_armador',
-        //'precedent_conditions',
+        'precedent_conditions',
     ];
 
     public function slip()

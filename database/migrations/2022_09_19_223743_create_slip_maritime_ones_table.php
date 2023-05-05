@@ -26,6 +26,7 @@ class CreateSlipMaritimeOnesTable extends Migration
             $table->text('coverage')->nullable();
             $table->string('insured_sum')->nullable()->default(0);
             $table->text('detail_boat')->nullable(); //detalle valorado de las embarcaciones
+            $table->text('precedent_conditions')->nullable(); //detalle valorado de las embarcaciones
             $table->string('name_armador')->nullable();
             $table->double('agreed_value')->nullable();
 
