@@ -32,6 +32,7 @@ class CreateSlipFianzaTwosTable extends Migration
             $table->string('periodo_descubrimiento')->nullable();
             //
             $table->text('unsecured_obligation')->nullable();
+            $table->text('condition_additional')->nullable();
             $table->string('entrenched')->nullable(); //afianzado
             $table->string('person_insured')->nullable(); //afianzado
             $table->string('beneficiary')->nullable();
