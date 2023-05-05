@@ -23,7 +23,9 @@ class SlipEnergy extends Model
         'th_sum_assured_2',
         'th_sum_assured_3',
         'th_sum_assured_4',
-        'th_sum_assured_5'
+        'th_sum_assured_5',
+        'insured_sum',
+        'insurable_sum'
     ];
 
     public function sum_assured()

@@ -40,6 +40,8 @@ class CreateSlipEnergiesTable extends Migration
             $table->string('th_sum_assured_3')->nullable();
             $table->string('th_sum_assured_4')->nullable();
             $table->string('th_sum_assured_5')->nullable();
+            $table->double('insurable_sum')->nullable();
+            $table->double('insured_sum')->nullable();
             $table->foreignIdFor(Slip::class);
             $table->timestamps();
         });
