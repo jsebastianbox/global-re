@@ -21,6 +21,7 @@ class CreateSlipAviationOnesTable extends Migration
         Schema::create('slip_aviation_ones', function (Blueprint $table) {
             $table->id();
             $table->text('object_insurance')->nullable();
+            $table->text('precedent_conditions')->nullable();
             //$table->string('aircraft_information')->nullable();
             $table->string('use_aerial')->nullable();
             $table->string('geography_limit')->nullable();
@@ -28,6 +29,7 @@ class CreateSlipAviationOnesTable extends Migration
             $table->string('type_aviation')->nullable();
             $table->text('coverage')->nullable();
             $table->string('coverage_limit')->nullable();
+            $table->string('valor_asegurado')->nullable();
             $table->double('limit_compensation')->nullable();
             $table->string('pilot_authorized')->nullable();
             $table->string('time_model_mark')->nullable();

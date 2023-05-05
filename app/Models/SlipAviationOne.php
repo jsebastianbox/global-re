@@ -22,7 +22,9 @@ class SlipAviationOne extends Model
         'coverage',
         'coverage_limit',
         'pilot_authorized',
-        'time_model_mark'
+        'time_model_mark',
+        'precedent_conditions',
+        'valor_asegurado'
     ];
 
     public function information_aerial()

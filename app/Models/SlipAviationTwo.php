@@ -14,7 +14,7 @@ class SlipAviationTwo extends Model
     protected $fillable = [
         'coverage',
         'use_loss_license',
-        'suma_asegurada_lol',
+        // 'suma_asegurada_lol',
         'geography_limit',
         'suma_asegurada_lol',
     ];

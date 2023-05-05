@@ -61,3 +61,12 @@ migracion:Slip_Maritime_Three
 vista:slipPortuaria
 modelo:slipMaritimeThree
 migracion:Slip_Maritime_Three
+
+vista:slipCascoAereo
+modelo:SlipAviationOne
+migracion:2022_09_19_231026_create_slip_aviation_ones_table
+
+
+vista:slipLicencia
+modelo:SlipAviationTwo
+migracion:2022_09_19_231430_create_slip_aviation_twos_table
