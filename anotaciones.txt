@@ -1,10 +1,9 @@
 OBSERVACIONES:
-
 Sistema de seguros que tienen como objetivo en esta parte crear el presupuesto de cada plan
 hay mas de 50 coberturas resumidas en 15 formularios obtimizando los includes de blade
 slipSelected.blade.php dentrp de sta vista tenemos un swich para mostrar todos los otros includes
 
-RELACIONES
+RELACIONES:
 vista:slipPetrolero.blade.php
 modelo:SlipEnergy.php
 migracion:2022_09_19_221739_create_slip_energies_table.php
@@ -65,4 +64,8 @@ migracion:2022_09_19_231430_create_slip_aviation_twos_table
 vista:slipAviacion3
 modelo:SlipAviationThree
 migracion:2022_09_19_232256_create_slip_aviation_threes_table
+
+vista:slipResponsabilidadCivil
+modelo:SlipCivilLiability
+migracion:2022_09_19_233138_create_slip_civil_liabilities_table
 

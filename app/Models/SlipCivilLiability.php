@@ -27,7 +27,7 @@ class SlipCivilLiability extends Model
         'limit_compensation',
         'limit_event',
         'limit_annual',
-        'condition_additional',
+        // 'condition_additional',
         'ingress_previous_year',
         'ingress_present_year',
         'ingress_next_year',
