@@ -45,7 +45,11 @@ Tablas qué contiene:
 Indemnización,
 Objeto del seguro
 
-slipcasco
+
 vista:slipcasco
 modelo:SlipMaritimeOne
-migracion:create_slip_fixed..
+migracion:Slip_Maritime_One..
+
+vista:slipproteccion
+modelo:SlipMaritimeTwo
+migracion:Slip_Maritime_Two
