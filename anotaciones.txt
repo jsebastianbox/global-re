@@ -69,3 +69,14 @@ vista:slipResponsabilidadCivil
 modelo:SlipCivilLiability
 migracion:2022_09_19_233138_create_slip_civil_liabilities_table
 
+vista:slipBankers
+modelo:
+migracion:
+
+vista:slipFidelidad
+modelo:
+migracion:
+
+vista:slipFianzas
+modelo:
+migracion:
