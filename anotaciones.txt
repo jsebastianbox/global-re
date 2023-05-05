@@ -1,0 +1,46 @@
+REALACIONES VISTAS TABLAS:
+
+Sistema de seguros que tienen como objetivo en esta parte crear el presupuesto de cada plan
+hay mas de 50 coberturas resumidas en 15 formularios obtimizando los includes de blade
+slipSelected.blade.php dentrp de sta vista tenemos un swich para mostrar todos los otros includes
+
+
+
+vista:slipPetrolero.blade.php
+modelo:SlipEnergy.php
+migracion:2022_09_19_221739_create_slip_energies_table.php
+
+vista:slip_vehicles.blade.php
+modelo:sliptech
+migracion:2022_09_19_221739_create_slip_tech
+
+vista:VehicleDetail
+modelo:VehicleDetail
+migracion:create_vehicle_detail.
+
+
+vista:slipLivianos
+modelo:slipLivianos
+migracion:create_vehicle_liv.
+
+
+vista:SlipFixedAssets
+modelo:SlipFixedAssets
+migracion:create_Slip_Fixed_Assets.
+
+
+
+vista:Slipcompensation
+modelo:compensation
+migracion:2023_05_04_083206_create_compensation_table.
+
+ 
+vista:SlipFire
+modelo:SlipFixedAssets
+migracion:create_slip_fixed..
+
+
+Slip life:
+Tablas qué contiene:
+Indemnización,
+Objeto del seguro
