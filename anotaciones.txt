@@ -1,7 +1,7 @@
 OBSERVACIONES:
 Sistema de seguros que tienen como objetivo en esta parte crear el presupuesto de cada plan
 hay mas de 50 coberturas resumidas en 15 formularios obtimizando los includes de blade
-slipSelected.blade.php dentrp de sta vista tenemos un swich para mostrar todos los otros includes
+slipSelected.blade.php dentro de sta vista tenemos un swich para mostrar todos los otros includes
 
 RELACIONES:
 vista:slipPetrolero.blade.php
@@ -75,8 +75,8 @@ migracion:2022_09_19_234924_create_slip_financial_risks_table
 
 vista:slipFidelidad
 modelo:SlipFianzaTwo
-migracion:2022_09_19_234924_create_slip_financial_risks_table
+migracion:2022_09_20_000230_create_slip_fianza_twos_table
 
 vista:slipFianzas
 modelo:SlipFianzaTwo
-migracion:
+migracion:2022_09_20_000230_create_slip_fianza_twos_table

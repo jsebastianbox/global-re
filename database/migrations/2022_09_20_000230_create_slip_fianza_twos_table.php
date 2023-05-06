@@ -28,6 +28,7 @@ class CreateSlipFianzaTwosTable extends Migration
             //fidelidad
             $table->string('type_coverage_fidelidad')->nullable();
             $table->double('limit_colusorio_value')->nullable();
+            $table->double('mount_fianza')->nullable();
             $table->string('limit_colusorio_text')->nullable();
             $table->string('periodo_descubrimiento')->nullable();
             //
